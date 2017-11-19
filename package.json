@@ -1,0 +1,30 @@
+{
+  "name": "twasi-appstore",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "jwt-decode": "^2.2.0",
+    "prop-types": "^15.6.0",
+    "query-string": "^5.0.1",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .jsx --ext .js ./src --max-warnings=0"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.3.2",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-lodash-fp": "^2.1.3",
+    "eslint-plugin-react": "^7.5.0"
+  }
+}
