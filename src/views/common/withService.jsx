@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const withService = (WrappedComponent, service) => {
+import serviceFactory from '../../services/serviceFactory';
+
+const withService = WrappedComponent => {
   const WithServiceComponent = (props, context) => {
     const { jwt } = context;
 
-    return <WrappedComponent {...props} service={service(jwt)} />;
+    return <WrappedComponent {...props} services={serviceFactory(jwt)} />;
   };
 
   WithServiceComponent.contextTypes = {
