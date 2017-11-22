@@ -1,13 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Layout, Icon, Menu } from 'antd';
 
 import Auth from './auth';
 import Main from './views/Main';
+import Status from './views/Status/Status';
 
 import twasiLogo from './views/common/resources/twasi.svg';
 
-const { Header, Content, Footer, Sider } = Layout;
+const {
+  Header, Content, Footer, Sider
+} = Layout;
 
 const App = () => (
   <BrowserRouter>
@@ -23,11 +26,7 @@ const App = () => (
             justifyContent: 'center'
           }}
         >
-          <img
-            alt="Twasi Logo"
-            src={twasiLogo}
-            style={{ height: 40, marginRight: 15 }}
-          />
+          <img alt="Twasi Logo" src={twasiLogo} style={{ height: 40, marginRight: 15 }} />
           <h1>Twasi Board</h1>
         </Header>
         <Layout>
@@ -35,8 +34,8 @@ const App = () => (
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
               <Menu.Item key="1">
-                <Icon type="user" />
-                <span>nav 1</span>
+                <Icon type="home" />
+                <span>Overview</span>
               </Menu.Item>
               <Menu.Item key="2">
                 <Icon type="video-camera" />
@@ -56,7 +55,10 @@ const App = () => (
               minHeight: 'calc( 100vh - 65px - 48px )'
             }}
           >
-            <Route path="/" exact component={Main} />
+            <Switch>
+              <Route path="/" exact component={Main} />
+              <Route path="/status" exact component={Status} />
+            </Switch>
           </Content>
         </Layout>
       </Layout>

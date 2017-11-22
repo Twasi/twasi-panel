@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { Icon, Row, Col, Card, Button } from 'antd';
 
-import withService from './common/withService';
+import withService from '../common/withService';
 
 class Main extends Component {
   constructor(props) {
@@ -32,7 +31,6 @@ class Main extends Component {
 
   render() {
     const { status } = this.state;
-    const { history } = this.props;
 
     const running = (
       <span style={{ color: 'green' }}>
@@ -47,12 +45,8 @@ class Main extends Component {
 
     return (
       <div>
-        <h2>Main</h2>
-        <Card
-          title="Bot status"
-          extra={<Button onClick={() => history.push('/status')}>Manage</Button>}
-          style={{ width: 300 }}
-        >
+        <h2>Status</h2>
+        <Card title="Bot status" style={{ width: 300 }}>
           <Row type="flex" justify="center">
             <Col span={12}>Twitchbot</Col>
             <Col span={12}>
@@ -70,4 +64,4 @@ Main.propTypes = {
   services: PropTypes.func.isRequired
 };
 
-export default withRouter(withService(Main));
+export default withService(Main);

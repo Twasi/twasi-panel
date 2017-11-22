@@ -33,21 +33,16 @@ class Auth extends Component {
 
     return (
       <div>
-        <Route path="/" component={Login} />
+        <Route path="/callback" component={Login} />
         {isAuthenticated && children}
-        {!isAuthenticated && (
-          <FullpageLoader text="Authenticating, please wait..." />
-        )}
+        {!isAuthenticated && <FullpageLoader text="Authenticating, please wait..." />}
       </div>
     );
   }
 }
 
 Auth.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
-  ])
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
 };
 
 Auth.childContextTypes = {
