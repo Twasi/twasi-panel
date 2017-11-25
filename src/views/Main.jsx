@@ -67,7 +67,10 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  services: PropTypes.func.isRequired
+  services: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default withRouter(withService(Main));

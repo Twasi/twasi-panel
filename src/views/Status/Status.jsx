@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Row, Col, Card, Button } from 'antd';
+import { Icon, Row, Col, Card } from 'antd';
 
 import withService from '../common/withService';
 
-class Main extends Component {
+class Status extends Component {
   constructor(props) {
     super(props);
 
@@ -60,8 +60,8 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+Status.propTypes = {
   services: PropTypes.func.isRequired
 };
 
-export default withService(Main);
+export default withService(Status);

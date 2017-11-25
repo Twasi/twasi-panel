@@ -33,7 +33,7 @@ class Auth extends Component {
 
     return (
       <div>
-        <Route path="/callback" component={Login} />
+        <Route path="/" component={Login} />
         {isAuthenticated && children}
         {!isAuthenticated && <FullpageLoader text="Authenticating, please wait..." />}
       </div>

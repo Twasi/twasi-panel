@@ -8,7 +8,12 @@ import config from '../config';
 
 class Login extends React.Component {
   componentWillMount() {
-    const { authenticate } = this.context;
+    const { authenticate, isAuthenticated } = this.context;
+
+    if (isAuthenticated) {
+      return;
+    }
+
     const urlParams = queryString.parse(window.location.search);
 
     if (urlParams.jwt) {
@@ -22,8 +27,7 @@ class Login extends React.Component {
     const { location } = this.props;
     return (
       <div>
-        {this.context.isAuthenticated &&
-          location.pathname !== '/' && <Redirect to="/" />}
+        {this.context.isAuthenticated && location.pathname === '/callback' && <Redirect to="/" />}
       </div>
     );
   }
