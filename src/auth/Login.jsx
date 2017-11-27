@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import jwtDecode from 'jwt-decode';
 import { Redirect } from 'react-router-dom';
+import storage from 'local-storage';
 
 import config from '../config';
+import userInfoService from '../services/userInfo';
+
+// 2 Hours
+const tokenExpiration = 2 * 60 * 60 * 1000;
 
 class Login extends React.Component {
   componentWillMount() {
@@ -18,8 +23,26 @@ class Login extends React.Component {
 
     if (urlParams.jwt) {
       authenticate(urlParams.jwt, jwtDecode(urlParams.jwt));
+      storage('jwt', { token: urlParams.jwt, since: new Date().getTime() });
     } else {
-      window.location.href = config.auth_url;
+      const cacheData = storage('jwt');
+
+      if (
+        typeof cacheData === 'undefined' ||
+        cacheData === null ||
+        cacheData.since < new Date().getTime() - tokenExpiration
+      ) {
+        window.location.href = config.auth_url;
+        return;
+      }
+
+      userInfoService(cacheData.token)()
+        .then(() => {
+          authenticate(cacheData.token, jwtDecode(cacheData.token));
+        })
+        .catch(() => {
+          window.location.href = config.auth_url;
+        });
     }
   }
 
