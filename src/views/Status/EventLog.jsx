@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Row, Col, Card } from 'antd';
+import { Icon, Row, Col, Card, Table } from 'antd';
 
 import withService from '../common/withService';
-import EventLog from './EventLog';
 
 class Status extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      status: {
+      data: {
         isRunning: false,
         isLoaded: false
       }
@@ -26,12 +25,13 @@ class Status extends Component {
   loadData() {
     const { services } = this.props;
     services()
-      .bot.info()
-      .then(data => this.setState({ status: { ...data, isLoaded: true } }));
+      .user.events()
+      .then(data => this.setState({ data: { ...data, isLoaded: true } }));
   }
 
   render() {
-    const { status } = this.state;
+    const { data } = this.state;
+    console.log(data);
 
     const running = (
       <span style={{ color: 'green' }}>
@@ -45,19 +45,23 @@ class Status extends Component {
     );
 
     return (
-      <div>
-        <h2>Status</h2>
-        <Card title="Bot status" style={{ width: 300 }}>
-          <Row type="flex" justify="center">
-            <Col span={12}>Twitchbot</Col>
-            <Col span={12}>
-              {status.isRunning && running}
-              {!status.isRunning && stopped}
-            </Col>
-          </Row>
-        </Card>
-        <EventLog />
-      </div>
+      <Card title="Event Log">
+        {data.messages && (
+          <Table
+            columns={[
+              {
+                title: 'Name',
+                dataIndex: 'message'
+              },
+              {
+                title: 'Timestamp',
+                dataIndex: 'createdAt'
+              }
+            ]}
+            dataSource={data.messages.map(message => ({ ...message, key: message.createdAt }))}
+          />
+        )}
+      </Card>
     );
   }
 }
