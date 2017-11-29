@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Row, Col, Card, Table } from 'antd';
+import { Card, Table } from 'antd';
 
 import withService from '../common/withService';
 
@@ -20,6 +20,11 @@ class Status extends Component {
 
   componentDidMount() {
     this.loadData();
+    this.intervalId = setInterval(this.loadData, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
   }
 
   loadData() {
@@ -31,18 +36,6 @@ class Status extends Component {
 
   render() {
     const { data } = this.state;
-    console.log(data);
-
-    const running = (
-      <span style={{ color: 'green' }}>
-        <Icon type="check-circle-o" /> Running
-      </span>
-    );
-    const stopped = (
-      <span style={{ color: 'red' }}>
-        <Icon type="close-circle-o" /> Stopped
-      </span>
-    );
 
     return (
       <Card title="Event Log">
