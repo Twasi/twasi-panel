@@ -9,7 +9,7 @@ ENV NPM_CONFIG_LOGLEVEL warn
 COPY . .
 
 # Install dependencies
-RUN yarn
+RUN npm install
 
 # Build for production.
 RUN yarn run build --production
