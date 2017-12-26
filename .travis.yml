@@ -1,0 +1,18 @@
+language: node_js
+sudo: required
+
+services:
+  - docker
+
+addons:
+  sonarcloud:
+    organization: "twasi"
+
+jobs:
+  include:
+    - stage: docker
+      script:
+        - "docker build ."
+
+stages:
+  - docker
