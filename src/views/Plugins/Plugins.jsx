@@ -35,7 +35,7 @@ class Main extends Component {
     const { plugins } = this.state.plugins;
 
     const renderedPlugins = plugins.map(plugin => (
-      <Col className="gutter-row" span={6} style={{ marginTop: 16 }}>
+      <Col span={6} style={{ marginTop: 16 }}>
         <Card key={plugin.name} title={plugin.name}>
           <table>
             <tr>

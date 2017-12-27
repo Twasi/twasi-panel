@@ -23,6 +23,12 @@ class Sidebar extends Component {
         name: 'Status'
       },
       {
+        key: 'settings',
+        path: '/settings',
+        icon: 'setting',
+        name: 'Settings'
+      },
+      {
         key: 'plugins',
         path: '/plugins',
         icon: 'api',
