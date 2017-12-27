@@ -21,6 +21,12 @@ class Sidebar extends Component {
         path: '/status',
         icon: 'home',
         name: 'Status'
+      },
+      {
+        key: 'plugins',
+        path: '/plugins',
+        icon: 'api',
+        name: 'Plugins'
       }
     ];
 
@@ -57,7 +63,12 @@ class Sidebar extends Component {
     return (
       <Sider trigger={null} collapsible collapsed={false}>
         <div className="logo" />
-        <Menu theme="dark" mode="inline" selectedKeys={[selectedKey]} onClick={this.handleClick}>
+        <Menu
+          theme="dark"
+          mode="inline"
+          selectedKeys={[selectedKey]}
+          onClick={this.handleClick}
+        >
           {renderItems()}
         </Menu>
       </Sider>

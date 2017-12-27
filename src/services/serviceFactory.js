@@ -6,6 +6,8 @@ import botStartService from './bot/startService';
 
 import userEventsService from './user/eventsService';
 
+import pluginsGetService from './plugins/getService';
+
 const serviceFactory = jwt => () => ({
   userInfo: userInfo(jwt),
   bot: {
@@ -15,6 +17,9 @@ const serviceFactory = jwt => () => ({
   },
   user: {
     events: userEventsService(jwt)
+  },
+  plugins: {
+    get: pluginsGetService(jwt)
   }
 });
 

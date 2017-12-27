@@ -6,8 +6,9 @@ import Auth from './auth';
 
 import Sidebar from './views/Sidebar/Sidebar';
 
-import Main from './views/Main';
-import Status from './views/Status/Status';
+import Overview from './views/Overview';
+import Status from './views/Status';
+import Plugins from './views/Plugins';
 
 import twasiLogo from './views/common/resources/twasi.svg';
 
@@ -27,7 +28,11 @@ const App = () => (
             justifyContent: 'center'
           }}
         >
-          <img alt="Twasi Logo" src={twasiLogo} style={{ height: 40, marginRight: 15 }} />
+          <img
+            alt="Twasi Logo"
+            src={twasiLogo}
+            style={{ height: 40, marginRight: 15 }}
+          />
           <h1>Twasi Board</h1>
         </Header>
         <Layout>
@@ -41,8 +46,9 @@ const App = () => (
             }}
           >
             <Switch>
-              <Route path="/" exact component={Main} />
+              <Route path="/" exact component={Overview} />
               <Route path="/status" exact component={Status} />
+              <Route path="/plugins" exact component={Plugins} />
             </Switch>
           </Content>
         </Layout>

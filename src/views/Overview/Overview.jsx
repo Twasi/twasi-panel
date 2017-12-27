@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Icon, Row, Col, Card, Button } from 'antd';
 
-import withService from './common/withService';
+import withService from '../common/withService';
 
 class Main extends Component {
   constructor(props) {
@@ -50,7 +50,9 @@ class Main extends Component {
         <h2>Main</h2>
         <Card
           title="Bot status"
-          extra={<Button onClick={() => history.push('/status')}>Manage</Button>}
+          extra={
+            <Button onClick={() => history.push('/status')}>Manage</Button>
+          }
           style={{ width: 300 }}
         >
           <Row type="flex" justify="center">

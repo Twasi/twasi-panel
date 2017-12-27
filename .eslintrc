@@ -90,6 +90,8 @@
       }
     ],
     "lodash-fp/preferred-alias": "off",
-    "lodash-fp/use-fp": "error"
+    "lodash-fp/use-fp": "error",
+
+    "function-paren-newline": "off"
   }
 }

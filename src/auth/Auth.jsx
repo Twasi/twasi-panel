@@ -14,6 +14,10 @@ class Auth extends Component {
       jwt: null,
       user: {}
     };
+
+    window.testLocal = (address = 'http://localhost:3000/callback') => {
+      window.open(`${address}?jwt=${this.state.jwt}`, '_blank');
+    };
   }
 
   getChildContext() {
@@ -35,14 +39,19 @@ class Auth extends Component {
       <div>
         <Route path="/" component={Login} />
         {isAuthenticated && children}
-        {!isAuthenticated && <FullpageLoader text="Authenticating, please wait..." />}
+        {!isAuthenticated && (
+          <FullpageLoader text="Authenticating, please wait..." />
+        )}
       </div>
     );
   }
 }
 
 Auth.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node)
+  ])
 };
 
 Auth.childContextTypes = {
