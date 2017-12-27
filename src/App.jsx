@@ -19,25 +19,25 @@ const App = () => (
   <BrowserRouter>
     <Auth>
       <Layout>
-        <Header
-          style={{
-            background: '#fff',
-            padding: 0,
-            height: 65,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <img
-            alt="Twasi Logo"
-            src={twasiLogo}
-            style={{ height: 40, marginRight: 15 }}
-          />
-          <h1>Twasi Board</h1>
-        </Header>
+        <Sidebar />
         <Layout>
-          <Sidebar />
+          <Header
+            style={{
+              background: '#fff',
+              padding: 0,
+              height: 65,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <img
+              alt="Twasi Logo"
+              src={twasiLogo}
+              style={{ height: 40, marginRight: 15 }}
+            />
+            <h1>Twasi Board</h1>
+          </Header>
           <Content
             style={{
               margin: '24px 16px',
