@@ -8,9 +8,6 @@ ENV NPM_CONFIG_LOGLEVEL all
 # Copy all local files into the image.
 COPY . .
 
-# Move the default config file (could be adapted later or replaced using volumes)
-RUN mv public/config/config.beta.js public/config/config.js
-
 # Install dependencies
 RUN yarn
 
@@ -21,7 +18,7 @@ RUN yarn run build --production
 RUN yarn global add serve
 
 # Set the command to start the node server.
-CMD serve -s build
+CMD bash scripts/start.sh
 
 # Tell Docker about the port we'll run on.
 EXPOSE 5000
