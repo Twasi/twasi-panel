@@ -12,7 +12,7 @@ jobs:
     - stage: docker
       script:
         - docker login -u="$DOCKERHUB_USERNAME" -p="$DOCKERHUB_PASSWORD"
-        - "fdocker build . -t twasi/twasi-panel"
+        - "docker build . -t twasi/twasi-panel"
         - "docker push twasi/twasi-panel"
 
 stages:
