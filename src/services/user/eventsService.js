@@ -1,8 +1,6 @@
-import config from '../../config';
-
 const eventsService = jwt => () =>
   new Promise((resolve, reject) => {
-    fetch(`${config.api_url}/user/events`, {
+    fetch(`${window.env.API_URL}/user/events`, {
       method: 'GET',
       headers: { authorization: `Bearer ${jwt}` }
     })

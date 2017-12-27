@@ -8,6 +8,9 @@ ENV NPM_CONFIG_LOGLEVEL warn
 # Copy all local files into the image.
 COPY . .
 
+# Move the default config file (could be adapted later or replaced using volumes)
+RUN mv public/config.example.js public/config.js
+
 # Install dependencies
 RUN yarn
 
@@ -21,4 +24,4 @@ RUN yarn global add serve
 CMD serve -s build
 
 # Tell Docker about the port we'll run on.
-EXPOSE 9000
+EXPOSE 5000

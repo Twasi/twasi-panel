@@ -1,8 +1,6 @@
-import config from '../../config';
-
 const startService = jwt => () =>
   new Promise((resolve, reject) => {
-    fetch(`${config.api_url}/bot/start`, {
+    fetch(`${window.env.API_URL}/bot/start`, {
       method: 'POST',
       headers: { authorization: `Bearer ${jwt}` }
     })

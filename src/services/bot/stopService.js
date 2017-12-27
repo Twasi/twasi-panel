@@ -1,8 +1,6 @@
-import config from '../../config';
-
 const stopService = jwt => () =>
   new Promise((resolve, reject) => {
-    fetch(`${config.api_url}/bot/stop`, {
+    fetch(`${window.env.API_URL}/bot/stop`, {
       method: 'POST',
       headers: { authorization: `Bearer ${jwt}` }
     })

@@ -5,7 +5,6 @@ import jwtDecode from 'jwt-decode';
 import { Redirect } from 'react-router-dom';
 import storage from 'local-storage';
 
-import config from '../config';
 import userInfoService from '../services/userInfo';
 
 // 2 Hours
@@ -32,7 +31,7 @@ class Login extends React.Component {
         cacheData === null ||
         cacheData.since < new Date().getTime() - tokenExpiration
       ) {
-        window.location.href = config.auth_url;
+        window.location.href = window.env.AUTH_URL;
         return;
       }
 
@@ -41,7 +40,7 @@ class Login extends React.Component {
           authenticate(cacheData.token, jwtDecode(cacheData.token));
         })
         .catch(() => {
-          window.location.href = config.auth_url;
+          window.location.href = window.env.AUTH_URL;
         });
     }
   }
