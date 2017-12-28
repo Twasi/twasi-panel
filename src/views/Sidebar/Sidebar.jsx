@@ -83,9 +83,9 @@ class Sidebar extends Component {
         </Menu>
         <div
           style={{
-            position: 'absolute',
+            position: 'fixed',
             bottom: 0,
-            width: '100%',
+            width: 200,
             height: 50,
             color: 'white'
           }}
