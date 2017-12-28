@@ -9,3 +9,6 @@ README.md
 # This should contain all files created during `npm run build`.
 build
 node_modules
+
+# Other files
+public/build.js

@@ -5,5 +5,13 @@ if [ ! -f "/build/config/config.js" ]; then
   echo "Config file didn't exist, copied default config."
 fi
 
+if [ ! -f "/build/build.js" ]; then
+  cp /scripts/config-presets/build.js /build/build.js
+  echo "First boot after build detected. Writing build data file..."
+fi
+
+today=$(date +%d%m%Y)
+sed -i "s/%currentDate%/${today}/g" /build/build.js
+
 cd /
 serve -s build

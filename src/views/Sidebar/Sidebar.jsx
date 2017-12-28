@@ -5,6 +5,8 @@ import find from 'lodash/fp/find';
 
 import { Layout, Menu, Icon } from 'antd';
 
+const pkgJson = require('../../../package.json');
+
 class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -66,6 +68,8 @@ class Sidebar extends Component {
         </Menu.Item>
       ));
 
+    const versionAlign = { width: '100%', textAlign: 'center' };
+
     return (
       <Sider trigger={null} collapsible collapsed={false}>
         <div className="logo" />
@@ -77,6 +81,20 @@ class Sidebar extends Component {
         >
           {renderItems()}
         </Menu>
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            width: '100%',
+            height: 50,
+            color: 'white'
+          }}
+        >
+          <div style={versionAlign}>
+            Twasi-panel v.{pkgJson.version} - #{window.env.BUILD_DESC}
+          </div>
+          <div style={versionAlign}>Twasi-core v.UNKNOWN</div>
+        </div>
       </Sider>
     );
   }
