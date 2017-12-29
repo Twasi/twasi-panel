@@ -1,5 +1,7 @@
 import userInfo from './userInfo';
 
+import versionInfoService from './versionInfoService';
+
 import botInfoService from './bot/infoService';
 import botStopService from './bot/stopService';
 import botStartService from './bot/startService';
@@ -10,6 +12,7 @@ import pluginsGetService from './plugins/getService';
 
 const serviceFactory = jwt => () => ({
   userInfo: userInfo(jwt),
+  versionInfo: versionInfoService(jwt),
   bot: {
     info: botInfoService(jwt),
     stop: botStopService(jwt),

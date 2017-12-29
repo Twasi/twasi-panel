@@ -1,0 +1,9 @@
+const UPDATE_USER = 'auth/UPDATE_USER';
+const UPDATE_JWT = 'auth/UPDATE_JWT';
+const UPDATE_IS_LOADING = 'auth/UPDATE_IS_LOADING';
+
+export default {
+  UPDATE_USER,
+  UPDATE_JWT,
+  UPDATE_IS_LOADING
+};

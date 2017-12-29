@@ -1,0 +1,5 @@
+const UPDATE_LANGUAGE = 'i18n/UPDATE_LANGUAGE';
+
+export default {
+  UPDATE_LANGUAGE
+};

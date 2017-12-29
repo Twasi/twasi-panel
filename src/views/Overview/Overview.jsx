@@ -5,7 +5,7 @@ import { Icon, Row, Col, Card, Button } from 'antd';
 
 import withService from '../common/withService';
 
-class Main extends Component {
+class Overview extends Component {
   constructor(props) {
     super(props);
 
@@ -68,11 +68,11 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+Overview.propTypes = {
   services: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired
 };
 
-export default withRouter(withService(Main));
+export default withRouter(withService(Overview));

@@ -1,47 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
-import FullpageLoader from '../views/common/FullpageLoader';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
+import { authSelectors } from '../state/auth';
+import FullpageLoader from '../views/common/FullpageLoader';
 import Login from './Login';
 
 class Auth extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isAuthenticated: false,
-      jwt: null,
-      user: {}
-    };
-
     window.testLocal = (address = 'http://localhost:3000/callback') => {
-      window.open(`${address}?jwt=${this.state.jwt}`, '_blank');
-    };
-  }
-
-  getChildContext() {
-    return {
-      user: this.state.user,
-      jwt: this.state.jwt,
-      isAuthenticated: this.state.isAuthenticated,
-      authenticate: (jwt, user) => {
-        this.setState({ user, jwt, isAuthenticated: true });
-      }
+      window.open(`${address}?jwt=${this.props.jwt}`, '_blank');
     };
   }
 
   render() {
-    const { children } = this.props;
-    const { isAuthenticated } = this.state;
+    const { children, isAuthenticated, isLoading } = this.props;
+
+    const isOk = isAuthenticated && !isLoading;
 
     return (
       <div>
-        <Route path="/" component={Login} />
-        {isAuthenticated && children}
-        {!isAuthenticated && (
-          <FullpageLoader text="Authenticating, please wait..." />
-        )}
+        <Login />
+        {isOk && children}
+        {!isOk && <FullpageLoader text="Authenticating, please wait..." />}
       </div>
     );
   }
@@ -51,14 +35,16 @@ Auth.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
-  ])
-};
-
-Auth.childContextTypes = {
-  user: PropTypes.shape({}),
+  ]),
+  isAuthenticated: PropTypes.bool.isRequired,
   jwt: PropTypes.string,
-  isAuthenticated: PropTypes.bool,
-  authenticate: PropTypes.func
+  isLoading: PropTypes.bool.isRequired
 };
 
-export default Auth;
+const mapStateToProps = state => ({
+  jwt: authSelectors.getJwt(state),
+  isAuthenticated: authSelectors.isAuthenticated(state),
+  isLoading: authSelectors.isLoading(state)
+});
+
+export default withRouter(connect(mapStateToProps)(Auth));
