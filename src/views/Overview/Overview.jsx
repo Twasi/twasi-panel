@@ -1,37 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Row, Col, Card, Button } from 'antd';
 
-import withService from '../common/withService';
+import { appInfoOperations } from '../../state/appInfo';
 
 class Overview extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      status: {
-        isRunning: false,
-        isLoaded: false
-      }
-    };
-
-    this.loadData = this.loadData.bind(this);
-  }
-
-  componentDidMount() {
-    this.loadData();
-  }
-
-  loadData() {
-    const { services } = this.props;
-    services()
-      .bot.info()
-      .then(data => this.setState({ status: { ...data, isLoaded: true } }));
+  componentWillMount() {
+    // Todo
   }
 
   render() {
-    const { status } = this.state;
     const { history } = this.props;
 
     const running = (
@@ -44,6 +24,8 @@ class Overview extends Component {
         <Icon type="close-circle-o" /> Stopped
       </span>
     );
+
+    const status = false;
 
     return (
       <div>
@@ -69,10 +51,14 @@ class Overview extends Component {
 }
 
 Overview.propTypes = {
-  services: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  verifyData: PropTypes.func.isRequired
 };
 
-export default withRouter(withService(Overview));
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(appInfoOperations.verifyData())
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(Overview));

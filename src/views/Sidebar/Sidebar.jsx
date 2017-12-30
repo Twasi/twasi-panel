@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import find from 'lodash/fp/find';
 
 import { Layout, Menu, Icon } from 'antd';
+
+import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 
 const pkgJson = require('../../../package.json');
 
@@ -41,6 +44,11 @@ class Sidebar extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentWillMount() {
+    const { verifyData } = this.props;
+    verifyData();
+  }
+
   handleClick(item) {
     const { history } = this.props;
 
@@ -51,7 +59,7 @@ class Sidebar extends Component {
 
   render() {
     const { Sider } = Layout;
-    const { location } = this.props;
+    const { location, serverVersion } = this.props;
 
     let selectedKey = find(item => item.path === location.pathname, this.items);
     if (typeof selectedKey === 'undefined') {
@@ -93,7 +101,7 @@ class Sidebar extends Component {
           <div style={versionAlign}>
             Twasi-panel v.{pkgJson.version} - #{window.env.BUILD_DESC}
           </div>
-          <div style={versionAlign}>Twasi-core v.UNKNOWN</div>
+          <div style={versionAlign}>Twasi-core v.{serverVersion}</div>
         </div>
       </Sider>
     );
@@ -106,7 +114,18 @@ Sidebar.propTypes = {
   }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  verifyData: PropTypes.func.isRequired
 };
 
-export default withRouter(Sidebar);
+const mapStateToProps = state => ({
+  serverVersion: appInfoSelectors.getVersion(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(appInfoOperations.verifyData())
+});
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Sidebar)
+);

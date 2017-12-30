@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Select, Form } from 'antd';
 
-import withService from '../common/withService';
-
 const { Option } = Select;
 const { Item } = Form;
 
-class Main extends Component {
+class Settings extends Component {
   constructor(props) {
     super(props);
 
@@ -76,8 +74,8 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+Settings.propTypes = {
   services: PropTypes.func.isRequired
 };
 
-export default withService(Main);
+export default Settings;

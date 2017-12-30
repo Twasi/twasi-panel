@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Row, Col } from 'antd';
 
-import withService from '../common/withService';
-
-class Main extends Component {
+class Plugins extends Component {
   constructor(props) {
     super(props);
 
@@ -66,8 +64,8 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+Plugins.propTypes = {
   services: PropTypes.func.isRequired
 };
 
-export default withService(Main);
+export default Plugins;

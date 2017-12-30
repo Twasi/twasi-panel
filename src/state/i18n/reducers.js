@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import types from './types';
-// import detectLanguage, { supportedLanguages } from '../../i18n/detectLanguage';
 
 export const initialState = {
   language: 'DE_DE'

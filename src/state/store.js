@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import auth from './auth';
 import i18n from './i18n';
+import appInfo from './appInfo';
 import { initialState as i18nInitialState } from './i18n/reducers';
 
 let store = null;
@@ -13,7 +14,8 @@ const configureStore = (translations = {}) => {
 
   const reducers = {
     authState: auth,
-    i18nState: i18n
+    i18nState: i18n,
+    appInfoState: appInfo
   };
 
   const initialState = {

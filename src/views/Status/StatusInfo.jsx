@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Row, Col, Card, Button } from 'antd';
 
-import withService from '../common/withService';
-
 class Status extends Component {
   constructor(props) {
     super(props);
@@ -82,10 +80,18 @@ class Status extends Component {
           </Col>
         </Row>
         <Row>
-          <Button type="danger" disabled={!status.isRunning} onClick={this.stopBot}>
+          <Button
+            type="danger"
+            disabled={!status.isRunning}
+            onClick={this.stopBot}
+          >
             Stop
           </Button>
-          <Button type="success" disabled={status.isRunning} onClick={this.startBot}>
+          <Button
+            type="success"
+            disabled={status.isRunning}
+            onClick={this.startBot}
+          >
             Start
           </Button>
         </Row>
@@ -98,4 +104,4 @@ Status.propTypes = {
   services: PropTypes.func.isRequired
 };
 
-export default withService(Status);
+export default Status;

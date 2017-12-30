@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import { Redirect, withRouter } from 'react-router-dom';
 import storage from 'local-storage';
 
-import userInfoService from '../services/userInfo';
+import userInfoService from '../services/userInfo.service';
 import { authSelectors, authOperations } from '../state/auth';
 
 // 2 Hours
@@ -36,13 +36,10 @@ class Login extends React.Component {
         return;
       }
 
-      userInfoService(cacheData.token)()
-        .then(() => {
-          authenticate(cacheData.token);
-        })
-        .catch(() => {
-          window.location.href = window.env.AUTH_URL;
-        });
+      authenticate(cacheData.token);
+      userInfoService.get(cacheData.token).catch(() => {
+        window.location.href = window.env.AUTH_URL;
+      });
     }
   }
 

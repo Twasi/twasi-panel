@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Table } from 'antd';
 
-import withService from '../common/withService';
-
 class Status extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +49,10 @@ class Status extends Component {
                 dataIndex: 'createdAt'
               }
             ]}
-            dataSource={data.messages.map(message => ({ ...message, key: message.createdAt }))}
+            dataSource={data.messages.map(message => ({
+              ...message,
+              key: message.createdAt
+            }))}
           />
         )}
       </Card>
@@ -63,4 +64,4 @@ Status.propTypes = {
   services: PropTypes.func.isRequired
 };
 
-export default withService(Status);
+export default Status;
