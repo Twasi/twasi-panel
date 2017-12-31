@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Row, Col, Card, Button } from 'antd';
 
-import { appInfoOperations } from '../../state/appInfo';
+import { statusSelectors, statusOperations } from '../../state/status';
 
 class Overview extends Component {
   componentWillMount() {
-    // Todo
+    const { verifyData } = this.props;
+    verifyData();
   }
 
   render() {
-    const { history } = this.props;
+    const { history, status } = this.props;
 
     const running = (
       <span style={{ color: 'green' }}>
@@ -24,8 +25,6 @@ class Overview extends Component {
         <Icon type="close-circle-o" /> Stopped
       </span>
     );
-
-    const status = false;
 
     return (
       <div>
@@ -54,11 +53,18 @@ Overview.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  verifyData: PropTypes.func.isRequired
+  verifyData: PropTypes.func.isRequired,
+  status: PropTypes.shape({})
 };
 
-const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(appInfoOperations.verifyData())
+const mapStateToProps = state => ({
+  status: statusSelectors.getStatus(state)
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(Overview));
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(statusOperations.verifyData())
+});
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Overview)
+);

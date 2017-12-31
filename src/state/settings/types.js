@@ -1,0 +1,9 @@
+const UPDATE_LANGUAGE = 'settings/UPDATE_LANGUAGE';
+const UPDATE_LOADED = 'settings/UPDATE_LOADED';
+const UPDATE_DIRTY = 'status/UPDATE_DIRTY';
+
+export default {
+  UPDATE_LANGUAGE,
+  UPDATE_LOADED,
+  UPDATE_DIRTY
+};

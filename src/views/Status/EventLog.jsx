@@ -1,43 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Card, Table } from 'antd';
 
-class Status extends Component {
-  constructor(props) {
-    super(props);
+import { statusSelectors, statusOperations } from '../../state/status';
 
-    this.state = {
-      data: {
-        isRunning: false,
-        isLoaded: false
-      }
-    };
-
-    this.loadData = this.loadData.bind(this);
-  }
-
+class EventLog extends Component {
   componentDidMount() {
-    this.loadData();
-    this.intervalId = setInterval(this.loadData, 1000);
+    const { loadEvents } = this.props;
+    loadEvents();
+    this.intervalId = setInterval(loadEvents, 5000);
   }
 
   componentWillUnmount() {
     clearInterval(this.intervalId);
   }
 
-  loadData() {
-    const { services } = this.props;
-    services()
-      .user.events()
-      .then(data => this.setState({ data: { ...data, isLoaded: true } }));
-  }
-
   render() {
-    const { data } = this.state;
+    const { events } = this.props;
 
     return (
       <Card title="Event Log">
-        {data.messages && (
+        {events && (
           <Table
             columns={[
               {
@@ -49,7 +33,7 @@ class Status extends Component {
                 dataIndex: 'createdAt'
               }
             ]}
-            dataSource={data.messages.map(message => ({
+            dataSource={events.map(message => ({
               ...message,
               key: message.createdAt
             }))}
@@ -60,8 +44,17 @@ class Status extends Component {
   }
 }
 
-Status.propTypes = {
-  services: PropTypes.func.isRequired
+EventLog.propTypes = {
+  loadEvents: PropTypes.func.isRequired,
+  events: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
-export default Status;
+const mapStateToProps = state => ({
+  events: statusSelectors.getEvents(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadEvents: () => dispatch(statusOperations.loadEvents())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventLog);

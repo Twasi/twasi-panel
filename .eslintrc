@@ -92,6 +92,7 @@
     "lodash-fp/preferred-alias": "off",
     "lodash-fp/use-fp": "error",
 
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "object-curly-newline": "off"
   }
 }

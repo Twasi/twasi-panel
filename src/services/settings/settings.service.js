@@ -1,7 +1,7 @@
 import fetch from '../fetch';
 
 async function get() {
-  const url = `${window.env.API_URL}/bot`;
+  const url = `${window.env.API_URL}/settings`;
   return fetch(url, 'GET');
 }
 

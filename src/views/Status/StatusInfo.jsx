@@ -1,63 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Icon, Row, Col, Card, Button } from 'antd';
 
-class Status extends Component {
-  constructor(props) {
-    super(props);
+import { statusSelectors, statusOperations } from '../../state/status';
 
-    this.state = {
-      status: {
-        isRunning: false,
-        isLoaded: false
-      }
-    };
-
-    this.intervalId = null;
-
-    this.loadData = this.loadData.bind(this);
-    this.startBot = this.startBot.bind(this);
-    this.stopBot = this.stopBot.bind(this);
-  }
-
+class StatusInfo extends Component {
   componentDidMount() {
-    this.loadData();
-    this.intervalId = setInterval(this.loadData, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
-  }
-
-  loadData() {
-    const { services } = this.props;
-    services()
-      .bot.info()
-      .then(data => this.setState({ status: { ...data, isLoaded: true } }));
-  }
-
-  stopBot() {
-    const { services } = this.props;
-
-    services()
-      .bot.stop()
-      .then(() => {
-        this.loadData();
-      });
-  }
-
-  startBot() {
-    const { services } = this.props;
-
-    services()
-      .bot.start()
-      .then(() => {
-        this.loadData();
-      });
+    const { verifyData } = this.props;
+    verifyData();
   }
 
   render() {
-    const { status } = this.state;
+    const { status, startBot, stopBot, isStarting, isStopping } = this.props;
 
     const running = (
       <span style={{ color: 'green' }}>
@@ -83,14 +38,16 @@ class Status extends Component {
           <Button
             type="danger"
             disabled={!status.isRunning}
-            onClick={this.stopBot}
+            onClick={stopBot}
+            loading={isStopping}
           >
             Stop
           </Button>
           <Button
             type="success"
             disabled={status.isRunning}
-            onClick={this.startBot}
+            onClick={startBot}
+            loading={isStarting}
           >
             Start
           </Button>
@@ -100,8 +57,25 @@ class Status extends Component {
   }
 }
 
-Status.propTypes = {
-  services: PropTypes.func.isRequired
+StatusInfo.propTypes = {
+  verifyData: PropTypes.func.isRequired,
+  status: PropTypes.shape({}),
+  startBot: PropTypes.func.isRequired,
+  stopBot: PropTypes.func.isRequired,
+  isStarting: PropTypes.bool.isRequired,
+  isStopping: PropTypes.bool.isRequired
 };
 
-export default Status;
+const mapStateToProps = state => ({
+  status: statusSelectors.getStatus(state),
+  isStarting: statusSelectors.isStarting(state),
+  isStopping: statusSelectors.isStopping(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(statusOperations.verifyData()),
+  stopBot: () => dispatch(statusOperations.stopBot()),
+  startBot: () => dispatch(statusOperations.startBot())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(StatusInfo);

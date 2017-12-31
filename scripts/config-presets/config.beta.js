@@ -4,6 +4,7 @@
  Or 'build/config.js afterwards.'
 */
 window.env = {
+  ...window.env,
   API_URL: 'https://api-beta.twasi.net/api',
   AUTH_URL: 'https://api-beta.twasi.net/auth'
 };

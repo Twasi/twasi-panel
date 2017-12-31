@@ -1,42 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Select, Form } from 'antd';
+
+import { settingsSelectors, settingsOperations } from '../../state/settings';
 
 const { Option } = Select;
 const { Item } = Form;
 
 class Settings extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      settings: {
-        language: 'EN_GB',
-        isLoaded: false
-      }
-    };
-
-    // this.loadData = this.loadData.bind(this);
+  componentWillMount() {
+    const { verifyData } = this.props;
+    verifyData();
   }
 
-  /* componentDidMount() {
-    this.loadData();
-  } */
-
-  /* loadData() {
-    const { services } = this.props;
-    /* services()
-      .plugins.get()
-      .then(data =>
-        this.setState({ plugins: { plugins: data.plugins, isLoaded: true } })
-      );
-  } */
-
   render() {
-    const { language } = this.state.settings;
-
-    const handleLanguageChange = value =>
-      this.setState({ settings: { language: value } });
+    const { language, updateLanguage } = this.props;
 
     const formItemLayout = {
       labelCol: {
@@ -57,7 +36,7 @@ class Settings extends Component {
             style={{ width: 200 }}
             placeholder="Select a language"
             optionFilterProp="children"
-            onChange={handleLanguageChange}
+            onChange={updateLanguage}
             value={language}
             filterOption={(input, option) =>
               option.props.children
@@ -75,7 +54,19 @@ class Settings extends Component {
 }
 
 Settings.propTypes = {
-  services: PropTypes.func.isRequired
+  language: PropTypes.string.isRequired,
+  updateLanguage: PropTypes.func.isRequired,
+  verifyData: PropTypes.func.isRequired
 };
 
-export default Settings;
+const mapStateToProps = state => ({
+  language: settingsSelectors.getLanguage(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateLanguage: language =>
+    dispatch(settingsOperations.updateLanguage(language)),
+  verifyData: () => dispatch(settingsOperations.verifyData())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);
