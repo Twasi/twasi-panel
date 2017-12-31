@@ -115,7 +115,8 @@ Sidebar.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  verifyData: PropTypes.func.isRequired
+  verifyData: PropTypes.func.isRequired,
+  serverVersion: PropTypes.string
 };
 
 const mapStateToProps = state => ({
