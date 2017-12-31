@@ -10,7 +10,10 @@ module.exports = function override(config, env) {
     config
   ); // change importing css to less
   modifiedConfig = rewireLess.withLoaderOptions({
-    modifyVars: { '@primary-color': '#00aeae' }
+    modifyVars: {
+      '@primary-color': '#00aeae',
+      '@icon-url': "'/iconfont/iconfont'"
+    }
   })(config, env);
 
   return modifiedConfig;

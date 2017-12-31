@@ -60,7 +60,8 @@ Settings.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  language: settingsSelectors.getLanguage(state)
+  language: settingsSelectors.getLanguage(state),
+  isDirty: settingsSelectors.isDirty(state)
 });
 
 const mapDispatchToProps = dispatch => ({
