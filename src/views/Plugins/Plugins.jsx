@@ -1,53 +1,37 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Card, Row, Col } from 'antd';
 
+import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
+
 class Plugins extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      plugins: {
-        plugins: [],
-        isLoaded: false
-      }
-    };
-
-    this.loadData = this.loadData.bind(this);
-  }
-
   componentDidMount() {
-    this.loadData();
-  }
-
-  loadData() {
-    const { services } = this.props;
-    services()
-      .plugins.get()
-      .then(data =>
-        this.setState({ plugins: { plugins: data.plugins, isLoaded: true } })
-      );
+    const { verifyData } = this.props;
+    verifyData();
   }
 
   render() {
-    const { plugins } = this.state.plugins;
+    const { plugins } = this.props;
 
     const renderedPlugins = plugins.map(plugin => (
-      <Col span={6} style={{ marginTop: 16 }}>
+      <Col span={6} style={{ marginTop: 16 }} key={plugin.name}>
         <Card key={plugin.name} title={plugin.name}>
           <table>
-            <tr>
-              <td>Name: </td>
-              <td>{plugin.name}</td>
-            </tr>
-            <tr>
-              <td>Author: </td>
-              <td>{plugin.author}</td>
-            </tr>
-            <tr>
-              <td>Version: </td>
-              <td>{plugin.version}</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>Name: </td>
+                <td>{plugin.name}</td>
+              </tr>
+              <tr>
+                <td>Author: </td>
+                <td>{plugin.author}</td>
+              </tr>
+              <tr>
+                <td>Version: </td>
+                <td>{plugin.version}</td>
+              </tr>
+            </tbody>
           </table>
           <br />
           <div>{plugin.description}</div>
@@ -65,7 +49,16 @@ class Plugins extends Component {
 }
 
 Plugins.propTypes = {
-  services: PropTypes.func.isRequired
+  plugins: PropTypes.arrayOf(PropTypes.shape({})),
+  verifyData: PropTypes.func.isRequired
 };
 
-export default Plugins;
+const mapStateToProps = state => ({
+  plugins: pluginsSelectors.getPlugins(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(pluginsOperations.verifyData())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Plugins);

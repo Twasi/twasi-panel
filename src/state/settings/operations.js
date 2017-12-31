@@ -16,7 +16,6 @@ const verifyData = () => (dispatch, getState) => {
 
   if (!selectors.isLoaded(state)) {
     dispatch(loadData());
-    console.log('loading data');
   }
 };
 
