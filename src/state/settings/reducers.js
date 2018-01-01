@@ -10,7 +10,7 @@ export const initialState = {
 const settingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_LANGUAGE: {
-      return { ...state, language: action.language, isDirty: true };
+      return { ...state, language: action.language };
     }
 
     case types.UPDATE_LOADED: {

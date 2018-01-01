@@ -19,10 +19,23 @@ const verifyData = () => (dispatch, getState) => {
   }
 };
 
+const pushChanges = () => (dispatch, getState) => {
+  const state = getState();
+
+  const request = selectors.getRequest(state);
+
+  return settings.put(request).then(answer => {
+    if (answer.status) {
+      dispatch(updateDirty(false));
+    }
+  });
+};
+
 export default {
   updateLoaded,
   updateDirty,
   updateLanguage,
   verifyData,
-  loadData
+  loadData,
+  pushChanges
 };

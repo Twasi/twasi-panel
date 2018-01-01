@@ -5,4 +5,9 @@ async function get() {
   return fetch(url, 'GET');
 }
 
-export default { get };
+async function put(request) {
+  const url = `${window.env.API_URL}/settings`;
+  return fetch(url, 'PUT', request);
+}
+
+export default { get, put };

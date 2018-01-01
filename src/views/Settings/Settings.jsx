@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Select, Form } from 'antd';
+import { Select, Form, Button } from 'antd';
 
 import { settingsSelectors, settingsOperations } from '../../state/settings';
 
@@ -15,12 +15,18 @@ class Settings extends Component {
   }
 
   render() {
-    const { language, updateLanguage } = this.props;
+    const {
+      language,
+      updateLanguage,
+      updateDirty,
+      isDirty,
+      pushChanges
+    } = this.props;
 
     const formItemLayout = {
       labelCol: {
-        xs: { span: 4 },
-        sm: { span: 2 }
+        xs: { span: 6 },
+        sm: { span: 3 }
       },
       wrapperCol: {
         xs: { span: 8 },
@@ -36,7 +42,10 @@ class Settings extends Component {
             style={{ width: 200 }}
             placeholder="Select a language"
             optionFilterProp="children"
-            onChange={updateLanguage}
+            onChange={lang => {
+              updateLanguage(lang);
+              updateDirty(true);
+            }}
             value={language}
             filterOption={(input, option) =>
               option.props.children
@@ -48,6 +57,13 @@ class Settings extends Component {
             <Option value="DE_DE">German</Option>
           </Select>
         </Item>
+        {isDirty && (
+          <Item {...formItemLayout} label="You have unsaved changes">
+            <Button type="primary" onClick={pushChanges}>
+              Save
+            </Button>
+          </Item>
+        )}
       </Form>
     );
   }
@@ -56,7 +72,10 @@ class Settings extends Component {
 Settings.propTypes = {
   language: PropTypes.string.isRequired,
   updateLanguage: PropTypes.func.isRequired,
-  verifyData: PropTypes.func.isRequired
+  verifyData: PropTypes.func.isRequired,
+  updateDirty: PropTypes.func.isRequired,
+  isDirty: PropTypes.bool.isRequired,
+  pushChanges: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -67,7 +86,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updateLanguage: language =>
     dispatch(settingsOperations.updateLanguage(language)),
-  verifyData: () => dispatch(settingsOperations.verifyData())
+  verifyData: () => dispatch(settingsOperations.verifyData()),
+  updateDirty: isDirty => dispatch(settingsOperations.updateDirty(isDirty)),
+  pushChanges: () => dispatch(settingsOperations.pushChanges())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings);
