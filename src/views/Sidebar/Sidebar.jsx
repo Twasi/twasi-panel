@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
 
 import { Layout, Menu, Icon } from 'antd';
@@ -19,25 +20,25 @@ class Sidebar extends Component {
         key: 'overview',
         path: '/',
         icon: 'home',
-        name: 'Overview'
+        name: 'sidebar.overview'
       },
       {
         key: 'status',
         path: '/status',
         icon: 'home',
-        name: 'Status'
+        name: 'sidebar.status'
       },
       {
         key: 'settings',
         path: '/settings',
         icon: 'setting',
-        name: 'Settings'
+        name: 'sidebar.settings'
       },
       {
         key: 'plugins',
         path: '/plugins',
         icon: 'api',
-        name: 'Plugins'
+        name: 'sidebar.plugins'
       }
     ];
 
@@ -59,7 +60,7 @@ class Sidebar extends Component {
 
   render() {
     const { Sider } = Layout;
-    const { location, serverVersion } = this.props;
+    const { location, serverVersion, intl } = this.props;
 
     let selectedKey = find(item => item.path === location.pathname, this.items);
     if (typeof selectedKey === 'undefined') {
@@ -72,7 +73,7 @@ class Sidebar extends Component {
       this.items.map(item => (
         <Menu.Item key={item.key}>
           <Icon type={item.icon} />
-          <span>{item.name}</span>
+          <span>{intl.formatMessage({ id: item.name })}</span>
         </Menu.Item>
       ));
 
@@ -116,7 +117,8 @@ Sidebar.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   verifyData: PropTypes.func.isRequired,
-  serverVersion: PropTypes.string
+  serverVersion: PropTypes.string,
+  intl: intlShape
 };
 
 const mapStateToProps = state => ({
@@ -127,6 +129,6 @@ const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(appInfoOperations.verifyData())
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Sidebar)
+export default injectIntl(
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(Sidebar))
 );

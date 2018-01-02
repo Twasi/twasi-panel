@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import { Card, Row, Col } from 'antd';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -41,7 +42,9 @@ class Plugins extends Component {
 
     return (
       <div>
-        <h2>Plugins</h2>
+        <h2>
+          <FormattedMessage id="sidebar.plugins" />
+        </h2>
         <Row gutter={16}>{renderedPlugins}</Row>
       </div>
     );

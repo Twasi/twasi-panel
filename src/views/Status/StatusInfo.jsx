@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import { Icon, Row, Col, Card, Button } from 'antd';
 
 import { statusSelectors, statusOperations } from '../../state/status';
@@ -16,12 +17,12 @@ class StatusInfo extends Component {
 
     const running = (
       <span style={{ color: 'green' }}>
-        <Icon type="check-circle-o" /> Running
+        <Icon type="check-circle-o" /> <FormattedMessage id="status.started" />
       </span>
     );
     const stopped = (
       <span style={{ color: 'red' }}>
-        <Icon type="close-circle-o" /> Stopped
+        <Icon type="close-circle-o" /> <FormattedMessage id="status.stopped" />
       </span>
     );
 

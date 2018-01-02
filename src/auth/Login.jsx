@@ -44,10 +44,10 @@ class Login extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, isAuthenticated } = this.props;
     return (
       <div>
-        {this.context.isAuthenticated &&
+        {isAuthenticated &&
           location.pathname === '/callback' && <Redirect to="/" />}
       </div>
     );

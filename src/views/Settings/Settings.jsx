@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { Select, Form, Button } from 'antd';
 
 import { settingsSelectors, settingsOperations } from '../../state/settings';
@@ -20,7 +21,8 @@ class Settings extends Component {
       updateLanguage,
       updateDirty,
       isDirty,
-      pushChanges
+      pushChanges,
+      intl
     } = this.props;
 
     const formItemLayout = {
@@ -34,37 +36,51 @@ class Settings extends Component {
       }
     };
 
+    const unsavedChanges = intl.formatMessage({ id: 'settings.unsaved' });
+
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Item {...formItemLayout} label="Select a Language">
-          <Select
-            showSearch
-            style={{ width: 200 }}
-            placeholder="Select a language"
-            optionFilterProp="children"
-            onChange={lang => {
-              updateLanguage(lang);
-              updateDirty(true);
-            }}
-            value={language}
-            filterOption={(input, option) =>
-              option.props.children
-                .toLowerCase()
-                .indexOf(input.toLowerCase()) >= 0
-            }
+      <div>
+        <h2>
+          <FormattedMessage id="sidebar.settings" />
+        </h2>
+        <Form onSubmit={this.handleSubmit}>
+          <Item
+            {...formItemLayout}
+            label={intl.formatMessage({
+              id: 'settings.selectLanguage'
+            })}
           >
-            <Option value="EN_GB">English (GB)</Option>
-            <Option value="DE_DE">German</Option>
-          </Select>
-        </Item>
-        {isDirty && (
-          <Item {...formItemLayout} label="You have unsaved changes">
-            <Button type="primary" onClick={pushChanges}>
-              Save
-            </Button>
+            <Select
+              showSearch
+              style={{ width: 200 }}
+              placeholder={intl.formatMessage({
+                id: 'settings.selectLanguage'
+              })}
+              optionFilterProp="children"
+              onChange={lang => {
+                updateLanguage(lang);
+                updateDirty(true);
+              }}
+              value={language}
+              filterOption={(input, option) =>
+                option.props.children
+                  .toLowerCase()
+                  .indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              <Option value="EN_GB">English (GB)</Option>
+              <Option value="DE_DE">German</Option>
+            </Select>
           </Item>
-        )}
-      </Form>
+          {isDirty && (
+            <Item {...formItemLayout} label={unsavedChanges}>
+              <Button type="primary" onClick={pushChanges}>
+                <FormattedMessage id="common.save" defaultMessage="Save" />
+              </Button>
+            </Item>
+          )}
+        </Form>
+      </div>
     );
   }
 }
@@ -75,7 +91,8 @@ Settings.propTypes = {
   verifyData: PropTypes.func.isRequired,
   updateDirty: PropTypes.func.isRequired,
   isDirty: PropTypes.bool.isRequired,
-  pushChanges: PropTypes.func.isRequired
+  pushChanges: PropTypes.func.isRequired,
+  intl: intlShape.isRequired // eslint-disable-line react/no-typos
 };
 
 const mapStateToProps = state => ({
@@ -91,4 +108,6 @@ const mapDispatchToProps = dispatch => ({
   pushChanges: () => dispatch(settingsOperations.pushChanges())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default injectIntl(
+  connect(mapStateToProps, mapDispatchToProps)(Settings)
+);

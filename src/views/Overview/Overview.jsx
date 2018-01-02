@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import { Icon, Row, Col, Card, Button } from 'antd';
 
 import { statusSelectors, statusOperations } from '../../state/status';
@@ -17,22 +18,28 @@ class Overview extends Component {
 
     const running = (
       <span style={{ color: 'green' }}>
-        <Icon type="check-circle-o" /> Running
+        <Icon type="check-circle-o" />{' '}
+        <FormattedMessage id="status.started" defaultMessage="Started" />
       </span>
     );
     const stopped = (
       <span style={{ color: 'red' }}>
-        <Icon type="close-circle-o" /> Stopped
+        <Icon type="close-circle-o" />{' '}
+        <FormattedMessage id="status.stopped" defaultMessage="Stopped" />
       </span>
     );
 
     return (
       <div>
-        <h2>Main</h2>
+        <h2>
+          <FormattedMessage id="sidebar.overview" defaultMessage="Overview" />
+        </h2>
         <Card
           title="Bot status"
           extra={
-            <Button onClick={() => history.push('/status')}>Manage</Button>
+            <Button onClick={() => history.push('/status')}>
+              <FormattedMessage id="status.manage" defaultMessage="Manage" />
+            </Button>
           }
           style={{ width: 300 }}
         >

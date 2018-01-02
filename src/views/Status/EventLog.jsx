@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { intlShape, injectIntl } from 'react-intl';
 import { Card, Table } from 'antd';
 
 import { statusSelectors, statusOperations } from '../../state/status';
@@ -17,10 +18,10 @@ class EventLog extends Component {
   }
 
   render() {
-    const { events } = this.props;
+    const { events, intl } = this.props;
 
     return (
-      <Card title="Event Log">
+      <Card title={intl.formatMessage({ id: 'status.eventlog' })}>
         {events && (
           <Table
             columns={[
@@ -46,7 +47,8 @@ class EventLog extends Component {
 
 EventLog.propTypes = {
   loadEvents: PropTypes.func.isRequired,
-  events: PropTypes.arrayOf(PropTypes.shape({}))
+  events: PropTypes.arrayOf(PropTypes.shape({})),
+  intl: intlShape
 };
 
 const mapStateToProps = state => ({
@@ -57,4 +59,6 @@ const mapDispatchToProps = dispatch => ({
   loadEvents: () => dispatch(statusOperations.loadEvents())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventLog);
+export default injectIntl(
+  connect(mapStateToProps, mapDispatchToProps)(EventLog)
+);
