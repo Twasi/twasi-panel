@@ -40,9 +40,6 @@ class Settings extends Component {
 
     return (
       <div>
-        <h2>
-          <FormattedMessage id="sidebar.settings" />
-        </h2>
         <Form onSubmit={this.handleSubmit}>
           <Item
             {...formItemLayout}

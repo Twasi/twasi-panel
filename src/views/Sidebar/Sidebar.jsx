@@ -6,7 +6,7 @@ import find from 'lodash/fp/find';
 
 import { Layout, Menu, Icon } from 'antd';
 
-import twasiLogo from '../common/resources/twasi.svg';
+import twasiLogo from '../common/resources/twasi_flat.svg';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -86,8 +86,7 @@ class Sidebar extends Component {
             marginBottom: 30
           }}
         >
-          <img alt="Twasi Logo" src={twasiLogo} style={{ height: 40 }} />
-          <h1 style={{ fontSize: 22, marginLeft: 10 }}>Twasi Panel</h1>
+          <img alt="Twasi Logo" src={twasiLogo} style={{ height: 60 }} />
         </div>
         <Menu
           mode="inline"

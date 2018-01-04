@@ -31,9 +31,6 @@ class Overview extends Component {
 
     return (
       <div>
-        <h2>
-          <FormattedMessage id="sidebar.overview" defaultMessage="Overview" />
-        </h2>
         <Card
           title="Bot status"
           extra={

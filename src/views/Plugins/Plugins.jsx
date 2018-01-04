@@ -16,7 +16,7 @@ class Plugins extends Component {
     const { plugins } = this.props;
 
     const renderedPlugins = plugins.map(plugin => (
-      <Col span={6} style={{ marginTop: 16 }} key={plugin.name}>
+      <Col span={6} key={plugin.name}>
         <Card key={plugin.name} title={plugin.name}>
           <table>
             <tbody>
@@ -42,9 +42,6 @@ class Plugins extends Component {
 
     return (
       <div>
-        <h2>
-          <FormattedMessage id="sidebar.plugins" />
-        </h2>
         <Row gutter={16}>{renderedPlugins}</Row>
       </div>
     );

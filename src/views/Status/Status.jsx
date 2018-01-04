@@ -6,10 +6,8 @@ import EventLog from './EventLog';
 
 const Status = () => (
   <div>
-    <h2>
-      <FormattedMessage id="sidebar.status" />
-    </h2>
     <StatusInfo />
+    <br />
     <EventLog />
   </div>
 );
