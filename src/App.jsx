@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 
 import Auth from './auth';
 import configureStore from './state/store';

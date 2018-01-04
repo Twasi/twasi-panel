@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { Card, Row, Col } from 'antd';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';

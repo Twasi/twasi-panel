@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
+import { throttle } from 'lodash';
 
 import { Layout, Menu, Icon } from 'antd';
 
-import twasiLogo from '../common/resources/twasi_flat.svg';
+import twasiLogo from '../common/resources/twasi_anim.gif';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -40,6 +41,19 @@ class Sidebar extends Component {
     ];
 
     this.handleClick = this.handleClick.bind(this);
+
+    this.resetAnimation = throttle(
+      () => {
+        this.LogoDOM.src = this.Logo.src;
+      },
+      2500,
+      { trailing: false }
+    );
+  }
+
+  componentWillMount() {
+    this.Logo = new Image();
+    this.Logo.src = twasiLogo;
   }
 
   handleClick(item) {
@@ -77,6 +91,7 @@ class Sidebar extends Component {
         style={{ backgroundColor: '#fff' }}
       >
         <div
+          onMouseOver={this.resetAnimation}
           className="logo"
           style={{
             display: 'flex',
@@ -86,7 +101,14 @@ class Sidebar extends Component {
             marginBottom: 30
           }}
         >
-          <img alt="Twasi Logo" src={twasiLogo} style={{ height: 60 }} />
+          <img
+            ref={elem => {
+              this.LogoDOM = elem;
+            }}
+            alt="Twasi Logo"
+            src={this.Logo.src}
+            style={{ height: 40 }}
+          />
         </div>
         <Menu
           mode="inline"

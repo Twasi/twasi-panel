@@ -12,7 +12,7 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "jest", "lodash-fp"],
+  "plugins": ["react", "jest"],
   "extends": "airbnb",
   "rules": {
     "linebreak-style": ["off"],
@@ -54,43 +54,13 @@
         "allowChildren": false
       }
     ],
+    "jsx-a11y/mouse-events-have-key-events": "off",
 
     "react/require-default-props": ["off"],
 
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
-
-    "lodash-fp/consistent-compose": "off",
-    "lodash-fp/consistent-name": ["error", "_"],
-    "lodash-fp/no-argumentless-calls": "error",
-    "lodash-fp/no-chain": "error",
-    "lodash-fp/no-extraneous-args": "error",
-    "lodash-fp/no-extraneous-function-wrapping": "error",
-    "lodash-fp/no-extraneous-iteratee-args": "error",
-    "lodash-fp/no-for-each": "off",
-    "lodash-fp/no-partial-of-curried": "error",
-    "lodash-fp/no-single-composition": "error",
-    "lodash-fp/no-submodule-destructuring": "error",
-    "lodash-fp/no-unused-result": "error",
-    "lodash-fp/prefer-compact": "error",
-    "lodash-fp/prefer-composition-grouping": "error",
-    "lodash-fp/prefer-constant": [
-      "error",
-      {
-        "arrowFunctions": false
-      }
-    ],
-    "lodash-fp/prefer-flat-map": "error",
-    "lodash-fp/prefer-get": "error",
-    "lodash-fp/prefer-identity": [
-      "error",
-      {
-        "arrowFunctions": false
-      }
-    ],
-    "lodash-fp/preferred-alias": "off",
-    "lodash-fp/use-fp": "error",
 
     "function-paren-newline": "off",
     "object-curly-newline": "off",
