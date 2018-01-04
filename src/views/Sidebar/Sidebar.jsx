@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
 
 import { Layout, Menu, Icon } from 'antd';
 
-import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
-
-const pkgJson = require('../../../package.json');
+import twasiLogo from '../common/resources/twasi.svg';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -45,11 +42,6 @@ class Sidebar extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillMount() {
-    const { verifyData } = this.props;
-    verifyData();
-  }
-
   handleClick(item) {
     const { history } = this.props;
 
@@ -60,7 +52,7 @@ class Sidebar extends Component {
 
   render() {
     const { Sider } = Layout;
-    const { location, serverVersion, intl } = this.props;
+    const { location, intl } = this.props;
 
     let selectedKey = find(item => item.path === location.pathname, this.items);
     if (typeof selectedKey === 'undefined') {
@@ -77,33 +69,33 @@ class Sidebar extends Component {
         </Menu.Item>
       ));
 
-    const versionAlign = { width: '100%', textAlign: 'center' };
-
     return (
-      <Sider trigger={null} collapsible collapsed={false}>
-        <div className="logo" />
+      <Sider
+        trigger={null}
+        collapsible
+        collapsed={false}
+        style={{ backgroundColor: '#fff' }}
+      >
+        <div
+          className="logo"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 30,
+            marginBottom: 30
+          }}
+        >
+          <img alt="Twasi Logo" src={twasiLogo} style={{ height: 40 }} />
+          <h1 style={{ fontSize: 22, marginLeft: 10 }}>Twasi Panel</h1>
+        </div>
         <Menu
-          theme="dark"
           mode="inline"
           selectedKeys={[selectedKey]}
           onClick={this.handleClick}
         >
           {renderItems()}
         </Menu>
-        <div
-          style={{
-            position: 'fixed',
-            bottom: 0,
-            width: 200,
-            height: 50,
-            color: 'white'
-          }}
-        >
-          <div style={versionAlign}>
-            Twasi-panel v.{pkgJson.version} - #{window.env.BUILD_DESC}
-          </div>
-          <div style={versionAlign}>Twasi-core v.{serverVersion}</div>
-        </div>
       </Sider>
     );
   }
@@ -116,19 +108,7 @@ Sidebar.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  verifyData: PropTypes.func.isRequired,
-  serverVersion: PropTypes.string,
   intl: intlShape
 };
 
-const mapStateToProps = state => ({
-  serverVersion: appInfoSelectors.getVersion(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(appInfoOperations.verifyData())
-});
-
-export default injectIntl(
-  withRouter(connect(mapStateToProps, mapDispatchToProps)(Sidebar))
-);
+export default injectIntl(withRouter(Sidebar));

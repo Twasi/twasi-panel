@@ -93,6 +93,7 @@
     "lodash-fp/use-fp": "error",
 
     "function-paren-newline": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "max-len": "off"
   }
 }
