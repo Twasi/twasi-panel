@@ -13,7 +13,7 @@ const Footer = ({ serverVersion, verifyData }) => {
   verifyData();
   return (
     <AntdFooter style={{ textAlign: 'center' }}>
-      Twasi ©2017 MPL-2.0 | Twasi-panel v.{pkgJson.version} - #{
+      Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-panel v.{pkgJson.version} - #{
         window.env.BUILD_DESC
       }{' '}
       | Twasi-core v.{serverVersion}
@@ -23,7 +23,7 @@ const Footer = ({ serverVersion, verifyData }) => {
 
 Footer.propTypes = {
   serverVersion: PropTypes.string,
-  verifyData: PropTypes.string.isRequired
+  verifyData: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
