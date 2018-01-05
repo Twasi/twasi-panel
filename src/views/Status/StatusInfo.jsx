@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-import { Icon, Row, Col, Card, Button } from 'antd';
+import { Row, Col, Card, Button } from 'antd';
 
 import { statusSelectors, statusOperations } from '../../state/status';
+
+const ButtonGroup = Button.Group;
 
 class StatusInfo extends Component {
   componentDidMount() {
@@ -14,46 +15,35 @@ class StatusInfo extends Component {
 
   render() {
     const { status, startBot, stopBot, isStarting, isStopping } = this.props;
-
-    const running = (
-      <span style={{ color: 'green' }}>
-        <Icon type="check-circle-o" /> <FormattedMessage id="status.started" />
-      </span>
-    );
-    const stopped = (
-      <span style={{ color: 'red' }}>
-        <Icon type="close-circle-o" /> <FormattedMessage id="status.stopped" />
-      </span>
-    );
-
     return (
-      <Card title="Bot status">
-        <Row type="flex" justify="center">
-          <Col span={12}>Twitchbot</Col>
-          <Col span={12}>
-            {status.isRunning && running}
-            {!status.isRunning && stopped}
+      <div>
+        <Row gutter={24}>
+          <Col span={6} key="status">
+            <Card title="Twitchbot">
+              <Row type="flex" justify="center">
+                <ButtonGroup>
+                  <Button
+                    type="danger"
+                    disabled={!status.isRunning}
+                    onClick={stopBot}
+                    loading={isStopping}
+                  >
+                    Bot Stoppen
+                  </Button>
+                  <Button
+                    type="primary"
+                    disabled={status.isRunning}
+                    onClick={startBot}
+                    loading={isStarting}
+                  >
+                    Bot Starten
+                  </Button>
+                </ButtonGroup>
+              </Row>
+            </Card>
           </Col>
         </Row>
-        <Row>
-          <Button
-            type="danger"
-            disabled={!status.isRunning}
-            onClick={stopBot}
-            loading={isStopping}
-          >
-            Stop
-          </Button>
-          <Button
-            type="success"
-            disabled={status.isRunning}
-            onClick={startBot}
-            loading={isStarting}
-          >
-            Start
-          </Button>
-        </Row>
-      </Card>
+      </div>
     );
   }
 }

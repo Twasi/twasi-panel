@@ -41,7 +41,7 @@ class Plugins extends Component {
 
     return (
       <div>
-        <Row gutter={16}>{renderedPlugins}</Row>
+        <Row gutter={24}>{renderedPlugins}</Row>
       </div>
     );
   }
