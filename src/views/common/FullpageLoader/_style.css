@@ -11,18 +11,14 @@
   justify-content: center;
 }
 
-.FullpageLoaderImage {
-  height: auto;
-  width: 70px;
-  margin: 0 auto;
-  animation: Logo-spin infinite 3s linear;
+.FullpageLoaderText {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes Logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.FullpageLoaderImage {
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
 }

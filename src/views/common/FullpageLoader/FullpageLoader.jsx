@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './_style.css';
-import twasiImage from '../resources/twasi.svg';
+import twasiImage from '../resources/twasi_anim_loading.gif';
 
 const FullpageLoader = ({ text }) => (
   <div className="FullpageLoaderWrapper">
