@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Switch } from 'antd';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
@@ -16,19 +16,29 @@ class Plugins extends Component {
 
     const renderedPlugins = plugins.map(plugin => (
       <Col span={6} key={plugin.name}>
-        <Card key={plugin.name} title={plugin.name}>
+        <Card
+          key={plugin.name}
+          title={plugin.name}
+          extra={<Switch defaultChecked />}
+        >
           <table>
             <tbody>
               <tr>
-                <td>Name: </td>
+                <td>
+                  <b>Name:</b>{' '}
+                </td>
                 <td>{plugin.name}</td>
               </tr>
               <tr>
-                <td>Author: </td>
+                <td>
+                  <b>Author:</b>{' '}
+                </td>
                 <td>{plugin.author}</td>
               </tr>
               <tr>
-                <td>Version: </td>
+                <td>
+                  <b>Version:</b>{' '}
+                </td>
                 <td>{plugin.version}</td>
               </tr>
             </tbody>
@@ -41,6 +51,21 @@ class Plugins extends Component {
 
     return (
       <div>
+        <Row>
+          <Col span={24}>
+            <Card title="Willkommen im Pluginstore">
+              Hier findest du sämtliche Plugins, die den Funktionsumfang des
+              Bots erweitern.<br />
+              Es gibt Standard Plugins und von Entwicklern veröffentlichte
+              Plugins, die du zusätzlich installieren bzw. deinstallieren
+              kannst.<br />
+              <br />
+              Erfahre, wie du selber Erweiterungen für Twasi entwickeln und
+              veröffentlichen kannst LINK
+            </Card>
+          </Col>
+        </Row>
+        <br />
         <Row gutter={24}>{renderedPlugins}</Row>
       </div>
     );
