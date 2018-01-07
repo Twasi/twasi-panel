@@ -13,7 +13,25 @@ const pluginsReducer = (state = initialState, action) => {
     }
 
     case types.UPDATE_PLUGINS: {
-      return { ...state, plugins: action.plugins };
+      return {
+        ...state,
+        plugins: [
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins,
+          ...action.plugins
+        ]
+      };
     }
 
     default:
