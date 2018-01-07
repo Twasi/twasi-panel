@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card, Row, Col, Switch } from 'antd';
+import { Card, Row, Col, Switch, Avatar, Pagination, Icon } from 'antd';
+import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
@@ -15,36 +16,48 @@ class Plugins extends Component {
     const { plugins } = this.props;
 
     const renderedPlugins = plugins.map(plugin => (
-      <Col span={6} key={plugin.name}>
+      <Col span={12} key={plugin.name} className="pluginCard">
         <Card
           key={plugin.name}
           title={plugin.name}
-          extra={<Switch defaultChecked />}
+          extra={
+            <Switch
+              checkedChildren={<Icon type="check" />}
+              unCheckedChildren={<Icon type="cross" />}
+              defaultChecked
+            />
+          }
         >
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <b>Name:</b>{' '}
-                </td>
-                <td>{plugin.name}</td>
-              </tr>
-              <tr>
-                <td>
-                  <b>Author:</b>{' '}
-                </td>
-                <td>{plugin.author}</td>
-              </tr>
-              <tr>
-                <td>
-                  <b>Version:</b>{' '}
-                </td>
-                <td>{plugin.version}</td>
-              </tr>
-            </tbody>
-          </table>
-          <br />
-          <div>{plugin.description}</div>
+          <Col span={2} className="pluginCardImage">
+            <Avatar shape="square" size="large" icon="api" />
+          </Col>
+          <Col span={10}>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <b>Name:</b>{' '}
+                  </td>
+                  <td>{plugin.name}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Author:</b>{' '}
+                  </td>
+                  <td>{plugin.author}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Version:</b>{' '}
+                  </td>
+                  <td>{plugin.version}</td>
+                </tr>
+              </tbody>
+            </table>
+          </Col>
+          <Col span={12}>
+            <div>{plugin.description}</div>
+          </Col>
         </Card>
       </Col>
     ));
@@ -67,6 +80,9 @@ class Plugins extends Component {
         </Row>
         <br />
         <Row gutter={24}>{renderedPlugins}</Row>
+        <Row gutter={24} type="flex" justify="center">
+          <Pagination defaultCurrent={6} total={500} />
+        </Row>
       </div>
     );
   }
