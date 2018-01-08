@@ -15,22 +15,24 @@ const pluginsReducer = (state = initialState, action) => {
     case types.UPDATE_PLUGINS: {
       return {
         ...state,
-        plugins: [
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins,
-          ...action.plugins
-        ]
+        plugins: action.plugins
+      };
+    }
+
+    case types.SET_INSTALLED: {
+      const newPlugins = state.plugins.map(plugin => {
+        if (plugin.name === action.name) {
+          return {
+            ...plugin,
+            isInstalled: action.isInstalled
+          };
+        }
+        return plugin;
+      });
+
+      return {
+        ...state,
+        plugins: newPlugins
       };
     }
 

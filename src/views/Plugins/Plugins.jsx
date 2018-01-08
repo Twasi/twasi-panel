@@ -16,7 +16,7 @@ import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
-const Search = Input.Search;
+const { Search } = Input;
 
 class Plugins extends Component {
   state = {
@@ -32,7 +32,7 @@ class Plugins extends Component {
   };
 
   render() {
-    const { plugins } = this.props;
+    const { plugins, installPlugin, uninstallPlugin } = this.props;
     const { value } = this.state;
 
     const renderedPlugins = plugins.map(plugin => (
@@ -44,7 +44,14 @@ class Plugins extends Component {
             <Switch
               checkedChildren={<Icon type="check" />}
               unCheckedChildren={<Icon type="cross" />}
-              defaultChecked
+              checked={plugin.isInstalled}
+              onChange={checked => {
+                if (checked) {
+                  installPlugin(plugin.name);
+                } else {
+                  uninstallPlugin(plugin.name);
+                }
+              }}
             />
           }
         >
@@ -103,7 +110,6 @@ class Plugins extends Component {
               extra={
                 <Search
                   placeholder="Suche nach einem Plugin"
-                  onSearch={value => console.log(value)}
                   style={{ width: 200 }}
                 />
               }
@@ -131,7 +137,9 @@ class Plugins extends Component {
 
 Plugins.propTypes = {
   plugins: PropTypes.arrayOf(PropTypes.shape({})),
-  verifyData: PropTypes.func.isRequired
+  verifyData: PropTypes.func.isRequired,
+  installPlugin: PropTypes.func.isRequired,
+  uninstallPlugin: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -139,7 +147,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(pluginsOperations.verifyData())
+  verifyData: () => dispatch(pluginsOperations.verifyData()),
+  installPlugin: name => dispatch(pluginsOperations.installPlugin(name)),
+  uninstallPlugin: name => dispatch(pluginsOperations.uninstallPlugin(name))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plugins);

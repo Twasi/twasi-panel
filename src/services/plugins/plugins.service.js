@@ -5,4 +5,9 @@ async function get() {
   return fetch(url, 'GET');
 }
 
-export default { get };
+async function post(request) {
+  const url = `${window.env.API_URL}/plugins`;
+  return fetch(url, 'POST', request);
+}
+
+export default { get, post };

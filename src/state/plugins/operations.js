@@ -3,7 +3,7 @@ import selectors from './selectors';
 
 import plugins from '../../services/plugins/plugins.service';
 
-const { updateLoaded, updatePlugins } = actions;
+const { updateLoaded, updatePlugins, setInstalled } = actions;
 
 const loadData = () => dispatch => {
   plugins.get().then(data => {
@@ -21,9 +21,33 @@ const verifyData = () => (dispatch, getState) => {
   }
 };
 
+const installPlugin = name => dispatch => {
+  plugins
+    .post({
+      action: 'INSTALL',
+      pluginName: name
+    })
+    .then(() => {
+      dispatch(setInstalled(name, true));
+    });
+};
+
+const uninstallPlugin = name => dispatch => {
+  plugins
+    .post({
+      action: 'UNINSTALL',
+      pluginName: name
+    })
+    .then(() => {
+      dispatch(setInstalled(name, false));
+    });
+};
+
 export default {
   verifyData,
   loadData,
   updateLoaded,
-  updatePlugins
+  updatePlugins,
+  installPlugin,
+  uninstallPlugin
 };

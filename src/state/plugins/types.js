@@ -1,7 +1,9 @@
 const UPDATE_LOADED = 'plugins/UPDATE_LOADED';
 const UPDATE_PLUGINS = 'plugins/UPDATE_PLUGINS';
+const SET_INSTALLED = 'plugins/SET_INSTALLED';
 
 export default {
   UPDATE_LOADED,
-  UPDATE_PLUGINS
+  UPDATE_PLUGINS,
+  SET_INSTALLED
 };

@@ -10,7 +10,14 @@ const updatePlugins = plugins => ({
   plugins
 });
 
+const setInstalled = (name, isInstalled) => ({
+  type: types.SET_INSTALLED,
+  name,
+  isInstalled
+});
+
 export default {
   updateLoaded,
-  updatePlugins
+  updatePlugins,
+  setInstalled
 };
