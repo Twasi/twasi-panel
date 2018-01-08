@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card, Row, Col, Switch, Avatar, Pagination, Icon } from 'antd';
+import {
+  Card,
+  Row,
+  Col,
+  Switch,
+  Avatar,
+  Pagination,
+  Icon,
+  Input,
+  Rate
+} from 'antd';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
+const Search = Input.Search;
+
 class Plugins extends Component {
+  state = {
+    value: 3
+  };
+
   componentDidMount() {
     const { verifyData } = this.props;
     verifyData();
   }
+  handleChange = value => {
+    this.setState({ value });
+  };
 
   render() {
     const { plugins } = this.props;
+    const { value } = this.state;
 
     const renderedPlugins = plugins.map(plugin => (
       <Col span={12} key={plugin.name} className="pluginCard">
@@ -52,6 +72,18 @@ class Plugins extends Component {
                   </td>
                   <td>{plugin.version}</td>
                 </tr>
+                <tr>
+                  <td colSpan={2}>
+                    <span>
+                      <Rate
+                        onChange={this.handleChange}
+                        value={value}
+                        style={{ color: '#00aeae' }}
+                      />
+                      <span className="ant-rate-text">1337 Bewertungen</span>
+                    </span>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </Col>
@@ -66,7 +98,16 @@ class Plugins extends Component {
       <div>
         <Row>
           <Col span={24}>
-            <Card title="Willkommen im Pluginstore">
+            <Card
+              title="Willkommen im Pluginstore"
+              extra={
+                <Search
+                  placeholder="Suche nach einem Plugin"
+                  onSearch={value => console.log(value)}
+                  style={{ width: 200 }}
+                />
+              }
+            >
               Hier findest du sämtliche Plugins, die den Funktionsumfang des
               Bots erweitern.<br />
               Es gibt Standard Plugins und von Entwicklern veröffentlichte
