@@ -10,7 +10,9 @@ import {
   Pagination,
   Icon,
   Input,
-  Rate
+  Divider,
+  Rate,
+  Button
 } from 'antd';
 import './_style.css';
 
@@ -79,23 +81,29 @@ class Plugins extends Component {
                   </td>
                   <td>{plugin.version}</td>
                 </tr>
-                <tr>
-                  <td colSpan={2}>
-                    <span>
-                      <Rate
-                        onChange={this.handleChange}
-                        value={value}
-                        style={{ color: '#00aeae' }}
-                      />
-                      <span className="ant-rate-text">1337 Bewertungen</span>
-                    </span>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </Col>
           <Col span={12}>
             <div>{plugin.description}</div>
+          </Col>
+          <Col span={24}>
+            <Divider />
+            <Col span={12}>
+              <span>
+                <Rate
+                  onChange={this.handleChange}
+                  value={value}
+                  style={{ color: '#00AEAE' }}
+                />
+                <span className="ant-rate-text">1337 Bewertungen</span>
+              </span>
+            </Col>
+            <Col span={12}>
+              <Button className="feedbackbutton" type="primary">
+                Feedback geben
+              </Button>
+            </Col>
           </Col>
         </Card>
       </Col>
