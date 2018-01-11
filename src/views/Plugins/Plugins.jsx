@@ -10,7 +10,8 @@ import {
   Pagination,
   Icon,
   Input,
-  Rate
+  Rate,
+  Spin
 } from 'antd';
 import './_style.css';
 
@@ -32,7 +33,13 @@ class Plugins extends Component {
   };
 
   render() {
-    const { plugins, installPlugin, uninstallPlugin } = this.props;
+    const {
+      plugins,
+      installPlugin,
+      uninstallPlugin,
+      isLoading,
+      updateQuery
+    } = this.props;
     const { value } = this.state;
 
     const renderedPlugins = plugins.map(plugin => (
@@ -111,6 +118,7 @@ class Plugins extends Component {
                 <Search
                   placeholder="Suche nach einem Plugin"
                   style={{ width: 200 }}
+                  onChange={e => updateQuery(e.target.value)}
                 />
               }
             >
@@ -126,7 +134,20 @@ class Plugins extends Component {
           </Col>
         </Row>
         <br />
-        <Row gutter={24}>{renderedPlugins}</Row>
+        {!isLoading && <Row gutter={24}>{renderedPlugins}</Row>}
+        {isLoading && (
+          <div style={{ width: '100%' }}>
+            <Spin
+              indicator={
+                <Icon
+                  type="loading"
+                  style={{ fontSize: 24, textAlign: 'center', width: '100%' }}
+                  spin
+                />
+              }
+            />
+          </div>
+        )}
         <Row gutter={24} type="flex" justify="center">
           <Pagination defaultCurrent={6} total={500} />
         </Row>
@@ -139,17 +160,20 @@ Plugins.propTypes = {
   plugins: PropTypes.arrayOf(PropTypes.shape({})),
   verifyData: PropTypes.func.isRequired,
   installPlugin: PropTypes.func.isRequired,
-  uninstallPlugin: PropTypes.func.isRequired
+  uninstallPlugin: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-  plugins: pluginsSelectors.getPlugins(state)
+  plugins: pluginsSelectors.getPlugins(state),
+  isLoading: pluginsSelectors.isLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(pluginsOperations.verifyData()),
   installPlugin: name => dispatch(pluginsOperations.installPlugin(name)),
-  uninstallPlugin: name => dispatch(pluginsOperations.uninstallPlugin(name))
+  uninstallPlugin: name => dispatch(pluginsOperations.uninstallPlugin(name)),
+  updateQuery: query => dispatch(pluginsOperations.updateQuery(query))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plugins);

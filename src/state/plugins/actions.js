@@ -16,8 +16,20 @@ const setInstalled = (name, isInstalled) => ({
   isInstalled
 });
 
+const updateLoading = isLoading => ({
+  type: types.UPDATE_LOADING,
+  isLoading
+});
+
+const updateQuery = query => ({
+  type: types.UPDATE_QUERY,
+  query
+});
+
 export default {
   updateLoaded,
+  updateLoading,
   updatePlugins,
-  setInstalled
+  setInstalled,
+  updateQuery
 };

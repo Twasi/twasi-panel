@@ -1,13 +1,17 @@
+import debounce from 'lodash/debounce';
+
 import actions from './actions';
 import selectors from './selectors';
 
 import plugins from '../../services/plugins/plugins.service';
 
-const { updateLoaded, updatePlugins, setInstalled } = actions;
+const { updateLoaded, updatePlugins, setInstalled, updateLoading } = actions;
 
 const loadData = () => dispatch => {
+  dispatch(updateLoading(true));
   plugins.get().then(data => {
     dispatch(updatePlugins(data.plugins));
+    dispatch(updateLoading(false));
   });
 };
 
@@ -43,11 +47,22 @@ const uninstallPlugin = name => dispatch => {
     });
 };
 
+const updateQuery = debounce(
+  name => dispatch => {
+    dispatch(actions.updateQuery(name));
+    plugins.get(0, name).then(data => {
+      dispatch(updatePlugins(data.plugins));
+    });
+  },
+  1000
+);
+
 export default {
   verifyData,
   loadData,
   updateLoaded,
   updatePlugins,
   installPlugin,
-  uninstallPlugin
+  uninstallPlugin,
+  updateQuery
 };

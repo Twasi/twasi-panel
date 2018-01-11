@@ -3,7 +3,11 @@ import types from './types';
 
 export const initialState = {
   isLoaded: false,
-  plugins: []
+  isLoading: true,
+  plugins: [],
+  filter: {
+    query: ''
+  }
 };
 
 const pluginsReducer = (state = initialState, action) => {
@@ -12,10 +16,24 @@ const pluginsReducer = (state = initialState, action) => {
       return { ...state, isLoaded: action.isLoaded };
     }
 
+    case types.UPDATE_LOADING: {
+      return { ...state, isLoading: action.isLoading };
+    }
+
     case types.UPDATE_PLUGINS: {
       return {
         ...state,
         plugins: action.plugins
+      };
+    }
+
+    case types.UPDATE_QUERY: {
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          query: action.query
+        }
       };
     }
 
