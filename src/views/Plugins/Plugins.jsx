@@ -10,7 +10,9 @@ import {
   Pagination,
   Icon,
   Input,
+  Divider,
   Rate,
+  Button,
   Spin
 } from 'antd';
 import './_style.css';
@@ -86,23 +88,29 @@ class Plugins extends Component {
                   </td>
                   <td>{plugin.version}</td>
                 </tr>
-                <tr>
-                  <td colSpan={2}>
-                    <span>
-                      <Rate
-                        onChange={this.handleChange}
-                        value={value}
-                        style={{ color: '#00aeae' }}
-                      />
-                      <span className="ant-rate-text">1337 Bewertungen</span>
-                    </span>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </Col>
           <Col span={12}>
             <div>{plugin.description}</div>
+          </Col>
+          <Col span={24}>
+            <Divider />
+            <Col span={12}>
+              <span>
+                <Rate
+                  onChange={this.handleChange}
+                  value={value}
+                  style={{ color: '#00AEAE' }}
+                />
+                <span className="ant-rate-text">1337 Bewertungen</span>
+              </span>
+            </Col>
+            <Col span={12}>
+              <Button className="feedbackbutton" type="primary">
+                Feedback geben
+              </Button>
+            </Col>
           </Col>
         </Card>
       </Col>
@@ -161,7 +169,8 @@ Plugins.propTypes = {
   verifyData: PropTypes.func.isRequired,
   installPlugin: PropTypes.func.isRequired,
   uninstallPlugin: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  updateQuery: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
