@@ -6,6 +6,7 @@ import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
 
 import { Layout, Menu, Icon } from 'antd';
+import './_style.css';
 
 import twasiLogo from '../common/resources/twasi_anim.gif';
 
@@ -23,7 +24,7 @@ class Sidebar extends Component {
       {
         key: 'status',
         path: '/status',
-        icon: 'home',
+        icon: 'info-circle-o',
         name: 'sidebar.status'
       },
       {
@@ -37,6 +38,12 @@ class Sidebar extends Component {
         path: '/plugins',
         icon: 'api',
         name: 'sidebar.plugins'
+      },
+      {
+        key: 'songrequests',
+        path: '/songrequests',
+        icon: 'play-circle-o',
+        name: 'sidebar.songrequests'
       }
     ];
 

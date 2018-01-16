@@ -1,0 +1,9 @@
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+  border-right: 0px;
+}
+
+.ant-menu-horizontal {
+  border-bottom: 0px;
+}
