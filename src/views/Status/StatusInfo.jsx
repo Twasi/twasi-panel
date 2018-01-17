@@ -19,26 +19,29 @@ class StatusInfo extends Component {
       <div>
         <Row gutter={24}>
           <Col span={6} key="status">
-            <Card title="Twitchbot">
-              <Row type="flex" justify="center">
-                <ButtonGroup>
-                  <Button
-                    type="danger"
-                    disabled={!status.isRunning}
-                    onClick={stopBot}
-                    loading={isStopping}
-                  >
-                    Bot Stoppen
-                  </Button>
-                  <Button
-                    type="primary"
-                    disabled={status.isRunning}
-                    onClick={startBot}
-                    loading={isStarting}
-                  >
-                    Bot Starten
-                  </Button>
-                </ButtonGroup>
+            <Card>
+              <Row gutter={16} type="flex" justify="center">
+                <Col align="middle" span={24}>
+                  <h2>Twitchbot</h2>
+                  <ButtonGroup>
+                    <Button
+                      type="danger"
+                      disabled={!status.isRunning}
+                      onClick={stopBot}
+                      loading={isStopping}
+                    >
+                      Bot Stoppen
+                    </Button>
+                    <Button
+                      type="primary"
+                      disabled={status.isRunning}
+                      onClick={startBot}
+                      loading={isStarting}
+                    >
+                      Bot Starten
+                    </Button>
+                  </ButtonGroup>
+                </Col>
               </Row>
             </Card>
           </Col>

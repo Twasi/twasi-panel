@@ -33,29 +33,27 @@ const App = () => {
                   <Menu
                     mode="horizontal"
                     defaultSelectedKeys={['1']}
-                    style={{ lineHeight: '64px' }}
+                    style={{ lineHeight: '64px', float: 'right' }}
                   >
                     <Menu.Item key="1">Twasi Panel</Menu.Item>
                     <Menu.Item key="2">Dokumentation</Menu.Item>
                   </Menu>
                 </Header>
-                <Content style={{ padding: '50px 50px 0' }}>
-                  <Layout style={{ padding: '24px 0' }}>
-                    <Content
-                      style={{
-                        padding: '0 24px',
-                        minHeight: 'calc( 100vh - 64px - 50px - 66px - 48px )'
-                      }}
-                    >
-                      <Switch>
-                        <Route path="/" exact component={Overview} />
-                        <Route path="/status" exact component={Status} />
-                        <Route path="/settings" exact component={Settings} />
-                        <Route path="/plugins" exact component={Plugins} />
-                      </Switch>
-                    </Content>
-                  </Layout>
-                </Content>
+                <Layout style={{ padding: '24px 0' }}>
+                  <Content
+                    style={{
+                      padding: '0 24px',
+                      minHeight: 'calc( 100vh - 64px - 50px - 66px - 48px )'
+                    }}
+                  >
+                    <Switch>
+                      <Route path="/" exact component={Overview} />
+                      <Route path="/status" exact component={Status} />
+                      <Route path="/settings" exact component={Settings} />
+                      <Route path="/plugins" exact component={Plugins} />
+                    </Switch>
+                  </Content>
+                </Layout>
                 <Footer />
               </Layout>
             </Layout>
