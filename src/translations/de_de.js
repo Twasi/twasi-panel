@@ -7,6 +7,7 @@ export default {
   'sidebar.status': 'Status',
   'sidebar.settings': 'Einstellungen',
   'sidebar.plugins': 'Erweiterungen',
+  'sidebar.commands': 'Befehle',
   'sidebar.songrequests': 'Songrequests',
 
   // Overview

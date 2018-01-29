@@ -83,7 +83,6 @@ class Overview extends Component {
               />
             </Card>
           </Col>
-
           <Col span={6}>
             <Card
               actions={[

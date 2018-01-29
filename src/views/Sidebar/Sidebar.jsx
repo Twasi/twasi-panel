@@ -5,7 +5,7 @@ import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
 
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Switch } from 'antd';
 import './_style.css';
 
 import twasiLogo from '../common/resources/twasi_anim.gif';
@@ -40,6 +40,12 @@ class Sidebar extends Component {
         name: 'sidebar.plugins'
       },
       {
+        key: 'commands',
+        path: '/commands',
+        icon: 'exclamation-circle-o',
+        name: 'sidebar.commands'
+      },
+      {
         key: 'songrequests',
         path: '/songrequests',
         icon: 'play-circle-o',
@@ -58,10 +64,20 @@ class Sidebar extends Component {
     );
   }
 
+  state = {
+    theme: 'light'
+  };
+
   componentWillMount() {
     this.Logo = new Image();
     this.Logo.src = twasiLogo;
   }
+
+  changeTheme = value => {
+    this.setState({
+      theme: value ? 'dark' : 'light'
+    });
+  };
 
   handleClick(item) {
     const { history } = this.props;
@@ -69,6 +85,7 @@ class Sidebar extends Component {
     const { path } = find(newItem => newItem.key === item.key, this.items);
 
     history.push(path);
+    this.setState({});
   }
 
   render() {
@@ -118,12 +135,19 @@ class Sidebar extends Component {
           />
         </div>
         <Menu
+          theme={this.state.theme}
           mode="inline"
           selectedKeys={[selectedKey]}
           onClick={this.handleClick}
         >
           {renderItems()}
         </Menu>
+        <Switch
+          checked={this.state.theme === 'dark'}
+          onChange={this.changeTheme}
+          checkedChildren="Dark"
+          unCheckedChildren="Light"
+        />
       </Sider>
     );
   }
