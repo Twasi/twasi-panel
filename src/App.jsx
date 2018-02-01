@@ -43,7 +43,7 @@ const App = () => {
       <ReduxProvider store={store}>
         <BrowserRouter>
           <Auth>
-            <Layout style={{ height: '100vh' }}>
+            <Layout style={{ minHeight: '100vh' }}>
               <Sidebar />
               <Layout>
                 <Header className="header" style={{ backgroundColor: '#fff' }}>
