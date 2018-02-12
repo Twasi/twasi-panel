@@ -5,8 +5,6 @@ import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
 
-import { Layout, Menu, Icon } from 'antd';
-
 import twasiLogo from '../common/resources/twasi_anim.gif';
 
 class Sidebar extends Component {
@@ -65,7 +63,6 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { Sider } = Layout;
     const { location, intl } = this.props;
 
     let selectedKey = find(item => item.path === location.pathname, this.items);
@@ -77,19 +74,14 @@ class Sidebar extends Component {
 
     const renderItems = () =>
       this.items.map(item => (
-        <Menu.Item key={item.key}>
-          <Icon type={item.icon} />
+        <div key={item.key}>
+          <icon type={item.icon} />
           <span>{intl.formatMessage({ id: item.name })}</span>
-        </Menu.Item>
+        </div>
       ));
 
     return (
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={false}
-        style={{ backgroundColor: '#fff' }}
-      >
+      <div trigger={null} collapsible collapsed={false} style={{ backgroundColor: '#fff' }}>
         <div
           onMouseOver={this.resetAnimation}
           className="logo"
@@ -99,8 +91,7 @@ class Sidebar extends Component {
             alignItems: 'center',
             marginTop: 30,
             marginBottom: 30
-          }}
-        >
+          }}>
           <img
             ref={elem => {
               this.LogoDOM = elem;
@@ -110,14 +101,10 @@ class Sidebar extends Component {
             style={{ height: 40 }}
           />
         </div>
-        <Menu
-          mode="inline"
-          selectedKeys={[selectedKey]}
-          onClick={this.handleClick}
-        >
+        <button mode="inline" selectedKeys={[selectedKey]} onClick={this.handleClick}>
           {renderItems()}
-        </Menu>
-      </Sider>
+        </button>
+      </div>
     );
   }
 }

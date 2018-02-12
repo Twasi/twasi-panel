@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Row, Col, Card, Button } from 'antd';
 
 import { statusSelectors, statusOperations } from '../../state/status';
-
-const ButtonGroup = Button.Group;
 
 class StatusInfo extends Component {
   componentDidMount() {
@@ -17,32 +14,30 @@ class StatusInfo extends Component {
     const { status, startBot, stopBot, isStarting, isStopping } = this.props;
     return (
       <div>
-        <Row gutter={24}>
-          <Col span={6} key="status">
-            <Card title="Twitchbot">
-              <Row type="flex" justify="center">
-                <ButtonGroup>
-                  <Button
+        <div gutter={24}>
+          <div span={6} key="status">
+            <div title="Twitchbot">
+              <div type="flex" justify="center">
+                <div>
+                  <button
                     type="danger"
                     disabled={!status.isRunning}
                     onClick={stopBot}
-                    loading={isStopping}
-                  >
+                    loading={isStopping}>
                     Bot Stoppen
-                  </Button>
-                  <Button
+                  </button>
+                  <button
                     type="primary"
                     disabled={status.isRunning}
                     onClick={startBot}
-                    loading={isStarting}
-                  >
+                    loading={isStarting}>
                     Bot Starten
-                  </Button>
-                </ButtonGroup>
-              </Row>
-            </Card>
-          </Col>
-        </Row>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

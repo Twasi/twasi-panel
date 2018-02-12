@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { intlShape, injectIntl } from 'react-intl';
-import { Card, Table } from 'antd';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -21,9 +20,9 @@ class EventLog extends Component {
     const { events, intl } = this.props;
 
     return (
-      <Card title={intl.formatMessage({ id: 'status.eventlog' })}>
+      <div title={intl.formatMessage({ id: 'status.eventlog' })}>
         {events && (
-          <Table
+          <table
             columns={[
               {
                 title: 'Name',
@@ -40,7 +39,7 @@ class EventLog extends Component {
             }))}
           />
         )}
-      </Card>
+      </div>
     );
   }
 }
@@ -59,6 +58,4 @@ const mapDispatchToProps = dispatch => ({
   loadEvents: () => dispatch(statusOperations.loadEvents())
 });
 
-export default injectIntl(
-  connect(mapStateToProps, mapDispatchToProps)(EventLog)
-);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(EventLog));

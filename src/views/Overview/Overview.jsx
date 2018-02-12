@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { Icon, Row, Col, Card, Button } from 'antd';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -18,36 +17,35 @@ class Overview extends Component {
 
     const running = (
       <span style={{ color: 'green' }}>
-        <Icon type="check-circle-o" />{' '}
+        <icon type="check-circle-o" />{' '}
         <FormattedMessage id="status.started" defaultMessage="Started" />
       </span>
     );
     const stopped = (
       <span style={{ color: 'red' }}>
-        <Icon type="close-circle-o" />{' '}
+        <icon type="close-circle-o" />{' '}
         <FormattedMessage id="status.stopped" defaultMessage="Stopped" />
       </span>
     );
 
     return (
       <div>
-        <Card
+        <div
           title="Bot status"
           extra={
-            <Button onClick={() => history.push('/status')}>
+            <button onClick={() => history.push('/status')}>
               <FormattedMessage id="status.manage" defaultMessage="Manage" />
-            </Button>
+            </button>
           }
-          style={{ width: 300 }}
-        >
-          <Row type="flex" justify="center">
-            <Col span={12}>Twitchbot</Col>
-            <Col span={12}>
+          style={{ width: 300 }}>
+          <div type="flex" justify="center">
+            <div span={12}>Twitchbot</div>
+            <div span={12}>
               {status.isRunning && running}
               {!status.isRunning && stopped}
-            </Col>
-          </Row>
-        </Card>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -69,6 +67,4 @@ const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(statusOperations.verifyData())
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Overview)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Overview));

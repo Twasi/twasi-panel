@@ -57,6 +57,7 @@
     "jsx-a11y/mouse-events-have-key-events": "off",
 
     "react/require-default-props": ["off"],
+    "react/jsx-closing-bracket-location": ["off"],
 
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",

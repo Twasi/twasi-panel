@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
 
 import Auth from './auth';
 import configureStore from './state/store';
@@ -16,8 +15,6 @@ import Settings from './views/Settings';
 
 import LanguageProvider from './translations/LanguageProvider';
 
-const { Header, Content } = Layout;
-
 const App = () => {
   const store = configureStore();
 
@@ -26,39 +23,34 @@ const App = () => {
       <ReduxProvider store={store}>
         <BrowserRouter>
           <Auth>
-            <Layout>
+            <div>
               <Sidebar />
-              <Layout>
-                <Header className="header" style={{ backgroundColor: '#fff' }}>
-                  <Menu
-                    mode="horizontal"
-                    defaultSelectedKeys={['1']}
-                    style={{ lineHeight: '64px' }}
-                  >
-                    <Menu.Item key="1">Twasi Panel</Menu.Item>
-                    <Menu.Item key="2">Dokumentation</Menu.Item>
-                  </Menu>
-                </Header>
-                <Content style={{ padding: '50px 50px 0' }}>
-                  <Layout style={{ padding: '24px 0' }}>
-                    <Content
+              <div>
+                <header className="header" style={{ backgroundColor: '#fff' }}>
+                  <ul mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '64px' }}>
+                    <li key="1">Twasi Panel</li>
+                    <li key="2">Dokumentation</li>
+                  </ul>
+                </header>
+                <div style={{ padding: '50px 50px 0' }}>
+                  <div style={{ padding: '24px 0' }}>
+                    <div
                       style={{
                         padding: '0 24px',
                         minHeight: 'calc( 100vh - 64px - 50px - 66px - 48px )'
-                      }}
-                    >
+                      }}>
                       <Switch>
                         <Route path="/" exact component={Overview} />
                         <Route path="/status" exact component={Status} />
                         <Route path="/settings" exact component={Settings} />
                         <Route path="/plugins" exact component={Plugins} />
                       </Switch>
-                    </Content>
-                  </Layout>
-                </Content>
+                    </div>
+                  </div>
+                </div>
                 <Footer />
-              </Layout>
-            </Layout>
+              </div>
+            </div>
           </Auth>
         </BrowserRouter>
       </ReduxProvider>

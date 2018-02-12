@@ -1,11 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { injectBabelPlugin } = require('react-app-rewired');
-const rewireLess = require('react-app-rewire-less');
 
-module.exports = function override(config, env) {
-  let modifiedConfig = config;
+module.exports = function override(config) {
+  const modifiedConfig = config;
 
-  modifiedConfig = injectBabelPlugin(
+  /* modifiedConfig = injectBabelPlugin(
     ['import', { libraryName: 'antd', style: true }],
     config
   ); // change importing css to less
@@ -14,7 +12,7 @@ module.exports = function override(config, env) {
       '@primary-color': '#00aeae',
       '@icon-url': "'/iconfont/iconfont'"
     }
-  })(config, env);
+  })(config, env); */
 
   return modifiedConfig;
 };
