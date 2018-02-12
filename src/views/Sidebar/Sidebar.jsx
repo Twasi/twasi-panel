@@ -5,6 +5,8 @@ import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
 
+import { getMenuStyle, getHeaderMenuItem, getMenuItemStyle } from './_style';
+
 import twasiLogo from '../common/resources/twasi_anim.gif';
 
 class Sidebar extends Component {
@@ -74,13 +76,12 @@ class Sidebar extends Component {
 
     const renderItems = () =>
       this.items.map(item => (
-        <div key={item.key}>
-          <icon type={item.icon} />
-          <span>{intl.formatMessage({ id: item.name })}</span>
-        </div>
+        <li style={getMenuItemStyle()} key={item.key}>
+          <i className="zmdi zmdi-home" /> {intl.formatMessage({ id: item.name })}
+        </li>
       ));
 
-    return (
+    /* return (
       <div trigger={null} collapsible collapsed={false} style={{ backgroundColor: '#fff' }}>
         <div
           onMouseOver={this.resetAnimation}
@@ -105,6 +106,14 @@ class Sidebar extends Component {
           {renderItems()}
         </button>
       </div>
+    ); */
+    return (
+      <ul style={getMenuStyle()}>
+        <div style={getHeaderMenuItem()}>
+          <div className="cwh-day-nav">Willkommen, larcce</div>
+        </div>
+        {renderItems()}
+      </ul>
     );
   }
 }
