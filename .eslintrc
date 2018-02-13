@@ -55,6 +55,7 @@
       }
     ],
     "jsx-a11y/mouse-events-have-key-events": "off",
+    "jsx-a11y/anchor-is-valid": "off",
 
     "react/require-default-props": ["off"],
     "react/jsx-closing-bracket-location": ["off"],

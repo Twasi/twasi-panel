@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Auth from './auth';
 import configureStore from './state/store';
@@ -27,28 +28,29 @@ const App = () => {
       <ReduxProvider store={store}>
         <BrowserRouter>
           <Auth>
-            <Content>
-              {/*<Sidebar />*/}
-              <Header />
-              <Sidebar />
-              <div style={{ padding: '50px 50px 0' }}>
-                <div style={{ padding: '24px 0' }}>
-                  <div
-                    style={{
-                      padding: '0 24px',
-                      minHeight: 'calc( 100vh - 64px - 50px - 66px - 48px )'
-                    }}>
-                    <Switch>
-                      <Route path="/" exact component={Overview} />
-                      <Route path="/status" exact component={Status} />
-                      <Route path="/settings" exact component={Settings} />
-                      <Route path="/plugins" exact component={Plugins} />
-                    </Switch>
+            <MuiThemeProvider>
+              <Content>
+                <Header />
+                <Sidebar />
+                <div style={{ padding: '50px 50px 0' }}>
+                  <div style={{ padding: '24px 0' }}>
+                    <div
+                      style={{
+                        padding: '0 24px',
+                        minHeight: 'calc( 100vh - 64px - 50px - 66px - 48px )'
+                      }}>
+                      <Switch>
+                        <Route path="/" exact component={Overview} />
+                        <Route path="/status" exact component={Status} />
+                        <Route path="/settings" exact component={Settings} />
+                        <Route path="/plugins" exact component={Plugins} />
+                      </Switch>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <Footer />
-            </Content>
+                <Footer />
+              </Content>
+            </MuiThemeProvider>
           </Auth>
         </BrowserRouter>
       </ReduxProvider>

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
+import Paper from 'material-ui/Paper';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+import FontIcon from 'material-ui/FontIcon';
 
 import { getMenuStyle, getHeaderMenuItem, getMenuItemStyle } from './_style';
 
@@ -29,13 +33,13 @@ class Sidebar extends Component {
       {
         key: 'settings',
         path: '/settings',
-        icon: 'setting',
+        icon: 'settings',
         name: 'sidebar.settings'
       },
       {
         key: 'plugins',
         path: '/plugins',
-        icon: 'api',
+        icon: 'store',
         name: 'sidebar.plugins'
       }
     ];
@@ -76,9 +80,13 @@ class Sidebar extends Component {
 
     const renderItems = () =>
       this.items.map(item => (
-        <li style={getMenuItemStyle()} key={item.key}>
-          <i className="zmdi zmdi-home" /> {intl.formatMessage({ id: item.name })}
-        </li>
+        <Link to={item.path}>
+          <MenuItem
+            primaryText={intl.formatMessage({ id: item.name })}
+            leftIcon={<FontIcon className="material-icons">{item.icon}</FontIcon>}
+            style={{ color: '#828282' }}
+          />
+        </Link>
       ));
 
     /* return (
@@ -107,13 +115,19 @@ class Sidebar extends Component {
         </button>
       </div>
     ); */
-    return (
+    /* return (
       <ul style={getMenuStyle()}>
         <div style={getHeaderMenuItem()}>
           <div className="cwh-day-nav">Willkommen, larcce</div>
         </div>
         {renderItems()}
       </ul>
+    ); */
+    return (
+      <Paper style={getMenuStyle()}>
+        <div style={getHeaderMenuItem()}>Hallo, name</div>
+        <Menu>{renderItems()}</Menu>
+      </Paper>
     );
   }
 }
