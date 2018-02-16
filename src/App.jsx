@@ -16,12 +16,29 @@ import Status from './views/Status';
 import Plugins from './views/Plugins';
 import Settings from './views/Settings';
 
+import Songrequests from './views/Extensions/Songrequests/Songrequests';
+import Commands from './views/Extensions/Commands/Commands';
+
 import LanguageProvider from './translations/LanguageProvider';
 
 import './styles/main.css';
 
 const App = () => {
   const store = configureStore();
+
+  const dropdown = (
+    <Menu>
+      <Menu.Item>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://panel-beta.twasi.net/"
+        >
+          Ausloggen
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <LanguageProvider>

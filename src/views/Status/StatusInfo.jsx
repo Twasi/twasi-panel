@@ -14,8 +14,8 @@ class StatusInfo extends Component {
     const { status, startBot, stopBot, isStarting, isStopping } = this.props;
     return (
       <div>
-        <div gutter={24}>
-          <div span={6} key="status">
+        <div>
+          <div>
             <div title="Twitchbot">
               <div type="flex" justify="center">
                 <div>

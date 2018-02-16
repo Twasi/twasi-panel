@@ -7,6 +7,8 @@ export default {
   'sidebar.status': 'Status',
   'sidebar.settings': 'Einstellungen',
   'sidebar.plugins': 'Erweiterungen',
+  'sidebar.commands': 'Befehle',
+  'sidebar.songrequests': 'Songrequests',
 
   // Overview
 
@@ -18,5 +20,9 @@ export default {
 
   // Settings
   'settings.unsaved': 'Ungespeicherte Änderungen',
-  'settings.selectLanguage': 'Wähle eine Sprache'
+  'settings.selectLanguage': 'Wähle eine Sprache',
+
+  // Commands
+  'commands.title': 'Befehle',
+  'commands.addcommand': 'Befehl Hinzufügen'
 };

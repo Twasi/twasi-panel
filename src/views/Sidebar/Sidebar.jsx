@@ -11,7 +11,7 @@ import FontIcon from 'material-ui/FontIcon';
 
 import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
 
-import twasiLogo from '../common/resources/twasi_anim.gif';
+import twasiLogo from '../common/resources/twasi_anim_dark.gif';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Sidebar extends Component {
       {
         key: 'status',
         path: '/status',
-        icon: 'home',
+        icon: 'info-circle-o',
         name: 'sidebar.status'
       },
       {
@@ -41,6 +41,18 @@ class Sidebar extends Component {
         path: '/plugins',
         icon: 'store',
         name: 'sidebar.plugins'
+      },
+      {
+        key: 'commands',
+        path: '/commands',
+        icon: 'exclamation-circle-o',
+        name: 'sidebar.commands'
+      },
+      {
+        key: 'songrequests',
+        path: '/songrequests',
+        icon: 'play-circle-o',
+        name: 'sidebar.songrequests'
       }
     ];
 
@@ -66,6 +78,7 @@ class Sidebar extends Component {
     const { path } = find(newItem => newItem.key === value, this.items);
 
     history.push(path);
+    this.setState({});
   }
 
   render() {
