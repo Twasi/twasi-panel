@@ -4,9 +4,12 @@ import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
+import Paper from 'material-ui/Paper';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+import FontIcon from 'material-ui/FontIcon';
 
-import { Layout, Menu, Icon } from 'antd';
-import './_style.css';
+import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
 
 import twasiLogo from '../common/resources/twasi_anim_dark.gif';
 
@@ -30,13 +33,13 @@ class Sidebar extends Component {
       {
         key: 'settings',
         path: '/settings',
-        icon: 'setting',
+        icon: 'settings',
         name: 'sidebar.settings'
       },
       {
         key: 'plugins',
         path: '/plugins',
-        icon: 'api',
+        icon: 'store',
         name: 'sidebar.plugins'
       },
       {
@@ -69,17 +72,16 @@ class Sidebar extends Component {
     this.Logo.src = twasiLogo;
   }
 
-  handleClick(item) {
+  handleClick(event, value) {
     const { history } = this.props;
 
-    const { path } = find(newItem => newItem.key === item.key, this.items);
+    const { path } = find(newItem => newItem.key === value, this.items);
 
     history.push(path);
     this.setState({});
   }
 
   render() {
-    const { Sider } = Layout;
     const { location, intl } = this.props;
 
     let selectedKey = find(item => item.path === location.pathname, this.items);
@@ -91,43 +93,26 @@ class Sidebar extends Component {
 
     const renderItems = () =>
       this.items.map(item => (
-        <Menu.Item key={item.key}>
-          <Icon type={item.icon} />
-          <span>{intl.formatMessage({ id: item.name })}</span>
-        </Menu.Item>
+        <MenuItem
+          primaryText={intl.formatMessage({ id: item.name })}
+          leftIcon={<FontIcon className="material-icons">{item.icon}</FontIcon>}
+          style={{ color: '#828282', fontSize: 13 }}
+          value={item.key}
+          key={item.key}
+          innerDivStyle={{ padding: '0px 16px 0px 52px' }}
+        />
       ));
 
     return (
-      <Sider trigger={null} collapsible collapsed={false}>
-        <div
-          onMouseOver={this.resetAnimation}
-          className="logo"
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 30,
-            marginBottom: 30
-          }}
-        >
-          <img
-            ref={elem => {
-              this.LogoDOM = elem;
-            }}
-            alt="Twasi Logo"
-            src={this.Logo.src}
-            style={{ height: 40 }}
-          />
-        </div>
+      <Paper style={getMenuStyle()} className="sidebar">
+        <div style={getHeaderMenuItem()}>Hallo, name</div>
         <Menu
-          theme="dark"
-          mode="inline"
-          selectedKeys={[selectedKey]}
-          onClick={this.handleClick}
-        >
+          onChange={this.handleClick}
+          value={selectedKey}
+          selectedMenuItemStyle={getActiveMenuItem()}>
           {renderItems()}
         </Menu>
-      </Sider>
+      </Paper>
     );
   }
 }

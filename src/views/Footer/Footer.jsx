@@ -1,23 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layout } from 'antd';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
-
-const AntdFooter = Layout.Footer;
 
 const pkgJson = require('../../../package.json');
 
 const Footer = ({ serverVersion, verifyData }) => {
   verifyData();
   return (
-    <AntdFooter style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: 'center' }}>
       Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-panel v.{pkgJson.version} - #{
         window.env.BUILD_DESC
       }{' '}
       | Twasi-core v.{serverVersion}
-    </AntdFooter>
+    </div>
   );
 };
 

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Layout, Menu, Dropdown, Icon } from 'antd';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Auth from './auth';
 import configureStore from './state/store';
 
+import Header from './views/common/Header';
+import Content from './views/common/Content';
 import Sidebar from './views/Sidebar/Sidebar';
 import Footer from './views/Footer/Footer';
 
@@ -19,7 +21,7 @@ import Commands from './views/Extensions/Commands/Commands';
 
 import LanguageProvider from './translations/LanguageProvider';
 
-const { Header, Content } = Layout;
+import './styles/main.css';
 
 const App = () => {
   const store = configureStore();
@@ -43,53 +45,22 @@ const App = () => {
       <ReduxProvider store={store}>
         <BrowserRouter>
           <Auth>
-            <Layout style={{ minHeight: '100vh' }}>
-              <Sidebar />
-              <Layout>
-                <Header className="header" style={{ backgroundColor: '#fff' }}>
-                  <Menu
-                    mode="horizontal"
-                    defaultSelectedKeys={['1']}
-                    style={{ lineHeight: '64px', float: 'left' }}
-                  >
-                    <Menu.Item key="1">Twasi Panel</Menu.Item>
-                    <Menu.Item key="2">Dokumentation</Menu.Item>
-                  </Menu>
-                  <Menu
-                    mode="horizontal"
-                    defaultSelectedKeys={['1']}
-                    style={{ lineHeight: '64px', float: 'right' }}
-                  >
-                    <Dropdown overlay={dropdown} trigger={['click']}>
-                      <div style={{ cursor: 'pointer' }}>
-                        Eingeloggt als <b>Name</b> <Icon type="down" />
-                      </div>
-                    </Dropdown>
-                  </Menu>
-                </Header>
-                <Layout style={{ padding: '24px 0' }}>
-                  <Content
-                    style={{
-                      padding: '0 24px'
-                    }}
-                  >
-                    <Switch>
-                      <Route path="/" exact component={Overview} />
-                      <Route path="/status" exact component={Status} />
-                      <Route path="/settings" exact component={Settings} />
-                      <Route path="/commands" exact component={Commands} />
-                      <Route
-                        path="/songrequests"
-                        exact
-                        component={Songrequests}
-                      />
-                      <Route path="/plugins" exact component={Plugins} />
-                    </Switch>
-                  </Content>
-                </Layout>
+            <MuiThemeProvider>
+              <Content>
+                <Header />
+                <Sidebar />
+                <div className="content">
+                  <Switch>
+                    <Route path="/" exact component={Overview} />
+                    <Route path="/status" exact component={Status} />
+                    <Route path="/settings" exact component={Settings} />
+                    <Route path="/plugins" exact component={Plugins} />
+                  </Switch>
+                </div>
+                <div style={{ clear: 'both' }} />
                 <Footer />
-              </Layout>
-            </Layout>
+              </Content>
+            </MuiThemeProvider>
           </Auth>
         </BrowserRouter>
       </ReduxProvider>

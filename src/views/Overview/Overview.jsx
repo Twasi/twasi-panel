@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { Icon, Row, Col, Card, Tag, Divider, List } from 'antd';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
@@ -35,139 +34,38 @@ class Overview extends Component {
 
     const running = (
       <span style={{ color: 'green' }}>
-        <Tag color="#87d068">
-          <FormattedMessage id="status.started" defaultMessage="Started" />
-        </Tag>
+        <icon type="check-circle-o" />{' '}
+        <FormattedMessage id="status.started" defaultMessage="Started" />
       </span>
     );
     const stopped = (
       <span style={{ color: 'red' }}>
-        <Tag color="#f5222d">
-          <FormattedMessage id="status.stopped" defaultMessage="Stopped" />
-        </Tag>
+        <icon type="close-circle-o" />{' '}
+        <FormattedMessage id="status.stopped" defaultMessage="Stopped" />
       </span>
     );
 
     return (
       <div>
-        <Row gutter={24}>
-          <Col span={6}>
-            <Card
-              actions={[
-                <Icon onClick={() => history.push('/status')} type="setting">
-                  {' '}
-                  <FormattedMessage
-                    id="status.manage"
-                    defaultMessage="Manage"
-                  />{' '}
-                </Icon>
-              ]}
-            >
-              <Row gutter={16} type="flex" justify="center">
-                <Col align="middle" span={24}>
-                  <h2>Twitchbot</h2>
-                  <Divider className="dividerStatus">
-                    {' '}
-                    {status.isRunning && running}
-                    {!status.isRunning && stopped}
-                  </Divider>
-                </Col>
-              </Row>
-            </Card>
-            <Card style={{ marginTop: '10px' }}>
-              <Divider>Log</Divider>
-              <List
-                size="small"
-                dataSource={databot}
-                renderItem={item => <List.Item>{item}</List.Item>}
-              />
-            </Card>
-          </Col>
-          <Col span={6}>
-            <Card
-              actions={[
-                <Icon onClick={() => history.push('/settings')} type="setting">
-                  {' '}
-                  <FormattedMessage
-                    id="status.manage"
-                    defaultMessage="Manage"
-                  />{' '}
-                </Icon>
-              ]}
-            >
-              <Row gutter={16} type="flex" justify="center">
-                <Col align="middle" span={24}>
-                  <h2>Songrequests</h2>
-                  <Divider className="dividerStatus">
-                    <Tag color="#87d068">aktiviert</Tag>
-                  </Divider>
-                </Col>
-              </Row>
-            </Card>
-            <Card style={{ marginTop: '10px' }}>
-              <Divider>Letzte Requests</Divider>
-              <List
-                size="small"
-                dataSource={data}
-                renderItem={item => <List.Item>{item}</List.Item>}
-              />
-            </Card>
-          </Col>
-
-          <Col span={6}>
-            <Card
-              actions={[
-                <Icon onClick={() => history.push('/settings')} type="setting">
-                  {' '}
-                  <FormattedMessage
-                    id="status.manage"
-                    defaultMessage="Manage"
-                  />{' '}
-                </Icon>
-              ]}
-            >
-              <Row gutter={16} type="flex" justify="center">
-                <Col align="middle" span={24}>
-                  <h2>Timeouts</h2>
-                  <Divider className="dividerStatus">
-                    <Tag color="#87d068">aktiviert</Tag>
-                  </Divider>
-                </Col>
-              </Row>
-            </Card>
-            <Card style={{ marginTop: '10px' }}>
-              <Divider>Letzte Timeouts</Divider>
-              <List
-                size="small"
-                dataSource={data}
-                renderItem={item => <List.Item>{item}</List.Item>}
-              />
-            </Card>
-          </Col>
-
-          <Col span={6}>
-            <Card
-              actions={[
-                <Icon onClick={() => history.push('/settings')} type="setting">
-                  {' '}
-                  <FormattedMessage
-                    id="status.manage"
-                    defaultMessage="Manage"
-                  />{' '}
-                </Icon>
-              ]}
-            >
-              <Row gutter={16} type="flex" justify="center">
-                <Col align="middle" span={24}>
-                  <h2>Tokens</h2>
-                  <Divider className="dividerStatus">
-                    <Tag color="#87d068">aktiviert</Tag>
-                  </Divider>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-        </Row>
+        <h2 className="pageTitle">
+          <FormattedMessage id="sidebar.overview" />
+        </h2>
+        <div
+          title="Bot status"
+          extra={
+            <button onClick={() => history.push('/status')}>
+              <FormattedMessage id="status.manage" defaultMessage="Manage" />
+            </button>
+          }
+          style={{ width: 300 }}>
+          <div type="flex" justify="center">
+            <div span={12}>Twitchbot</div>
+            <div span={12}>
+              {status.isRunning && running}
+              {!status.isRunning && stopped}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -189,6 +87,4 @@ const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(statusOperations.verifyData())
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Overview)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Overview));

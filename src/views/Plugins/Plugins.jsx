@@ -1,25 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  Card,
-  Row,
-  Col,
-  Switch,
-  Avatar,
-  Pagination,
-  Icon,
-  Input,
-  Divider,
-  Rate,
-  Button,
-  Spin
-} from 'antd';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
-
-const { Search } = Input;
 
 class Plugins extends Component {
   state = {
@@ -35,24 +19,18 @@ class Plugins extends Component {
   };
 
   render() {
-    const {
-      plugins,
-      installPlugin,
-      uninstallPlugin,
-      isLoading,
-      updateQuery
-    } = this.props;
+    const { plugins, installPlugin, uninstallPlugin, isLoading, updateQuery } = this.props;
     const { value } = this.state;
 
     const renderedPlugins = plugins.map(plugin => (
-      <Col span={12} key={plugin.name} className="pluginCard">
-        <Card
+      <div span={12} key={plugin.name} className="pluginCard">
+        <div
           key={plugin.name}
           title={plugin.name}
           extra={
-            <Switch
-              checkedChildren={<Icon type="check" />}
-              unCheckedChildren={<Icon type="cross" />}
+            <input
+              checkedChildren={<icon type="check" />}
+              unCheckedChildren={<icon type="cross" />}
               checked={plugin.isInstalled}
               onChange={checked => {
                 if (checked) {
@@ -62,12 +40,11 @@ class Plugins extends Component {
                 }
               }}
             />
-          }
-        >
-          <Col span={2} className="pluginCardImage">
-            <Avatar shape="square" size="large" icon="api" />
-          </Col>
-          <Col span={10}>
+          }>
+          <div span={2} className="pluginCardImage">
+            <img shape="square" size="large" icon="api" alt="Plugin" />
+          </div>
+          <div span={10}>
             <table>
               <tbody>
                 <tr>
@@ -90,64 +67,57 @@ class Plugins extends Component {
                 </tr>
               </tbody>
             </table>
-          </Col>
-          <Col span={12}>
+          </div>
+          <div span={12}>
             <div>{plugin.description}</div>
-          </Col>
-          <Col span={24}>
-            <Divider />
-            <Col span={12}>
+          </div>
+          <div span={24}>
+            <div />
+            <div span={12}>
               <span>
-                <Rate
-                  onChange={this.handleChange}
-                  value={value}
-                  style={{ color: '#00AEAE' }}
-                />
+                <div onChange={this.handleChange} value={value} style={{ color: '#00AEAE' }} />
                 <span className="ant-rate-text">1337 Bewertungen</span>
               </span>
-            </Col>
-            <Col span={12}>
-              <Button className="feedbackbutton" type="primary">
+            </div>
+            <div span={12}>
+              <button className="feedbackbutton" type="primary">
                 Feedback geben
-              </Button>
-            </Col>
-          </Col>
-        </Card>
-      </Col>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     ));
 
     return (
       <div>
-        <Row>
-          <Col span={24}>
-            <Card
+        <div>
+          <div span={24}>
+            <div
               title="Willkommen im Pluginstore"
               extra={
-                <Search
+                <input
                   placeholder="Suche nach einem Plugin"
                   style={{ width: 200 }}
                   onChange={e => updateQuery(e.target.value)}
                 />
-              }
-            >
-              Hier findest du sämtliche Plugins, die den Funktionsumfang des
-              Bots erweitern.<br />
-              Es gibt Standard Plugins und von Entwicklern veröffentlichte
-              Plugins, die du zusätzlich installieren bzw. deinstallieren
-              kannst.<br />
+              }>
+              Hier findest du sämtliche Plugins, die den Funktionsumfang des Bots erweitern.<br />
+              Es gibt Standard Plugins und von Entwicklern veröffentlichte Plugins, die du
+              zusätzlich installieren bzw. deinstallieren kannst.<br />
               <br />
-              Erfahre, wie du selber Erweiterungen für Twasi entwickeln und
-              veröffentlichen kannst LINK
-            </Card>
-          </Col>
-        </Row>
+              Erfahre, wie du selber Erweiterungen für Twasi entwickeln und veröffentlichen kannst
+              LINK
+            </div>
+          </div>
+        </div>
         <br />
-        {!isLoading && <Row gutter={24}>{renderedPlugins}</Row>}
+        {!isLoading && <div gutter={24}>{renderedPlugins}</div>}
         {isLoading && (
           <div style={{ width: '100%' }}>
-            <Spin
+            <div
               indicator={
-                <Icon
+                <icon
                   type="loading"
                   style={{ fontSize: 24, textAlign: 'center', width: '100%' }}
                   spin
@@ -156,9 +126,6 @@ class Plugins extends Component {
             />
           </div>
         )}
-        <Row gutter={24} type="flex" justify="center">
-          <Pagination defaultCurrent={6} total={500} />
-        </Row>
       </div>
     );
   }

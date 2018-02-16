@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
-import { Select, Form, Button } from 'antd';
 
 import { settingsSelectors, settingsOperations } from '../../state/settings';
-
-const { Option } = Select;
-const { Item } = Form;
 
 class Settings extends Component {
   componentWillMount() {
@@ -16,14 +12,7 @@ class Settings extends Component {
   }
 
   render() {
-    const {
-      language,
-      updateLanguage,
-      updateDirty,
-      isDirty,
-      pushChanges,
-      intl
-    } = this.props;
+    const { language, updateLanguage, updateDirty, isDirty, pushChanges, intl } = this.props;
 
     const formItemLayout = {
       labelCol: {
@@ -40,14 +29,13 @@ class Settings extends Component {
 
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
-          <Item
+        <form onSubmit={this.handleSubmit}>
+          <div
             {...formItemLayout}
             label={intl.formatMessage({
               id: 'settings.selectLanguage'
-            })}
-          >
-            <Select
+            })}>
+            <select
               showSearch
               style={{ width: 200 }}
               placeholder={intl.formatMessage({
@@ -60,23 +48,20 @@ class Settings extends Component {
               }}
               value={language}
               filterOption={(input, option) =>
-                option.props.children
-                  .toLowerCase()
-                  .indexOf(input.toLowerCase()) >= 0
-              }
-            >
-              <Option value="EN_GB">English (GB)</Option>
-              <Option value="DE_DE">German</Option>
-            </Select>
-          </Item>
+                option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }>
+              <option value="EN_GB">English (GB)</option>
+              <option value="DE_DE">German</option>
+            </select>
+          </div>
           {isDirty && (
-            <Item {...formItemLayout} label={unsavedChanges}>
-              <Button type="primary" onClick={pushChanges}>
+            <div {...formItemLayout} label={unsavedChanges}>
+              <button type="primary" onClick={pushChanges}>
                 <FormattedMessage id="common.save" defaultMessage="Save" />
-              </Button>
-            </Item>
+              </button>
+            </div>
           )}
-        </Form>
+        </form>
       </div>
     );
   }
@@ -98,13 +83,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateLanguage: language =>
-    dispatch(settingsOperations.updateLanguage(language)),
+  updateLanguage: language => dispatch(settingsOperations.updateLanguage(language)),
   verifyData: () => dispatch(settingsOperations.verifyData()),
   updateDirty: isDirty => dispatch(settingsOperations.updateDirty(isDirty)),
   pushChanges: () => dispatch(settingsOperations.pushChanges())
 });
 
-export default injectIntl(
-  connect(mapStateToProps, mapDispatchToProps)(Settings)
-);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Settings));
