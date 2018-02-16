@@ -26,20 +26,6 @@ import './styles/main.css';
 const App = () => {
   const store = configureStore();
 
-  const dropdown = (
-    <Menu>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://panel-beta.twasi.net/"
-        >
-          Ausloggen
-        </a>
-      </Menu.Item>
-    </Menu>
-  );
-
   return (
     <LanguageProvider>
       <ReduxProvider store={store}>

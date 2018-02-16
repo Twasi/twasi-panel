@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { Card, Table, Input, Button, Icon, Tooltip, Col, Row } from 'antd';
-import { FormattedMessage } from 'react-intl';
-
-const ButtonGroup = Button.Group;
 
 const data = [];
 for (let i = 0; i < 100; i++) {
@@ -16,24 +12,20 @@ for (let i = 0; i < 100; i++) {
   });
 }
 
-const EditableCell = ({ editable, value, onChange }) => (
+/* const EditableCell = ({ editable, value, onChange }) => (
   <div>
     {editable ? (
-      <Input
-        style={{ margin: '-5px 0' }}
-        value={value}
-        onChange={e => onChange(e.target.value)}
-      />
+      <input style={{ margin: '-5px 0' }} value={value} onChange={e => onChange(e.target.value)} />
     ) : (
       value
     )}
   </div>
-);
+); */
 
 class Commands extends Component {
   constructor(props) {
     super(props);
-    this.columns = [
+    /* this.columns = [
       {
         title: 'Befehl',
         dataIndex: 'command',
@@ -65,7 +57,7 @@ class Commands extends Component {
             <div className="editable-row-operations">
               {editable ? (
                 <span>
-                  <ButtonGroup>
+                  <div>
                     <Tooltip title="Speichern">
                       <Button type="primary">
                         <a onClick={() => this.save(record.key)}>
@@ -80,10 +72,10 @@ class Commands extends Component {
                         </a>
                       </Button>
                     </Tooltip>
-                  </ButtonGroup>
+                  </div>
                 </span>
               ) : (
-                <ButtonGroup>
+                <div>
                   <Tooltip title="Bearbeiten">
                     <Button>
                       <a onClick={() => this.edit(record.key)}>
@@ -96,13 +88,13 @@ class Commands extends Component {
                       <Icon type="delete" />
                     </Button>
                   </Tooltip>
-                </ButtonGroup>
+                </div>
               )}
             </div>
           );
         }
       }
-    ];
+    ]; */
     this.state = { data };
     this.cacheData = data.map(item => ({ ...item }));
   }
@@ -141,16 +133,16 @@ class Commands extends Component {
     }
   }
   renderColumns(text, record, column) {
-    return (
+    /* return (
       <EditableCell
         editable={record.editable}
         value={text}
         onChange={value => this.handleChange(value, record.key, column)}
       />
-    );
+    ); */
   }
   render() {
-    return (
+    /* return (
       <div>
         <Card>
           <Row gutter={24} type="flex" justify="center">
@@ -171,7 +163,8 @@ class Commands extends Component {
           </Row>
         </Card>
       </div>
-    );
+    ); */
+    return <div />;
   }
 }
 
