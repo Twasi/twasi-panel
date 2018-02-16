@@ -60,10 +60,11 @@ class Sidebar extends Component {
     this.Logo.src = twasiLogo;
   }
 
-  handleClick(item) {
+  handleClick(event, value) {
+    console.log(value);
     const { history } = this.props;
 
-    const { path } = find(newItem => newItem.key === item.key, this.items);
+    const { path } = find(newItem => newItem.key === value, this.items);
 
     history.push(path);
   }
@@ -80,13 +81,13 @@ class Sidebar extends Component {
 
     const renderItems = () =>
       this.items.map(item => (
-        <Link to={item.path}>
-          <MenuItem
-            primaryText={intl.formatMessage({ id: item.name })}
-            leftIcon={<FontIcon className="material-icons">{item.icon}</FontIcon>}
-            style={{ color: '#828282' }}
-          />
-        </Link>
+        <MenuItem
+          primaryText={intl.formatMessage({ id: item.name })}
+          leftIcon={<FontIcon className="material-icons">{item.icon}</FontIcon>}
+          style={{ color: '#828282' }}
+          value={item.key}
+          key={item.key}
+        />
       ));
 
     /* return (
@@ -126,7 +127,9 @@ class Sidebar extends Component {
     return (
       <Paper style={getMenuStyle()}>
         <div style={getHeaderMenuItem()}>Hallo, name</div>
-        <Menu>{renderItems()}</Menu>
+        <Menu onChange={this.handleClick} value={selectedKey}>
+          {renderItems()}
+        </Menu>
       </Paper>
     );
   }

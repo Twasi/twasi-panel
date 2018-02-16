@@ -1,7 +1,4 @@
 export const getMenuStyle = () => ({
-  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), */
-  /* marginRight: 60,
-  marginBottom: 30, */
   display: 'inline-block',
   margin: '32px 32px 16px 0'
 });
