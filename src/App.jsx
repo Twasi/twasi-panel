@@ -32,22 +32,15 @@ const App = () => {
               <Content>
                 <Header />
                 <Sidebar />
-                <div style={{ padding: '50px 50px 0' }}>
-                  <div style={{ padding: '24px 0' }}>
-                    <div
-                      style={{
-                        padding: '0 24px',
-                        minHeight: 'calc( 100vh - 64px - 50px - 66px - 48px )'
-                      }}>
-                      <Switch>
-                        <Route path="/" exact component={Overview} />
-                        <Route path="/status" exact component={Status} />
-                        <Route path="/settings" exact component={Settings} />
-                        <Route path="/plugins" exact component={Plugins} />
-                      </Switch>
-                    </div>
-                  </div>
+                <div className="content">
+                  <Switch>
+                    <Route path="/" exact component={Overview} />
+                    <Route path="/status" exact component={Status} />
+                    <Route path="/settings" exact component={Settings} />
+                    <Route path="/plugins" exact component={Plugins} />
+                  </Switch>
                 </div>
+                <div style={{ clear: 'both' }} />
                 <Footer />
               </Content>
             </MuiThemeProvider>

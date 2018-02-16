@@ -12,7 +12,7 @@ export const getMenuItemStyle = () => ({
 
 export const getHeaderMenuItem = () => ({
   ...getMenuItemStyle(),
-  backgroundColor: '#009688',
+  backgroundColor: 'rgb(0, 150, 136)',
   fontSize: 14,
   lineHeight: '48px',
   color: '#fff',
@@ -20,4 +20,8 @@ export const getHeaderMenuItem = () => ({
   padding: '0px 16px 0px 16px',
   minHeight: 48,
   position: 'relative'
+});
+
+export const getActiveMenuItem = () => ({
+  color: '#009688'
 });

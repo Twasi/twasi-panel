@@ -6,7 +6,7 @@ import { getContentStyle } from './_style';
 const Content = ({ children }) => <div style={getContentStyle()}>{children}</div>;
 
 Content.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.node
 };
 
 export default Content;

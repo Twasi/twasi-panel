@@ -4,3 +4,21 @@
 body {
   background-color: #edecec;
 }
+
+.content {
+  float: left;
+  margin-top: 32px;
+  margin-left: 32px;
+}
+
+.sidebar {
+  float: left;
+}
+
+.pageTitle {
+  font-size: 15px;
+  color: #fff;
+  margin: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+}

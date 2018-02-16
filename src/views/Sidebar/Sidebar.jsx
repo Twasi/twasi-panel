@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
@@ -9,7 +9,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 
-import { getMenuStyle, getHeaderMenuItem, getMenuItemStyle } from './_style';
+import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
 
 import twasiLogo from '../common/resources/twasi_anim.gif';
 
@@ -61,7 +61,6 @@ class Sidebar extends Component {
   }
 
   handleClick(event, value) {
-    console.log(value);
     const { history } = this.props;
 
     const { path } = find(newItem => newItem.key === value, this.items);
@@ -84,50 +83,20 @@ class Sidebar extends Component {
         <MenuItem
           primaryText={intl.formatMessage({ id: item.name })}
           leftIcon={<FontIcon className="material-icons">{item.icon}</FontIcon>}
-          style={{ color: '#828282' }}
+          style={{ color: '#828282', fontSize: 13 }}
           value={item.key}
           key={item.key}
+          innerDivStyle={{ padding: '0px 16px 0px 52px' }}
         />
       ));
 
-    /* return (
-      <div trigger={null} collapsible collapsed={false} style={{ backgroundColor: '#fff' }}>
-        <div
-          onMouseOver={this.resetAnimation}
-          className="logo"
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 30,
-            marginBottom: 30
-          }}>
-          <img
-            ref={elem => {
-              this.LogoDOM = elem;
-            }}
-            alt="Twasi Logo"
-            src={this.Logo.src}
-            style={{ height: 40 }}
-          />
-        </div>
-        <button mode="inline" selectedKeys={[selectedKey]} onClick={this.handleClick}>
-          {renderItems()}
-        </button>
-      </div>
-    ); */
-    /* return (
-      <ul style={getMenuStyle()}>
-        <div style={getHeaderMenuItem()}>
-          <div className="cwh-day-nav">Willkommen, larcce</div>
-        </div>
-        {renderItems()}
-      </ul>
-    ); */
     return (
-      <Paper style={getMenuStyle()}>
+      <Paper style={getMenuStyle()} className="sidebar">
         <div style={getHeaderMenuItem()}>Hallo, name</div>
-        <Menu onChange={this.handleClick} value={selectedKey}>
+        <Menu
+          onChange={this.handleClick}
+          value={selectedKey}
+          selectedMenuItemStyle={getActiveMenuItem()}>
           {renderItems()}
         </Menu>
       </Paper>

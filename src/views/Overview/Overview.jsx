@@ -30,6 +30,9 @@ class Overview extends Component {
 
     return (
       <div>
+        <h2 className="pageTitle">
+          <FormattedMessage id="sidebar.overview" />
+        </h2>
         <div
           title="Bot status"
           extra={
