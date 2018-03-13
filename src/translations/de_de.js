@@ -9,6 +9,8 @@ export default {
   'sidebar.plugins': 'Erweiterungen',
   'sidebar.commands': 'Befehle',
   'sidebar.songrequests': 'Songrequests',
+  'sidebar.docs': 'Dokumentation',
+  'sidebar.logout': 'Ausloggen',
 
   // Overview
 

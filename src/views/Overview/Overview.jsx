@@ -57,7 +57,8 @@ class Overview extends Component {
               <FormattedMessage id="status.manage" defaultMessage="Manage" />
             </button>
           }
-          style={{ width: 300 }}>
+          style={{ width: 300 }}
+        >
           <div type="flex" justify="center">
             <div span={12}>Twitchbot</div>
             <div span={12}>
@@ -87,4 +88,6 @@ const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(statusOperations.verifyData())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Overview));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Overview)
+);

@@ -34,7 +34,9 @@ const App = () => {
             <MuiThemeProvider>
               <Content>
                 <Header />
-                <Sidebar />
+                <div style={{ float: 'left' }}>
+                  <Sidebar />
+                </div>
                 <div className="content">
                   <Switch>
                     <Route path="/" exact component={Overview} />

@@ -9,11 +9,11 @@ const pkgJson = require('../../../package.json');
 const Footer = ({ serverVersion, verifyData }) => {
   verifyData();
   return (
-    <div style={{ textAlign: 'center' }}>
-      Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-panel v.{pkgJson.version} - #{
-        window.env.BUILD_DESC
+    <div style={{ textAlign: 'center', color: '#a2a2a2' }}>
+      Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-panel v.{
+        pkgJson.version
       }{' '}
-      | Twasi-core v.{serverVersion}
+      - #{window.env.BUILD_DESC} | Twasi-core v.{serverVersion}
     </div>
   );
 };

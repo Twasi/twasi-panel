@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape } from 'react-intl';
 import find from 'lodash/fp/find';
@@ -7,11 +8,12 @@ import { throttle } from 'lodash';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import FontIcon from 'material-ui/FontIcon';
 
+import { authSelectors } from '../../state/auth';
 import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
 
 import twasiLogo from '../common/resources/twasi_anim_dark.gif';
+import './_style.css';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -27,7 +29,7 @@ class Sidebar extends Component {
       {
         key: 'status',
         path: '/status',
-        icon: 'info-circle-o',
+        icon: 'info',
         name: 'sidebar.status'
       },
       {
@@ -45,13 +47,13 @@ class Sidebar extends Component {
       {
         key: 'commands',
         path: '/commands',
-        icon: 'exclamation-circle-o',
+        icon: 'code',
         name: 'sidebar.commands'
       },
       {
         key: 'songrequests',
         path: '/songrequests',
-        icon: 'play-circle-o',
+        icon: 'library_music',
         name: 'sidebar.songrequests'
       }
     ];
@@ -95,7 +97,7 @@ class Sidebar extends Component {
       this.items.map(item => (
         <MenuItem
           primaryText={intl.formatMessage({ id: item.name })}
-          leftIcon={<FontIcon className="material-icons">{item.icon}</FontIcon>}
+          leftIcon={<i className="material-icons">{item.icon}</i>}
           style={{ color: '#828282', fontSize: 13 }}
           value={item.key}
           key={item.key}
@@ -104,15 +106,44 @@ class Sidebar extends Component {
       ));
 
     return (
-      <Paper style={getMenuStyle()} className="sidebar">
-        <div style={getHeaderMenuItem()}>Hallo, name</div>
-        <Menu
-          onChange={this.handleClick}
-          value={selectedKey}
-          selectedMenuItemStyle={getActiveMenuItem()}>
-          {renderItems()}
-        </Menu>
-      </Paper>
+      <Fragment>
+        <Paper style={getMenuStyle()} className="sidebar">
+          <div style={getHeaderMenuItem()}>Hallo, {this.props.userName}</div>
+          <Menu
+            onChange={this.handleClick}
+            value={selectedKey}
+            selectedMenuItemStyle={getActiveMenuItem()}
+            className="Sidebar"
+          >
+            {renderItems()}
+          </Menu>
+        </Paper>
+        <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
+          <Menu
+            value={selectedKey}
+            selectedMenuItemStyle={getActiveMenuItem()}
+            className="Sidebar"
+          >
+            <MenuItem
+              primaryText={intl.formatMessage({ id: 'sidebar.docs' })}
+              leftIcon={<i className="material-icons">language</i>}
+              style={{ color: '#828282', fontSize: 13 }}
+              innerDivStyle={{ padding: '0px 16px 0px 52px' }}
+              onClick={() => window.open('https://docs.twasi.net', '_blank')}
+            />
+            <MenuItem
+              primaryText={intl.formatMessage({ id: 'sidebar.logout' })}
+              leftIcon={<i className="material-icons">keyboard_return</i>}
+              style={{ color: '#828282', fontSize: 13 }}
+              innerDivStyle={{ padding: '0px 16px 0px 52px' }}
+              onClick={() => {
+                localStorage.clear();
+                window.location = 'https://twasi.net';
+              }}
+            />
+          </Menu>
+        </Paper>
+      </Fragment>
     );
   }
 }
@@ -124,7 +155,12 @@ Sidebar.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  intl: intlShape
+  intl: intlShape,
+  userName: PropTypes.string
 };
 
-export default injectIntl(withRouter(Sidebar));
+const mapStateToProps = state => ({
+  userName: authSelectors.getUser(state).name
+});
+
+export default injectIntl(withRouter(connect(mapStateToProps)(Sidebar)));

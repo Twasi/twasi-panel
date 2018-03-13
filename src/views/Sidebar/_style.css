@@ -1,9 +1,8 @@
-.ant-menu-inline,
-.ant-menu-vertical,
-.ant-menu-vertical-left {
-  border-right: 0px;
+.Sidebar {
+  padding: 0px !important;
 }
 
-.ant-menu-horizontal {
-  border-bottom: 0px;
+.sidebar {
+  float: unset;
+  display: block !important;
 }
