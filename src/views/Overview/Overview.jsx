@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import Paper from 'material-ui/Paper';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
@@ -46,27 +47,29 @@ class Overview extends Component {
     );
 
     return (
-      <div>
+      <div className="pageContent">
         <h2 className="pageTitle">
           <FormattedMessage id="sidebar.overview" />
         </h2>
-        <div
-          title="Bot status"
-          extra={
-            <button onClick={() => history.push('/status')}>
-              <FormattedMessage id="status.manage" defaultMessage="Manage" />
-            </button>
-          }
-          style={{ width: 300 }}
-        >
-          <div type="flex" justify="center">
-            <div span={12}>Twitchbot</div>
-            <div span={12}>
-              {status.isRunning && running}
-              {!status.isRunning && stopped}
+        <Paper className="pageContainer">
+          <div
+            title="Bot status"
+            extra={
+              <button onClick={() => history.push('/status')}>
+                <FormattedMessage id="status.manage" defaultMessage="Manage" />
+              </button>
+            }
+            style={{ width: 300 }}
+          >
+            <div type="flex" justify="center">
+              <div span={12}>Twitchbot</div>
+              <div span={12}>
+                {status.isRunning && running}
+                {!status.isRunning && stopped}
+              </div>
             </div>
           </div>
-        </div>
+        </Paper>
       </div>
     );
   }

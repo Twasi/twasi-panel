@@ -6,15 +6,21 @@ body {
 }
 
 .content {
-  float: left;
-  margin-top: 32px;
-  margin-left: 32px;
+  margin: 32px;
+  display: flex;
 }
-
+.pageContent {
+  width: 100%;
+}
 .pageTitle {
   font-size: 15px;
   color: #fff;
   margin: 0;
   font-weight: 400;
   text-transform: uppercase;
+}
+.pageContainer {
+  border-radius: 0px !important;
+  padding: 23px;
+  margin-top: 23px;
 }

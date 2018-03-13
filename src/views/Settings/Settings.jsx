@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import Paper from 'material-ui/Paper';
 
 import { settingsSelectors, settingsOperations } from '../../state/settings';
 
@@ -12,7 +13,14 @@ class Settings extends Component {
   }
 
   render() {
-    const { language, updateLanguage, updateDirty, isDirty, pushChanges, intl } = this.props;
+    const {
+      language,
+      updateLanguage,
+      updateDirty,
+      isDirty,
+      pushChanges,
+      intl
+    } = this.props;
 
     const formItemLayout = {
       labelCol: {
@@ -28,40 +36,49 @@ class Settings extends Component {
     const unsavedChanges = intl.formatMessage({ id: 'settings.unsaved' });
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div
-            {...formItemLayout}
-            label={intl.formatMessage({
-              id: 'settings.selectLanguage'
-            })}>
-            <select
-              showSearch
-              style={{ width: 200 }}
-              placeholder={intl.formatMessage({
+      <div className="pageContent">
+        <h2 className="pageTitle">
+          <FormattedMessage id="sidebar.settings" />
+        </h2>
+        <Paper className="pageContainer">
+          <form onSubmit={this.handleSubmit}>
+            <div
+              {...formItemLayout}
+              label={intl.formatMessage({
                 id: 'settings.selectLanguage'
               })}
-              optionFilterProp="children"
-              onChange={lang => {
-                updateLanguage(lang);
-                updateDirty(true);
-              }}
-              value={language}
-              filterOption={(input, option) =>
-                option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }>
-              <option value="EN_GB">English (GB)</option>
-              <option value="DE_DE">German</option>
-            </select>
-          </div>
-          {isDirty && (
-            <div {...formItemLayout} label={unsavedChanges}>
-              <button type="primary" onClick={pushChanges}>
-                <FormattedMessage id="common.save" defaultMessage="Save" />
-              </button>
+            >
+              <select
+                showSearch
+                style={{ width: 200 }}
+                placeholder={intl.formatMessage({
+                  id: 'settings.selectLanguage'
+                })}
+                optionFilterProp="children"
+                onChange={lang => {
+                  updateLanguage(lang);
+                  updateDirty(true);
+                }}
+                value={language}
+                filterOption={(input, option) =>
+                  option.props.children
+                    .toLowerCase()
+                    .indexOf(input.toLowerCase()) >= 0
+                }
+              >
+                <option value="EN_GB">English (GB)</option>
+                <option value="DE_DE">German</option>
+              </select>
             </div>
-          )}
-        </form>
+            {isDirty && (
+              <div {...formItemLayout} label={unsavedChanges}>
+                <button type="primary" onClick={pushChanges}>
+                  <FormattedMessage id="common.save" defaultMessage="Save" />
+                </button>
+              </div>
+            )}
+          </form>
+        </Paper>
       </div>
     );
   }
@@ -83,10 +100,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateLanguage: language => dispatch(settingsOperations.updateLanguage(language)),
+  updateLanguage: language =>
+    dispatch(settingsOperations.updateLanguage(language)),
   verifyData: () => dispatch(settingsOperations.verifyData()),
   updateDirty: isDirty => dispatch(settingsOperations.updateDirty(isDirty)),
   pushChanges: () => dispatch(settingsOperations.pushChanges())
 });
 
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Settings));
+export default injectIntl(
+  connect(mapStateToProps, mapDispatchToProps)(Settings)
+);
