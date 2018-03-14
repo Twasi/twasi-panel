@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Paper from 'material-ui/Paper';
+import { Container, Row, Col } from 'react-grid-system';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
@@ -48,9 +49,50 @@ class Overview extends Component {
 
     return (
       <div className="pageContent">
-        <h2 className="pageTitle">
-          <FormattedMessage id="sidebar.overview" />
-        </h2>
+        <Container className="overviewHead">
+          <Row>
+            <Col sm={3}>
+              <div className="translucentBox">
+                <div className="media-body">
+                  <h2 style={{ margin: '7px 0px 0px' }}>
+                    <span>1337</span>
+                  </h2>
+                  <small>Follower</small>
+                </div>
+              </div>
+            </Col>
+            <Col sm={3}>
+              <div className="translucentBox">
+                <div className="media-body">
+                  <h2 style={{ margin: '7px 0px 0px' }}>
+                    <span>1337</span>
+                  </h2>
+                  <small>Zuschauer getrackt</small>
+                </div>
+              </div>
+            </Col>
+            <Col sm={3}>
+              <div className="translucentBox">
+                <div className="media-body">
+                  <h2 style={{ margin: '7px 0px 0px' }}>
+                    <span>1337</span>
+                  </h2>
+                  <small>Chatnachrichten getrackt</small>
+                </div>
+              </div>
+            </Col>
+            <Col sm={3}>
+              <div className="translucentBox">
+                <div className="media-body">
+                  <h2 style={{ margin: '7px 0px 0px' }}>
+                    <span>1337</span>
+                  </h2>
+                  <small>Streams getrackt</small>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
         <Paper className="pageContainer">
           <div
             title="Bot status"
