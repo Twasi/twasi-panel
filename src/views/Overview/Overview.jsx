@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Paper from 'material-ui/Paper';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import { Container, Row, Col } from 'react-grid-system';
 
 import { statusSelectors, statusOperations } from '../../state/status';
@@ -77,24 +78,45 @@ class Overview extends Component {
             </Col>
           </Row>
         </Container>
-        <Paper className="pageContainer">
-          <div
-            title="Bot status"
-            extra={
-              <button onClick={() => history.push('/status')}>
-                <FormattedMessage id="status.manage" defaultMessage="Manage" />
-              </button>
-            }
-            style={{ width: 300 }}
+        <Paper style={{ paddingTop: '5px' }} className="pageContainer">
+          <Tabs
+            tabItemContainerStyle={{
+              backgroundColor: '#fff'
+            }}
+            inkBarStyle={{ backgroundColor: '#00aeae' }}
+            contentContainerStyle={{ paddingTop: '23px' }}
           >
-            <div type="flex" justify="center">
-              <div span={12}>Twitchbot</div>
-              <div span={12}>
-                {status.isRunning && running}
-                {!status.isRunning && stopped}
+            <Tab
+              label="Letzter Stream"
+              buttonStyle={{
+                color: '#000',
+                float: 'left',
+                paddingLeft: '23px',
+                fontSize: '13px'
+              }}
+            >
+              <div
+                title="Bot status"
+                extra={
+                  <button onClick={() => history.push('/status')}>
+                    <FormattedMessage
+                      id="status.manage"
+                      defaultMessage="Manage"
+                    />
+                  </button>
+                }
+                style={{ width: 300 }}
+              >
+                <div type="flex" justify="center">
+                  <div span={12}>Twitchbot</div>
+                  <div span={12}>
+                    {status.isRunning && running}
+                    {!status.isRunning && stopped}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </Tab>
+          </Tabs>
         </Paper>
       </div>
     );

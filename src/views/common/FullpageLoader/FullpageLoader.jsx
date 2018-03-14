@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './_style.css';
 import twasiImage from '../resources/twasi_anim_loading.gif';
+import twasiLoadingBar from '../resources/twasi_anim_loadingbar.gif';
 
-const FullpageLoader = ({ text }) => (
+const FullpageLoader = () => (
   <div className="FullpageLoaderWrapper">
     <div>
       <div className="FullpageLoader">
@@ -14,13 +14,13 @@ const FullpageLoader = ({ text }) => (
           alt="Twasi Logo"
         />
       </div>
-      <div className="FullpageLoaderText">{text}</div>
+      <img
+        src={twasiLoadingBar}
+        className="FullpageLoaderBar"
+        alt="Twasi Loading Bar"
+      />
     </div>
   </div>
 );
-
-FullpageLoader.propTypes = {
-  text: PropTypes.string
-};
 
 export default FullpageLoader;
