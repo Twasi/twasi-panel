@@ -9,22 +9,6 @@ import { Container, Row, Col } from 'react-grid-system';
 import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
 
-const data = [
-  'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-  'Los Angeles battles huge wildfires.'
-];
-
-const databot = [
-  '13:37 - Bot gestartet',
-  '13:38 - Bot gestoppt',
-  '13:39 - Bot gestartet',
-  '13:40 - Bot gestoppt',
-  '13:41 - Bot gestartet'
-];
-
 class Overview extends Component {
   componentWillMount() {
     const { verifyData } = this.props;

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -106,7 +106,7 @@ class Sidebar extends Component {
       ));
 
     return (
-      <Fragment>
+      <div>
         <Paper style={getMenuStyle()} className="sidebar">
           <div style={getHeaderMenuItem()}>Hallo, {this.props.userName}</div>
           <Menu
@@ -143,7 +143,7 @@ class Sidebar extends Component {
             />
           </Menu>
         </Paper>
-      </Fragment>
+      </div>
     );
   }
 }
