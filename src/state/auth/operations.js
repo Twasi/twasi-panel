@@ -2,6 +2,8 @@ import jwtDecode from 'jwt-decode';
 
 import actions from './actions';
 
+const { updateUserData } = actions;
+
 const authenticate = jwt => dispatch => {
   const user = jwtDecode(jwt);
 
@@ -11,5 +13,6 @@ const authenticate = jwt => dispatch => {
 };
 
 export default {
-  authenticate
+  authenticate,
+  updateUserData
 };

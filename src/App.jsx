@@ -16,9 +16,6 @@ import Status from './views/Status';
 import Plugins from './views/Plugins';
 import Settings from './views/Settings';
 
-import Songrequests from './views/Extensions/Songrequests/Songrequests';
-import Commands from './views/Extensions/Commands/Commands';
-
 import LanguageProvider from './translations/LanguageProvider';
 
 import './styles/main.css';

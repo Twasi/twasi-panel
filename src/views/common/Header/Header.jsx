@@ -12,15 +12,11 @@ import {
   getLogoDescriptionStyle
 } from './_style';
 
-const Header = ({ userName, rank }) => (
+const Header = ({ userName, rank, avatar }) => (
   <header>
     <div style={getHeaderStyle()} />
     <div style={getLogoStyle()}>
-      <img
-        src="https://static-cdn.jtvnw.net/jtv_user_pictures/larcce-profile_image-be973d0efe0837bd-300x300.png"
-        alt=""
-        style={getAvatarStyle()}
-      />
+      <img src={avatar} alt="Avatar" style={getAvatarStyle()} />
       <div style={getLogoDescriptionStyle()}>
         <span>
           {userName}
@@ -33,7 +29,8 @@ const Header = ({ userName, rank }) => (
 
 Header.propTypes = {
   userName: PropTypes.string,
-  rank: PropTypes.string
+  rank: PropTypes.string,
+  avatar: PropTypes.string
 };
 
 Header.defaultProps = {
@@ -43,7 +40,8 @@ Header.defaultProps = {
 
 const mapStateToProps = state => ({
   userName: authSelectors.getUser(state).name,
-  rank: authSelectors.getUser(state).rank
+  rank: authSelectors.getUser(state).rank,
+  avatar: authSelectors.getUserAvatar(state)
 });
 
 export default connect(mapStateToProps)(Header);

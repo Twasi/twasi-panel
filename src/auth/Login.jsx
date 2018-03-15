@@ -13,7 +13,7 @@ const tokenExpiration = 2 * 60 * 60 * 1000;
 
 class Login extends React.Component {
   componentWillMount() {
-    const { isAuthenticated, authenticate } = this.props;
+    const { isAuthenticated, authenticate, updateUserData } = this.props;
 
     if (isAuthenticated) {
       return;
@@ -37,9 +37,15 @@ class Login extends React.Component {
       }
 
       authenticate(cacheData.token);
-      userInfoService.get(cacheData.token).catch(() => {
-        window.location.href = window.env.AUTH_URL;
-      });
+      userInfoService
+        .get(cacheData.token)
+        .then(data => {
+          console.log(data);
+          updateUserData(data);
+        })
+        .catch(() => {
+          window.location.href = window.env.AUTH_URL;
+        });
     }
   }
 
@@ -59,7 +65,8 @@ Login.propTypes = {
     pathname: PropTypes.string
   }),
   isAuthenticated: PropTypes.bool.isRequired,
-  authenticate: PropTypes.func.isRequired
+  authenticate: PropTypes.func.isRequired,
+  updateUserData: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -67,7 +74,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  authenticate: jwt => dispatch(authOperations.authenticate(jwt))
+  authenticate: jwt => dispatch(authOperations.authenticate(jwt)),
+  updateUserData: data => dispatch(authOperations.updateUserData(data))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

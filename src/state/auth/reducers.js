@@ -4,7 +4,8 @@ import types from './types';
 const initialState = {
   user: null,
   jwt: null,
-  isLoading: true
+  isLoading: true,
+  userData: {}
 };
 
 const authReducer = (state = initialState, action) => {
@@ -19,6 +20,10 @@ const authReducer = (state = initialState, action) => {
 
     case types.UPDATE_JWT: {
       return { ...state, jwt: action.jwt };
+    }
+
+    case types.UPDATE_USER_DATA: {
+      return { ...state, userData: action.data };
     }
 
     default:

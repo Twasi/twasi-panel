@@ -10,6 +10,11 @@ const updateUser = user => ({
   user
 });
 
+const updateUserData = data => ({
+  type: types.UPDATE_USER_DATA,
+  data
+});
+
 const isLoading = loading => ({
   type: types.UPDATE_IS_LOADING,
   loading
@@ -18,5 +23,6 @@ const isLoading = loading => ({
 export default {
   updateJwt,
   updateUser,
-  isLoading
+  isLoading,
+  updateUserData
 };
