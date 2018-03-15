@@ -5,6 +5,14 @@ import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Paper from 'material-ui/Paper';
 import { Tabs, Tab } from 'material-ui/Tabs';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn
+} from 'material-ui/Table';
 import { Container, Row, Col } from 'react-grid-system';
 
 import { statusSelectors, statusOperations } from '../../state/status';
@@ -17,6 +25,7 @@ class Overview extends Component {
   }
 
   render() {
+    /*
     const { history, status } = this.props;
 
     const running = (
@@ -31,6 +40,7 @@ class Overview extends Component {
         <FormattedMessage id="status.stopped" defaultMessage="Stopped" />
       </span>
     );
+    */
 
     return (
       <div className="pageContent">
@@ -95,6 +105,61 @@ class Overview extends Component {
                 fontSize: '13px'
               }}
             >
+              <Table>
+                <TableHeader
+                  className="overviewTableHead"
+                  adjustForCheckbox={false}
+                  displaySelectAll={false}
+                  selectable={false}
+                >
+                  <TableRow className="overviewTableRow">
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Stream ID
+                    </TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Dauer
+                    </TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Follower +
+                    </TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Aufrufe +
+                    </TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Zuschauer Maximum
+                    </TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Zuschauer Durchschnitt
+                    </TableHeaderColumn>
+                  </TableRow>
+                </TableHeader>
+                <TableBody
+                  className="overviewTableBody"
+                  displayRowCheckbox={false}
+                >
+                  <TableRow>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                  </TableRow>
+                </TableBody>
+              </Table>
+              {/*
               <div
                 title="Bot status"
                 extra={
@@ -115,6 +180,7 @@ class Overview extends Component {
                   </div>
                 </div>
               </div>
+              */}
             </Tab>
           </Tabs>
         </Paper>

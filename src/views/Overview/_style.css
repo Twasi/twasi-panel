@@ -14,5 +14,22 @@
 }
 .overviewTabBar {
   padding: 0px !important;
-  color: #00aeae;
+}
+.overviewTableHead {
+  background-color: #00aeae;
+  height: auto !important;
+}
+.overviewTableColumn {
+  color: #fff !important;
+  height: auto !important;
+}
+.overviewTableRow {
+  height: 35px !important;
+}
+.overviewTableBody {
+  background-color: #f4f4f4 !important;
+}
+.overviewTableColumnBody {
+  font-size: 18px !important;
+  color: grey;
 }
