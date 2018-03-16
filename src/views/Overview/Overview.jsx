@@ -14,14 +14,13 @@ import {
 } from 'material-ui/Table';
 import { Container, Row, Col } from 'react-grid-system';
 
-import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
 
 class Overview extends Component {
-  componentWillMount() {
+  /* componentWillMount() {
     const { verifyData } = this.props;
     verifyData();
-  }
+  } */
 
   render() {
     /*
@@ -93,8 +92,7 @@ class Overview extends Component {
               backgroundColor: '#fff'
             }}
             inkBarStyle={{ backgroundColor: '#00aeae' }}
-            contentContainerStyle={{ paddingTop: '23px' }}
-          >
+            contentContainerStyle={{ paddingTop: '23px' }}>
             <Tab
               label="Letzter Stream"
               buttonStyle={{
@@ -102,28 +100,20 @@ class Overview extends Component {
                 float: 'left',
                 paddingLeft: '23px',
                 fontSize: '13px'
-              }}
-            >
+              }}>
               <Table>
                 <TableHeader
                   className="overviewTableHead"
                   adjustForCheckbox={false}
                   displaySelectAll={false}
-                  selectable={false}
-                >
+                  selectable={false}>
                   <TableRow className="overviewTableRow">
-                    <TableHeaderColumn className="overviewTableColumn">
-                      Stream ID
-                    </TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">
-                      Dauer
-                    </TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">Stream ID</TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">Dauer</TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
                       Follower +
                     </TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">
-                      Aufrufe +
-                    </TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">Aufrufe +</TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
                       Zuschauer Maximum
                     </TableHeaderColumn>
@@ -132,29 +122,14 @@ class Overview extends Component {
                     </TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
-                <TableBody
-                  className="overviewTableBody"
-                  displayRowCheckbox={false}
-                >
+                <TableBody className="overviewTableBody" displayRowCheckbox={false}>
                   <TableRow>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1'337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1'337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1'337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1'337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1'337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1'337
-                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -188,22 +163,6 @@ class Overview extends Component {
   }
 }
 
-Overview.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
-  verifyData: PropTypes.func.isRequired,
-  status: PropTypes.shape({})
-};
+Overview.propTypes = {};
 
-const mapStateToProps = state => ({
-  status: statusSelectors.getStatus(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(statusOperations.verifyData())
-});
-
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Overview)
-);
+export default withRouter(connect()(Overview));

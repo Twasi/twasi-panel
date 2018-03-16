@@ -59,6 +59,7 @@
 
     "react/require-default-props": ["off"],
     "react/jsx-closing-bracket-location": ["off"],
+    "react/prefer-stateless-function": ["off"],
 
     "import/prefer-default-export": ["off"],
 
