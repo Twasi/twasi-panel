@@ -39,6 +39,12 @@ class Sidebar extends Component {
         name: 'sidebar.settings'
       },
       {
+        key: 'profile',
+        path: '/profile',
+        icon: 'account_box',
+        name: 'sidebar.profile'
+      },
+      {
         key: 'plugins',
         path: '/plugins',
         icon: 'store',
@@ -113,17 +119,12 @@ class Sidebar extends Component {
             onChange={this.handleClick}
             value={selectedKey}
             selectedMenuItemStyle={getActiveMenuItem()}
-            className="Sidebar"
-          >
+            className="Sidebar">
             {renderItems()}
           </Menu>
         </Paper>
         <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
-          <Menu
-            value={selectedKey}
-            selectedMenuItemStyle={getActiveMenuItem()}
-            className="Sidebar"
-          >
+          <Menu value={selectedKey} selectedMenuItemStyle={getActiveMenuItem()} className="Sidebar">
             <MenuItem
               primaryText={intl.formatMessage({ id: 'sidebar.docs' })}
               leftIcon={<i className="material-icons">language</i>}

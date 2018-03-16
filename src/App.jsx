@@ -15,6 +15,7 @@ import Overview from './views/Overview';
 import Status from './views/Status';
 import Plugins from './views/Plugins';
 import Settings from './views/Settings';
+import Profile from './views/Profile/Profile';
 
 import LanguageProvider from './translations/LanguageProvider';
 
@@ -40,6 +41,7 @@ const App = () => {
                     <Route path="/status" exact component={Status} />
                     <Route path="/settings" exact component={Settings} />
                     <Route path="/plugins" exact component={Plugins} />
+                    <Route path="/profile" exact component={Profile} />
                   </Switch>
                 </div>
                 <div style={{ clear: 'both' }} />
