@@ -16,6 +16,8 @@ import Status from './views/Status';
 import Plugins from './views/Plugins';
 import Settings from './views/Settings';
 import Profile from './views/Profile/Profile';
+import Commands from './views/Commands/Commands';
+import Songrequests from './views/Songrequests/Songrequests';
 
 import LanguageProvider from './translations/LanguageProvider';
 
@@ -42,6 +44,12 @@ const App = () => {
                     <Route path="/settings" exact component={Settings} />
                     <Route path="/plugins" exact component={Plugins} />
                     <Route path="/profile" exact component={Profile} />
+                    <Route path="/commands" exact component={Commands} />
+                    <Route
+                      path="/songrequests"
+                      exact
+                      component={Songrequests}
+                    />
                   </Switch>
                 </div>
                 <div style={{ clear: 'both' }} />

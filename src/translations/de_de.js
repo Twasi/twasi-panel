@@ -27,5 +27,8 @@ export default {
 
   // Commands
   'commands.title': 'Befehle',
-  'commands.addcommand': 'Befehl Hinzufügen'
+  'commands.addcommand': 'Befehl Hinzufügen',
+
+  // Plugins
+  'plugins.headline': 'Plugin Store'
 };

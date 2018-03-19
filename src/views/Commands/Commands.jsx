@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Paper from 'material-ui/Paper';
+import { FormattedMessage } from 'react-intl';
 
 const data = [];
 for (let i = 0; i < 100; i++) {
@@ -132,15 +134,6 @@ class Commands extends Component {
       this.setState({ data: newData });
     }
   }
-  renderColumns(text, record, column) {
-    /* return (
-      <EditableCell
-        editable={record.editable}
-        value={text}
-        onChange={value => this.handleChange(value, record.key, column)}
-      />
-    ); */
-  }
   render() {
     /* return (
       <div>
@@ -164,7 +157,14 @@ class Commands extends Component {
         </Card>
       </div>
     ); */
-    return <div />;
+    return (
+      <div className="pageContent">
+        <h2 className="pageTitle">
+          <FormattedMessage id="sidebar.commands" />
+        </h2>
+        <Paper className="pageContainer">Befehle</Paper>
+      </div>
+    );
   }
 }
 

@@ -92,7 +92,8 @@ class Overview extends Component {
               backgroundColor: '#fff'
             }}
             inkBarStyle={{ backgroundColor: '#00aeae' }}
-            contentContainerStyle={{ paddingTop: '23px' }}>
+            contentContainerStyle={{ paddingTop: '23px' }}
+          >
             <Tab
               label="Letzter Stream"
               buttonStyle={{
@@ -100,20 +101,28 @@ class Overview extends Component {
                 float: 'left',
                 paddingLeft: '23px',
                 fontSize: '13px'
-              }}>
+              }}
+            >
               <Table>
                 <TableHeader
                   className="overviewTableHead"
                   adjustForCheckbox={false}
                   displaySelectAll={false}
-                  selectable={false}>
+                  selectable={false}
+                >
                   <TableRow className="overviewTableRow">
-                    <TableHeaderColumn className="overviewTableColumn">Stream ID</TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">Dauer</TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Stream ID
+                    </TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Dauer
+                    </TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
                       Follower +
                     </TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">Aufrufe +</TableHeaderColumn>
+                    <TableHeaderColumn className="overviewTableColumn">
+                      Aufrufe +
+                    </TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
                       Zuschauer Maximum
                     </TableHeaderColumn>
@@ -122,17 +131,33 @@ class Overview extends Component {
                     </TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
-                <TableBody className="overviewTableBody" displayRowCheckbox={false}>
+                <TableBody
+                  className="overviewTableBody"
+                  displayRowCheckbox={false}
+                >
                   <TableRow>
-                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">1'337</TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
+                    <TableRowColumn className="overviewTableColumnBody">
+                      1'337
+                    </TableRowColumn>
                   </TableRow>
                 </TableBody>
               </Table>
+
               {/*
               <div
                 title="Bot status"

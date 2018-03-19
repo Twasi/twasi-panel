@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+import { Container, Row, Col } from 'react-grid-system';
+import Paper from 'material-ui/Paper';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -19,10 +22,20 @@ class Plugins extends Component {
   };
 
   render() {
-    const { plugins, installPlugin, uninstallPlugin, isLoading, updateQuery } = this.props;
+    const {
+      plugins,
+      installPlugin,
+      uninstallPlugin,
+      isLoading,
+      updateQuery
+    } = this.props;
     const { value } = this.state;
 
     const renderedPlugins = plugins.map(plugin => (
+      <Col sm={6}>
+        <Paper className="pageContainer">lalala</Paper>
+      </Col>
+      /*
       <div span={12} key={plugin.name} className="pluginCard">
         <div
           key={plugin.name}
@@ -40,7 +53,8 @@ class Plugins extends Component {
                 }
               }}
             />
-          }>
+          }
+        >
           <div span={2} className="pluginCardImage">
             <img shape="square" size="large" icon="api" alt="Plugin" />
           </div>
@@ -75,7 +89,11 @@ class Plugins extends Component {
             <div />
             <div span={12}>
               <span>
-                <div onChange={this.handleChange} value={value} style={{ color: '#00AEAE' }} />
+                <div
+                  onChange={this.handleChange}
+                  value={value}
+                  style={{ color: '#00AEAE' }}
+                />
                 <span className="ant-rate-text">1337 Bewertungen</span>
               </span>
             </div>
@@ -87,45 +105,15 @@ class Plugins extends Component {
           </div>
         </div>
       </div>
+      */
     ));
 
     return (
-      <div>
-        <div>
-          <div span={24}>
-            <div
-              title="Willkommen im Pluginstore"
-              extra={
-                <input
-                  placeholder="Suche nach einem Plugin"
-                  style={{ width: 200 }}
-                  onChange={e => updateQuery(e.target.value)}
-                />
-              }>
-              Hier findest du sämtliche Plugins, die den Funktionsumfang des Bots erweitern.<br />
-              Es gibt Standard Plugins und von Entwicklern veröffentlichte Plugins, die du
-              zusätzlich installieren bzw. deinstallieren kannst.<br />
-              <br />
-              Erfahre, wie du selber Erweiterungen für Twasi entwickeln und veröffentlichen kannst
-              LINK
-            </div>
-          </div>
-        </div>
-        <br />
-        {!isLoading && <div gutter={24}>{renderedPlugins}</div>}
-        {isLoading && (
-          <div style={{ width: '100%' }}>
-            <div
-              indicator={
-                <icon
-                  type="loading"
-                  style={{ fontSize: 24, textAlign: 'center', width: '100%' }}
-                  spin
-                />
-              }
-            />
-          </div>
-        )}
+      <div className="pageContent">
+        <h2 className="pageTitle">
+          <FormattedMessage id="plugins.headline" />
+        </h2>
+        <Paper className="pageContainer">Plugins</Paper>
       </div>
     );
   }
