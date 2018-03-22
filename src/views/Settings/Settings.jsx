@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import Paper from 'material-ui/Paper';
+import { Row, Col } from 'react-grid-system';
+import Toggle from 'material-ui/Toggle';
+
+import './_style.css';
 
 import { settingsSelectors, settingsOperations } from '../../state/settings';
 
@@ -79,6 +83,54 @@ class Settings extends Component {
             )}
           </form>
         </Paper>
+        <Row>
+          <Col sm={6}>
+            <div className="settingsHead">
+              <div>Einstellungen</div>
+              <small>Stelle dir Twasi nach deinen Bedürfnissen ein.</small>
+            </div>
+            <Paper style={{ marginTop: '0px' }} className="pageContainer">
+              <Toggle
+                label="Songrequests"
+                thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
+              />
+              <div className="settingsDescription">
+                Mit dieser Einstellung aktivierst oder deaktivierst du die
+                Funktion für das Hinzufügen und Abspielen von Songs der
+                Streamplaylist.
+              </div>
+            </Paper>
+          </Col>
+          <Col sm={6} />
+          <Col sm={6}>
+            <Paper style={{ marginTop: '5px' }} className="pageContainer">
+              <Toggle
+                label="Tokens"
+                thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
+              />
+              <div className="settingsDescription">
+                Mit dieser Einstellung aktivierst oder deaktivierst du das
+                Tokensystem, dabei sammeln alle Chatter virtuelle Punkte für das
+                Ansehen deines Streams.
+              </div>
+            </Paper>
+          </Col>
+          <Col sm={6} />
+          <Col sm={6}>
+            <Paper style={{ marginTop: '5px' }} className="pageContainer">
+              <Toggle
+                label="Zitate"
+                thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
+              />
+              <div className="settingsDescription">
+                Mit dieser Einstellung aktivierst oder deaktivierst du das
+                Zitatsystem, dabei kannst du Zitate deines Streams mithilfe von
+                !zitat add hinzufügen oder zufällige Zitate mithilfe von !zitat
+                im Chat ausgeben lassen.
+              </div>
+            </Paper>
+          </Col>
+        </Row>
       </div>
     );
   }

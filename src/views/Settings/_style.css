@@ -1,0 +1,17 @@
+.settingsHead {
+  padding: 15px;
+  background-color: #00aeae;
+  position: relative;
+  margin-top: 23px;
+  color: #fff;
+}
+.settingsDescription {
+  margin-top: 15px;
+  font-size: 12px;
+}
+.green {
+  color: #43a047;
+}
+.red {
+  color: #e53935;
+}

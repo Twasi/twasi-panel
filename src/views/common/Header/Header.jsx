@@ -35,7 +35,8 @@ Header.propTypes = {
 
 Header.defaultProps = {
   userName: 'Unknown',
-  rank: 'Unknown'
+  rank: 'Unknown',
+  avatar: 'Unknown'
 };
 
 const mapStateToProps = state => ({
