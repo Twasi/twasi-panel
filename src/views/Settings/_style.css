@@ -8,6 +8,11 @@
 .settingsDescription {
   margin-top: 15px;
   font-size: 12px;
+  color: #5e5e5e;
+}
+.settingsToggle {
+  font-size: 14px !important;
+  color: #5e5e5e !important;
 }
 .green {
   color: #43a047;

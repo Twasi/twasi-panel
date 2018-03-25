@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
 import { Row, Col } from 'react-grid-system';
+import Divider from 'material-ui/Divider';
 import Toggle from 'material-ui/Toggle';
+import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
 
 import './_style.css';
 
@@ -92,6 +97,11 @@ class Settings extends Component {
             <Paper style={{ marginTop: '0px' }} className="pageContainer">
               <Toggle
                 label="Songrequests"
+                labelStyle={{
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  color: '#5e5e5e'
+                }}
                 thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
               />
               <div className="settingsDescription">
@@ -99,6 +109,37 @@ class Settings extends Component {
                 Funktion für das Hinzufügen und Abspielen von Songs der
                 Streamplaylist.
               </div>
+              <Divider style={{ marginTop: '25px' }} />
+              <Row>
+                <Col sm={6}>
+                  <ListItem
+                    primaryText="Requests nur für Abonnenten"
+                    className="settingsToggle"
+                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                  />
+                </Col>
+                <Col sm={6}>
+                  <ListItem
+                    primaryText="Skipvotes für Zuschauer"
+                    className="settingsToggle"
+                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                  />
+                </Col>
+                <Col sm={6}>
+                  <ListItem
+                    primaryText="Mindest Viewtime für Requests"
+                    className="settingsToggle"
+                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                  />
+                </Col>
+                <Col sm={6}>
+                  <ListItem
+                    primaryText="Tokenkosten für Request"
+                    className="settingsToggle"
+                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                  />
+                </Col>
+              </Row>
             </Paper>
           </Col>
           <Col sm={6} />
@@ -106,6 +147,11 @@ class Settings extends Component {
             <Paper style={{ marginTop: '5px' }} className="pageContainer">
               <Toggle
                 label="Tokens"
+                labelStyle={{
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  color: '#5e5e5e'
+                }}
                 thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
               />
               <div className="settingsDescription">
@@ -120,6 +166,11 @@ class Settings extends Component {
             <Paper style={{ marginTop: '5px' }} className="pageContainer">
               <Toggle
                 label="Zitate"
+                labelStyle={{
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  color: '#5e5e5e'
+                }}
                 thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
               />
               <div className="settingsDescription">
@@ -128,6 +179,10 @@ class Settings extends Component {
                 !zitat add hinzufügen oder zufällige Zitate mithilfe von !zitat
                 im Chat ausgeben lassen.
               </div>
+              {/*
+              <Divider style={{ marginTop: '15px' }} />
+              <div className="settingsAdvanced">Erweiterte Einstellungen</div>
+              */}
             </Paper>
           </Col>
         </Row>
