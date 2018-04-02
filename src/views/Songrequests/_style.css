@@ -16,3 +16,21 @@
 .rightTime {
   float: right;
 }
+.songrequestsTableHead {
+  background-color: #00aeae;
+  height: auto !important;
+}
+.songrequestsTableColumn {
+  color: #fff !important;
+  height: auto !important;
+}
+.songrequestsTableRow {
+  height: 35px !important;
+}
+.songrequestsTableBody {
+  background-color: #fff !important;
+}
+.songrequestsTableColumnBody {
+  font-size: 14px !important;
+  color: grey;
+}
