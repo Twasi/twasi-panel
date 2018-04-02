@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "amcharts3": "amcharts/amcharts3",
+    "amcharts3-react": "amcharts/amcharts3-react",
     "jwt-decode": "^2.2.0",
     "local-storage": "^1.4.2",
     "lodash": "^4.17.4",

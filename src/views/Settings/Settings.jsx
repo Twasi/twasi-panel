@@ -115,28 +115,28 @@ class Settings extends Component {
                   <ListItem
                     primaryText="Requests nur für Abonnenten"
                     className="settingsToggle"
-                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                    leftCheckbox={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
                   />
                 </Col>
                 <Col sm={6}>
                   <ListItem
                     primaryText="Skipvotes für Zuschauer"
                     className="settingsToggle"
-                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                    leftCheckbox={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
                   />
                 </Col>
                 <Col sm={6}>
                   <ListItem
                     primaryText="Mindest Viewtime für Requests"
                     className="settingsToggle"
-                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                    leftCheckbox={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
                   />
                 </Col>
                 <Col sm={6}>
                   <ListItem
                     primaryText="Tokenkosten für Request"
                     className="settingsToggle"
-                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                    leftCheckbox={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
                   />
                 </Col>
               </Row>

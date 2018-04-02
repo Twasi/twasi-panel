@@ -1,0 +1,18 @@
+.songrequestsCoverImage {
+  height: 150px;
+  width: 150px;
+}
+.songrequestsPlayer {
+  width: -webkit-fill-available;
+  padding: 23px;
+}
+.songrequestsInfo {
+  padding-top: 5px;
+  width: 100%;
+}
+.leftTime {
+  float: left;
+}
+.rightTime {
+  float: right;
+}

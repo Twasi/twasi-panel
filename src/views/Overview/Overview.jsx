@@ -157,7 +157,6 @@ class Overview extends Component {
                   </TableRow>
                 </TableBody>
               </Table>
-
               {/*
               <div
                 title="Bot status"
