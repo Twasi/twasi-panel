@@ -18,6 +18,7 @@ import Settings from './views/Settings';
 import Profile from './views/Profile/Profile';
 import Commands from './views/Commands/Commands';
 import Songrequests from './views/Songrequests/Songrequests';
+import DevTools from './views/DevTools/DevTools';
 
 import LanguageProvider from './translations/LanguageProvider';
 
@@ -45,6 +46,7 @@ const App = () => {
                     <Route path="/plugins" exact component={Plugins} />
                     <Route path="/profile" exact component={Profile} />
                     <Route path="/commands" exact component={Commands} />
+                    <Route path="/dev" exact component={DevTools} />
                     <Route
                       path="/songrequests"
                       exact

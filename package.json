@@ -5,6 +5,7 @@
   "dependencies": {
     "amcharts3": "amcharts/amcharts3",
     "amcharts3-react": "amcharts/amcharts3-react",
+    "graphiql": "^0.11.11",
     "jwt-decode": "^2.2.0",
     "local-storage": "^1.4.2",
     "lodash": "^4.17.4",
