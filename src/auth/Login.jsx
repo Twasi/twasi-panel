@@ -24,6 +24,13 @@ class Login extends React.Component {
     if (urlParams.jwt) {
       authenticate(urlParams.jwt);
       storage('jwt', { token: urlParams.jwt, since: new Date().getTime() });
+      graph('user{id,twitchAccount{twitchid,name,avatar,email}}', urlParams.jwt).then(data => {
+        if (data.data.viewer == null) {
+          window.location.href = window.env.AUTH_URL;
+        } else {
+          updateUserData(data.data.viewer.user);
+        }
+      });
     } else {
       const cacheData = storage('jwt');
 
