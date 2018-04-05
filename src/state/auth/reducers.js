@@ -5,7 +5,12 @@ const initialState = {
   user: null,
   jwt: null,
   isLoading: true,
-  userData: {}
+  userData: {
+    id: '',
+    twitchAccount: {
+      avatar: ''
+    }
+  }
 };
 
 const authReducer = (state = initialState, action) => {

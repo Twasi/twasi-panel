@@ -3,8 +3,7 @@ import { authSelectors } from '../state/auth';
 
 const requestHeaders = token => ({
   Accept: 'application/json',
-  Authorization: `Bearer ${token}`
-  // 'Content-Type': 'application/json'
+  'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 });
 
 export default async (url, method, payload) => {
@@ -19,7 +18,7 @@ export default async (url, method, payload) => {
   const options = {
     method,
     headers: requestHeaders(token),
-    body: method !== 'GET' ? JSON.stringify(payload) : undefined
+    body: method !== 'GET' ? payload : undefined
   };
 
   const response = await fetch(url, options);

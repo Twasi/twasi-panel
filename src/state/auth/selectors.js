@@ -4,7 +4,7 @@ const isLoading = state => state.authState.auth.isLoading;
 
 const isAuthenticated = state => state.authState.auth.user !== null;
 
-const getUserAvatar = state => state.authState.auth.userData.avatar;
+const getUserAvatar = state => state.authState.auth.userData.twitchAccount.avatar;
 
 export default {
   getJwt,

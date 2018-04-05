@@ -1,13 +1,12 @@
 import actions from './actions';
 import selectors from './selectors';
-import versionInfo from '../../services/versionInfo.service';
 
 const { updateLoaded, updateConnected, updateVersion } = actions;
 
 const loadData = () => dispatch => {
-  versionInfo.get().then(data => {
+  /* versionInfo.get().then(data => {
     dispatch(updateVersion(data.version));
-  });
+  }); */
 };
 
 const verifyData = () => (dispatch, getState) => {

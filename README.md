@@ -16,7 +16,8 @@ Paste this into the file:
 window.env = {
   ...window.env,
   API_URL: 'https://api-beta.twasi.net/api',
-  AUTH_URL: 'https://api-beta.twasi.net/auth'
+  AUTH_URL: 'https://api-beta.twasi.net/auth',
+  GRAPHQL_URL: 'https://api-beta.twasi.net/graphql'
 };
 ```
 
@@ -26,6 +27,7 @@ You can also adapt it to use the local backend (if it is running on your machine
 window.env = {
   ...window.env,
   API_URL: 'http://localhost:8000/api',
-  AUTH_URL: 'http://localhost:8000/auth'
+  AUTH_URL: 'http://localhost:8000/auth',
+  GRAPHQL_URL: 'http://localhost:8000/graphql'
 };
 ```

@@ -3,16 +3,14 @@ import debounce from 'lodash/debounce';
 import actions from './actions';
 import selectors from './selectors';
 
-import plugins from '../../services/plugins/plugins.service';
-
 const { updateLoaded, updatePlugins, setInstalled, updateLoading } = actions;
 
 const loadData = () => dispatch => {
   dispatch(updateLoading(true));
-  plugins.get().then(data => {
+  /* plugins.get().then(data => {
     dispatch(updatePlugins(data.plugins));
     dispatch(updateLoading(false));
-  });
+  }); */
 };
 
 const verifyData = () => (dispatch, getState) => {
@@ -26,28 +24,28 @@ const verifyData = () => (dispatch, getState) => {
 };
 
 const installPlugin = name => dispatch => {
-  plugins
+  /* plugins
     .post({
       action: 'INSTALL',
       pluginName: name
     })
     .then(() => {
       dispatch(setInstalled(name, true));
-    });
+    }); */
 };
 
 const uninstallPlugin = name => dispatch => {
-  plugins
+  /* plugins
     .post({
       action: 'UNINSTALL',
       pluginName: name
     })
     .then(() => {
       dispatch(setInstalled(name, false));
-    });
+    }); */
 };
 
-const updateQuery = debounce(
+/* const updateQuery = debounce(
   name => dispatch => {
     dispatch(actions.updateQuery(name));
     plugins.get(0, name).then(data => {
@@ -55,7 +53,9 @@ const updateQuery = debounce(
     });
   },
   1000
-);
+);*/
+
+const updateQuery = () => {};
 
 export default {
   verifyData,
