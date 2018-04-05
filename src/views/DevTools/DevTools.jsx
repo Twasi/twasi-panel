@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GraphiQL from 'graphiql';
 import Paper from 'material-ui/Paper';
 // import { Container, Row, Col } from 'react-grid-system';
 
-import { statusSelectors, statusOperations } from '../../state/status';
+import { authSelectors } from '../../state/auth';
 import './_style.css';
 
 class Profile extends Component {
@@ -18,7 +19,7 @@ class Profile extends Component {
     const graphQLFetcher = params => fetch(`${window.env.GRAPHQL_URL}`, {
       method: 'post',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-      body: `query=${encodeURI(params.query)}`
+      body: `query=${encodeURI(params.query.split('API_KEY').join(this.props.jwt))}`
     }).then(response => response.json());
 
     return (
@@ -34,16 +35,14 @@ class Profile extends Component {
   }
 }
 
-Profile.propTypes = {};
+Profile.propTypes = {
+  jwt: PropTypes.string.isRequired
+};
 
 const mapStateToProps = state => ({
-  status: statusSelectors.getStatus(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(statusOperations.verifyData())
+  jwt: authSelectors.getJwt(state)
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Profile)
+  connect(mapStateToProps)(Profile)
 );
