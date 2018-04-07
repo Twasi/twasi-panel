@@ -1,6 +1,9 @@
 import actions from './actions';
 import selectors from './selectors';
 
+import { getUserGraph } from '../../services/graphqlService';
+import { authSelectors } from '../auth';
+
 const {
   updateStatus,
   updateEvents,
@@ -9,12 +12,18 @@ const {
   updateStopping
 } = actions;
 
-const loadData = () => dispatch => {};
+const loadData = () => (dispatch, getState) => {
+  const state = getState();
+  const jwt = authSelectors.getJwt(state);
 
-const loadEvents = () => () => {
-  /* events.get().then(data => {
-    dispatch(updateEvents(data.messages));
-  }); */
+  getUserGraph('status{isRunning}', jwt).then(data => dispatch(updateStatus(data.data.viewer.status)));
+};
+
+const loadEvents = () => (dispatch, getState) => {
+  const state = getState();
+  const jwt = authSelectors.getJwt(state);
+
+  getUserGraph('user{events{message,messageType,createdAt}}', jwt).then(data => dispatch(updateEvents(data.data.viewer.user.events)));
 };
 
 const verifyData = () => (dispatch, getState) => {
