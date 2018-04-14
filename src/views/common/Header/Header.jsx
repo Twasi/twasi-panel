@@ -40,7 +40,7 @@ Header.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  userName: authSelectors.getUser(state).name,
+  userName: authSelectors.getUser(state).displayName,
   rank: authSelectors.getUser(state).rank,
   avatar: authSelectors.getUserAvatar(state)
 });

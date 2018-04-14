@@ -44,7 +44,7 @@ class Login extends React.Component {
       }
 
       authenticate(cacheData.token);
-      graph('user{id,twitchAccount{twitchid,name,avatar,email}}', cacheData.token).then(data => {
+      graph('user{id,twitchAccount{twitchid,name,displayName,avatar,email}}', cacheData.token).then(data => {
         if (data.data.viewer == null) {
           window.location.href = window.env.AUTH_URL;
         } else {
