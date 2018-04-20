@@ -23,23 +23,6 @@ class Overview extends Component {
   } */
 
   render() {
-    /*
-    const { history, status } = this.props;
-
-    const running = (
-      <span style={{ color: 'green' }}>
-        <icon type="check-circle-o" />{' '}
-        <FormattedMessage id="status.started" defaultMessage="Started" />
-      </span>
-    );
-    const stopped = (
-      <span style={{ color: 'red' }}>
-        <icon type="close-circle-o" />{' '}
-        <FormattedMessage id="status.stopped" defaultMessage="Stopped" />
-      </span>
-    );
-    */
-
     return (
       <div className="pageContent">
         <Container className="overviewHead">
