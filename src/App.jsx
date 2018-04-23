@@ -20,6 +20,8 @@ import Commands from './views/Commands/Commands';
 import Songrequests from './views/Songrequests/Songrequests';
 import DevTools from './views/DevTools/DevTools';
 
+import Welcome from './views/Welcome/Welcome';
+
 import LanguageProvider from './translations/LanguageProvider';
 
 import './styles/main.css';
@@ -35,26 +37,28 @@ const App = () => {
             <MuiThemeProvider>
               <Content>
                 <Header />
-                <div style={{ float: 'left' }}>
-                  <Sidebar />
-                </div>
-                <div className="content">
-                  <Switch>
-                    <Route path="/" exact component={Overview} />
-                    <Route path="/status" exact component={Status} />
-                    <Route path="/settings" exact component={Settings} />
-                    <Route path="/plugins" exact component={Plugins} />
-                    <Route path="/profile" exact component={Profile} />
-                    <Route path="/commands" exact component={Commands} />
-                    <Route path="/dev" exact component={DevTools} />
-                    <Route
-                      path="/songrequests"
-                      exact
-                      component={Songrequests}
-                    />
-                  </Switch>
-                </div>
-                <div style={{ clear: 'both' }} />
+                <Welcome>
+                  <div style={{ float: 'left' }}>
+                    <Sidebar />
+                  </div>
+                  <div className="content">
+                    <Switch>
+                      <Route path="/" exact component={Overview} />
+                      <Route path="/status" exact component={Status} />
+                      <Route path="/settings" exact component={Settings} />
+                      <Route path="/plugins" exact component={Plugins} />
+                      <Route path="/profile" exact component={Profile} />
+                      <Route path="/commands" exact component={Commands} />
+                      <Route path="/dev" exact component={DevTools} />
+                      <Route
+                        path="/songrequests"
+                        exact
+                        component={Songrequests}
+                      />
+                    </Switch>
+                  </div>
+                  <div style={{ clear: 'both' }} />
+                </Welcome>
                 <Footer />
               </Content>
             </MuiThemeProvider>
