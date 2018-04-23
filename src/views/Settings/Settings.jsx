@@ -104,39 +104,134 @@ class Settings extends Component {
                 }}
                 thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
               />
+              <Divider style={{ marginTop: '15px' }} />
               <div className="settingsDescription">
-                Mit dieser Einstellung aktivierst oder deaktivierst du die
-                Funktion für das Hinzufügen und Abspielen von Songs der
-                Streamplaylist.
+                Mit dieser Einstellung <span className="green">aktivierst</span>{' '}
+                oder <span className="red">deaktivierst</span> du die Funktion
+                für das Hinzufügen und Abspielen von Songs der Streamplaylist.
               </div>
-              <Divider style={{ marginTop: '25px' }} />
+              <Divider style={{ marginTop: '15px' }} />
               <Row>
                 <Col sm={6}>
                   <ListItem
                     primaryText="Requests nur für Abonnenten"
                     className="settingsToggle"
-                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                    rightToggle={
+                      <Toggle
+                        thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
+                      />
+                    }
+                  />
+                </Col>
+                <Col sm={6}>
+                  <TextField
+                    fullWidth="true"
+                    floatingLabelFixed="true"
+                    floatingLabelStyle={{
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: '#5e5e5e'
+                    }}
+                    hintText="Hint Text"
+                    floatingLabelText="Requests pro Zuschauer"
+                  />
+                </Col>
+                <Col sm={6}>
+                  <ListItem
+                    primaryText="Tokenkosten pro Requests"
+                    className="settingsToggle"
+                    rightToggle={
+                      <Toggle
+                        thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
+                      />
+                    }
+                  />
+                </Col>
+                <Col sm={6}>
+                  <TextField
+                    fullWidth="true"
+                    floatingLabelFixed="true"
+                    floatingLabelStyle={{
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: '#5e5e5e'
+                    }}
+                    hintText="Hint Text"
+                    floatingLabelText="Kosten pro Requesten"
+                  />
+                </Col>
+                <Col sm={6}>
+                  <ListItem
+                    primaryText="Mindest Viewtime für Requesten"
+                    className="settingsToggle"
+                    rightToggle={
+                      <Toggle
+                        thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
+                      />
+                    }
+                  />
+                </Col>
+                <Col sm={6}>
+                  <TextField
+                    fullWidth="true"
+                    floatingLabelFixed="true"
+                    floatingLabelStyle={{
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: '#5e5e5e'
+                    }}
+                    hintText="Hint Text"
+                    floatingLabelText="Viewtime zum Requesten"
                   />
                 </Col>
                 <Col sm={6}>
                   <ListItem
                     primaryText="Skipvotes für Zuschauer"
                     className="settingsToggle"
-                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                    rightToggle={
+                      <Toggle
+                        thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
+                      />
+                    }
                   />
                 </Col>
                 <Col sm={6}>
-                  <ListItem
-                    primaryText="Mindest Viewtime für Requests"
-                    className="settingsToggle"
-                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                  <TextField
+                    fullWidth="true"
+                    floatingLabelFixed="true"
+                    floatingLabelStyle={{
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: '#5e5e5e'
+                    }}
+                    hintText="Hint Text"
+                    floatingLabelText="Votes um Song zu skippen"
                   />
                 </Col>
                 <Col sm={6}>
-                  <ListItem
-                    primaryText="Tokenkosten für Request"
-                    className="settingsToggle"
-                    rightToggle={<Checkbox iconStyle={{ fill: '#00aeae' }} />}
+                  <TextField
+                    fullWidth="true"
+                    floatingLabelFixed="true"
+                    floatingLabelStyle={{
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: '#5e5e5e'
+                    }}
+                    hintText="Hint Text"
+                    floatingLabelText="Minimallänge eines Songs"
+                  />
+                </Col>
+                <Col sm={6}>
+                  <TextField
+                    fullWidth="true"
+                    floatingLabelFixed="true"
+                    floatingLabelStyle={{
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      color: '#5e5e5e'
+                    }}
+                    hintText="Hint Text"
+                    floatingLabelText="Maximallänge eines Songs"
                   />
                 </Col>
               </Row>
@@ -154,11 +249,14 @@ class Settings extends Component {
                 }}
                 thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
               />
+              <Divider style={{ marginTop: '15px' }} />
               <div className="settingsDescription">
-                Mit dieser Einstellung aktivierst oder deaktivierst du das
+                Mit dieser Einstellung <span className="green">aktivierst</span>{' '}
+                oder <span className="red">deaktivierst</span> du das
                 Tokensystem, dabei sammeln alle Chatter virtuelle Punkte für das
                 Ansehen deines Streams.
               </div>
+              <Divider style={{ marginTop: '15px' }} />
             </Paper>
           </Col>
           <Col sm={6} />
@@ -173,12 +271,15 @@ class Settings extends Component {
                 }}
                 thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
               />
+              <Divider style={{ marginTop: '15px' }} />
               <div className="settingsDescription">
-                Mit dieser Einstellung aktivierst oder deaktivierst du das
+                Mit dieser Einstellung <span className="green">aktivierst</span>{' '}
+                oder <span className="red">deaktivierst</span> du das
                 Zitatsystem, dabei kannst du Zitate deines Streams mithilfe von
                 !zitat add hinzufügen oder zufällige Zitate mithilfe von !zitat
                 im Chat ausgeben lassen.
               </div>
+              <Divider style={{ marginTop: '15px' }} />
               {/*
               <Divider style={{ marginTop: '15px' }} />
               <div className="settingsAdvanced">Erweiterte Einstellungen</div>

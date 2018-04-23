@@ -25,3 +25,9 @@ body {
   margin-top: 23px;
   box-shadow: none !important;
 }
+.green {
+  color: #43a047;
+}
+.red {
+  color: #e53935;
+}
