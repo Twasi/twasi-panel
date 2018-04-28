@@ -1,4 +1,4 @@
 window.env = {
   ...window.env,
-  BUILD_DESC: 'live'
+  BUILD_DESC: 'LIVE'
 };

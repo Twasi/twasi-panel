@@ -1,28 +1,32 @@
 import actions from './actions';
-import selectors from './selectors';
 
-const { updateLoaded, updateConnected, updateVersion } = actions;
+import { authSelectors } from '../auth';
+import { getUserGraph } from '../../services/graphqlService';
 
-const loadData = () => dispatch => {
-  /* versionInfo.get().then(data => {
-    dispatch(updateVersion(data.version));
-  }); */
+const { updateLoaded, updateConnected, updateVersion, updateUserStatus } = actions;
+
+const loadUserStatus = () => (dispatch, getState) => {
+  const state = getState();
+  const jwt = authSelectors.getJwt(state);
+
+  getUserGraph('userStatus{status}', jwt).then(data => dispatch(updateUserStatus(data.data.viewer.userStatus.status)));
 };
 
-const verifyData = () => (dispatch, getState) => {
+const loadVersion = () => (dispatch, getState) => {
   const state = getState();
+  const jwt = authSelectors.getJwt(state);
 
-  const isLoaded = selectors.isLoaded(state);
-
-  if (!isLoaded) {
-    dispatch(loadData());
-  }
+  getUserGraph('appInfo{version}', jwt).then(data => {
+    dispatch(updateVersion(data.data.viewer.appInfo.version));
+    dispatch(updateConnected(true));
+    dispatch(updateLoaded(true));
+  });
 };
 
 export default {
-  verifyData,
-  loadData,
   updateLoaded,
   updateConnected,
-  updateVersion
+  updateVersion,
+  loadUserStatus,
+  loadVersion
 };

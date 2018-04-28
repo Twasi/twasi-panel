@@ -15,8 +15,14 @@ const updateVersion = version => ({
   version
 });
 
+const updateUserStatus = userStatus => ({
+  type: types.UPDATE_USER_STATUS,
+  userStatus
+});
+
 export default {
   updateLoaded,
   updateConnected,
-  updateVersion
+  updateVersion,
+  updateUserStatus
 };

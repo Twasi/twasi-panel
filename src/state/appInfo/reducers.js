@@ -4,7 +4,8 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   isConnected: false,
-  serverVersion: 'DISCONNECTED'
+  serverVersion: 'DISCONNECTED',
+  userStatus: 'LOADING'
 };
 
 const appInfoReducer = (state = initialState, action) => {
@@ -19,6 +20,10 @@ const appInfoReducer = (state = initialState, action) => {
 
     case types.UPDATE_SERVERVERSION: {
       return { ...state, serverVersion: action.version };
+    }
+
+    case types.UPDATE_USER_STATUS: {
+      return { ...state, userStatus: action.userStatus };
     }
 
     default:
