@@ -2,6 +2,9 @@ export default {
   // General
   'common.save': 'Speichern',
 
+  // Welcome
+  'welcome.headline': 'Willkommen bei Twasi',
+
   // Sidebar
   'sidebar.overview': 'Übersicht',
   'sidebar.status': 'Status',

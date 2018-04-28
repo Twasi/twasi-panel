@@ -157,7 +157,7 @@ class Settings extends Component {
                       color: '#5e5e5e'
                     }}
                     hintText="Hint Text"
-                    floatingLabelText="Kosten pro Requesten"
+                    floatingLabelText="Kosten pro Request"
                   />
                 </Col>
                 <Col sm={6}>
