@@ -24,7 +24,7 @@ class Welcome extends Component {
     super(props);
 
     this.status = {
-      shown: false
+      shown: true
     };
 
     window.setWelcome = value => this.setStatus({ shown: value });
@@ -206,7 +206,7 @@ class Welcome extends Component {
     const contentStyle = { margin: '0 16px' };
     if (this.status.shown) {
       return (
-        <div className="content">
+        <div className="contentWelcome">
           <div className="pageContent">
             <Paper className="pageContainer">
               <Stepper activeStep={stepIndex}>
