@@ -8,6 +8,7 @@ body {
 .content {
   margin: 32px;
   display: flex;
+  line-height: 22px;
 }
 .pageContent {
   width: 100%;
@@ -30,4 +31,28 @@ body {
 }
 .red {
   color: #e53935;
+}
+.infoAlert {
+  background-color: #d1ecf1;
+  padding: 0.75rem 1.25rem;
+  color: #0c5460;
+  border: 1px solid transparent;
+  border-color: #bee5eb;
+  margin-bottom: 1rem;
+}
+.successAlert {
+  background-color: #d4edda;
+  padding: 0.75rem 1.25rem;
+  color: #155724;
+  border: 1px solid transparent;
+  border-color: #c3e6cb;
+  margin-bottom: 1rem;
+}
+.dangerAlert {
+  background-color: #f8d7da;
+  padding: 0.75rem 1.25rem;
+  color: #721c24;
+  border: 1px solid transparent;
+  border-color: #f5c6cb;
+  margin-bottom: 1rem;
 }

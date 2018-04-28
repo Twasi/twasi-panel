@@ -1,0 +1,26 @@
+.content {
+  margin: 0px 0px 23px 0px !important;
+}
+.welcomeHeadline {
+  color: #5e5e5e;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0px;
+}
+.welcomeBox {
+  border-radius: 0px !important;
+  padding: 23px;
+  margin-top: 23px;
+  box-shadow: none !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+.welcomeSubHeadline {
+  margin: 0px !important;
+  margin-bottom: 23px !important;
+}
+.welcomeSubHeadlineParagraph {
+  margin: 0px !important;
+}
+.setupContent {
+  margin-bottom: 30px;
+}
