@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper';
@@ -21,16 +22,6 @@ import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 import './_style.css';
 
 class Welcome extends Component {
-  constructor(props) {
-    super(props);
-
-    this.status = {
-      shown: true
-    };
-
-    window.setWelcome = value => this.setStatus({ shown: value });
-  }
-
   state = {
     finished: false,
     stepIndex: 0
@@ -309,4 +300,4 @@ const mapDispatchToProps = dispatch => ({
   updateUserStatus: () => dispatch(appInfoOperations.loadUserStatus())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Welcome));
