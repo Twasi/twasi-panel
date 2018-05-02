@@ -33,7 +33,7 @@ const muiTheme = getMuiTheme({
 class Welcome extends Component {
   state = {
     finished: false,
-    stepIndex: 2
+    stepIndex: 0
   };
 
   componentWillMount() {
