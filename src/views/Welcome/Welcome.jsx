@@ -9,22 +9,31 @@ import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
 import { Row, Col } from 'react-grid-system';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
-import {
-  Table,
-  TableBody,
-  TableRow,
-  TableRowColumn
-} from 'material-ui/Table';
+import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
 import Checkbox from 'material-ui/Checkbox';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
+import Toggle from 'material-ui/Toggle';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 
 import './_style.css';
 
+const muiTheme = getMuiTheme({
+  stepper: {
+    iconColor: '#00aeae' // or logic to change color
+  },
+  toggle: {
+    thumbOnColor: '#00aeae',
+    trackOnColor: 'rgba(0, 174, 174, 0.59)'
+  }
+});
+
 class Welcome extends Component {
   state = {
     finished: false,
-    stepIndex: 0
+    stepIndex: 2
   };
 
   componentWillMount() {
@@ -50,6 +59,11 @@ class Welcome extends Component {
               Bitte lies dir in den folgenden <b>3 Schritten</b> alles genau
               durch.
             </p>
+            <div className="infoAlert">
+              Du wurdest von <b>Blechkelle</b> geworben (Reflink).<br />{' '}
+              Blechkelle erhällt durch deine Registrierung eine Belohnung in
+              Form von Refpunkten.
+            </div>
           </div>
         );
       case 1:
@@ -91,6 +105,7 @@ class Welcome extends Component {
               <RadioButton
                 value="1"
                 label="Ich möchte meine Daten aus der Twasi BETA mitnehmen."
+                iconStyle={{ fill: '#00aeae' }}
                 style={{
                   marginBottom: '10px',
                   marginTop: '10px',
@@ -100,6 +115,7 @@ class Welcome extends Component {
               <RadioButton
                 value="2"
                 label="Ich möchte einen Neustart und bin damit einverstanden, dass ALLE gesammelten Daten aus der BETA permanent gelöscht werden."
+                iconStyle={{ fill: '#00aeae' }}
                 style={{
                   fontWeight: 'bold'
                 }}
@@ -122,7 +138,10 @@ class Welcome extends Component {
                     <b>55</b> Datensätze
                   </TableRowColumn>
                   <TableRowColumn>
-                    <Checkbox label="Daten Mitnehmen" />
+                    <Checkbox
+                      label="Daten mitnehmen"
+                      iconStyle={{ fill: '#00aeae' }}
+                    />
                   </TableRowColumn>
                 </TableRow>
                 <TableRow>
@@ -131,7 +150,10 @@ class Welcome extends Component {
                     <b>14</b> Datensätze
                   </TableRowColumn>
                   <TableRowColumn>
-                    <Checkbox label="Daten Mitnehmen" />
+                    <Checkbox
+                      label="Daten mitnehmen"
+                      iconStyle={{ fill: '#00aeae' }}
+                    />
                   </TableRowColumn>
                 </TableRow>
                 <TableRow>
@@ -140,7 +162,10 @@ class Welcome extends Component {
                     <b>34</b> Datensätze
                   </TableRowColumn>
                   <TableRowColumn>
-                    <Checkbox label="Daten Mitnehmen" />
+                    <Checkbox
+                      label="Daten mitnehmen"
+                      iconStyle={{ fill: '#00aeae' }}
+                    />
                   </TableRowColumn>
                 </TableRow>
                 <TableRow>
@@ -149,7 +174,10 @@ class Welcome extends Component {
                     <b>316</b> Datensätze
                   </TableRowColumn>
                   <TableRowColumn>
-                    <Checkbox label="Daten Mitnehmen" />
+                    <Checkbox
+                      label="Daten mitnehmen"
+                      iconStyle={{ fill: '#00aeae' }}
+                    />
                   </TableRowColumn>
                 </TableRow>
                 <TableRow>
@@ -158,7 +186,10 @@ class Welcome extends Component {
                     <b>4.302</b> Datensätze
                   </TableRowColumn>
                   <TableRowColumn>
-                    <Checkbox label="Daten Mitnehmen" />
+                    <Checkbox
+                      label="Daten mitnehmen"
+                      iconStyle={{ fill: '#00aeae' }}
+                    />
                   </TableRowColumn>
                 </TableRow>
                 <TableRow>
@@ -167,7 +198,10 @@ class Welcome extends Component {
                     <b>429</b> Datensätze
                   </TableRowColumn>
                   <TableRowColumn>
-                    <Checkbox label="Daten Mitnehmen" />
+                    <Checkbox
+                      label="Daten mitnehmen"
+                      iconStyle={{ fill: '#00aeae' }}
+                    />
                   </TableRowColumn>
                 </TableRow>
               </TableBody>
@@ -175,7 +209,51 @@ class Welcome extends Component {
           </div>
         );
       case 2:
-        return 'Test';
+        return (
+          <div className="setupContent">
+            <h1>Plugins</h1>
+            <p>
+              Hier kannst du auswählen, welche Plugins du aktiviert bzw.
+              deaktiviert haben möchtest.<br /> Plugins beinhalten den
+              kompletten Funktionsumfang von Twasi.<br />
+              Es gibt Plugins, die du nicht deaktivieren kannst, da sie
+              essentiell für den Betrieb des Bots sind.<br />
+              <br />
+              Alle Plugins lassen sich auch im nachhinein noch aktivieren,
+              deaktivieren und einstellen.
+            </p>
+            <Divider />
+            <br />
+            <Row>
+              <Col sm={4}>
+                <Card className="pluginCard">
+                  <CardHeader
+                    avatar=""
+                    title="Teilchenbeschleuniger"
+                    subtitle="John Doe"
+                    actAsExpander={true}
+                    showExpandableButton={true}
+                  />
+                  <Divider />
+                  <CardText>
+                    <Toggle
+                      labelPosition="left"
+                      label="Dieses Plugin aktivieren"
+                      thumbStyle={{ backgroundColor: '#00aeae' }}
+                    />
+                  </CardText>
+                  <CardText expandable={true}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec mattis pretium massa. Aliquam erat volutpat. Nulla
+                    facilisi. Donec vulputate interdum sollicitudin. Nunc
+                    lacinia auctor quam sed pellentesque. Aliquam dui mauris,
+                    mattis quis lacus id, pellentesque lobortis odio.
+                  </CardText>
+                </Card>
+              </Col>
+            </Row>
+          </div>
+        );
       case 3:
         return 'Test';
       default:
@@ -208,77 +286,82 @@ class Welcome extends Component {
       const { finished, stepIndex } = this.state;
       const contentStyle = { margin: '0 16px' };
       return (
-        <div className="contentWelcome">
-          <div className="pageContent">
-            <Paper className="pageContainer">
-              <Stepper activeStep={stepIndex}>
-                <Step>
-                  <StepLabel style={{ fontWeight: 'bold' }}>
-                    Willkommen
-                  </StepLabel>
-                </Step>
-                <Step>
-                  <StepLabel style={{ fontWeight: 'bold' }}>
-                    Migration
-                  </StepLabel>
-                </Step>
-                <Step>
-                  <StepLabel style={{ fontWeight: 'bold' }}>Plugins</StepLabel>
-                </Step>
-                <Step>
-                  <StepLabel style={{ fontWeight: 'bold' }}>Fertig</StepLabel>
-                </Step>
-              </Stepper>
-              <div style={contentStyle}>
-                {finished ? (
-                  <p>
-                    <a
-                      href="#"
-                      onClick={event => {
-                        event.preventDefault();
-                        this.setState({ stepIndex: 0, finished: false });
-                      }}
-                    >
-                      Click here
-                    </a>{' '}
-                    to reset the example.
-                  </p>
-                ) : (
-                  <div>
-                    <p>{this.getStepContent(stepIndex)}</p>
-                    <Divider />
-                    <div style={{ marginTop: 20 }}>
-                      <FlatButton
-                        label="Zurück"
-                        disabled={stepIndex === 0}
-                        onClick={this.handlePrev}
-                        style={{ marginRight: 12 }}
-                      />
-                      <RaisedButton
-                        label={(() => {
-                          switch (stepIndex) {
-                            case 0:
-                              return "Los Geht's";
-                            case 1:
-                              return 'Migration Starten';
-                            case 2:
-                              return 'Speichern und Weiter';
-                            case 3:
-                              return 'Fertig';
-                            default:
-                              return null;
-                          }
-                        })()}
-                        primary="true"
-                        onClick={this.handleNext}
-                      />
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div className="contentWelcome">
+            <div className="pageContent">
+              <Paper className="pageContainer">
+                <Stepper activeStep={stepIndex}>
+                  <Step>
+                    <StepLabel style={{ fontWeight: 'bold' }}>
+                      Willkommen
+                    </StepLabel>
+                  </Step>
+                  <Step>
+                    <StepLabel style={{ fontWeight: 'bold' }}>
+                      Migration
+                    </StepLabel>
+                  </Step>
+                  <Step>
+                    <StepLabel style={{ fontWeight: 'bold' }}>
+                      Plugins
+                    </StepLabel>
+                  </Step>
+                  <Step>
+                    <StepLabel style={{ fontWeight: 'bold' }}>Fertig</StepLabel>
+                  </Step>
+                </Stepper>
+                <div style={contentStyle}>
+                  {finished ? (
+                    <p>
+                      <a
+                        href="#"
+                        onClick={event => {
+                          event.preventDefault();
+                          this.setState({ stepIndex: 0, finished: false });
+                        }}
+                      >
+                        Click here
+                      </a>{' '}
+                      to reset the example.
+                    </p>
+                  ) : (
+                    <div>
+                      <p>{this.getStepContent(stepIndex)}</p>
+                      <Divider />
+                      <div style={{ marginTop: 20 }}>
+                        <FlatButton
+                          label="Zurück"
+                          disabled={stepIndex === 0}
+                          onClick={this.handlePrev}
+                          style={{ marginRight: 12 }}
+                        />
+                        <RaisedButton
+                          label={(() => {
+                            switch (stepIndex) {
+                              case 0:
+                                return "Los Geht's";
+                              case 1:
+                                return 'Weiter';
+                              case 2:
+                                return 'Weiter';
+                              case 3:
+                                return 'Fertig';
+                              default:
+                                return null;
+                            }
+                          })()}
+                          backgroundColor="#00aeae"
+                          labelColor="#fff"
+                          onClick={this.handleNext}
+                        />
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            </Paper>
+                  )}
+                </div>
+              </Paper>
+            </div>
           </div>
-        </div>
+        </MuiThemeProvider>
       );
     }
 
@@ -300,4 +383,6 @@ const mapDispatchToProps = dispatch => ({
   updateUserStatus: () => dispatch(appInfoOperations.loadUserStatus())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Welcome));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Welcome)
+);

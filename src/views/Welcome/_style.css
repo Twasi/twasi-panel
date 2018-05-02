@@ -24,3 +24,18 @@
 .setupContent {
   margin-bottom: 30px;
 }
+.pluginCard {
+  box-shadow: none !important;
+  padding-bottom: 0px !important;
+  background-color: #cacaca2b !important;
+  font-size: 12px !important;
+  color: #5e5e5e !important;
+}
+.pluginCard > div {
+  padding-bottom: 0px !important;
+}
+.pluginToggle {
+  font-size: 12px !important;
+  font-weight: bold;
+  color: #5e5e5e !important;
+}
