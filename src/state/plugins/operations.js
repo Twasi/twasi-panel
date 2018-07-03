@@ -1,16 +1,24 @@
-import debounce from 'lodash/debounce';
-
 import actions from './actions';
 import selectors from './selectors';
 
+import { authSelectors } from '../auth';
+
+import { getUserGraph } from '../../services/graphqlService';
+
 const { updateLoaded, updatePlugins, setInstalled, updateLoading } = actions;
 
-const loadData = () => dispatch => {
+const loadData = () => (dispatch, getState) => {
   dispatch(updateLoading(true));
   /* plugins.get().then(data => {
     dispatch(updatePlugins(data.plugins));
     dispatch(updateLoading(false));
   }); */
+  const state = getState();
+  const jwt = authSelectors.getJwt(state);
+
+  getUserGraph('plugins { isInstalled, name, version, description, commands, permissions }', jwt).then(
+    data => dispatch(updatePlugins(data.data.viewer.plugins))
+  );
 };
 
 const verifyData = () => (dispatch, getState) => {
@@ -53,7 +61,7 @@ const uninstallPlugin = name => dispatch => {
     });
   },
   1000
-);*/
+); */
 
 const updateQuery = () => {};
 

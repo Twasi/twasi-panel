@@ -33,7 +33,15 @@ class Plugins extends Component {
 
     const renderedPlugins = plugins.map(plugin => (
       <Col sm={6}>
-        <Paper className="pageContainer">lalala</Paper>
+        <Paper className="pageContainer">
+          <h3>{plugin.name}</h3>
+          <div>{plugin.description}</div>
+          <div>Version: {plugin.version}</div>
+          <div>Registered commands: {plugin.commands.map(s => `!${s}`).join(', ')}</div>
+          <div>Permissions: {plugin.commands.join(', ')}</div>
+          {plugin.isInstalled && <div>Installed<br /><button onClick={() => uninstallPlugin(plugin.name)}>Uninstall</button></div>}
+          {!plugin.isInstalled && <div>Not installed<br /><button onClick={() => installPlugin(plugin.name)}>Install</button></div>}
+        </Paper>
       </Col>
       /*
       <div span={12} key={plugin.name} className="pluginCard">
@@ -114,6 +122,7 @@ class Plugins extends Component {
           <FormattedMessage id="plugins.headline" />
         </h2>
         <Paper className="pageContainer">Plugins</Paper>
+        {renderedPlugins}
       </div>
     );
   }
