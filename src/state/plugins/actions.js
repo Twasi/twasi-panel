@@ -10,6 +10,12 @@ const updatePlugins = plugins => ({
   plugins
 });
 
+const updateActionInProgress = (pluginName, isLoading) => ({
+  type: types.UPDATE_ACTION_IN_PROGRESS,
+  pluginName,
+  isLoading
+});
+
 const setInstalled = (name, isInstalled) => ({
   type: types.SET_INSTALLED,
   name,
@@ -31,5 +37,6 @@ export default {
   updateLoading,
   updatePlugins,
   setInstalled,
-  updateQuery
+  updateQuery,
+  updateActionInProgress
 };

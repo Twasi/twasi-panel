@@ -2,25 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
-import { Step, Stepper, StepLabel } from 'material-ui/Stepper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import Divider from 'material-ui/Divider';
+import Paper from '@material-ui/core/Paper';
+import { Step, Stepper, StepLabel } from '@material-ui/core/Stepper';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 import { Row, Col } from 'react-grid-system';
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
-import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
-import Checkbox from 'material-ui/Checkbox';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
-import Toggle from 'material-ui/Toggle';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import { Table, TableBody, TableRow, TableRowColumn } from '@material-ui/core/Table';
+import Checkbox from '@material-ui/core/Checkbox';
+import { Card, CardHeader, CardText } from '@material-ui/core/Card';
+import Switch from '@material-ui/core/Switch';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 
 import './_style.css';
 
-const muiTheme = getMuiTheme({
+const muiTheme = createMuiTheme({
   stepper: {
     iconColor: '#00aeae' // or logic to change color
   },
@@ -97,12 +96,12 @@ class Welcome extends Component {
               </Col>
             </Row>
             <Divider />
-            <RadioButtonGroup
+            <RadioGroup
               style={{ marginBottom: '10px' }}
               name="firstStep"
               defaultSelected="1"
             >
-              <RadioButton
+              <Radio
                 value="1"
                 label="Ich möchte meine Daten aus der Twasi BETA mitnehmen."
                 iconStyle={{ fill: '#00aeae' }}
@@ -112,7 +111,7 @@ class Welcome extends Component {
                   fontWeight: 'bold'
                 }}
               />
-              <RadioButton
+              <Radio
                 value="2"
                 label="Ich möchte einen Neustart und bin damit einverstanden, dass ALLE gesammelten Daten aus der BETA permanent gelöscht werden."
                 iconStyle={{ fill: '#00aeae' }}
@@ -120,7 +119,7 @@ class Welcome extends Component {
                   fontWeight: 'bold'
                 }}
               />
-            </RadioButtonGroup>
+            </RadioGroup>
             <Divider />
             <p>
               Bitte wähle alle Daten aus, die du in das neue Twasi übernehmen
@@ -231,18 +230,18 @@ class Welcome extends Component {
                     avatar=""
                     title="Teilchenbeschleuniger"
                     subtitle="John Doe"
-                    actAsExpander={true}
-                    showExpandableButton={true}
+                    actAsExpander
+                    showExpandableButton
                   />
                   <Divider />
                   <CardText>
-                    <Toggle
+                    <Switch
                       labelPosition="left"
                       label="Dieses Plugin aktivieren"
                       thumbStyle={{ backgroundColor: '#00aeae' }}
                     />
                   </CardText>
-                  <CardText expandable={true}>
+                  <CardText expandable>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Donec mattis pretium massa. Aliquam erat volutpat. Nulla
                     facilisi. Donec vulputate interdum sollicitudin. Nunc
@@ -329,13 +328,13 @@ class Welcome extends Component {
                       <p>{this.getStepContent(stepIndex)}</p>
                       <Divider />
                       <div style={{ marginTop: 20 }}>
-                        <FlatButton
+                        <Button
                           label="Zurück"
                           disabled={stepIndex === 0}
                           onClick={this.handlePrev}
                           style={{ marginRight: 12 }}
                         />
-                        <RaisedButton
+                        <Button
                           label={(() => {
                             switch (stepIndex) {
                               case 0:

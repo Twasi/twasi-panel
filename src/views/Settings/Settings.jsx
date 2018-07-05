@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import { List, ListItem } from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
 import { Row, Col } from 'react-grid-system';
-import Divider from 'material-ui/Divider';
-import Toggle from 'material-ui/Toggle';
-import TextField from 'material-ui/TextField';
-import Checkbox from 'material-ui/Checkbox';
+import Divider from '@material-ui/core/Divider';
+import Switch from 'material-ui/Toggle';
+import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import './_style.css';
 
@@ -95,7 +94,7 @@ class Settings extends Component {
               <small>Stelle dir Twasi nach deinen Bedürfnissen ein.</small>
             </div>
             <Paper style={{ marginTop: '0px' }} className="pageContainer">
-              <Toggle
+              <Switch
                 label="Songrequests"
                 labelStyle={{
                   fontWeight: 'bold',
@@ -117,7 +116,7 @@ class Settings extends Component {
                     primaryText="Requests nur für Abonnenten"
                     className="settingsToggle"
                     rightToggle={
-                      <Toggle
+                      <Switch
                         thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
                       />
                     }
@@ -141,7 +140,7 @@ class Settings extends Component {
                     primaryText="Tokenkosten pro Requests"
                     className="settingsToggle"
                     rightToggle={
-                      <Toggle
+                      <Switch
                         thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
                       />
                     }
@@ -165,7 +164,7 @@ class Settings extends Component {
                     primaryText="Mindest Viewtime für Requesten"
                     className="settingsToggle"
                     rightToggle={
-                      <Toggle
+                      <Switch
                         thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
                       />
                     }
@@ -189,7 +188,7 @@ class Settings extends Component {
                     primaryText="Skipvotes für Zuschauer"
                     className="settingsToggle"
                     rightToggle={
-                      <Toggle
+                      <Switch
                         thumbSwitchedStyle={{ backgroundColor: '#00aeae' }}
                       />
                     }
@@ -240,7 +239,7 @@ class Settings extends Component {
           <Col sm={6} />
           <Col sm={6}>
             <Paper style={{ marginTop: '5px' }} className="pageContainer">
-              <Toggle
+              <Switch
                 label="Tokens"
                 labelStyle={{
                   fontWeight: 'bold',
@@ -262,7 +261,7 @@ class Settings extends Component {
           <Col sm={6} />
           <Col sm={6}>
             <Paper style={{ marginTop: '5px' }} className="pageContainer">
-              <Toggle
+              <Switch
                 label="Zitate"
                 labelStyle={{
                   fontWeight: 'bold',

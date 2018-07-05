@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col } from 'react-grid-system';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -39,8 +41,22 @@ class Plugins extends Component {
           <div>Version: {plugin.version}</div>
           <div>Registered commands: {plugin.commands.map(s => `!${s}`).join(', ')}</div>
           <div>Permissions: {plugin.commands.join(', ')}</div>
-          {plugin.isInstalled && <div>Installed<br /><button onClick={() => uninstallPlugin(plugin.name)}>Uninstall</button></div>}
-          {!plugin.isInstalled && <div>Not installed<br /><button onClick={() => installPlugin(plugin.name)}>Install</button></div>}
+          {plugin.isInstalled &&
+            <div>
+              Installed<br />
+              <Button onClick={() => uninstallPlugin(plugin.name)}>
+                Uninstall
+                {plugin.actionInProgress && <CircularProgress size={20} />}
+              </Button>
+            </div>}
+          {!plugin.isInstalled &&
+            <div>
+              Not installed<br />
+              <Button onClick={() => installPlugin(plugin.name)}>
+                Install
+                {plugin.actionInProgress && <CircularProgress size={20} />}
+              </Button>
+            </div>}
         </Paper>
       </Col>
       /*

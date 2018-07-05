@@ -54,6 +54,23 @@ const pluginsReducer = (state = initialState, action) => {
       };
     }
 
+    case types.UPDATE_ACTION_IN_PROGRESS: {
+      const newPlugins = state.plugins.map(plugin => {
+        if (plugin.name === action.pluginName) {
+          return {
+            ...plugin,
+            actionInProgress: action.isLoading
+          };
+        }
+        return plugin;
+      });
+
+      return {
+        ...state,
+        plugins: newPlugins
+      };
+    }
+
     default:
       return state;
   }
