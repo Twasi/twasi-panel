@@ -11,6 +11,7 @@ export default {
   'sidebar.settings': 'Einstellungen',
   'sidebar.profile': 'Profil',
   'sidebar.plugins': 'Erweiterungen',
+  'sidebar.fakechat': 'Fakechat',
   'sidebar.commands': 'Befehle',
   'sidebar.songrequests': 'Songrequests',
   'sidebar.docs': 'Dokumentation',

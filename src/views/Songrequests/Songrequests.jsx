@@ -51,7 +51,7 @@ class Songrequests extends React.Component {
           <FormattedMessage id="sidebar.songrequests" />
         </h2>
         <Paper
-          style={{ padding: '0px', display: 'flex', marginBottom: '32px' }}
+          style={{ padding: '0px', display: 'flex' }}
           className="pageContainer"
         >
           <div className="songrequestsCoverImage">
@@ -154,6 +154,26 @@ class Songrequests extends React.Component {
               <span className="rightTime">13:37</span>
             </div>
           </div>
+        </Paper>
+        <Paper
+          style={{
+            padding: '8px',
+            paddingTop: '11px',
+            marginBottom: '32px',
+            marginTop: '0px',
+            backgroundColor: '#6AE368',
+            color: '#fff'
+          }}
+          className="pageContainer"
+        >
+          <img
+            src="https://newsroom.spotify.com/media/mediakit/2018-03-19_22-28-47/Spotify_Logo_RGB_White.png"
+            alt="spotify"
+            style={{ height: '25px' }}
+          />
+          <span style={{ float: 'right', marginTop: '3px' }}>
+            Dieser Song wird zur Verfügung gestellt durch Spotify
+          </span>
         </Paper>
         <Table>
           <TableHeader

@@ -51,6 +51,12 @@ class Sidebar extends Component {
         name: 'sidebar.plugins'
       },
       {
+        key: 'fakechat',
+        path: '/fakechat',
+        icon: 'vertical_split',
+        name: 'sidebar.fakechat'
+      },
+      {
         key: 'commands',
         path: '/commands',
         icon: 'code',
@@ -119,12 +125,17 @@ class Sidebar extends Component {
             onChange={this.handleClick}
             value={selectedKey}
             selectedMenuItemStyle={getActiveMenuItem()}
-            className="Sidebar">
+            className="Sidebar"
+          >
             {renderItems()}
           </Menu>
         </Paper>
         <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
-          <Menu value={selectedKey} selectedMenuItemStyle={getActiveMenuItem()} className="Sidebar">
+          <Menu
+            value={selectedKey}
+            selectedMenuItemStyle={getActiveMenuItem()}
+            className="Sidebar"
+          >
             <MenuItem
               primaryText={intl.formatMessage({ id: 'sidebar.docs' })}
               leftIcon={<i className="material-icons">language</i>}

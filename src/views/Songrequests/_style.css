@@ -4,7 +4,7 @@
 }
 .songrequestsPlayer {
   width: -webkit-fill-available;
-  padding: 23px;
+  padding: 23px 23px 0px 23px;
 }
 .songrequestsInfo {
   padding-top: 5px;

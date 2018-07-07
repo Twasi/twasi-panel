@@ -4,25 +4,25 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.3.1",
-    "amcharts3": "amcharts/amcharts3",
-    "amcharts3-react": "amcharts/amcharts3-react",
+    "amcharts3": "github:amcharts/amcharts3",
+    "amcharts3-react": "github:amcharts/amcharts3-react",
     "graphiql": "^0.11.11",
     "graphql": "^0.13.2",
     "jwt-decode": "^2.2.0",
     "local-storage": "^1.4.2",
     "lodash": "^4.17.5",
     "material-ui": "^0.20.1",
-    "prop-types": "^15.6.1",
-    "query-string": "^5.0.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-grid-system": "^3.1.2",
+    "prop-types": "^15.6.2",
+    "query-string": "^5.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-grid-system": "^3.2.3",
     "react-intl": "^2.4.0",
     "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -32,15 +32,15 @@
     "lint": "eslint --ext .jsx --ext .js ./src --max-warnings=0"
   },
   "devDependencies": {
-    "babel-plugin-import": "^1.7.0",
+    "babel-plugin-import": "^1.8.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jest": "^21.15.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-lodash-fp": "^2.1.3",
-    "eslint-plugin-react": "^7.7.0",
-    "react-app-rewire-less": "^2.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "react-app-rewire-less": "^2.1.2",
     "react-app-rewired": "^1.5.0"
   }
 }

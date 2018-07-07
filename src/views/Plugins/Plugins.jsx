@@ -39,24 +39,28 @@ class Plugins extends Component {
           <h3>{plugin.name}</h3>
           <div>{plugin.description}</div>
           <div>Version: {plugin.version}</div>
-          <div>Registered commands: {plugin.commands.map(s => `!${s}`).join(', ')}</div>
+          <div>
+            Registered commands: {plugin.commands.map(s => `!${s}`).join(', ')}
+          </div>
           <div>Permissions: {plugin.commands.join(', ')}</div>
-          {plugin.isInstalled &&
+          {plugin.isInstalled && (
             <div>
               Installed<br />
               <Button onClick={() => uninstallPlugin(plugin.name)}>
                 Uninstall
                 {plugin.actionInProgress && <CircularProgress size={20} />}
               </Button>
-            </div>}
-          {!plugin.isInstalled &&
+            </div>
+          )}
+          {!plugin.isInstalled && (
             <div>
               Not installed<br />
               <Button onClick={() => installPlugin(plugin.name)}>
                 Install
                 {plugin.actionInProgress && <CircularProgress size={20} />}
               </Button>
-            </div>}
+            </div>
+          )}
         </Paper>
       </Col>
       /*
