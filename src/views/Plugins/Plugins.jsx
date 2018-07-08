@@ -54,16 +54,22 @@ class Plugins extends Component {
                   backgroundColor="#c14b4b"
                   labelColor="#fff"
                   label="Uninstall"
+                  disabled={plugin.actionInProgress}
                   fullWidth={true}
                   onClick={() => uninstallPlugin(plugin.name)}
                 >
                   {plugin.actionInProgress && (
-                    <div>
-                      <CircularProgress
-                        style={{ color: 'white', marginTop: '8px' }}
-                        size={20}
-                      />
-                    </div>
+                    <CircularProgress
+                      style={{
+                        color: '#00aeae',
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        marginTop: -12,
+                        marginLeft: -12
+                      }}
+                      size={24}
+                    />
                   )}
                 </RaisedButton>
               </div>
@@ -74,16 +80,22 @@ class Plugins extends Component {
                   backgroundColor="#00aeae"
                   labelColor="#fff"
                   label="Install"
+                  disabled={plugin.actionInProgress}
                   fullWidth={true}
                   onClick={() => installPlugin(plugin.name)}
                 >
                   {plugin.actionInProgress && (
-                    <div>
-                      <CircularProgress
-                        style={{ color: 'white', marginTop: '8px' }}
-                        size={20}
-                      />
-                    </div>
+                    <CircularProgress
+                      style={{
+                        color: '#00aeae',
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        marginTop: -12,
+                        marginLeft: -12
+                      }}
+                      size={24}
+                    />
                   )}
                 </RaisedButton>
               </div>
@@ -212,6 +224,19 @@ class Plugins extends Component {
           <FormattedMessage id="plugins.headline" />
         </h2>
         <Paper className="pageContainer">
+          <Row>
+            <Col sm={12}>
+              <h4 style={{ marginTop: '0px' }}>Was sind Plugins?</h4>
+              <small>
+                Plugins sind Erweiterungen für Twasi.<br />
+                Du bestimmst, welche Plugins du für deinen Persönlichen Bot
+                installieren bzw. deinstallieren möchtest.
+              </small>
+            </Col>
+          </Row>
+          <br />
+          <Divider />
+          <br />
           <Row>{renderedPlugins}</Row>
         </Paper>
       </div>
