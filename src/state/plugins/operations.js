@@ -23,7 +23,7 @@ const loadData = () => (dispatch, getState) => {
   const jwt = authSelectors.getJwt(state);
 
   getUserGraph(
-    'plugins { isInstalled, name, version, description, commands, permissions }',
+    'plugins { isInstalled, name, author, version, description, commands, permissions }',
     jwt
   ).then(data => {
     dispatch(
