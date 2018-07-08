@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Container, Row, Col } from 'react-grid-system';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
+import Divider from 'material-ui/Divider';
+import RaisedButton from 'material-ui/RaisedButton';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -12,7 +15,7 @@ import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
 class Plugins extends Component {
   state = {
-    value: 3
+    value: 0
   };
 
   componentDidMount() {
@@ -34,6 +37,72 @@ class Plugins extends Component {
     const { value } = this.state;
 
     const renderedPlugins = plugins.map(plugin => (
+      <Col sm={4}>
+        <Card className="pluginCard">
+          <CardHeader
+            avatar=""
+            title={plugin.name}
+            subtitle={plugin.author}
+            actAsExpander={true}
+            showExpandableButton={true}
+          />
+          <Divider />
+          <CardText>
+            {plugin.isInstalled && (
+              <div>
+                <RaisedButton
+                  backgroundColor="#c14b4b"
+                  labelColor="#fff"
+                  label="Uninstall"
+                  fullWidth={true}
+                  onClick={() => uninstallPlugin(plugin.name)}
+                >
+                  {plugin.actionInProgress && (
+                    <div>
+                      <CircularProgress
+                        style={{ color: 'white', marginTop: '8px' }}
+                        size={20}
+                      />
+                    </div>
+                  )}
+                </RaisedButton>
+              </div>
+            )}
+            {!plugin.isInstalled && (
+              <div>
+                <RaisedButton
+                  backgroundColor="#00aeae"
+                  labelColor="#fff"
+                  label="Install"
+                  fullWidth={true}
+                  onClick={() => installPlugin(plugin.name)}
+                >
+                  {plugin.actionInProgress && (
+                    <div>
+                      <CircularProgress
+                        style={{ color: 'white', marginTop: '8px' }}
+                        size={20}
+                      />
+                    </div>
+                  )}
+                </RaisedButton>
+              </div>
+            )}
+          </CardText>
+          <CardText expandable={true}>
+            <p>
+              <b>Version {plugin.version}</b>
+            </p>
+            {plugin.description}
+            <p>
+              <b>Commands</b>
+            </p>
+            {plugin.commands.join(', ')}
+          </CardText>
+        </Card>
+      </Col>
+
+      /*
       <Col sm={6}>
         <Paper className="pageContainer">
           <h3>{plugin.name}</h3>
@@ -63,6 +132,7 @@ class Plugins extends Component {
           )}
         </Paper>
       </Col>
+      */
       /*
       <div span={12} key={plugin.name} className="pluginCard">
         <div
@@ -141,8 +211,9 @@ class Plugins extends Component {
         <h2 className="pageTitle">
           <FormattedMessage id="plugins.headline" />
         </h2>
-        <Paper className="pageContainer">Plugins</Paper>
-        {renderedPlugins}
+        <Paper className="pageContainer">
+          <Row>{renderedPlugins}</Row>
+        </Paper>
       </div>
     );
   }
