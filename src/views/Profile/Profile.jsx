@@ -22,6 +22,7 @@ import youtubelogo from '../common/resources/youtube.svg';
 import instagramlogo from '../common/resources/instagram.svg';
 import snapchatlogo from '../common/resources/snapchat.svg';
 import spotifylogo from '../common/resources/spotify.svg';
+import soundcloudlogo from '../common/resources/soundcloud.svg';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
@@ -235,6 +236,37 @@ class Profile extends Component {
                         className="socialIcon"
                         src={spotifylogo}
                         alt="spotify-logo"
+                      />
+                    </span>
+                  </RaisedButton>
+                </Col>
+                <Col sm={6}>
+                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={6}>
+                  <RaisedButton
+                    backgroundColor="#f50"
+                    labelColor="#ffffff"
+                    label="Soundcloud"
+                    fullWidth={true}
+                    style={{ boxShadow: 'none' }}
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#bf4000'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={soundcloudlogo}
+                        alt="soundcloud-logo"
                       />
                     </span>
                   </RaisedButton>
