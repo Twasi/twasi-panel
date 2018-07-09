@@ -149,9 +149,9 @@ class Profile extends Component {
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">Social Media</h4>
               <small>
-                Hier kannst du deine Social Media Pages verlinken. Deine Social
-                Media Pages werden auf der Startseite, auf Leaderboards und auf
-                deinem Profil angezeigt.
+                Hier kannst du deine Social Media Pages verlinken. Plugins
+                können mit deiner Zustimmung auf bestimmte Daten der verbundenen
+                Accounts zurückgreifen.
               </small>
               <Divider className="marginDivider" />
               <Row>
