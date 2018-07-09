@@ -15,6 +15,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 // import { Container, Row, Col } from 'react-grid-system';
 
+import twitterlogo from '../common/resources/twitter.svg';
+import googlelogo from '../common/resources/google.svg';
+import facebooklogo from '../common/resources/facebook.svg';
+import youtubelogo from '../common/resources/youtube.svg';
+import instagramlogo from '../common/resources/instagram.svg';
+import snapchatlogo from '../common/resources/snapchat.svg';
+
 import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
 
@@ -75,13 +82,13 @@ class Profile extends Component {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Account Löschen</TableCell>
-                        <TableCell>
-                          <RaisedButton
-                            backgroundColor="#ffffff"
-                            labelColor="#c14b4b"
-                            label="Account Löschen"
-                          />
+                        <TableCell style={{ borderBottom: '0px' }}>
+                          Löschen
+                        </TableCell>
+                        <TableCell style={{ borderBottom: '0px' }}>
+                          <a href="#" className="red">
+                            Account Löschen
+                          </a>
                         </TableCell>
                       </TableRow>
                     </TableBody>
@@ -151,7 +158,23 @@ class Profile extends Component {
                     label="Twitter"
                     fullWidth={true}
                     style={{ boxShadow: 'none' }}
-                  />
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#137cbd'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={twitterlogo}
+                        alt="twitter-logo"
+                      />
+                    </span>
+                  </RaisedButton>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
@@ -166,7 +189,23 @@ class Profile extends Component {
                     label="Google"
                     fullWidth={true}
                     style={{ boxShadow: 'none' }}
-                  />
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#a23425'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={googlelogo}
+                        alt="google-logo"
+                      />
+                    </span>
+                  </RaisedButton>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
@@ -181,7 +220,23 @@ class Profile extends Component {
                     label="Facebook"
                     fullWidth={true}
                     style={{ boxShadow: 'none' }}
-                  />
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#2a406d'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={facebooklogo}
+                        alt="facebook-logo"
+                      />
+                    </span>
+                  </RaisedButton>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
@@ -196,7 +251,23 @@ class Profile extends Component {
                     label="Youtube"
                     fullWidth={true}
                     style={{ boxShadow: 'none' }}
-                  />
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#d20202'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={youtubelogo}
+                        alt="youtube-logo"
+                      />
+                    </span>
+                  </RaisedButton>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
@@ -211,7 +282,23 @@ class Profile extends Component {
                     label="Instagram"
                     fullWidth={true}
                     style={{ boxShadow: 'none' }}
-                  />
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#6b2288'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={instagramlogo}
+                        alt="instagram-logo"
+                      />
+                    </span>
+                  </RaisedButton>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
@@ -226,7 +313,23 @@ class Profile extends Component {
                     label="Snapchat"
                     fullWidth={true}
                     style={{ boxShadow: 'none' }}
-                  />
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#d6d300'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={snapchatlogo}
+                        alt="snapchat-logo"
+                      />
+                    </span>
+                  </RaisedButton>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
