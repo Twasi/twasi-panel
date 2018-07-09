@@ -155,11 +155,11 @@ class Profile extends Component {
               </small>
               <Divider className="marginDivider" />
               <Row>
-                <Col sm={6}>
+                <Col sm={12}>
                   <RaisedButton
                     backgroundColor="#1da1f2"
                     labelColor="#fff"
-                    label="Twitter"
+                    disabled={true}
                     fullWidth={true}
                     style={{ boxShadow: 'none' }}
                   >
@@ -178,10 +178,13 @@ class Profile extends Component {
                         alt="twitter-logo"
                       />
                     </span>
+                    <small>
+                      Verbunden als <b>@Blechkelle</b>.{' '}
+                      <a style={{ color: '#e53935' }} href="#">
+                        Trennen
+                      </a>
+                    </small>
                   </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
                 </Col>
               </Row>
               <br />
@@ -212,7 +215,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
               <br />
@@ -243,7 +248,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
               <br />
@@ -274,7 +281,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
               <br />
@@ -305,7 +314,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
               <br />
@@ -336,7 +347,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
               <br />
@@ -367,7 +380,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
               <br />
@@ -398,7 +413,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
               <br />
@@ -429,7 +446,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
               <br />
@@ -460,7 +479,9 @@ class Profile extends Component {
                   </RaisedButton>
                 </Col>
                 <Col sm={6}>
-                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
                 </Col>
               </Row>
             </Paper>
