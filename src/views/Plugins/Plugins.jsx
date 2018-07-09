@@ -226,7 +226,7 @@ class Plugins extends Component {
         <Paper className="pageContainer">
           <Row>
             <Col sm={12}>
-              <h4 style={{ marginTop: '0px' }}>Was sind Plugins?</h4>
+              <h4 className="pageContainerTitle">Was sind Plugins?</h4>
               <small>
                 Plugins sind Erweiterungen für Twasi.<br />
                 Du bestimmst, welche Plugins du für deinen Persönlichen Bot
