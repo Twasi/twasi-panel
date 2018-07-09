@@ -194,39 +194,6 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <RaisedButton
-                    backgroundColor="#d9432f"
-                    labelColor="#ffffff"
-                    label="Google"
-                    fullWidth={true}
-                    style={{ boxShadow: 'none' }}
-                  >
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#a23425'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={googlelogo}
-                        alt="google-logo"
-                      />
-                    </span>
-                  </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <RaisedButton
                     backgroundColor="#0088cc"
                     labelColor="#ffffff"
                     label="Telegram"
@@ -246,72 +213,6 @@ class Profile extends Component {
                         className="socialIcon"
                         src={telegramlogo}
                         alt="telegram-logo"
-                      />
-                    </span>
-                  </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#6ae368"
-                    labelColor="#ffffff"
-                    label="Spotify"
-                    fullWidth={true}
-                    style={{ boxShadow: 'none' }}
-                  >
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#52b550'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={spotifylogo}
-                        alt="spotify-logo"
-                      />
-                    </span>
-                  </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#f50"
-                    labelColor="#ffffff"
-                    label="Soundcloud"
-                    fullWidth={true}
-                    style={{ boxShadow: 'none' }}
-                  >
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#bf4000'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={soundcloudlogo}
-                        alt="soundcloud-logo"
                       />
                     </span>
                   </RaisedButton>
@@ -359,39 +260,6 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <RaisedButton
-                    backgroundColor="#FF0000"
-                    labelColor="#ffffff"
-                    label="Youtube"
-                    fullWidth={true}
-                    style={{ boxShadow: 'none' }}
-                  >
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#d20202'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={youtubelogo}
-                        alt="youtube-logo"
-                      />
-                    </span>
-                  </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <RaisedButton
                     backgroundColor="#962fbf"
                     labelColor="#ffffff"
                     label="Instagram"
@@ -425,6 +293,105 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <RaisedButton
+                    backgroundColor="#d9432f"
+                    labelColor="#ffffff"
+                    label="Google"
+                    fullWidth={true}
+                    style={{ boxShadow: 'none' }}
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#a23425'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={googlelogo}
+                        alt="google-logo"
+                      />
+                    </span>
+                  </RaisedButton>
+                </Col>
+                <Col sm={6}>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={6}>
+                  <RaisedButton
+                    backgroundColor="#FF0000"
+                    labelColor="#ffffff"
+                    label="Youtube"
+                    fullWidth={true}
+                    style={{ boxShadow: 'none' }}
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#d20202'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={youtubelogo}
+                        alt="youtube-logo"
+                      />
+                    </span>
+                  </RaisedButton>
+                </Col>
+                <Col sm={6}>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={6}>
+                  <RaisedButton
+                    backgroundColor="#f50"
+                    labelColor="#ffffff"
+                    label="Soundcloud"
+                    fullWidth={true}
+                    style={{ boxShadow: 'none' }}
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#bf4000'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={soundcloudlogo}
+                        alt="soundcloud-logo"
+                      />
+                    </span>
+                  </RaisedButton>
+                </Col>
+                <Col sm={6}>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={6}>
+                  <RaisedButton
                     backgroundColor="#FFFB00"
                     labelColor="#000000"
                     label="Snapchat"
@@ -444,6 +411,39 @@ class Profile extends Component {
                         className="socialIcon"
                         src={snapchatlogo}
                         alt="snapchat-logo"
+                      />
+                    </span>
+                  </RaisedButton>
+                </Col>
+                <Col sm={6}>
+                  <div style={{ marginTop: '6px' }}>
+                    <small>Noch nicht verbunden.</small>
+                  </div>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={6}>
+                  <RaisedButton
+                    backgroundColor="#6ae368"
+                    labelColor="#ffffff"
+                    label="Spotify"
+                    fullWidth={true}
+                    style={{ boxShadow: 'none' }}
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#52b550'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={spotifylogo}
+                        alt="spotify-logo"
                       />
                     </span>
                   </RaisedButton>
