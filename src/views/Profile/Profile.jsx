@@ -149,7 +149,7 @@ class Profile extends Component {
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">Social Media</h4>
               <small>
-                Hier kannst du deine Social Media Pages verlinken. Plugins
+                Hier kannst du deine Social Media Pages verlinken.<br /> Plugins
                 können mit deiner Zustimmung auf bestimmte Daten der verbundenen
                 Accounts zurückgreifen.
               </small>
