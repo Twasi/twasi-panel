@@ -182,6 +182,9 @@ class Profile extends Component {
                       Verbunden als <b>@Blechkelle</b>.{' '}
                       <a style={{ color: '#e53935' }} href="#">
                         Trennen
+                      </a>{' '}
+                      <a style={{ color: '#00aeae' }} href="#">
+                        Berechtigungen
                       </a>
                     </small>
                   </RaisedButton>

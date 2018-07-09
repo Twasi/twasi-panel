@@ -1,9 +1,9 @@
-.profilePicture {
-  height: 100px !important;
-  width: 100px !important;
-}
 .socialIcon {
   height: 25px;
   width: 25px;
   margin-top: 5px;
+}
+.buttonConnected {
+  box-shadow: none !important;
+  width: 10% !important;
 }
