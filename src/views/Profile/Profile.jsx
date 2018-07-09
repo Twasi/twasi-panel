@@ -23,6 +23,8 @@ import instagramlogo from '../common/resources/instagram.svg';
 import snapchatlogo from '../common/resources/snapchat.svg';
 import spotifylogo from '../common/resources/spotify.svg';
 import soundcloudlogo from '../common/resources/soundcloud.svg';
+import telegramlogo from '../common/resources/telegram.svg';
+import githublogo from '../common/resources/github.svg';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
@@ -217,6 +219,37 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <RaisedButton
+                    backgroundColor="#0088cc"
+                    labelColor="#ffffff"
+                    label="Telegram"
+                    fullWidth={true}
+                    style={{ boxShadow: 'none' }}
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#006394'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={telegramlogo}
+                        alt="telegram-logo"
+                      />
+                    </span>
+                  </RaisedButton>
+                </Col>
+                <Col sm={6}>
+                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={6}>
+                  <RaisedButton
                     backgroundColor="#6ae368"
                     labelColor="#ffffff"
                     label="Spotify"
@@ -391,6 +424,37 @@ class Profile extends Component {
                         className="socialIcon"
                         src={snapchatlogo}
                         alt="snapchat-logo"
+                      />
+                    </span>
+                  </RaisedButton>
+                </Col>
+                <Col sm={6}>
+                  <div style={{ marginTop: '5px' }}>Noch nicht verbunden.</div>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={6}>
+                  <RaisedButton
+                    backgroundColor="#333"
+                    labelColor="#FFFFFF"
+                    label="Github"
+                    fullWidth={true}
+                    style={{ boxShadow: 'none' }}
+                  >
+                    <span
+                      style={{
+                        position: 'absolute',
+                        left: '0',
+                        width: '36px',
+                        height: '36px',
+                        backgroundColor: '#000000'
+                      }}
+                    >
+                      <img
+                        className="socialIcon"
+                        src={githublogo}
+                        alt="github-logo"
                       />
                     </span>
                   </RaisedButton>
