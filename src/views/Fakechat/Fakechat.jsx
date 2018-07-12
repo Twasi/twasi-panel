@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
+import { Card, CardHeader, CardActions, CardText } from 'material-ui/Card';
+import Divider from 'material-ui/Divider';
 // import { Container, Row, Col } from 'react-grid-system';
 
 import { statusSelectors, statusOperations } from '../../state/status';
@@ -17,10 +19,17 @@ class Fakechat extends Component {
   render() {
     return (
       <div className="pageContent">
-        <h2 className="pageTitle">
-          <FormattedMessage id="sidebar.fakechat" />
-        </h2>
-        <Paper className="pageContainer">Fakechat</Paper>
+        <Paper className="pageContainer">
+          <h4 className="pageContainerTitle">Fakechat</h4>
+          <small>
+            Im Fakechat kannst du alle Funktionen des Bots unabhängig deines
+            Chats ausprobieren.
+          </small>
+          <Divider className="marginDivider" />
+          <Card className="pluginCard">
+            <CardText />
+          </Card>
+        </Paper>
       </div>
     );
   }
