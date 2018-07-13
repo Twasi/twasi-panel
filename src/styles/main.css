@@ -7,6 +7,7 @@ body {
 
 .content {
   margin: 32px;
+  margin-top: 23px;
   margin-right: 0px;
   display: flex;
   line-height: 22px;
