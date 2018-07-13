@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import './_style.css';
 import { authSelectors } from '../../../state/auth';
 
 import {
@@ -30,9 +31,13 @@ const Header = ({ userName, rank, avatar }) => (
       </span>
       <span style={getSwapStyle()}>
         <Tooltip id="tooltip-left" title="Swap Account" placement="left">
-          <a href="" style={{ color: '#fff', height: '36px' }}>
-            <Icon style={{ fontSize: 36 }}>swap_horizontal_circle</Icon>
-          </a>
+          <Icon
+            onClick={this.handleClickOpen}
+            className="swapIcon"
+            style={{ fontSize: 36 }}
+          >
+            swap_horizontal_circle
+          </Icon>
         </Tooltip>
       </span>
     </div>
