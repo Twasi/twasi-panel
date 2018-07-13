@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Icon from '@material-ui/core/Icon';
-import Tooltip from '@material-ui/core/Tooltip';
 
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
+import { AccountSwitchIcon } from '../../AccountSwitch';
 
 import {
   getHeaderStyle,
@@ -30,15 +29,7 @@ const Header = ({ userName, rank, avatar }) => (
         </div>
       </span>
       <span style={getSwapStyle()}>
-        <Tooltip id="tooltip-left" title="Swap Account" placement="left">
-          <Icon
-            onClick={this.handleClickOpen}
-            className="swapIcon"
-            style={{ fontSize: 36 }}
-          >
-            swap_horizontal_circle
-          </Icon>
-        </Tooltip>
+        <AccountSwitchIcon />
       </span>
     </div>
   </header>
