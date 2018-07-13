@@ -18,6 +18,8 @@ import {
   TableRowColumn
 } from 'material-ui/Table';
 
+import SongrequestConnectionStatus from './SongrequestConnectionStatus';
+
 import './_style.css';
 
 class Songrequests extends React.Component {
@@ -47,8 +49,9 @@ class Songrequests extends React.Component {
   render() {
     return (
       <div className="pageContent">
-        <h2 className="pageTitle">
+        <h2 className="pageTitle songrequestsTitle">
           <FormattedMessage id="sidebar.songrequests" />
+          <SongrequestConnectionStatus status="disconnected" />
         </h2>
         <Paper
           style={{

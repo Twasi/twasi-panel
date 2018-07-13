@@ -34,3 +34,7 @@
   font-size: 14px !important;
   color: grey;
 }
+.songrequestsTitle {
+  display: flex;
+  justify-content: space-between;
+}
