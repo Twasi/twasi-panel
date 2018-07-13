@@ -14,7 +14,6 @@ import Footer from './views/Footer/Footer';
 import Overview from './views/Overview';
 import Status from './views/Status';
 import Plugins from './views/Plugins';
-import Settings from './views/Settings';
 import Fakechat from './views/Fakechat';
 import Profile from './views/Profile/Profile';
 import Commands from './views/Commands/Commands';
@@ -46,7 +45,6 @@ const App = () => {
                     <Switch>
                       <Route path="/" exact component={Overview} />
                       <Route path="/status" exact component={Status} />
-                      <Route path="/settings" exact component={Settings} />
                       <Route path="/plugins" exact component={Plugins} />
                       <Route path="/fakechat" exact component={Fakechat} />
                       <Route path="/profile" exact component={Profile} />

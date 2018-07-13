@@ -33,12 +33,6 @@ class Sidebar extends Component {
         name: 'sidebar.status'
       },
       {
-        key: 'settings',
-        path: '/settings',
-        icon: 'settings',
-        name: 'sidebar.settings'
-      },
-      {
         key: 'profile',
         path: '/profile',
         icon: 'account_box',
