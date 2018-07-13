@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import Icon from '@material-ui/core/Icon';
@@ -12,14 +11,14 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 // import PersonIcon from '@material-ui/icons/Person';
 // import AddIcon from '@material-ui/icons/Add';
-import Typography from '@material-ui/core/Typography';
-import blue from '@material-ui/core/colors/blue';
 
-const emails = ['username@gmail.com', 'user02@gmail.com'];
+import './_style.css';
+
+const accounts = ['Larcce', 'DieserMerlin', 'mekalix'];
 const styles = {
-  avatar: {
-    backgroundColor: blue[100],
-    color: blue[600]
+  paper: {
+    borderRadius: 0,
+    borderTop: '5px solid #00aeae'
   }
 };
 
@@ -36,36 +35,38 @@ class AccountSwitch extends React.Component {
     const { classes, onClose, selectedValue, ...other } = this.props;
 
     return (
-      <Dialog onClose={this.handleClose} {...other}>
-        <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+      <Dialog
+        classes={{
+          paper: classes.paper
+        }}
+        onClose={this.handleClose}
+        {...other}
+      >
+        <DialogTitle id="simple-dialog-title">Account wechseln</DialogTitle>
         <div>
           <List>
-            {emails.map(email => (
-              <ListItem button onClick={() => this.handleListItemClick(email)} key={email}>
-                <ListItemAvatar>
-                  <Avatar className={classes.avatar}>
-                    <Icon
-                      style={{ fontSize: 36 }}
-                    >
-                    person
-                    </Icon>
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={email} />
-              </ListItem>
-            ))}
-            <ListItem button onClick={() => this.handleListItemClick('addAccount')}>
+            <ListItem button>
               <ListItemAvatar>
-                <Avatar>
-                  <Icon
-                    style={{ fontSize: 36 }}
-                  >
-                  add
-                  </Icon>
+                <Avatar style={{ backgroundColor: '#00aeae' }}>
+                  <Icon style={{ fontSize: 36 }}>check</Icon>
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="add account" />
+              <ListItemText primary="Blechkelle" />
             </ListItem>
+            {accounts.map(account => (
+              <ListItem
+                button
+                onClick={() => this.handleListItemClick(account)}
+                key={account}
+              >
+                <ListItemAvatar>
+                  <Avatar>
+                    <Icon style={{ fontSize: 36 }}>person</Icon>
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={account} />
+              </ListItem>
+            ))}
           </List>
         </div>
       </Dialog>
@@ -74,11 +75,11 @@ class AccountSwitch extends React.Component {
 }
 
 AccountSwitch.propTypes = {
-  classes: PropTypes.object.isRequired,
   onClose: PropTypes.func,
-  selectedValue: PropTypes.string
+  selectedValue: PropTypes.string,
+  classes: PropTypes.isRequired
 };
 
 const AccountSwitchWrapped = withStyles(styles)(AccountSwitch);
 
-export default AccountSwitchWrapped;
+export default withStyles(styles)(AccountSwitchWrapped);
