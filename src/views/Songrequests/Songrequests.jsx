@@ -6,7 +6,6 @@ import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import SkipArrow from 'material-ui/svg-icons/av/skip-next';
 import RevokeArrow from 'material-ui/svg-icons/av/skip-previous';
 import Volume from 'material-ui/svg-icons/av/volume-up';
-import { Container, Row, Col } from 'react-grid-system';
 import Slider from 'material-ui/Slider';
 import Popover from 'material-ui/Popover';
 import {
@@ -19,6 +18,7 @@ import {
 } from 'material-ui/Table';
 
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
+import songrequestSync from '../../services/songrequestSync';
 
 import './_style.css';
 
@@ -26,8 +26,21 @@ class Songrequests extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      sync: {
+        status: 'disconnected',
+        ping: -1
+      }
     };
+
+    this.sync = songrequestSync;
+  }
+
+  componentDidMount() {
+    this.sync.connect();
+
+    this.sync.onPing = ping => this.setState({ sync: { ...this.state.sync, ping } });
+    this.sync.onStatus = status => this.setState({ sync: { ...this.state.sync, status } });
   }
 
   handleClick = event => {
@@ -51,7 +64,7 @@ class Songrequests extends React.Component {
       <div className="pageContent">
         <h2 className="pageTitle songrequestsTitle">
           <FormattedMessage id="sidebar.songrequests" />
-          <SongrequestConnectionStatus status="disconnected" />
+          <SongrequestConnectionStatus status={this.state.sync.status} ping={this.state.sync.ping} />
         </h2>
         <Paper
           style={{
