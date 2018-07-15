@@ -1,168 +1,235 @@
 import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 import { FormattedMessage } from 'react-intl';
-
-const data = [];
-for (let i = 0; i < 100; i++) {
-  data.push({
-    key: i.toString(),
-    command: `!befehl${i}`,
-    output:
-      'Ich bin eine sehr lange Ausgabe, um zu testen, wie sich die Tabelle verhält, wenn die Ausgabe sehr lang ist.',
-    access: 'Zuschauer',
-    uses: `${i}`
-  });
-}
-
-/* const EditableCell = ({ editable, value, onChange }) => (
-  <div>
-    {editable ? (
-      <input style={{ margin: '-5px 0' }} value={value} onChange={e => onChange(e.target.value)} />
-    ) : (
-      value
-    )}
-  </div>
-); */
+import { Row, Col } from 'react-grid-system';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Card, CardText } from 'material-ui/Card';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn
+} from 'material-ui/Table';
+import Divider from 'material-ui/Divider';
 
 class Commands extends Component {
-  constructor(props) {
-    super(props);
-    /* this.columns = [
-      {
-        title: 'Befehl',
-        dataIndex: 'command',
-        render: (text, record) => this.renderColumns(text, record, 'command')
-      },
-      {
-        title: 'Ausgabe',
-        width: '50%',
-        dataIndex: 'output',
-        render: (text, record) => this.renderColumns(text, record, 'output')
-      },
-      {
-        title: 'Zugriff',
-        dataIndex: 'access',
-        render: (text, record) => this.renderColumns(text, record, 'access')
-      },
-      {
-        title: 'Ausgeführt',
-        dataIndex: 'uses',
-        render: (text, record) => this.renderColumns(text, record, 'uses')
-      },
-      {
-        title: 'Optionen',
-        dataIndex: 'options',
-        width: '10%',
-        render: (text, record) => {
-          const { editable } = record;
-          return (
-            <div className="editable-row-operations">
-              {editable ? (
-                <span>
-                  <div>
-                    <Tooltip title="Speichern">
-                      <Button type="primary">
-                        <a onClick={() => this.save(record.key)}>
-                          <Icon type="check" />
-                        </a>
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Abbrechen">
-                      <Button type="danger">
-                        <a onClick={() => this.cancel(record.key)}>
-                          <Icon type="close" />
-                        </a>
-                      </Button>
-                    </Tooltip>
-                  </div>
-                </span>
-              ) : (
-                <div>
-                  <Tooltip title="Bearbeiten">
-                    <Button>
-                      <a onClick={() => this.edit(record.key)}>
-                        <Icon type="edit" />
-                      </a>
-                    </Button>
-                  </Tooltip>
-                  <Tooltip title="Löschen">
-                    <Button type="danger">
-                      <Icon type="delete" />
-                    </Button>
-                  </Tooltip>
-                </div>
-              )}
-            </div>
-          );
-        }
-      }
-    ]; */
-    this.state = { data };
-    this.cacheData = data.map(item => ({ ...item }));
-  }
-  handleChange(value, key, column) {
-    const newData = [...this.state.data];
-    const target = newData.filter(item => key === item.key)[0];
-    if (target) {
-      target[column] = value;
-      this.setState({ data: newData });
-    }
-  }
-  edit(key) {
-    const newData = [...this.state.data];
-    const target = newData.filter(item => key === item.key)[0];
-    if (target) {
-      target.editable = true;
-      this.setState({ data: newData });
-    }
-  }
-  save(key) {
-    const newData = [...this.state.data];
-    const target = newData.filter(item => key === item.key)[0];
-    if (target) {
-      delete target.editable;
-      this.setState({ data: newData });
-      this.cacheData = newData.map(item => ({ ...item }));
-    }
-  }
-  cancel(key) {
-    const newData = [...this.state.data];
-    const target = newData.filter(item => key === item.key)[0];
-    if (target) {
-      Object.assign(target, this.cacheData.filter(item => key === item.key)[0]);
-      delete target.editable;
-      this.setState({ data: newData });
-    }
-  }
   render() {
-    /* return (
-      <div>
-        <Card>
-          <Row gutter={24} type="flex" justify="center">
-            <Col span={12}>
-              <h2>
-                <FormattedMessage id="commands.title" />
-              </h2>
-            </Col>
-            <Col span={12}>
-              <Button type="primary" style={{ float: 'right' }}>
-                <Icon type="plus" />
-                <FormattedMessage id="commands.addcommand" />
-              </Button>
-            </Col>
-          </Row>
-          <Row gutter={24}>
-            <Table dataSource={this.state.data} columns={this.columns} />
-          </Row>
-        </Card>
-      </div>
-    ); */
     return (
       <div className="pageContent">
         <h2 className="pageTitle">
           <FormattedMessage id="sidebar.commands" />
         </h2>
-        <Paper className="pageContainer">Befehle</Paper>
+        <Paper className="pageContainer">
+          <h4 className="pageContainerTitle">
+            Deine Befehle
+            <span style={{ float: 'right' }}>
+              <RaisedButton
+                backgroundColor="#00aeae"
+                labelColor="#ffffff"
+                label="Befehl Hinzufügen"
+              />
+            </span>
+          </h4>
+          <small>
+            Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
+          </small>
+        </Paper>
+        <Table>
+          <TableHeader
+            className="songrequestsTableHead"
+            adjustForCheckbox={false}
+            displaySelectAll={false}
+            selectable={false}
+          >
+            <TableRow className="songrequestsTableRow">
+              <TableHeaderColumn className="songrequestsTableColumn">
+                ID
+              </TableHeaderColumn>
+              <TableHeaderColumn className="songrequestsTableColumn">
+                Befehl
+              </TableHeaderColumn>
+              <TableHeaderColumn className="songrequestsTableColumn">
+                Ausgabe
+              </TableHeaderColumn>
+              <TableHeaderColumn className="songrequestsTableColumn">
+                Zugriff
+              </TableHeaderColumn>
+              <TableHeaderColumn className="songrequestsTableColumn">
+                Uses
+              </TableHeaderColumn>
+              <TableHeaderColumn className="songrequestsTableColumn">
+                Aktionen
+              </TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody
+            className="songrequestsTableBody"
+            displayRowCheckbox={false}
+          >
+            <TableRow>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                !test
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Das ist ein Test.
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Alle
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1'337
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Bearbeiten Löschen
+              </TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                !test
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Das ist ein Test.
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Alle
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1'337
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Bearbeiten Löschen
+              </TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                !test
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Das ist ein Test.
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Alle
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1'337
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Bearbeiten Löschen
+              </TableRowColumn>
+            </TableRow>{' '}
+            <TableRow>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                !test
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Das ist ein Test.
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Alle
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1'337
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Bearbeiten Löschen
+              </TableRowColumn>
+            </TableRow>{' '}
+            <TableRow>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                !test
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Das ist ein Test.
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Alle
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1'337
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Bearbeiten Löschen
+              </TableRowColumn>
+            </TableRow>{' '}
+            <TableRow>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                !test
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Das ist ein Test.
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Alle
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1'337
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Bearbeiten Löschen
+              </TableRowColumn>
+            </TableRow>{' '}
+            <TableRow>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                !test
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Das ist ein Test.
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Alle
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1'337
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Bearbeiten Löschen
+              </TableRowColumn>
+            </TableRow>{' '}
+            <TableRow>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                !test
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Das ist ein Test.
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Alle
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                1'337
+              </TableRowColumn>
+              <TableRowColumn className="songrequestsTableColumnBody">
+                Bearbeiten Löschen
+              </TableRowColumn>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
     );
   }

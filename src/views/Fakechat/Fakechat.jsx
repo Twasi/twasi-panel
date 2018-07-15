@@ -19,8 +19,10 @@ class Fakechat extends Component {
   render() {
     return (
       <div className="pageContent">
+        <h2 className="pageTitle">
+          <FormattedMessage id="sidebar.fakechat" />
+        </h2>
         <Paper className="pageContainer">
-          <h4 className="pageContainerTitle">Fakechat</h4>
           <small>
             Im Fakechat kannst du alle Funktionen des Bots unabhängig deines
             Chats ausprobieren.
