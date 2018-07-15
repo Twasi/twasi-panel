@@ -223,36 +223,12 @@ class Songrequests extends React.Component {
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             <TableRow>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1</TableRowColumn>
+              <TableRowColumn>Queen - Bohemian Rhapsody</TableRowColumn>
+              <TableRowColumn>Queen</TableRowColumn>
+              <TableRowColumn>13:37</TableRowColumn>
+              <TableRowColumn>John Doe</TableRowColumn>
+              <TableRowColumn>Löschen Favorisieren</TableRowColumn>
             </TableRow>
           </TableBody>
         </Table>
