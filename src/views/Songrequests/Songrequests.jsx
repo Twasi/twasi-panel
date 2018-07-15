@@ -20,6 +20,8 @@ import {
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import songrequestSync from '../../services/songrequestSync';
 
+import spotifylogo from '../common/resources/spotifyIcon.png';
+
 import './_style.css';
 
 class Songrequests extends React.Component {
@@ -73,34 +75,8 @@ class Songrequests extends React.Component {
         </h2>
         <Paper
           style={{
-            padding: '10px 10px 4px',
-            marginBottom: '0px',
-            marginTop: '23px',
-            backgroundColor: '#6AE368',
-            color: '#fff'
-          }}
-          className="pageContainer"
-        >
-          <img
-            src="https://newsroom.spotify.com/media/mediakit/2018-03-19_22-28-47/Spotify_Logo_RGB_White.png"
-            alt="spotify"
-            style={{ height: '25px' }}
-          />
-          <span style={{ float: 'right' }}>
-            <a
-              style={{ color: '#fff', fontSize: '15px' }}
-              href=""
-              target="_blank"
-            >
-              Diesen Song auf Spotify anhören
-            </a>
-          </span>
-        </Paper>
-        <Paper
-          style={{
             padding: '0px',
             display: 'flex',
-            marginTop: '0px',
             marginBottom: '23px'
           }}
           className="pageContainer"
@@ -218,6 +194,7 @@ class Songrequests extends React.Component {
               <TableHeaderColumn>Kanal</TableHeaderColumn>
               <TableHeaderColumn>Dauer</TableHeaderColumn>
               <TableHeaderColumn>Requestet von</TableHeaderColumn>
+              <TableHeaderColumn>Platform</TableHeaderColumn>
               <TableHeaderColumn>Aktionen</TableHeaderColumn>
             </TableRow>
           </TableHeader>
@@ -228,6 +205,15 @@ class Songrequests extends React.Component {
               <TableRowColumn>Queen</TableRowColumn>
               <TableRowColumn>13:37</TableRowColumn>
               <TableRowColumn>John Doe</TableRowColumn>
+              <TableRowColumn>
+                <div>
+                  <img
+                    src={spotifylogo}
+                    alt="spotify"
+                    style={{ height: '30px', marginTop: '5px' }}
+                  />
+                </div>
+              </TableRowColumn>
               <TableRowColumn>Löschen Favorisieren</TableRowColumn>
             </TableRow>
           </TableBody>
