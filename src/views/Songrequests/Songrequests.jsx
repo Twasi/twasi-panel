@@ -39,8 +39,10 @@ class Songrequests extends React.Component {
   componentDidMount() {
     this.sync.connect();
 
-    this.sync.onPing = ping => this.setState({ sync: { ...this.state.sync, ping } });
-    this.sync.onStatus = status => this.setState({ sync: { ...this.state.sync, status } });
+    this.sync.onPing = ping =>
+      this.setState({ sync: { ...this.state.sync, ping } });
+    this.sync.onStatus = status =>
+      this.setState({ sync: { ...this.state.sync, status } });
   }
 
   handleClick = event => {
@@ -64,7 +66,10 @@ class Songrequests extends React.Component {
       <div className="pageContent">
         <h2 className="pageTitle songrequestsTitle">
           <FormattedMessage id="sidebar.songrequests" />
-          <SongrequestConnectionStatus status={this.state.sync.status} ping={this.state.sync.ping} />
+          <SongrequestConnectionStatus
+            status={this.state.sync.status}
+            ping={this.state.sync.ping}
+          />
         </h2>
         <Paper
           style={{
@@ -203,195 +208,51 @@ class Songrequests extends React.Component {
         </Paper>
         <Table>
           <TableHeader
-            className="songrequestsTableHead"
             adjustForCheckbox={false}
             displaySelectAll={false}
             selectable={false}
           >
-            <TableRow className="songrequestsTableRow">
-              <TableHeaderColumn className="songrequestsTableColumn">
-                ID
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Titel
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Kanal
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Dauer
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Requestet von
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Aktionen
-              </TableHeaderColumn>
+            <TableRow className="TableRow">
+              <TableHeaderColumn>ID</TableHeaderColumn>
+              <TableHeaderColumn>Titel</TableHeaderColumn>
+              <TableHeaderColumn>Kanal</TableHeaderColumn>
+              <TableHeaderColumn>Dauer</TableHeaderColumn>
+              <TableHeaderColumn>Requestet von</TableHeaderColumn>
+              <TableHeaderColumn>Aktionen</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody
-            className="songrequestsTableBody"
-            displayRowCheckbox={false}
-          >
+          <TableBody displayRowCheckbox={false}>
             <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
             </TableRow>
             <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
             </TableRow>
             <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
             </TableRow>
             <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
             </TableRow>
           </TableBody>
         </Table>

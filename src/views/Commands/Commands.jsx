@@ -38,195 +38,48 @@ class Commands extends Component {
         </Paper>
         <Table>
           <TableHeader
-            className="songrequestsTableHead"
             adjustForCheckbox={false}
             displaySelectAll={false}
             selectable={false}
           >
-            <TableRow className="songrequestsTableRow">
-              <TableHeaderColumn className="songrequestsTableColumn">
-                ID
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Befehl
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Ausgabe
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Zugriff
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Uses
-              </TableHeaderColumn>
-              <TableHeaderColumn className="songrequestsTableColumn">
-                Aktionen
-              </TableHeaderColumn>
+            <TableRow className="TableRow">
+              <TableHeaderColumn>ID</TableHeaderColumn>
+              <TableHeaderColumn>Befehl</TableHeaderColumn>
+              <TableHeaderColumn>Ausgabe</TableHeaderColumn>
+              <TableHeaderColumn>Zugriff</TableHeaderColumn>
+              <TableHeaderColumn>Uses</TableHeaderColumn>
+              <TableHeaderColumn>Aktionen</TableHeaderColumn>
             </TableRow>
           </TableHeader>
-          <TableBody
-            className="songrequestsTableBody"
-            displayRowCheckbox={false}
-          >
+          <TableBody displayRowCheckbox={false}>
             <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1
+              <TableRowColumn>1</TableRowColumn>
+              <TableRowColumn>
+                <b>!test</b>
               </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                !test
+              <TableRowColumn
+                style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
+              >
+                Das ist ein sehr langer Test, um zu schauen, wie sich die
+                Tabelle bei längeren Einträgen verhält.
               </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Das ist ein Test.
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Alle
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Bearbeiten Löschen
-              </TableRowColumn>
+              <TableRowColumn>Alle</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>Bearbeiten Löschen</TableRowColumn>
             </TableRow>
             <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1
+              <TableRowColumn>2</TableRowColumn>
+              <TableRowColumn>
+                <b>!test</b>
               </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                !test
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
+              <TableRowColumn
+                style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
+              >
                 Das ist ein Test.
               </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Alle
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Bearbeiten Löschen
-              </TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                !test
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Das ist ein Test.
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Alle
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Bearbeiten Löschen
-              </TableRowColumn>
-            </TableRow>{' '}
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                !test
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Das ist ein Test.
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Alle
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Bearbeiten Löschen
-              </TableRowColumn>
-            </TableRow>{' '}
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                !test
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Das ist ein Test.
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Alle
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Bearbeiten Löschen
-              </TableRowColumn>
-            </TableRow>{' '}
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                !test
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Das ist ein Test.
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Alle
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Bearbeiten Löschen
-              </TableRowColumn>
-            </TableRow>{' '}
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                !test
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Das ist ein Test.
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Alle
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Bearbeiten Löschen
-              </TableRowColumn>
-            </TableRow>{' '}
-            <TableRow>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                !test
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Das ist ein Test.
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Alle
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                1'337
-              </TableRowColumn>
-              <TableRowColumn className="songrequestsTableColumnBody">
-                Bearbeiten Löschen
-              </TableRowColumn>
+              <TableRowColumn>Alle</TableRowColumn>
+              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>Bearbeiten Löschen</TableRowColumn>
             </TableRow>
           </TableBody>
         </Table>

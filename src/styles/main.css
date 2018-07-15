@@ -30,6 +30,7 @@ body {
 }
 .pageContainerTitle {
   margin-top: 0px;
+  margin-bottom: 15px;
 }
 .green {
   color: #43a047;
@@ -64,4 +65,7 @@ body {
   border: 1px solid transparent;
   border-color: #f5c6cb;
   margin-bottom: 1rem;
+}
+.TableRow {
+  border-bottom: 3px solid #00aeae !important;
 }
