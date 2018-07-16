@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^1.3.1",
+    "@material-ui/core": "^1.4.0",
     "amcharts3": "github:amcharts/amcharts3",
     "amcharts3-react": "github:amcharts/amcharts3-react",
     "graphiql": "^0.11.11",
