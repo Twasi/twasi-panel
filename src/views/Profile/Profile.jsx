@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
-import { Card, CardHeader, CardActions, CardText } from 'material-ui/Card';
-import { Container, Row, Col } from 'react-grid-system';
+import { Card, CardText } from 'material-ui/Card';
+import { Row, Col } from 'react-grid-system';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Button from '@material-ui/core/Button';
-// import { Container, Row, Col } from 'react-grid-system';
 
 import twitterlogo from '../common/resources/twitter.svg';
 import googlelogo from '../common/resources/google.svg';
@@ -26,7 +24,7 @@ import soundcloudlogo from '../common/resources/soundcloud.svg';
 import telegramlogo from '../common/resources/telegram.svg';
 import githublogo from '../common/resources/github.svg';
 
-import { statusSelectors, statusOperations } from '../../state/status';
+import { authSelectors } from '../../state/auth';
 import './_style.css';
 
 class Profile extends Component {
@@ -64,19 +62,19 @@ class Profile extends Component {
                       <TableRow>
                         <TableCell>Twitch Name</TableCell>
                         <TableCell>
-                          <b>John Doe</b>
+                          <b title={this.props.user.name}>{this.props.user.displayName}</b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>Twitch ID</TableCell>
                         <TableCell>
-                          <b>********</b>
+                          <b>{this.props.user.twitchid}</b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>Twasi Rang</TableCell>
                         <TableCell>
-                          <b>Streamer</b>
+                          <b>{this.props.user.rank}</b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -159,8 +157,8 @@ class Profile extends Component {
                   <RaisedButton
                     backgroundColor="#1da1f2"
                     labelColor="#fff"
-                    disabled={true}
-                    fullWidth={true}
+                    disabled
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -197,7 +195,7 @@ class Profile extends Component {
                     backgroundColor="#0088cc"
                     labelColor="#ffffff"
                     label="Telegram"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -230,7 +228,7 @@ class Profile extends Component {
                     backgroundColor="#3b5998"
                     labelColor="#ffffff"
                     label="Facebook"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -263,7 +261,7 @@ class Profile extends Component {
                     backgroundColor="#962fbf"
                     labelColor="#ffffff"
                     label="Instagram"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -296,7 +294,7 @@ class Profile extends Component {
                     backgroundColor="#d9432f"
                     labelColor="#ffffff"
                     label="Google"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -329,7 +327,7 @@ class Profile extends Component {
                     backgroundColor="#FF0000"
                     labelColor="#ffffff"
                     label="Youtube"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -362,7 +360,7 @@ class Profile extends Component {
                     backgroundColor="#f50"
                     labelColor="#ffffff"
                     label="Soundcloud"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -395,7 +393,7 @@ class Profile extends Component {
                     backgroundColor="#FFFB00"
                     labelColor="#000000"
                     label="Snapchat"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -428,7 +426,7 @@ class Profile extends Component {
                     backgroundColor="#6ae368"
                     labelColor="#ffffff"
                     label="Spotify"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -461,7 +459,7 @@ class Profile extends Component {
                     backgroundColor="#333"
                     labelColor="#FFFFFF"
                     label="Github"
-                    fullWidth={true}
+                    fullWidth
                     style={{ boxShadow: 'none' }}
                   >
                     <span
@@ -495,16 +493,19 @@ class Profile extends Component {
   }
 }
 
-Profile.propTypes = {};
+Profile.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    displayName: PropTypes.string,
+    twitchid: PropTypes.string,
+    rank: PropTypes.string
+  })
+};
 
 const mapStateToProps = state => ({
-  status: statusSelectors.getStatus(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(statusOperations.verifyData())
+  user: authSelectors.getUser(state)
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Profile)
+  connect(mapStateToProps, null)(Profile)
 );
