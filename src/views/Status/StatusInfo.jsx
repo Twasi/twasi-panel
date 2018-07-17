@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import ToggleButton, { ToggleButtonGroup } from '@material-ui/lab/ToggleButton';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -19,20 +20,26 @@ class StatusInfo extends Component {
             <div title="Twitchbot">
               <div type="flex" justify="center">
                 <div>
-                  <button
-                    type="danger"
-                    disabled={!status.isRunning}
-                    onClick={stopBot}
-                    loading={isStopping}>
-                    Bot Stoppen
-                  </button>
-                  <button
-                    type="primary"
-                    disabled={status.isRunning}
-                    onClick={startBot}
-                    loading={isStarting}>
-                    Bot Starten
-                  </button>
+                  <ToggleButtonGroup exclusive onChange={this.handleAlignment}>
+                    <ToggleButton
+                      type="danger"
+                      disabled={status.isRunning}
+                      onClick={startBot}
+                      loading={isStarting}
+                      value="on"
+                    >
+                      Bot starten
+                    </ToggleButton>
+                    <ToggleButton
+                      type="primary"
+                      disabled={!status.isRunning}
+                      onClick={stopBot}
+                      loading={isStopping}
+                      value="off"
+                    >
+                      Bot stoppen
+                    </ToggleButton>
+                  </ToggleButtonGroup>
                 </div>
               </div>
             </div>

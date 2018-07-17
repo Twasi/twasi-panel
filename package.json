@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.4.0",
+    "@material-ui/lab": "^1.0.0-alpha.6",
     "amcharts3": "github:amcharts/amcharts3",
     "amcharts3-react": "github:amcharts/amcharts3-react",
     "graphiql": "^0.11.11",
@@ -37,7 +38,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jest": "^21.17.0",
-    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-lodash-fp": "^2.1.3",
     "eslint-plugin-react": "^7.10.0",
     "react-app-rewire-less": "^2.1.2",
