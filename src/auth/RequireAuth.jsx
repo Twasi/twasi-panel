@@ -21,7 +21,7 @@ class RequireAuth extends React.Component {
   }
 
   componentWillMount() {
-    const { isAuthenticated, isLoading, authenticate, updateIsLoading, updateUserData, graph, history, location } = this.props;
+    const { isAuthenticated, isLoading, authenticate, updateIsLoading, updateUserData, graph, history, location, optional } = this.props;
 
     // Are we returning from auth provider?
     const urlParams = queryString.parse(window.location.search);
@@ -62,15 +62,23 @@ class RequireAuth extends React.Component {
         cacheData === null ||
         cacheData.since < new Date().getTime() - tokenExpiration
       ) {
-        storage('originalUrl', location.pathname);
-        window.location.href = window.env.AUTH_URL;
+        if (!optional) {
+          storage('originalUrl', location.pathname);
+          window.location.href = window.env.AUTH_URL;
+        } else {
+          updateIsLoading(false);
+        }
         return;
       }
 
       graph('user{id,twitchAccount{twitchid,name,displayName,avatar,email}}', cacheData.token).then(data => {
         if (data.data.viewer == null) {
-          storage('originalUrl', location.pathname);
-          window.location.href = window.env.AUTH_URL;
+          if (!optional) {
+            storage('originalUrl', location.pathname);
+            window.location.href = window.env.AUTH_URL;
+          } else {
+            updateIsLoading(false);
+          }
         } else {
           authenticate(cacheData.token);
           updateUserData(data.data.viewer.user);
@@ -106,7 +114,8 @@ RequireAuth.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
-  ])
+  ]),
+  optional: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
