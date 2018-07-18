@@ -1,23 +1,12 @@
-import { getState } from '../state/store';
-import { authSelectors } from '../state/auth';
-
-const requestHeaders = token => ({
+const requestHeaders = () => ({
   Accept: 'application/json',
   'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 });
 
 export default async (url, method, payload) => {
-  const state = getState();
-
-  const user = authSelectors.getUser(state);
-  const token = authSelectors.getJwt(state);
-  if (user === null || token === null) {
-    throw new Error('User is not authenticated - request failed.');
-  }
-
   const options = {
     method,
-    headers: requestHeaders(token),
+    headers: requestHeaders(),
     body: method !== 'GET' ? payload : undefined
   };
 

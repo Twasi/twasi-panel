@@ -2,9 +2,12 @@ import { combineReducers } from 'redux';
 import types from './types';
 
 const initialState = {
-  user: null,
+  user: {
+    displayName: ''
+  },
+  isAuthenticated: false,
   jwt: null,
-  isLoading: true,
+  isLoading: false,
   userData: {
     id: '',
     twitchAccount: {
@@ -21,6 +24,10 @@ const authReducer = (state = initialState, action) => {
 
     case types.UPDATE_IS_LOADING: {
       return { ...state, isLoading: action.loading };
+    }
+
+    case types.UPDATE_IS_AUTHENTICATED: {
+      return { ...state, isAuthenticated: action.authenticated };
     }
 
     case types.UPDATE_JWT: {

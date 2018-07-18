@@ -20,9 +20,15 @@ const isLoading = loading => ({
   loading
 });
 
+const isAuthenticated = authenticated => ({
+  type: types.UPDATE_IS_AUTHENTICATED,
+  authenticated
+});
+
 export default {
   updateJwt,
   updateUser,
   isLoading,
+  isAuthenticated,
   updateUserData
 };

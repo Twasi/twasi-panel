@@ -9,12 +9,20 @@ const loadUserStatus = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
+  if (jwt === null) {
+    return;
+  }
+
   getUserGraph('userStatus{status}', jwt).then(data => dispatch(updateUserStatus(data.data.viewer.userStatus.status)));
 };
 
 const loadVersion = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
+
+  if (jwt === null) {
+    return;
+  }
 
   getUserGraph('appInfo{version}', jwt).then(data => {
     dispatch(updateVersion(data.data.viewer.appInfo.version));

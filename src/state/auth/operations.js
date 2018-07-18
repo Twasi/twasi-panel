@@ -10,9 +10,16 @@ const authenticate = jwt => dispatch => {
   dispatch(actions.updateJwt(jwt));
   dispatch(actions.updateUser(user));
   dispatch(actions.isLoading(false));
+  dispatch(actions.isAuthenticated(true));
+};
+
+const reloadData = () => (dispatch, getState) => {
+
 };
 
 export default {
   authenticate,
-  updateUserData
+  updateUserData,
+  updateIsAuthenticated: actions.isAuthenticated,
+  updateIsLoading: actions.isLoading
 };

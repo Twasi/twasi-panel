@@ -3,7 +3,8 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import Auth from './auth';
+import RequireAuth from './auth/RequireAuth';
+import AuthLoader from './auth/AuthLoader';
 import configureStore from './state/store';
 
 import Header from './views/common/Header';
@@ -33,36 +34,38 @@ const App = () => {
     <LanguageProvider>
       <ReduxProvider store={store}>
         <BrowserRouter>
-          <Auth>
-            <MuiThemeProvider>
+          <MuiThemeProvider>
+            <AuthLoader>
               <Content>
-                <Header />
-                <Welcome>
-                  <div style={{ float: 'left' }}>
-                    <Sidebar />
-                  </div>
-                  <div className="content">
-                    <Switch>
-                      <Route path="/" exact component={Overview} />
-                      <Route path="/status" exact component={Status} />
-                      <Route path="/plugins" exact component={Plugins} />
-                      <Route path="/fakechat" exact component={Fakechat} />
-                      <Route path="/profile" exact component={Profile} />
-                      <Route path="/commands" exact component={Commands} />
-                      <Route path="/dev" exact component={DevTools} />
-                      <Route
-                        path="/songrequests"
-                        exact
-                        component={Songrequests}
-                      />
-                    </Switch>
-                  </div>
-                  <div style={{ clear: 'both' }} />
-                </Welcome>
+                <RequireAuth>
+                  <Header />
+                  <Welcome>
+                    <div style={{ float: 'left' }}>
+                      <Sidebar />
+                    </div>
+                    <div className="content">
+                      <Switch>
+                        <Route path="/" exact component={Overview} />
+                        <Route path="/status" exact component={Status} />
+                        <Route path="/plugins" exact component={Plugins} />
+                        <Route path="/fakechat" exact component={Fakechat} />
+                        <Route path="/profile" exact component={Profile} />
+                        <Route path="/commands" exact component={Commands} />
+                        <Route path="/dev" exact component={DevTools} />
+                        <Route
+                          path="/songrequests"
+                          exact
+                          component={Songrequests}
+                        />
+                      </Switch>
+                    </div>
+                    <div style={{ clear: 'both' }} />
+                  </Welcome>
+                </RequireAuth>
                 <Footer />
               </Content>
-            </MuiThemeProvider>
-          </Auth>
+            </AuthLoader>
+          </MuiThemeProvider>
         </BrowserRouter>
       </ReduxProvider>
     </LanguageProvider>
