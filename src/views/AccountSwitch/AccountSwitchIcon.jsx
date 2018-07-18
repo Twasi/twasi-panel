@@ -22,22 +22,22 @@ class AccountSwitchIcon extends React.Component {
   render() {
     return (
       <div>
-        <Tooltip id="tooltip-left" title="Swap Account" placement="left">
+        <Tooltip title="Swap Account" placement="right">
           <Icon
             className="swapIcon"
-            style={{ fontSize: 36 }}
+            style={{ fontSize: 36, float: 'right' }}
             onClick={() => this.setState({ open: true })}
           >
-        swap_horizontal_circle
+            swap_horizontal_circle
           </Icon>
-
         </Tooltip>
         <AccountSwitch
           selectedValue={this.state.selectedValue}
           open={this.state.open}
           onClose={this.handleClose}
         />
-      </div>);
+      </div>
+    );
   }
 }
 

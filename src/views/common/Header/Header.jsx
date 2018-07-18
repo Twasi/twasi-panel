@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Tooltip from '@material-ui/core/Tooltip';
+import Icon from '@material-ui/core/Icon';
 
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
@@ -28,8 +30,16 @@ const Header = ({ userName, rank, avatar }) => (
           </span>
         </div>
       </span>
-      <span style={getSwapStyle()}>
+      <span style={{ width: '150px' }}>
         <AccountSwitchIcon />
+        <Tooltip title="Feedback geben" placement="left">
+          <Icon
+            className="feedbackIcon"
+            style={{ fontSize: 36, float: 'right' }}
+          >
+            favorite_border
+          </Icon>
+        </Tooltip>
       </span>
     </div>
   </header>
