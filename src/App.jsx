@@ -9,7 +9,7 @@ import configureStore from './state/store';
 
 import Header from './views/common/Header';
 import Content from './views/common/Content';
-import Sidebar from './views/Sidebar/Sidebar';
+import Public from './views/Public/Public';
 import Footer from './views/Footer/Footer';
 
 import PanelContent from './views/Panel/PanelContent';
@@ -31,7 +31,7 @@ const App = () => {
               <Content>
                 <Header />
                 <Switch>
-                  <Route path="/public/:name" component={() => <div>Public</div>} />
+                  <Route path="/profile/:name" component={Public} />
                   <Route path="/" component={PanelContent} />
                 </Switch>
                 <Footer />
