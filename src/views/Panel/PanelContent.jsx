@@ -12,6 +12,7 @@ import Status from '../Status';
 import Plugins from '../Plugins';
 import Fakechat from '../Fakechat';
 import Profile from '../Profile/Profile';
+import Urlshortener from '../Urlshortener/Urlshortener';
 import Commands from '../Commands/Commands';
 import Songrequests from '../Songrequests/Songrequests';
 import DevTools from '../DevTools/DevTools';
@@ -27,15 +28,12 @@ const PanelContent = () => (
           <Route path="/" exact component={Overview} />
           <Route path="/status" exact component={Status} />
           <Route path="/plugins" exact component={Plugins} />
-          <Route path="/fakechat" exact component={Fakechat} />
           <Route path="/profile" exact component={Profile} />
           <Route path="/commands" exact component={Commands} />
+          <Route path="/urlshortener" exact component={Urlshortener} />
+          <Route path="/fakechat" exact component={Fakechat} />
           <Route path="/dev" exact component={DevTools} />
-          <Route
-            path="/songrequests"
-            exact
-            component={Songrequests}
-          />
+          <Route path="/songrequests" exact component={Songrequests} />
         </Switch>
       </div>
       <div style={{ clear: 'both' }} />

@@ -16,6 +16,7 @@ export default {
   'sidebar.songrequests': 'Songrequests',
   'sidebar.docs': 'Dokumentation',
   'sidebar.logout': 'Ausloggen',
+  'sidebar.urlshortener': 'URL Shortener',
 
   // Overview
 
@@ -34,5 +35,8 @@ export default {
   'commands.addcommand': 'Befehl Hinzufügen',
 
   // Plugins
-  'plugins.headline': 'Plugin Store'
+  'plugins.headline': 'Plugin Store',
+
+  // Public
+  'public.headline': 'Public'
 };

@@ -45,12 +45,6 @@ class Sidebar extends Component {
         name: 'sidebar.plugins'
       },
       {
-        key: 'fakechat',
-        path: '/fakechat',
-        icon: 'vertical_split',
-        name: 'sidebar.fakechat'
-      },
-      {
         key: 'commands',
         path: '/commands',
         icon: 'code',
@@ -61,6 +55,18 @@ class Sidebar extends Component {
         path: '/songrequests',
         icon: 'library_music',
         name: 'sidebar.songrequests'
+      },
+      {
+        key: 'urlshortener',
+        path: '/urlshortener',
+        icon: 'link',
+        name: 'sidebar.urlshortener'
+      },
+      {
+        key: 'fakechat',
+        path: '/fakechat',
+        icon: 'vertical_split',
+        name: 'sidebar.fakechat'
       }
     ];
 
