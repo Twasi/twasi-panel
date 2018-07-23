@@ -7,7 +7,6 @@ import { Card, CardHeader, CardActions, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 // import { Container, Row, Col } from 'react-grid-system';
 
-import { statusSelectors, statusOperations } from '../../state/status';
 import './_style.css';
 
 class Fakechat extends Component {
@@ -39,14 +38,4 @@ class Fakechat extends Component {
 
 Fakechat.propTypes = {};
 
-const mapStateToProps = state => ({
-  status: statusSelectors.getStatus(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(statusOperations.verifyData())
-});
-
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Fakechat)
-);
+export default withRouter(connect()(Fakechat));

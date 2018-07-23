@@ -2,39 +2,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
 class Plugins extends Component {
-  state = {
-    value: 0
-  };
-
   componentDidMount() {
     const { verifyData } = this.props;
     verifyData();
   }
-  handleChange = value => {
-    this.setState({ value });
-  };
 
   render() {
-    const {
-      plugins,
-      installPlugin,
-      uninstallPlugin,
-      isLoading,
-      updateQuery
-    } = this.props;
-    const { value } = this.state;
+    const { plugins, installPlugin, uninstallPlugin } = this.props;
 
     const renderedPlugins = plugins.map(plugin => (
       <Col sm={4}>
@@ -43,8 +28,8 @@ class Plugins extends Component {
             avatar=""
             title={plugin.name}
             subtitle={plugin.author}
-            actAsExpander={true}
-            showExpandableButton={true}
+            actAsExpander
+            showExpandableButton
           />
           <Divider />
           <CardText>
@@ -55,7 +40,7 @@ class Plugins extends Component {
                   labelColor="#fff"
                   label="Uninstall"
                   disabled={plugin.actionInProgress}
-                  fullWidth={true}
+                  fullWidth
                   onClick={() => uninstallPlugin(plugin.name)}
                 >
                   {plugin.actionInProgress && (
@@ -81,7 +66,7 @@ class Plugins extends Component {
                   labelColor="#fff"
                   label="Install"
                   disabled={plugin.actionInProgress}
-                  fullWidth={true}
+                  fullWidth
                   onClick={() => installPlugin(plugin.name)}
                 >
                   {plugin.actionInProgress && (
@@ -101,7 +86,7 @@ class Plugins extends Component {
               </div>
             )}
           </CardText>
-          <CardText expandable={true}>
+          <CardText expandable>
             <p>
               <b>Version {plugin.version}</b>
             </p>

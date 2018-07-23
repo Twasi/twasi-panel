@@ -31,4 +31,4 @@ class Urlshortener extends Component {
 
 Urlshortener.propTypes = {};
 
-export default withRouter(connect(Urlshortener));
+export default withRouter(connect()(Urlshortener));
