@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-grid-system';
 import Divider from 'material-ui/Divider';
@@ -28,3 +30,5 @@ class Urlshortener extends Component {
 }
 
 Urlshortener.propTypes = {};
+
+export default withRouter(connect(Urlshortener));
