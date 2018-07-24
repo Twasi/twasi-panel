@@ -44,12 +44,12 @@ class Profile extends Component {
           <Col sm={6}>
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">
-                Deine Twasi Daten{' '}
+                Deine Twasi Daten
                 <span style={{ float: 'right' }}>
                   <RaisedButton
                     backgroundColor="#00aeae"
                     labelColor="#ffffff"
-                    label="Refresh"
+                    label="Daten aktualisieren"
                   />
                 </span>
               </h4>
@@ -62,7 +62,9 @@ class Profile extends Component {
                       <TableRow>
                         <TableCell>Twitch Name</TableCell>
                         <TableCell>
-                          <b title={this.props.user.name}>{this.props.user.displayName}</b>
+                          <b title={this.props.user.name}>
+                            {this.props.user.displayName}
+                          </b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -506,6 +508,4 @@ const mapStateToProps = state => ({
   user: authSelectors.getUser(state)
 });
 
-export default withRouter(
-  connect(mapStateToProps, null)(Profile)
-);
+export default withRouter(connect(mapStateToProps, null)(Profile));

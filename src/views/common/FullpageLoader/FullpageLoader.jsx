@@ -14,11 +14,13 @@ const FullpageLoader = () => (
           alt="Twasi Logo"
         />
       </div>
+      {/*
       <img
         src={twasiLoadingBar}
         className="FullpageLoaderBar"
         alt="Twasi Loading Bar"
       />
+      */}
     </div>
   </div>
 );
