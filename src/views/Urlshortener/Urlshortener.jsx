@@ -77,8 +77,12 @@ class Urlshortener extends Component {
                       )
                     }}
                   />
-                  <Divider className="marginDivider" />
-                  Vorschau:{' '}
+                </CardText>
+              </Card>
+              <br />
+              <Card className="pluginCard">
+                <CardText>
+                  <h4 className="pageContainerTitle">Vorschau</h4>
                   <samp style={{ color: '#00aeae' }}>
                     <b>https://twa.si/c/{this.state.inputValue}</b>
                   </samp>
