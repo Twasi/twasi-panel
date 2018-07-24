@@ -99,8 +99,9 @@ class Urlshortener extends Component {
                 <Icon
                   style={{
                     fontSize: 36,
-                    backgroundColor: '#e0e0e0',
-                    borderRadius: '50px'
+                    backgroundColor: 'rgb(224, 224, 224)',
+                    borderRadius: '50px',
+                    color: '#5e5e5e'
                   }}
                 >
                   arrow_downward
