@@ -24,7 +24,7 @@ class Urlshortener extends Component {
     return (
       <div className="pageContent">
         <h2 className="pageTitle">
-          <FormattedMessage id="plugins.headline" />
+          <FormattedMessage id="sidebar.urlshortener" />
         </h2>
         <Row>
           <Col sm={6}>
