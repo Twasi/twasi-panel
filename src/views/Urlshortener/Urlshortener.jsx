@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col } from 'react-grid-system';
+import { Col } from 'react-grid-system';
 import Divider from 'material-ui/Divider';
 import Paper from '@material-ui/core/Paper';
 import './_style.css';
@@ -14,16 +14,14 @@ class Urlshortener extends Component {
         <h2 className="pageTitle">
           <FormattedMessage id="plugins.headline" />
         </h2>
-        <Paper className="pageContainer">
-          <Row>
-            <Col sm={12}>
-              <h4 className="pageContainerTitle">URL Kürzer</h4>
-              <small>Kürze deine URLs um sie mit jedem zu teilen.</small>
-            </Col>
-          </Row>
-          <br />
-          <Divider />
-        </Paper>
+        <Col sm={6}>
+          <Paper className="pageContainer">
+            <h4 className="pageContainerTitle">URL Kürzer</h4>
+            <small>Kürze deine URLs um sie mit jedem zu teilen.</small>
+            <br />
+            <Divider />
+          </Paper>
+        </Col>
       </div>
     );
   }

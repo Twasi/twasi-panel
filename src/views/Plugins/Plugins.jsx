@@ -233,9 +233,7 @@ Plugins.propTypes = {
   plugins: PropTypes.arrayOf(PropTypes.shape({})),
   verifyData: PropTypes.func.isRequired,
   installPlugin: PropTypes.func.isRequired,
-  uninstallPlugin: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  updateQuery: PropTypes.func.isRequired
+  uninstallPlugin: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

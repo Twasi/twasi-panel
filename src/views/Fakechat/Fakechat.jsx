@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
-import { Card, CardHeader, CardActions, CardText } from 'material-ui/Card';
+import { Card, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 // import { Container, Row, Col } from 'react-grid-system';
 

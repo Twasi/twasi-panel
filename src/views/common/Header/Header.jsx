@@ -12,7 +12,6 @@ import {
   getHeaderStyle,
   getAvatarStyle,
   getLogoStyle,
-  getSwapStyle,
   getRankStyle,
   getLogoDescriptionStyle
 } from './_style';

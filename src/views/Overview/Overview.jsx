@@ -119,22 +119,22 @@ class Overview extends Component {
                 >
                   <TableRow>
                     <TableRowColumn className="overviewTableColumnBody">
-                      1'337
+                      1.337
                     </TableRowColumn>
                     <TableRowColumn className="overviewTableColumnBody">
-                      1'337
+                      1.337
                     </TableRowColumn>
                     <TableRowColumn className="overviewTableColumnBody">
-                      1'337
+                      1.337
                     </TableRowColumn>
                     <TableRowColumn className="overviewTableColumnBody">
-                      1'337
+                      1.337
                     </TableRowColumn>
                     <TableRowColumn className="overviewTableColumnBody">
-                      1'337
+                      1.337
                     </TableRowColumn>
                     <TableRowColumn className="overviewTableColumnBody">
-                      1'337
+                      1.337
                     </TableRowColumn>
                   </TableRow>
                 </TableBody>

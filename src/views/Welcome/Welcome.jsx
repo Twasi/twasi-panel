@@ -226,8 +226,8 @@ class Welcome extends Component {
                     avatar=""
                     title="Teilchenbeschleuniger"
                     subtitle="John Doe"
-                    actAsExpander={true}
-                    showExpandableButton={true}
+                    actAsExpander
+                    showExpandableButton
                   />
                   <Divider />
                   <CardText>
@@ -235,10 +235,10 @@ class Welcome extends Component {
                       label="Installieren"
                       backgroundColor="#00aeae"
                       labelColor="#fff"
-                      fullWidth={true}
+                      fullWidth
                     />
                   </CardText>
-                  <CardText expandable={true}>
+                  <CardText expandable>
                     <p>
                       <b>Version 1.0</b>
                     </p>

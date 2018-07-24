@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col } from 'react-grid-system';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Card, CardText } from 'material-ui/Card';
 import {
   Table,
   TableBody,
@@ -12,7 +10,6 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table';
-import Divider from 'material-ui/Divider';
 
 class Commands extends Component {
   render() {
@@ -64,7 +61,7 @@ class Commands extends Component {
                 Tabelle bei längeren Einträgen verhält.
               </TableRowColumn>
               <TableRowColumn>Alle</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1.337</TableRowColumn>
               <TableRowColumn>Bearbeiten Löschen</TableRowColumn>
             </TableRow>
             <TableRow>
@@ -78,7 +75,7 @@ class Commands extends Component {
                 Das ist ein Test.
               </TableRowColumn>
               <TableRowColumn>Alle</TableRowColumn>
-              <TableRowColumn>1'337</TableRowColumn>
+              <TableRowColumn>1.337</TableRowColumn>
               <TableRowColumn>Bearbeiten Löschen</TableRowColumn>
             </TableRow>
           </TableBody>
