@@ -120,7 +120,7 @@ class Sidebar extends Component {
     return (
       <div>
         <Paper style={getMenuStyle()} className="sidebar">
-          <div style={getHeaderMenuItem()}>Hallo, {this.props.userName}</div>
+          <div style={getHeaderMenuItem()}>Navigation</div>
           <Menu
             onChange={this.handleClick}
             value={selectedKey}

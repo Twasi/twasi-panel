@@ -17,9 +17,23 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table';
+import { Card, CardText } from 'material-ui/Card';
 import './_style.css';
 
 class Urlshortener extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ''
+    };
+  }
+
+  updateInputValue(evt) {
+    this.setState({
+      inputValue: evt.target.value
+    });
+  }
+
   render() {
     return (
       <div className="pageContent">
@@ -30,7 +44,7 @@ class Urlshortener extends Component {
           <Col sm={6}>
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">
-                URL Kürzer
+                URL Kürzen
                 <span style={{ float: 'right' }}>
                   <RaisedButton
                     backgroundColor="#00aeae"
@@ -39,27 +53,32 @@ class Urlshortener extends Component {
                   />
                 </span>
               </h4>
-              <small>Kürze deine URLs um sie mit jedem zu teilen.</small>
+              <small>Kürze deine URL's um sie mit jedem zu teilen.</small>
               <Divider className="marginDivider" />
-              <TextField
-                helperText="Vorschau: https://twa.si/c/"
-                fullWidth
-                id="shortlink"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment
-                      style={{
-                        backgroundColor: '#e0e0e0',
-                        padding: '0px 15px 0px 15px',
-                        zIndex: '99'
-                      }}
-                      position="start"
-                    >
-                      https://twa.si/c/
-                    </InputAdornment>
-                  )
-                }}
-              />
+              <Card className="pluginCard">
+                <CardText>
+                  <TextField
+                    helperText="Freilassen für eine zufällige URL."
+                    fullWidth
+                    id="shortlink"
+                    onChange={evt => this.updateInputValue(evt)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment
+                          style={{
+                            backgroundColor: '#e0e0e0',
+                            padding: '0px 15px 0px 15px',
+                            zIndex: '99'
+                          }}
+                          position="start"
+                        >
+                          https://twa.si/c/
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                </CardText>
+              </Card>
               <span
                 style={{
                   justifyContent: 'center',
@@ -68,27 +87,47 @@ class Urlshortener extends Component {
                   padding: '15px 0px 15px 0px'
                 }}
               >
-                <Icon style={{ fontSize: 36 }}>arrow_downward</Icon>
+                <Icon
+                  style={{
+                    fontSize: 36,
+                    backgroundColor: '#e0e0e0',
+                    borderRadius: '50px'
+                  }}
+                >
+                  arrow_downward
+                </Icon>
               </span>
-              <TextField
-                helperText="Auf welche Domain soll dein Shortlink weiterleiten?"
-                fullWidth
-                id="shortlink-redirection"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment
-                      style={{
-                        backgroundColor: '#e0e0e0',
-                        padding: '0px 15px 0px 15px',
-                        zIndex: '99'
-                      }}
-                      position="start"
-                    >
-                      https://
-                    </InputAdornment>
-                  )
-                }}
-              />
+              <Card className="pluginCard">
+                <CardText>
+                  <TextField
+                    helperText="Auf welche Domain soll dein Shortlink weiterleiten?"
+                    fullWidth
+                    id="shortlink-redirection"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment
+                          style={{
+                            backgroundColor: '#e0e0e0',
+                            padding: '0px 15px 0px 15px',
+                            zIndex: '99'
+                          }}
+                          position="start"
+                        >
+                          https://
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                </CardText>
+              </Card>
+              <Card className="pluginCard">
+                <CardText>
+                  Vorschau:{' '}
+                  <samp style={{ color: '#00aeae' }}>
+                    <b>https://twa.si/c/{this.state.inputValue}</b>
+                  </samp>
+                </CardText>
+              </Card>
             </Paper>
           </Col>
           <Col sm={6}>
@@ -111,40 +150,6 @@ class Urlshortener extends Component {
                 </TableRow>
               </TableHeader>
               <TableBody displayRowCheckbox={false}>
-                <TableRow>
-                  <TableRowColumn>
-                    <a style={{ color: '#00aeae' }} href="#">
-                      https://twa.si/c/test
-                    </a>
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <a style={{ color: '#00aeae' }} href="#">
-                      https://blechkelle.com
-                    </a>
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <a style={{ color: '#e53935' }} href="#">
-                      Löschen
-                    </a>
-                  </TableRowColumn>
-                </TableRow>
-                <TableRow>
-                  <TableRowColumn>
-                    <a style={{ color: '#00aeae' }} href="#">
-                      https://twa.si/c/test
-                    </a>
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <a style={{ color: '#00aeae' }} href="#">
-                      https://blechkelle.com
-                    </a>
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <a style={{ color: '#e53935' }} href="#">
-                      Löschen
-                    </a>
-                  </TableRowColumn>
-                </TableRow>
                 <TableRow>
                   <TableRowColumn>
                     <a style={{ color: '#00aeae' }} href="#">

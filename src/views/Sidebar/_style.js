@@ -7,7 +7,7 @@ export const getMenuStyle = () => ({
 export const getMenuItemStyle = () => ({
   position: 'relative',
   borderRadius: 0,
-  Opacity: 0.9,
+  Opacity: 0.7,
   fontSize: 13
 });
 
