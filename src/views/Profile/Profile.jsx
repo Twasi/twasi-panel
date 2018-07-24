@@ -124,22 +124,22 @@ class Profile extends Component {
                   <img
                     src="https://twasi.net/public/img/badges/team_badge.svg"
                     alt="Badge"
-                    style={{ height: '35px', margin: '0px 10px 0px 10px' }}
+                    className="profileBadge selected"
                   />
                   <img
                     src="https://twasi.net/public/img/badges/beta_badge.svg"
                     alt="Badge"
-                    style={{ height: '35px', margin: '0px 10px 0px 10px' }}
+                    className="profileBadge selected"
                   />
                   <img
                     src="https://twasi.net/public/img/badges/gamescom_badge_blue.svg"
                     alt="Badge"
-                    style={{ height: '35px', margin: '0px 10px 0px 10px' }}
+                    className="profileBadge"
                   />
                   <img
                     src="https://twasi.net/public/img/badges/gamescom_badge_blue18.svg"
                     alt="Badge"
-                    style={{ height: '35px', margin: '0px 10px 0px 10px' }}
+                    className="profileBadge"
                   />
                 </CardText>
               </Card>
