@@ -5,7 +5,6 @@
   "dependencies": {
     "@material-ui/core": "^1.4.0",
     "@material-ui/lab": "^1.0.0-alpha.6",
-    "amcharts3": "github:amcharts/amcharts3",
     "amcharts3-react": "github:amcharts/amcharts3-react",
     "graphiql": "^0.11.11",
     "graphql": "^0.13.2",
