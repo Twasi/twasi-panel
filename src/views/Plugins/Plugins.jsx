@@ -245,7 +245,7 @@ class Plugins extends Component {
                   </span>
                 </CardText>
               </Card>
-              <Divider className="marginDivider" />
+              <br />
               <Row>{renderedPlugins}</Row>
             </Tab>
             <Tab
@@ -262,7 +262,7 @@ class Plugins extends Component {
                   Hier findest du alle Kostenlosen Plugins für Twasi.
                 </CardText>
               </Card>
-              <Divider className="marginDivider" />
+              <br />
               <Row>Kosta fast gar nix.</Row>
             </Tab>
             <Tab
@@ -281,7 +281,7 @@ class Plugins extends Component {
                   unterstützt du den Entwickler direkt.
                 </CardText>
               </Card>
-              <Divider className="marginDivider" />
+              <br />
               <Row>LUL ich bezahl doch hier nichts...</Row>
             </Tab>
           </Tabs>
