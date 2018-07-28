@@ -16,6 +16,9 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table';
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import songrequestSync from '../../services/songrequestSync';
@@ -207,14 +210,37 @@ class Songrequests extends React.Component {
               <TableRowColumn>John Doe</TableRowColumn>
               <TableRowColumn>
                 <div>
-                  <img
-                    src={spotifylogo}
-                    alt="spotify"
-                    style={{ height: '30px', marginTop: '5px' }}
-                  />
+                  <Tooltip title="Spotify" placement="top">
+                    <img
+                      src={spotifylogo}
+                      alt="spotify"
+                      style={{ height: '40px', marginTop: '5px' }}
+                    />
+                  </Tooltip>
                 </div>
               </TableRowColumn>
-              <TableRowColumn>Löschen Favorisieren</TableRowColumn>
+              <TableRowColumn>
+                <Tooltip title="Favorisieren" placement="top">
+                  <Button
+                    variant="fab"
+                    className="noshadow"
+                    mini
+                    aria-label="favSong"
+                  >
+                    <Icon style={{ color: '#ffffff' }}>star</Icon>
+                  </Button>
+                </Tooltip>{' '}
+                <Tooltip title="Löschen" placement="top">
+                  <Button
+                    variant="fab"
+                    className="redbg noshadow"
+                    mini
+                    aria-label="deleteSong"
+                  >
+                    <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                  </Button>
+                </Tooltip>
+              </TableRowColumn>
             </TableRow>
           </TableBody>
         </Table>

@@ -10,6 +10,9 @@ import {
   TableRow,
   TableRowColumn
 } from 'material-ui/Table';
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class Commands extends Component {
   render() {
@@ -62,7 +65,28 @@ class Commands extends Component {
               </TableRowColumn>
               <TableRowColumn>Alle</TableRowColumn>
               <TableRowColumn>1.337</TableRowColumn>
-              <TableRowColumn>Bearbeiten Löschen</TableRowColumn>
+              <TableRowColumn>
+                <Tooltip title="Bearbeiten" placement="top">
+                  <Button
+                    variant="fab"
+                    className="tealbg noshadow"
+                    mini
+                    aria-label="editCommand"
+                  >
+                    <Icon style={{ color: '#ffffff' }}>edit</Icon>
+                  </Button>
+                </Tooltip>{' '}
+                <Tooltip title="Löschen" placement="top">
+                  <Button
+                    variant="fab"
+                    className="redbg noshadow"
+                    mini
+                    aria-label="deleteCommand"
+                  >
+                    <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                  </Button>
+                </Tooltip>
+              </TableRowColumn>
             </TableRow>
             <TableRow>
               <TableRowColumn>2</TableRowColumn>
@@ -76,7 +100,28 @@ class Commands extends Component {
               </TableRowColumn>
               <TableRowColumn>Alle</TableRowColumn>
               <TableRowColumn>1.337</TableRowColumn>
-              <TableRowColumn>Bearbeiten Löschen</TableRowColumn>
+              <TableRowColumn>
+                <Tooltip title="Bearbeiten" placement="top">
+                  <Button
+                    variant="fab"
+                    className="tealbg noshadow"
+                    mini
+                    aria-label="editCommand"
+                  >
+                    <Icon style={{ color: '#ffffff' }}>edit</Icon>
+                  </Button>
+                </Tooltip>{' '}
+                <Tooltip title="Löschen" placement="top">
+                  <Button
+                    variant="fab"
+                    className="redbg noshadow"
+                    mini
+                    aria-label="deleteCommand"
+                  >
+                    <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                  </Button>
+                </Tooltip>
+              </TableRowColumn>
             </TableRow>
           </TableBody>
         </Table>

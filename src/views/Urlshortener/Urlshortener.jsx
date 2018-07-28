@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from '@material-ui/core/Icon';
 import RaisedButton from 'material-ui/RaisedButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import {
   Table,
   TableBody,
@@ -18,6 +19,7 @@ import {
   TableRowColumn
 } from 'material-ui/Table';
 import { Card, CardText } from 'material-ui/Card';
+import Button from '@material-ui/core/Button';
 import './_style.css';
 
 class Urlshortener extends Component {
@@ -165,9 +167,26 @@ class Urlshortener extends Component {
                     </a>
                   </TableRowColumn>
                   <TableRowColumn>
-                    <a style={{ color: '#e53935' }} href="#">
-                      Löschen
-                    </a>
+                    <Tooltip title="Bearbeiten" placement="top">
+                      <Button
+                        variant="fab"
+                        className="tealbg noshadow"
+                        mini
+                        aria-label="editCommand"
+                      >
+                        <Icon style={{ color: '#ffffff' }}>edit</Icon>
+                      </Button>
+                    </Tooltip>{' '}
+                    <Tooltip title="Löschen" placement="top">
+                      <Button
+                        variant="fab"
+                        className="redbg noshadow"
+                        mini
+                        aria-label="deleteCommand"
+                      >
+                        <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                      </Button>
+                    </Tooltip>
                   </TableRowColumn>
                 </TableRow>
               </TableBody>

@@ -38,6 +38,15 @@ body {
 .red {
   color: #e53935;
 }
+.redbg {
+  background-color: #e53935 !important;
+}
+.tealbg {
+  background-color: #00aeae !important;
+}
+.noshadow {
+  box-shadow: none !important;
+}
 .marginDivider {
   margin-top: 23px !important;
   margin-bottom: 23px !important;
