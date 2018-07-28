@@ -10,7 +10,7 @@ export default {
   'sidebar.status': 'Status',
   'sidebar.settings': 'Einstellungen',
   'sidebar.profile': 'Profil',
-  'sidebar.plugins': 'Erweiterungen',
+  'sidebar.plugins': 'Plugin Store',
   'sidebar.fakechat': 'Fakechat',
   'sidebar.commands': 'Befehle',
   'sidebar.songrequests': 'Songrequests',

@@ -21,18 +21,19 @@ import { Card, CardText } from 'material-ui/Card';
 import './_style.css';
 
 class Urlshortener extends Component {
+  /*
   constructor(props) {
     super(props);
     this.state = {
       inputValue: ''
     };
   }
-
   updateInputValue(evt) {
     this.setState({
       inputValue: evt.target.value
     });
   }
+  */
 
   render() {
     return (
@@ -68,7 +69,7 @@ class Urlshortener extends Component {
                           style={{
                             backgroundColor: '#e0e0e0',
                             padding: '0px 15px 0px 15px',
-                            zIndex: '99'
+                            zIndex: '1'
                           }}
                           position="start"
                         >
@@ -79,6 +80,7 @@ class Urlshortener extends Component {
                   />
                 </CardText>
               </Card>
+              {/*
               <br />
               <Card className="pluginCard">
                 <CardText>
@@ -88,6 +90,7 @@ class Urlshortener extends Component {
                   </samp>
                 </CardText>
               </Card>
+              */}
               <span
                 style={{
                   justifyContent: 'center',
@@ -99,8 +102,6 @@ class Urlshortener extends Component {
                 <Icon
                   style={{
                     fontSize: 36,
-                    backgroundColor: 'rgb(224, 224, 224)',
-                    borderRadius: '50px',
                     color: '#5e5e5e'
                   }}
                 >
@@ -110,7 +111,7 @@ class Urlshortener extends Component {
               <Card className="pluginCard">
                 <CardText>
                   <TextField
-                    helperText="Auf welche Domain soll dein Shortlink weiterleiten?"
+                    helperText="Auf welche Domain soll dein Shortlink leiten?"
                     fullWidth
                     id="shortlink-redirection"
                     InputProps={{
@@ -119,7 +120,7 @@ class Urlshortener extends Component {
                           style={{
                             backgroundColor: '#e0e0e0',
                             padding: '0px 15px 0px 15px',
-                            zIndex: '99'
+                            zIndex: '1'
                           }}
                           position="start"
                         >
