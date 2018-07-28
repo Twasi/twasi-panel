@@ -8,6 +8,7 @@ import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -220,9 +221,70 @@ class Plugins extends Component {
             </Col>
           </Row>
           <br />
-          <Divider />
-          <br />
-          <Row>{renderedPlugins}</Row>
+          <Tabs
+            tabItemContainerStyle={{
+              backgroundColor: '#fff'
+            }}
+            inkBarStyle={{ backgroundColor: '#00aeae' }}
+            contentContainerStyle={{ paddingTop: '23px' }}
+          >
+            <Tab
+              label="Alle"
+              style={{ borderBottom: '2px solid #cacaca2b' }}
+              buttonStyle={{
+                color: '#000',
+                paddingLeft: '23px',
+                fontSize: '13px'
+              }}
+            >
+              <Card className="pluginCard">
+                <CardText>
+                  <span>
+                    Hier findest du die gesamte Sammlung an Plugins, die für
+                    Twasi erstellt wurden.
+                  </span>
+                </CardText>
+              </Card>
+              <Divider className="marginDivider" />
+              <Row>{renderedPlugins}</Row>
+            </Tab>
+            <Tab
+              label="Kostenlos"
+              style={{ borderBottom: '2px solid #cacaca2b' }}
+              buttonStyle={{
+                color: '#000',
+                paddingLeft: '23px',
+                fontSize: '13px'
+              }}
+            >
+              <Card className="pluginCard">
+                <CardText>
+                  Hier findest du alle Kostenlosen Plugins für Twasi.
+                </CardText>
+              </Card>
+              <Divider className="marginDivider" />
+              <Row>Kosta fast gar nix.</Row>
+            </Tab>
+            <Tab
+              label="Kostenpflichtig"
+              style={{ borderBottom: '2px solid #cacaca2b' }}
+              buttonStyle={{
+                color: '#000',
+                paddingLeft: '23px',
+                fontSize: '13px'
+              }}
+            >
+              <Card className="pluginCard">
+                <CardText>
+                  Hier findest du alle Kostenpflichtigen Plugins für Twasi.
+                  <br />Durch den Kauf eines Kostenpflichtigen Plugins
+                  unterstützt du den Entwickler direkt.
+                </CardText>
+              </Card>
+              <Divider className="marginDivider" />
+              <Row>LUL ich bezahl doch hier nichts...</Row>
+            </Tab>
+          </Tabs>
         </Paper>
       </div>
     );
