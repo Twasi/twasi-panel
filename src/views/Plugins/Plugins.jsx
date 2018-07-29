@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col } from 'react-grid-system';
+import { Row, Col, Container } from 'react-grid-system';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -23,7 +23,7 @@ class Plugins extends Component {
     const { plugins, installPlugin, uninstallPlugin } = this.props;
 
     const renderedPlugins = plugins.map(plugin => (
-      <Col sm={4}>
+      <Col style={{ marginTop: '30px' }} sm={4}>
         <Card className="pluginCard">
           <CardHeader
             avatar=""
@@ -245,7 +245,6 @@ class Plugins extends Component {
                   </span>
                 </CardText>
               </Card>
-              <br />
               <Row>{renderedPlugins}</Row>
             </Tab>
             <Tab
@@ -262,7 +261,6 @@ class Plugins extends Component {
                   Hier findest du alle Kostenlosen Plugins für Twasi.
                 </CardText>
               </Card>
-              <br />
               <Row>Kosta fast gar nix.</Row>
             </Tab>
             <Tab
@@ -281,7 +279,6 @@ class Plugins extends Component {
                   unterstützt du den Entwickler direkt.
                 </CardText>
               </Card>
-              <br />
               <Row>LUL ich bezahl doch hier nichts...</Row>
             </Tab>
           </Tabs>
