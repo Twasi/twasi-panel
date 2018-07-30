@@ -177,10 +177,6 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.1.8"
   resolved "https://codeload.github.com/amcharts/amcharts3-react/tar.gz/a444df9ea1686461d4e1df2f5a0a2dcd07f39b4b"
 
-"amcharts3@github:amcharts/amcharts3":
-  version "3.21.13"
-  resolved "https://codeload.github.com/amcharts/amcharts3/tar.gz/00193340e7bc1cbbdd76f2c3e4f96a7f028e85e3"
-
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"

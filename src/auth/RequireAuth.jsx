@@ -12,14 +12,6 @@ import withService from '../views/common/withService';
 const tokenExpiration = 2 * 60 * 60 * 1000;
 
 class RequireAuth extends React.Component {
-  constructor(props) {
-    super(props);
-
-    window.testLocal = (address = 'http://localhost:3000/callback') => {
-      window.open(`${address}?jwt=${props.jwt}`, '_blank');
-    };
-  }
-
   componentWillMount() {
     const { isAuthenticated, isLoading, authenticate, updateIsLoading, updateUserData, graph, history, location, optional } = this.props;
 
@@ -89,6 +81,10 @@ class RequireAuth extends React.Component {
 
   render() {
     const { isAuthenticated, children } = this.props;
+
+    window.testLocal = () => {
+      window.location.href = `http://localhost:3000/callback?jwt=${this.props.jwt}`;
+    };
 
     if (isAuthenticated && children) {
       return children;
