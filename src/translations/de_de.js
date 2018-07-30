@@ -45,6 +45,7 @@ export default {
   'status.eventlog': 'Ereignislog',
 
   // Plugins
+  'plugins.headline': 'Plugin Store',
   'plugins.explanation':
     'Plugins sind Erweiterungen für Twasi. Du bestimmst, welche Plugins du für deinen Persönlichen Bot installieren bzw. deinstallieren möchtest.',
   'plugins.card_headline': 'Was sind Plugins?',
@@ -63,12 +64,32 @@ export default {
   'settings.unsaved': 'Ungespeicherte Änderungen',
   'settings.selectLanguage': 'Wähle eine Sprache',
 
+  // Profil
+  'profile.your_data': 'Deine Twasi Daten',
+  'profile.your_data_subline': 'Hier findest du deine Twasi Daten.',
+  'profile.your_data_refreshbutton': 'Aktualisieren',
+  'profile.your_data_twitchname': 'Twitch Name',
+  'profile.your_data_twitchid': 'Twitch ID',
+  'profile.your_data_rank': 'Twasi Rang',
+  'profile.your_data_registerdate': 'Registriert seit',
+  'profile.your_data_delete': 'Löschen',
+  'profile.your_data_deletelink': 'Account Löschen',
+  'profile.badges': 'Abzeichen',
+  'profile.badges_subline':
+    'Hier kannst du dein Aussehen in Leaderboards anpassen. Du kannst bis zu 3 Badges gleichzeitig auswählen.',
+  'profile.badges_savebutton': 'Speichern',
+  'profile.badges_yourbadges': 'Deine Abzeichen',
+  'profile.social': 'Social Media',
+  'profile.social_subline':
+    'Hier kannst du deine Social Media Pages verlinken. Plugins können mit deiner Zustimmung auf bestimmte Daten der verbundenen Accounts zurückgreifen.',
+  'profile.social_connected_as': 'Verbunden als',
+  'profile.social_disconnect': 'Trennen',
+  'profile.social_permissions': 'Berechtigungen',
+  'profile.social_notconnected': 'Noch nicht verbunden',
+
   // Commands
   'commands.title': 'Befehle',
   'commands.addcommand': 'Befehl Hinzufügen',
-
-  // Plugins
-  'plugins.headline': 'Plugin Store',
 
   // AccountSwitch
   'accountswitch.switch_account': 'Account wechseln',
