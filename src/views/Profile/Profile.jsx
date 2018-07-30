@@ -44,23 +44,29 @@ class Profile extends Component {
           <Col sm={6}>
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">
-                Deine Twasi Daten
+                <FormattedMessage id="profile.your_data" />
                 <span style={{ float: 'right' }}>
                   <RaisedButton
                     backgroundColor="#00aeae"
                     labelColor="#ffffff"
-                    label="Daten aktualisieren"
+                    label={
+                      <FormattedMessage id="profile.your_data_refreshbutton" />
+                    }
                   />
                 </span>
               </h4>
-              <small>Hier findest du deine Twasi Daten.</small>
+              <small>
+                <FormattedMessage id="profile.your_data_subline" />
+              </small>
               <Divider className="marginDivider" />
               <Card className="pluginCard">
                 <CardText>
                   <Table>
                     <TableBody>
                       <TableRow>
-                        <TableCell>Twitch Name</TableCell>
+                        <TableCell>
+                          <FormattedMessage id="profile.your_data_twitchname" />
+                        </TableCell>
                         <TableCell>
                           <b title={this.props.user.name}>
                             {this.props.user.displayName}
@@ -68,30 +74,36 @@ class Profile extends Component {
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Twitch ID</TableCell>
+                        <TableCell>
+                          <FormattedMessage id="profile.your_data_twitchid" />
+                        </TableCell>
                         <TableCell>
                           <b>{this.props.user.twitchid}</b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Twasi Rang</TableCell>
+                        <TableCell>
+                          <FormattedMessage id="profile.your_data_rank" />
+                        </TableCell>
                         <TableCell>
                           <b>{this.props.user.rank}</b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell>Registriert seit</TableCell>
+                        <TableCell>
+                          <FormattedMessage id="profile.your_data_registerdate" />
+                        </TableCell>
                         <TableCell>
                           <b>01.01.1997</b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell style={{ borderBottom: '0px' }}>
-                          Löschen
+                          <FormattedMessage id="profile.your_data_delete" />
                         </TableCell>
                         <TableCell style={{ borderBottom: '0px' }}>
                           <a href="#" className="red">
-                            Account Löschen
+                            <FormattedMessage id="profile.your_data_deletelink" />
                           </a>
                         </TableCell>
                       </TableRow>
@@ -102,23 +114,24 @@ class Profile extends Component {
             </Paper>
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">
-                Badges
+                <FormattedMessage id="profile.badges" />
                 <span style={{ float: 'right' }}>
                   <RaisedButton
                     backgroundColor="#00aeae"
                     labelColor="#ffffff"
-                    label="Speichern"
+                    label={<FormattedMessage id="profile.badges_savebutton" />}
                   />
                 </span>
               </h4>
               <small>
-                Hier kannst du dein Aussehen in Leaderboards anpassen.<br /> Du
-                kannst bis zu 3 Badges gleichzeitig auswählen.
+                <FormattedMessage id="profile.badges_subline" />
               </small>
               <Divider className="marginDivider" />
               <Card className="pluginCard">
                 <CardText>
-                  <h4 className="pageContainerTitle">Deine Badges</h4>
+                  <h4 className="pageContainerTitle">
+                    <FormattedMessage id="profile.badges_yourbadges" />
+                  </h4>
                   <Divider />
                   <br />
                   <img
@@ -147,11 +160,11 @@ class Profile extends Component {
           </Col>
           <Col sm={6}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">Social Media</h4>
+              <h4 className="pageContainerTitle">
+                <FormattedMessage id="profile.social" />
+              </h4>
               <small>
-                Hier kannst du deine Social Media Pages verlinken.<br /> Plugins
-                können mit deiner Zustimmung auf bestimmte Daten der verbundenen
-                Accounts zurückgreifen.
+                <FormattedMessage id="profile.social_subline" />
               </small>
               <Divider className="marginDivider" />
               <Row>
@@ -179,12 +192,13 @@ class Profile extends Component {
                       />
                     </span>
                     <small>
-                      Verbunden als <b>@Blechkelle</b>.{' '}
+                      <FormattedMessage id="profile.social_connected_as" />{' '}
+                      <b>@Blechkelle</b>.{' '}
                       <a style={{ color: '#e53935' }} href="#">
-                        Trennen
+                        <FormattedMessage id="profile.social_disconnect" />
                       </a>{' '}
                       <a style={{ color: '#00aeae' }} href="#">
-                        Berechtigungen
+                        <FormattedMessage id="profile.social_permissions" />
                       </a>
                     </small>
                   </RaisedButton>
@@ -219,7 +233,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
@@ -252,7 +268,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
@@ -285,7 +303,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
@@ -318,7 +338,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
@@ -351,7 +373,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
@@ -384,7 +408,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
@@ -417,7 +443,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
@@ -450,7 +478,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
@@ -483,7 +513,9 @@ class Profile extends Component {
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
-                    <small>Noch nicht verbunden.</small>
+                    <small>
+                      <FormattedMessage id="profile.social_notconnected" />
+                    </small>
                   </div>
                 </Col>
               </Row>
