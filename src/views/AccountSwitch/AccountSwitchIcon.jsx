@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import AccountSwitch from './AccountSwitch';
@@ -21,7 +22,10 @@ class AccountSwitchIcon extends React.Component {
   render() {
     return (
       <div>
-        <Tooltip title="Swap Account" placement="right">
+        <Tooltip
+          title={<FormattedMessage id="accountswitch.switch_account" />}
+          placement="right"
+        >
           <Icon
             className="swapIcon"
             style={{ fontSize: 36, float: 'right' }}

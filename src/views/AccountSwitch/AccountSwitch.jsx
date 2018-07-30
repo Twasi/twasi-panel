@@ -9,12 +9,13 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
+import { FormattedMessage } from 'react-intl';
 // import PersonIcon from '@material-ui/icons/Person';
 // import AddIcon from '@material-ui/icons/Add';
 
 import './_style.css';
 
-const accounts = ['Larcce', 'DieserMerlin', 'mekalix'];
+const accounts = ['Larcce', 'DieserMerlin', 'mekalix', 'Spendendose'];
 const styles = {
   paper: {
     borderRadius: 0,
@@ -42,7 +43,9 @@ class AccountSwitch extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-        <DialogTitle id="simple-dialog-title">Account wechseln</DialogTitle>
+        <DialogTitle id="simple-dialog-title">
+          <FormattedMessage id="accountswitch.switch_account" />
+        </DialogTitle>
         <div>
           <List>
             <ListItem button>

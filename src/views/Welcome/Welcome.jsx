@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';

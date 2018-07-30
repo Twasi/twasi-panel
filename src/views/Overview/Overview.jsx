@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
@@ -32,7 +33,9 @@ class Overview extends Component {
                   <h2 style={{ margin: '7px 0px 0px' }}>
                     <span>1337</span>
                   </h2>
-                  <small>Follower</small>
+                  <small>
+                    <FormattedMessage id="overview.follower" />
+                  </small>
                 </div>
               </div>
             </Col>
@@ -42,7 +45,9 @@ class Overview extends Component {
                   <h2 style={{ margin: '7px 0px 0px' }}>
                     <span>1337</span>
                   </h2>
-                  <small>Zuschauer getrackt</small>
+                  <small>
+                    <FormattedMessage id="overview.viewer" />
+                  </small>
                 </div>
               </div>
             </Col>
@@ -52,7 +57,9 @@ class Overview extends Component {
                   <h2 style={{ margin: '7px 0px 0px' }}>
                     <span>1337</span>
                   </h2>
-                  <small>Chatnachrichten getrackt</small>
+                  <small>
+                    <FormattedMessage id="overview.messages" />
+                  </small>
                 </div>
               </div>
             </Col>
@@ -62,7 +69,9 @@ class Overview extends Component {
                   <h2 style={{ margin: '7px 0px 0px' }}>
                     <span>1337</span>
                   </h2>
-                  <small>Streams getrackt</small>
+                  <small>
+                    <FormattedMessage id="overview.streams" />
+                  </small>
                 </div>
               </div>
             </Col>
@@ -77,7 +86,7 @@ class Overview extends Component {
             contentContainerStyle={{ paddingTop: '23px' }}
           >
             <Tab
-              label="Letzter Stream"
+              label={<FormattedMessage id="overview.laststream" />}
               buttonStyle={{
                 color: '#000',
                 float: 'left',
@@ -94,22 +103,22 @@ class Overview extends Component {
                 >
                   <TableRow className="overviewTableRow">
                     <TableHeaderColumn className="overviewTableColumn">
-                      Stream ID
+                      <FormattedMessage id="overview.table_id" />
                     </TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
-                      Dauer
+                      <FormattedMessage id="overview.table_duration" />
                     </TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
-                      Follower +
+                      <FormattedMessage id="overview.table_follower" />
                     </TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
-                      Aufrufe +
+                      <FormattedMessage id="overview.table_views" />
                     </TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
-                      Zuschauer Maximum
+                      <FormattedMessage id="overview.table_viewermax" />
                     </TableHeaderColumn>
                     <TableHeaderColumn className="overviewTableColumn">
-                      Zuschauer Durchschnitt
+                      <FormattedMessage id="overview.table_average" />
                     </TableHeaderColumn>
                   </TableRow>
                 </TableHeader>

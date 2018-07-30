@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col, Container } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -89,11 +89,15 @@ class Plugins extends Component {
           </CardText>
           <CardText expandable>
             <p>
-              <b>Version {plugin.version}</b>
+              <b>
+                <FormattedMessage id="plugins.version" /> {plugin.version}
+              </b>
             </p>
             {plugin.description}
             <p>
-              <b>Commands</b>
+              <b>
+                <FormattedMessage id="plugins.commands" />
+              </b>
             </p>
             {plugin.commands.join(', ')}
           </CardText>
@@ -212,11 +216,11 @@ class Plugins extends Component {
         <Paper className="pageContainer">
           <Row>
             <Col sm={12}>
-              <h4 className="pageContainerTitle">Was sind Plugins?</h4>
+              <h4 className="pageContainerTitle">
+                <FormattedMessage id="plugins.card_headline" />
+              </h4>
               <small>
-                Plugins sind Erweiterungen für Twasi.<br />
-                Du bestimmst, welche Plugins du für deinen Persönlichen Bot
-                installieren bzw. deinstallieren möchtest.
+                <FormattedMessage id="plugins.explanation" />
               </small>
             </Col>
           </Row>
@@ -229,7 +233,7 @@ class Plugins extends Component {
             contentContainerStyle={{ paddingTop: '23px' }}
           >
             <Tab
-              label="Alle"
+              label={<FormattedMessage id="plugins.all" />}
               style={{ borderBottom: '2px solid #cacaca2b' }}
               buttonStyle={{
                 color: '#000',
@@ -240,15 +244,14 @@ class Plugins extends Component {
               <Card className="pluginCard">
                 <CardText>
                   <span>
-                    Hier findest du die gesamte Sammlung an Plugins, die für
-                    Twasi erstellt wurden.
+                    <FormattedMessage id="plugins.all_text" />
                   </span>
                 </CardText>
               </Card>
               <Row>{renderedPlugins}</Row>
             </Tab>
             <Tab
-              label="Kostenlos"
+              label={<FormattedMessage id="plugins.free" />}
               style={{ borderBottom: '2px solid #cacaca2b' }}
               buttonStyle={{
                 color: '#000',
@@ -258,13 +261,12 @@ class Plugins extends Component {
             >
               <Card className="pluginCard">
                 <CardText>
-                  Hier findest du alle Kostenlosen Plugins für Twasi.
+                  <FormattedMessage id="plugins.free_text" />
                 </CardText>
               </Card>
-              <Row>Kosta fast gar nix.</Row>
             </Tab>
             <Tab
-              label="Kostenpflichtig"
+              label={<FormattedMessage id="plugins.paid" />}
               style={{ borderBottom: '2px solid #cacaca2b' }}
               buttonStyle={{
                 color: '#000',
@@ -274,12 +276,9 @@ class Plugins extends Component {
             >
               <Card className="pluginCard">
                 <CardText>
-                  Hier findest du alle Kostenpflichtigen Plugins für Twasi.
-                  <br />Durch den Kauf eines Kostenpflichtigen Plugins
-                  unterstützt du den Entwickler direkt.
+                  <FormattedMessage id="plugins.paid_text" />
                 </CardText>
               </Card>
-              <Row>LUL ich bezahl doch hier nichts...</Row>
             </Tab>
           </Tabs>
         </Paper>
