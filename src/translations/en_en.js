@@ -17,6 +17,7 @@ export default {
   'sidebar.docs': 'Documentation',
   'sidebar.logout': 'Logout',
   'sidebar.urlshortener': 'URL Shortener',
+  'sidebar.navigation_headline': 'Navigation',
 
   // Sidebar
   'header.give_feedback': 'Feedback',
@@ -51,8 +52,7 @@ export default {
   'plugins.card_headline': 'What are plugins?',
   'plugins.version': 'Version',
   'plugins.commands': 'Commands',
-  'plugins.all_text':
-    'These are all plugins you can find for Twasi.',
+  'plugins.all_text': 'These are all plugins you can find for Twasi.',
   'plugins.free_text': 'These plugins are free to use.',
   'plugins.paid_text':
     'These Plugins do you have to buy. If you buy a plugin you support the developer directly.',
@@ -95,5 +95,15 @@ export default {
   'accountswitch.switch_account': 'Switch Account',
 
   // Public
-  'public.headline': 'Public'
+  'public.headline': 'Public',
+
+  // Songrequests
+  'songrequest.requestby': 'Requestet von',
+  'songrequest.table_id': 'ID',
+  'songrequest.table_title': 'Titel',
+  'songrequest.table_channel': 'Kanal',
+  'songrequest.table_duration': 'Dauer',
+  'songrequest.table_requestby': 'Requestet von',
+  'songrequest.table_platform': 'Platform',
+  'songrequest.table_actions': 'Aktionen'
 };

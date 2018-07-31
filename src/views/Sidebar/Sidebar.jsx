@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
 import Paper from 'material-ui/Paper';
@@ -120,7 +120,9 @@ class Sidebar extends Component {
     return (
       <div>
         <Paper style={getMenuStyle()} className="sidebar">
-          <div style={getHeaderMenuItem()}>Navigation</div>
+          <div style={getHeaderMenuItem()}>
+            <FormattedMessage id="sidebar.navigation_headline" />
+          </div>
           <Menu
             onChange={this.handleClick}
             value={selectedKey}

@@ -17,6 +17,7 @@ export default {
   'sidebar.docs': 'Dokumentation',
   'sidebar.logout': 'Ausloggen',
   'sidebar.urlshortener': 'URL Shortener',
+  'sidebar.navigation_headline': 'Navigation',
 
   // Sidebar
   'header.give_feedback': 'Feedback geben',
@@ -95,5 +96,15 @@ export default {
   'accountswitch.switch_account': 'Account wechseln',
 
   // Public
-  'public.headline': 'Public'
+  'public.headline': 'Public',
+
+  // Songrequests
+  'songrequest.requestby': 'Requestet von',
+  'songrequest.table_id': 'ID',
+  'songrequest.table_title': 'Titel',
+  'songrequest.table_channel': 'Kanal',
+  'songrequest.table_duration': 'Dauer',
+  'songrequest.table_requestby': 'Requestet von',
+  'songrequest.table_platform': 'Platform',
+  'songrequest.table_actions': 'Aktionen'
 };

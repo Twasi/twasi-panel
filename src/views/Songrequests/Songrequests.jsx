@@ -169,7 +169,7 @@ class Songrequests extends React.Component {
               <small>Queen</small>
               <br />
               <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
-                Requestet von <b>John Doe</b>
+                <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
               </em>
             </h4>
             <Slider
@@ -192,13 +192,27 @@ class Songrequests extends React.Component {
             selectable={false}
           >
             <TableRow className="TableRow">
-              <TableHeaderColumn>ID</TableHeaderColumn>
-              <TableHeaderColumn>Titel</TableHeaderColumn>
-              <TableHeaderColumn>Kanal</TableHeaderColumn>
-              <TableHeaderColumn>Dauer</TableHeaderColumn>
-              <TableHeaderColumn>Requestet von</TableHeaderColumn>
-              <TableHeaderColumn>Platform</TableHeaderColumn>
-              <TableHeaderColumn>Aktionen</TableHeaderColumn>
+              <TableHeaderColumn>
+                <FormattedMessage id="songrequest.table_id" />
+              </TableHeaderColumn>
+              <TableHeaderColumn>
+                <FormattedMessage id="songrequest.table_title" />
+              </TableHeaderColumn>
+              <TableHeaderColumn>
+                <FormattedMessage id="songrequest.table_channel" />
+              </TableHeaderColumn>
+              <TableHeaderColumn>
+                <FormattedMessage id="songrequest.table_duration" />
+              </TableHeaderColumn>
+              <TableHeaderColumn>
+                <FormattedMessage id="songrequest.table_requestby" />
+              </TableHeaderColumn>
+              <TableHeaderColumn>
+                <FormattedMessage id="songrequest.table_platform" />
+              </TableHeaderColumn>
+              <TableHeaderColumn>
+                <FormattedMessage id="songrequest.table_actions" />
+              </TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
