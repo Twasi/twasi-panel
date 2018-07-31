@@ -1,98 +1,98 @@
 export default {
   // General
-  'common.save': 'Speichern',
+  'common.save': 'Save',
 
   // Welcome
-  'welcome.headline': 'Willkommen bei Twasi',
+  'welcome.headline': 'Welcome to Twasi',
 
   // Sidebar
-  'sidebar.overview': 'Übersicht',
+  'sidebar.overview': 'Overview',
   'sidebar.status': 'Status',
-  'sidebar.settings': 'Einstellungen',
-  'sidebar.profile': 'Profil',
+  'sidebar.settings': 'Settings',
+  'sidebar.profile': 'Profile',
   'sidebar.plugins': 'Plugin Store',
   'sidebar.fakechat': 'Fakechat',
-  'sidebar.commands': 'Befehle',
+  'sidebar.commands': 'Commands',
   'sidebar.songrequests': 'Songrequests',
-  'sidebar.docs': 'Dokumentation',
-  'sidebar.logout': 'Ausloggen',
+  'sidebar.docs': 'Documentation',
+  'sidebar.logout': 'Logout',
   'sidebar.urlshortener': 'URL Shortener',
 
   // Sidebar
-  'header.give_feedback': 'Feedback geben',
+  'header.give_feedback': 'Feedback',
 
   // fakechat
   'fakechat.explanation':
-    'Im Fakechat kannst du alle Funktionen des Bots unabhängig deines Chats testen.',
+    'Through Fakechat you can test commands without using your own Twitch Chat.',
 
   // Overview
   'overview.follower': 'Follower',
-  'overview.viewer': 'Zuschauer getrackt',
-  'overview.messages': 'Chatnachrichten getrackt',
-  'overview.streams': 'Streams getrackt',
-  'overview.laststream': 'Letzter Stream',
+  'overview.viewer': 'Tracked Viewer',
+  'overview.messages': 'Tracked Messages',
+  'overview.streams': 'Tracked Streams',
+  'overview.laststream': 'Last Stream',
   'overview.table_id': 'Stream ID',
-  'overview.table_duration': 'Dauer',
+  'overview.table_duration': 'Duration',
   'overview.table_follower': 'Follower +',
-  'overview.table_views': 'Aufrufe +',
-  'overview.table_viewermax': 'Zuschauer Maximum',
-  'overview.table_average': 'Zuschauer Durchschnitt',
+  'overview.table_views': 'Views +',
+  'overview.table_viewermax': 'Max Viewer',
+  'overview.table_average': 'Average Viewer',
 
   // Status
-  'status.started': 'Läuft',
-  'status.stopped': 'Gestoppt',
-  'status.manage': 'Verwalten',
-  'status.eventlog': 'Ereignislog',
+  'status.started': 'Working',
+  'status.stopped': 'Stopped',
+  'status.manage': 'Manage',
+  'status.eventlog': 'Eventlog',
 
   // Plugins
   'plugins.headline': 'Plugin Store',
   'plugins.explanation':
-    'Plugins sind Erweiterungen für Twasi. Du bestimmst, welche Plugins du für deinen Persönlichen Bot installieren bzw. deinstallieren möchtest.',
-  'plugins.card_headline': 'Was sind Plugins?',
+    'Plugins are extentions for Twasi. You decide which plugins do you want to install and uninstall for your own Bot.',
+  'plugins.card_headline': 'What are plugins?',
   'plugins.version': 'Version',
-  'plugins.commands': 'Befehle',
+  'plugins.commands': 'Commands',
   'plugins.all_text':
-    'Hier findest du die gesamte Sammlung an Plugins, die für Twasi erstellt wurden.',
-  'plugins.free_text': 'Hier findest du alle Kostenlosen Plugins für Twasi.',
+    'These are all plugins you can find for Twasi.',
+  'plugins.free_text': 'These plugins are free to use.',
   'plugins.paid_text':
-    'Hier findest du alle Kostenpflichtigen Plugins für Twasi. Durch den Kauf eines Kostenpflichtigen Plugins unterstützt du den Entwickler direkt.',
-  'plugins.all': 'Alle',
-  'plugins.free': 'Kostenlos',
-  'plugins.paid': 'Kostenpflichtig',
+    'These Plugins do you have to buy. If you buy a plugin you support the developer directly.',
+  'plugins.all': 'All',
+  'plugins.free': 'Free plugins',
+  'plugins.paid': 'Paid plugins',
 
   // Settings
-  'settings.unsaved': 'Ungespeicherte Änderungen',
-  'settings.selectLanguage': 'Wähle eine Sprache',
+  'settings.unsaved': 'Unsaved Changes',
+  'settings.selectLanguage': 'Select your language',
 
   // Profil
-  'profile.your_data': 'Deine Twasi Daten',
-  'profile.your_data_subline': 'Hier findest du deine Twasi Daten.',
-  'profile.your_data_refreshbutton': 'Aktualisieren',
+  'profile.your_data': 'Your Twasi Data',
+  'profile.your_data_subline': 'Here you can find your Twasi Data.',
+  'profile.your_data_refreshbutton': 'Refresh',
   'profile.your_data_twitchname': 'Twitch Name',
   'profile.your_data_twitchid': 'Twitch ID',
-  'profile.your_data_rank': 'Twasi Rang',
-  'profile.your_data_registerdate': 'Registriert seit',
-  'profile.your_data_delete': 'Löschen',
-  'profile.your_data_deletelink': 'Account Löschen',
-  'profile.badges': 'Abzeichen',
+  'profile.your_data_rank': 'Twasi Rank',
+  'profile.your_data_registerdate': 'Registered since',
+  'profile.your_data_delete': 'Delete',
+  'profile.your_data_deletelink': 'Delete Account',
+  'profile.badges': 'Badges',
   'profile.badges_subline':
-    'Hier kannst du dein Aussehen in Leaderboards anpassen. Du kannst bis zu 3 Badges gleichzeitig auswählen.',
-  'profile.badges_savebutton': 'Speichern',
-  'profile.badges_yourbadges': 'Deine Abzeichen',
+    'Here you can change your Badges at the Leaderboard. You can use 3 Badges at the same time.',
+  'profile.badges_savebutton': 'Save',
+  'profile.badges_yourbadges': 'Your Badges',
   'profile.social': 'Social Media',
   'profile.social_subline':
-    'Hier kannst du deine Social Media Pages verlinken. Plugins können mit deiner Zustimmung auf bestimmte Daten der verbundenen Accounts zurückgreifen.',
-  'profile.social_connected_as': 'Verbunden als',
-  'profile.social_disconnect': 'Trennen',
-  'profile.social_permissions': 'Berechtigungen',
-  'profile.social_notconnected': 'Noch nicht verbunden',
+    'Here you can link your Social Media. Plugins can use information from connected accounts if you want.',
+  'profile.social_connected_as': 'Connected as',
+  'profile.social_disconnect': 'Disconnect',
+  'profile.social_permissions': 'Permissions',
+  'profile.social_notconnected': 'Not connected',
 
   // Commands
-  'commands.title': 'Befehle',
-  'commands.addcommand': 'Befehl Hinzufügen',
+  'commands.title': 'Commands',
+  'commands.addcommand': 'Add Commands',
 
   // AccountSwitch
-  'accountswitch.switch_account': 'Account wechseln',
+  'accountswitch.switch_account': 'Switch Account',
 
   // Public
   'public.headline': 'Public'
