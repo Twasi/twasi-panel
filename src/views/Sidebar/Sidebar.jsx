@@ -57,6 +57,12 @@ class Sidebar extends Component {
         name: 'sidebar.songrequests'
       },
       {
+        key: 'giveaways',
+        path: '/giveaways',
+        icon: 'library_music',
+        name: 'sidebar.giveaways'
+      },
+      {
         key: 'urlshortener',
         path: '/urlshortener',
         icon: 'link',

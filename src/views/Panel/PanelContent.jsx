@@ -15,6 +15,7 @@ import Profile from '../Profile/Profile';
 import Urlshortener from '../Urlshortener/Urlshortener';
 import Commands from '../Commands/Commands';
 import Songrequests from '../Songrequests/Songrequests';
+import Giveaways from '../Giveaways';
 import DevTools from '../DevTools/DevTools';
 
 const PanelContent = () => (
@@ -34,6 +35,7 @@ const PanelContent = () => (
           <Route path="/fakechat" exact component={Fakechat} />
           <Route path="/dev" exact component={DevTools} />
           <Route path="/songrequests" exact component={Songrequests} />
+          <Route path="/giveaways" exact component={Giveaways} />
         </Switch>
       </div>
       <div style={{ clear: 'both' }} />

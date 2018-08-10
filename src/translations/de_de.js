@@ -17,6 +17,7 @@ export default {
   'sidebar.docs': 'Dokumentation',
   'sidebar.logout': 'Ausloggen',
   'sidebar.urlshortener': 'URL Shortener',
+  'sidebar.giveaways': 'Giveaways',
   'sidebar.navigation_headline': 'Navigation',
 
   // Sidebar
