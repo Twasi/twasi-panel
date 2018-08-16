@@ -7,6 +7,7 @@ class SongrequestSync {
     this.socketAddress = this.socketAddress.replace('https://', 'wss://');
 
     this.connect = this.connect.bind(this);
+    this.isConnected = this.isConnected.bind(this);
     this.onOpen = this.onOpen.bind(this);
     this.sendPing = this.sendPing.bind(this);
     this.sendObject = this.sendObject.bind(this);
@@ -14,11 +15,19 @@ class SongrequestSync {
   }
 
   connect() {
+    if (this.isConnected()) {
+      return;
+    }
+
     SongrequestSync.log(`Connecting to ${this.socketAddress}`);
     this.socket = new WebSocket(this.socketAddress);
 
     this.socket.addEventListener('open', this.onOpen);
     this.socket.addEventListener('message', this.onMessage);
+  }
+
+  isConnected() {
+    return this.socket && this.socket.readyState === this.socket.OPEN;
   }
 
   onOpen() {
