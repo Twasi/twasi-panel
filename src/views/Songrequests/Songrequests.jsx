@@ -48,6 +48,8 @@ class Songrequests extends React.Component {
       this.setState({ sync: { ...this.state.sync, ping } });
     this.sync.onStatus = status =>
       this.setState({ sync: { ...this.state.sync, status } });
+
+    this.sync.requestStatus();
   }
 
   handleClick = event => {

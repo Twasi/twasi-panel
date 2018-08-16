@@ -46,6 +46,14 @@ class SongrequestSync {
     this.sendObject({ type: 'ping' });
   }
 
+  requestStatus() {
+    if (this.isConnected) {
+      this.onStatus('connected');
+    } else {
+      this.onStatus('disconnected');
+    }
+  }
+
   onMessage(msg) {
     SongrequestSync.log(`< ${msg.data}`);
     const parsed = JSON.parse(msg.data);
