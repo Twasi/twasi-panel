@@ -14,8 +14,17 @@ import AppBar from '@material-ui/core/AppBar';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 
 import './_style.css';
+
+function TabContainer(props) {
+  return (
+    <Typography component="div">
+      {props.children}
+    </Typography>
+  );
+}
 
 class Giveaways extends Component {
   state = {
@@ -93,51 +102,115 @@ class Giveaways extends Component {
                           textColor="primary"
                           fullWidth
                         >
-                          <Tab label="Zufälliger User" />
+                          <Tab label="Keyword" />
                           <Tab label="Zufällige Zahl" />
                         </Tabs>
                       </AppBar>
-                      Einstellungen
-                    </Grid>
-                  </Grid>
-                  <br />
-                  <Grid container spacing={16}>
-                    <Grid item lg={9} md={12}>
-                      <Button
-                        fullWidth
-                        className="buttonToggled"
-                        variant="outlined"
-                      >
-                        Auslosen
-                      </Button>
-                    </Grid>
-                    <Grid item lg={3} md={12}>
-                      <Button
-                        fullWidth
-                        className="buttonToggled"
-                        variant="outlined"
-                      >
-                        Reroll
-                      </Button>
+                        {this.state.value === 0 && <TabContainer>
+                          <p>
+                            Bestimme ein Keyword, welches in deinen Chat geschrieben werden muss, um teilzunehmen.
+                          </p>
+                          <TextField
+                            label="Keyword"
+                            placeholder="#Twasi"
+                            fullWidth
+                          />
+                          <br />
+                          <br />
+                          <Grid container spacing={16}>
+                            <Grid item lg={6}>
+                              <Button
+                                fullWidth
+                                className="buttonToggled"
+                                variant="outlined"
+                              >
+                                Giveaway öffnen
+                              </Button>
+                            </Grid>
+                            <Grid item lg={6}>
+                              <Button
+                                fullWidth
+                                className="buttonCancel"
+                                variant="outlined"
+                              >
+                                Giveaway abbrechen
+                              </Button>
+                            </Grid>
+                          </Grid>
+                        </TabContainer>}
+                        {this.state.value === 1 && <TabContainer>
+                          <p>
+                            Hier wird eine zufällige Zahl bestimmt, welche erraten werden muss. Derjenige, der die Zahl zuerst errät gewinnt.
+                          </p>
+                          <Grid container spacing={16}>
+                            <Grid item lg={6}>
+                              <TextField
+                                label="von"
+                                fullWidth
+                              />
+                            </Grid>
+                            <Grid item lg={6}>
+                              <TextField
+                                label="bis"
+                                fullWidth
+                              />
+                            </Grid>
+                          </Grid>
+                          <br />
+                          <Grid container spacing={16}>
+                            <Grid item lg={6}>
+                              <Button
+                                fullWidth
+                                className="buttonToggled"
+                                variant="outlined"
+                              >
+                                Giveaway öffnen
+                              </Button>
+                            </Grid>
+                            <Grid item lg={6}>
+                              <Button
+                                fullWidth
+                                className="buttonCancel"
+                                variant="outlined"
+                              >
+                                Giveaway abbrechen
+                              </Button>
+                            </Grid>
+                          </Grid>
+                      </TabContainer>}
                     </Grid>
                   </Grid>
                 </CardText>
               </Card>
+              <br />
+              <Grid container spacing={16}>
+                <Grid item lg={9} md={12}>
+                  <Button
+                    fullWidth
+                    className="buttonToggled"
+                    variant="outlined"
+                  >
+                    Auslosen
+                  </Button>
+                </Grid>
+                <Grid item lg={3} md={12}>
+                  <Button
+                    fullWidth
+                    className="buttonToggled"
+                    variant="outlined"
+                  >
+                    Reroll
+                  </Button>
+                </Grid>
+              </Grid>
             </Paper>
           </Grid>
           <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">Chat</h4>
-              <small>Dein Twitch Chat.</small>
+              <h4 className="pageContainerTitle">Teilnehmer</h4>
+              <small>Hier werden alle Teilnehmer des aktuellen Giveaways aufgelistet.</small>
               <Divider className="marginDivider" />
-              <iframe
-                frameborder="0"
-                scrolling="no"
-                id="chat_embed"
-                src="http://www.twitch.tv/embed/blechkelle/chat"
-                height="600"
-                width="100%"
-              />
+
             </Paper>
           </Grid>
         </Grid>

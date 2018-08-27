@@ -9,3 +9,10 @@
   color: #ffffff !important;
   border: 1px solid #00aeae !important;
 }
+.buttonCancel {
+  margin-Right: 15px !important;
+  border-Radius: 0px !important;
+  background-color: #e53935 !important;
+  color: #ffffff !important;
+  border: 1px solid #e53935 !important;
+}
