@@ -59,7 +59,7 @@ class Sidebar extends Component {
       {
         key: 'giveaways',
         path: '/giveaways',
-        icon: 'library_music',
+        icon: 'redeem',
         name: 'sidebar.giveaways'
       },
       {

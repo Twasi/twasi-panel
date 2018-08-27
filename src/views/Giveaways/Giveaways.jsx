@@ -8,98 +8,124 @@ import { Container, Row, Col } from 'react-grid-system';
 import Divider from 'material-ui/Divider';
 import Button from '@material-ui/core/Button';
 import { Card, CardText } from 'material-ui/Card';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import AppBar from '@material-ui/core/AppBar';
+import Icon from '@material-ui/core/Icon';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 import './_style.css';
 
 class Giveaways extends Component {
+  state = {
+    value: 0,
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  handleChangeIndex = index => {
+    this.setState({ value: index });
+  };
   render() {
     return (
       <div className="pageContent">
         <h2 className="pageTitle">
           <FormattedMessage id="sidebar.giveaways" />
         </h2>
-        <Row>
-          <Col sm={6}>
+        <Grid container spacing={24}>
+           <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">Giveaways</h4>
               <small>Erstelle ein neues Giveaway.</small>
               <Divider className="marginDivider" />
               <Card className="pluginCard">
                 <CardText>
-                  <p>
-                    <b>Schritt 1:</b> Für welche Nutzergruppen ist das Giveaway?
-                  </p>
-                  <Row>
-                    <Col sm={4}>
+                  <Grid container spacing={16}>
+                    <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        style={{ marginRight: '15px' }}
+                        className="buttonNotToggled"
                         variant="outlined"
                       >
-                        Mods
+                        <Icon>close</Icon> Staff
                       </Button>
-                    </Col>
-                    <Col sm={4}>
+                    </Grid>
+                    <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        style={{ marginRight: '15px' }}
+                        className="buttonNotToggled"
                         variant="outlined"
                       >
-                        Subscriber
+                        <Icon>close</Icon> Mods
                       </Button>
-                    </Col>
-                    <Col sm={4}>
+                    </Grid>
+                    <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        style={{ marginRight: '15px' }}
+                        className="buttonNotToggled"
                         variant="outlined"
                       >
-                        Normalos
+                        <Icon>close</Icon> Subs
                       </Button>
-                    </Col>
-                  </Row>
-                </CardText>
-              </Card>
-              <Divider className="marginDivider" />
-              <Card className="pluginCard">
-                <CardText>
-                  <p>
-                    <b>Schritt 2:</b> Welche Art Giveaway?
-                  </p>
-                  <Row>
-                    <Col sm={4}>
+                    </Grid>
+                    <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        style={{ marginRight: '15px' }}
+                        className="buttonToggled"
                         variant="outlined"
                       >
-                        Wort im Chat
+                        <Icon>check</Icon> User
                       </Button>
-                    </Col>
-                    <Col sm={4}>
+                    </Grid>
+                  </Grid>
+                  <br />
+                  <Grid container spacing={24}>
+                    <Grid item lg={12}>
+                      <AppBar style={{ boxShadow: 'none' }} position="static" color="default">
+                        <Tabs
+                          style={{ border: '1px solid rgba(0, 0, 0, 0.23)' }}
+                          value={this.state.value}
+                          onChange={this.handleChange}
+                          indicatorColor="primary"
+                          textColor="primary"
+                          fullWidth
+                        >
+                          <Tab label="Zufälliger User" />
+                          <Tab label="Zufällige Zahl" />
+                        </Tabs>
+                      </AppBar>
+                      Einstellungen
+                    </Grid>
+                  </Grid>
+                  <br />
+                  <Grid container spacing={16}>
+                    <Grid item lg={9} md={12}>
                       <Button
                         fullWidth
-                        style={{ marginRight: '15px' }}
+                        className="buttonToggled"
                         variant="outlined"
                       >
-                        Zufälliger Nutzer
+                        Auslosen
                       </Button>
-                    </Col>
-                    <Col sm={4}>
+                    </Grid>
+                    <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        style={{ marginRight: '15px' }}
+                        className="buttonToggled"
                         variant="outlined"
                       >
-                        Zufällige Zahl
+                        Reroll
                       </Button>
-                    </Col>
-                  </Row>
+                    </Grid>
+                  </Grid>
                 </CardText>
               </Card>
             </Paper>
-          </Col>
-          <Col sm={6}>
+          </Grid>
+          <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">Chat</h4>
               <small>Dein Twitch Chat.</small>
@@ -113,8 +139,8 @@ class Giveaways extends Component {
                 width="100%"
               />
             </Paper>
-          </Col>
-        </Row>
+          </Grid>
+        </Grid>
       </div>
     );
   }

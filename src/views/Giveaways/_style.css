@@ -1,0 +1,11 @@
+.buttonNotToggled {
+  margin-Right: 15px !important;
+  border-Radius: 0px !important;
+}
+.buttonToggled {
+  margin-Right: 15px !important;
+  border-Radius: 0px !important;
+  background-color: #00aeae !important;
+  color: #ffffff !important;
+  border: 1px solid #00aeae !important;
+}
