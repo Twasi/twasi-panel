@@ -57,6 +57,45 @@ class Overview extends Component {
     chart.cursor = new am4charts.XYCursor();
 
     this.chart = chart;
+
+
+    // Create chart instance
+    let chartpie = am4core.create("chartdivpie", am4charts.PieChart);
+
+    // Add data
+    chartpie.data = [{
+      "country": "Lithuania",
+      "litres": 501.9
+    }, {
+      "country": "Czech Republic",
+      "litres": 301.9
+    }, {
+      "country": "Ireland",
+      "litres": 201.1
+    }, {
+      "country": "Germany",
+      "litres": 165.8
+    }, {
+      "country": "Australia",
+      "litres": 139.9
+    }, {
+      "country": "Austria",
+      "litres": 128.3
+    }, {
+      "country": "UK",
+      "litres": 99
+    }, {
+      "country": "Belgium",
+      "litres": 60
+    }, {
+      "country": "The Netherlands",
+      "litres": 50
+    }];
+
+    // Add and configure Series
+    let pieSeries = chartpie.series.push(new am4charts.PieSeries());
+    pieSeries.dataFields.value = "litres";
+    pieSeries.dataFields.category = "country";
   }
 
   componentWillUnmount() {
@@ -194,9 +233,18 @@ class Overview extends Component {
             </Tab>
           </Tabs>
         </Paper>
-        <Paper className="pageContainer">
-          <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-        </Paper>
+        <Row>
+          <Col sm={8}>
+            <Paper className="pageContainer">
+              <div id="chartdiv" style={{ width: "100%", height: "300px" }}></div>
+            </Paper>
+          </Col>
+          <Col sm={4}>
+            <Paper className="pageContainer">
+              <div id="chartdivpie" style={{ width: "100%", height: "300px" }}></div>
+            </Paper>
+          </Col>
+        </Row>
       </div>
     );
   }
