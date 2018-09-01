@@ -19,9 +19,9 @@ import './_style.css';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import am4themes_material from "@amcharts/amcharts4/themes/material";
+import am4themes_kelly from "@amcharts/amcharts4/themes/kelly";
 
-am4core.useTheme(am4themes_material);
+am4core.useTheme(am4themes_kelly);
 
 class Overview extends Component {
   componentDidMount() {
@@ -32,7 +32,7 @@ class Overview extends Component {
     let data = [];
     let visits = 10;
     for (let i = 1; i < 20; i++) {
-      visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+      visits += Math.round((Math.random() < 0.5 ? 1 : 5) * Math.random() * 10);
       data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
     }
 
@@ -52,12 +52,6 @@ class Overview extends Component {
     series.tensionX = 0.8;
     series.tensionY = 1;
     series.fillOpacity = 0.3;
-
-    let fillModifier = new am4core.LinearGradientModifier();
-    fillModifier.opacities = [1, 0];
-    fillModifier.offsets = [0, 1];
-    fillModifier.gradient.rotation = 90;
-    series.segments.template.fillModifier = fillModifier;
 
     series.tooltipText = "{valueY.value}";
     chart.cursor = new am4charts.XYCursor();
