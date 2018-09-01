@@ -94,13 +94,82 @@ class Overview extends Component {
 
     // Add and configure Series
     let pieSeries = chartpie.series.push(new am4charts.PieSeries());
+    pieSeries.labels.template.disabled = true;
+    pieSeries.ticks.template.disabled = true;
     pieSeries.dataFields.value = "litres";
     pieSeries.dataFields.category = "country";
+
+
+    let chartbars = am4core.create("chartdivbars", am4charts.XYChart);
+
+    // Add data
+    chartbars.data = [{
+      "country": "Lithuania",
+      "litres": 501.9,
+      "units": 250
+    }, {
+      "country": "Czech Republic",
+      "litres": 301.9,
+      "units": 222
+    }, {
+      "country": "Ireland",
+      "litres": 201.1,
+      "units": 170
+    }, {
+      "country": "Germany",
+      "litres": 165.8,
+      "units": 122
+    }, {
+      "country": "Australia",
+      "litres": 139.9,
+      "units": 99
+    }, {
+      "country": "Austria",
+      "litres": 128.3,
+      "units": 85
+    }, {
+      "country": "UK",
+      "litres": 99,
+      "units": 93
+    }, {
+      "country": "Belgium",
+      "litres": 60,
+      "units": 50
+    }, {
+      "country": "The Netherlands",
+      "litres": 50,
+      "units": 42
+    }];
+
+    // Create axes
+    let categoryAxisbars = chartbars.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxisbars.dataFields.category = "country";
+    categoryAxisbars.title.text = "Countries";
+
+    let valueAxisbars = chartbars.yAxes.push(new am4charts.ValueAxis());
+    valueAxisbars.title.text = "Litres sold (M)";
+
+    // Create series
+    let seriesbars = chartbars.series.push(new am4charts.ColumnSeries());
+    seriesbars.dataFields.valueY = "litres";
+    seriesbars.dataFields.categoryX = "country";
+    seriesbars.name = "Sales";
+    seriesbars.columns.template.tooltipText = "Series: {name}\nCategory: {categoryX}\nValue: {valueY}";
+    seriesbars.columns.template.fill = am4core.color("#104547"); // fill
+
+    var series2bars = chartbars.series.push(new am4charts.LineSeries());
+    series2bars.name = "Units";
+    series2bars.stroke = am4core.color("#CDA2AB");
+    series2bars.strokeWidth = 3;
+    series2bars.dataFields.valueY = "units";
+    series2bars.dataFields.categoryX = "country";
   }
 
   componentWillUnmount() {
     if (this.chart) {
       this.chart.dispose();
+      this.chartpie.dispose();
+      this.chartbars.dispose();
     }
   }
 
@@ -234,14 +303,19 @@ class Overview extends Component {
           </Tabs>
         </Paper>
         <Row>
-          <Col sm={8}>
+          <Col sm={12}>
             <Paper className="pageContainer">
               <div id="chartdiv" style={{ width: "100%", height: "300px" }}></div>
             </Paper>
           </Col>
-          <Col sm={4}>
+          <Col sm={6}>
             <Paper className="pageContainer">
               <div id="chartdivpie" style={{ width: "100%", height: "300px" }}></div>
+            </Paper>
+          </Col>
+          <Col sm={6}>
+            <Paper className="pageContainer">
+              <div id="chartdivbars" style={{ width: "100%", height: "300px" }}></div>
             </Paper>
           </Col>
         </Row>
