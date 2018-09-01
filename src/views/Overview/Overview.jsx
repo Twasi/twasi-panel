@@ -19,9 +19,9 @@ import './_style.css';
 
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import am4themes_kelly from "@amcharts/amcharts4/themes/kelly";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
-am4core.useTheme(am4themes_kelly);
+am4core.useTheme(am4themes_animated);
 
 class Overview extends Component {
   componentDidMount() {
@@ -53,8 +53,25 @@ class Overview extends Component {
     series.tensionY = 1;
     series.fillOpacity = 0.3;
 
+    let circleBullet = series.bullets.push(new am4charts.CircleBullet());
+    circleBullet.circle.stroke = am4core.color("#fff");
+    circleBullet.circle.strokeWidth = 2;
+
+    let labelBullet = series.bullets.push(new am4charts.LabelBullet());
+    labelBullet.label.text = "{value}";
+    labelBullet.label.dy = -20;
+
     series.tooltipText = "{valueY.value}";
     chart.cursor = new am4charts.XYCursor();
+
+    let watermark = new am4core.Label();
+    watermark.text = "Twasi.net © 2018";
+    chart.plotContainer.children.push(watermark);
+    watermark.align = "center";
+    watermark.valign = "bottom";
+    watermark.fontSize = 20;
+    watermark.opacity = 0.2;
+    watermark.marginBottom = 5;
 
     this.chart = chart;
 
@@ -94,10 +111,14 @@ class Overview extends Component {
 
     // Add and configure Series
     let pieSeries = chartpie.series.push(new am4charts.PieSeries());
-    pieSeries.labels.template.disabled = true;
     pieSeries.ticks.template.disabled = true;
     pieSeries.dataFields.value = "litres";
     pieSeries.dataFields.category = "country";
+    pieSeries.alignLabels = false;
+    pieSeries.labels.template.text = "{litres}";
+    pieSeries.labels.template.radius = -60;
+    pieSeries.labels.template.fill = am4core.color("white");
+    pieSeries.labels.template.relativeRotation = 90;
 
     this.chartpie = chartpie;
 
@@ -308,17 +329,17 @@ class Overview extends Component {
         <Row>
           <Col sm={12}>
             <Paper className="pageContainer" style={{ padding: '0px' }}>
-              <div id="chartdiv" style={{ width: "100%", height: "300px" }}></div>
+              <div id="chartdiv" style={{ width: "100%", height: "400px" }}></div>
             </Paper>
           </Col>
           <Col sm={6}>
             <Paper className="pageContainer" style={{ padding: '0px' }}>
-              <div id="chartdivpie" style={{ width: "100%", height: "300px" }}></div>
+              <div id="chartdivpie" style={{ width: "100%", height: "400px" }}></div>
             </Paper>
           </Col>
           <Col sm={6}>
             <Paper className="pageContainer" style={{ padding: '0px' }}>
-              <div id="chartdivbars" style={{ width: "100%", height: "300px" }}></div>
+              <div id="chartdivbars" style={{ width: "100%", height: "400px" }}></div>
             </Paper>
           </Col>
         </Row>
