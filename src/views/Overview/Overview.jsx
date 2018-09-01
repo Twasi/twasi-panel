@@ -99,6 +99,7 @@ class Overview extends Component {
     pieSeries.dataFields.value = "litres";
     pieSeries.dataFields.category = "country";
 
+    this.chartpie = chartpie;
 
     let chartbars = am4core.create("chartdivbars", am4charts.XYChart);
 
@@ -163,6 +164,8 @@ class Overview extends Component {
     series2bars.strokeWidth = 3;
     series2bars.dataFields.valueY = "units";
     series2bars.dataFields.categoryX = "country";
+
+    this.chartbars = chartbars;
   }
 
   componentWillUnmount() {
@@ -304,17 +307,17 @@ class Overview extends Component {
         </Paper>
         <Row>
           <Col sm={12}>
-            <Paper className="pageContainer">
+            <Paper className="pageContainer" style={{ padding: '0px' }}>
               <div id="chartdiv" style={{ width: "100%", height: "300px" }}></div>
             </Paper>
           </Col>
           <Col sm={6}>
-            <Paper className="pageContainer">
+            <Paper className="pageContainer" style={{ padding: '0px' }}>
               <div id="chartdivpie" style={{ width: "100%", height: "300px" }}></div>
             </Paper>
           </Col>
           <Col sm={6}>
-            <Paper className="pageContainer">
+            <Paper className="pageContainer" style={{ padding: '0px' }}>
               <div id="chartdivbars" style={{ width: "100%", height: "300px" }}></div>
             </Paper>
           </Col>
