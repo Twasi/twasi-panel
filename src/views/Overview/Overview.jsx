@@ -27,8 +27,6 @@ class Overview extends Component {
   componentDidMount() {
     let chart = am4core.create("chartdiv", am4charts.XYChart);
 
-    chart.paddingRight = 20;
-
     let data = [];
     let visits = 10;
     for (let i = 1; i < 20; i++) {
@@ -39,29 +37,44 @@ class Overview extends Component {
     chart.data = data;
 
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    dateAxis.renderer.grid.template.location = 0;
+    dateAxis.renderer.grid.template.disabled = true;
+    dateAxis.renderer.labels.template.disabled = true;
+    dateAxis.cursorTooltipEnabled = false;
+    dateAxis.startLocation = 0.5;
+    dateAxis.endLocation = 0.5;
 
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxis.tooltip.disabled = true;
-    valueAxis.renderer.minWidth = 35;
+    valueAxis.renderer.minWidth = 0;
+    valueAxis.renderer.grid.template.disabled = true;
+    valueAxis.renderer.labels.template.disabled = true;
+    valueAxis.renderer.baseGrid.disabled = true;
+    valueAxis.cursorTooltipEnabled = false;
+
+    let title = chart.titles.create();
+    title.text = "Zuschauerverlauf deines letzten Streams";
+    title.fontSize = 20;
+    title.marginBottom = 25;
 
     let series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.dateX = "date";
     series.dataFields.valueY = "value";
     series.strokeWidth = 3;
-    series.tensionX = 0.8;
-    series.tensionY = 1;
-    series.fillOpacity = 0.3;
+    series.fillOpacity = 0.2;
+    series.stroke = am4core.color("#00AEAE");
+    series.fill = am4core.color("#00AEAE");
+
+    chart.padding(0, 0, 0, 0);
 
     let circleBullet = series.bullets.push(new am4charts.CircleBullet());
     circleBullet.circle.stroke = am4core.color("#fff");
-    circleBullet.circle.strokeWidth = 2;
+    circleBullet.circle.strokeWidth = 1;
 
     let labelBullet = series.bullets.push(new am4charts.LabelBullet());
     labelBullet.label.text = "{value}";
     labelBullet.label.dy = -20;
 
-    series.tooltipText = "{valueY.value}";
+    series.tooltipText = "{dateX} {valueY.value} Zuschauer";
     chart.cursor = new am4charts.XYCursor();
 
     let watermark = new am4core.Label();
@@ -72,6 +85,14 @@ class Overview extends Component {
     watermark.fontSize = 20;
     watermark.opacity = 0.2;
     watermark.marginBottom = 5;
+
+    // Create a range
+    var range = dateAxis.createSeriesRange(series);
+    range.date = new Date(2018, 0, 20);
+    range.endDate = new Date(2018, 0, 30);
+    range.contents.stroke = am4core.color("#f00");
+    range.contents.fill = am4core.color("#f00");
+    range.contents.fillOpacity = 0.5;
 
     this.chart = chart;
 
@@ -119,6 +140,10 @@ class Overview extends Component {
     pieSeries.labels.template.radius = -60;
     pieSeries.labels.template.fill = am4core.color("white");
     pieSeries.labels.template.relativeRotation = 90;
+
+    let titlepie = chartpie.titles.create();
+    titlepie.text = "Meist genutzte Befehle";
+    titlepie.fontSize = 20;
 
     this.chartpie = chartpie;
 
@@ -328,18 +353,18 @@ class Overview extends Component {
         </Paper>
         <Row>
           <Col sm={12}>
-            <Paper className="pageContainer" style={{ padding: '0px' }}>
-              <div id="chartdiv" style={{ width: "100%", height: "400px" }}></div>
+            <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+              <div id="chartdiv" style={{ width: "100%", height: "300px", margin: '0px' }}></div>
             </Paper>
           </Col>
           <Col sm={6}>
-            <Paper className="pageContainer" style={{ padding: '0px' }}>
-              <div id="chartdivpie" style={{ width: "100%", height: "400px" }}></div>
+            <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+              <div id="chartdivpie" style={{ width: "100%", height: "400px", margin: '0px' }}></div>
             </Paper>
           </Col>
           <Col sm={6}>
-            <Paper className="pageContainer" style={{ padding: '0px' }}>
-              <div id="chartdivbars" style={{ width: "100%", height: "400px" }}></div>
+            <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+              <div id="chartdivbars" style={{ width: "100%", height: "400px", margin: '0px' }}></div>
             </Paper>
           </Col>
         </Row>
