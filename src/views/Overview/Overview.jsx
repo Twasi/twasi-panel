@@ -91,49 +91,38 @@ class Overview extends Component {
 
     // Add data
     chartpie.data = [{
-      "country": "Lithuania",
-      "litres": 501.9
+      "command": "lol",
+      "uses": 101
     }, {
-      "country": "Czech Republic",
-      "litres": 301.9
-    }, {
-      "country": "Ireland",
-      "litres": 201.1
-    }, {
-      "country": "Germany",
-      "litres": 165.8
-    }, {
-      "country": "Australia",
-      "litres": 139.9
-    }, {
-      "country": "Austria",
-      "litres": 128.3
-    }, {
-      "country": "UK",
-      "litres": 99
-    }, {
-      "country": "Belgium",
-      "litres": 60
-    }, {
-      "country": "The Netherlands",
-      "litres": 50
+      "command": "!twitter",
+      "uses": 24
+    },{
+      "command": "!game",
+      "uses": 13
+    },{
+      "command": "!check",
+      "uses": 59
+    },{
+      "command": "!uptime",
+      "uses": 33
     }];
 
     // Add and configure Series
     let pieSeries = chartpie.series.push(new am4charts.PieSeries());
     pieSeries.ticks.template.disabled = true;
-    pieSeries.dataFields.value = "litres";
-    pieSeries.dataFields.category = "country";
+    pieSeries.dataFields.value = "uses";
+    pieSeries.dataFields.category = "command";
     pieSeries.alignLabels = false;
-    pieSeries.labels.template.text = "{litres}";
-    pieSeries.labels.template.radius = -60;
+    pieSeries.labels.template.text = "{command}";
+    pieSeries.labels.template.radius = -65;
     pieSeries.labels.template.fill = am4core.color("white");
     pieSeries.labels.template.relativeRotation = 90;
+    pieSeries.tooltip.getFillFromObject = false;
     pieSeries.tooltip.background.fill = am4core.color("#fff");
     pieSeries.tooltip.label.fill = am4core.color("#000");
 
     let titlepie = chartpie.titles.create();
-    titlepie.text = "Meist genutzte Befehle";
+    titlepie.text = "Genutzte Befehle";
     titlepie.fontSize = 20;
 
     this.chartpie = chartpie;
@@ -142,61 +131,53 @@ class Overview extends Component {
 
     // Add data
     chartbars.data = [{
-      "country": "Lithuania",
-      "litres": 501.9,
-      "units": 250
+      "game": "Grand Theft Auto V",
+      "averageviewers": 20,
+      "minutes": 60
     }, {
-      "country": "Czech Republic",
-      "litres": 301.9,
-      "units": 222
+      "game": "Minecraft",
+      "averageviewers": 35,
+      "minutes": 20
     }, {
-      "country": "Ireland",
-      "litres": 201.1,
-      "units": 170
+      "game": "Overwatch",
+      "averageviewers": 4,
+      "minutes": 36
     }, {
-      "country": "Germany",
-      "litres": 165.8,
-      "units": 122
+      "game": "League of Legends",
+      "averageviewers": 2,
+      "minutes": 123
     }, {
-      "country": "Australia",
-      "litres": 139.9,
-      "units": 99
+      "game": "Dota 2",
+      "averageviewers": 21,
+      "minutes": 74
     }, {
-      "country": "Austria",
-      "litres": 128.3,
-      "units": 85
-    }, {
-      "country": "UK",
-      "litres": 99,
-      "units": 93
-    }, {
-      "country": "Belgium",
-      "litres": 60,
-      "units": 50
-    }, {
-      "country": "The Netherlands",
-      "litres": 50,
-      "units": 42
+      "game": "IRL",
+      "averageviewers": 45,
+      "minutes": 66
     }];
 
     let titlebars = chartbars.titles.create();
     titlebars.text = "Gespielte Spiele";
+    titlebars.marginBottom = 25;
     titlebars.fontSize = 20;
 
     // Create axes
     let categoryAxisbars = chartbars.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxisbars.dataFields.category = "country";
+    categoryAxisbars.renderer.grid.template.disabled = true;
+    categoryAxisbars.dataFields.category = "game";
 
     let valueAxisbars = chartbars.yAxes.push(new am4charts.ValueAxis());
 
     // Create series
     let seriesbars = chartbars.series.push(new am4charts.ColumnSeries());
-    seriesbars.dataFields.valueY = "litres";
-    seriesbars.dataFields.categoryX = "country";
-    seriesbars.name = "Sales";
-    seriesbars.columns.template.tooltipText = "Value: {valueY}";
+    seriesbars.dataFields.valueY = "minutes";
+    seriesbars.dataFields.categoryX = "game";
+    seriesbars.columns.template.tooltipText = "Spiel: {game}\nMinuten gespielt: {minutes}\nDurchschnittliche Zuschauer: {averageviewers}";
+    seriesbars.tooltip.getFillFromObject = false;
     seriesbars.tooltip.background.fill = am4core.color("#fff");
     seriesbars.tooltip.label.fill = am4core.color("#000");
+
+    chartbars.padding(0, 0, 0, 0);
 
     this.chartbars = chartbars;
   }
