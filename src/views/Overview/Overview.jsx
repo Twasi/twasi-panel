@@ -29,8 +29,8 @@ class Overview extends Component {
 
     let data = [];
     let visits = 10;
-    for (let i = 1; i < 20; i++) {
-      visits += Math.round((Math.random() < 0.5 ? 1 : 5) * Math.random() * 10);
+    for (let i = 1; i < 30; i++) {
+      visits += Math.round((Math.random() < 0.5 ? 1 : 2) * Math.random() * 10);
       data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
     }
 
@@ -61,18 +61,15 @@ class Overview extends Component {
     series.dataFields.valueY = "value";
     series.strokeWidth = 3;
     series.fillOpacity = 0.2;
-    series.stroke = am4core.color("#00AEAE");
-    series.fill = am4core.color("#00AEAE");
+    series.tooltip.getFillFromObject = false;
+    series.tooltip.background.fill = am4core.color("#fff");
+    series.tooltip.label.fill = am4core.color("#000");
 
     chart.padding(0, 0, 0, 0);
 
     let circleBullet = series.bullets.push(new am4charts.CircleBullet());
     circleBullet.circle.stroke = am4core.color("#fff");
     circleBullet.circle.strokeWidth = 1;
-
-    let labelBullet = series.bullets.push(new am4charts.LabelBullet());
-    labelBullet.label.text = "{value}";
-    labelBullet.label.dy = -20;
 
     series.tooltipText = "{dateX} {valueY.value} Zuschauer";
     chart.cursor = new am4charts.XYCursor();
@@ -85,14 +82,6 @@ class Overview extends Component {
     watermark.fontSize = 20;
     watermark.opacity = 0.2;
     watermark.marginBottom = 5;
-
-    // Create a range
-    var range = dateAxis.createSeriesRange(series);
-    range.date = new Date(2018, 0, 20);
-    range.endDate = new Date(2018, 0, 30);
-    range.contents.stroke = am4core.color("#f00");
-    range.contents.fill = am4core.color("#f00");
-    range.contents.fillOpacity = 0.5;
 
     this.chart = chart;
 
@@ -140,6 +129,8 @@ class Overview extends Component {
     pieSeries.labels.template.radius = -60;
     pieSeries.labels.template.fill = am4core.color("white");
     pieSeries.labels.template.relativeRotation = 90;
+    pieSeries.tooltip.background.fill = am4core.color("#fff");
+    pieSeries.tooltip.label.fill = am4core.color("#000");
 
     let titlepie = chartpie.titles.create();
     titlepie.text = "Meist genutzte Befehle";
@@ -188,28 +179,24 @@ class Overview extends Component {
       "units": 42
     }];
 
+    let titlebars = chartbars.titles.create();
+    titlebars.text = "Gespielte Spiele";
+    titlebars.fontSize = 20;
+
     // Create axes
     let categoryAxisbars = chartbars.xAxes.push(new am4charts.CategoryAxis());
     categoryAxisbars.dataFields.category = "country";
-    categoryAxisbars.title.text = "Countries";
 
     let valueAxisbars = chartbars.yAxes.push(new am4charts.ValueAxis());
-    valueAxisbars.title.text = "Litres sold (M)";
 
     // Create series
     let seriesbars = chartbars.series.push(new am4charts.ColumnSeries());
     seriesbars.dataFields.valueY = "litres";
     seriesbars.dataFields.categoryX = "country";
     seriesbars.name = "Sales";
-    seriesbars.columns.template.tooltipText = "Series: {name}\nCategory: {categoryX}\nValue: {valueY}";
-    seriesbars.columns.template.fill = am4core.color("#104547"); // fill
-
-    var series2bars = chartbars.series.push(new am4charts.LineSeries());
-    series2bars.name = "Units";
-    series2bars.stroke = am4core.color("#CDA2AB");
-    series2bars.strokeWidth = 3;
-    series2bars.dataFields.valueY = "units";
-    series2bars.dataFields.categoryX = "country";
+    seriesbars.columns.template.tooltipText = "Value: {valueY}";
+    seriesbars.tooltip.background.fill = am4core.color("#fff");
+    seriesbars.tooltip.label.fill = am4core.color("#000");
 
     this.chartbars = chartbars;
   }
@@ -277,84 +264,64 @@ class Overview extends Component {
             </Col>
           </Row>
         </Container>
-        <Paper style={{ paddingTop: '5px' }} className="pageContainer">
-          <Tabs
-            tabItemContainerStyle={{
-              backgroundColor: '#fff'
-            }}
-            inkBarStyle={{ backgroundColor: '#00aeae' }}
-            contentContainerStyle={{ paddingTop: '23px' }}
-          >
-            <Tab
-              label={<FormattedMessage id="overview.laststream" />}
-              buttonStyle={{
-                color: '#000',
-                float: 'left',
-                paddingLeft: '23px',
-                fontSize: '13px'
-              }}
+        <Paper className="pageContainerOverview">
+          <Table>
+            <TableHeader
+              adjustForCheckbox={false}
+              displaySelectAll={false}
+              selectable={false}
             >
-              <Table>
-                <TableHeader
-                  className="overviewTableHead"
-                  adjustForCheckbox={false}
-                  displaySelectAll={false}
-                  selectable={false}
-                >
-                  <TableRow className="overviewTableRow">
-                    <TableHeaderColumn className="overviewTableColumn">
-                      <FormattedMessage id="overview.table_id" />
-                    </TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">
-                      <FormattedMessage id="overview.table_duration" />
-                    </TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">
-                      <FormattedMessage id="overview.table_follower" />
-                    </TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">
-                      <FormattedMessage id="overview.table_views" />
-                    </TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">
-                      <FormattedMessage id="overview.table_viewermax" />
-                    </TableHeaderColumn>
-                    <TableHeaderColumn className="overviewTableColumn">
-                      <FormattedMessage id="overview.table_average" />
-                    </TableHeaderColumn>
-                  </TableRow>
-                </TableHeader>
-                <TableBody
-                  className="overviewTableBody"
-                  displayRowCheckbox={false}
-                >
-                  <TableRow>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1.337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1.337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1.337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1.337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1.337
-                    </TableRowColumn>
-                    <TableRowColumn className="overviewTableColumnBody">
-                      1.337
-                    </TableRowColumn>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </Tab>
-          </Tabs>
+              <TableRow className="TableRow">
+                <TableHeaderColumn>
+                  <FormattedMessage id="overview.table_id" />
+                </TableHeaderColumn>
+                <TableHeaderColumn>
+                  <FormattedMessage id="overview.table_duration" />
+                </TableHeaderColumn>
+                <TableHeaderColumn>
+                  <FormattedMessage id="overview.table_follower" />
+                </TableHeaderColumn>
+                <TableHeaderColumn>
+                  <FormattedMessage id="overview.table_views" />
+                </TableHeaderColumn>
+                <TableHeaderColumn>
+                  <FormattedMessage id="overview.table_viewermax" />
+                </TableHeaderColumn>
+                <TableHeaderColumn>
+                  <FormattedMessage id="overview.table_average" />
+                </TableHeaderColumn>
+              </TableRow>
+            </TableHeader>
+            <TableBody
+              displayRowCheckbox={false}
+            >
+              <TableRow>
+                <TableRowColumn>
+                  1.337
+                </TableRowColumn>
+                <TableRowColumn>
+                  1.337
+                </TableRowColumn>
+                <TableRowColumn>
+                  1.337
+                </TableRowColumn>
+                <TableRowColumn>
+                  1.337
+                </TableRowColumn>
+                <TableRowColumn>
+                  1.337
+                </TableRowColumn>
+                <TableRowColumn>
+                  1.337
+                </TableRowColumn>
+              </TableRow>
+            </TableBody>
+          </Table>
         </Paper>
         <Row>
           <Col sm={12}>
             <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
-              <div id="chartdiv" style={{ width: "100%", height: "300px", margin: '0px' }}></div>
+              <div id="chartdiv" style={{ width: "100%", height: "200px", margin: '0px' }}></div>
             </Paper>
           </Col>
           <Col sm={6}>
