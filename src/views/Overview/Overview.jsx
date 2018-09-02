@@ -14,6 +14,10 @@ import {
   TableRowColumn
 } from 'material-ui/Table';
 import { Container, Row, Col } from 'react-grid-system';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import './_style.css';
 
@@ -53,7 +57,7 @@ class Overview extends Component {
 
     let title = chart.titles.create();
     title.text = "Zuschauerverlauf deines letzten Streams";
-    title.fontSize = 20;
+    title.fontSize = 16;
     title.marginBottom = 25;
 
     let series = chart.series.push(new am4charts.LineSeries());
@@ -123,7 +127,7 @@ class Overview extends Component {
 
     let titlepie = chartpie.titles.create();
     titlepie.text = "Genutzte Befehle";
-    titlepie.fontSize = 20;
+    titlepie.fontSize = 16;
 
     this.chartpie = chartpie;
 
@@ -159,7 +163,7 @@ class Overview extends Component {
     let titlebars = chartbars.titles.create();
     titlebars.text = "Gespielte Spiele";
     titlebars.marginBottom = 25;
-    titlebars.fontSize = 20;
+    titlebars.fontSize = 16;
 
     // Create axes
     let categoryAxisbars = chartbars.xAxes.push(new am4charts.CategoryAxis());
@@ -245,75 +249,82 @@ class Overview extends Component {
             </Col>
           </Row>
         </Container>
-        <Paper className="pageContainerOverview">
-          <Table>
-            <TableHeader
-              adjustForCheckbox={false}
-              displaySelectAll={false}
-              selectable={false}
-            >
-              <TableRow className="TableRow">
-                <TableHeaderColumn>
-                  <FormattedMessage id="overview.table_id" />
-                </TableHeaderColumn>
-                <TableHeaderColumn>
-                  <FormattedMessage id="overview.table_duration" />
-                </TableHeaderColumn>
-                <TableHeaderColumn>
-                  <FormattedMessage id="overview.table_follower" />
-                </TableHeaderColumn>
-                <TableHeaderColumn>
-                  <FormattedMessage id="overview.table_views" />
-                </TableHeaderColumn>
-                <TableHeaderColumn>
-                  <FormattedMessage id="overview.table_viewermax" />
-                </TableHeaderColumn>
-                <TableHeaderColumn>
-                  <FormattedMessage id="overview.table_average" />
-                </TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
-            <TableBody
-              displayRowCheckbox={false}
-            >
-              <TableRow>
-                <TableRowColumn>
-                  1.337
-                </TableRowColumn>
-                <TableRowColumn>
-                  1.337
-                </TableRowColumn>
-                <TableRowColumn>
-                  1.337
-                </TableRowColumn>
-                <TableRowColumn>
-                  1.337
-                </TableRowColumn>
-                <TableRowColumn>
-                  1.337
-                </TableRowColumn>
-                <TableRowColumn>
-                  1.337
-                </TableRowColumn>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </Paper>
         <Row>
           <Col sm={12}>
+            <Paper className="pageContainer">
+              <h4 className="pageContainerTitle">Statistiken deines letzten Streams
+                <span style={{ float: 'right' }}>
+                  <RaisedButton
+                    backgroundColor="#00aeae"
+                    labelColor="#ffffff"
+                    label="Aktualisieren"
+                  />
+                </span>
+              </h4>
+              <small>Hier findest du die Statisten deines letzten von Twasi erfassten Streams.</small>
+            </Paper>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={3}>
+            <Paper className="pageContainer" style={{ padding: '0px 0px 0px 0px' }}>
+              <div>
+                <List>
+                  <ListItem>
+                    <ListItemText primary="Stream ID" secondary="1.337" />
+                  </ListItem>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText primary="Dauer" secondary="13:37" />
+                  </ListItem>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText primary="Chatnachrichten" secondary="1.337" />
+                  </ListItem>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText primary="Befehle genutzt" secondary="1.337" />
+                  </ListItem>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText primary="Follower" secondary="1.337" />
+                  </ListItem>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText primary="Aufrufe" secondary="1.337" />
+                  </ListItem>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText primary="Zuschauer Maximum" secondary="1.337" />
+                  </ListItem>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText primary="Zuschauer Durchnitt" secondary="1.337" />
+                  </ListItem>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText primary="Individuelle Zuschauer" secondary="1.337" />
+                  </ListItem>
+                </List>
+              </div>
+            </Paper>
+          </Col>
+          <Col sm={9}>
             <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
               <div id="chartdiv" style={{ width: "100%", height: "200px", margin: '0px' }}></div>
             </Paper>
-          </Col>
-          <Col sm={6}>
-            <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
-              <div id="chartdivpie" style={{ width: "100%", height: "400px", margin: '0px' }}></div>
-            </Paper>
-          </Col>
-          <Col sm={6}>
-            <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
-              <div id="chartdivbars" style={{ width: "100%", height: "400px", margin: '0px' }}></div>
-            </Paper>
+            <Row>
+            <Col sm={6}>
+              <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+                <div id="chartdivpie" style={{ width: "100%", height: "350px", margin: '0px' }}></div>
+              </Paper>
+            </Col>
+            <Col sm={6}>
+              <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+                <div id="chartdivbars" style={{ width: "100%", height: "350px", margin: '0px' }}></div>
+              </Paper>
+            </Col>
+          </Row>
           </Col>
         </Row>
       </div>
