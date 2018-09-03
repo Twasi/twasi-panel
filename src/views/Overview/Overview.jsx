@@ -18,6 +18,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import RaisedButton from 'material-ui/RaisedButton';
+import Button from '@material-ui/core/Button';
 
 import './_style.css';
 
@@ -171,12 +172,19 @@ class Overview extends Component {
     categoryAxisbars.dataFields.category = "game";
 
     let valueAxisbars = chartbars.yAxes.push(new am4charts.ValueAxis());
+    valueAxisbars.renderer.grid.template.disabled = true;
+    valueAxisbars.renderer.labels.template.disabled = true;
+    valueAxisbars.renderer.baseGrid.disabled = true;
+
+    let label = categoryAxisbars.renderer.labels.template;
+    label.truncate = true;
+    label.maxWidth = 120;
 
     // Create series
     let seriesbars = chartbars.series.push(new am4charts.ColumnSeries());
     seriesbars.dataFields.valueY = "minutes";
     seriesbars.dataFields.categoryX = "game";
-    seriesbars.columns.template.tooltipText = "Spiel: {game}\nMinuten gespielt: {minutes}\nDurchschnittliche Zuschauer: {averageviewers}";
+    seriesbars.columns.template.tooltipText = "Spiel: {game}\nZeit: {minutes}\nZuschauer: {averageviewers}";
     seriesbars.tooltip.getFillFromObject = false;
     seriesbars.tooltip.background.fill = am4core.color("#fff");
     seriesbars.tooltip.label.fill = am4core.color("#000");
@@ -251,7 +259,7 @@ class Overview extends Component {
         </Container>
         <Row>
           <Col sm={12}>
-            <Paper className="pageContainer">
+            <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <h4 className="pageContainerTitle">Statistiken deines letzten Streams
                 <span style={{ float: 'right' }}>
                   <RaisedButton
@@ -267,51 +275,84 @@ class Overview extends Component {
         </Row>
         <Row>
           <Col sm={3}>
-            <Paper className="pageContainer" style={{ padding: '0px 0px 0px 0px' }}>
               <div>
-                <List>
-                  <ListItem>
-                    <ListItemText primary="Stream ID" secondary="1.337" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem>
-                    <ListItemText primary="Dauer" secondary="13:37" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem>
-                    <ListItemText primary="Chatnachrichten" secondary="1.337" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem>
-                    <ListItemText primary="Befehle genutzt" secondary="1.337" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem>
-                    <ListItemText primary="Follower" secondary="1.337" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem>
-                    <ListItemText primary="Aufrufe" secondary="1.337" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem>
-                    <ListItemText primary="Zuschauer Maximum" secondary="1.337" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem>
-                    <ListItemText primary="Zuschauer Durchnitt" secondary="1.337" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem>
-                    <ListItemText primary="Individuelle Zuschauer" secondary="1.337" />
-                  </ListItem>
+                <List dense style={{ padding: '0px' }}>
+                  <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
+                    <ListItem>
+                      <ListItemText secondary="1.337" >
+                        Stream ID
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem>
+                      <ListItemText secondary="13:37">
+                        Dauer
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem>
+                      <ListItemText secondary="1.337" >
+                        Chatnachrichten
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem>
+                      <ListItemText secondary="1.337" >
+                        Befehle ausgeführt
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem>
+                      <ListItemText secondary="1.337" >
+                        Follower
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem>
+                      <ListItemText secondary="1.337" >
+                        Aufrufe
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem>
+                      <ListItemText secondary="1.337" >
+                        Zuschauer Maximum
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem>
+                      <ListItemText secondary="1.337" >
+                        Zuschauer Durchschnitt
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem>
+                      <ListItemText secondary="1.337" >
+                        Individuelle Zuschauer
+                      </ListItemText>
+                    </ListItem>
+                  </Paper>
+                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <ListItem style={{ padding: '0px' }}>
+                      <Button fullWidth variant="contained" color="secondary" style={{ borderRadius: '0px' }}>
+                        Streamdaten Löschen
+                      </Button>
+                    </ListItem>
+                  </Paper>
                 </List>
               </div>
-            </Paper>
           </Col>
           <Col sm={9}>
             <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
-              <div id="chartdiv" style={{ width: "100%", height: "200px", margin: '0px' }}></div>
+              <div id="chartdiv" style={{ width: "100%", height: "250px", margin: '0px' }}></div>
             </Paper>
             <Row>
             <Col sm={6}>
