@@ -79,6 +79,13 @@ class Overview extends Component {
     series.tooltipText = "{dateX} {valueY.value} Zuschauer";
     chart.cursor = new am4charts.XYCursor();
 
+    chart.cursor.lineY.disabled = true;
+
+    chart.cursor.lineX.stroke = am4core.color("#828282");
+    chart.cursor.lineX.strokeWidth = 3;
+    chart.cursor.lineX.strokeOpacity = 0.2;
+    chart.cursor.lineX.strokeDasharray = 4;
+
     let watermark = new am4core.Label();
     watermark.text = "Twasi.net © 2018";
     chart.plotContainer.children.push(watermark);
@@ -188,6 +195,12 @@ class Overview extends Component {
     seriesbars.tooltip.getFillFromObject = false;
     seriesbars.tooltip.background.fill = am4core.color("#fff");
     seriesbars.tooltip.label.fill = am4core.color("#000");
+
+    var seriesbars2 = chartbars.series.push(new am4charts.LineSeries());
+    seriesbars2.name = "Average Viewers";
+    seriesbars2.strokeWidth = 3;
+    seriesbars2.dataFields.valueY = "averageviewers";
+    seriesbars2.dataFields.categoryX = "game";
 
     chartbars.padding(0, 0, 0, 0);
 
