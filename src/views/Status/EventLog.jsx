@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { intlShape, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn
+} from 'material-ui/Table';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -19,27 +27,29 @@ class EventLog extends Component {
   render() {
     const { events, intl } = this.props;
 
+    const renderedEvents = events.map(message => (
+      <TableRow>
+        <TableRowColumn>{message}</TableRowColumn>
+        <TableRowColumn>{message.createdAt}</TableRowColumn>
+      </TableRow>
+    ));
+
     return (
-      <div title={intl.formatMessage({ id: 'status.eventlog' })}>
-        {events && (
-          <table
-            columns={[
-              {
-                title: 'Name',
-                dataIndex: 'message'
-              },
-              {
-                title: 'Timestamp',
-                dataIndex: 'createdAt'
-              }
-            ]}
-            dataSource={events.map(message => ({
-              ...message,
-              key: message.createdAt
-            }))}
-          />
-        )}
-      </div>
+      <Table>
+        <TableHeader
+          adjustForCheckbox={false}
+          displaySelectAll={false}
+          selectable={false}
+        >
+          <TableRow className="TableRow">
+            <TableHeaderColumn>Message</TableHeaderColumn>
+            <TableHeaderColumn>Created</TableHeaderColumn>
+          </TableRow>
+        </TableHeader>
+        <TableBody displayRowCheckbox={false}>
+          {renderedEvents}
+        </TableBody>
+      </Table>
     );
   }
 }
@@ -47,7 +57,6 @@ class EventLog extends Component {
 EventLog.propTypes = {
   loadEvents: PropTypes.func.isRequired,
   events: PropTypes.arrayOf(PropTypes.shape({})),
-  intl: intlShape
 };
 
 const mapStateToProps = state => ({
@@ -58,4 +67,4 @@ const mapDispatchToProps = dispatch => ({
   loadEvents: () => dispatch(statusOperations.loadEvents())
 });
 
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(EventLog));
+export default connect(mapStateToProps, mapDispatchToProps)(EventLog);

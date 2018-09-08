@@ -45,6 +45,8 @@ export default {
   'status.stopped': 'Gestoppt',
   'status.manage': 'Verwalten',
   'status.eventlog': 'Ereignislog',
+  'status.card_headline': 'Bot Status',
+  'status.explanation': 'Hier kannst du den Bot jederzeit starten bzw. stoppen.',
 
   // Plugins
   'plugins.headline': 'Plugin Store',

@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import ToggleButton, { ToggleButtonGroup } from '@material-ui/lab/ToggleButton';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
+import Chip from '@material-ui/core/Chip';
+import Icon from '@material-ui/core/Icon';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -14,39 +19,59 @@ class StatusInfo extends Component {
 
   render() {
     const { status, startBot, stopBot, isStarting, isStopping } = this.props;
+
+    const running = (
+      <Chip
+        label={<FormattedMessage id="status.started" defaultMessage="Started" />}
+        color="primary"
+      />
+    );
+    const stopped = (
+      <Chip
+        label={<FormattedMessage id="status.stopped" defaultMessage="Stopped" />}
+        color="secondary"
+      />
+    );
+
     return (
-      <div>
-        <div>
-          <div>
-            <div title="Twitchbot">
-              <div type="flex" justify="center">
-                <div>
-                  <ToggleButtonGroup exclusive onChange={this.handleAlignment}>
-                    <ToggleButton
-                      type="danger"
-                      disabled={status.isRunning}
-                      onClick={startBot}
-                      loading={isStarting}
-                      value="on"
-                    >
-                      Bot starten
-                    </ToggleButton>
-                    <ToggleButton
-                      type="primary"
-                      disabled={!status.isRunning}
-                      onClick={stopBot}
-                      loading={isStopping}
-                      value="off"
-                    >
-                      Bot stoppen
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Card className="pluginCard">
+        <CardText>
+          <Grid container spacing={16}>
+            <Grid item xs={6} style={{ textAlign: 'center' }}>
+              <h4 className="pageContainerTitle">
+                Starten / Stoppen
+              </h4>
+              <Button
+                type="danger"
+                disabled={status.isRunning}
+                onClick={startBot}
+                loading={isStarting}
+                value="on"
+                variant="contained" color="primary"
+                style={{ marginRight: '16px' }}
+              >
+                starten
+              </Button>
+              <Button
+                type="primary"
+                disabled={!status.isRunning}
+                onClick={stopBot}
+                loading={isStopping}
+                value="off"
+                variant="contained" color="secondary"
+              >
+                stoppen
+              </Button>
+            </Grid>
+            <Grid item xs={6} style={{ textAlign: 'center' }}>
+              <h4 className="pageContainerTitle">
+                Aktueller Bot Status
+              </h4>
+              {status.isRunning ? running : stopped}
+            </Grid>
+          </Grid>
+        </CardText>
+      </Card>
     );
   }
 }
