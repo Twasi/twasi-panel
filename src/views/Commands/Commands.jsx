@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
-import RaisedButton from 'material-ui/RaisedButton';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn
-} from 'material-ui/Table';
-import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 
 class Commands extends Component {
@@ -25,106 +21,110 @@ class Commands extends Component {
           <h4 className="pageContainerTitle">
             Deine Befehle
             <span style={{ float: 'right' }}>
-              <RaisedButton
-                backgroundColor="#00aeae"
-                labelColor="#ffffff"
-                label="Befehl Hinzufügen"
-              />
+              <Button variant="contained" color="primary">
+                Befehl Hinzufügen
+              </Button>
             </span>
           </h4>
           <small>
             Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
           </small>
         </Paper>
-        <Table>
-          <TableHeader
-            adjustForCheckbox={false}
-            displaySelectAll={false}
-            selectable={false}
-          >
-            <TableRow className="TableRow">
-              <TableHeaderColumn>ID</TableHeaderColumn>
-              <TableHeaderColumn>Befehl</TableHeaderColumn>
-              <TableHeaderColumn>Ausgabe</TableHeaderColumn>
-              <TableHeaderColumn>Zugriff</TableHeaderColumn>
-              <TableHeaderColumn>Uses</TableHeaderColumn>
-              <TableHeaderColumn>Aktionen</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody displayRowCheckbox={false}>
-            <TableRow>
-              <TableRowColumn>1</TableRowColumn>
-              <TableRowColumn>
-                <b>!test</b>
-              </TableRowColumn>
-              <TableRowColumn
-                style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
-              >
-                Das ist ein sehr langer Test, um zu schauen, wie sich die
-                Tabelle bei längeren Einträgen verhält.
-              </TableRowColumn>
-              <TableRowColumn>Alle</TableRowColumn>
-              <TableRowColumn>1.337</TableRowColumn>
-              <TableRowColumn>
-                <Tooltip title="Bearbeiten" placement="top">
-                  <Button
-                    variant="fab"
-                    className="tealbg noshadow"
-                    mini
-                    aria-label="editCommand"
-                  >
-                    <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                  </Button>
-                </Tooltip>{' '}
-                <Tooltip title="Löschen" placement="top">
-                  <Button
-                    variant="fab"
-                    className="redbg noshadow"
-                    mini
-                    aria-label="deleteCommand"
-                  >
-                    <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                  </Button>
-                </Tooltip>
-              </TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>2</TableRowColumn>
-              <TableRowColumn>
-                <b>!test</b>
-              </TableRowColumn>
-              <TableRowColumn
-                style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
-              >
-                Das ist ein Test.
-              </TableRowColumn>
-              <TableRowColumn>Alle</TableRowColumn>
-              <TableRowColumn>1.337</TableRowColumn>
-              <TableRowColumn>
-                <Tooltip title="Bearbeiten" placement="top">
-                  <Button
-                    variant="fab"
-                    className="tealbg noshadow"
-                    mini
-                    aria-label="editCommand"
-                  >
-                    <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                  </Button>
-                </Tooltip>{' '}
-                <Tooltip title="Löschen" placement="top">
-                  <Button
-                    variant="fab"
-                    className="redbg noshadow"
-                    mini
-                    aria-label="deleteCommand"
-                  >
-                    <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                  </Button>
-                </Tooltip>
-              </TableRowColumn>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px' }}>
+          <Table>
+            <TableHead
+              adjustForCheckbox={false}
+              displaySelectAll={false}
+              selectable={false}
+            >
+              <TableRow className="TableRow">
+                <TableCell>ID</TableCell>
+                <TableCell>Befehl</TableCell>
+                <TableCell>Ausgabe</TableCell>
+                <TableCell>Zugriff</TableCell>
+                <TableCell>Uses</TableCell>
+                <TableCell style={{ minWidth: '100px' }}>Aktionen</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody displayRowCheckbox={false}>
+              <TableRow>
+                <TableCell>1</TableCell>
+                <TableCell>
+                  <b>!test</b>
+                </TableCell>
+                <TableCell
+                  style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
+                >
+                  Das ist ein sehr langer Test, um zu schauen, wie sich die
+                  Tabelle bei längeren Einträgen verhält.
+                </TableCell>
+                <TableCell>Alle</TableCell>
+                <TableCell>1.337</TableCell>
+                <TableCell>
+                  <Tooltip title="Bearbeiten" placement="top">
+                    <Button
+                      variant="fab"
+                      color="primary"
+                      className="noshadow"
+                      mini
+                      aria-label="editCommand"
+                    >
+                      <Icon style={{ color: '#ffffff' }}>edit</Icon>
+                    </Button>
+                  </Tooltip>{' '}
+                  <Tooltip title="Löschen" placement="top">
+                    <Button
+                      variant="fab"
+                      color="secondary"
+                      className="noshadow"
+                      mini
+                      aria-label="deleteCommand"
+                    >
+                      <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                    </Button>
+                  </Tooltip>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>2</TableCell>
+                <TableCell>
+                  <b>!test</b>
+                </TableCell>
+                <TableCell
+                  style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
+                >
+                  Das ist ein Test.
+                </TableCell>
+                <TableCell>Alle</TableCell>
+                <TableCell>1.337</TableCell>
+                <TableCell>
+                  <Tooltip title="Bearbeiten" placement="top">
+                    <Button
+                      variant="fab"
+                      color="primary"
+                      className="noshadow"
+                      mini
+                      aria-label="editCommand"
+                    >
+                      <Icon style={{ color: '#ffffff' }}>edit</Icon>
+                    </Button>
+                  </Tooltip>{' '}
+                  <Tooltip title="Löschen" placement="top">
+                    <Button
+                      variant="fab"
+                      color="secondary"
+                      className="noshadow"
+                      mini
+                      aria-label="deleteCommand"
+                    >
+                      <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                    </Button>
+                  </Tooltip>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </Paper>
       </div>
     );
   }

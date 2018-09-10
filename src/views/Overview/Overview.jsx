@@ -2,22 +2,13 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Paper from 'material-ui/Paper';
-import { Tabs, Tab } from 'material-ui/Tabs';
-import Divider from 'material-ui/Divider';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn
-} from 'material-ui/Table';
+import Paper from '@material-ui/core/Paper';
+import { Tabs, Tab } from '@material-ui/core/Tabs';
+import Divider from '@material-ui/core/Divider';
 import { Container, Row, Col } from 'react-grid-system';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import RaisedButton from 'material-ui/RaisedButton';
 import Button from '@material-ui/core/Button';
 
 import './_style.css';
@@ -275,11 +266,7 @@ class Overview extends Component {
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <h4 className="pageContainerTitle">Statistiken deines letzten Streams
                 <span style={{ float: 'right' }}>
-                  <RaisedButton
-                    backgroundColor="#00aeae"
-                    labelColor="#ffffff"
-                    label="Aktualisieren"
-                  />
+                  <Button variant="contained" color="primary">Aktualisieren</Button>
                 </span>
               </h4>
               <small>Hier findest du die Statisten deines letzten von Twasi erfassten Streams.</small>

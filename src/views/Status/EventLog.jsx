@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn
-} from 'material-ui/Table';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -29,23 +26,23 @@ class EventLog extends Component {
 
     const renderedEvents = events.map(message => (
       <TableRow>
-        <TableRowColumn>{message}</TableRowColumn>
-        <TableRowColumn>{message.createdAt}</TableRowColumn>
+        <TableCell>{message}</TableCell>
+        <TableCell>{message.createdAt}</TableCell>
       </TableRow>
     ));
 
     return (
       <Table>
-        <TableHeader
+        <TableHead
           adjustForCheckbox={false}
           displaySelectAll={false}
           selectable={false}
         >
           <TableRow className="TableRow">
-            <TableHeaderColumn>Message</TableHeaderColumn>
-            <TableHeaderColumn>Created</TableHeaderColumn>
+            <TableCell>Message</TableCell>
+            <TableCell>Created</TableCell>
           </TableRow>
-        </TableHeader>
+        </TableHead>
         <TableBody displayRowCheckbox={false}>
           {renderedEvents}
         </TableBody>

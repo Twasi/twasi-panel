@@ -1,24 +1,19 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
-import SkipArrow from 'material-ui/svg-icons/av/skip-next';
-import RevokeArrow from 'material-ui/svg-icons/av/skip-previous';
-import Volume from 'material-ui/svg-icons/av/volume-up';
-import Slider from 'material-ui/Slider';
-import Popover from 'material-ui/Popover';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn
-} from 'material-ui/Table';
+import Paper from '@material-ui/core/Paper';
+import Slider from '@material-ui/lab/Slider';
+import Popover from '@material-ui/core/Popover';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
+import VolumeIcon from '@material-ui/icons/VolumeUp';
 
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import songrequestSync from '../../services/songrequestSync';
@@ -32,6 +27,7 @@ class Songrequests extends React.Component {
     super(props);
     this.state = {
       open: false,
+      anchorEl: null,
       sync: {
         status: 'disconnected',
         ping: -1
@@ -53,22 +49,21 @@ class Songrequests extends React.Component {
   }
 
   handleClick = event => {
-    // This prevents ghost click.
-    event.preventDefault();
-
     this.setState({
       open: true,
-      anchorEl: event.currentTarget
+      anchorEl: event.currentTarget,
     });
   };
 
-  handleRequestClose = () => {
+  handleClose = () => {
     this.setState({
-      open: false
+      open: false,
+      anchorEl: null,
     });
   };
 
   render() {
+    const { anchorEl } = this.state;
     return (
       <div className="pageContent">
         <h2 className="pageTitle songrequestsTitle">
@@ -86,18 +81,7 @@ class Songrequests extends React.Component {
           }}
           className="pageContainer"
         >
-          <div className="songrequestsCoverImage">
-            <FloatingActionButton
-              style={{
-                position: 'absolute',
-                marginTop: '50px',
-                marginLeft: '50px'
-              }}
-              backgroundColor="#00aeae"
-            >
-              <PlayArrow />
-            </FloatingActionButton>
-
+          <div style={{ position: 'relative' }} className="songrequestsCoverImage">
             <img
               src="https://images-na.ssl-images-amazon.com/images/I/71M%2BI5aOauL._SY355_.jpg"
               alt="albumcover"
@@ -107,66 +91,26 @@ class Songrequests extends React.Component {
           <div className="songrequestsPlayer">
             <h4 style={{ padding: '0px', margin: '0px', color: '#525252' }}>
               Bohemian Rhapsody{' '}
-              <FloatingActionButton
-                style={{
-                  marginTop: '0px',
-                  marginLeft: '10px',
-                  float: 'right',
-                  boxShadow: 'none'
-                }}
-                mini="true"
-                backgroundColor="#414358"
-              >
-                <SkipArrow />
-              </FloatingActionButton>
-              <FloatingActionButton
-                style={{
-                  marginTop: '0px',
-                  marginLeft: '10px',
-                  float: 'right',
-                  boxShadow: 'none'
-                }}
-                mini="true"
-                backgroundColor="#414358"
-              >
-                <RevokeArrow />
-              </FloatingActionButton>
-              <FloatingActionButton
-                onClick={this.handleClick}
-                style={{
-                  marginTop: '0px',
-                  marginLeft: '10px',
-                  float: 'right',
-                  boxShadow: 'none'
-                }}
-                mini="true"
-                backgroundColor="#00aeae"
-              >
-                <Volume />
-                <Popover
-                  open={this.state.open}
-                  animated="true"
-                  anchorEl={this.state.anchorEl}
-                  anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-                  targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-                  onRequestClose={this.handleRequestClose}
-                  style={{
-                    height: 'auto',
-                    width: 'auto'
-                  }}
-                >
-                  <Slider
-                    sliderStyle={{
-                      marginLeft: '15px',
+              <div style={{ textAlign: 'right', float: 'right' }}>
+                <Chip style={{ verticalAlign: 'middle', marginRight: '15px' }} avatar={
+                      <Avatar>
+                        <VolumeIcon/>
+                      </Avatar>
+                    } label={<div style={{
                       marginRight: '15px',
                       marginTop: '11px',
                       marginBottom: '11px',
-                      width: '150px'
-                    }}
-                    style={{ color: '#00aeae' }}
-                  />
-                </Popover>
-              </FloatingActionButton>
+                      width: '150px' }}><Slider style={{ color: '#00aeae' }}/></div>} />
+                <Button style={{ margin: '0px 5px 0px 5px' }} mini variant="fab" color="primary" aria-label="previous">
+                  <Icon style={{ color: '#ffffff' }}>skip_previous</Icon>
+                </Button>
+                <Button style={{ margin: '0px 5px 0px 5px' }} mini variant="fab" color="primary" aria-label="play">
+                  <Icon style={{ color: '#ffffff' }}>play_arrow</Icon>
+                </Button>
+                <Button style={{ margin: '0px 5px 0px 5px' }} mini variant="fab" color="primary" aria-label="skip">
+                  <Icon style={{ color: '#ffffff' }}>skip_next</Icon>
+                </Button>
+              </div>
               <br />
               <small>Queen</small>
               <br />
@@ -174,10 +118,11 @@ class Songrequests extends React.Component {
                 <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
               </em>
             </h4>
-            <Slider
-              sliderStyle={{ marginBottom: '0px', marginTop: '10px' }}
-              style={{ color: '#00aeae' }}
-            />
+            <div style={{ marginBottom: '0px', marginTop: '0px' }}>
+              <Slider
+                style={{ color: '#00aeae' }}
+              />
+            </div>
             <div
               className="songrequestsInfo"
               style={{ color: '#525252', fontWeight: 'bold', fontSize: '14px' }}
@@ -187,79 +132,81 @@ class Songrequests extends React.Component {
             </div>
           </div>
         </Paper>
-        <Table>
-          <TableHeader
-            adjustForCheckbox={false}
-            displaySelectAll={false}
-            selectable={false}
-          >
-            <TableRow className="TableRow">
-              <TableHeaderColumn>
-                <FormattedMessage id="songrequest.table_id" />
-              </TableHeaderColumn>
-              <TableHeaderColumn>
-                <FormattedMessage id="songrequest.table_title" />
-              </TableHeaderColumn>
-              <TableHeaderColumn>
-                <FormattedMessage id="songrequest.table_channel" />
-              </TableHeaderColumn>
-              <TableHeaderColumn>
-                <FormattedMessage id="songrequest.table_duration" />
-              </TableHeaderColumn>
-              <TableHeaderColumn>
-                <FormattedMessage id="songrequest.table_requestby" />
-              </TableHeaderColumn>
-              <TableHeaderColumn>
-                <FormattedMessage id="songrequest.table_platform" />
-              </TableHeaderColumn>
-              <TableHeaderColumn>
-                <FormattedMessage id="songrequest.table_actions" />
-              </TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody displayRowCheckbox={false}>
-            <TableRow>
-              <TableRowColumn>1</TableRowColumn>
-              <TableRowColumn>Queen - Bohemian Rhapsody</TableRowColumn>
-              <TableRowColumn>Queen</TableRowColumn>
-              <TableRowColumn>13:37</TableRowColumn>
-              <TableRowColumn>John Doe</TableRowColumn>
-              <TableRowColumn>
-                <div>
-                  <Tooltip title="Spotify" placement="top">
-                    <img
-                      src={spotifylogo}
-                      alt="spotify"
-                      style={{ height: '40px', marginTop: '5px' }}
-                    />
+        <Paper className="pageContainer" style={{ padding: '0px' }}>
+          <Table>
+            <TableHead
+              adjustForCheckbox={false}
+              displaySelectAll={false}
+              selectable={false}
+            >
+              <TableRow className="TableRow">
+                <TableCell>
+                  <FormattedMessage id="songrequest.table_id" />
+                </TableCell>
+                <TableCell>
+                  <FormattedMessage id="songrequest.table_title" />
+                </TableCell>
+                <TableCell>
+                  <FormattedMessage id="songrequest.table_channel" />
+                </TableCell>
+                <TableCell>
+                  <FormattedMessage id="songrequest.table_duration" />
+                </TableCell>
+                <TableCell>
+                  <FormattedMessage id="songrequest.table_requestby" />
+                </TableCell>
+                <TableCell>
+                  <FormattedMessage id="songrequest.table_platform" />
+                </TableCell>
+                <TableCell>
+                  <FormattedMessage id="songrequest.table_actions" />
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody displayRowCheckbox={false}>
+              <TableRow>
+                <TableCell>1</TableCell>
+                <TableCell>Queen - Bohemian Rhapsody</TableCell>
+                <TableCell>Queen</TableCell>
+                <TableCell>13:37</TableCell>
+                <TableCell>John Doe</TableCell>
+                <TableCell>
+                  <div>
+                    <Tooltip title="Spotify" placement="top">
+                      <img
+                        src={spotifylogo}
+                        alt="spotify"
+                        style={{ height: '40px', marginTop: '5px' }}
+                      />
+                    </Tooltip>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <Tooltip title="Favorisieren" placement="top">
+                    <Button
+                      variant="fab"
+                      className="noshadow"
+                      mini
+                      aria-label="favSong"
+                    >
+                      <Icon style={{ color: '#ffffff' }}>star</Icon>
+                    </Button>
+                  </Tooltip>{' '}
+                  <Tooltip title="Löschen" placement="top">
+                    <Button
+                      variant="fab"
+                      className="redbg noshadow"
+                      mini
+                      aria-label="deleteSong"
+                    >
+                      <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                    </Button>
                   </Tooltip>
-                </div>
-              </TableRowColumn>
-              <TableRowColumn>
-                <Tooltip title="Favorisieren" placement="top">
-                  <Button
-                    variant="fab"
-                    className="noshadow"
-                    mini
-                    aria-label="favSong"
-                  >
-                    <Icon style={{ color: '#ffffff' }}>star</Icon>
-                  </Button>
-                </Tooltip>{' '}
-                <Tooltip title="Löschen" placement="top">
-                  <Button
-                    variant="fab"
-                    className="redbg noshadow"
-                    mini
-                    aria-label="deleteSong"
-                  >
-                    <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                  </Button>
-                </Tooltip>
-              </TableRowColumn>
-            </TableRow>
-          </TableBody>
-        </Table>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </Paper>
       </div>
     );
   }

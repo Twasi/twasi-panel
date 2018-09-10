@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Paper from 'material-ui/Paper';
-import { Container, Row, Col } from 'react-grid-system';
-import Divider from 'material-ui/Divider';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
-import { Card, CardText } from 'material-ui/Card';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AppBar from '@material-ui/core/AppBar';
@@ -51,12 +51,11 @@ class Giveaways extends Component {
               <small>Erstelle ein neues Giveaway.</small>
               <Divider className="marginDivider" />
               <Card className="pluginCard">
-                <CardText>
+                <CardContent className="pluginCardContent">
                   <Grid container spacing={16}>
                     <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        className="buttonNotToggled"
                         variant="outlined"
                       >
                         <Icon>close</Icon> Staff
@@ -65,7 +64,6 @@ class Giveaways extends Component {
                     <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        className="buttonNotToggled"
                         variant="outlined"
                       >
                         <Icon>close</Icon> Mods
@@ -74,7 +72,6 @@ class Giveaways extends Component {
                     <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        className="buttonNotToggled"
                         variant="outlined"
                       >
                         <Icon>close</Icon> Subs
@@ -83,8 +80,8 @@ class Giveaways extends Component {
                     <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
-                        className="buttonToggled"
-                        variant="outlined"
+                        color="primary"
+                        variant="contained"
                       >
                         <Icon>check</Icon> User
                       </Button>
@@ -121,8 +118,8 @@ class Giveaways extends Component {
                             <Grid item lg={6}>
                               <Button
                                 fullWidth
-                                className="buttonToggled"
                                 variant="outlined"
+                                color="primary"
                               >
                                 Giveaway öffnen
                               </Button>
@@ -130,8 +127,8 @@ class Giveaways extends Component {
                             <Grid item lg={6}>
                               <Button
                                 fullWidth
-                                className="buttonCancel"
                                 variant="outlined"
+                                color="secondary"
                               >
                                 Giveaway abbrechen
                               </Button>
@@ -161,8 +158,8 @@ class Giveaways extends Component {
                             <Grid item lg={6}>
                               <Button
                                 fullWidth
-                                className="buttonToggled"
                                 variant="outlined"
+                                color="primary"
                               >
                                 Giveaway öffnen
                               </Button>
@@ -170,8 +167,8 @@ class Giveaways extends Component {
                             <Grid item lg={6}>
                               <Button
                                 fullWidth
-                                className="buttonCancel"
                                 variant="outlined"
+                                color="secondary"
                               >
                                 Giveaway abbrechen
                               </Button>
@@ -180,15 +177,15 @@ class Giveaways extends Component {
                       </TabContainer>}
                     </Grid>
                   </Grid>
-                </CardText>
+                </CardContent>
               </Card>
               <br />
               <Grid container spacing={16}>
                 <Grid item lg={9} md={12}>
                   <Button
                     fullWidth
-                    className="buttonToggled"
-                    variant="outlined"
+                    variant="contained"
+                    color="primary"
                   >
                     Auslosen
                   </Button>
@@ -196,8 +193,8 @@ class Giveaways extends Component {
                 <Grid item lg={3} md={12}>
                   <Button
                     fullWidth
-                    className="buttonToggled"
-                    variant="outlined"
+                    variant="contained"
+                    color="primary"
                   >
                     Reroll
                   </Button>

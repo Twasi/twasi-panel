@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 

@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-grid-system';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
-import Divider from 'material-ui/Divider';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { Tabs, Tab } from 'material-ui/Tabs';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -26,18 +29,19 @@ class Plugins extends Component {
     const renderedPlugins = plugins.map(plugin => (
       <Grid container spacing={16} style={{ marginTop: '23px' }}>
           <Grid item xs={4}>
-            <Card className="pluginCard" style={{ minHeight: '167px' }}>
-              <CardHeader
-                avatar=""
-                title={<div><b>{plugin.name}</b></div>}
-                subtitle={<div>by <i>{plugin.author}</i><br /><FormattedMessage id="plugins.version" /> {plugin.version}</div>}
-              />
+            <Card className="pluginCard" style={{ minHeight: '183px' }}>
+              <CardContent className="pluginCardContent">
+                  <b>{plugin.name}</b><br />
+                  by <i>{plugin.author}</i><br />
+                  <FormattedMessage id="plugins.version" /> {plugin.version}
+              </CardContent>
               <Divider />
-              <CardText>
+              <CardContent className="pluginCardContent">
                 {plugin.isInstalled && (
                   <div>
                     <Button
-                      variant="outlined" color="secondary"
+                      fullWidth
+                      variant="contained" color="secondary"
                       disabled={plugin.actionInProgress}
                       onClick={() => uninstallPlugin(plugin.name)}
                     >
@@ -61,7 +65,8 @@ class Plugins extends Component {
                 {!plugin.isInstalled && (
                   <div>
                     <Button
-                      variant="outlined" color="primary"
+                      fullWidth
+                      variant="contained" color="primary"
                       disabled={plugin.actionInProgress}
                       onClick={() => installPlugin(plugin.name)}
                     >
@@ -82,12 +87,12 @@ class Plugins extends Component {
                     </Button>
                   </div>
                 )}
-              </CardText>
+              </CardContent>
             </Card>
           </Grid>
           <Grid item xs={8}>
-            <Card className="pluginCard" style={{ minHeight: '167px' }}>
-              <CardText>
+            <Card className="pluginCard" style={{ minHeight: '183px' }}>
+              <CardContent className="pluginCardContent">
                 {plugin.description}
                 <Divider style={{ marginTop: '15px', marginBottom: '15px' }} />
                   <Grid container spacing={24}>
@@ -104,7 +109,7 @@ class Plugins extends Component {
                       -
                     </Grid>
                   </Grid>
-              </CardText>
+              </CardContent>
             </Card>
           </Grid>
       </Grid>
@@ -127,57 +132,7 @@ class Plugins extends Component {
             </Grid>
           </Grid>
           <br />
-          <Tabs
-            tabItemContainerStyle={{
-              backgroundColor: '#fff'
-            }}
-            inkBarStyle={{ backgroundColor: '#00aeae' }}
-            contentContainerStyle={{ paddingTop: '23px' }}
-          >
-            <Tab
-              label={<FormattedMessage id="plugins.all" />}
-              style={{ borderBottom: '2px solid #cacaca2b' }}
-              buttonStyle={{
-                color: '#000',
-                paddingLeft: '23px',
-                fontSize: '13px'
-              }}
-            >
-              {renderedPlugins}
-            </Tab>
-            <Tab
-              label={<FormattedMessage id="plugins.installed" />}
-              style={{ borderBottom: '2px solid #cacaca2b' }}
-              buttonStyle={{
-                color: '#000',
-                paddingLeft: '23px',
-                fontSize: '13px'
-              }}
-            >
-            </Tab>
-            <Tab
-              disabled
-              label={<FormattedMessage id="plugins.free" />}
-              style={{ borderBottom: '2px solid #cacaca2b' }}
-              buttonStyle={{
-                color: '#000',
-                paddingLeft: '23px',
-                fontSize: '13px'
-              }}
-            >
-            </Tab>
-            <Tab
-              disabled
-              label={<FormattedMessage id="plugins.paid" />}
-              style={{ borderBottom: '2px solid #cacaca2b' }}
-              buttonStyle={{
-                color: '#000',
-                paddingLeft: '23px',
-                fontSize: '13px'
-              }}
-            >
-            </Tab>
-          </Tabs>
+          {renderedPlugins}
         </Paper>
       </div>
     );
