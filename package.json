@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@amcharts/amcharts4": "^4.0.0-beta.48",
-    "@material-ui/core": "^3.0.1",
+    "@material-ui/core": "^3.0.1", 
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^1.0.0-alpha.6",
     "@babel/runtime": "7.0.0-beta.46",
