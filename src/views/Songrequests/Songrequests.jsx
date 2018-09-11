@@ -14,6 +14,7 @@ import Icon from '@material-ui/core/Icon';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import VolumeIcon from '@material-ui/icons/VolumeUp';
+import Grid from '@material-ui/core/Grid';
 
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import songrequestSync from '../../services/songrequestSync';
@@ -88,11 +89,21 @@ class Songrequests extends React.Component {
               style={{ height: '150px', width: '150px' }}
             />
           </div>
-          <div className="songrequestsPlayer">
-            <h4 style={{ padding: '0px', margin: '0px', color: '#525252' }}>
-              Bohemian Rhapsody{' '}
+          <Grid container spacing={0} className="songrequestsPlayer">
+            <Grid item xs={6}>
+              <h4 style={{ padding: '0px', margin: '0px', color: '#525252' }}>
+                Bohemian Rhapsody{' '}
+                <br />
+                <small>Queen</small>
+                <br />
+                <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
+                  <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
+                </em>
+              </h4>
+            </Grid>
+            <Grid item xs={6}>
               <div style={{ textAlign: 'right', float: 'right' }}>
-                <Chip style={{ verticalAlign: 'middle', marginRight: '15px' }} avatar={
+                <Chip style={{ verticalAlign: 'middle', marginRight: '5px' }} avatar={
                       <Avatar>
                         <VolumeIcon/>
                       </Avatar>
@@ -100,7 +111,8 @@ class Songrequests extends React.Component {
                       marginRight: '15px',
                       marginTop: '11px',
                       marginBottom: '11px',
-                      width: '150px' }}><Slider style={{ color: '#00aeae' }}/></div>} />
+                      width: '150px' }}><Slider style={{ color: '#00aeae' }}/></div>}
+                />
                 <Button style={{ margin: '0px 5px 0px 5px' }} mini variant="fab" color="primary" aria-label="previous">
                   <Icon style={{ color: '#ffffff' }}>skip_previous</Icon>
                 </Button>
@@ -111,26 +123,15 @@ class Songrequests extends React.Component {
                   <Icon style={{ color: '#ffffff' }}>skip_next</Icon>
                 </Button>
               </div>
-              <br />
-              <small>Queen</small>
-              <br />
-              <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
-                <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
-              </em>
-            </h4>
-            <div style={{ marginBottom: '0px', marginTop: '0px' }}>
-              <Slider
-                style={{ color: '#00aeae' }}
-              />
-            </div>
-            <div
-              className="songrequestsInfo"
-              style={{ color: '#525252', fontWeight: 'bold', fontSize: '14px' }}
-            >
+            </Grid>
+            <Grid item xs={12}>
+              <div style={{ marginBottom: '0px', marginTop: '0px' }}>
+                <Slider/>
+              </div>
               <span className="leftTime">00:00</span>
               <span className="rightTime">13:37</span>
-            </div>
-          </div>
+            </Grid>
+          </Grid>
         </Paper>
         <Paper className="pageContainer" style={{ padding: '0px' }}>
           <Table>

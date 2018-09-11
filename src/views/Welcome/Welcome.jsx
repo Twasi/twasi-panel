@@ -16,6 +16,8 @@ import { Card, CardHeader, CardText } from 'material-ui/Card';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import DummyLoadingPage from '../DummyLoadingPage';
+
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 
 import './_style.css';
@@ -365,7 +367,7 @@ class Welcome extends Component {
       );
     }
 
-    return <div>Loading...</div>;
+    return <DummyLoadingPage/>;
   }
 }
 
