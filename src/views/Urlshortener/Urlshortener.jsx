@@ -3,22 +3,19 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-grid-system';
-import Divider from 'material-ui/Divider';
+import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Icon from '@material-ui/core/Icon';
-import RaisedButton from 'material-ui/RaisedButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn
-} from 'material-ui/Table';
-import { Card, CardText } from 'material-ui/Card';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import './_style.css';
 
@@ -49,17 +46,18 @@ class Urlshortener extends Component {
               <h4 className="pageContainerTitle">
                 URL Kürzen
                 <span style={{ float: 'right' }}>
-                  <RaisedButton
-                    backgroundColor="#00aeae"
-                    labelColor="#ffffff"
-                    label="Speichern"
-                  />
+                  <Button
+                    variant="contained"
+                    color="primary"
+                  >
+                    Speichern
+                  </Button>
                 </span>
               </h4>
               <small>Kürze deine URL's um sie mit jedem zu teilen.</small>
               <Divider className="marginDivider" />
               <Card className="pluginCard">
-                <CardText>
+                <CardContent className="pluginCardContent">
                   <TextField
                     helperText="Freilassen für eine zufällige URL."
                     fullWidth
@@ -80,7 +78,7 @@ class Urlshortener extends Component {
                       )
                     }}
                   />
-                </CardText>
+                </CardContent>
               </Card>
               {/*
               <br />
@@ -111,7 +109,7 @@ class Urlshortener extends Component {
                 </Icon>
               </span>
               <Card className="pluginCard">
-                <CardText>
+                <CardContent className="pluginCardContent">
                   <TextField
                     helperText="Auf welche Domain soll dein Shortlink leiten?"
                     fullWidth
@@ -131,7 +129,7 @@ class Urlshortener extends Component {
                       )
                     }}
                   />
-                </CardText>
+                </CardContent>
               </Card>
             </Paper>
           </Col>
@@ -142,55 +140,57 @@ class Urlshortener extends Component {
                 Hier findest du eine Liste deiner bereits gekürzten URL's
               </small>
             </Paper>
-            <Table>
-              <TableHeader
-                adjustForCheckbox={false}
-                displaySelectAll={false}
-                selectable={false}
-              >
-                <TableRow className="TableRow">
-                  <TableHeaderColumn>Shortlink</TableHeaderColumn>
-                  <TableHeaderColumn>Weiterleitung</TableHeaderColumn>
-                  <TableHeaderColumn />
-                </TableRow>
-              </TableHeader>
-              <TableBody displayRowCheckbox={false}>
-                <TableRow>
-                  <TableRowColumn>
-                    <a style={{ color: '#00aeae' }} href="#">
-                      https://twa.si/c/test
-                    </a>
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <a style={{ color: '#00aeae' }} href="#">
-                      https://blechkelle.com
-                    </a>
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <Tooltip title="Bearbeiten" placement="top">
-                      <Button
-                        variant="fab"
-                        className="tealbg noshadow"
-                        mini
-                        aria-label="editCommand"
-                      >
-                        <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                      </Button>
-                    </Tooltip>{' '}
-                    <Tooltip title="Löschen" placement="top">
-                      <Button
-                        variant="fab"
-                        className="redbg noshadow"
-                        mini
-                        aria-label="deleteCommand"
-                      >
-                        <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                      </Button>
-                    </Tooltip>
-                  </TableRowColumn>
-                </TableRow>
-              </TableBody>
-            </Table>
+            <Paper className="pageContainer" style={{ padding: '0px', margin: '0px' }}>
+              <Table>
+                <TableHead
+                  adjustForCheckbox={false}
+                  displaySelectAll={false}
+                  selectable={false}
+                >
+                  <TableRow className="TableRow">
+                    <TableCell>Shortlink</TableCell>
+                    <TableCell>Weiterleitung</TableCell>
+                    <TableCell/>
+                  </TableRow>
+                </TableHead>
+                <TableBody displayRowCheckbox={false}>
+                  <TableRow>
+                    <TableCell>
+                      <a style={{ color: '#00aeae' }} href="#">
+                        https://twa.si/c/test
+                      </a>
+                    </TableCell>
+                    <TableCell>
+                      <a style={{ color: '#00aeae' }} href="#">
+                        https://blechkelle.com
+                      </a>
+                    </TableCell>
+                    <TableCell>
+                      <Tooltip title="Bearbeiten" placement="top">
+                        <Button
+                          variant="fab"
+                          className="tealbg noshadow"
+                          mini
+                          aria-label="editCommand"
+                        >
+                          <Icon style={{ color: '#ffffff' }}>edit</Icon>
+                        </Button>
+                      </Tooltip>{' '}
+                      <Tooltip title="Löschen" placement="top">
+                        <Button
+                          variant="fab"
+                          className="redbg noshadow"
+                          mini
+                          aria-label="deleteCommand"
+                        >
+                          <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                        </Button>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Paper>
           </Col>
         </Row>
       </div>

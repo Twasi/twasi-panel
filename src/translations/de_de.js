@@ -45,6 +45,8 @@ export default {
   'status.stopped': 'Gestoppt',
   'status.manage': 'Verwalten',
   'status.eventlog': 'Ereignislog',
+  'status.card_headline': 'Bot Status',
+  'status.explanation': 'Hier kannst du den Bot jederzeit starten bzw. stoppen.',
 
   // Plugins
   'plugins.headline': 'Plugin Store',
@@ -53,14 +55,10 @@ export default {
   'plugins.card_headline': 'Was sind Plugins?',
   'plugins.version': 'Version',
   'plugins.commands': 'Befehle',
-  'plugins.all_text':
-    'Hier findest du die gesamte Sammlung an Plugins, die für Twasi erstellt wurden.',
-  'plugins.free_text': 'Hier findest du alle Kostenlosen Plugins für Twasi.',
-  'plugins.paid_text':
-    'Hier findest du alle Kostenpflichtigen Plugins für Twasi. Durch den Kauf eines Kostenpflichtigen Plugins unterstützt du den Entwickler direkt.',
   'plugins.all': 'Alle',
   'plugins.free': 'Kostenlos',
   'plugins.paid': 'Kostenpflichtig',
+  'plugins.installed': 'Installiert',
 
   // Settings
   'settings.unsaved': 'Ungespeicherte Änderungen',

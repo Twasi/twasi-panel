@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
-import Paper from 'material-ui/Paper';
-import { Card, CardText } from 'material-ui/Card';
+import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import { Row, Col } from 'react-grid-system';
-import Divider from 'material-ui/Divider';
-import RaisedButton from 'material-ui/RaisedButton';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -46,13 +47,9 @@ class Profile extends Component {
               <h4 className="pageContainerTitle">
                 <FormattedMessage id="profile.your_data" />
                 <span style={{ float: 'right' }}>
-                  <RaisedButton
-                    backgroundColor="#00aeae"
-                    labelColor="#ffffff"
-                    label={
-                      <FormattedMessage id="profile.your_data_refreshbutton" />
-                    }
-                  />
+                  <Button variant="contained" color="primary">
+                    <FormattedMessage id="profile.your_data_refreshbutton" />
+                  </Button>
                 </span>
               </h4>
               <small>
@@ -60,7 +57,7 @@ class Profile extends Component {
               </small>
               <Divider className="marginDivider" />
               <Card className="pluginCard">
-                <CardText>
+                <CardContent className="pluginCardContent">
                   <Table>
                     <TableBody>
                       <TableRow>
@@ -109,18 +106,16 @@ class Profile extends Component {
                       </TableRow>
                     </TableBody>
                   </Table>
-                </CardText>
+                </CardContent>
               </Card>
             </Paper>
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">
                 <FormattedMessage id="profile.badges" />
                 <span style={{ float: 'right' }}>
-                  <RaisedButton
-                    backgroundColor="#00aeae"
-                    labelColor="#ffffff"
-                    label={<FormattedMessage id="profile.badges_savebutton" />}
-                  />
+                  <Button variant="contained" color="primary">
+                    <FormattedMessage id="profile.badges_savebutton" />
+                  </Button>
                 </span>
               </h4>
               <small>
@@ -128,7 +123,7 @@ class Profile extends Component {
               </small>
               <Divider className="marginDivider" />
               <Card className="pluginCard">
-                <CardText>
+                <CardContent className="pluginCardContent">
                   <h4 className="pageContainerTitle">
                     <FormattedMessage id="profile.badges_yourbadges" />
                   </h4>
@@ -154,7 +149,7 @@ class Profile extends Component {
                     alt="Badge"
                     className="profileBadge"
                   />
-                </CardText>
+                </CardContent>
               </Card>
             </Paper>
           </Col>
@@ -169,13 +164,7 @@ class Profile extends Component {
               <Divider className="marginDivider" />
               <Row>
                 <Col sm={12}>
-                  <RaisedButton
-                    backgroundColor="#1da1f2"
-                    labelColor="#fff"
-                    disabled
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
+                  <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                     <span
                       style={{
                         position: 'absolute',
@@ -192,7 +181,6 @@ class Profile extends Component {
                       />
                     </span>
                     <small>
-                      <FormattedMessage id="profile.social_connected_as" />{' '}
                       <b>@Blechkelle</b>.{' '}
                       <a style={{ color: '#e53935' }} href="#">
                         <FormattedMessage id="profile.social_disconnect" />
@@ -201,19 +189,14 @@ class Profile extends Component {
                         <FormattedMessage id="profile.social_permissions" />
                       </a>
                     </small>
-                  </RaisedButton>
+                  </Button>
                 </Col>
               </Row>
               <br />
               <Row>
                 <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#0088cc"
-                    labelColor="#ffffff"
-                    label="Telegram"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
+                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    Telegram
                     <span
                       style={{
                         position: 'absolute',
@@ -229,7 +212,7 @@ class Profile extends Component {
                         alt="telegram-logo"
                       />
                     </span>
-                  </RaisedButton>
+                  </Button>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
@@ -242,13 +225,8 @@ class Profile extends Component {
               <br />
               <Row>
                 <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#3b5998"
-                    labelColor="#ffffff"
-                    label="Facebook"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
+                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    Facebook
                     <span
                       style={{
                         position: 'absolute',
@@ -264,7 +242,7 @@ class Profile extends Component {
                         alt="facebook-logo"
                       />
                     </span>
-                  </RaisedButton>
+                  </Button>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
@@ -277,83 +255,8 @@ class Profile extends Component {
               <br />
               <Row>
                 <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#962fbf"
-                    labelColor="#ffffff"
-                    label="Instagram"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#6b2288'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={instagramlogo}
-                        alt="instagram-logo"
-                      />
-                    </span>
-                  </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#d9432f"
-                    labelColor="#ffffff"
-                    label="Google"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#a23425'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={googlelogo}
-                        alt="google-logo"
-                      />
-                    </span>
-                  </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#FF0000"
-                    labelColor="#ffffff"
-                    label="Youtube"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
+                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    Youtube
                     <span
                       style={{
                         position: 'absolute',
@@ -369,7 +272,7 @@ class Profile extends Component {
                         alt="youtube-logo"
                       />
                     </span>
-                  </RaisedButton>
+                  </Button>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
@@ -382,13 +285,8 @@ class Profile extends Component {
               <br />
               <Row>
                 <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#f50"
-                    labelColor="#ffffff"
-                    label="Soundcloud"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
+                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    Soundcloud
                     <span
                       style={{
                         position: 'absolute',
@@ -404,7 +302,7 @@ class Profile extends Component {
                         alt="soundcloud-logo"
                       />
                     </span>
-                  </RaisedButton>
+                  </Button>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>
@@ -417,48 +315,8 @@ class Profile extends Component {
               <br />
               <Row>
                 <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#FFFB00"
-                    labelColor="#000000"
-                    label="Snapchat"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#d6d300'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={snapchatlogo}
-                        alt="snapchat-logo"
-                      />
-                    </span>
-                  </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#6ae368"
-                    labelColor="#ffffff"
-                    label="Spotify"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
+                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    Spotify
                     <span
                       style={{
                         position: 'absolute',
@@ -474,42 +332,7 @@ class Profile extends Component {
                         alt="spotify-logo"
                       />
                     </span>
-                  </RaisedButton>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <RaisedButton
-                    backgroundColor="#333"
-                    labelColor="#FFFFFF"
-                    label="Github"
-                    fullWidth
-                    style={{ boxShadow: 'none' }}
-                  >
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#000000'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={githublogo}
-                        alt="github-logo"
-                      />
-                    </span>
-                  </RaisedButton>
+                  </Button>
                 </Col>
                 <Col sm={6}>
                   <div style={{ marginTop: '6px' }}>

@@ -1,5 +1,9 @@
 .pluginCard {
   padding-bottom: 24px;
+  box-shadow: 0 0 1px rgba(34, 25, 25, 0.4) !important;
+}
+.pluginCardContent {
+  margin-bottom: 24px;
 }
 .pluginCardImage {
   padding-top: 5px;

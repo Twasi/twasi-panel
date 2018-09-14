@@ -53,13 +53,10 @@ export default {
   'plugins.card_headline': 'What are plugins?',
   'plugins.version': 'Version',
   'plugins.commands': 'Commands',
-  'plugins.all_text': 'These are all plugins you can find for Twasi.',
-  'plugins.free_text': 'These plugins are free to use.',
-  'plugins.paid_text':
-    'These Plugins do you have to buy. If you buy a plugin you support the developer directly.',
   'plugins.all': 'All',
   'plugins.free': 'Free plugins',
   'plugins.paid': 'Paid plugins',
+  'plugins.installed': 'Installed',
 
   // Settings
   'settings.unsaved': 'Unsaved Changes',
