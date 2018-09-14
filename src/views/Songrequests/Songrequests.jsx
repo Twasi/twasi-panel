@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -22,6 +23,7 @@ import Icon from '@material-ui/core/Icon';
 
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import songrequestSync from '../../services/songrequestSync';
+import { authSelectors } from '../../state/auth';
 
 import spotifylogo from '../common/resources/spotifyIcon.png';
 
@@ -42,6 +44,7 @@ class Songrequests extends React.Component {
   }
 
   componentDidMount() {
+    this.sync.setTwitchId(this.props.twitchid);
     this.sync.connect();
 
     this.sync.onPing = ping =>
@@ -265,4 +268,8 @@ class Songrequests extends React.Component {
   }
 }
 
-export default Songrequests;
+const mapStateToProps = state => ({
+  twitchid: authSelectors.getUser(state).twitchid
+});
+
+export default connect(mapStateToProps)(Songrequests);

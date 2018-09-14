@@ -12,6 +12,7 @@ class SongrequestSync {
     this.sendPing = this.sendPing.bind(this);
     this.sendObject = this.sendObject.bind(this);
     this.onMessage = this.onMessage.bind(this);
+    this.setTwitchId = this.setTwitchId.bind(this);
   }
 
   connect() {
@@ -33,6 +34,7 @@ class SongrequestSync {
   onOpen() {
     SongrequestSync.log('Connected!');
     this.sendPing();
+    this.sendSelectChannel();
 
     if (this.onStatus) {
       this.onStatus('connected');
@@ -44,6 +46,10 @@ class SongrequestSync {
   sendPing() {
     this.latestPing = Date.now();
     this.sendObject({ type: 'ping' });
+  }
+
+  sendSelectChannel() {
+    this.sendObject({ type: 'selectChannel', channel: this.twitchid });
   }
 
   requestStatus() {
@@ -77,6 +83,10 @@ class SongrequestSync {
   sendObject(obj) {
     SongrequestSync.log(`> ${JSON.stringify(obj)}`);
     this.socket.send(JSON.stringify(obj));
+  }
+
+  setTwitchId(twitchid) {
+    this.twitchid = twitchid;
   }
 
   static log(str) {
