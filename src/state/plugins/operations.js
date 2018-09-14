@@ -28,7 +28,7 @@ const loadData = () => (dispatch, getState) => {
   ).then(data => {
     dispatch(
       updatePlugins(
-        data.data.viewer.plugins.map(p => ({ ...p, actionInProgress: false }))
+        data.plugins.map(p => ({ ...p, actionInProgress: false }))
       )
     );
     dispatch(updateLoading(false));
@@ -57,7 +57,7 @@ const installPlugin = name => (dispatch, getState) => {
     jwt
   ).then(data => {
     dispatch(
-      setInstalled(name, data.data.viewer.user.installPlugin.isInstalled)
+      setInstalled(name, data.user.installPlugin.isInstalled)
     );
     dispatch(updateActionInProgress(name, false));
   });
@@ -82,7 +82,7 @@ const uninstallPlugin = name => (dispatch, getState) => {
     jwt
   ).then(data => {
     dispatch(
-      setInstalled(name, data.data.viewer.user.uninstallPlugin.isInstalled)
+      setInstalled(name, data.user.uninstallPlugin.isInstalled)
     );
     dispatch(updateActionInProgress(name, false));
   });

@@ -22,11 +22,11 @@ class RequireAuth extends React.Component {
       console.log('Welcome back from the auth provider! Let\'s look if we can get you authenticated...');
 
       graph('user{id,twitchAccount{twitchid,name,displayName,avatar,email}}', urlParams.jwt).then(data => {
-        if (data.data.viewer == null) {
+        if (data.data.panel == null) {
           window.location.href = window.env.AUTH_URL;
         } else {
           authenticate(urlParams.jwt);
-          updateUserData(data.data.viewer.user);
+          updateUserData(data.data.panel.user);
 
           // store it in local storage
           storage('jwt', { token: urlParams.jwt, since: new Date().getTime() });
@@ -64,7 +64,7 @@ class RequireAuth extends React.Component {
       }
 
       graph('user{id,twitchAccount{twitchid,name,displayName,avatar,email}}', cacheData.token).then(data => {
-        if (data.data.viewer == null) {
+        if (data.data.panel == null) {
           if (!optional) {
             storage('originalUrl', location.pathname);
             window.location.href = window.env.AUTH_URL;
@@ -73,7 +73,7 @@ class RequireAuth extends React.Component {
           }
         } else {
           authenticate(cacheData.token);
-          updateUserData(data.data.viewer.user);
+          updateUserData(data.data.panel.user);
         }
       });
     }

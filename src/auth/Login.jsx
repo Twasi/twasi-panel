@@ -25,10 +25,10 @@ class Login extends React.Component {
       authenticate(urlParams.jwt);
       storage('jwt', { token: urlParams.jwt, since: new Date().getTime() });
       graph('user{id,twitchAccount{twitchid,name,avatar,email}}', urlParams.jwt).then(data => {
-        if (data.data.viewer == null) {
+        if (data.data.panel == null) {
           window.location.href = window.env.AUTH_URL;
         } else {
-          updateUserData(data.data.viewer.user);
+          updateUserData(data.data.panel.user);
         }
       });
     } else {
@@ -45,10 +45,10 @@ class Login extends React.Component {
 
       authenticate(cacheData.token);
       graph('user{id,twitchAccount{twitchid,name,displayName,avatar,email}}', cacheData.token).then(data => {
-        if (data.data.viewer == null) {
+        if (data.data.panel == null) {
           window.location.href = window.env.AUTH_URL;
         } else {
-          updateUserData(data.data.viewer.user);
+          updateUserData(data.data.panel.user);
         }
       });
     }

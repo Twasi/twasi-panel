@@ -13,7 +13,7 @@ const loadUserStatus = () => (dispatch, getState) => {
     return;
   }
 
-  getUserGraph('userStatus{status}', jwt).then(data => dispatch(updateUserStatus(data.data.viewer.userStatus.status)));
+  getUserGraph('userStatus{status}', jwt).then(data => dispatch(updateUserStatus(data.userStatus.status)));
 };
 
 const loadVersion = () => (dispatch, getState) => {
@@ -25,7 +25,7 @@ const loadVersion = () => (dispatch, getState) => {
   }
 
   getUserGraph('appInfo{version}', jwt).then(data => {
-    dispatch(updateVersion(data.data.viewer.appInfo.version));
+    dispatch(updateVersion(data.appInfo.version));
     dispatch(updateConnected(true));
     dispatch(updateLoaded(true));
   });

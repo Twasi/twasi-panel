@@ -16,14 +16,14 @@ const loadData = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('status{isRunning}', jwt).then(data => dispatch(updateStatus(data.data.viewer.status)));
+  getUserGraph('status{isRunning}', jwt).then(data => dispatch(updateStatus(data.status)));
 };
 
 const loadEvents = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('user{events{message,messageType,createdAt}}', jwt).then(data => dispatch(updateEvents(data.data.viewer.user.events)));
+  getUserGraph('user{events{message,messageType,createdAt}}', jwt).then(data => dispatch(updateEvents(data.user.events)));
 };
 
 const verifyData = () => (dispatch, getState) => {
@@ -40,14 +40,14 @@ const stopBot = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('status{changeStatus(isRunning:false){isRunning}}', jwt).then(data => dispatch(updateStatus(data.data.viewer.status.changeStatus)));
+  getUserGraph('status{changeStatus(isRunning:false){isRunning}}', jwt).then(data => dispatch(updateStatus(data.status.changeStatus)));
 };
 
 const startBot = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('status{changeStatus(isRunning:true){isRunning}}', jwt).then(data => dispatch(updateStatus(data.data.viewer.status.changeStatus)));
+  getUserGraph('status{changeStatus(isRunning:true){isRunning}}', jwt).then(data => dispatch(updateStatus(data.status.changeStatus)));
 };
 
 export default {

@@ -9,7 +9,7 @@ const withService = Component => {
   const enhancedComponent = props => {
     const { jwt } = props;
 
-    const executeQuery = (query, customToken) => graphqlService(`query{viewer(token:"${customToken === null ? jwt : customToken}"){${query}}}`);
+    const executeQuery = (query, customToken) => graphqlService(`query{panel(token:"${customToken === null ? jwt : customToken}"){${query}}}`);
 
     return <Component {...props} graph={executeQuery} />;
   };
