@@ -6,10 +6,9 @@ import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import find from 'lodash/fp/find';
 import { throttle } from 'lodash';
 import Paper from '@material-ui/core/Paper';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import MenuItem from '@material-ui/core/MenuItem';
 import Hidden from '@material-ui/core/Hidden';
-import Divider from '@material-ui/core/Divider';
 
 import { authSelectors } from '../../state/auth';
 import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
@@ -116,13 +115,16 @@ class Sidebar extends Component {
     const renderItems = () =>
       this.items.map(item => (
         <MenuItem
-          primaryText={intl.formatMessage({ id: item.name })}
-          leftIcon={<i className="material-icons">{item.icon}</i>}
           style={{ color: '#828282', fontSize: 13 }}
           value={item.key}
           key={item.key}
+          selected={item.key === selectedKey}
           innerDivStyle={{ padding: '0px 16px 0px 52px' }}
-        />
+          onClick={event => this.handleClick(event, item.key)}
+        >
+          <i className="material-icons" style={{ marginRight: '15px' }}>{item.icon}</i>
+          {intl.formatMessage({ id: item.name })}
+        </MenuItem>
       ));
 
     return (
@@ -132,39 +134,36 @@ class Sidebar extends Component {
             <div style={getHeaderMenuItem()}>
               <FormattedMessage id="sidebar.navigation_headline" />
             </div>
-            <Menu
-              onChange={this.handleClick}
-              value={selectedKey}
-              selectedMenuItemStyle={getActiveMenuItem()}
+            <MenuList
               className="Sidebar"
             >
               {renderItems()}
-            </Menu>
+            </MenuList>
           </Paper>
           <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
-            <Menu
-              value={selectedKey}
-              selectedMenuItemStyle={getActiveMenuItem()}
+            <MenuList
               className="Sidebar"
             >
               <MenuItem
-                primaryText={intl.formatMessage({ id: 'sidebar.docs' })}
-                leftIcon={<i className="material-icons">language</i>}
                 style={{ color: '#828282', fontSize: 13 }}
                 innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 onClick={() => window.open('https://docs.twasi.net', '_blank')}
-              />
+              >
+                <i className="material-icons" style={{ marginRight: '15px' }}>language</i>
+                {intl.formatMessage({ id: 'sidebar.docs' })}
+              </MenuItem>
               <MenuItem
-                primaryText={intl.formatMessage({ id: 'sidebar.logout' })}
-                leftIcon={<i className="material-icons">keyboard_return</i>}
                 style={{ color: '#828282', fontSize: 13 }}
                 innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 onClick={() => {
                   localStorage.clear();
                   window.location = 'https://twasi.net';
                 }}
-              />
-            </Menu>
+              >
+                <i className="material-icons" style={{ marginRight: '15px' }}>keyboard_return</i>
+                {intl.formatMessage({ id: 'sidebar.logout' })}
+              </MenuItem>
+            </MenuList>
           </Paper>
         </Hidden>
       </div>

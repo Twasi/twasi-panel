@@ -17,15 +17,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip'
 
 import twitterlogo from '../common/resources/twitter.svg';
-import googlelogo from '../common/resources/google.svg';
 import facebooklogo from '../common/resources/facebook.svg';
 import youtubelogo from '../common/resources/youtube.svg';
-import instagramlogo from '../common/resources/instagram.svg';
-import snapchatlogo from '../common/resources/snapchat.svg';
 import spotifylogo from '../common/resources/spotify.svg';
 import soundcloudlogo from '../common/resources/soundcloud.svg';
 import telegramlogo from '../common/resources/telegram.svg';
-import githublogo from '../common/resources/github.svg';
 
 import { authSelectors } from '../../state/auth';
 import './_style.css';

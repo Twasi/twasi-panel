@@ -3,18 +3,19 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
-import { Step, Stepper, StepLabel } from 'material-ui/Stepper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import Divider from 'material-ui/Divider';
-import { Row, Col } from 'react-grid-system';
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
-import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
-import Checkbox from 'material-ui/Checkbox';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Paper from '@material-ui/core/Paper';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import DummyLoadingPage from '../DummyLoadingPage';
 
@@ -22,16 +23,10 @@ import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 
 import './_style.css';
 
-const muiTheme = getMuiTheme({
-  stepper: {
-    iconColor: '#00aeae' // or logic to change color
-  }
-});
-
 class Welcome extends Component {
   state = {
     finished: false,
-    stepIndex: 2
+    stepIndex: 0
   };
 
   componentWillMount() {
@@ -68,8 +63,8 @@ class Welcome extends Component {
         return (
           <div className="setupContent">
             <h1>Migration deiner Daten</h1>
-            <Row>
-              <Col sm={12}>
+            <Grid container spacing={24}>
+              <Grid item xs={12}>
                 <p>
                   <div className="infoAlert">
                     Wir haben festgestellt, dass du bereits seit unserer BETA
@@ -92,34 +87,8 @@ class Welcome extends Component {
                   <p className="welcomeSubHeadlineParagraph" />
                 </Paper>
                 */}
-              </Col>
-            </Row>
-            <Divider />
-            <RadioButtonGroup
-              style={{ marginBottom: '10px' }}
-              name="firstStep"
-              defaultSelected="1"
-            >
-              <RadioButton
-                value="1"
-                label="Ich möchte meine Daten aus der Twasi BETA mitnehmen."
-                iconStyle={{ fill: '#00aeae' }}
-                style={{
-                  marginBottom: '10px',
-                  marginTop: '10px',
-                  fontWeight: 'bold'
-                }}
-              />
-              <RadioButton
-                value="2"
-                label="Ich möchte einen Neustart und bin damit einverstanden, dass ALLE gesammelten Daten aus der BETA permanent gelöscht werden."
-                iconStyle={{ fill: '#00aeae' }}
-                style={{
-                  fontWeight: 'bold'
-                }}
-              />
-            </RadioButtonGroup>
-            <Divider />
+              </Grid>
+            </Grid>
             <p>
               Bitte wähle alle Daten aus, die du in das neue Twasi übernehmen
               möchtest.
@@ -131,76 +100,64 @@ class Welcome extends Component {
             >
               <TableBody displayRowCheckbox={false}>
                 <TableRow>
-                  <TableRowColumn>Befehle</TableRowColumn>
-                  <TableRowColumn>
+                  <TableCell>Befehle</TableCell>
+                  <TableCell>
                     <b>55</b> Datensätze
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <Checkbox
-                      label="Daten mitnehmen"
-                      iconStyle={{ fill: '#00aeae' }}
-                    />
-                  </TableRowColumn>
+                  </TableCell>
+                  <TableCell>
+                    <Checkbox/>
+                      Daten mitnehmen
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableRowColumn>Variablen</TableRowColumn>
-                  <TableRowColumn>
+                  <TableCell>Variablen</TableCell>
+                  <TableCell>
                     <b>14</b> Datensätze
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <Checkbox
-                      label="Daten mitnehmen"
-                      iconStyle={{ fill: '#00aeae' }}
-                    />
-                  </TableRowColumn>
+                  </TableCell>
+                  <TableCell>
+                    <Checkbox/>
+                      Daten mitnehmen
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableRowColumn>Zitate</TableRowColumn>
-                  <TableRowColumn>
+                  <TableCell>Zitate</TableCell>
+                  <TableCell>
                     <b>34</b> Datensätze
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <Checkbox
-                      label="Daten mitnehmen"
-                      iconStyle={{ fill: '#00aeae' }}
-                    />
-                  </TableRowColumn>
+                  </TableCell>
+                  <TableCell>
+                    <Checkbox/>
+                      Daten mitnehmen
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableRowColumn>Songrequests</TableRowColumn>
-                  <TableRowColumn>
+                  <TableCell>Songrequests</TableCell>
+                  <TableCell>
                     <b>316</b> Datensätze
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <Checkbox
-                      label="Daten mitnehmen"
-                      iconStyle={{ fill: '#00aeae' }}
-                    />
-                  </TableRowColumn>
+                  </TableCell>
+                  <TableCell>
+                    <Checkbox/>
+                      Daten mitnehmen
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableRowColumn>Streamdaten</TableRowColumn>
-                  <TableRowColumn>
+                  <TableCell>Streamdaten</TableCell>
+                  <TableCell>
                     <b>4.302</b> Datensätze
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <Checkbox
-                      label="Daten mitnehmen"
-                      iconStyle={{ fill: '#00aeae' }}
-                    />
-                  </TableRowColumn>
+                  </TableCell>
+                  <TableCell>
+                    <Checkbox/>
+                      Daten mitnehmen
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableRowColumn>Bestenlisten</TableRowColumn>
-                  <TableRowColumn>
+                  <TableCell>Bestenlisten</TableCell>
+                  <TableCell>
                     <b>429</b> Datensätze
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    <Checkbox
-                      label="Daten mitnehmen"
-                      iconStyle={{ fill: '#00aeae' }}
-                    />
-                  </TableRowColumn>
+                  </TableCell>
+                  <TableCell>
+                    <Checkbox/>
+                      Daten mitnehmen
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -222,38 +179,6 @@ class Welcome extends Component {
             </p>
             <Divider />
             <br />
-            <Row>
-              <Col sm={4}>
-                <Card className="pluginCard">
-                  <CardHeader
-                    avatar=""
-                    title="Teilchenbeschleuniger"
-                    subtitle="John Doe"
-                    actAsExpander
-                    showExpandableButton
-                  />
-                  <Divider />
-                  <CardText>
-                    <RaisedButton
-                      label="Installieren"
-                      backgroundColor="#00aeae"
-                      labelColor="#fff"
-                      fullWidth
-                    />
-                  </CardText>
-                  <CardText expandable>
-                    <p>
-                      <b>Version 1.0</b>
-                    </p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec mattis pretium massa. Aliquam erat volutpat. Nulla
-                    facilisi. Donec vulputate interdum sollicitudin. Nunc
-                    lacinia auctor quam sed pellentesque. Aliquam dui mauris,
-                    mattis quis lacus id, pellentesque lobortis odio.
-                  </CardText>
-                </Card>
-              </Col>
-            </Row>
           </div>
         );
       case 3:
@@ -288,7 +213,6 @@ class Welcome extends Component {
       const { finished, stepIndex } = this.state;
       const contentStyle = { margin: '0 16px' };
       return (
-        <MuiThemeProvider muiTheme={muiTheme}>
           <div className="contentWelcome">
             <div className="pageContent">
               <Paper className="pageContainer">
@@ -331,14 +255,21 @@ class Welcome extends Component {
                       <p>{this.getStepContent(stepIndex)}</p>
                       <Divider />
                       <div style={{ marginTop: 20 }}>
-                        <FlatButton
-                          label="Zurück"
+                        <Button
+                          color="primary"
+                          variant="contained"
                           disabled={stepIndex === 0}
                           onClick={this.handlePrev}
                           style={{ marginRight: 12 }}
-                        />
-                        <RaisedButton
-                          label={(() => {
+                        >
+                          Zurück
+                        </Button>
+                        <Button
+                          color="primary"
+                          variant="contained"
+                          onClick={this.handleNext}
+                        >
+                          {(() => {
                             switch (stepIndex) {
                               case 0:
                                 return "Los Geht's";
@@ -352,10 +283,7 @@ class Welcome extends Component {
                                 return null;
                             }
                           })()}
-                          backgroundColor="#00aeae"
-                          labelColor="#fff"
-                          onClick={this.handleNext}
-                        />
+                        </Button>
                       </div>
                     </div>
                   )}
@@ -363,7 +291,6 @@ class Welcome extends Component {
               </Paper>
             </div>
           </div>
-        </MuiThemeProvider>
       );
     }
 

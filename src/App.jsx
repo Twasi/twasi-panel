@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import AuthLoader from './auth/AuthLoader';
 import RequireAuth from './auth/RequireAuth';
@@ -18,6 +18,23 @@ import LanguageProvider from './translations/LanguageProvider';
 
 import './styles/main.css';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#00aeae',
+      contrastText: '#ffffff',
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      main: '#e53935',
+      contrastText: '#ffffff',
+    },
+    // error: will use the default color
+  },
+});
+
 const App = () => {
   const store = configureStore();
 
@@ -25,7 +42,7 @@ const App = () => {
     <LanguageProvider>
       <ReduxProvider store={store}>
         <BrowserRouter>
-          <MuiThemeProvider>
+          <MuiThemeProvider theme={theme}>
             <AuthLoader>
               <RequireAuth optional />
               <Content>
