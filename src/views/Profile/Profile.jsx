@@ -13,6 +13,8 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip'
 
 import twitterlogo from '../common/resources/twitter.svg';
 import googlelogo from '../common/resources/google.svg';
@@ -129,26 +131,42 @@ class Profile extends Component {
                   </h4>
                   <Divider />
                   <br />
-                  <img
-                    src="https://twasi.net/public/img/badges/team_badge.svg"
-                    alt="Badge"
-                    className="profileBadge selected"
-                  />
-                  <img
-                    src="https://twasi.net/public/img/badges/beta_badge.svg"
-                    alt="Badge"
-                    className="profileBadge selected"
-                  />
-                  <img
-                    src="https://twasi.net/public/img/badges/gamescom_badge_blue.svg"
-                    alt="Badge"
-                    className="profileBadge"
-                  />
-                  <img
-                    src="https://twasi.net/public/img/badges/gamescom_badge_blue18.svg"
-                    alt="Badge"
-                    className="profileBadge"
-                  />
+                  <Tooltip title="Twasi Team" placement="top">
+                    <IconButton aria-label="Delete">
+                      <img
+                        src="https://twasi.net/public/img/badges/team_badge.svg"
+                        alt="Badge"
+                        className="profileBadge"
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Twasi Beta" placement="top">
+                    <IconButton aria-label="Delete">
+                      <img
+                        src="https://twasi.net/public/img/badges/beta_badge.svg"
+                        alt="Badge"
+                        className="profileBadge"
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Gamescom 2017" placement="top">
+                    <IconButton aria-label="Delete">
+                      <img
+                        src="https://twasi.net/public/img/badges/gamescom_badge_blue.svg"
+                        alt="Badge"
+                        className="profileBadge"
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Gamescom 2018" placement="top">
+                    <IconButton aria-label="Delete">
+                      <img
+                        src="https://twasi.net/public/img/badges/gamescom_badge_blue18.svg"
+                        alt="Badge"
+                        className="profileBadge"
+                      />
+                    </IconButton>
+                  </Tooltip>
                 </CardContent>
               </Card>
             </Paper>
@@ -181,7 +199,7 @@ class Profile extends Component {
                       />
                     </span>
                     <small>
-                      <b>@Blechkelle</b>.{' '}
+                      <b>@Blechkelle</b>{' '}
                       <a style={{ color: '#e53935' }} href="#">
                         <FormattedMessage id="profile.social_disconnect" />
                       </a>{' '}
@@ -196,7 +214,9 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    Telegram
+                    <small>
+                      Telegram
+                    </small>
                     <span
                       style={{
                         position: 'absolute',
@@ -226,7 +246,9 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    Facebook
+                    <small>
+                      Facebook
+                    </small>
                     <span
                       style={{
                         position: 'absolute',
@@ -256,7 +278,9 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    Youtube
+                    <small>
+                      Youtube
+                    </small>
                     <span
                       style={{
                         position: 'absolute',
@@ -286,7 +310,9 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    Soundcloud
+                    <small>
+                      Soundcloud
+                    </small>
                     <span
                       style={{
                         position: 'absolute',
@@ -316,7 +342,9 @@ class Profile extends Component {
               <Row>
                 <Col sm={6}>
                   <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    Spotify
+                    <small>
+                      Spotify
+                    </small>
                     <span
                       style={{
                         position: 'absolute',

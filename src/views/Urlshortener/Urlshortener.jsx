@@ -150,7 +150,7 @@ class Urlshortener extends Component {
                   <TableRow className="TableRow">
                     <TableCell>Shortlink</TableCell>
                     <TableCell>Weiterleitung</TableCell>
-                    <TableCell/>
+                    <TableCell>Aktionen</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody displayRowCheckbox={false}>
@@ -169,7 +169,8 @@ class Urlshortener extends Component {
                       <Tooltip title="Bearbeiten" placement="top">
                         <Button
                           variant="fab"
-                          className="tealbg noshadow"
+                          className="noshadow"
+                          color="primary"
                           mini
                           aria-label="editCommand"
                         >
@@ -179,7 +180,8 @@ class Urlshortener extends Component {
                       <Tooltip title="Löschen" placement="top">
                         <Button
                           variant="fab"
-                          className="redbg noshadow"
+                          className="noshadow"
+                          color="secondary"
                           mini
                           aria-label="deleteCommand"
                         >

@@ -38,7 +38,7 @@ class StatusInfo extends Component {
       <Card className="pluginCard">
         <CardContent className="pluginCardContent">
           <Grid container spacing={16}>
-            <Grid item xs={6} style={{ textAlign: 'center' }}>
+            <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
               <h4 className="pageContainerTitle">
                 Starten / Stoppen
               </h4>
@@ -64,7 +64,7 @@ class StatusInfo extends Component {
                 stoppen
               </Button>
             </Grid>
-            <Grid item xs={6} style={{ textAlign: 'center' }}>
+            <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
               <h4 className="pageContainerTitle">
                 Aktueller Bot Status
               </h4>

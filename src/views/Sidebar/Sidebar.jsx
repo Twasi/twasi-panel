@@ -8,6 +8,8 @@ import { throttle } from 'lodash';
 import Paper from '@material-ui/core/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import Hidden from '@material-ui/core/Hidden';
+import Divider from '@material-ui/core/Divider';
 
 import { authSelectors } from '../../state/auth';
 import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
@@ -125,44 +127,46 @@ class Sidebar extends Component {
 
     return (
       <div>
-        <Paper style={getMenuStyle()} className="sidebar">
-          <div style={getHeaderMenuItem()}>
-            <FormattedMessage id="sidebar.navigation_headline" />
-          </div>
-          <Menu
-            onChange={this.handleClick}
-            value={selectedKey}
-            selectedMenuItemStyle={getActiveMenuItem()}
-            className="Sidebar"
-          >
-            {renderItems()}
-          </Menu>
-        </Paper>
-        <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
-          <Menu
-            value={selectedKey}
-            selectedMenuItemStyle={getActiveMenuItem()}
-            className="Sidebar"
-          >
-            <MenuItem
-              primaryText={intl.formatMessage({ id: 'sidebar.docs' })}
-              leftIcon={<i className="material-icons">language</i>}
-              style={{ color: '#828282', fontSize: 13 }}
-              innerDivStyle={{ padding: '0px 16px 0px 52px' }}
-              onClick={() => window.open('https://docs.twasi.net', '_blank')}
-            />
-            <MenuItem
-              primaryText={intl.formatMessage({ id: 'sidebar.logout' })}
-              leftIcon={<i className="material-icons">keyboard_return</i>}
-              style={{ color: '#828282', fontSize: 13 }}
-              innerDivStyle={{ padding: '0px 16px 0px 52px' }}
-              onClick={() => {
-                localStorage.clear();
-                window.location = 'https://twasi.net';
-              }}
-            />
-          </Menu>
-        </Paper>
+        <Hidden mdDown>
+          <Paper style={getMenuStyle()} className="sidebar">
+            <div style={getHeaderMenuItem()}>
+              <FormattedMessage id="sidebar.navigation_headline" />
+            </div>
+            <Menu
+              onChange={this.handleClick}
+              value={selectedKey}
+              selectedMenuItemStyle={getActiveMenuItem()}
+              className="Sidebar"
+            >
+              {renderItems()}
+            </Menu>
+          </Paper>
+          <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
+            <Menu
+              value={selectedKey}
+              selectedMenuItemStyle={getActiveMenuItem()}
+              className="Sidebar"
+            >
+              <MenuItem
+                primaryText={intl.formatMessage({ id: 'sidebar.docs' })}
+                leftIcon={<i className="material-icons">language</i>}
+                style={{ color: '#828282', fontSize: 13 }}
+                innerDivStyle={{ padding: '0px 16px 0px 52px' }}
+                onClick={() => window.open('https://docs.twasi.net', '_blank')}
+              />
+              <MenuItem
+                primaryText={intl.formatMessage({ id: 'sidebar.logout' })}
+                leftIcon={<i className="material-icons">keyboard_return</i>}
+                style={{ color: '#828282', fontSize: 13 }}
+                innerDivStyle={{ padding: '0px 16px 0px 52px' }}
+                onClick={() => {
+                  localStorage.clear();
+                  window.location = 'https://twasi.net';
+                }}
+              />
+            </Menu>
+          </Paper>
+        </Hidden>
       </div>
     );
   }

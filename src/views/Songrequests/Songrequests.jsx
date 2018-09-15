@@ -202,7 +202,8 @@ class Songrequests extends React.Component {
                   <Tooltip title="Löschen" placement="top">
                     <Button
                       variant="fab"
-                      className="redbg noshadow"
+                      className="noshadow"
+                      color="secondary"
                       mini
                       aria-label="deleteSong"
                     >
