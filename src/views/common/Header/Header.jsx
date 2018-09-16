@@ -33,7 +33,15 @@ const Header = ({ userName, rank, avatar }) => (
       </span>
       <span style={{ width: '150px' }}>
         <AccountSwitchIcon />
-        <Tooltip title="Feedback geben" placement="left">
+        <Tooltip title="Theme wechseln" placement="bottom">
+          <Icon
+            className="themeIcon"
+            style={{ fontSize: 36, float: 'right' }}
+          >
+            color_lens
+          </Icon>
+        </Tooltip>
+        <Tooltip title="Feedback geben" placement="bottom">
           <Icon
             className="feedbackIcon"
             style={{ fontSize: 36, float: 'right' }}

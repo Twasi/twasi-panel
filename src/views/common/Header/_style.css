@@ -19,6 +19,20 @@
   animation: heartbeat 2s infinite;
 }
 
+.themeIcon {
+  cursor: pointer;
+  color: #ffffff;
+  margin-right: 15px;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -ms-transition: -ms-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+.themeIcon:hover {
+  transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+}
+
 @keyframes heartbeat {
   0% {
     transform: scale(1);

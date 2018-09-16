@@ -24,7 +24,7 @@ class AccountSwitchIcon extends React.Component {
       <div>
         <Tooltip
           title={<FormattedMessage id="accountswitch.switch_account" />}
-          placement="right"
+          placement="bottom"
         >
           <Icon
             className="swapIcon"
