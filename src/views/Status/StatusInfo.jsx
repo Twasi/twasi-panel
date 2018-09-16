@@ -51,7 +51,7 @@ class StatusInfo extends Component {
                 variant="contained" color="primary"
                 style={{ marginRight: '16px' }}
               >
-                starten
+                Starten
               </Button>
               <Button
                 type="primary"
@@ -61,7 +61,7 @@ class StatusInfo extends Component {
                 value="off"
                 variant="contained" color="secondary"
               >
-                stoppen
+                Stoppen
               </Button>
             </Grid>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>

@@ -27,91 +27,86 @@ class Plugins extends Component {
     const { plugins, installPlugin, uninstallPlugin } = this.props;
 
     const renderedPlugins = plugins.map(plugin => (
-      <Grid container spacing={16} style={{ marginTop: '23px' }}>
-          <Grid item xs={4}>
-            <Card className="pluginCard" style={{ minHeight: '183px' }}>
-              <CardContent className="pluginCardContent">
+      <Grid container spacing={0} style={{ marginTop: '23px' }}>
+        <Grid item xs={12}>
+          <Card className="pluginCard">
+            <CardContent className="pluginCardContent">
+              <Grid container spacing={0} style={{ marginTop: '0px' }}>
+                <Grid item xs={6}>
                   <b>{plugin.name}</b><br />
                   by <i>{plugin.author}</i><br />
                   <FormattedMessage id="plugins.version" /> {plugin.version}
-              </CardContent>
-              <Divider />
-              <CardContent className="pluginCardContent">
-                {plugin.isInstalled && (
-                  <div>
-                    <Button
-                      fullWidth
-                      variant="contained" color="secondary"
-                      disabled={plugin.actionInProgress}
-                      onClick={() => uninstallPlugin(plugin.name)}
-                    >
-                      Uninstall
-                      {plugin.actionInProgress && (
-                        <CircularProgress
-                          style={{
-                            color: '#00aeae',
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            marginTop: -12,
-                            marginLeft: -12
-                          }}
-                          size={24}
-                        />
-                      )}
-                    </Button>
-                  </div>
-                )}
-                {!plugin.isInstalled && (
-                  <div>
-                    <Button
-                      fullWidth
-                      variant="contained" color="primary"
-                      disabled={plugin.actionInProgress}
-                      onClick={() => installPlugin(plugin.name)}
-                    >
-                      Install
-                      {plugin.actionInProgress && (
-                        <CircularProgress
-                          style={{
-                            color: '#00aeae',
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            marginTop: -12,
-                            marginLeft: -12
-                          }}
-                          size={24}
-                        />
-                      )}
-                    </Button>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={8}>
-            <Card className="pluginCard" style={{ minHeight: '183px' }}>
-              <CardContent className="pluginCardContent">
-                {plugin.description}
-                <Divider style={{ marginTop: '15px', marginBottom: '15px' }} />
-                  <Grid container spacing={24}>
-                    <Grid item xs={6}>
-                      <b>
-                        <FormattedMessage id="plugins.commands" />
-                      </b><br />
-                      <samp>{plugin.commands.join(', ')}</samp>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <b>
-                        Dependencies
-                      </b><br />
-                      -
-                    </Grid>
-                  </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
+                </Grid>
+                <Grid item xs={6}>
+                  {plugin.isInstalled && (
+                    <div>
+                      <Button
+                        variant="contained" color="secondary"
+                        disabled={plugin.actionInProgress}
+                        onClick={() => uninstallPlugin(plugin.name)}
+                      >
+                        Uninstall
+                        {plugin.actionInProgress && (
+                          <CircularProgress
+                            style={{
+                              color: '#00aeae',
+                              position: 'absolute',
+                              top: '50%',
+                              left: '50%',
+                              marginTop: -12,
+                              marginLeft: -12
+                            }}
+                            size={24}
+                          />
+                        )}
+                      </Button>
+                    </div>
+                  )}
+                  {!plugin.isInstalled && (
+                    <div>
+                      <Button
+                        variant="contained" color="primary"
+                        disabled={plugin.actionInProgress}
+                        onClick={() => installPlugin(plugin.name)}
+                      >
+                        Install
+                        {plugin.actionInProgress && (
+                          <CircularProgress
+                            style={{
+                              color: '#00aeae',
+                              position: 'absolute',
+                              top: '50%',
+                              left: '50%',
+                              marginTop: -12,
+                              marginLeft: -12
+                            }}
+                            size={24}
+                          />
+                        )}
+                      </Button>
+                    </div>
+                  )}
+                </Grid>
+              </Grid>
+              <Divider style={{ marginTop: '15px', marginBottom: '15px' }} />
+              <div style={{ marginTop: '15px', marginBottom: '15px' }}>{plugin.description}</div>
+              <Grid container spacing={0}>
+                <Grid item xs={6}>
+                  <b>
+                    <FormattedMessage id="plugins.commands" />
+                  </b><br />
+                  <samp>{plugin.commands.join(', ')}</samp>
+                </Grid>
+                <Grid item xs={6}>
+                  <b>
+                    Dependencies
+                  </b><br />
+                  -
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
     ));
 
@@ -121,7 +116,7 @@ class Plugins extends Component {
           <FormattedMessage id="plugins.headline" />
         </h2>
         <Paper className="pageContainer">
-          <Grid container spacing={24}>
+          <Grid container spacing={0}>
             <Grid item xs={12}>
               <h4 className="pageContainerTitle">
                 <FormattedMessage id="plugins.card_headline" />
@@ -131,7 +126,6 @@ class Plugins extends Component {
               </small>
             </Grid>
           </Grid>
-          <br />
           {renderedPlugins}
         </Paper>
       </div>

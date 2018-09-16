@@ -1,9 +1,10 @@
 .pluginCard {
-  padding-bottom: 24px;
+  padding-bottom: 0px;
   box-shadow: 0 0 1px rgba(34, 25, 25, 0.4) !important;
+  margin-bottom: 0px !important;
 }
 .pluginCardContent {
-  margin-bottom: 24px;
+  margin-bottom: 0px !important;
 }
 .pluginCardImage {
   padding-top: 5px;

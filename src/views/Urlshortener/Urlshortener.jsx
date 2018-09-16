@@ -67,7 +67,6 @@ class Urlshortener extends Component {
                       startAdornment: (
                         <InputAdornment
                           style={{
-                            backgroundColor: '#e0e0e0',
                             padding: '0px 15px 0px 15px',
                             zIndex: '1'
                           }}
@@ -118,7 +117,6 @@ class Urlshortener extends Component {
                       startAdornment: (
                         <InputAdornment
                           style={{
-                            backgroundColor: '#e0e0e0',
                             padding: '0px 15px 0px 15px',
                             zIndex: '1'
                           }}

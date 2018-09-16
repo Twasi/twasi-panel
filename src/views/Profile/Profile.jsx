@@ -209,7 +209,7 @@ class Profile extends Component {
               <br />
               <Row>
                 <Col sm={6}>
-                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                  <Button fullWidth variant="contained" color="default" style={{ boxShadow: 'none' }}>
                     <small>
                       Telegram
                     </small>

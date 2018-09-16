@@ -33,18 +33,56 @@ const theme = createMuiTheme({
   overrides: {
     MuiPaper: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: 'rgba(255, 255, 255, 0.7)', // Some CSS
-        background: '#2c2c2c',
+        color: '#b7b7b7', // Some CSS
+        backgroundColor: '#1b292d',
       },
     },
     MuiCardContent: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: 'rgba(255, 255, 255, 0.7)', // Some CSS
+        color: '#b7b7b7', // Some CSS
+        backgroundColor: 'rgba(15, 27, 31, 0.46)', // Some CSS
       },
     },
     MuiMenuItem: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: 'rgba(255, 255, 255, 0.7)', // Some CSS
+        color: '#b7b7b7', // Some CSS
+      },
+    },
+    MuiButton: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        textTransform: 'none', // Some CSS
+        color: '#b7b7b7', // Some CSS
+      },
+    },
+    MuiTableCell: { // Name of the component ⚛️ / style sheet
+      body: { // Name of the rule
+        color: '#b7b7b7', // Some CSS
+        borderColor: 'rgba(255, 255, 255, 0.12)'
+      },
+    },
+    MuiInputAdornment: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        backgroundColor: '#1b292d', // Some CSS
+      },
+    },
+    MuiTabs: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        backgroundColor: '#162226', // Some CSS
+      },
+    },
+    MuiTab: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        border: '0px',
+      },
+    },
+    MuiChip: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        backgroundColor: '#162226', // Some CSS
+      },
+    },
+    MuiAvatar: { // Name of the component ⚛️ / style sheet
+      colorDefault: { // Name of the rule
+        backgroundColor: '#162226', // Some CSS
       },
     },
   },
