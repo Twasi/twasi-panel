@@ -93,7 +93,7 @@ class Songrequests extends React.Component {
           </div>
           <Grid container spacing={0} className="songrequestsPlayer">
             <Grid item xs={6}>
-              <h4 style={{ padding: '0px', margin: '0px', color: '#525252' }}>
+              <h4 style={{ padding: '0px', margin: '0px' }}>
                 Bohemian Rhapsody{' '}
                 <br />
                 <small>Queen</small>

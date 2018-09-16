@@ -115,7 +115,7 @@ class Sidebar extends Component {
     const renderItems = () =>
       this.items.map(item => (
         <MenuItem
-          style={{ color: '#828282', fontSize: 13 }}
+          style={{ fontSize: 13 }}
           value={item.key}
           key={item.key}
           selected={item.key === selectedKey}
@@ -145,7 +145,7 @@ class Sidebar extends Component {
               className="Sidebar"
             >
               <MenuItem
-                style={{ color: '#828282', fontSize: 13 }}
+                style={{ fontSize: 13 }}
                 innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 onClick={() => window.open('https://docs.twasi.net', '_blank')}
               >
@@ -153,7 +153,7 @@ class Sidebar extends Component {
                 {intl.formatMessage({ id: 'sidebar.docs' })}
               </MenuItem>
               <MenuItem
-                style={{ color: '#828282', fontSize: 13 }}
+                style={{ fontSize: 13 }}
                 innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 onClick={() => {
                   localStorage.clear();

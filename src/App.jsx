@@ -20,18 +20,33 @@ import './styles/main.css';
 
 const theme = createMuiTheme({
   palette: {
+    type: 'dark',
     primary: {
-      // light: will be calculated from palette.primary.main,
       main: '#00aeae',
       contrastText: '#ffffff',
-      // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contrast with palette.primary.main
     },
     secondary: {
       main: '#e53935',
       contrastText: '#ffffff',
     },
-    // error: will use the default color
+  },
+  overrides: {
+    MuiPaper: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        color: 'rgba(255, 255, 255, 0.7)', // Some CSS
+        background: '#2c2c2c',
+      },
+    },
+    MuiCardContent: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        color: 'rgba(255, 255, 255, 0.7)', // Some CSS
+      },
+    },
+    MuiMenuItem: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        color: 'rgba(255, 255, 255, 0.7)', // Some CSS
+      },
+    },
   },
 });
 

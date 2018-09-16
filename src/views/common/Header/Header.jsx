@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import Tooltip from '@material-ui/core/Tooltip';
 import Icon from '@material-ui/core/Icon';
+import Switch from '@material-ui/core/Switch';
 
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
