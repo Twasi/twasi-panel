@@ -112,6 +112,9 @@ class Giveaways extends Component {
                             label="Keyword"
                             placeholder="#Twasi"
                             fullWidth
+                            margin="normal"
+                            variant="outlined"
+                            InputLabelProps={{ shrink: true }}
                           />
                           <br />
                           <br />
@@ -145,12 +148,18 @@ class Giveaways extends Component {
                               <TextField
                                 label="von"
                                 fullWidth
+                                margin="normal"
+                                variant="outlined"
+                                InputLabelProps={{ shrink: true }}
                               />
                             </Grid>
                             <Grid item lg={6}>
                               <TextField
                                 label="bis"
                                 fullWidth
+                                margin="normal"
+                                variant="outlined"
+                                InputLabelProps={{ shrink: true }}
                               />
                             </Grid>
                           </Grid>

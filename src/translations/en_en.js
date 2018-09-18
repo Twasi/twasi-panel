@@ -92,6 +92,9 @@ export default {
   // AccountSwitch
   'accountswitch.switch_account': 'Switch Account',
 
+  // ThemeSwitch
+  'themeswitch.switch_theme': 'Change Theme',
+
   // Public
   'public.headline': 'Public',
 

@@ -9,6 +9,7 @@ import Switch from '@material-ui/core/Switch';
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
 import { AccountSwitchIcon } from '../../AccountSwitch';
+import { ThemeSwitchIcon } from '../../ThemeSwitch';
 
 import {
   getHeaderStyle,
@@ -33,14 +34,7 @@ const Header = ({ userName, rank, avatar }) => (
       </span>
       <span style={{ width: '150px' }}>
         <AccountSwitchIcon />
-        <Tooltip title="Theme wechseln" placement="bottom">
-          <Icon
-            className="themeIcon"
-            style={{ fontSize: 36, float: 'right' }}
-          >
-            color_lens
-          </Icon>
-        </Tooltip>
+        <ThemeSwitchIcon />
         <Tooltip title="Feedback geben" placement="bottom">
           <Icon
             className="feedbackIcon"

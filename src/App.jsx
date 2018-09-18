@@ -146,12 +146,34 @@ const darktheme = createMuiTheme({
     MuiAvatar: { // Name of the component ⚛️ / style sheet
       colorDefault: { // Name of the rule
         backgroundColor: '#162226', // Some CSS
+        color: '#ffffff',
       },
     },
     MuiTypography: { // Name of the component ⚛️ / style sheet
       body1: { // Name of the rule
         color: '#b7b7b7', // Some CSS
       },
+    },
+    MuiTooltip: { // Name of the component ⚛️ / style sheet
+      tooltip: { // Name of the rule
+        color: '#b7b7b7', // Some CSS
+        backgroundColor: '#151e21',
+        border: '1px solid #00aeae',
+      },
+    },
+  },
+});
+
+const lightheme = createMuiTheme({
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#00aeae',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      main: '#e53935',
+      contrastText: '#ffffff',
     },
   },
 });
