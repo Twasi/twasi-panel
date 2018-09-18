@@ -43,6 +43,7 @@ class StatusInfo extends Component {
               <h4 className="pageContainerTitle">
                 Starten / Stoppen
               </h4>
+              <br/>
               <Button
                 type="danger"
                 disabled={status.isRunning}
@@ -69,6 +70,7 @@ class StatusInfo extends Component {
               <h4 className="pageContainerTitle">
                 Aktueller Bot Status
               </h4>
+              <br/>
               {status.isRunning ? running : stopped}
             </Grid>
           </Grid>
