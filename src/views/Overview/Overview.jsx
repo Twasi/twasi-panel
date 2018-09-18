@@ -47,11 +47,6 @@ class Overview extends Component {
     valueAxis.renderer.baseGrid.disabled = true;
     valueAxis.cursorTooltipEnabled = false;
 
-    let title = chart.titles.create();
-    title.text = "Zuschauerverlauf deines letzten Streams";
-    title.fontSize = 16;
-    title.marginBottom = 25;
-
     let series = chart.series.push(new am4charts.LineSeries());
     series.dataFields.dateX = "date";
     series.dataFields.valueY = "value";
@@ -124,10 +119,6 @@ class Overview extends Component {
     pieSeries.tooltip.background.fill = am4core.color("#fff");
     pieSeries.tooltip.label.fill = am4core.color("#000");
 
-    let titlepie = chartpie.titles.create();
-    titlepie.text = "Genutzte Befehle";
-    titlepie.fontSize = 16;
-
     this.chartpie = chartpie;
 
     let chartbars = am4core.create("chartdivbars", am4charts.XYChart);
@@ -158,11 +149,6 @@ class Overview extends Component {
       "averageviewers": 45,
       "minutes": 66
     }];
-
-    let titlebars = chartbars.titles.create();
-    titlebars.text = "Gespielte Spiele";
-    titlebars.marginBottom = 25;
-    titlebars.fontSize = 16;
 
     // Create axes
     let categoryAxisbars = chartbars.xAxes.push(new am4charts.CategoryAxis());
@@ -352,20 +338,29 @@ class Overview extends Component {
           </Col>
           <Col sm={9}>
             <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+              <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
+                Zuschauerverlauf
+              </h4>
               <div id="chartdiv" style={{ width: "100%", height: "250px", margin: '0px' }}></div>
             </Paper>
             <Row>
-            <Col sm={6}>
-              <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
-                <div id="chartdivpie" style={{ width: "100%", height: "350px", margin: '0px' }}></div>
-              </Paper>
-            </Col>
-            <Col sm={6}>
-              <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
-                <div id="chartdivbars" style={{ width: "100%", height: "350px", margin: '0px' }}></div>
-              </Paper>
-            </Col>
-          </Row>
+              <Col sm={6}>
+                <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+                  <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
+                    Genutzte Befehle
+                  </h4>
+                  <div id="chartdivpie" style={{ width: "100%", height: "350px", margin: '0px' }}></div>
+                </Paper>
+              </Col>
+              <Col sm={6}>
+                <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+                  <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
+                    Gespielte Spiele
+                  </h4>
+                  <div id="chartdivbars" style={{ width: "100%", height: "350px", margin: '0px' }}></div>
+                </Paper>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </div>

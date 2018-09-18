@@ -18,7 +18,7 @@ import LanguageProvider from './translations/LanguageProvider';
 
 import './styles/main.css';
 
-const theme = createMuiTheme({
+const darktheme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
@@ -40,18 +40,37 @@ const theme = createMuiTheme({
     MuiCardContent: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         color: '#b7b7b7', // Some CSS
-        backgroundColor: 'rgba(15, 27, 31, 0.46)', // Some CSS
+        backgroundColor: '#162226', // Some CSS
       },
     },
     MuiMenuItem: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         color: '#b7b7b7', // Some CSS
+        padding: '10px',
+        '&:hover': {
+          backgroundColor: '#162226',
+        },
+      },
+      selected: { // Name of the rule
+        color: '#ffffff',
+        background: '#00aeae !important',
       },
     },
     MuiButton: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         textTransform: 'none', // Some CSS
         color: '#b7b7b7', // Some CSS
+      },
+      contained: {
+        backgroundColor: '#162226',
+        color: '#b7b7b7',
+        '&$disabled': {
+          backgroundColor: '#162226',
+          color: '#b7b7b7',
+        },
+        '&:hover': {
+          backgroundColor: '#151e21',
+        },
       },
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
@@ -95,7 +114,7 @@ const App = () => {
     <LanguageProvider>
       <ReduxProvider store={store}>
         <BrowserRouter>
-          <MuiThemeProvider theme={theme}>
+          <MuiThemeProvider theme={darktheme}>
             <AuthLoader>
               <RequireAuth optional />
               <Content>
