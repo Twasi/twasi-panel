@@ -177,7 +177,7 @@ class Profile extends Component {
               </small>
               <Divider className="marginDivider" />
               <Row>
-                <Col sm={12}>
+                <Col sm={6}>
                   <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                     <span
                       style={{
@@ -196,13 +196,15 @@ class Profile extends Component {
                     </span>
                     <small>
                       <b>@Blechkelle</b>{' '}
-                      <a style={{ color: '#e53935' }} href="#">
-                        <FormattedMessage id="profile.social_disconnect" />
-                      </a>{' '}
-                      <a style={{ color: '#00aeae' }} href="#">
-                        <FormattedMessage id="profile.social_permissions" />
-                      </a>
                     </small>
+                  </Button>
+                </Col>
+                <Col sm={6}>
+                  <Button color="primary" size="small">
+                    <FormattedMessage id="profile.social_permissions" />
+                  </Button>
+                  <Button color="secondary" size="small">
+                    <FormattedMessage id="profile.social_disconnect" />
                   </Button>
                 </Col>
               </Row>
