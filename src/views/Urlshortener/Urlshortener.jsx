@@ -153,12 +153,12 @@ class Urlshortener extends Component {
                 </TableHead>
                 <TableBody displayRowCheckbox={false}>
                   <TableRow>
-                    <TableCell>
+                    <TableCell style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', maxWidth: '100px' }}>
                       <a style={{ color: '#00aeae' }} href="#">
                         https://twa.si/c/test
                       </a>
                     </TableCell>
-                    <TableCell>
+                    <TableCell style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', maxWidth: '100px' }}>
                       <a style={{ color: '#00aeae' }} href="#">
                         https://blechkelle.com
                       </a>

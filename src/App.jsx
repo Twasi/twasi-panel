@@ -53,7 +53,7 @@ const darktheme = createMuiTheme({
       },
       selected: { // Name of the rule
         color: '#ffffff',
-        background: '#00aeae !important',
+        background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
       },
     },
     MuiButton: { // Name of the component ⚛️ / style sheet
@@ -61,7 +61,44 @@ const darktheme = createMuiTheme({
         textTransform: 'none', // Some CSS
         color: '#b7b7b7', // Some CSS
       },
+      containedPrimary: {
+        boxShadow: 'none',
+        background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
+        '&$disabled': {
+          background: '#162226',
+          color: '#b7b7b7',
+        },
+      },
+      containedSecondary: {
+        boxShadow: 'none',
+        background: 'linear-gradient(135deg,#e53935,#ff4f4a)',
+        '&$disabled': {
+          background: '#162226',
+          color: '#b7b7b7',
+        },
+      },
+      containedPrimary: {
+        boxShadow: 'none',
+        background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
+        '&$disabled': {
+          background: '#162226',
+          color: '#b7b7b7',
+        },
+      },
+      outlinedPrimary: {
+        borderWidth: '2px',
+        '&:hover': {
+          borderWidth: '2px',
+        },
+      },
+      outlinedSecondary: {
+        borderWidth: '2px',
+        '&:hover': {
+          borderWidth: '2px',
+        },
+      },
       contained: {
+        boxShadow: 'none',
         backgroundColor: '#162226',
         color: '#b7b7b7',
         '&$disabled': {
@@ -87,6 +124,7 @@ const darktheme = createMuiTheme({
     MuiTabs: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         backgroundColor: '#162226', // Some CSS
+        border: '0px !important',
       },
     },
     MuiTab: { // Name of the component ⚛️ / style sheet
@@ -98,10 +136,21 @@ const darktheme = createMuiTheme({
       root: { // Name of the rule
         backgroundColor: '#162226', // Some CSS
       },
+      colorPrimary: {
+        background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
+      },
+      colorSecondary: {
+        background: 'linear-gradient(135deg,#e53935,#ff4f4a)',
+      },
     },
     MuiAvatar: { // Name of the component ⚛️ / style sheet
       colorDefault: { // Name of the rule
         backgroundColor: '#162226', // Some CSS
+      },
+    },
+    MuiTypography: { // Name of the component ⚛️ / style sheet
+      body1: { // Name of the rule
+        color: '#b7b7b7', // Some CSS
       },
     },
   },

@@ -9,6 +9,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
 import Icon from '@material-ui/core/Icon';
+import DoneIcon from '@material-ui/icons/Done';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 

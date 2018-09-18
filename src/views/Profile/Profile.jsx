@@ -185,7 +185,7 @@ class Profile extends Component {
                         left: '0',
                         width: '36px',
                         height: '36px',
-                        backgroundColor: '#137cbd'
+                        backgroundColor: '#1da1f2'
                       }}
                     >
                       <img
@@ -219,7 +219,7 @@ class Profile extends Component {
                         left: '0',
                         width: '36px',
                         height: '36px',
-                        backgroundColor: '#006394'
+                        backgroundColor: '#0088cc'
                       }}
                     >
                       <img
@@ -251,7 +251,7 @@ class Profile extends Component {
                         left: '0',
                         width: '36px',
                         height: '36px',
-                        backgroundColor: '#2a406d'
+                        backgroundColor: '#3b5998'
                       }}
                     >
                       <img
@@ -283,7 +283,7 @@ class Profile extends Component {
                         left: '0',
                         width: '36px',
                         height: '36px',
-                        backgroundColor: '#d20202'
+                        backgroundColor: '#ff0000'
                       }}
                     >
                       <img
@@ -315,7 +315,7 @@ class Profile extends Component {
                         left: '0',
                         width: '36px',
                         height: '36px',
-                        backgroundColor: '#bf4000'
+                        backgroundColor: '#ff8800'
                       }}
                     >
                       <img
@@ -347,7 +347,7 @@ class Profile extends Component {
                         left: '0',
                         width: '36px',
                         height: '36px',
-                        backgroundColor: '#52b550'
+                        backgroundColor: '#1db954'
                       }}
                     >
                       <img

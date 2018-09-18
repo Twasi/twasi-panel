@@ -15,6 +15,7 @@ import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Chip from '@material-ui/core/Chip';
 
 import './_style.css';
 
@@ -207,7 +208,45 @@ class Giveaways extends Component {
               <h4 className="pageContainerTitle">Teilnehmer</h4>
               <small>Hier werden alle Teilnehmer des aktuellen Giveaways aufgelistet.</small>
               <Divider className="marginDivider" />
-
+              <Card className="pluginCard">
+                <CardContent className="giveawayCard">
+                  <Grid container spacing={0}>
+                    <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <h5 className="pageContainerTitle">Blechkelle</h5>
+                    </Grid>
+                    <Grid item md={6} style={{ textAlign: 'center' }}>
+                      <Chip
+                        label="Staff"
+                        color="primary"
+                      />
+                    </Grid>
+                  </Grid>
+                  <br/>
+                  <Grid container spacing={0}>
+                    <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <h5 className="pageContainerTitle">Spendendose</h5>
+                    </Grid>
+                    <Grid item md={6} style={{ textAlign: 'center' }}>
+                      <Chip
+                        label="Zuschauer"
+                        color="primary"
+                      />
+                    </Grid>
+                  </Grid>
+                  <br/>
+                  <Grid container spacing={0}>
+                    <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <h5 className="pageContainerTitle">Mekalix</h5>
+                    </Grid>
+                    <Grid item md={6} style={{ textAlign: 'center' }}>
+                      <Chip
+                        label="Moderator"
+                        color="primary"
+                      />
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
             </Paper>
           </Grid>
         </Grid>

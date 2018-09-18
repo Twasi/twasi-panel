@@ -13,7 +13,7 @@ export const getMenuItemStyle = () => ({
 
 export const getHeaderMenuItem = () => ({
   ...getMenuItemStyle(),
-  backgroundColor: '#00aeae',
+  background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
   fontSize: 18,
   fontWeight: '600',
   lineHeight: '48px',
