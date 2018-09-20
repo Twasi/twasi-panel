@@ -39,8 +39,15 @@ class Welcome extends Component {
       case 0:
         return (
           <div className="setupContent">
-            <h1>Willkommen bei Twasi</h1>
+            <h1>Willkommen bei Twasi 2</h1>
             <p>
+              Bitte melde dich bei einem Admin, um dich freischalten zu lassen.<br /><br />
+              Bitte <b>UNBEDINGT BEACHTEN</b>, dass dies eine sehr Frühe Version ist und viele Funktionen noch nicht bzw. nur bedingt funktionstüchtig sind.<br />
+              Es werden fast täglich neue Elemente und Funktionen hinzugefügt.<br /><br />
+              Wir übernehmen geine Gewehr für verlorene Daten während der neuen Versionen.
+            </p>
+
+              {/*
               Wir freuen uns, dass du dich für Twasi als Chatbot entschieden
               hast.<br /> Twasi ist ein Chatbot, der durch Ideen einer
               vielseitigen Community entstanden ist.
@@ -57,7 +64,9 @@ class Welcome extends Component {
               Blechkelle erhällt durch deine Registrierung eine Belohnung in
               Form von Refpunkten.
             </div>
+            */}
           </div>
+
         );
       case 1:
         return (
@@ -265,6 +274,7 @@ class Welcome extends Component {
                           Zurück
                         </Button>
                         <Button
+                          disabled
                           color="primary"
                           variant="contained"
                           onClick={this.handleNext}
