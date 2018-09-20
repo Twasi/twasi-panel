@@ -15,7 +15,7 @@ Paste this into the file:
 ```javascript
 window.env = {
   ...window.env,
-  AUTH_URL: 'https://api-beta.twasi.net/auth',
+  AUTH_URL: 'https://api-beta.twasi.net/auth?environment=https://api-beta.twasi.net',
   GRAPHQL_URL: 'https://api-beta.twasi.net/apis/'
 };
 ```
@@ -25,7 +25,7 @@ You can also adapt it to use the local backend (if it is running on your machine
 ```javascript
 window.env = {
   ...window.env,
-  AUTH_URL: 'http://localhost:8000/auth',
+  AUTH_URL: 'http://localhost:8000/auth?environment=http://localhost:3000',
   GRAPHQL_URL: 'http://localhost:8000/apis/'
 };
 ```
