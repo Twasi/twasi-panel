@@ -125,10 +125,11 @@ class Profile extends Component {
                   <h4 className="pageContainerTitle">
                     <FormattedMessage id="profile.badges_yourbadges" />
                   </h4>
+                  <br />
                   <Divider />
                   <br />
                   <Tooltip title="Twasi Team" placement="top">
-                    <IconButton aria-label="Delete">
+                    <IconButton>
                       <img
                         src="https://twasi.net/public/img/badges/team_badge.svg"
                         alt="Badge"
@@ -137,7 +138,7 @@ class Profile extends Component {
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="Twasi Beta" placement="top">
-                    <IconButton aria-label="Delete">
+                    <IconButton>
                       <img
                         src="https://twasi.net/public/img/badges/beta_badge.svg"
                         alt="Badge"
@@ -146,7 +147,7 @@ class Profile extends Component {
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="Gamescom 2017" placement="top">
-                    <IconButton aria-label="Delete">
+                    <IconButton>
                       <img
                         src="https://twasi.net/public/img/badges/gamescom_badge_blue.svg"
                         alt="Badge"
@@ -155,7 +156,7 @@ class Profile extends Component {
                     </IconButton>
                   </Tooltip>
                   <Tooltip title="Gamescom 2018" placement="top">
-                    <IconButton aria-label="Delete">
+                    <IconButton>
                       <img
                         src="https://twasi.net/public/img/badges/gamescom_badge_blue18.svg"
                         alt="Badge"

@@ -32,12 +32,20 @@ class Plugins extends Component {
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">
               <Grid container spacing={0} style={{ marginTop: '0px' }}>
-                <Grid item xs={6}>
-                  <b>{plugin.name}</b><br />
-                  by <i>{plugin.author}</i><br />
-                  <FormattedMessage id="plugins.version" /> {plugin.version}
+                <Grid item xs={4}>
+                  <h4 className="pageContainerTitle">{plugin.name}</h4>
+                  <small>
+                    by <i>{plugin.author}</i><br />
+                    <FormattedMessage id="plugins.version" /> {plugin.version}
+                  </small>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={8}>
+                  {plugin.description}
+                </Grid>
+              </Grid>
+              <Divider style={{ marginTop: '15px', marginBottom: '15px' }} />
+              <Grid container spacing={0}>
+                <Grid item xs={4}>
                   {plugin.isInstalled && (
                     <div>
                       <Button
@@ -87,17 +95,13 @@ class Plugins extends Component {
                     </div>
                   )}
                 </Grid>
-              </Grid>
-              <Divider style={{ marginTop: '15px', marginBottom: '15px' }} />
-              <div style={{ marginTop: '15px', marginBottom: '15px' }}>{plugin.description}</div>
-              <Grid container spacing={0}>
-                <Grid item xs={6}>
+                <Grid item xs={4}>
                   <b>
                     <FormattedMessage id="plugins.commands" />
                   </b><br />
                   <samp>{plugin.commands.join(', ')}</samp>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={4}>
                   <b>
                     Dependencies
                   </b><br />

@@ -56,6 +56,11 @@ const darktheme = createMuiTheme({
         background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
       },
     },
+    MuiListItemText: { // Name of the component ⚛️ / style sheet
+      root: { // Name of the rule
+        color: '#b7b7b7',
+      },
+    },
     MuiButton: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         textTransform: 'none', // Some CSS
