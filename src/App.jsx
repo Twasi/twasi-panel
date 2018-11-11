@@ -92,15 +92,15 @@ const darktheme = createMuiTheme({
         },
       },
       outlinedPrimary: {
-        borderWidth: '2px',
+        borderWidth: '1px',
         '&:hover': {
-          borderWidth: '2px',
+          borderWidth: '1px',
         },
       },
       outlinedSecondary: {
-        borderWidth: '2px',
+        borderWidth: '1px',
         '&:hover': {
-          borderWidth: '2px',
+          borderWidth: '1px',
         },
       },
       contained: {

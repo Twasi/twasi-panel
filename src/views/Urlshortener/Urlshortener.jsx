@@ -132,13 +132,13 @@ class Urlshortener extends Component {
             </Paper>
           </Col>
           <Col sm={6}>
-            <Paper className="pageContainer">
+            <Paper className="pageContainer" style={{ borderRadius: '0px' }}>
               <h4 className="pageContainerTitle">Deine URL's</h4>
               <small>
                 Hier findest du eine Liste deiner bereits gekürzten URL's
               </small>
             </Paper>
-            <Paper className="pageContainer" style={{ padding: '0px', margin: '0px' }}>
+            <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px' }}>
               <Table>
                 <TableHead
                   adjustForCheckbox={false}

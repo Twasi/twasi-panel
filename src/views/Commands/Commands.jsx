@@ -17,7 +17,7 @@ class Commands extends Component {
         <h2 className="pageTitle">
           <FormattedMessage id="sidebar.commands" />
         </h2>
-        <Paper className="pageContainer">
+        <Paper className="pageContainer" style={{ borderRadius: '0px' }}>
           <h4 className="pageContainerTitle">
             Deine Befehle
             <span style={{ float: 'right' }}>
@@ -30,7 +30,7 @@ class Commands extends Component {
             Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
           </small>
         </Paper>
-        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px' }}>
+        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px' }}>
           <Table>
             <TableHead
               adjustForCheckbox={false}

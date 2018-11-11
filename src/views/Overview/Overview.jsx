@@ -263,72 +263,91 @@ class Overview extends Component {
           <Col sm={3}>
               <div>
                 <List dense style={{ padding: '0px' }}>
-                  <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
+                  <Paper className="pageContainer" style={{ padding: '15px', margin: '23px 0px 0px 0px' }}>
                     <ListItem>
-                      <ListItemText secondary="1.337" >
-                        Stream ID
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Stream ID</h4>
+                        <small>1337</small>
+                      </Col>
+                    </Row>
                     </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <Divider />
                     <ListItem>
-                      <ListItemText secondary="13:37">
-                        Dauer
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Dauer</h4>
+                        <small>13:37</small>
+                      </Col>
+                    </Row>
                     </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <Divider />
                     <ListItem>
-                      <ListItemText secondary="1.337" >
-                        Chatnachrichten
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Chatnachrichten</h4>
+                        <small>1337</small>
+                      </Col>
+                    </Row>
                     </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <Divider />
                     <ListItem>
-                      <ListItemText secondary="1.337" >
-                        Befehle ausgeführt
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Befehle ausgeführt</h4>
+                        <small>1337</small>
+                      </Col>
+                    </Row>
                     </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <Divider />
                     <ListItem>
-                      <ListItemText secondary="1.337" >
-                        Follower
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Follower +</h4>
+                        <small>1337</small>
+                      </Col>
+                    </Row>
                     </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <Divider />
                     <ListItem>
-                      <ListItemText secondary="1.337" >
-                        Aufrufe
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Aufrufe +</h4>
+                        <small>1337</small>
+                      </Col>
+                    </Row>
                     </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <Divider />
                     <ListItem>
-                      <ListItemText secondary="1.337" >
-                        Zuschauer Maximum
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Zuschauer Maximum</h4>
+                        <small>1337</small>
+                      </Col>
+                    </Row>
                     </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <Divider />
                     <ListItem>
-                      <ListItemText secondary="1.337" >
-                        Zuschauer Durchschnitt
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Zuschauer Durchschnitt</h4>
+                        <small>1337</small>
+                      </Col>
+                    </Row>
                     </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
+                    <Divider />
                     <ListItem>
-                      <ListItemText secondary="1.337" >
-                        Individuelle Zuschauer
-                      </ListItemText>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">Individuelle Zuschauer</h4>
+                        <small>1337</small>
+                      </Col>
+                    </Row>
                     </ListItem>
                   </Paper>
                   <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
                     <ListItem style={{ padding: '0px' }}>
-                      <Button fullWidth variant="contained" color="secondary" style={{ borderRadius: '0px' }}>
+                      <Button fullWidth variant="contained" color="secondary">
                         Streamdaten Löschen
                       </Button>
                     </ListItem>
