@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GraphiQL from 'graphiql';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 // import { Container, Row, Col } from 'react-grid-system';
 
 import { authSelectors } from '../../state/auth';
