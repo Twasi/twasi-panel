@@ -44,7 +44,7 @@ class Welcome extends Component {
               Bitte melde dich bei einem Admin, um dich freischalten zu lassen.<br /><br />
               Bitte <b>UNBEDINGT BEACHTEN</b>, dass dies eine sehr Frühe Version ist und viele Funktionen noch nicht bzw. nur bedingt funktionstüchtig sind.<br />
               Es werden fast täglich neue Elemente und Funktionen hinzugefügt.<br /><br />
-              Wir übernehmen geine Gewehr für verlorene Daten während der neuen Versionen.
+              Wir übernehmen geine Gewähr für verlorene Daten während der neuen Versionen.
             </p>
 
               {/*
