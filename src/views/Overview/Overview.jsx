@@ -13,13 +13,7 @@ import Button from '@material-ui/core/Button';
 
 import './_style.css';
 
-import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
-
-import * as am4core from '@amcharts/amcharts4/core';
-import * as am4charts from '@amcharts/amcharts4/charts';
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-
-am4core.useTheme(am4themes_animated);
+import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, YAxis } from 'recharts';
 
 let data = [];
 let visits = 100;
@@ -213,7 +207,7 @@ class Overview extends Component {
                 Zuschauerverlauf
               </h4>
               <ResponsiveContainer height='100%' width='100%'>
-                <AreaChart margin={{ top: 10, right: 0, left: 0, bottom: 0 }} data={data}>
+                <AreaChart margin={{ top: 15, right: 0, left: 0, bottom: 0 }} data={data}>
                   <Tooltip/>
                   <Area type="monotone" dataKey="value" stroke="#00aeae" strokeWidth="2" fill="#00aeae" fillOpacity=".1" />
                 </AreaChart>
@@ -226,7 +220,8 @@ class Overview extends Component {
                     Genutzte Befehle
                   </h4>
                   <ResponsiveContainer height='100%' width='100%'>
-                    <PieChart width={730} height={250}>
+                    <PieChart width={730} height={250}
+                        margin={{top: 15, right: 0, left: 0, bottom: 0}}>
                       <Tooltip/>
                       <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" fillOpacity="1">
                       {
@@ -244,7 +239,7 @@ class Overview extends Component {
                   </h4>
                   <ResponsiveContainer height='100%' width='100%'>
                     <BarChart width={600} height={300} data={data02}
-                          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                        margin={{top: 15, right: 0, left: 0, bottom: 0}}>
                      <Tooltip/>
                      <Bar dataKey="pv" fill="#00aeae">
                      {
