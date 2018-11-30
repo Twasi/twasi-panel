@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 
 import './_style.css';
 
-import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, ReferenceArea, CartesianGrid, Label } from 'recharts';
+import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, ReferenceArea, CartesianGrid, Label, LineChart, Line } from 'recharts';
 
 let data = [];
 let visits = 100;
@@ -208,15 +208,15 @@ class Overview extends Component {
                 Zuschauerverlauf
               </h4>
               <ResponsiveContainer height='100%' width='100%'>
-                <AreaChart margin={{ top: 15, right: 0, left: 0, bottom: 0 }} data={data}>
-                  <ReferenceArea x1={0} x2={20} y1={0} y2={1000} fill="#0088FE" fillOpacity=".1">
-                    <Label value="Minecraft" fill="#b7b7b7" offset={10} position="insideTop" />
+                <AreaChart margin={{ top: 40, right: 0, left: 0, bottom: 0 }} data={data}>
+                  <ReferenceArea x1={0} x2={20} y1={980} y2={1000} fill="#0088FE" fillOpacity="1">
+                    <Label value="Minecraft" fill="#b7b7b7" offset={10} position="top" />
                   </ReferenceArea>
-                  <ReferenceArea x1={20} x2={50} y1={0} y2={1000} fill="#00C49F" fillOpacity=".1">
-                    <Label value="GTA V" fill="#b7b7b7" offset={10} position="insideTop" />
+                  <ReferenceArea x1={20} x2={50} y1={980} y2={1000} fill="#00C49F" fillOpacity="1">
+                    <Label value="GTA V" fill="#b7b7b7" offset={10} position="top" />
                   </ReferenceArea>
-                  <ReferenceArea x1={50} x2={98} y1={0} y2={1000} fill="#FFBB28" fillOpacity=".1">
-                    <Label value="RDR 2" fill="#b7b7b7" offset={10} position="insideTop" />
+                  <ReferenceArea x1={50} x2={98} y1={980} y2={1000} fill="#FFBB28" fillOpacity="1">
+                    <Label value="RDR 2" fill="#b7b7b7" offset={10} position="top" />
                   </ReferenceArea>
                   <Tooltip/>
                   <Area type="monotone" dataKey="value" stroke="#00aeae" strokeWidth="0" fill="#00aeae" fillOpacity="1" />
