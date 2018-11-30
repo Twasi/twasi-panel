@@ -22,7 +22,8 @@ export const getHeaderMenuItem = () => ({
   padding: '0px 16px 0px 16px',
   minHeight: 48,
   position: 'relative',
-  textAlign: 'center'
+  textAlign: 'center',
+  borderRadius: '4px 4px 0px 0px'
 });
 
 export const getActiveMenuItem = () => ({
