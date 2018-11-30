@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 
 import './_style.css';
 
-import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, YAxis } from 'recharts';
+import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, ReferenceArea, CartesianGrid, Label } from 'recharts';
 
 let data = [];
 let visits = 100;
@@ -22,10 +22,11 @@ for (let i = 1; i < 100; i++) {
   data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
 }
 
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
 const data01 = [{name: 'Group A', value: 400},
                 {name: 'Group D', value: 200},
                 {name: 'Group E', value: 278}, {name: 'Group F', value: 189}]
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const data02 = [
       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
@@ -208,8 +209,17 @@ class Overview extends Component {
               </h4>
               <ResponsiveContainer height='100%' width='100%'>
                 <AreaChart margin={{ top: 15, right: 0, left: 0, bottom: 0 }} data={data}>
+                  <ReferenceArea x1={0} x2={20} y1={0} y2={1000} fill="#0088FE" fillOpacity=".1">
+                    <Label value="Minecraft" fill="#b7b7b7" offset={10} position="insideTop" />
+                  </ReferenceArea>
+                  <ReferenceArea x1={20} x2={50} y1={0} y2={1000} fill="#00C49F" fillOpacity=".1">
+                    <Label value="GTA V" fill="#b7b7b7" offset={10} position="insideTop" />
+                  </ReferenceArea>
+                  <ReferenceArea x1={50} x2={98} y1={0} y2={1000} fill="#FFBB28" fillOpacity=".1">
+                    <Label value="RDR 2" fill="#b7b7b7" offset={10} position="insideTop" />
+                  </ReferenceArea>
                   <Tooltip/>
-                  <Area type="monotone" dataKey="value" stroke="#00aeae" strokeWidth="2" fill="#00aeae" fillOpacity=".1" />
+                  <Area type="monotone" dataKey="value" stroke="#00aeae" strokeWidth="0" fill="#00aeae" fillOpacity="1" />
                 </AreaChart>
               </ResponsiveContainer>
             </Paper>
@@ -238,9 +248,9 @@ class Overview extends Component {
                     Gespielte Spiele
                   </h4>
                   <ResponsiveContainer height='100%' width='100%'>
-                    <BarChart width={600} height={300} data={data02}
+                    <BarChart backgroundOpacity=".1" width={600} height={300} data={data02}
                         margin={{top: 15, right: 0, left: 0, bottom: 0}}>
-                     <Tooltip/>
+                     <Tooltip cursor={{ fill: '#283c42' }} />
                      <Bar dataKey="pv" fill="#00aeae">
                      {
                        data02.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
