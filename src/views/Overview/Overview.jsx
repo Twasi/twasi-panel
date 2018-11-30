@@ -13,185 +13,37 @@ import Button from '@material-ui/core/Button';
 
 import './_style.css';
 
+import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
+
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 am4core.useTheme(am4themes_animated);
 
+let data = [];
+let visits = 100;
+for (let i = 1; i < 100; i++) {
+  visits += Math.round((Math.random() < 0.5 ? 1 : 2) * Math.random() * 10);
+  data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
+}
+
+const data01 = [{name: 'Group A', value: 400},
+                {name: 'Group D', value: 200},
+                {name: 'Group E', value: 278}, {name: 'Group F', value: 189}]
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+const data02 = [
+      {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
+      {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
+      {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
+      {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
+      {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
+      {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
+      {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
+];
+
 class Overview extends Component {
-  componentDidMount() {
-    let chart = am4core.create("chartdiv", am4charts.XYChart);
-
-    let data = [];
-    let visits = 10;
-    for (let i = 1; i < 30; i++) {
-      visits += Math.round((Math.random() < 0.5 ? 1 : 2) * Math.random() * 10);
-      data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
-    }
-
-    chart.data = data;
-
-    let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    dateAxis.renderer.grid.template.disabled = true;
-    dateAxis.renderer.labels.template.disabled = true;
-    dateAxis.cursorTooltipEnabled = false;
-    dateAxis.startLocation = 0.5;
-    dateAxis.endLocation = 0.5;
-
-    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.tooltip.disabled = true;
-    valueAxis.renderer.minWidth = 0;
-    valueAxis.renderer.grid.template.disabled = true;
-    valueAxis.renderer.labels.template.disabled = true;
-    valueAxis.renderer.baseGrid.disabled = true;
-    valueAxis.cursorTooltipEnabled = false;
-
-    let series = chart.series.push(new am4charts.LineSeries());
-    series.dataFields.dateX = "date";
-    series.dataFields.valueY = "value";
-    series.strokeWidth = 3;
-    series.fillOpacity = 0.2;
-    series.tooltip.getFillFromObject = false;
-    series.tooltip.background.fill = am4core.color("#fff");
-    series.tooltip.label.fill = am4core.color("#000");
-
-    chart.padding(0, 0, 0, 0);
-
-    let circleBullet = series.bullets.push(new am4charts.CircleBullet());
-    circleBullet.circle.stroke = am4core.color("#fff");
-    circleBullet.circle.strokeWidth = 1;
-
-    series.tooltipText = "{dateX} {valueY.value} Zuschauer";
-    chart.cursor = new am4charts.XYCursor();
-
-    chart.cursor.lineY.disabled = true;
-
-    chart.cursor.lineX.stroke = am4core.color("#828282");
-    chart.cursor.lineX.strokeWidth = 3;
-    chart.cursor.lineX.strokeOpacity = 0.2;
-    chart.cursor.lineX.strokeDasharray = 4;
-
-    let watermark = new am4core.Label();
-    watermark.text = "Twasi.net © 2018";
-    chart.plotContainer.children.push(watermark);
-    watermark.align = "center";
-    watermark.valign = "bottom";
-    watermark.fontSize = 20;
-    watermark.opacity = 0.2;
-    watermark.marginBottom = 5;
-
-    this.chart = chart;
-
-
-    // Create chart instance
-    let chartpie = am4core.create("chartdivpie", am4charts.PieChart);
-
-    // Add data
-    chartpie.data = [{
-      "command": "lol",
-      "uses": 101
-    }, {
-      "command": "!twitter",
-      "uses": 24
-    },{
-      "command": "!game",
-      "uses": 13
-    },{
-      "command": "!check",
-      "uses": 59
-    },{
-      "command": "!uptime",
-      "uses": 33
-    }];
-
-    // Add and configure Series
-    let pieSeries = chartpie.series.push(new am4charts.PieSeries());
-    pieSeries.ticks.template.disabled = true;
-    pieSeries.dataFields.value = "uses";
-    pieSeries.dataFields.category = "command";
-    pieSeries.alignLabels = false;
-    pieSeries.labels.template.text = "{command}";
-    pieSeries.labels.template.radius = -65;
-    pieSeries.labels.template.fill = am4core.color("white");
-    pieSeries.labels.template.relativeRotation = 90;
-    pieSeries.tooltip.getFillFromObject = false;
-    pieSeries.tooltip.background.fill = am4core.color("#fff");
-    pieSeries.tooltip.label.fill = am4core.color("#000");
-
-    this.chartpie = chartpie;
-
-    let chartbars = am4core.create("chartdivbars", am4charts.XYChart);
-
-    // Add data
-    chartbars.data = [{
-      "game": "Grand Theft Auto V",
-      "averageviewers": 20,
-      "minutes": 60
-    }, {
-      "game": "Minecraft",
-      "averageviewers": 35,
-      "minutes": 20
-    }, {
-      "game": "Overwatch",
-      "averageviewers": 4,
-      "minutes": 36
-    }, {
-      "game": "League of Legends",
-      "averageviewers": 2,
-      "minutes": 123
-    }, {
-      "game": "Dota 2",
-      "averageviewers": 21,
-      "minutes": 74
-    }, {
-      "game": "IRL",
-      "averageviewers": 45,
-      "minutes": 66
-    }];
-
-    // Create axes
-    let categoryAxisbars = chartbars.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxisbars.renderer.grid.template.disabled = true;
-    categoryAxisbars.dataFields.category = "game";
-
-    let valueAxisbars = chartbars.yAxes.push(new am4charts.ValueAxis());
-    valueAxisbars.renderer.grid.template.disabled = true;
-    valueAxisbars.renderer.labels.template.disabled = true;
-    valueAxisbars.renderer.baseGrid.disabled = true;
-
-    let label = categoryAxisbars.renderer.labels.template;
-    label.truncate = true;
-    label.maxWidth = 120;
-
-    // Create series
-    let seriesbars = chartbars.series.push(new am4charts.ColumnSeries());
-    seriesbars.dataFields.valueY = "minutes";
-    seriesbars.dataFields.categoryX = "game";
-    seriesbars.columns.template.tooltipText = "Spiel: {game}\nZeit: {minutes}\nZuschauer: {averageviewers}";
-    seriesbars.tooltip.getFillFromObject = false;
-    seriesbars.tooltip.background.fill = am4core.color("#fff");
-    seriesbars.tooltip.label.fill = am4core.color("#000");
-
-    var seriesbars2 = chartbars.series.push(new am4charts.LineSeries());
-    seriesbars2.name = "Average Viewers";
-    seriesbars2.strokeWidth = 3;
-    seriesbars2.dataFields.valueY = "averageviewers";
-    seriesbars2.dataFields.categoryX = "game";
-
-    chartbars.padding(0, 0, 0, 0);
-
-    this.chartbars = chartbars;
-  }
-
-  componentWillUnmount() {
-    if (this.chart) {
-      this.chart.dispose();
-      this.chartpie.dispose();
-      this.chartbars.dispose();
-    }
-  }
-
   render() {
     return (
       <div className="pageContent">
@@ -356,27 +208,51 @@ class Overview extends Component {
               </div>
           </Col>
           <Col sm={9}>
-            <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+            <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px' }}>
               <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
                 Zuschauerverlauf
               </h4>
-              <div id="chartdiv" style={{ width: "100%", height: "250px", margin: '0px' }}></div>
+              <ResponsiveContainer height='100%' width='100%'>
+                <AreaChart margin={{ top: 10, right: 0, left: 0, bottom: 0 }} data={data}>
+                  <Tooltip/>
+                  <Area type="monotone" dataKey="value" stroke="#00aeae" strokeWidth="2" fill="#00aeae" fillOpacity=".1" />
+                </AreaChart>
+              </ResponsiveContainer>
             </Paper>
             <Row>
               <Col sm={6}>
-                <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+                <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px' }}>
                   <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
                     Genutzte Befehle
                   </h4>
-                  <div id="chartdivpie" style={{ width: "100%", height: "350px", margin: '0px' }}></div>
+                  <ResponsiveContainer height='100%' width='100%'>
+                    <PieChart width={730} height={250}>
+                      <Tooltip/>
+                      <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" fillOpacity="1">
+                      {
+                      	data01.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                      }
+                      </Pie>
+                    </PieChart>
+                  </ResponsiveContainer>
                 </Paper>
               </Col>
               <Col sm={6}>
-                <Paper className="pageContainer" style={{ padding: '25px 0px 0px 0px' }}>
+                <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px' }}>
                   <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
                     Gespielte Spiele
                   </h4>
-                  <div id="chartdivbars" style={{ width: "100%", height: "350px", margin: '0px' }}></div>
+                  <ResponsiveContainer height='100%' width='100%'>
+                    <BarChart width={600} height={300} data={data02}
+                          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                     <Tooltip/>
+                     <Bar dataKey="pv" fill="#00aeae">
+                     {
+                       data02.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                     }
+                     </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
                 </Paper>
               </Col>
             </Row>
