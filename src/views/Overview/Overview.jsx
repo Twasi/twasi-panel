@@ -19,23 +19,23 @@ let data = [];
 let visits = 100;
 for (let i = 1; i < 100; i++) {
   visits += Math.round((Math.random() < 0.5 ? 1 : 2) * Math.random() * 10);
-  data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
+  data.push({ date: new Date(2018, 0, i), name: "name" + i, Zuschauer: visits });
 }
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-const data01 = [{name: 'Group A', value: 400},
-                {name: 'Group D', value: 200},
-                {name: 'Group E', value: 278}, {name: 'Group F', value: 189}]
+const data01 = [{name: '!twitter', value: 400},
+                {name: '!check', value: 200},
+                {name: '!noob', value: 278}, {name: '!sr', value: 189}]
 
 const data02 = [
-      {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-      {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-      {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-      {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-      {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-      {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-      {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
+      {name: 'Page A', pv: 2400},
+      {name: 'Page B', pv: 1398},
+      {name: 'Page C', pv: 9800},
+      {name: 'Page D', pv: 3908},
+      {name: 'Page E', pv: 4800},
+      {name: 'Page F', pv: 3800},
+      {name: 'Page G', pv: 4300},
 ];
 
 class Overview extends Component {
@@ -208,18 +208,27 @@ class Overview extends Component {
                 Zuschauerverlauf
               </h4>
               <ResponsiveContainer height='100%' width='100%'>
-                <AreaChart margin={{ top: 40, right: 0, left: 0, bottom: 0 }} data={data}>
-                  <ReferenceArea x1={0} x2={20} y1={980} y2={1000} fill="#0088FE" fillOpacity="1">
+                <AreaChart margin={{ top: 50, right: 0, left: 0, bottom: 0 }} data={data}>
+                  <defs>
+                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#02d4d4" stopOpacity={1}/>
+                      <stop offset="95%" stopColor="#00aeae" stopOpacity={1}/>
+                    </linearGradient>
+                  </defs>
+                  <ReferenceArea x1={0} x2={20} y1={985} y2={1000} fill="#0088FE" fillOpacity="1">
                     <Label value="Minecraft" fill="#b7b7b7" offset={10} position="top" />
                   </ReferenceArea>
-                  <ReferenceArea x1={20} x2={50} y1={980} y2={1000} fill="#00C49F" fillOpacity="1">
-                    <Label value="GTA V" fill="#b7b7b7" offset={10} position="top" />
+                  <ReferenceArea x1={0} x2={20} y1={0} y2={1000} fill="#0088FE" fillOpacity=".1"/>
+                  <ReferenceArea x1={20} x2={50} y1={985} y2={1000} fill="#00C49F" fillOpacity="1">
+                    <Label value="Grand Theft Auto V" fill="#b7b7b7" offset={10} position="top" />
                   </ReferenceArea>
-                  <ReferenceArea x1={50} x2={98} y1={980} y2={1000} fill="#FFBB28" fillOpacity="1">
-                    <Label value="RDR 2" fill="#b7b7b7" offset={10} position="top" />
+                  <ReferenceArea x1={20} x2={50} y1={0} y2={1000} fill="#00C49F" fillOpacity=".1"/>
+                  <ReferenceArea x1={50} x2={98} y1={985} y2={1000} fill="#FFBB28" fillOpacity="1">
+                    <Label value="Red Dead Redemption 2" fill="#b7b7b7" offset={10} position="top" />
                   </ReferenceArea>
+                  <ReferenceArea x1={50} x2={98} y1={0} y2={1000} fill="#FFBB28" fillOpacity=".1"/>
                   <Tooltip/>
-                  <Area type="monotone" dataKey="value" stroke="#00aeae" strokeWidth="0" fill="#00aeae" fillOpacity="1" />
+                  <Area type="monotone" dataKey="Zuschauer" stroke="#00aeae" strokeWidth="0" fill="url(#colorUv)" fillOpacity="1" />
                 </AreaChart>
               </ResponsiveContainer>
             </Paper>
