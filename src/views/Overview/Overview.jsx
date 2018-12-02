@@ -203,35 +203,6 @@ class Overview extends Component {
               </div>
           </Col>
           <Col sm={9}>
-            <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px' }}>
-              <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
-                Zuschauerverlauf
-              </h4>
-              <ResponsiveContainer height='100%' width='100%'>
-                <AreaChart margin={{ top: 50, right: 0, left: 0, bottom: 0 }} data={data}>
-                  <defs>
-                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#02d4d4" stopOpacity={1}/>
-                      <stop offset="95%" stopColor="#00aeae" stopOpacity={1}/>
-                    </linearGradient>
-                  </defs>
-                  <ReferenceArea x1={0} x2={20} y1={985} y2={1000} fill="#0088FE" fillOpacity="1">
-                    <Label value="Minecraft" fill="#b7b7b7" offset={10} position="top" />
-                  </ReferenceArea>
-                  <ReferenceArea x1={0} x2={20} y1={0} y2={1000} fill="#0088FE" fillOpacity=".1"/>
-                  <ReferenceArea x1={20} x2={50} y1={985} y2={1000} fill="#00C49F" fillOpacity="1">
-                    <Label value="Grand Theft Auto V" fill="#b7b7b7" offset={10} position="top" />
-                  </ReferenceArea>
-                  <ReferenceArea x1={20} x2={50} y1={0} y2={1000} fill="#00C49F" fillOpacity=".1"/>
-                  <ReferenceArea x1={50} x2={98} y1={985} y2={1000} fill="#FFBB28" fillOpacity="1">
-                    <Label value="Red Dead Redemption 2" fill="#b7b7b7" offset={10} position="top" />
-                  </ReferenceArea>
-                  <ReferenceArea x1={50} x2={98} y1={0} y2={1000} fill="#FFBB28" fillOpacity=".1"/>
-                  <Tooltip/>
-                  <Area type="monotone" dataKey="Zuschauer" stroke="#00aeae" strokeWidth="0" fill="url(#colorUv)" fillOpacity="1" />
-                </AreaChart>
-              </ResponsiveContainer>
-            </Paper>
             <Row>
               <Col sm={6}>
                 <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px' }}>
@@ -270,6 +241,35 @@ class Overview extends Component {
                 </Paper>
               </Col>
             </Row>
+            <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px' }}>
+              <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
+                Zuschauerverlauf
+              </h4>
+              <ResponsiveContainer height='100%' width='100%'>
+                <AreaChart margin={{ top: 50, right: 0, left: 0, bottom: 0 }} data={data}>
+                  <defs>
+                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#02d4d4" stopOpacity={1}/>
+                      <stop offset="95%" stopColor="#00aeae" stopOpacity={1}/>
+                    </linearGradient>
+                  </defs>
+                  <ReferenceArea x1={0} x2={20} y1={985} y2={1000} fill="#0088FE" fillOpacity="1">
+                    <Label value="Minecraft" fill="#b7b7b7" offset={10} position="top" />
+                  </ReferenceArea>
+                  <ReferenceArea x1={0} x2={20} y1={0} y2={1000} fill="#0088FE" fillOpacity=".1"/>
+                  <ReferenceArea x1={20} x2={50} y1={985} y2={1000} fill="#00C49F" fillOpacity="1">
+                    <Label value="Grand Theft Auto V" fill="#b7b7b7" offset={10} position="top" />
+                  </ReferenceArea>
+                  <ReferenceArea x1={20} x2={50} y1={0} y2={1000} fill="#00C49F" fillOpacity=".1"/>
+                  <ReferenceArea x1={50} x2={98} y1={985} y2={1000} fill="#FFBB28" fillOpacity="1">
+                    <Label value="Red Dead Redemption 2" fill="#b7b7b7" offset={10} position="top" />
+                  </ReferenceArea>
+                  <ReferenceArea x1={50} x2={98} y1={0} y2={1000} fill="#FFBB28" fillOpacity=".1"/>
+                  <Tooltip/>
+                  <Area type="monotone" dataKey="Zuschauer" stroke="#00aeae" strokeWidth="0" fill="url(#colorUv)" fillOpacity="1" />
+                </AreaChart>
+              </ResponsiveContainer>
+            </Paper>
           </Col>
         </Row>
       </div>
