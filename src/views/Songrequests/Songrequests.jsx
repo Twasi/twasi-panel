@@ -131,7 +131,7 @@ class Songrequests extends React.Component {
               </div>
             </Grid>
             <Grid item xs={12}>
-              <div style={{ marginBottom: '0px', marginTop: '0px' }}>
+              <div style={{ marginBottom: '15px', marginTop: '0px' }}>
                 <Slider />
               </div>
               <span className="leftTime">00:00</span>

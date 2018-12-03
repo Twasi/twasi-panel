@@ -10,6 +10,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 
 import './_style.css';
 
@@ -99,10 +100,11 @@ class Overview extends Component {
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <h4 className="pageContainerTitle">Statistiken deines letzten Streams
                 <span style={{ float: 'right' }}>
+                  <Button variant="contained" color="secondary" style={{ marginRight: '16px' }}>Daten des letzten Streams löschen</Button>
                   <Button variant="contained" color="primary">Aktualisieren</Button>
                 </span>
               </h4>
-              <small>Hier findest du die Statisten deines letzten von Twasi erfassten Streams.</small>
+              <small>Hier findest du die Statistiken deines letzten, von Twasi erfassten Streams.</small>
             </Paper>
           </Col>
         </Row>
@@ -114,89 +116,130 @@ class Overview extends Component {
                     <ListItem>
                     <Row>
                       <Col sm={12}>
-                        <h4 className="pageContainerTitle">Stream ID</h4>
-                        <small>1337</small>
+                        <h4 className="pageContainerTitle">1564184945</h4>
+                        <small>Stream ID</small>
                       </Col>
                     </Row>
+                    </ListItem>
+                    <Divider />
+                    <ListItem fullwidth>
+                    <Row>
+                      <Col sm={12}>
+                        <h4 className="pageContainerTitle">13:37</h4>
+                        <small>Dauer</small>
+                      </Col>
+                    </Row>
+                    <Icon
+                      color="primary"
+                      style={{ position: 'absolute', right: '13px' }}
+                    >
+                      trending_up
+                    </Icon>
                     </ListItem>
                     <Divider />
                     <ListItem>
                     <Row>
                       <Col sm={12}>
-                        <h4 className="pageContainerTitle">Dauer</h4>
-                        <small>13:37</small>
+                        <h4 className="pageContainerTitle">1.243</h4>
+                        <small>Chatnachrichten</small>
                       </Col>
                     </Row>
+                    <Icon
+                      color="primary"
+                      style={{ position: 'absolute', right: '13px' }}
+                    >
+                      trending_up
+                    </Icon>
                     </ListItem>
                     <Divider />
                     <ListItem>
                     <Row>
                       <Col sm={12}>
-                        <h4 className="pageContainerTitle">Chatnachrichten</h4>
-                        <small>1337</small>
+                        <h4 className="pageContainerTitle">354</h4>
+                        <small>Befehle ausgeführt</small>
                       </Col>
                     </Row>
+                    <Icon
+                      color="secondary"
+                      style={{ position: 'absolute', right: '13px' }}
+                    >
+                      trending_down
+                    </Icon>
                     </ListItem>
                     <Divider />
                     <ListItem>
                     <Row>
                       <Col sm={12}>
-                        <h4 className="pageContainerTitle">Befehle ausgeführt</h4>
-                        <small>1337</small>
+                        <h4 className="pageContainerTitle">54</h4>
+                        <small>Follower +</small>
                       </Col>
                     </Row>
+                    <Icon
+                      color="secondary"
+                      style={{ position: 'absolute', right: '13px' }}
+                    >
+                      trending_down
+                    </Icon>
                     </ListItem>
                     <Divider />
                     <ListItem>
                     <Row>
                       <Col sm={12}>
-                        <h4 className="pageContainerTitle">Follower +</h4>
-                        <small>1337</small>
+                        <h4 className="pageContainerTitle">263</h4>
+                        <small>Aufrufe +</small>
                       </Col>
                     </Row>
+                    <Icon
+                      color="primary"
+                      style={{ position: 'absolute', right: '13px' }}
+                    >
+                      trending_up
+                    </Icon>
                     </ListItem>
                     <Divider />
                     <ListItem>
                     <Row>
                       <Col sm={12}>
-                        <h4 className="pageContainerTitle">Aufrufe +</h4>
-                        <small>1337</small>
+                        <h4 className="pageContainerTitle">32</h4>
+                        <small>Zuschauer Maximum</small>
                       </Col>
                     </Row>
+                    <Icon
+                      color="primary"
+                      style={{ position: 'absolute', right: '13px' }}
+                    >
+                      trending_up
+                    </Icon>
                     </ListItem>
                     <Divider />
                     <ListItem>
                     <Row>
                       <Col sm={12}>
-                        <h4 className="pageContainerTitle">Zuschauer Maximum</h4>
-                        <small>1337</small>
+                        <h4 className="pageContainerTitle">25</h4>
+                        <small>Zuschauer Durchschnitt</small>
                       </Col>
                     </Row>
+                    <Icon
+                      color="secondary"
+                      style={{ position: 'absolute', right: '13px' }}
+                    >
+                      trending_down
+                    </Icon>
                     </ListItem>
                     <Divider />
                     <ListItem>
                     <Row>
                       <Col sm={12}>
-                        <h4 className="pageContainerTitle">Zuschauer Durchschnitt</h4>
-                        <small>1337</small>
+                        <h4 className="pageContainerTitle">197</h4>
+                        <small>Individuelle Zuschauer</small>
                       </Col>
                     </Row>
-                    </ListItem>
-                    <Divider />
-                    <ListItem>
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">Individuelle Zuschauer</h4>
-                        <small>1337</small>
-                      </Col>
-                    </Row>
-                    </ListItem>
-                  </Paper>
-                  <Paper className="pageContainer" style={{ padding: '0px', marginTop: '10px' }}>
-                    <ListItem style={{ padding: '0px' }}>
-                      <Button fullWidth variant="contained" color="secondary">
-                        Streamdaten Löschen
-                      </Button>
+                    <Icon
+                      color="secondary"
+                      style={{ position: 'absolute', right: '13px' }}
+                    >
+                      trending_down
+                    </Icon>
                     </ListItem>
                   </Paper>
                 </List>
