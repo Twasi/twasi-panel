@@ -30,6 +30,9 @@ const darktheme = createMuiTheme({
       contrastText: '#ffffff',
     },
   },
+  neutral: {
+    color: '#da7720',
+  },
   overrides: {
     MuiPaper: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule

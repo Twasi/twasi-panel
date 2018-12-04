@@ -11,10 +11,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import TooltipM from '@material-ui/core/Tooltip';
+import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, ReferenceArea, CartesianGrid, Label, LineChart, Line } from 'recharts';
+
+import Kreygasm from '../common/resources/Kreygasm.png';
+import LUL from '../common/resources/LUL.png';
+import Kappa from '../common/resources/Kappa.png';
+import PogChamp from '../common/resources/PogChamp.png';
 
 import './_style.css';
-
-import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, ReferenceArea, CartesianGrid, Label, LineChart, Line } from 'recharts';
 
 let data = [];
 let visits = 100;
@@ -54,6 +59,11 @@ class Overview extends Component {
                   <small>
                     <FormattedMessage id="overview.follower" />
                   </small>
+                  <img
+                    style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
+                    src={Kreygasm}
+                    alt="Kreygasm"
+                  />
                 </div>
               </div>
             </Col>
@@ -66,6 +76,11 @@ class Overview extends Component {
                   <small>
                     <FormattedMessage id="overview.viewer" />
                   </small>
+                  <img
+                    style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
+                    src={LUL}
+                    alt="LUL"
+                  />
                 </div>
               </div>
             </Col>
@@ -78,6 +93,11 @@ class Overview extends Component {
                   <small>
                     <FormattedMessage id="overview.messages" />
                   </small>
+                  <img
+                    style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
+                    src={Kappa}
+                    alt="Kappa"
+                  />
                 </div>
               </div>
             </Col>
@@ -90,6 +110,11 @@ class Overview extends Component {
                   <small>
                     <FormattedMessage id="overview.streams" />
                   </small>
+                  <img
+                    style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
+                    src={PogChamp}
+                    alt="PogChamp"
+                  />
                 </div>
               </div>
             </Col>
@@ -120,6 +145,14 @@ class Overview extends Component {
                         <small>Stream ID</small>
                       </Col>
                     </Row>
+                    <TooltipM title="Jetzt Live" placement="top">
+                      <Icon
+                        color="secondary"
+                        style={{ position: 'absolute', right: '17px', fontSize: '15px' }}
+                      >
+                        brightness_1
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                     <Divider />
                     <ListItem fullwidth>
@@ -129,12 +162,14 @@ class Overview extends Component {
                         <small>Dauer</small>
                       </Col>
                     </Row>
-                    <Icon
-                      color="primary"
-                      style={{ position: 'absolute', right: '13px' }}
-                    >
-                      trending_up
-                    </Icon>
+                    <TooltipM title="+ 5:12" placement="top">
+                      <Icon
+                        color="primary"
+                        style={{ position: 'absolute', right: '13px' }}
+                      >
+                        trending_up
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -144,12 +179,14 @@ class Overview extends Component {
                         <small>Chatnachrichten</small>
                       </Col>
                     </Row>
-                    <Icon
-                      color="primary"
-                      style={{ position: 'absolute', right: '13px' }}
-                    >
-                      trending_up
-                    </Icon>
+                    <TooltipM title="+ 125" placement="top">
+                      <Icon
+                        color="primary"
+                        style={{ position: 'absolute', right: '13px' }}
+                      >
+                        trending_up
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -159,12 +196,14 @@ class Overview extends Component {
                         <small>Befehle ausgeführt</small>
                       </Col>
                     </Row>
-                    <Icon
-                      color="secondary"
-                      style={{ position: 'absolute', right: '13px' }}
-                    >
-                      trending_down
-                    </Icon>
+                    <TooltipM title="- 5" placement="top">
+                      <Icon
+                        color="secondary"
+                        style={{ position: 'absolute', right: '13px' }}
+                      >
+                        trending_down
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -174,12 +213,13 @@ class Overview extends Component {
                         <small>Follower +</small>
                       </Col>
                     </Row>
-                    <Icon
-                      color="secondary"
-                      style={{ position: 'absolute', right: '13px' }}
-                    >
-                      trending_down
-                    </Icon>
+                    <TooltipM title="+- 0" placement="top">
+                      <Icon
+                        style={{ position: 'absolute', right: '13px', color: '#da7720' }}
+                      >
+                        trending_flat
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -189,12 +229,13 @@ class Overview extends Component {
                         <small>Aufrufe +</small>
                       </Col>
                     </Row>
-                    <Icon
-                      color="primary"
-                      style={{ position: 'absolute', right: '13px' }}
-                    >
-                      trending_up
-                    </Icon>
+                    <TooltipM title="+- 0" placement="top">
+                      <Icon
+                        style={{ position: 'absolute', right: '13px', color: '#da7720' }}
+                      >
+                        trending_flat
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -204,12 +245,14 @@ class Overview extends Component {
                         <small>Zuschauer Maximum</small>
                       </Col>
                     </Row>
-                    <Icon
-                      color="primary"
-                      style={{ position: 'absolute', right: '13px' }}
-                    >
-                      trending_up
-                    </Icon>
+                    <TooltipM title="+ 7" placement="top">
+                      <Icon
+                        color="primary"
+                        style={{ position: 'absolute', right: '13px' }}
+                      >
+                        trending_up
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -219,12 +262,14 @@ class Overview extends Component {
                         <small>Zuschauer Durchschnitt</small>
                       </Col>
                     </Row>
-                    <Icon
-                      color="secondary"
-                      style={{ position: 'absolute', right: '13px' }}
-                    >
-                      trending_down
-                    </Icon>
+                    <TooltipM title="- 2" placement="top">
+                      <Icon
+                        color="secondary"
+                        style={{ position: 'absolute', right: '13px' }}
+                      >
+                        trending_down
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -234,12 +279,14 @@ class Overview extends Component {
                         <small>Individuelle Zuschauer</small>
                       </Col>
                     </Row>
-                    <Icon
-                      color="secondary"
-                      style={{ position: 'absolute', right: '13px' }}
-                    >
-                      trending_down
-                    </Icon>
+                    <TooltipM title="- 50" placement="top">
+                      <Icon
+                        color="secondary"
+                        style={{ position: 'absolute', right: '13px' }}
+                      >
+                        trending_down
+                      </Icon>
+                    </TooltipM>
                     </ListItem>
                   </Paper>
                 </List>
