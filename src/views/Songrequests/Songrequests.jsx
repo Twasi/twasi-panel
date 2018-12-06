@@ -25,11 +25,20 @@ import spotifylogo from '../common/resources/spotifyIcon.png';
 import './_style.css';
 
 class Songrequests extends React.Component {
+
+  handleVolumeChange = (event, volume) => {
+    this.setState({ volume });
+  };
+
+  handleTimelineChange = (event, time) => {
+    this.setState({ time });
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      anchorEl: null,
+      volume: 50,
+      time: 50,
       sync: {
         status: 'disconnected',
         ping: -1
@@ -51,21 +60,9 @@ class Songrequests extends React.Component {
     this.sync.requestStatus();
   }
 
-  handleClick = event => {
-    this.setState({
-      open: true,
-      anchorEl: event.currentTarget
-    });
-  };
-
-  handleClose = () => {
-    this.setState({
-      open: false,
-      anchorEl: null
-    });
-  };
-
   render() {
+    const { volume } = this.state;
+    const { time } = this.state;
     const { anchorEl } = this.state;
     return (
       <div className="pageContent">
@@ -116,8 +113,9 @@ class Songrequests extends React.Component {
                     marginRight: '15px',
                     marginTop: '11px',
                     marginBottom: '11px',
-                    width: '150px' }}><Slider style={{ color: '#00aeae' }} />
-                         </div>}
+                    width: '150px' }}>
+                    <Slider value={volume} onChange={this.handleVolumeChange} style={{ color: '#00aeae' }} />
+                </div>}
                 />
                 <Button style={{ margin: '0px 5px 0px 5px' }} mini variant="fab" color="primary" aria-label="previous">
                   <Icon style={{ color: '#ffffff' }}>skip_previous</Icon>
@@ -131,8 +129,8 @@ class Songrequests extends React.Component {
               </div>
             </Grid>
             <Grid item xs={12}>
-              <div style={{ marginBottom: '15px', marginTop: '0px' }}>
-                <Slider />
+              <div style={{ marginBottom: '10px', marginTop: '0px' }}>
+                <Slider value={time} onChange={this.handleTimelineChange} style={{ color: '#00aeae' }} />
               </div>
               <span className="leftTime">00:00</span>
               <span className="rightTime">13:37</span>

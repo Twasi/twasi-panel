@@ -9,7 +9,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
 import Icon from '@material-ui/core/Icon';
-import DoneIcon from '@material-ui/icons/Done';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -23,16 +22,10 @@ class StatusInfo extends Component {
     const { status, startBot, stopBot, isStarting, isStopping } = this.props;
 
     const running = (
-      <Chip
-        label={<FormattedMessage id="status.started" defaultMessage="Started" />}
-        color="primary"
-      />
+      <Chip icon={<Icon>power</Icon>} label={<FormattedMessage id="status.started" defaultMessage="started" />} color="primary" />
     );
     const stopped = (
-      <Chip
-        label={<FormattedMessage id="status.stopped" defaultMessage="Stopped" />}
-        color="secondary"
-      />
+      <Chip icon={<Icon>power_off</Icon>} label={<FormattedMessage id="status.stopped" defaultMessage="stopped" />} color="secondary" />
     );
 
     return (

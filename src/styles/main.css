@@ -4,6 +4,7 @@
 body {
   //background-color: #edecec;
   background-color: #151e21;
+  overflow-x: hidden;
 }
 
 .content {
