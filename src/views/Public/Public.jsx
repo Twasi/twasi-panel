@@ -5,6 +5,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 import { FormattedMessage } from 'react-intl';
 
 let id = 0;
@@ -23,14 +25,20 @@ const rows = [
 
 const Public = () => (
   <div className="pageContent">
-    <Paper className="pageContainer">
+    <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
+      <h4 className="pageContainerTitle">Bestenliste</h4>
+      <small>
+        Hier findest du die Bestenliste.
+      </small>
+    </Paper>
+    <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', margin: '0px 0px 15px 0px', borderRadius: '0px 0px 4px 4px' }}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Platzierung</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Points</TableCell>
-            <TableCell>Viewtime</TableCell>
+            <TableCell><h2>Platzierung</h2></TableCell>
+            <TableCell><h2>Name</h2></TableCell>
+            <TableCell><h2>Points</h2></TableCell>
+            <TableCell><h2>Viewtime</h2></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
