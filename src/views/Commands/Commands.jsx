@@ -122,6 +122,43 @@ class Commands extends Component {
                   </Tooltip>
                 </TableCell>
               </TableRow>
+              <TableRow>
+                <TableCell>3</TableCell>
+                <TableCell>
+                  <b>!test</b>
+                </TableCell>
+                <TableCell
+                  style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
+                >
+                  Das ist ein Test.
+                </TableCell>
+                <TableCell>Alle</TableCell>
+                <TableCell>1.337</TableCell>
+                <TableCell>
+                  <Tooltip title="Bearbeiten" placement="top">
+                    <Button
+                      variant="fab"
+                      color="primary"
+                      className="noshadow"
+                      mini
+                      aria-label="editCommand"
+                    >
+                      <Icon style={{ color: '#ffffff' }}>edit</Icon>
+                    </Button>
+                  </Tooltip>{' '}
+                  <Tooltip title="Löschen" placement="top">
+                    <Button
+                      variant="fab"
+                      color="secondary"
+                      className="noshadow"
+                      mini
+                      aria-label="deleteCommand"
+                    >
+                      <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                    </Button>
+                  </Tooltip>
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </Paper>

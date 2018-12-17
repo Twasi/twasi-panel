@@ -123,7 +123,14 @@ const darktheme = createMuiTheme({
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       body: { // Name of the rule
         color: '#b7b7b7', // Some CSS
-        borderColor: 'rgba(255, 255, 255, 0.12)'
+        borderColor: 'transparent',
+      },
+    },
+    MuiTableRow: {
+      root: {
+        '&:nth-of-type(even)': {
+          backgroundColor: 'rgb(24, 36, 39)',
+        },
       },
     },
     MuiInputAdornment: { // Name of the component ⚛️ / style sheet
