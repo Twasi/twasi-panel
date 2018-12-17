@@ -10,6 +10,7 @@ import './_style.css';
 import { authSelectors } from '../../../state/auth';
 import { AccountSwitchIcon } from '../../AccountSwitch';
 import { ThemeSwitchIcon } from '../../ThemeSwitch';
+import twasilogo from '../../common/resources/twasi_flat_white.svg';
 
 import {
   getHeaderStyle,
@@ -31,6 +32,13 @@ const Header = ({ userName, rank, avatar }) => (
             <small style={getRankStyle()}>{rank}</small>
           </span>
         </div>
+      </span>
+      <span style={{ marginLeft: 'auto', marginRight: 'auto', width: '140px' }}>
+        <img
+          className="twasiLogo"
+          src={twasilogo}
+          alt="twasi-logo"
+        />
       </span>
       <span style={{ width: '150px' }}>
         <AccountSwitchIcon />
