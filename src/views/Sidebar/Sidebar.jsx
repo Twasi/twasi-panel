@@ -135,7 +135,7 @@ class Sidebar extends Component {
           <Paper style={getMenuStyle()} className="sidebar">
             <div style={getHeaderMenuItem()}>
               <FormattedMessage id="sidebar.navigation_headline" />
-              <Fab size="small" style={{ float: 'right', margin: '5px 0px 0px 15px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Add">
+              <Fab size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Add">
                 <Icon style={{ color: '#ffffff' }}>
                   arrow_back
                 </Icon>

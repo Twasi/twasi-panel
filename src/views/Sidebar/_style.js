@@ -19,7 +19,7 @@ export const getHeaderMenuItem = () => ({
   lineHeight: '48px',
   color: '#fff',
   marginLeft: 0,
-  padding: '0px 16px 0px 16px',
+  padding: '0px 5px 0px 16px',
   minHeight: 48,
   position: 'relative',
   textAlign: 'center',
