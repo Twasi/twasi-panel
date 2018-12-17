@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 import Hidden from '@material-ui/core/Hidden';
+import Icon from '@material-ui/core/Icon';
+import Fab from '@material-ui/core/Fab';
 
 import { authSelectors } from '../../state/auth';
 import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
@@ -133,6 +135,11 @@ class Sidebar extends Component {
           <Paper style={getMenuStyle()} className="sidebar">
             <div style={getHeaderMenuItem()}>
               <FormattedMessage id="sidebar.navigation_headline" />
+              <Fab size="small" style={{ float: 'right', margin: '5px 0px 0px 15px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Add">
+                <Icon style={{ color: '#ffffff' }}>
+                  arrow_back
+                </Icon>
+              </Fab>
             </div>
             <MenuList
               className="Sidebar"

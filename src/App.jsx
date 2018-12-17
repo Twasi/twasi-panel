@@ -39,6 +39,7 @@ const darktheme = createMuiTheme({
         color: '#b7b7b7', // Some CSS
         backgroundColor: '#1b292d',
         borderRadius: '4px',
+        border: '0px solid #25373e',
       },
     },
     MuiCardContent: { // Name of the component ⚛️ / style sheet
