@@ -32,7 +32,7 @@ class Sidebar extends Component {
       {
         key: 'status',
         path: '/status',
-        icon: 'info',
+        icon: 'power',
         name: 'sidebar.status'
       },
       {
