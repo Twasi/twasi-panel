@@ -210,7 +210,7 @@ class Overview extends Component {
           <Col sm={3}>
               <div>
                 <List dense style={{ padding: '0px' }}>
-                  <Paper className="pageContainer" style={{ padding: '15px', margin: '23px 0px 0px 0px' }}>
+                  <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
                     <ListItem>
                     <Row>
                       <Col sm={12}>
@@ -227,8 +227,8 @@ class Overview extends Component {
                       </Icon>
                     </TooltipM>
                     </ListItem>
-                    <Divider />
-                    <ListItem fullwidth>
+
+                    <ListItem style={{ backgroundColor: '#182427' }}>
                     <Row>
                       <Col sm={12}>
                         <h4 className="pageContainerTitle">13:37</h4>
@@ -244,7 +244,7 @@ class Overview extends Component {
                       </Icon>
                     </TooltipM>
                     </ListItem>
-                    <Divider />
+
                     <ListItem>
                     <Row>
                       <Col sm={12}>
@@ -261,8 +261,8 @@ class Overview extends Component {
                       </Icon>
                     </TooltipM>
                     </ListItem>
-                    <Divider />
-                    <ListItem>
+
+                    <ListItem style={{ backgroundColor: '#182427' }}>
                     <Row>
                       <Col sm={12}>
                         <h4 className="pageContainerTitle">354</h4>
@@ -278,7 +278,7 @@ class Overview extends Component {
                       </Icon>
                     </TooltipM>
                     </ListItem>
-                    <Divider />
+
                     <ListItem>
                     <Row>
                       <Col sm={12}>
@@ -294,8 +294,8 @@ class Overview extends Component {
                       </Icon>
                     </TooltipM>
                     </ListItem>
-                    <Divider />
-                    <ListItem>
+
+                    <ListItem style={{ backgroundColor: '#182427' }}>
                     <Row>
                       <Col sm={12}>
                         <h4 className="pageContainerTitle">263</h4>
@@ -310,7 +310,7 @@ class Overview extends Component {
                       </Icon>
                     </TooltipM>
                     </ListItem>
-                    <Divider />
+
                     <ListItem>
                     <Row>
                       <Col sm={12}>
@@ -327,8 +327,8 @@ class Overview extends Component {
                       </Icon>
                     </TooltipM>
                     </ListItem>
-                    <Divider />
-                    <ListItem>
+
+                    <ListItem style={{ backgroundColor: '#182427' }}>
                     <Row>
                       <Col sm={12}>
                         <h4 className="pageContainerTitle">25</h4>
@@ -344,7 +344,7 @@ class Overview extends Component {
                       </Icon>
                     </TooltipM>
                     </ListItem>
-                    <Divider />
+
                     <ListItem>
                     <Row>
                       <Col sm={12}>
