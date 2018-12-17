@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
+import Chip from '@material-ui/core/Chip';
 
 class Commands extends Component {
   render() {
@@ -58,7 +59,12 @@ class Commands extends Component {
                   Das ist ein sehr langer Test, um zu schauen, wie sich die
                   Tabelle bei längeren Einträgen verhält.
                 </TableCell>
-                <TableCell>Alle</TableCell>
+                <TableCell>
+                  <Chip
+                    label="Jeder"
+                    color="primary"
+                  />
+                </TableCell>
                 <TableCell>1.337</TableCell>
                 <TableCell>
                   <Tooltip title="Bearbeiten" placement="top">
@@ -95,7 +101,12 @@ class Commands extends Component {
                 >
                   Das ist ein Test.
                 </TableCell>
-                <TableCell>Alle</TableCell>
+                <TableCell>
+                  <Chip
+                    label="Mods und höher"
+                    color="secondary"
+                  />
+                </TableCell>
                 <TableCell>1.337</TableCell>
                 <TableCell>
                   <Tooltip title="Bearbeiten" placement="top">
@@ -132,7 +143,12 @@ class Commands extends Component {
                 >
                   Das ist ein Test.
                 </TableCell>
-                <TableCell>Alle</TableCell>
+                <TableCell>
+                  <Chip
+                    label="Jeder"
+                    color="primary"
+                  />
+                </TableCell>
                 <TableCell>1.337</TableCell>
                 <TableCell>
                   <Tooltip title="Bearbeiten" placement="top">

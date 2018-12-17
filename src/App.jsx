@@ -124,6 +124,8 @@ const darktheme = createMuiTheme({
       body: { // Name of the rule
         color: '#b7b7b7', // Some CSS
         borderColor: 'transparent',
+        paddingTop: '15px',
+        paddingBottom: '15px',
       },
     },
     MuiTableRow: {
