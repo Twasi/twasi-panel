@@ -71,110 +71,6 @@ class Welcome extends Component {
       case 1:
         return (
           <div className="setupContent">
-            <h1>Migration deiner Daten</h1>
-            <Grid container spacing={24}>
-              <Grid item xs={12}>
-                <p>
-                  <div className="infoAlert">
-                    Wir haben festgestellt, dass du bereits seit unserer BETA
-                    Teil der Twasi Community bist.<br />
-                    Du hast anschließend die Möglichkeit die Daten, die wir in
-                    der BETA von dir gesammelt haben mitzunehmen oder einen
-                    kompletten Neustart zu machen.
-                  </div>
-                  <div className="dangerAlert">
-                    <b>Achtung!</b> Solltest du einen Neustart wählen, werden{' '}
-                    <b>ALLE</b> Daten, die wir von dir und deinen Streams
-                    gesammelt haben permanent gelöscht!
-                  </div>
-                </p>
-                {/*
-                <Paper className="welcomeBox">
-                  <h4 className="welcomeSubHeadline">
-                    Deine Daten aus der BETA
-                  </h4>
-                  <p className="welcomeSubHeadlineParagraph" />
-                </Paper>
-                */}
-              </Grid>
-            </Grid>
-            <p>
-              Bitte wähle alle Daten aus, die du in das neue Twasi übernehmen
-              möchtest.
-            </p>
-            <Table
-              style={{
-                border: '1px solid rgb(224, 224, 224)'
-              }}
-            >
-              <TableBody displayRowCheckbox={false}>
-                <TableRow>
-                  <TableCell>Befehle</TableCell>
-                  <TableCell>
-                    <b>55</b> Datensätze
-                  </TableCell>
-                  <TableCell>
-                    <Checkbox/>
-                      Daten mitnehmen
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Variablen</TableCell>
-                  <TableCell>
-                    <b>14</b> Datensätze
-                  </TableCell>
-                  <TableCell>
-                    <Checkbox/>
-                      Daten mitnehmen
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Zitate</TableCell>
-                  <TableCell>
-                    <b>34</b> Datensätze
-                  </TableCell>
-                  <TableCell>
-                    <Checkbox/>
-                      Daten mitnehmen
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Songrequests</TableCell>
-                  <TableCell>
-                    <b>316</b> Datensätze
-                  </TableCell>
-                  <TableCell>
-                    <Checkbox/>
-                      Daten mitnehmen
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Streamdaten</TableCell>
-                  <TableCell>
-                    <b>4.302</b> Datensätze
-                  </TableCell>
-                  <TableCell>
-                    <Checkbox/>
-                      Daten mitnehmen
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Bestenlisten</TableCell>
-                  <TableCell>
-                    <b>429</b> Datensätze
-                  </TableCell>
-                  <TableCell>
-                    <Checkbox/>
-                      Daten mitnehmen
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
-        );
-      case 2:
-        return (
-          <div className="setupContent">
             <h1>Plugins</h1>
             <p>
               Hier kannst du auswählen, welche Plugins du aktiviert bzw.
@@ -190,7 +86,7 @@ class Welcome extends Component {
             <br />
           </div>
         );
-      case 3:
+      case 2:
         return 'Test';
       default:
         return 'Fehler';
@@ -201,7 +97,7 @@ class Welcome extends Component {
     const { stepIndex } = this.state;
     this.setState({
       stepIndex: stepIndex + 1,
-      finished: stepIndex >= 3
+      finished: stepIndex >= 2
     });
   };
 
@@ -233,12 +129,7 @@ class Welcome extends Component {
                   </Step>
                   <Step>
                     <StepLabel style={{ fontWeight: 'bold' }}>
-                      Migration
-                    </StepLabel>
-                  </Step>
-                  <Step>
-                    <StepLabel style={{ fontWeight: 'bold' }}>
-                      Plugins
+                      Plugins aktivieren
                     </StepLabel>
                   </Step>
                   <Step>
@@ -286,8 +177,6 @@ class Welcome extends Component {
                               case 1:
                                 return 'Weiter';
                               case 2:
-                                return 'Weiter';
-                              case 3:
                                 return 'Fertig';
                               default:
                                 return null;
