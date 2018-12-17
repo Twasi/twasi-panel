@@ -177,7 +177,7 @@ const darktheme = createMuiTheme({
       tooltip: { // Name of the rule
         color: '#b7b7b7', // Some CSS
         backgroundColor: '#151e21',
-        border: '1px solid #00aeae',
+        border: '0px solid #00aeae',
       },
     },
   },

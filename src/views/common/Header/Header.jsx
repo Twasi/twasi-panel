@@ -33,7 +33,7 @@ const Header = ({ userName, rank, avatar }) => (
           </span>
         </div>
       </span>
-      <span style={{ marginLeft: 'auto', marginRight: 'auto', width: '140px' }}>
+      <span style={{ marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
         <img
           className="twasiLogo"
           src={twasilogo}
