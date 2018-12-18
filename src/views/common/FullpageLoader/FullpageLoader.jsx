@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './_style.css';
-import twasiImage from '../resources/twasi_anim_loading.gif';
+import twasiImage from '../resources/twasi_flat_white.svg';
 import twasiLoadingBar from '../resources/twasi_anim_loadingbar.gif';
 
 const FullpageLoader = () => (
