@@ -18,7 +18,7 @@ class Commands extends Component {
         <h2 className="pageTitle">
           <FormattedMessage id="sidebar.commands" />
         </h2>
-        <Paper className="pageContainer" style={{ borderRadius: '0px' }}>
+        <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <h4 className="pageContainerTitle">
             Deine Befehle
             <span style={{ float: 'right' }}>

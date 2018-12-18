@@ -27,7 +27,7 @@ class Moderators extends Component {
         <h2 className="pageTitle">
           <FormattedMessage id="sidebar.mods" />
         </h2>
-        <Paper className="pageContainer">
+        <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <h4 className="pageContainerTitle">
             Moderatoren Verwaltung
             <span style={{ float: 'right' }}>
