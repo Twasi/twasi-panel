@@ -181,7 +181,7 @@ class Songrequests extends React.Component {
                       <img
                         src={spotifylogo}
                         alt="spotify"
-                        style={{ height: '40px', marginTop: '5px' }}
+                        style={{ height: '32px', marginTop: '7px' }}
                       />
                     </Tooltip>
                   </div>
