@@ -12,6 +12,7 @@ import Status from '../Status';
 import Plugins from '../Plugins';
 import Fakechat from '../Fakechat';
 import Profile from '../Profile/Profile';
+import Moderators from '../Moderators';
 import Urlshortener from '../Urlshortener/Urlshortener';
 import Commands from '../Commands/Commands';
 import Songrequests from '../Songrequests/Songrequests';
@@ -30,6 +31,7 @@ const PanelContent = () => (
           <Route path="/status" exact component={Status} />
           <Route path="/plugins" exact component={Plugins} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/mods" exact component={Moderators} />
           <Route path="/commands" exact component={Commands} />
           <Route path="/urlshortener" exact component={Urlshortener} />
           <Route path="/fakechat" exact component={Fakechat} />

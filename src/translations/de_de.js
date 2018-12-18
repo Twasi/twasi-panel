@@ -10,6 +10,7 @@ export default {
   'sidebar.status': 'Status',
   'sidebar.settings': 'Einstellungen',
   'sidebar.profile': 'Profil',
+  'sidebar.mods': 'Moderatoren',
   'sidebar.plugins': 'Plugin Store',
   'sidebar.fakechat': 'Fakechat',
   'sidebar.commands': 'Befehle',
@@ -51,7 +52,7 @@ export default {
   // Plugins
   'plugins.headline': 'Plugin Store',
   'plugins.explanation':
-    'Plugins sind Erweiterungen für Twasi. Du bestimmst, welche Plugins du für deinen Persönlichen Bot installieren bzw. deinstallieren möchtest.',
+  'Plugins sind Erweiterungen für Twasi. Du bestimmst, welche Plugins du für deinen Persönlichen Bot installieren bzw. deinstallieren möchtest.',
   'plugins.card_headline': 'Was sind Plugins?',
   'plugins.version': 'Version',
   'plugins.commands': 'Befehle',

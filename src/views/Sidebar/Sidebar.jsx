@@ -42,6 +42,12 @@ class Sidebar extends Component {
         name: 'sidebar.profile'
       },
       {
+        key: 'mods',
+        path: '/mods',
+        icon: 'people',
+        name: 'sidebar.mods'
+      },
+      {
         key: 'plugins',
         path: '/plugins',
         icon: 'store',

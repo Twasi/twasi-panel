@@ -70,6 +70,12 @@ const darktheme = createMuiTheme({
       root: { // Name of the rule
         textTransform: 'none', // Some CSS
         color: '#b7b7b7', // Some CSS
+        borderRadius: '50px',
+      },
+      mini: {
+        minHeight: '32px',
+        height: '32px',
+        width: '32px',
       },
       containedPrimary: {
         boxShadow: 'none',

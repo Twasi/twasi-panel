@@ -10,6 +10,7 @@ export default {
   'sidebar.status': 'Status',
   'sidebar.settings': 'Settings',
   'sidebar.profile': 'Profile',
+  'sidebar.mods': 'Moderators',
   'sidebar.plugins': 'Plugin Store',
   'sidebar.fakechat': 'Fakechat',
   'sidebar.commands': 'Commands',
