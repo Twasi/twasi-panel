@@ -71,8 +71,6 @@ const darktheme = createMuiTheme({
         textTransform: 'none', // Some CSS
         color: '#b7b7b7', // Some CSS
         borderRadius: '50px',
-        height: '32px',
-        minHeight: '32px',
       },
       mini: {
         minHeight: '32px',

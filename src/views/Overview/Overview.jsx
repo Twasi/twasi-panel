@@ -12,6 +12,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import TooltipM from '@material-ui/core/Tooltip';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, ReferenceArea, CartesianGrid, Label, LineChart, Line } from 'recharts';
 
 import Kreygasm from '../common/resources/Kreygasm.png';
@@ -129,13 +131,33 @@ class Overview extends Component {
         <Row>
           <Col sm={12}>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
-              <h4 className="pageContainerTitle">Statistiken deines letzten Streams
+              <h4 className="pageContainerTitle">Dein letzter Stream
                 <span style={{ float: 'right' }}>
                   <Button variant="contained" color="secondary" style={{ marginRight: '16px' }}>Daten des letzten Streams löschen</Button>
                   <Button variant="contained" color="primary">Aktualisieren</Button>
                 </span>
               </h4>
               <small>Hier findest du die Statistiken deines letzten, von Twasi erfassten Streams.</small>
+              <Grid style={{ marginTop: '15px' }} container spacing={16}>
+                <Grid item lg={6}>
+                  <TextField
+                    label="Titel"
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{ shrink: true }}
+                  />
+                </Grid>
+                <Grid item lg={6}>
+                  <TextField
+                    label="Spiel"
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{ shrink: true }}
+                  />
+                </Grid>
+              </Grid>
             </Paper>
           </Col>
         </Row>
