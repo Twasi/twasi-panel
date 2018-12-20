@@ -17,6 +17,7 @@ import Urlshortener from '../Urlshortener/Urlshortener';
 import Commands from '../Commands/Commands';
 import Songrequests from '../Songrequests/Songrequests';
 import Giveaways from '../Giveaways';
+import Votings from '../Votings';
 import DevTools from '../DevTools/DevTools';
 
 const PanelContent = () => (
@@ -38,6 +39,7 @@ const PanelContent = () => (
           <Route path="/dev" exact component={DevTools} />
           <Route path="/songrequests" exact component={Songrequests} />
           <Route path="/giveaways" exact component={Giveaways} />
+          <Route path="/votings" exact component={Votings} />
         </Switch>
       </div>
       <div style={{ clear: 'both' }} />

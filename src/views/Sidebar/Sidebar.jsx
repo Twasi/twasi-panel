@@ -72,6 +72,12 @@ class Sidebar extends Component {
         name: 'sidebar.giveaways'
       },
       {
+        key: 'votings',
+        path: '/votings',
+        icon: 'notes',
+        name: 'sidebar.votings'
+      },
+      {
         key: 'urlshortener',
         path: '/urlshortener',
         icon: 'link',

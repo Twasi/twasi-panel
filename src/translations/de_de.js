@@ -19,6 +19,7 @@ export default {
   'sidebar.logout': 'Ausloggen',
   'sidebar.urlshortener': 'URL Shortener',
   'sidebar.giveaways': 'Giveaways',
+  'sidebar.votings': 'Umfragen',
   'sidebar.navigation_headline': 'Navigation',
 
   // Sidebar
