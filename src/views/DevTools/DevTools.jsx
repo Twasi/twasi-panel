@@ -27,7 +27,7 @@ class Profile extends Component {
         <h2 className="pageTitle">
           Developer Tools
         </h2>
-        <Paper className="pageContainer" style={{ height: 800 }}>
+        <Paper className="pageContainer" style={{ height: 800, padding: '0px' }}>
           <GraphiQL fetcher={graphQLFetcher} />
         </Paper>
       </div>

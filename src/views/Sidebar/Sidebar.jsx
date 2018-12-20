@@ -82,12 +82,6 @@ class Sidebar extends Component {
         path: '/urlshortener',
         icon: 'link',
         name: 'sidebar.urlshortener'
-      },
-      {
-        key: 'fakechat',
-        path: '/fakechat',
-        icon: 'vertical_split',
-        name: 'sidebar.fakechat'
       }
     ];
 
