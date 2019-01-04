@@ -31,7 +31,7 @@ Footer.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  loadVersion: () => dispatch(appInfoOperations.loadVersion())
+  loadVersion: () => setTimeout(() => dispatch(appInfoOperations.loadVersion(), 1000))
 });
 
 const mapStateToProps = state => ({

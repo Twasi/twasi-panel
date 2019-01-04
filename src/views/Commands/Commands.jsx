@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import Button from '@material-ui/core/Button';
@@ -11,8 +13,70 @@ import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Chip from '@material-ui/core/Chip';
 
+import { commandsSelectors, commandsOperations } from '../../state/commands';
+
 class Commands extends Component {
+  constructor(props) {
+    super(props);
+
+    this.renderCommands = this.renderCommands.bind(this);
+  }
+
+  componentDidMount() {
+    const { updateCommands } = this.props;
+    updateCommands();
+  }
+
+  renderCommands() {
+    const { commands } = this.props;
+
+    return commands.map(command => (
+      <TableRow>
+        <TableCell>
+          <b>{command.name}</b>
+        </TableCell>
+        <TableCell
+          style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
+        >
+          {command.content}
+        </TableCell>
+        <TableCell>
+          <Chip
+            label="Jeder"
+            color="primary"
+          />
+        </TableCell>
+        <TableCell>1.337</TableCell>
+        <TableCell>
+          <Tooltip title="Bearbeiten" placement="top">
+            <Button
+              variant="fab"
+              color="primary"
+              className="noshadow"
+              mini
+              aria-label="editCommand"
+            >
+              <Icon style={{ color: '#ffffff' }}>edit</Icon>
+            </Button>
+          </Tooltip>{' '}
+          <Tooltip title="Löschen" placement="top">
+            <Button
+              variant="fab"
+              color="secondary"
+              className="noshadow"
+              mini
+              aria-label="deleteCommand"
+            >
+              <Icon style={{ color: '#ffffff' }}>delete</Icon>
+            </Button>
+          </Tooltip>
+        </TableCell>
+      </TableRow>
+    ));
+  }
+
   render() {
+    const { disabled } = this.props;
     return (
       <div className="pageContent">
         <h2 className="pageTitle">
@@ -22,8 +86,11 @@ class Commands extends Component {
           <h4 className="pageContainerTitle">
             Deine Befehle
             <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary">
-                Befehl Hinzufügen
+              <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
+                Aktualisieren
+              </Button>
+              <Button variant="contained" color="primary" disabled={disabled}>
+                Befehl hinzufügen
               </Button>
             </span>
           </h4>
@@ -32,155 +99,48 @@ class Commands extends Component {
           </small>
         </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px' }}>
-          <Table>
-            <TableHead
-              adjustForCheckbox={false}
-              displaySelectAll={false}
-              selectable={false}
-            >
-              <TableRow className="TableRow">
-                <TableCell>ID</TableCell>
-                <TableCell>Befehl</TableCell>
-                <TableCell>Ausgabe</TableCell>
-                <TableCell>Zugriff</TableCell>
-                <TableCell>Uses</TableCell>
-                <TableCell style={{ minWidth: '100px' }}>Aktionen</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody displayRowCheckbox={false}>
-              <TableRow>
-                <TableCell>1</TableCell>
-                <TableCell>
-                  <b>!test</b>
-                </TableCell>
-                <TableCell
-                  style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
-                >
-                  Das ist ein sehr langer Test, um zu schauen, wie sich die
-                  Tabelle bei längeren Einträgen verhält.
-                </TableCell>
-                <TableCell>
-                  <Chip
-                    label="Jeder"
-                    color="primary"
-                  />
-                </TableCell>
-                <TableCell>1.337</TableCell>
-                <TableCell>
-                  <Tooltip title="Bearbeiten" placement="top">
-                    <Button
-                      variant="fab"
-                      color="primary"
-                      className="noshadow"
-                      mini
-                      aria-label="editCommand"
-                    >
-                      <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                    </Button>
-                  </Tooltip>{' '}
-                  <Tooltip title="Löschen" placement="top">
-                    <Button
-                      variant="fab"
-                      color="secondary"
-                      className="noshadow"
-                      mini
-                      aria-label="deleteCommand"
-                    >
-                      <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                    </Button>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>2</TableCell>
-                <TableCell>
-                  <b>!test</b>
-                </TableCell>
-                <TableCell
-                  style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
-                >
-                  Das ist ein Test.
-                </TableCell>
-                <TableCell>
-                  <Chip
-                    label="Mods und höher"
-                    color="secondary"
-                  />
-                </TableCell>
-                <TableCell>1.337</TableCell>
-                <TableCell>
-                  <Tooltip title="Bearbeiten" placement="top">
-                    <Button
-                      variant="fab"
-                      color="primary"
-                      className="noshadow"
-                      mini
-                      aria-label="editCommand"
-                    >
-                      <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                    </Button>
-                  </Tooltip>{' '}
-                  <Tooltip title="Löschen" placement="top">
-                    <Button
-                      variant="fab"
-                      color="secondary"
-                      className="noshadow"
-                      mini
-                      aria-label="deleteCommand"
-                    >
-                      <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                    </Button>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>3</TableCell>
-                <TableCell>
-                  <b>!test</b>
-                </TableCell>
-                <TableCell
-                  style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
-                >
-                  Das ist ein Test.
-                </TableCell>
-                <TableCell>
-                  <Chip
-                    label="Jeder"
-                    color="primary"
-                  />
-                </TableCell>
-                <TableCell>1.337</TableCell>
-                <TableCell>
-                  <Tooltip title="Bearbeiten" placement="top">
-                    <Button
-                      variant="fab"
-                      color="primary"
-                      className="noshadow"
-                      mini
-                      aria-label="editCommand"
-                    >
-                      <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                    </Button>
-                  </Tooltip>{' '}
-                  <Tooltip title="Löschen" placement="top">
-                    <Button
-                      variant="fab"
-                      color="secondary"
-                      className="noshadow"
-                      mini
-                      aria-label="deleteCommand"
-                    >
-                      <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                    </Button>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          {!disabled &&
+            <Table>
+              <TableHead>
+                <TableRow className="TableRow">
+                  <TableCell>Befehl</TableCell>
+                  <TableCell>Ausgabe</TableCell>
+                  <TableCell>Zugriff</TableCell>
+                  <TableCell>Uses</TableCell>
+                  <TableCell style={{ minWidth: '100px' }}>Aktionen</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.renderCommands()}
+              </TableBody>
+            </Table>
+          }
+          {disabled && <span>Du hast dieses Plugin deinstalliert. Bitte installiere es, um hier eine Ansicht zu erhalten</span>}
         </Paper>
       </div>
     );
   }
 }
 
-export default Commands;
+Commands.propTypes = {
+  updateCommands: PropTypes.func.isRequired,
+  commands: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  })),
+  disabled: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = state => ({
+  commands: commandsSelectors.getCommands(state),
+  isLoaded: commandsSelectors.isLoaded(state),
+  disabled: commandsSelectors.isDisabled(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(commandsOperations.verifyData()),
+  updateCommands: () => dispatch(commandsOperations.loadCommands())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Commands);

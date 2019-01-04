@@ -7,6 +7,7 @@ import appInfo from './appInfo';
 import status from './status';
 import settings from './settings';
 import plugins from './plugins';
+import commands from './commands';
 
 import { initialState as i18nInitialState } from './i18n/reducers';
 
@@ -23,7 +24,8 @@ const configureStore = (translations = {}) => {
     appInfoState: appInfo,
     statusState: status,
     settingsState: settings,
-    pluginsState: plugins
+    pluginsState: plugins,
+    commandsState: commands
   };
 
   const initialState = {

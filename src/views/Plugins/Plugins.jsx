@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Row, Col } from 'react-grid-system';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -49,7 +45,8 @@ class Plugins extends Component {
                   {plugin.isInstalled && (
                     <div>
                       <Button
-                        variant="contained" color="secondary"
+                        variant="contained"
+                        color="secondary"
                         disabled={plugin.actionInProgress}
                         onClick={() => uninstallPlugin(plugin.name)}
                       >
@@ -73,7 +70,8 @@ class Plugins extends Component {
                   {!plugin.isInstalled && (
                     <div>
                       <Button
-                        variant="contained" color="primary"
+                        variant="contained"
+                        color="primary"
                         disabled={plugin.actionInProgress}
                         onClick={() => installPlugin(plugin.name)}
                       >

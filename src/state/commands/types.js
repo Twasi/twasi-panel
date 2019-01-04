@@ -1,0 +1,7 @@
+const UPDATE_COMMANDS = 'commands/UPDATE_COMMANDS';
+const UPDATE_DISABLED = 'commands/UPDATE_DISABLED';
+
+export default {
+  UPDATE_COMMANDS,
+  UPDATE_DISABLED
+};
