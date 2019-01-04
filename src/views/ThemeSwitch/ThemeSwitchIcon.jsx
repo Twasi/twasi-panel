@@ -35,7 +35,6 @@ class ThemeSwitchIcon extends React.Component {
           </Icon>
         </Tooltip>
         <ThemeSwitch
-          selectedValue={this.state.selectedValue}
           open={this.state.open}
           onClose={this.handleClose}
         />

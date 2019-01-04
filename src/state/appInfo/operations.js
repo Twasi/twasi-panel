@@ -1,9 +1,19 @@
+import storage from 'local-storage';
+
 import actions from './actions';
 
 import { authSelectors } from '../auth';
 import { getUserGraph } from '../../services/graphqlService';
 
-const { updateLoaded, updateConnected, updateVersion, updateUserStatus } = actions;
+const { updateLoaded, updateConnected, updateVersion, updateUserStatus, updateTheme } = actions;
+
+const loadTheme = () => dispatch => {
+  const themeInStorage = storage('twasi-theme');
+
+  if (themeInStorage !== null) {
+    dispatch(updateTheme(themeInStorage));
+  }
+};
 
 const loadUserStatus = () => (dispatch, getState) => {
   const state = getState();
@@ -36,5 +46,7 @@ export default {
   updateConnected,
   updateVersion,
   loadUserStatus,
-  loadVersion
+  loadVersion,
+  loadTheme,
+  updateTheme
 };

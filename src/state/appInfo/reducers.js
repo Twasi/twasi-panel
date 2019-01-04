@@ -5,7 +5,8 @@ export const initialState = {
   isLoaded: false,
   isConnected: false,
   serverVersion: 'DISCONNECTED',
-  userStatus: 'LOADING'
+  userStatus: 'LOADING',
+  theme: 'twasi-dark'
 };
 
 const appInfoReducer = (state = initialState, action) => {
@@ -24,6 +25,10 @@ const appInfoReducer = (state = initialState, action) => {
 
     case types.UPDATE_USER_STATUS: {
       return { ...state, userStatus: action.userStatus };
+    }
+
+    case types.UPDATE_THEME: {
+      return { ...state, theme: action.theme };
     }
 
     default:

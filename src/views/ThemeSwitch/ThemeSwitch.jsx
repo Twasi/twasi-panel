@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
@@ -10,10 +11,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import { FormattedMessage } from 'react-intl';
+import storage from 'local-storage';
+
+import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 
 import './_style.css';
 
-const themes = ['Dark Grey', 'Light', 'Torben´s Special Dark Theme'];
+const themes = ['Twasi-Dark', 'Twasi-Light'];
 const styles = {
   paper: {
     borderRadius: 0,
@@ -23,11 +27,12 @@ const styles = {
 
 class ThemeSwitch extends React.Component {
   handleClose = () => {
-    this.props.onClose(this.props.selectedValue);
+    this.props.onClose();
   };
 
   handleListItemClick = value => {
-    this.props.onClose(value);
+    storage('twasi-theme', value);
+    this.props.updateTheme(value);
   };
 
   render() {
@@ -46,14 +51,6 @@ class ThemeSwitch extends React.Component {
         </DialogTitle>
         <div>
           <List>
-            <ListItem button>
-              <ListItemAvatar>
-                <Avatar style={{ backgroundColor: '#00aeae' }}>
-                  <Icon style={{ fontSize: 36 }}>check</Icon>
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="Dark Twasi" />
-            </ListItem>
             {themes.map(theme => (
               <ListItem
                 button
@@ -61,8 +58,8 @@ class ThemeSwitch extends React.Component {
                 key={theme}
               >
                 <ListItemAvatar>
-                  <Avatar>
-                    <Icon style={{ fontSize: 36 }}>color_lens</Icon>
+                  <Avatar style={{ backgroundColor: this.props.selectedValue === theme ? '#00aeae' : '' }}>
+                    <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === theme ? 'check' : 'color_lens'}</Icon>
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={theme} />
@@ -78,9 +75,18 @@ class ThemeSwitch extends React.Component {
 ThemeSwitch.propTypes = {
   onClose: PropTypes.func,
   selectedValue: PropTypes.string,
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  updateTheme: PropTypes.func.isRequired
 };
 
 const ThemeSwitchWrapped = withStyles(styles)(ThemeSwitch);
 
-export default withStyles(styles)(ThemeSwitchWrapped);
+const mapStateToProps = state => ({
+  selectedValue: appInfoSelectors.getTheme(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateTheme: name => dispatch(appInfoOperations.updateTheme(name))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThemeSwitchWrapped);

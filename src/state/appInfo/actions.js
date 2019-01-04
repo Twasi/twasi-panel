@@ -20,9 +20,15 @@ const updateUserStatus = userStatus => ({
   userStatus
 });
 
+const updateTheme = theme => ({
+  type: types.UPDATE_THEME,
+  theme
+});
+
 export default {
   updateLoaded,
   updateConnected,
   updateVersion,
-  updateUserStatus
+  updateUserStatus,
+  updateTheme
 };
