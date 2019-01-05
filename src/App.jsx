@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Provider as ReduxProvider, connect } from 'react-redux';
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import AuthLoader from './auth/AuthLoader';
 import RequireAuth from './auth/RequireAuth';
@@ -45,6 +46,7 @@ const App = () => {
 
     return (
       <MuiThemeProvider theme={selectedTheme}>
+        <CssBaseline />
         <AuthLoader>
           <RequireAuth optional />
           <Content>

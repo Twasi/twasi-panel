@@ -133,7 +133,6 @@ class Overview extends Component {
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <h4 className="pageContainerTitle">Dein letzter Stream
                 <span style={{ float: 'right' }}>
-                  <Button variant="contained" color="secondary" style={{ marginRight: '16px' }}>Daten des letzten Streams löschen</Button>
                   <Button variant="contained" color="primary">Aktualisieren</Button>
                 </span>
               </h4>
@@ -250,7 +249,7 @@ class Overview extends Component {
                     </TooltipM>
                     </ListItem>
 
-                    <ListItem style={{ backgroundColor: '#182427' }}>
+                    <ListItem className="darkershade">
                     <Row>
                       <Col sm={12}>
                         <h4 className="pageContainerTitle">13:37</h4>
@@ -284,7 +283,7 @@ class Overview extends Component {
                     </TooltipM>
                     </ListItem>
 
-                    <ListItem style={{ backgroundColor: '#182427' }}>
+                    <ListItem className="darkershade">
                     <Row>
                       <Col sm={12}>
                         <h4 className="pageContainerTitle">354</h4>
@@ -317,7 +316,7 @@ class Overview extends Component {
                     </TooltipM>
                     </ListItem>
 
-                    <ListItem style={{ backgroundColor: '#182427' }}>
+                    <ListItem className="darkershade">
                     <Row>
                       <Col sm={12}>
                         <h4 className="pageContainerTitle">263</h4>
@@ -350,7 +349,7 @@ class Overview extends Component {
                     </TooltipM>
                     </ListItem>
 
-                    <ListItem style={{ backgroundColor: '#182427' }}>
+                    <ListItem className="darkershade">
                     <Row>
                       <Col sm={12}>
                         <h4 className="pageContainerTitle">25</h4>
