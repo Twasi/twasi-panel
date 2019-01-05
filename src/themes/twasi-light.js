@@ -24,9 +24,7 @@ export default createMuiTheme({
         color: '#636363', // Some CSS
         backgroundColor: '#fff',
         borderRadius: '4px',
-        border: '0px solid #25373e',
-        paddingTop: '23px',
-        paddingBottom: '23px'
+        border: '0px solid #25373e'
       }
     },
     MuiCardContent: { // Name of the component ⚛️ / style sheet
