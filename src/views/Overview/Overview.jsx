@@ -162,7 +162,7 @@ class Overview extends Component {
         </Row>
         <Row>
           <Col sm={9}>
-            <Paper className="pageContainer" style={{ height: '200px', paddingRight: '0px', paddingLeft: '0px' }}>
+            <Paper className="pageContainer" style={{ height: '250px', paddingRight: '0px', paddingLeft: '0px' }}>
               <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
                 Zuschauerverlauf
               </h4>
@@ -191,7 +191,7 @@ class Overview extends Component {
             </Paper>
             <Row>
               <Col sm={6}>
-                <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px' }}>
+                <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
                   <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
                     Genutzte Befehle
                   </h4>
@@ -209,7 +209,7 @@ class Overview extends Component {
                 </Paper>
               </Col>
               <Col sm={6}>
-                <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px' }}>
+                <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
                   <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
                     Gespielte Spiele
                   </h4>
