@@ -45,6 +45,7 @@ class ThemeSwitch extends React.Component {
   handleListItemClick = value => {
     storage('twasi-theme', value.key);
     this.props.updateTheme(value.key);
+    this.props.onClose(value);
   };
 
   render() {
