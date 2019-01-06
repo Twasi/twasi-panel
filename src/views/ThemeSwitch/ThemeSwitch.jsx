@@ -23,6 +23,9 @@ const themes = [{
 }, {
   name: 'Twasi Light',
   key: 'twasi-light'
+}, {
+  name: 'Dark Grey',
+  key: 'dark-grey'
 }];
 const styles = {
   paper: {

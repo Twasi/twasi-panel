@@ -4,7 +4,7 @@ export default createMuiTheme({
   palette: {
     type: 'dark',
     background: {
-      default: '#151e21',
+      default: '#191919',
     },
     primary: {
       main: '#00aeae',
@@ -22,7 +22,7 @@ export default createMuiTheme({
     MuiPaper: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         color: '#b7b7b7', // Some CSS
-        backgroundColor: '#1b292d',
+        backgroundColor: '#272727',
         borderRadius: '4px',
         border: '0px solid #25373e'
       }
@@ -30,7 +30,7 @@ export default createMuiTheme({
     MuiCardContent: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         color: '#b7b7b7', // Some CSS
-        backgroundColor: '#162226' // Some CSS
+        backgroundColor: '#313131' // Some CSS
       }
     },
     MuiMenuItem: { // Name of the component ⚛️ / style sheet
@@ -38,7 +38,7 @@ export default createMuiTheme({
         color: '#b7b7b7', // Some CSS
         padding: '10px',
         '&:hover': {
-          backgroundColor: '#162226'
+          backgroundColor: '#212121'
         }
       },
       selected: { // Name of the rule
@@ -66,7 +66,7 @@ export default createMuiTheme({
         boxShadow: 'none',
         background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
         '&$disabled': {
-          background: '#162226',
+          background: '#313131',
           color: '#b7b7b7'
         }
       },
@@ -74,7 +74,7 @@ export default createMuiTheme({
         boxShadow: 'none',
         background: 'linear-gradient(135deg,#e53935,#ff4f4a)',
         '&$disabled': {
-          background: '#162226',
+          background: '#313131',
           color: '#b7b7b7'
         }
       },
@@ -92,14 +92,14 @@ export default createMuiTheme({
       },
       contained: {
         boxShadow: 'none',
-        backgroundColor: '#162226',
+        backgroundColor: '#313131',
         color: '#b7b7b7',
         '&$disabled': {
-          backgroundColor: '#162226',
+          backgroundColor: '#313131',
           color: '#b7b7b7'
         },
         '&:hover': {
-          backgroundColor: '#151e21'
+          backgroundColor: '#212121'
         }
       }
     },
@@ -114,18 +114,18 @@ export default createMuiTheme({
     MuiTableRow: {
       root: {
         '&:nth-of-type(even)': {
-          backgroundColor: 'rgb(22, 34, 38)'
+          backgroundColor: '#313131'
         }
       }
     },
     MuiInputAdornment: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        backgroundColor: '#1b292d' // Some CSS
+        backgroundColor: '#212121' // Some CSS
       }
     },
     MuiTabs: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        backgroundColor: '#162226', // Some CSS
+        backgroundColor: '#313131', // Some CSS
         border: '0px !important'
       }
     },
@@ -136,7 +136,7 @@ export default createMuiTheme({
     },
     MuiChip: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        backgroundColor: '#162226' // Some CSS
+        backgroundColor: '#444444' // Some CSS
       },
       colorPrimary: {
         background: 'linear-gradient(135deg,#00aeae,#02d4d4)'
@@ -147,7 +147,7 @@ export default createMuiTheme({
     },
     MuiAvatar: { // Name of the component ⚛️ / style sheet
       colorDefault: { // Name of the rule
-        backgroundColor: '#162226', // Some CSS
+        backgroundColor: '#212121', // Some CSS
         color: '#ffffff'
       }
     },

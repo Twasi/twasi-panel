@@ -23,6 +23,7 @@ import './styles/main.css';
 // Themes
 import twasiDark from './themes/twasi-dark';
 import twasiLight from './themes/twasi-light';
+import darkGrey from './themes/dark-grey';
 
 const App = () => {
   const store = configureStore();
@@ -42,6 +43,8 @@ const App = () => {
 
     if (props.theme.toLowerCase() === 'twasi-light') {
       selectedTheme = twasiLight;
+    } else if (props.theme.toLowerCase() === 'dark-grey') {
+      selectedTheme = darkGrey;
     }
 
     return (
