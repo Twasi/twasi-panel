@@ -17,7 +17,13 @@ import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 
 import './_style.css';
 
-const themes = ['Twasi-Dark', 'Twasi-Light'];
+const themes = [{
+  name: 'Twasi Dark',
+  key: 'twasi-dark'
+}, {
+  name: 'Twasi Light',
+  key: 'twasi-light'
+}];
 const styles = {
   paper: {
     borderRadius: 0,
@@ -31,8 +37,8 @@ class ThemeSwitch extends React.Component {
   };
 
   handleListItemClick = value => {
-    storage('twasi-theme', value);
-    this.props.updateTheme(value);
+    storage('twasi-theme', value.key);
+    this.props.updateTheme(value.key);
   };
 
   render() {
@@ -58,11 +64,11 @@ class ThemeSwitch extends React.Component {
                 key={theme}
               >
                 <ListItemAvatar>
-                  <Avatar style={{ backgroundColor: this.props.selectedValue === theme ? '#00aeae' : '' }}>
-                    <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === theme ? 'check' : 'color_lens'}</Icon>
+                  <Avatar style={{ backgroundColor: this.props.selectedValue === theme.key ? '#00aeae' : '' }}>
+                    <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === theme.key ? 'check' : 'color_lens'}</Icon>
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={theme} />
+                <ListItemText primary={theme.name} />
               </ListItem>
             ))}
           </List>
