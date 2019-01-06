@@ -26,6 +26,9 @@ const themes = [{
 }, {
   name: 'Dark Grey',
   key: 'dark-grey'
+}, {
+  name: 'BTTV Dark',
+  key: 'bttv-dark'
 }];
 const styles = {
   paper: {
