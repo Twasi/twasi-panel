@@ -25,6 +25,7 @@ import twasiDark from './themes/twasi-dark/twasi-dark.js';
 import twasiLight from './themes/twasi-light/twasi-light.js';
 import darkGrey from './themes/dark-grey/dark-grey.js';
 import bttvDark from './themes/bttv-dark/bttv-dark.js';
+import tipeeeDark from './themes/tipeee-dark/tipeee-dark.js';
 
 const App = () => {
   const store = configureStore();
@@ -48,6 +49,8 @@ const App = () => {
       selectedTheme = darkGrey;
     } else if (props.theme.toLowerCase() === 'bttv-dark') {
       selectedTheme = bttvDark;
+    } else if (props.theme.toLowerCase() === 'tipeee-dark') {
+      selectedTheme = tipeeeDark;
     }
 
     return (
