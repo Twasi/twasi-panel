@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Provider as ReduxProvider, connect } from 'react-redux';
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import AuthLoader from './auth/AuthLoader';
 import RequireAuth from './auth/RequireAuth';
@@ -22,6 +23,8 @@ import './styles/main.css';
 // Themes
 import twasiDark from './themes/twasi-dark';
 import twasiLight from './themes/twasi-light';
+import darkGrey from './themes/dark-grey';
+import bttvDark from './themes/bttv-dark';
 
 const App = () => {
   const store = configureStore();
@@ -41,10 +44,15 @@ const App = () => {
 
     if (props.theme.toLowerCase() === 'twasi-light') {
       selectedTheme = twasiLight;
+    } else if (props.theme.toLowerCase() === 'dark-grey') {
+      selectedTheme = darkGrey;
+    } else if (props.theme.toLowerCase() === 'bttv-dark') {
+      selectedTheme = bttvDark;
     }
 
     return (
       <MuiThemeProvider theme={selectedTheme}>
+        <CssBaseline />
         <AuthLoader>
           <RequireAuth optional />
           <Content className={props.theme.toLowerCase()}>

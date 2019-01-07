@@ -36,7 +36,7 @@ class Commands extends Component {
           <b>{command.name}</b>
         </TableCell>
         <TableCell
-          style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}
+          style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
         >
           {command.content}
         </TableCell>

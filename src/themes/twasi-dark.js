@@ -3,6 +3,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 export default createMuiTheme({
   palette: {
     type: 'dark',
+    background: {
+      default: '#151e21',
+    },
     primary: {
       main: '#00aeae',
       contrastText: '#ffffff'
@@ -111,7 +114,7 @@ export default createMuiTheme({
     MuiTableRow: {
       root: {
         '&:nth-of-type(even)': {
-          backgroundColor: 'rgb(24, 36, 39)'
+          backgroundColor: 'rgb(22, 34, 38)'
         }
       }
     },
