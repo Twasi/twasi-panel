@@ -47,7 +47,7 @@ const App = () => {
       <MuiThemeProvider theme={selectedTheme}>
         <AuthLoader>
           <RequireAuth optional />
-          <Content>
+          <Content className={props.theme.toLowerCase()}>
             <Header />
             <Switch>
               <Route path="/profile/:name" component={Public} />
