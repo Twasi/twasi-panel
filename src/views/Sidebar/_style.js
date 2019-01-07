@@ -11,21 +11,6 @@ export const getMenuItemStyle = () => ({
   fontSize: 13
 });
 
-export const getHeaderMenuItem = () => ({
-  ...getMenuItemStyle(),
-  background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
-  fontSize: 18,
-  fontWeight: '600',
-  lineHeight: '48px',
-  color: '#fff',
-  marginLeft: 0,
-  padding: '0px 5px 0px 16px',
-  minHeight: 48,
-  position: 'relative',
-  textAlign: 'center',
-  borderRadius: '4px 4px 0px 0px'
-});
-
 export const getActiveMenuItem = () => ({
   color: '#00aeae'
 });

@@ -1,3 +1,14 @@
+.bannerHeader {
+  background-color: #0d1315;
+  height: 265px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top: 5px solid #00aeae;
+  z-index: -100;
+}
+
 .swapIcon {
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.3s ease-in-out;

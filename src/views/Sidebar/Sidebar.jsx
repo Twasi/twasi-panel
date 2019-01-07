@@ -139,7 +139,7 @@ class Sidebar extends Component {
       <div>
         <Hidden mdDown>
           <Paper style={getMenuStyle()} className="sidebar">
-            <div style={getHeaderMenuItem()}>
+            <div className="headerMenuItem">
               <FormattedMessage id="sidebar.navigation_headline" />
               <Fab size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Add">
                 <Icon style={{ color: '#ffffff' }}>

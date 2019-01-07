@@ -22,7 +22,7 @@ import {
 
 const Header = ({ userName, rank, avatar }) => (
   <header>
-    <div style={getHeaderStyle()} />
+    <div className="bannerHeader" />
     <div style={getLogoStyle()}>
       <span>
         <img src={avatar} alt="Avatar" style={getAvatarStyle()} />

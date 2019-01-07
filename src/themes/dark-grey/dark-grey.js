@@ -1,5 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
+import './dark-grey.css';
+
 export default createMuiTheme({
   palette: {
     type: 'dark',

@@ -21,10 +21,10 @@ import LanguageProvider from './translations/LanguageProvider';
 import './styles/main.css';
 
 // Themes
-import twasiDark from './themes/twasi-dark';
-import twasiLight from './themes/twasi-light';
-import darkGrey from './themes/dark-grey';
-import bttvDark from './themes/bttv-dark';
+import twasiDark from './themes/twasi-dark/twasi-dark.js';
+import twasiLight from './themes/twasi-light/twasi-light.js';
+import darkGrey from './themes/dark-grey/dark-grey.js';
+import bttvDark from './themes/bttv-dark/bttv-dark.js';
 
 const App = () => {
   const store = configureStore();

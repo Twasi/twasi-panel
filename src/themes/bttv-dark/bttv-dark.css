@@ -1,0 +1,12 @@
+.bttv-dark .translucentBox {
+  background: linear-gradient(135deg, #4b367c, #5f459a);
+}
+.bttv-dark .headerMenuItem {
+  background: linear-gradient(135deg, #4b367c, #5f459a);
+}
+.bttv-dark .TableRow {
+  border-bottom: 3px solid #5f459a !important;
+}
+.bttv-dark .bannerHeader {
+  background-color: #1d1c21;
+}
