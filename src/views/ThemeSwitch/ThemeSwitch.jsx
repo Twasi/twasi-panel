@@ -40,6 +40,14 @@ const themes = [{
   primaryColor: '#00aeae',
   secondaryColor: '#e53935'
 }, {
+  name: 'Twasi Dev Dark',
+  key: 'twasi-dev',
+  backgroundColor: '#1a2035',
+  paperColor: '#202940',
+  cardColor: '#232f4a',
+  primaryColor: '#3f51b5',
+  secondaryColor: '#de6464'
+}, {
   name: 'Dark Grey',
   key: 'dark-grey',
   backgroundColor: '#191919',
