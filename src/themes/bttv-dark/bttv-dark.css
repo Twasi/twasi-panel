@@ -16,3 +16,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.bttv-dark a {
+  color: #5f459a !important;
+}

@@ -16,3 +16,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.twasi-dev a {
+  color: #3f51b5 !important;
+}
