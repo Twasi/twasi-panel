@@ -97,7 +97,7 @@ export default {
   'accountswitch.switch_account': 'Account wechseln',
 
   // ThemeSwitch
-  'themeswitch.switch_theme': 'Theme ändern',
+  'themeswitch.switch_theme': 'Theme anpassen',
 
   // Public
   'public.headline': 'Public',

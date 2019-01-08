@@ -29,6 +29,12 @@ export default createMuiTheme({
         border: '0px solid #25373e'
       }
     },
+    MuiBadge: {
+      badge: {
+        position: 'relative',
+        marginLeft: '5px'
+      }
+    },
     MuiCardContent: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         color: '#b7b7b7', // Some CSS

@@ -29,6 +29,12 @@ export default createMuiTheme({
         border: '0px solid #25373e'
       }
     },
+    MuiBadge: {
+      badge: {
+        position: 'relative',
+        marginLeft: '5px'
+      }
+    },
     MuiCardContent: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         color: '#ced3df', // Some CSS
@@ -45,7 +51,7 @@ export default createMuiTheme({
       },
       selected: { // Name of the rule
         color: '#c0c0cc',
-        borderLeft: '2px solid #d84759',
+        borderLeft: '3px solid #d84759',
         background: 'linear-gradient(135deg,#222631,#222631)'
       }
     },
