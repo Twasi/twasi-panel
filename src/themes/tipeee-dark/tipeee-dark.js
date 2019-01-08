@@ -9,7 +9,7 @@ export default createMuiTheme({
       default: '#272b37',
     },
     primary: {
-      main: '#00aeae',
+      main: '#7885a5',
       contrastText: '#ffffff'
     },
     secondary: {
@@ -67,7 +67,7 @@ export default createMuiTheme({
       },
       containedPrimary: {
         boxShadow: 'none',
-        background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
+        backgroundColor: '#7885a5',
         '&$disabled': {
           background: '#272b37',
           color: '#b7b7b7'
@@ -142,7 +142,7 @@ export default createMuiTheme({
         backgroundColor: '#474e62' // Some CSS
       },
       colorPrimary: {
-        background: 'linear-gradient(135deg,#00aeae,#02d4d4)'
+        backgroundColor: '#7885a5'
       },
       colorSecondary: {
         background: 'linear-gradient(135deg,#e53935,#ff4f4a)'

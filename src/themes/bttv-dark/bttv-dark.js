@@ -9,11 +9,11 @@ export default createMuiTheme({
       default: '#0f0e11',
     },
     primary: {
-      main: '#5f459a',
+      main: '#14b866',
       contrastText: '#ffffff'
     },
     secondary: {
-      main: '#e53935',
+      main: '#ec1313',
       contrastText: '#ffffff'
     }
   },
@@ -66,7 +66,7 @@ export default createMuiTheme({
       },
       containedPrimary: {
         boxShadow: 'none',
-        background: 'linear-gradient(135deg,#00aeae,#02d4d4)',
+        background: '#14b866',
         '&$disabled': {
           background: '#19171c',
           color: '#b7b7b7'
@@ -74,7 +74,7 @@ export default createMuiTheme({
       },
       containedSecondary: {
         boxShadow: 'none',
-        background: 'linear-gradient(135deg,#e53935,#ff4f4a)',
+        background: '#ec1313',
         '&$disabled': {
           background: '#19171c',
           color: '#b7b7b7'
@@ -141,10 +141,10 @@ export default createMuiTheme({
         backgroundColor: '#232127' // Some CSS
       },
       colorPrimary: {
-        background: 'linear-gradient(135deg,#00aeae,#02d4d4)'
+        background: '#14b866'
       },
       colorSecondary: {
-        background: 'linear-gradient(135deg,#e53935,#ff4f4a)'
+        background: '#ec1313'
       }
     },
     MuiAvatar: { // Name of the component ⚛️ / style sheet

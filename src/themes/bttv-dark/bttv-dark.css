@@ -11,3 +11,8 @@
   background-color: #1d1c21;
   border-top: 5px solid #5f459a;
 }
+.bttv-dark .themeIcon:hover{
+  background: -webkit-linear-gradient(135deg, #4b367c, #5f459a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
