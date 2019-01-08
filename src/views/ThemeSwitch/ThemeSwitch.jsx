@@ -53,7 +53,7 @@ const themes = [{
   backgroundColor: '#0f0e11',
   paperColor: '#19171c',
   cardColor: '#232127',
-  primaryColor: '#14b866',
+  primaryColor: '#5f459a',
   secondaryColor: '#ec1313'
 }, {
   name: 'Tipeee Dark',
