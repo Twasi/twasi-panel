@@ -16,12 +16,6 @@ import { FormattedMessage } from 'react-intl';
 import './_style.css';
 
 const accounts = ['Larcce', 'DieserMerlin', 'mekalix', 'Spendendose'];
-const styles = {
-  paper: {
-    borderRadius: 0,
-    borderTop: '5px solid #00aeae'
-  }
-};
 
 class AccountSwitch extends React.Component {
   handleClose = () => {
@@ -37,9 +31,6 @@ class AccountSwitch extends React.Component {
 
     return (
       <Dialog
-        classes={{
-          paper: classes.paper
-        }}
         onClose={this.handleClose}
         {...other}
       >
@@ -83,6 +74,4 @@ AccountSwitch.propTypes = {
   classes: PropTypes.isRequired
 };
 
-const AccountSwitchWrapped = withStyles(styles)(AccountSwitch);
-
-export default withStyles(styles)(AccountSwitchWrapped);
+export default (AccountSwitch);

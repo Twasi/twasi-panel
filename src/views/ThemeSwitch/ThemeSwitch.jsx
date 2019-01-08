@@ -64,12 +64,6 @@ const themes = [{
   primaryColor: '#7885a5',
   secondaryColor: '#e53935'
 }];
-const styles = {
-  paper: {
-    borderRadius: 0,
-    borderTop: '5px solid #00aeae'
-  }
-};
 
 class ThemeSwitch extends React.Component {
   handleClose = () => {
@@ -87,9 +81,6 @@ class ThemeSwitch extends React.Component {
 
     return (
       <Dialog
-        classes={{
-          paper: classes.paper
-        }}
         onClose={this.handleClose}
         {...other}
       >
@@ -154,7 +145,7 @@ ThemeSwitch.propTypes = {
   updateTheme: PropTypes.func.isRequired
 };
 
-const ThemeSwitchWrapped = withStyles(styles)(ThemeSwitch);
+const ThemeSwitchWrapped = (ThemeSwitch);
 
 const mapStateToProps = state => ({
   selectedValue: appInfoSelectors.getTheme(state)
