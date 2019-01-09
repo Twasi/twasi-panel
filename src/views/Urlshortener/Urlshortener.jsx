@@ -153,14 +153,50 @@ class Urlshortener extends Component {
                 </TableHead>
                 <TableBody displayRowCheckbox={false}>
                   <TableRow>
-                    <TableCell style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', maxWidth: '100px' }}>
+                    <TableCell style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '100px' }}>
                       <a style={{ color: '#00aeae' }} href="#">
                         https://twa.si/c/test
                       </a>
                     </TableCell>
-                    <TableCell style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', maxWidth: '100px' }}>
+                    <TableCell style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '100px' }}>
                       <a style={{ color: '#00aeae' }} href="#">
                         https://blechkelle.com
+                      </a>
+                    </TableCell>
+                    <TableCell>
+                      <Tooltip title="Bearbeiten" placement="top">
+                        <Button
+                          variant="fab"
+                          className="noshadow"
+                          color="primary"
+                          mini
+                          aria-label="editCommand"
+                        >
+                          <Icon style={{ color: '#ffffff' }}>edit</Icon>
+                        </Button>
+                      </Tooltip>{' '}
+                      <Tooltip title="Löschen" placement="top">
+                        <Button
+                          variant="fab"
+                          className="noshadow"
+                          color="secondary"
+                          mini
+                          aria-label="deleteCommand"
+                        >
+                          <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                        </Button>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '100px' }}>
+                      <a style={{ color: '#00aeae' }} href="#">
+                        https://twa.si/c/twitter
+                      </a>
+                    </TableCell>
+                    <TableCell style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '100px' }}>
+                      <a style={{ color: '#00aeae' }} href="#">
+                        https://twitter.com/blechkelle
                       </a>
                     </TableCell>
                     <TableCell>
