@@ -98,7 +98,7 @@ class Commands extends Component {
             Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
           </small>
         </Paper>
-        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px' }}>
+        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           {!disabled &&
             <Table>
               <TableHead>

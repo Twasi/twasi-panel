@@ -43,7 +43,7 @@ class Moderators extends Component {
             Verwalte den Zugriff deiner Moderatoren.
           </small>
         </Paper>
-        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px' }}>
+        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Table>
             <TableHead
               adjustForCheckbox={false}
