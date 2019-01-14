@@ -37,8 +37,7 @@ class Feedback extends React.Component {
         </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Du möchtest dazu beitragen, dass Twasi ein besserer Ort wird?<br />
-              Hier hast du die Möglichkeit Feedback einzubringen, eigene Ideen zu vermitteln oder Bugs zu melden.
+              <FormattedMessage id="feedbackswitch.subheadline" />
             </DialogContentText>
             <br />
             <Card className="pluginCard">
@@ -47,7 +46,7 @@ class Feedback extends React.Component {
                   <InputLabel
                     htmlFor="outlined-age-simple"
                   >
-                    Um was geht es?
+                    <FormattedMessage id="feedbackswitch.issue" />
                   </InputLabel>
                   <Select
                     input={
@@ -57,16 +56,16 @@ class Feedback extends React.Component {
                       />
                     }
                   >
-                    <MenuItem value={10}>Ich möchte Feedback geben.</MenuItem>
-                    <MenuItem value={20}>Ich möchte eine Idee einbringen.</MenuItem>
-                    <MenuItem value={30}>Da ist ein Bug!</MenuItem>
-                    <MenuItem value={40}>Erzähl uns einen Witz.</MenuItem>
+                    <MenuItem value={10}><FormattedMessage id="feedbackswitch.issue_feedback" /></MenuItem>
+                    <MenuItem value={20}><FormattedMessage id="feedbackswitch.issue_idea" /></MenuItem>
+                    <MenuItem value={30}><FormattedMessage id="feedbackswitch.issue_bug" /></MenuItem>
+                    <MenuItem value={40}><FormattedMessage id="feedbackswitch.issue_joke" /></MenuItem>
                   </Select>
                 </FormControl>
                 <TextField
                   style={{ marginBottom: '0px' }}
                   id="outlined-textarea"
-                  label="Multiline Placeholder"
+                  label={<FormattedMessage id="feedbackswitch.issue_content_headline" />}
                   placeholder="Placeholder"
                   multiline
                   fullWidth

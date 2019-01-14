@@ -96,6 +96,13 @@ export default {
 
   // FeedbackSwitch
   'feedbackswitch.headline': 'Feedback, Ideas or Bugs',
+  'feedbackswitch.subheadline': 'You want to make Twasi a even better place? Here you can give feedback, tell us your idea or report a bug.',
+  'feedbackswitch.issue': 'what is it about? (please choose!)',
+  'feedbackswitch.issue_feedback': 'I want to give feedback.',
+  'feedbackswitch.issue_idea': 'I want to tell you my idea.',
+  'feedbackswitch.issue_bug': 'There is a Bug!',
+  'feedbackswitch.issue_joke': 'tell us a joke.',
+  'feedbackswitch.issue_content_headline': 'Your message to us',
 
   // ThemeSwitch
   'themeswitch.switch_theme': 'Change Theme',
