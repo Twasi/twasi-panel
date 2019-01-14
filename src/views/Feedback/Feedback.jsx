@@ -15,6 +15,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { FormattedMessage } from 'react-intl';
 
 import './_style.css';
@@ -22,6 +23,15 @@ import './_style.css';
 class Feedback extends React.Component {
   handleClose = () => {
     this.props.onClose();
+  };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  state = {
+    issue: 10,
+    labelWidth: 125,
   };
 
   render() {
@@ -44,15 +54,18 @@ class Feedback extends React.Component {
               <CardContent className="pluginCardContent">
                 <FormControl variant="outlined" fullWidth>
                   <InputLabel
-                    htmlFor="outlined-age-simple"
+                    htmlFor="issue-select"
                   >
                     <FormattedMessage id="feedbackswitch.issue" />
                   </InputLabel>
                   <Select
+                    value={this.state.issue}
+                    onChange={this.handleChange}
                     input={
                       <OutlinedInput
-                        name="age"
-                        id="outlined-age-simple"
+                        labelWidth={this.state.labelWidth}
+                        name="issue"
+                        id="issue-select"
                       />
                     }
                   >
@@ -63,16 +76,18 @@ class Feedback extends React.Component {
                   </Select>
                 </FormControl>
                 <TextField
-                  style={{ marginBottom: '0px' }}
+                  InputLabelProps={{ shrink: true }}
                   id="outlined-textarea"
                   label={<FormattedMessage id="feedbackswitch.issue_content_headline" />}
-                  placeholder="Placeholder"
                   multiline
                   fullWidth
-                  rows="4"
+                  rows="6"
                   margin="normal"
                   variant="outlined"
                 />
+                <Button fullWidth style={{ borderRadius: '4px' }} variant="contained" color="primary">
+                  <FormattedMessage id="feedbackswitch.sendbutton" />
+                </Button>
               </CardContent>
             </Card>
           </DialogContent>

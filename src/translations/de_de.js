@@ -99,12 +99,13 @@ export default {
   // FeedbackSwitch
   'feedbackswitch.headline': 'Feedback, Ideen oder Bugs',
   'feedbackswitch.subheadline': 'Du möchtest dazu beitragen, dass Twasi ein besserer Ort wird? Hier hast du die Möglichkeit Feedback einzubringen, eigene Ideen zu vermitteln oder Bugs zu melden.',
-  'feedbackswitch.issue': 'Um was geht es? (Bitte auswählen)',
+  'feedbackswitch.issue': 'Um was geht es?',
   'feedbackswitch.issue_feedback': 'Ich möchte Feedback geben.',
   'feedbackswitch.issue_idea': 'Ich möchte eine Idee einbringen.',
   'feedbackswitch.issue_bug': 'Da ist ein Bug!',
   'feedbackswitch.issue_joke': 'Erzähl uns einen Witz.',
   'feedbackswitch.issue_content_headline': 'Hier kannst du dich auslassen.',
+  'feedbackswitch.sendbutton': 'Absenden',
 
   // ThemeSwitch
   'themeswitch.switch_theme': 'Theme anpassen',
