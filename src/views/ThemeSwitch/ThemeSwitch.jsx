@@ -106,7 +106,7 @@ class ThemeSwitch extends React.Component {
                     value="bannerAsHeader"
                   />
                 }
-                label="Twitch Banner als Header nutzen"
+                label={<FormattedMessage id="themeswitch.banner_as_header" />}
               />
             </ListItem>
             <Divider />
@@ -117,24 +117,24 @@ class ThemeSwitch extends React.Component {
                 key={theme}
               >
                 <ListItemAvatar>
-                  <Avatar style={{ backgroundColor: this.props.selectedValue === theme.key ? '#00aeae' : '' }}>
+                  <Avatar style={{ backgroundColor: this.props.selectedValue === theme.key ? theme.primaryColor : '' }}>
                     <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === theme.key ? 'check' : 'color_lens'}</Icon>
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={theme.name} />
-                  <Tooltip title="Hintergrund" placement="top">
+                  <Tooltip title={<FormattedMessage id="themeswitch.background_color" />} placement="top">
                     <Badge style={{ backgroundColor: theme.backgroundColor }} />
                   </Tooltip>
-                  <Tooltip title="Inhalts Boxen" placement="top">
+                  <Tooltip title={<FormattedMessage id="themeswitch.content_color" />} placement="top">
                     <Badge style={{ backgroundColor: theme.paperColor }} />
                   </Tooltip>
-                  <Tooltip title="Besondere Inhalte" placement="top">
+                  <Tooltip title={<FormattedMessage id="themeswitch.special_color" />} placement="top">
                     <Badge style={{ backgroundColor: theme.cardColor }} />
                   </Tooltip>
-                  <Tooltip title="Primärfarbe" placement="top">
+                  <Tooltip title={<FormattedMessage id="themeswitch.primary_color" />} placement="top">
                     <Badge style={{ backgroundColor: theme.primaryColor }} />
                   </Tooltip>
-                  <Tooltip title="Sekundärfarbe" placement="top">
+                  <Tooltip title={<FormattedMessage id="themeswitch.secondary_color" />} placement="top">
                     <Badge style={{ backgroundColor: theme.secondaryColor }} />
                   </Tooltip>
               </ListItem>

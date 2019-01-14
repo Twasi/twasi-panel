@@ -96,8 +96,17 @@ export default {
   // AccountSwitch
   'accountswitch.switch_account': 'Account wechseln',
 
+  // FeedbackSwitch
+  'feedbackswitch.headline': 'Feedback, Ideen oder Bugs',
+
   // ThemeSwitch
   'themeswitch.switch_theme': 'Theme anpassen',
+  'themeswitch.banner_as_header': 'Twitch Banner als Header nutzen',
+  'themeswitch.background_color': 'Hintergrundfarbe',
+  'themeswitch.content_color': 'Inhalt',
+  'themeswitch.special_color': 'Besondere Inhalte',
+  'themeswitch.primary_color': 'Primärfarbe',
+  'themeswitch.secondary_color': 'Sekundärfarbe',
 
   // Public
   'public.headline': 'Public',

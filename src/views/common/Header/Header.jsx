@@ -10,6 +10,7 @@ import './_style.css';
 import { authSelectors } from '../../../state/auth';
 import { AccountSwitchIcon } from '../../AccountSwitch';
 import { ThemeSwitchIcon } from '../../ThemeSwitch';
+import { FeedbackIcon } from '../../Feedback';
 import twasilogo from '../../common/resources/twasi_flat_white.svg';
 
 import {
@@ -43,14 +44,7 @@ const Header = ({ userName, rank, avatar }) => (
       <span style={{ width: '150px' }}>
         <AccountSwitchIcon />
         <ThemeSwitchIcon />
-        <Tooltip title="Feedback geben" placement="bottom">
-          <Icon
-            className="feedbackIcon"
-            style={{ fontSize: 36, float: 'right' }}
-          >
-            favorite_border
-          </Icon>
-        </Tooltip>
+        <FeedbackIcon />
       </span>
     </div>
   </header>
