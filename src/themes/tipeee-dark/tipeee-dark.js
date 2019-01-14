@@ -179,6 +179,16 @@ export default createMuiTheme({
       thumb: {
         backgroundColor: '#fff'
       }
+    },
+    MuiSelect: {
+      root: {
+        color: 'rgba(255, 255, 255, 0.7)',
+        fontSize: '0.875em',
+        borderBottom: '0px',
+      },
+      icon: {
+        color: 'rgba(255, 255, 255, 0.7)',
+      },
     }
   }
 });

@@ -170,6 +170,16 @@ export default createMuiTheme({
         backgroundColor: '#151e21',
         border: '0px solid #00aeae'
       }
+    },
+    MuiSelect: {
+      root: {
+        color: 'rgba(255, 255, 255, 0.7)',
+        fontSize: '0.875em',
+        borderBottom: '0px',
+      },
+      icon: {
+        color: 'rgba(255, 255, 255, 0.7)',
+      },
     }
   }
 });
