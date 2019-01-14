@@ -9,6 +9,8 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import { FormattedMessage } from 'react-intl';
 // import PersonIcon from '@material-ui/icons/Person';
 // import AddIcon from '@material-ui/icons/Add';
@@ -37,32 +39,34 @@ class AccountSwitch extends React.Component {
         <DialogTitle id="simple-dialog-title">
           <FormattedMessage id="accountswitch.switch_account" />
         </DialogTitle>
-        <div>
-          <List>
-            <ListItem button>
-              <ListItemAvatar>
-                <Avatar style={{ backgroundColor: '#00aeae' }}>
-                  <Icon style={{ fontSize: 36 }}>check</Icon>
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="Blechkelle" />
-            </ListItem>
-            {accounts.map(account => (
-              <ListItem
-                button
-                onClick={() => this.handleListItemClick(account)}
-                key={account}
-              >
+        <Card className="pluginCard">
+          <CardContent className="pluginCardContent">
+            <List>
+              <ListItem button>
                 <ListItemAvatar>
-                  <Avatar>
-                    <Icon style={{ fontSize: 36 }}>person</Icon>
+                  <Avatar style={{ backgroundColor: '#00aeae' }}>
+                    <Icon style={{ fontSize: 36 }}>check</Icon>
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={account} />
+                <ListItemText primary="Blechkelle" />
               </ListItem>
-            ))}
-          </List>
-        </div>
+              {accounts.map(account => (
+                <ListItem
+                  button
+                  onClick={() => this.handleListItemClick(account)}
+                  key={account}
+                >
+                  <ListItemAvatar>
+                    <Avatar>
+                      <Icon style={{ fontSize: 36 }}>person</Icon>
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={account} />
+                </ListItem>
+              ))}
+            </List>
+          </CardContent>
+        </Card>
       </Dialog>
     );
   }

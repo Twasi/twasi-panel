@@ -10,12 +10,16 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import Divider from '@material-ui/core/Divider';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import { FormattedMessage } from 'react-intl';
 import storage from 'local-storage';
 
@@ -95,52 +99,61 @@ class ThemeSwitch extends React.Component {
         <DialogTitle id="simple-dialog-title">
           <FormattedMessage id="themeswitch.switch_theme" />
         </DialogTitle>
-        <div>
-          <List>
-            <Divider />
-            <ListItem>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    color="primary"
-                    value="bannerAsHeader"
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Hier hast du die Möglichkeit, das Aussehen des Panels für deine Bedürfnisse zu verändern.
+          </DialogContentText>
+          <br />
+          <Card className="pluginCard">
+            <CardContent className="pluginCardContent">
+              <List>
+                <Divider />
+                <ListItem>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        color="primary"
+                        value="bannerAsHeader"
+                      />
+                    }
+                    label={<FormattedMessage id="themeswitch.banner_as_header" />}
                   />
-                }
-                label={<FormattedMessage id="themeswitch.banner_as_header" />}
-              />
-            </ListItem>
-            <Divider />
-            {themes.map(theme => (
-              <ListItem
-                button
-                onClick={() => this.handleListItemClick(theme)}
-                key={theme}
-              >
-                <ListItemAvatar>
-                  <Avatar style={{ backgroundColor: this.props.selectedValue === theme.key ? theme.primaryColor : '' }}>
-                    <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === theme.key ? 'check' : 'color_lens'}</Icon>
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={theme.name} />
-                  <Tooltip title={<FormattedMessage id="themeswitch.background_color" />} placement="top">
-                    <Badge style={{ backgroundColor: theme.backgroundColor }} />
-                  </Tooltip>
-                  <Tooltip title={<FormattedMessage id="themeswitch.content_color" />} placement="top">
-                    <Badge style={{ backgroundColor: theme.paperColor }} />
-                  </Tooltip>
-                  <Tooltip title={<FormattedMessage id="themeswitch.special_color" />} placement="top">
-                    <Badge style={{ backgroundColor: theme.cardColor }} />
-                  </Tooltip>
-                  <Tooltip title={<FormattedMessage id="themeswitch.primary_color" />} placement="top">
-                    <Badge style={{ backgroundColor: theme.primaryColor }} />
-                  </Tooltip>
-                  <Tooltip title={<FormattedMessage id="themeswitch.secondary_color" />} placement="top">
-                    <Badge style={{ backgroundColor: theme.secondaryColor }} />
-                  </Tooltip>
-              </ListItem>
-            ))}
-          </List>
-        </div>
+                </ListItem>
+                <Divider />
+                <br />
+                {themes.map(theme => (
+                  <ListItem
+                    button
+                    onClick={() => this.handleListItemClick(theme)}
+                    key={theme}
+                  >
+                    <ListItemAvatar>
+                      <Avatar style={{ backgroundColor: this.props.selectedValue === theme.key ? theme.primaryColor : '' }}>
+                        <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === theme.key ? 'check' : 'color_lens'}</Icon>
+                      </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={theme.name} />
+                      <Tooltip title={<FormattedMessage id="themeswitch.background_color" />} placement="top">
+                        <Badge style={{ backgroundColor: theme.backgroundColor }} />
+                      </Tooltip>
+                      <Tooltip title={<FormattedMessage id="themeswitch.content_color" />} placement="top">
+                        <Badge style={{ backgroundColor: theme.paperColor }} />
+                      </Tooltip>
+                      <Tooltip title={<FormattedMessage id="themeswitch.special_color" />} placement="top">
+                        <Badge style={{ backgroundColor: theme.cardColor }} />
+                      </Tooltip>
+                      <Tooltip title={<FormattedMessage id="themeswitch.primary_color" />} placement="top">
+                        <Badge style={{ backgroundColor: theme.primaryColor }} />
+                      </Tooltip>
+                      <Tooltip title={<FormattedMessage id="themeswitch.secondary_color" />} placement="top">
+                        <Badge style={{ backgroundColor: theme.secondaryColor }} />
+                      </Tooltip>
+                  </ListItem>
+                ))}
+              </List>
+            </CardContent>
+          </Card>
+        </DialogContent>
       </Dialog>
     );
   }

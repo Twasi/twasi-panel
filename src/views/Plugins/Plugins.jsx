@@ -29,14 +29,18 @@ class Plugins extends Component {
             <CardContent className="pluginCardContent">
               <Grid container spacing={0} style={{ marginTop: '0px' }}>
                 <Grid item xs={4}>
-                  <h4 className="pageContainerTitle">{plugin.name}</h4>
+                  <h2 className="pageContainerTitle">{plugin.name}</h2>
+                  <br />
                   <small>
                     by <i>{plugin.author}</i><br />
                     <FormattedMessage id="plugins.version" /> {plugin.version}
                   </small>
                 </Grid>
                 <Grid item xs={8}>
-                  {plugin.description}
+                  <h4 className="pageContainerTitle">Plugin Description</h4>
+                  <small>
+                    {plugin.description}
+                  </small>
                 </Grid>
               </Grid>
               <Divider style={{ marginTop: '15px', marginBottom: '15px' }} />
@@ -97,7 +101,7 @@ class Plugins extends Component {
                   <b>
                     <FormattedMessage id="plugins.commands" />
                   </b><br />
-                  <samp>{plugin.commands.join(', ')}</samp>
+                  <small>{plugin.commands.join(', ')}</small>
                 </Grid>
                 <Grid item xs={4}>
                   <b>
