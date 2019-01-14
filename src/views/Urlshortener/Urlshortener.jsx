@@ -17,6 +17,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/OutlinedInput';
 import './_style.css';
 
 class Urlshortener extends Component {
@@ -33,7 +37,6 @@ class Urlshortener extends Component {
     });
   }
   */
-
   render() {
     return (
       <div className="pageContent">
@@ -67,7 +70,7 @@ class Urlshortener extends Component {
                       startAdornment: (
                         <InputAdornment
                           style={{
-                            padding: '0px 15px 0px 15px',
+                            padding: '0px',
                             zIndex: '1'
                           }}
                           position="start"
@@ -82,12 +85,12 @@ class Urlshortener extends Component {
               {/*
               <br />
               <Card className="pluginCard">
-                <CardText>
+                <CardContent className="pluginCardContent">
                   <h4 className="pageContainerTitle">Vorschau</h4>
                   <samp style={{ color: '#00aeae' }}>
                     <b>https://twa.si/c/{this.state.inputValue}</b>
                   </samp>
-                </CardText>
+                </CardContent>
               </Card>
               */}
               <span
@@ -99,9 +102,9 @@ class Urlshortener extends Component {
                 }}
               >
                 <Icon
+                  className="urlshortener_arrow"
                   style={{
-                    fontSize: 36,
-                    color: '#5e5e5e'
+                    fontSize: 36
                   }}
                 >
                   arrow_downward
@@ -117,12 +120,15 @@ class Urlshortener extends Component {
                       startAdornment: (
                         <InputAdornment
                           style={{
-                            padding: '0px 15px 0px 15px',
+                            padding: '0px',
                             zIndex: '1',
                           }}
                           position="start"
                         >
-                          https://
+                            <Select value="10">
+                              <MenuItem value={10}>http://</MenuItem>
+                              <MenuItem value={20}>https://</MenuItem>
+                            </Select>
                         </InputAdornment>
                       )
                     }}
