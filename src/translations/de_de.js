@@ -20,6 +20,7 @@ export default {
   'sidebar.urlshortener': 'URL Shortener',
   'sidebar.giveaways': 'Giveaways',
   'sidebar.votings': 'Umfragen',
+  'sidebar.support': 'Support',
   'sidebar.navigation_headline': 'Navigation',
 
   // Sidebar

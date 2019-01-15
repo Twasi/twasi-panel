@@ -179,6 +179,17 @@ class Sidebar extends Component {
               <MenuItem
                 style={{ fontSize: 13 }}
                 innerDivStyle={{ padding: '0px 16px 0px 52px' }}
+                value="support"
+                key="support"
+                selected={'support' === selectedKey}
+                onClick={event => this.handleClick(event, 'support')}
+              >
+                <i className="material-icons" style={{ marginRight: '15px' }}>headset_mic</i>
+                {intl.formatMessage({ id: 'sidebar.support' })}
+              </MenuItem>
+              <MenuItem
+                style={{ fontSize: 13 }}
+                innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 onClick={() => {
                   localStorage.clear();
                   window.location = 'https://twasi.net';
