@@ -5,6 +5,7 @@
   margin-bottom: 23px;
   padding-left: 0px !important;
   padding-right: 0px !important;
+  max-width: none !important;
 }
 .translucentBox {
   padding: 10px 20px 15px;
@@ -12,6 +13,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   color: #fff;
   border-radius: 4px;
+  width: 100% !important;
 }
 .overviewTabBar {
   padding: 0px !important;
