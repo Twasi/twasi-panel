@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Hidden from '@material-ui/core/Hidden';
 import Icon from '@material-ui/core/Icon';
 import Fab from '@material-ui/core/Fab';
+import Collapse from '@material-ui/core/Collapse';
 
 import { authSelectors } from '../../state/auth';
 import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
@@ -19,6 +20,15 @@ import twasiLogo from '../common/resources/twasi_anim_dark.gif';
 import './_style.css';
 
 class Sidebar extends Component {
+
+  state = {
+    checked: true,
+  };
+
+  handleChange = () => {
+    this.setState(state => ({ checked: !state.checked }));
+  };
+
   constructor(props) {
     super(props);
 
@@ -111,6 +121,7 @@ class Sidebar extends Component {
   }
 
   render() {
+    const { checked } = this.state;
     const { location, intl } = this.props;
 
     let selectedKey = find(item => item.path === location.pathname, this.items);
@@ -136,14 +147,14 @@ class Sidebar extends Component {
       ));
 
     return (
-      <div>
+      <div style={checked ? {} : {width: 87}}>
         <Hidden mdDown>
           <Paper style={getMenuStyle()} className="sidebar">
             <div className="headerMenuItem">
-              <FormattedMessage id="sidebar.navigation_headline" />
-              <Fab size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Add">
+              {checked ? <FormattedMessage id="sidebar.navigation_headline" /> : ""}
+              <Fab onClick={this.handleChange} size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Collapse">
                 <Icon style={{ color: '#ffffff' }}>
-                  arrow_back
+                  {checked ? "arrow_back" : "arrow_forward"}
                 </Icon>
               </Fab>
             </div>

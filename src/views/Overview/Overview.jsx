@@ -133,13 +133,14 @@ class Overview extends Component {
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <h4 className="pageContainerTitle">Dein letzter Stream
                 <span style={{ float: 'right' }}>
-                  <Button variant="contained" color="primary">Aktualisieren</Button>
+                  <Button variant="contained" color="primary">Streamdaten Aktualisieren</Button>
                 </span>
               </h4>
               <small>Hier findest du die Statistiken deines letzten, von Twasi erfassten Streams.</small>
               <Grid style={{ marginTop: '15px' }} container spacing={16}>
                 <Grid item lg={6}>
                   <TextField
+                    placeholder="Ich spiele ein mega cooles Spiel!"
                     label="Titel"
                     fullWidth
                     margin="normal"
@@ -149,6 +150,7 @@ class Overview extends Component {
                 </Grid>
                 <Grid item lg={6}>
                   <TextField
+                    placeholder="Mega cooles Spiel"
                     label="Spiel"
                     fullWidth
                     margin="normal"
