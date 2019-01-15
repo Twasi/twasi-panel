@@ -37,6 +37,15 @@ class Urlshortener extends Component {
     });
   }
   */
+
+  state = {
+    protocol: 10,
+  };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render() {
     return (
       <div className="pageContent">
@@ -125,7 +134,13 @@ class Urlshortener extends Component {
                           }}
                           position="start"
                         >
-                            <Select value="10">
+                            <Select
+                              disableUnderline={true}
+                              value={this.state.protocol}
+                              onChange={this.handleChange}
+                              inputProps={{
+                                name: 'protocol',
+                              }}>
                               <MenuItem value={10}>http://</MenuItem>
                               <MenuItem value={20}>https://</MenuItem>
                             </Select>
