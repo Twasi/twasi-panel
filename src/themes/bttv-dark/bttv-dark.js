@@ -189,6 +189,7 @@ export default createMuiTheme({
     },
     MuiExpansionPanelSummary: {
       root: {
+        borderRadius: '4px 4px 0px 0px',
         backgroundColor: '#232127'
       }
     },

@@ -35,7 +35,7 @@ class Support extends Component {
         </h2>
         <Paper className="pageContainer">
           <h4 className="pageContainerTitle">
-            Support
+            Deine Support Tickets
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary">
                 Neues Ticket erstellen
@@ -60,7 +60,7 @@ class Support extends Component {
                 </Grid>
               </Grid>
             </ExpansionPanelSummary>
-            <Card className="pluginCard">
+            <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
               <CardContent style={{ padding: '0px' }}>
                 <Table>
                   <TableHead
@@ -125,7 +125,7 @@ class Support extends Component {
                 </Grid>
               </Grid>
             </ExpansionPanelSummary>
-            <Card className="pluginCard">
+            <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
               <CardContent style={{ padding: '0px' }}>
                 <Table>
                   <TableHead
