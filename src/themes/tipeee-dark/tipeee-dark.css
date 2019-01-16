@@ -22,3 +22,13 @@
 .tipeee-dark .urlshortener_arrow {
   color: #d84759;
 }
+.tipeee-dark .chatBubbleSelf {
+  background-color: #222631;
+  padding: 10px;
+  border-radius: 4px;
+}
+.tipeee-dark .chatBubbleSupport {
+  background-color: #576077;
+  padding: 10px;
+  border-radius: 4px;
+}

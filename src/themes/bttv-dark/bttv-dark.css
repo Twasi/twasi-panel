@@ -22,3 +22,13 @@
 .bttv-dark .urlshortener_arrow {
   color: #5f459a;
 }
+.bttv-dark .chatBubbleSelf {
+  background-color: #0f0e11;
+  padding: 10px;
+  border-radius: 4px;
+}
+.bttv-dark .chatBubbleSupport {
+  background-color: #3f3c46;
+  padding: 10px;
+  border-radius: 4px;
+}

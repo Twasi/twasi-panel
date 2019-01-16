@@ -22,3 +22,13 @@
 .twasi-dev .urlshortener_arrow {
   color: #3f51b5;
 }
+.twasi-dev .chatBubbleSelf {
+  background-color: #202940;
+  padding: 10px;
+  border-radius: 4px;
+}
+.twasi-dev .chatBubbleSupport {
+  background-color: #34456b;
+  padding: 10px;
+  border-radius: 4px;
+}

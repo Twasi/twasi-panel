@@ -4,3 +4,13 @@
 .dark-grey .urlshortener_arrow {
   color: #00aeae;
 }
+.dark-grey .chatBubbleSelf {
+  background-color: #212121;
+  padding: 10px;
+  border-radius: 4px;
+}
+.dark-grey .chatBubbleSupport {
+  background-color: #464646;
+  padding: 10px;
+  border-radius: 4px;
+}

@@ -4,3 +4,13 @@
 .twasi-light .urlshortener_arrow {
   color: #00aeae;
 }
+.twasi-light .chatBubbleSelf {
+  background-color: #ececec;
+  padding: 10px;
+  border-radius: 4px;
+}
+.twasi-light .chatBubbleSupport {
+  background-color: #d6d6d6;
+  padding: 10px;
+  border-radius: 4px;
+}
