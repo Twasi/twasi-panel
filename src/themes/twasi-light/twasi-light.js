@@ -27,7 +27,10 @@ export default createMuiTheme({
         backgroundColor: '#fff',
         borderRadius: '4px',
         border: '0px solid #25373e'
-      }
+      },
+      elevation1: {
+        boxShadow: 'none'
+      },
     },
     MuiBadge: {
       badge: {
@@ -180,6 +183,18 @@ export default createMuiTheme({
       icon: {
         color: 'rgba(0, 0, 0, 0.54)',
       },
+    },
+    MuiExpansionPanelSummary: {
+      root: {
+        backgroundColor: '#f9f9f9'
+      }
+    },
+    MuiExpansionPanel: {
+      root: {
+        '&:before': {
+          display: 'none'
+        }
+      }
     }
   }
 });
