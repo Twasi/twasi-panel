@@ -120,6 +120,17 @@ export default {
   // Public
   'public.headline': 'Public',
 
+  // Support
+  'support.new_ticket': 'Neues Support Ticket',
+  'support.new_ticket_subheadline': 'Hier kannst du ein neues Support Ticket eröffnen. Bitte achte darauf, dass du dein Problem möglichst genau schilderst, damit wir dir effektiv helfen können.',
+  'support.sendbutton': 'Ticket erstellen',
+  'support.issue_content_headline': 'Dein Ticket',
+  'support.issue': 'Um was geht es?',
+  'support.chatbot': 'Chatbot',
+  'support.userpanel': 'Userpanel',
+  'support.function': 'Funktionen',
+  'support.other': 'Sonstiges',
+
   // Songrequests
   'songrequest.requestby': 'Requestet von',
   'songrequest.table_id': 'ID',

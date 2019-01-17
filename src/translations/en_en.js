@@ -98,7 +98,7 @@ export default {
   // FeedbackSwitch
   'feedbackswitch.headline': 'Feedback, Ideas or Bugs',
   'feedbackswitch.subheadline': 'You want to make Twasi a even better place? Here you can give feedback, tell us your idea or report a bug.',
-  'feedbackswitch.issue': 'what is it about?',
+  'feedbackswitch.issue': 'What is it about?',
   'feedbackswitch.issue_feedback': 'I want to give feedback.',
   'feedbackswitch.issue_idea': 'I want to tell you my idea.',
   'feedbackswitch.issue_bug': 'There is a Bug!',
@@ -117,6 +117,17 @@ export default {
 
   // Public
   'public.headline': 'Public',
+
+  // Support
+  'support.new_ticket': 'New Support Ticket',
+  'support.new_ticket_subheadline': 'You are about to open a new support ticket. please give us the best details about your problem so we can give you the best possible answers.',
+  'support.sendbutton': 'Create Ticket',
+  'support.issue_content_headline': 'Your Ticket',
+  'support.issue': 'What is it about?',
+  'support.chatbot': 'Chatbot',
+  'support.userpanel': 'Userpanel',
+  'support.function': 'Functions',
+  'support.other': 'Miscellaneous',
 
   // Songrequests
   'songrequest.requestby': 'Requestet von',

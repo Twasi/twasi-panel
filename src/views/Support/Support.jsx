@@ -26,10 +26,25 @@ import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import Ticket from './Ticket';
 
 import './_style.css';
 
 class Support extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false
+    };
+
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClose() {
+    this.setState({ open: false });
+  }
 
   render() {
     return (
@@ -41,9 +56,13 @@ class Support extends Component {
           <h4 className="pageContainerTitle">
             Deine Support Tickets
             <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary">
+              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
                 Neues Ticket erstellen
               </Button>
+              <Ticket
+                open={this.state.open}
+                onClose={this.handleClose}
+              />
             </span>
           </h4>
           <small>
