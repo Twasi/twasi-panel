@@ -79,7 +79,7 @@ class Support extends Component {
                   <Typography><h4 className="pageContainerTitle">Erstellt am</h4><small>16.01.2019 - 09:45</small></Typography>
                 </Grid>
                 <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Letzte Änderung</h4><small>16.01.2019 - 12:15</small></Typography>
+                  <Typography><h4 className="pageContainerTitle">Letzte Antwort</h4><small>16.01.2019 - 12:15</small></Typography>
                 </Grid>
                 <Grid item xs={3}>
                   <Typography><h4 className="pageContainerTitle">Status</h4><Chip className="statusBadgeSupport" color="primary" label="offen" /></Typography>

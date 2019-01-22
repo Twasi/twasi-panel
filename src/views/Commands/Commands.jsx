@@ -12,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Chip from '@material-ui/core/Chip';
+import CommandDialog from './CommandDialog';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
 
@@ -19,12 +20,22 @@ class Commands extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      open: false
+    };
+
+    this.handleClose = this.handleClose.bind(this);
+
     this.renderCommands = this.renderCommands.bind(this);
   }
 
   componentDidMount() {
     const { updateCommands } = this.props;
     updateCommands();
+  }
+
+  handleClose() {
+    this.setState({ open: false });
   }
 
   renderCommands() {
@@ -89,9 +100,13 @@ class Commands extends Component {
               <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
                 Aktualisieren
               </Button>
-              <Button variant="contained" color="primary" disabled={disabled}>
+              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>
                 Befehl hinzufügen
               </Button>
+              <CommandDialog
+                open={this.state.open}
+                onClose={this.handleClose}
+              />
             </span>
           </h4>
           <small>

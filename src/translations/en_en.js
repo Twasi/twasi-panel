@@ -91,6 +91,8 @@ export default {
   // Commands
   'commands.title': 'Commands',
   'commands.addcommand': 'Add Commands',
+  'commands.new_command': 'Create a new Command',
+  'commands.new_command_subheadline': 'Here you can add a new Command.',
 
   // AccountSwitch
   'accountswitch.switch_account': 'Switch Account',

@@ -93,6 +93,8 @@ export default {
   // Commands
   'commands.title': 'Befehle',
   'commands.addcommand': 'Befehl Hinzufügen',
+  'commands.new_command': 'Einen neuen Befehl erstellen',
+  'commands.new_command_subheadline': 'Hier kannst du einen neuen Befehl hinzufügen.',
 
   // AccountSwitch
   'accountswitch.switch_account': 'Account wechseln',
