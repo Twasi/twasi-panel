@@ -95,6 +95,13 @@ export default {
   'commands.addcommand': 'Befehl Hinzufügen',
   'commands.new_command': 'Einen neuen Befehl erstellen',
   'commands.new_command_subheadline': 'Hier kannst du einen neuen Befehl hinzufügen.',
+  'commands.new_command.command': 'Dein Befehl',
+  'commands.new_command.output': 'Ausgabe',
+  'commands.new_command.access': 'Wer hat Zugriff?',
+  'commands.new_command.everyone': 'Jeder',
+  'commands.new_command.subs': 'Subscriber oder höher',
+  'commands.new_command.mods': 'Moderatoren oder höher',
+  'commands.new_command.streamer': 'Streamer',
 
   // AccountSwitch
   'accountswitch.switch_account': 'Account wechseln',
