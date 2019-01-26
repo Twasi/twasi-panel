@@ -1,3 +1,10 @@
+.twasi-dark {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.twasi-dark img {
+  pointer-events: none;
+}
 .twasi-dark .urlshortener_arrow {
   color: #00aeae;
 }

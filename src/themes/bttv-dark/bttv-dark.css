@@ -1,3 +1,10 @@
+.bttv-dark {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.bttc-dark img {
+  pointer-events: none;
+}
 .bttv-dark .translucentBox {
   background: linear-gradient(135deg, #4b367c, #5f459a);
 }

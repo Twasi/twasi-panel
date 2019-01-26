@@ -1,3 +1,10 @@
+.tipeee-dark {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.tipeee-dark img {
+  pointer-events: none;
+}
 .tipeee-dark .translucentBox {
   background: #d84759;
 }

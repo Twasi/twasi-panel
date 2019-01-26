@@ -1,3 +1,10 @@
+.twasi-light {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.twasi-light img {
+  pointer-events: none;
+}
 .twasi-light .bannerHeader {
  background-color: #213335;
 }
