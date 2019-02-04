@@ -119,8 +119,8 @@ class Support extends Component {
                 <br />
                 <TextField
                   label="Eine Antwort hinzufügen"
-                  helperText="0/500"
                   fullWidth
+                  multiline
                   variant="outlined"
                   InputLabelProps={{
                     shrink: true,
