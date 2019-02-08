@@ -16,6 +16,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Checkbox from '@material-ui/core/Checkbox';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import TextField from '@material-ui/core/TextField';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Typography from '@material-ui/core/Typography';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import DummyLoadingPage from '../DummyLoadingPage';
 
@@ -39,12 +46,45 @@ class Welcome extends Component {
       case 0:
         return (
           <div className="setupContent">
-            <h1>Willkommen bei Twasi 2</h1>
+            <h2>Willkommen zur geschlossenen Beta von Twasi 2</h2>
             <p>
-              Bitte melde dich bei einem Admin, um dich freischalten zu lassen.<br /><br />
+              Hier kannst du deinen persönlichen Beta Key einlösen, um an der geschlossenen Beta von Twasi 2 teilzunehmen.<br />
+              Wie du an einen Beta Code kommst erfährst du <a href="#">hier</a>.<br /><br /><br />
+              <TextField
+                label="Dein Beta Key"
+                multiline
+                fullWidth
+                variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                placeholder="tWiTcH"
+                // Falls gültig color auf primary und Text abändern.
+                helperText={<Typography color="secondary">Dieser Key ist ungültig.</Typography>}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Icon>
+                        vpn_key
+                      </Icon>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <br />
+              <br />
+              <FormControlLabel
+                control={
+                  <Checkbox color="primary" value="checkedA" />
+                }
+                label={<Typography>Ich habe die <a href="#">Nutzungsbedingungen</a> gelesen und akzeptiere diese.</Typography>}
+              />
+              <br />
+              <br />
+              <br />
               Bitte <b>UNBEDINGT BEACHTEN</b>, dass dies eine sehr Frühe Version ist und viele Funktionen noch nicht bzw. nur bedingt funktionstüchtig sind.<br />
               Es werden fast täglich neue Elemente und Funktionen hinzugefügt.<br /><br />
-              Wir übernehmen keine Gewähr für verlorene Daten während der neuen Versionen.
+              Wir übernehmen keine Gewähr für verloren gegangene Daten während der neuen Versionen.
             </p>
 
               {/*
