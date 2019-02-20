@@ -164,7 +164,7 @@ export default createMuiTheme({
     },
     MuiTypography: { // Name of the component ⚛️ / style sheet
       body1: { // Name of the rule
-        color: '#636363' // Some CSS
+        color: 'rgba(0, 0, 0, 0.54)' // Some CSS
       }
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet

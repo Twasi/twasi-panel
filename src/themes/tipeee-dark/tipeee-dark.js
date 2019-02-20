@@ -10,11 +10,11 @@ export default createMuiTheme({
     },
     primary: {
       main: '#7885a5',
-      contrastText: '#ffffff'
+      contrastText: 'rgba(255, 255, 255, 0.7)'
     },
     secondary: {
       main: '#e53935',
-      contrastText: '#ffffff'
+      contrastText: 'rgba(255, 255, 255, 0.7)'
     }
   },
   neutral: {
@@ -66,7 +66,7 @@ export default createMuiTheme({
     MuiButton: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         textTransform: 'none', // Some CSS
-        color: '#ffffff', // Some CSS
+        color: 'rgba(255, 255, 255, 0.7)', // Some CSS
         borderRadius: '4px'
       },
       mini: {
@@ -105,10 +105,10 @@ export default createMuiTheme({
       contained: {
         boxShadow: 'none',
         backgroundColor: '#474e62',
-        color: '#ffffff',
+        color: 'rgba(255, 255, 255, 0.7)',
         '&$disabled': {
           backgroundColor: '#474e62',
-          color: '#ffffff'
+          color: 'rgba(255, 255, 255, 0.7)'
         },
         '&:hover': {
           backgroundColor: '#222631'
@@ -160,12 +160,12 @@ export default createMuiTheme({
     MuiAvatar: { // Name of the component ⚛️ / style sheet
       colorDefault: { // Name of the rule
         backgroundColor: '#222631', // Some CSS
-        color: '#ffffff'
+        color: 'rgba(255, 255, 255, 0.7)'
       }
     },
     MuiTypography: { // Name of the component ⚛️ / style sheet
       body1: { // Name of the rule
-        color: '#ffffff' // Some CSS
+        color: 'rgba(255, 255, 255, 0.7)' // Some CSS
       }
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet

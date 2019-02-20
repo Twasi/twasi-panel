@@ -40,17 +40,20 @@ class Command extends React.Component {
     this.props.onClose(value);
   };
 
-  handleChange = event => {
+  handleChange = (event, value) => {
     this.setState({ [event.target.name]: event.target.value });
+    this.setState({ value });
   };
 
   state = {
     issue: 10,
     labelWidth: 115,
+    value: 0,
   };
 
   render() {
     const { classes, onClose, ...other } = this.props;
+    const { value } = this.state;
 
     return (
       <Dialog
@@ -139,11 +142,15 @@ class Command extends React.Component {
             </Card>
             <Card className="pluginCard" style={{ marginTop: '15px' }}>
               <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-                <Typography style={{ paddingTop: '8px', paddingLeft: '15px' }} id="label">Cooldown</Typography>
+                <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {value}s</Typography>
                 <Slider
                   style={{ padding: '22px 0px' }}
-                  value="50"
                   aria-labelledby="label"
+                  value={value}
+                  min={0}
+                  max={1000}
+                  step={1}
+                  onChange={this.handleChange}
                 />
               </CardContent>
             </Card>
