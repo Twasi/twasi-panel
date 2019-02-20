@@ -23,6 +23,8 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
+import Slider from '@material-ui/lab/Slider';
+import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 // import PersonIcon from '@material-ui/icons/Person';
 // import AddIcon from '@material-ui/icons/Add';
@@ -64,27 +66,51 @@ class Command extends React.Component {
             </DialogContentText>
             <br />
             <Card className="pluginCard">
-              <CardContent className="pluginCardContent">
+              <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                 <TextField
                   InputLabelProps={{ shrink: true }}
                   id="outlined-textarea"
                   label={<FormattedMessage id="commands.new_command.command" />}
                   fullWidth
+                  placeholder="Beispiel: !bot"
                   helperText="Das ist dein Befehl. Der Befehl wird so ausgelöst, wie du ihn hier hinterlegst."
                   margin="normal"
                   variant="outlined"
                 />
+              </CardContent>
+            </Card>
+            <Card className="pluginCard" style={{ marginTop: '15px' }}>
+              <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+                <TextField
+                  InputLabelProps={{ shrink: true }}
+                  id="outlined-textarea"
+                  label={<FormattedMessage id="commands.new_command.aliases" />}
+                  fullWidth
+                  placeholder="Beispiel: !chatbot, !twasi"
+                  helperText="Das sind Alternativen zu deinem Befehl, welche die selbe Ausgabe erzeugen. (Mit Komma trennen.)"
+                  margin="normal"
+                  variant="outlined"
+                />
+              </CardContent>
+            </Card>
+            <Card className="pluginCard" style={{ marginTop: '15px' }}>
+              <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                 <TextField
                   InputLabelProps={{ shrink: true }}
                   id="outlined-textarea"
                   label={<FormattedMessage id="commands.new_command.output" />}
                   fullWidth
+                  placeholder="Beispiel: Mein Bot heißt Twasibot."
                   multiline
                   rows="3"
                   helperText="Das ist die Ausgabe deines Befehls. Du kannst Variablen nutzen, um die Ausgabe dynamisch zu gestallten."
                   margin="normal"
                   variant="outlined"
                 />
+              </CardContent>
+            </Card>
+            <Card className="pluginCard" style={{ marginTop: '15px' }}>
+              <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
                 <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
                   <InputLabel
                     htmlFor="access-select"
@@ -111,6 +137,19 @@ class Command extends React.Component {
                 </FormControl>
               </CardContent>
             </Card>
+            <Card className="pluginCard" style={{ marginTop: '15px' }}>
+              <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
+                <Typography style={{ paddingTop: '8px', paddingLeft: '15px' }} id="label">Cooldown</Typography>
+                <Slider
+                  style={{ padding: '22px 0px' }}
+                  value="50"
+                  aria-labelledby="label"
+                />
+              </CardContent>
+            </Card>
+            <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+              <FormattedMessage id="commands.new_command.savecommand" />
+            </Button>
           </DialogContent>
       </Dialog>
     );

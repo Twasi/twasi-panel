@@ -94,12 +94,14 @@ export default {
   'commands.new_command': 'Create a new Command',
   'commands.new_command_subheadline': 'Here you can add a new Command.',
   'commands.new_command.command': 'Your Command',
+  'commands.new_command.aliases': 'Aliases',
   'commands.new_command.output': 'Output',
   'commands.new_command.access': 'Who have Access?',
   'commands.new_command.everyone': 'Everyone',
   'commands.new_command.subs': 'Subscriber or higher',
   'commands.new_command.mods': 'Moderators or higher',
   'commands.new_command.streamer': 'Streamer',
+  'commands.new_command.savecommand': 'Save Command',
 
   // AccountSwitch
   'accountswitch.switch_account': 'Switch Account',
