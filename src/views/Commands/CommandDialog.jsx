@@ -53,10 +53,25 @@ class Command extends React.Component {
 
   getCooldown() {
     if (this.state.cooldown <= 59) {
-      return this.state.cooldown+' Sekunde(n)';
+      if (this.state.cooldown == 0) {
+        return 'Keinen Cooldown festgelegt';
+      } else {
+        if (this.state.cooldown > 1) {
+          return this.state.cooldown+' Sekunden';
+        } else {
+          return this.state.cooldown+' Sekunde';
+        }
+      }
     } else if (this.state.cooldown >= 60) {
       this.state.cooldown -= 59;
-      return this.state.cooldown+' Minute(n)'
+      if (this.state.cooldown == 60) {
+        return '1 Stunde';
+      }
+      if (this.state.cooldown > 1) {
+        return this.state.cooldown+' Minuten';
+      } else {
+        return this.state.cooldown+' Minute';
+      }
     } else {
       return 'Fehler';
     }
