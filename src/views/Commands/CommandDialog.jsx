@@ -40,20 +40,32 @@ class Command extends React.Component {
     this.props.onClose(value);
   };
 
-  handleChange = (event, value) => {
+  handleChange = (event, cooldown) => {
     this.setState({ [event.target.name]: event.target.value });
-    this.setState({ value });
+    this.setState({ cooldown });
   };
 
   state = {
     issue: 10,
     labelWidth: 115,
-    value: 0,
+    cooldown: 0,
   };
+
+  getCooldown() {
+    if (this.state.cooldown <= 59) {
+      return this.state.cooldown+' Sekunde(n)';
+    } else if (this.state.cooldown >= 60) {
+      this.state.cooldown -= 59;
+      return this.state.cooldown+' Minute(n)'
+    } else {
+      return 'Fehler';
+    }
+  }
 
   render() {
     const { classes, onClose, ...other } = this.props;
     const { value } = this.state;
+    const { cooldown } = this.state;
 
     return (
       <Dialog
@@ -142,16 +154,17 @@ class Command extends React.Component {
             </Card>
             <Card className="pluginCard" style={{ marginTop: '15px' }}>
               <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-                <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {value}s</Typography>
+                <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {this.getCooldown()}</Typography>
                 <Slider
                   style={{ padding: '22px 0px' }}
                   aria-labelledby="label"
-                  value={value}
+                  value={cooldown}
                   min={0}
-                  max={1000}
+                  max={119}
                   step={1}
                   onChange={this.handleChange}
                 />
+                <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Cooldown von bis zu einer Stunde einstellen.</Typography>
               </CardContent>
             </Card>
             <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
