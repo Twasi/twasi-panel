@@ -79,3 +79,6 @@ body {
 .TableRow {
   border-bottom: 3px solid #00aeae !important;
 }
+#simple-dialog-title {
+  padding-bottom: 10px;
+}

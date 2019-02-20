@@ -29,7 +29,7 @@ class Plugins extends Component {
             <CardContent className="pluginCardContent">
               <Grid container spacing={0} style={{ marginTop: '0px' }}>
                 <Grid item xs={4}>
-                  <h2 className="pageContainerTitle">{plugin.name}</h2>
+                  <h3 className="pageContainerTitle">{plugin.name}</h3>
                   <br />
                   <small>
                     by <i>{plugin.author}</i><br />

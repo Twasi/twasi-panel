@@ -23,7 +23,7 @@ export default createMuiTheme({
   overrides: {
     MuiPaper: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#b7b7b7', // Some CSS
+        color: '#afb6c5', // Some CSS
         backgroundColor: '#202940',
         borderRadius: '4px',
         border: '0px solid #25373e'
@@ -40,13 +40,13 @@ export default createMuiTheme({
     },
     MuiCardContent: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#b7b7b7', // Some CSS
+        color: '#afb6c5', // Some CSS
         backgroundColor: '#232f4a' // Some CSS
       }
     },
     MuiMenuItem: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#b7b7b7', // Some CSS
+        color: '#afb6c5', // Some CSS
         padding: '10px',
         '&:hover': {
           backgroundColor: '#1a2035'
@@ -59,13 +59,13 @@ export default createMuiTheme({
     },
     MuiListItemText: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#b7b7b7'
+        color: '#afb6c5'
       }
     },
     MuiButton: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         textTransform: 'none', // Some CSS
-        color: '#b7b7b7', // Some CSS
+        color: '#afb6c5', // Some CSS
         borderRadius: '50px'
       },
       mini: {
@@ -78,7 +78,7 @@ export default createMuiTheme({
         background: 'linear-gradient(135deg,#3f51b5,#3f51b5)',
         '&$disabled': {
           background: '#232f4a',
-          color: '#b7b7b7'
+          color: '#afb6c5'
         }
       },
       containedSecondary: {
@@ -86,7 +86,7 @@ export default createMuiTheme({
         background: 'linear-gradient(135deg,#de6464,#de6464)',
         '&$disabled': {
           background: '#232f4a',
-          color: '#b7b7b7'
+          color: '#afb6c5'
         }
       },
       outlinedPrimary: {
@@ -104,10 +104,10 @@ export default createMuiTheme({
       contained: {
         boxShadow: 'none',
         backgroundColor: '#232f4a',
-        color: '#b7b7b7',
+        color: '#afb6c5',
         '&$disabled': {
           backgroundColor: '#232f4a',
-          color: '#b7b7b7'
+          color: '#afb6c5'
         },
         '&:hover': {
           backgroundColor: '#1a2035'
@@ -116,7 +116,7 @@ export default createMuiTheme({
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       body: { // Name of the rule
-        color: '#b7b7b7', // Some CSS
+        color: '#afb6c5', // Some CSS
         borderColor: 'transparent',
         paddingTop: '15px',
         paddingBottom: '15px'
@@ -169,7 +169,7 @@ export default createMuiTheme({
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet
       tooltip: { // Name of the rule
-        color: '#b7b7b7', // Some CSS
+        color: '#afb6c5', // Some CSS
         backgroundColor: '#151e21',
         border: '0px solid #00aeae'
       }
