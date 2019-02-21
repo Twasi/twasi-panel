@@ -19,6 +19,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import './_style.css';
 
 class Urlshortener extends Component {
@@ -33,9 +36,12 @@ class Urlshortener extends Component {
   render() {
     return (
       <div className="pageContent">
-        <h2 className="pageTitle">
-          <FormattedMessage id="sidebar.urlshortener" />
-        </h2>
+        <Breadcrumbs arial-label="Breadcrumb">
+          <Link color="inherit" href="/">
+            <FormattedMessage id="sidebar.overview" />
+          </Link>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.urlshortener" /></Typography>
+        </Breadcrumbs>
         <Row>
           <Col sm={6}>
             <Paper className="pageContainer">

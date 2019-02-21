@@ -16,6 +16,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Chip from '@material-ui/core/Chip';
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Link from '@material-ui/core/Link';
 
 import './_style.css';
 
@@ -42,9 +44,12 @@ class Giveaways extends Component {
   render() {
     return (
       <div className="pageContent">
-        <h2 className="pageTitle">
-          <FormattedMessage id="sidebar.giveaways" />
-        </h2>
+        <Breadcrumbs arial-label="Breadcrumb">
+          <Link color="inherit" href="/">
+            <FormattedMessage id="sidebar.overview" />
+          </Link>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.giveaways" /></Typography>
+        </Breadcrumbs>
         <Grid container spacing={24}>
            <Grid item lg={6} md={12}>
             <Paper className="pageContainer">

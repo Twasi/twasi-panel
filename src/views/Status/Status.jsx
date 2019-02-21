@@ -6,6 +6,9 @@ import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -16,9 +19,12 @@ const Status = ({ status }) => {
 
   return (
     <div className="pageContent">
-      <h2 className="pageTitle">
-        <FormattedMessage id="sidebar.status" />
-      </h2>
+      <Breadcrumbs arial-label="Breadcrumb">
+        <Link color="inherit" href="/">
+          <FormattedMessage id="sidebar.overview" />
+        </Link>
+        <Typography color="textPrimary"><FormattedMessage id="sidebar.status" /></Typography>
+      </Breadcrumbs>
       <Paper className="pageContainer">
         <Grid container spacing={24}>
           <Grid item xs={12}>

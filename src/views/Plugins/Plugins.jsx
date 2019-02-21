@@ -9,6 +9,9 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -118,9 +121,12 @@ class Plugins extends Component {
 
     return (
       <div className="pageContent">
-        <h2 className="pageTitle">
-          <FormattedMessage id="plugins.headline" />
-        </h2>
+        <Breadcrumbs arial-label="Breadcrumb">
+          <Link color="inherit" href="/">
+            <FormattedMessage id="sidebar.overview" />
+          </Link>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.plugins" /></Typography>
+        </Breadcrumbs>
         <Paper className="pageContainer">
           <Grid container spacing={0}>
             <Grid item xs={12}>

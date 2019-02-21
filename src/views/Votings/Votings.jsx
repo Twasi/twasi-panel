@@ -7,6 +7,9 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 // import { Container, Row, Col } from 'react-grid-system';
 
 import './_style.css';
@@ -16,9 +19,12 @@ class Votings extends Component {
   render() {
     return (
       <div className="pageContent">
-        <h2 className="pageTitle">
-          <FormattedMessage id="sidebar.votings" />
-        </h2>
+        <Breadcrumbs arial-label="Breadcrumb">
+          <Link color="inherit" href="/">
+            <FormattedMessage id="sidebar.overview" />
+          </Link>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.votings" /></Typography>
+        </Breadcrumbs>
         <Paper className="pageContainer">
           <h4 className="pageContainerTitle">
             Umfragen

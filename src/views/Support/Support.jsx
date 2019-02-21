@@ -19,6 +19,8 @@ import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Ticket from './Ticket';
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Link from '@material-ui/core/Link';
 
 import './_style.css';
 
@@ -41,9 +43,12 @@ class Support extends Component {
   render() {
     return (
       <div className="pageContent">
-        <h2 className="pageTitle">
-          <FormattedMessage id="sidebar.support" />
-        </h2>
+        <Breadcrumbs arial-label="Breadcrumb">
+          <Link color="inherit" href="/">
+            <FormattedMessage id="sidebar.overview" />
+          </Link>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>
+        </Breadcrumbs>
         <Paper className="pageContainer">
           <h4 className="pageContainerTitle">
             Deine Support Tickets

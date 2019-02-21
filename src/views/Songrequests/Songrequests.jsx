@@ -15,6 +15,9 @@ import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import VolumeIcon from '@material-ui/icons/VolumeUp';
 import Grid from '@material-ui/core/Grid';
+import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import songrequestSync from '../../services/songrequestSync';
@@ -66,13 +69,12 @@ class Songrequests extends React.Component {
     const { anchorEl } = this.state;
     return (
       <div className="pageContent">
-        <h2 className="pageTitle songrequestsTitle">
-          <FormattedMessage id="sidebar.songrequests" />
-          <SongrequestConnectionStatus
-            status={this.state.sync.status}
-            ping={this.state.sync.ping}
-          />
-        </h2>
+        <Breadcrumbs arial-label="Breadcrumb">
+          <Link color="inherit" href="/">
+            <FormattedMessage id="sidebar.overview" />
+          </Link>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.songrequests" /></Typography>
+        </Breadcrumbs>
         <Paper
           style={{
             padding: '0px',
