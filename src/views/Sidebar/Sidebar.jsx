@@ -13,21 +13,13 @@ import Icon from '@material-ui/core/Icon';
 import Fab from '@material-ui/core/Fab';
 
 import { authSelectors } from '../../state/auth';
+import { pluginsSelectors } from '../../state/plugins';
 import { getMenuStyle } from './_style';
 
 import twasiLogo from '../common/resources/twasi_anim_dark.gif';
 import './_style.css';
 
 class Sidebar extends Component {
-
-  state = {
-    checked: true,
-  };
-
-  handleChange = () => {
-    this.setState(state => ({ checked: !state.checked }));
-  };
-
   constructor(props) {
     super(props);
 
@@ -36,61 +28,71 @@ class Sidebar extends Component {
         key: 'overview',
         path: '/',
         icon: 'home',
-        name: 'sidebar.overview'
+        name: 'sidebar.overview',
+        shown: 'all'
       },
       {
         key: 'status',
         path: '/status',
         icon: 'power',
-        name: 'sidebar.status'
+        name: 'sidebar.status',
+        shown: 'all'
       },
       {
         key: 'profile',
         path: '/profile',
         icon: 'account_box',
-        name: 'sidebar.profile'
+        name: 'sidebar.profile',
+        shown: 'all'
       },
       {
         key: 'mods',
         path: '/mods',
         icon: 'people',
-        name: 'sidebar.mods'
+        name: 'sidebar.mods',
+        shown: 'all'
       },
       {
         key: 'plugins',
         path: '/plugins',
         icon: 'store',
-        name: 'sidebar.plugins'
+        name: 'sidebar.plugins',
+        shown: 'all'
       },
       {
         key: 'commands',
         path: '/commands',
         icon: 'code',
-        name: 'sidebar.commands'
+        name: 'sidebar.commands',
+        shown: 'plugins/commands'
       },
       {
         key: 'songrequests',
         path: '/songrequests',
         icon: 'library_music',
-        name: 'sidebar.songrequests'
+        name: 'sidebar.songrequests',
+        shown: 'plugins/songrequests'
       },
       {
         key: 'giveaways',
         path: '/giveaways',
         icon: 'redeem',
-        name: 'sidebar.giveaways'
+        name: 'sidebar.giveaways',
+        shown: 'plugins/giveaways'
       },
       {
         key: 'votings',
         path: '/votings',
         icon: 'notes',
-        name: 'sidebar.votings'
+        name: 'sidebar.votings',
+        shown: 'plugins/votings'
       },
       {
         key: 'urlshortener',
         path: '/urlshortener',
         icon: 'link',
-        name: 'sidebar.urlshortener'
+        name: 'sidebar.urlshortener',
+        shown: 'all'
       }
     ];
 
@@ -105,9 +107,17 @@ class Sidebar extends Component {
     );
   }
 
+  state = {
+    checked: true
+  };
+
   componentWillMount() {
     this.Logo = new Image();
     this.Logo.src = twasiLogo;
+  }
+
+  handleChange() {
+    this.setState(state => ({ checked: !state.checked }));
   }
 
   handleClick(event, value) {
@@ -121,7 +131,7 @@ class Sidebar extends Component {
 
   render() {
     const { checked } = this.state;
-    const { location, intl } = this.props;
+    const { location, intl, plugins } = this.props;
 
     let selectedKey = find(item => item.path === location.pathname, this.items);
     if (typeof selectedKey === 'undefined') {
@@ -131,29 +141,36 @@ class Sidebar extends Component {
     }
 
     const renderItems = () =>
-      this.items.map(item => (
-        <MenuItem
-          style={{ fontSize: 13 }}
-          value={item.key}
-          key={item.key}
-          selected={item.key === selectedKey}
-          innerDivStyle={{ padding: '0px 16px 0px 52px' }}
-          onClick={event => this.handleClick(event, item.key)}
-        >
-          <i className="material-icons" style={{ marginRight: '15px' }}>{item.icon}</i>
-          {intl.formatMessage({ id: item.name })}
-        </MenuItem>
-      ));
+      this.items
+        .filter(item => {
+          if (item.shown === 'all') {
+            return true;
+          }
+          return plugins.filter(p => p.isInstalled && item.shown === `plugins/${p.name.toLowerCase()}`).length !== 0;
+        })
+        .map(item => (
+          <MenuItem
+            style={{ fontSize: 13 }}
+            value={item.key}
+            key={item.key}
+            selected={item.key === selectedKey}
+            innerDivStyle={{ padding: '0px 16px 0px 52px' }}
+            onClick={event => this.handleClick(event, item.key)}
+          >
+            <i className="material-icons" style={{ marginRight: '15px' }}>{item.icon}</i>
+            {intl.formatMessage({ id: item.name })}
+          </MenuItem>
+        ));
 
     return (
-      <div style={checked ? {} : {width: 87}}>
+      <div style={checked ? {} : { width: 87 }}>
         <Hidden mdDown>
           <Paper style={getMenuStyle()} className="sidebar">
             <div className="headerMenuItem">
-              {checked ? <FormattedMessage id="sidebar.navigation_headline" /> : ""}
+              {checked ? <FormattedMessage id="sidebar.navigation_headline" /> : ''}
               <Fab onClick={this.handleChange} size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Collapse">
                 <Icon style={{ color: '#ffffff' }}>
-                  {checked ? "arrow_back" : "arrow_forward"}
+                  {checked ? 'arrow_back' : 'arrow_forward'}
                 </Icon>
               </Fab>
             </div>
@@ -180,7 +197,7 @@ class Sidebar extends Component {
                 innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 value="support"
                 key="support"
-                selected={'support' === selectedKey}
+                selected={selectedKey === 'support'}
                 onClick={event => this.handleClick(event, 'support')}
               >
                 <i className="material-icons" style={{ marginRight: '15px' }}>headset_mic</i>
@@ -213,11 +230,13 @@ Sidebar.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   intl: intlShape,
-  userName: PropTypes.string
+  userName: PropTypes.string,
+  plugins: PropTypes.shape({})
 };
 
 const mapStateToProps = state => ({
-  userName: authSelectors.getUser(state).name
+  userName: authSelectors.getUser(state).name,
+  plugins: pluginsSelectors.getPlugins(state)
 });
 
 export default injectIntl(withRouter(connect(mapStateToProps)(Sidebar)));

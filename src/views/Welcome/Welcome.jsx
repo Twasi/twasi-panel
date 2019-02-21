@@ -18,6 +18,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import DummyLoadingPage from '../DummyLoadingPage';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
+import { pluginsOperations } from '../../state/plugins';
 
 import './_style.css';
 
@@ -28,8 +29,9 @@ class Welcome extends Component {
   };
 
   componentWillMount() {
-    const { updateUserStatus } = this.props;
+    const { updateUserStatus, loadPlugins } = this.props;
     updateUserStatus();
+    loadPlugins();
   }
 
   getStepContent() {
@@ -47,7 +49,7 @@ class Welcome extends Component {
                 fullWidth
                 variant="outlined"
                 InputLabelProps={{
-                  shrink: true,
+                  shrink: true
                 }}
                 placeholder="tWiTcH"
                 // Falls gültig color auf primary und Text abändern.
@@ -59,7 +61,7 @@ class Welcome extends Component {
                         vpn_key
                       </Icon>
                     </InputAdornment>
-                  ),
+                  )
                 }}
               />
               <br />
@@ -78,7 +80,7 @@ class Welcome extends Component {
               Wir übernehmen keine Gewähr für verloren gegangene Daten während der neuen Versionen.
             </p>
 
-              {/*
+            {/*
               Wir freuen uns, dass du dich für Twasi als Chatbot entschieden
               hast.<br /> Twasi ist ein Chatbot, der durch Ideen einer
               vielseitigen Community entstanden ist.
@@ -149,89 +151,90 @@ class Welcome extends Component {
       const { finished, stepIndex } = this.state;
       const contentStyle = { margin: '0 16px' };
       return (
-          <div className="contentWelcome">
-            <div className="pageContent">
-              <Paper className="pageContainer">
-                <Stepper activeStep={stepIndex}>
-                  <Step>
-                    <StepLabel style={{ fontWeight: 'bold' }}>
+        <div className="contentWelcome">
+          <div className="pageContent">
+            <Paper className="pageContainer">
+              <Stepper activeStep={stepIndex}>
+                <Step>
+                  <StepLabel style={{ fontWeight: 'bold' }}>
                       Willkommen
-                    </StepLabel>
-                  </Step>
-                  <Step>
-                    <StepLabel style={{ fontWeight: 'bold' }}>
+                  </StepLabel>
+                </Step>
+                <Step>
+                  <StepLabel style={{ fontWeight: 'bold' }}>
                       Plugins aktivieren
-                    </StepLabel>
-                  </Step>
-                  <Step>
-                    <StepLabel style={{ fontWeight: 'bold' }}>Fertig</StepLabel>
-                  </Step>
-                </Stepper>
-                <div style={contentStyle}>
-                  {finished ? (
-                    <p>
-                      <a
-                        href="#"
-                        onClick={event => {
-                          event.preventDefault();
-                          this.setState({ stepIndex: 0, finished: false });
-                        }}
-                      >
+                  </StepLabel>
+                </Step>
+                <Step>
+                  <StepLabel style={{ fontWeight: 'bold' }}>Fertig</StepLabel>
+                </Step>
+              </Stepper>
+              <div style={contentStyle}>
+                {finished ? (
+                  <p>
+                    <a
+                      href="#"
+                      onClick={event => {
+                        event.preventDefault();
+                        this.setState({ stepIndex: 0, finished: false });
+                      }}
+                    >
                         Click here
-                      </a>{' '}
+                    </a>{' '}
                       to reset the example.
-                    </p>
-                  ) : (
-                    <div>
-                      <p>{this.getStepContent(stepIndex)}</p>
-                      <Divider />
-                      <div style={{ marginTop: 20 }}>
-                        <Button
-                          color="primary"
-                          variant="contained"
-                          disabled={stepIndex === 0}
-                          onClick={this.handlePrev}
-                          style={{ marginRight: 12 }}
-                        >
+                  </p>
+                ) : (
+                  <div>
+                    <p>{this.getStepContent(stepIndex)}</p>
+                    <Divider />
+                    <div style={{ marginTop: 20 }}>
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        disabled={stepIndex === 0}
+                        onClick={this.handlePrev}
+                        style={{ marginRight: 12 }}
+                      >
                           Zurück
-                        </Button>
-                        <Button
-                          disabled
-                          color="primary"
-                          variant="contained"
-                          onClick={this.handleNext}
-                        >
-                          {(() => {
-                            switch (stepIndex) {
-                              case 0:
-                                return "Los Geht's";
-                              case 1:
-                                return 'Weiter';
-                              case 2:
-                                return 'Fertig';
-                              default:
-                                return null;
-                            }
-                          })()}
-                        </Button>
-                      </div>
+                      </Button>
+                      <Button
+                        disabled
+                        color="primary"
+                        variant="contained"
+                        onClick={this.handleNext}
+                      >
+                        {(() => {
+                          switch (stepIndex) {
+                            case 0:
+                              return "Los Geht's";
+                            case 1:
+                              return 'Weiter';
+                            case 2:
+                              return 'Fertig';
+                            default:
+                              return null;
+                          }
+                        })()}
+                      </Button>
                     </div>
-                  )}
-                </div>
-              </Paper>
-            </div>
+                  </div>
+                )}
+              </div>
+            </Paper>
           </div>
+        </div>
       );
     }
 
-    return <DummyLoadingPage/>;
+    return <DummyLoadingPage />;
   }
 }
 
 Welcome.propTypes = {
   children: PropTypes.node,
   userStatus: PropTypes.string,
-  updateUserStatus: PropTypes.func.isRequired
+  updateUserStatus: PropTypes.func.isRequired,
+  loadPlugins: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -239,7 +242,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateUserStatus: () => dispatch(appInfoOperations.loadUserStatus())
+  updateUserStatus: () => dispatch(appInfoOperations.loadUserStatus()),
+  loadPlugins: () => dispatch(pluginsOperations.loadData())
 });
 
 export default withRouter(
