@@ -7,10 +7,8 @@ import Icon from '@material-ui/core/Icon';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import Divider from '@material-ui/core/Divider';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -94,14 +92,14 @@ class ThemeSwitch extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-        <DialogTitle id="simple-dialog-title">
-          <FormattedMessage id="themeswitch.switch_theme" />
-        </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <h4 className="pageContainerTitle">
+            <FormattedMessage id="themeswitch.switch_theme" />
+          </h4>
+          <small>
             Hier hast du die Möglichkeit, das Aussehen des Panels für deine Bedürfnisse zu verändern.
-          </DialogContentText>
-          <br />
+          </small>
+          <br /><br />
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">
               <List>

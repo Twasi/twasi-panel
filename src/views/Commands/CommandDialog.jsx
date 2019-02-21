@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import CardContent from '@material-ui/core/CardContent';
 import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
@@ -77,14 +75,14 @@ class Command extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-        <DialogTitle id="simple-dialog-title">
-          <FormattedMessage id="commands.new_command" />
-        </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <h4 className="pageContainerTitle">
+              <FormattedMessage id="commands.new_command" />
+            </h4>
+            <small>
               <FormattedMessage id="commands.new_command_subheadline" />
-            </DialogContentText>
-            <br />
+            </small>
+            <br /><br />
             <Card className="pluginCard">
               <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                 <TextField

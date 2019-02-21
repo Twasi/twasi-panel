@@ -170,8 +170,11 @@ export default createMuiTheme({
     MuiTooltip: { // Name of the component ⚛️ / style sheet
       tooltip: { // Name of the rule
         color: '#b7b7b7', // Some CSS
-        backgroundColor: '#151e21',
-        border: '0px solid #00aeae'
+        backgroundColor: 'rgba(0,0,0,0.0)',
+        opacity: '1',
+      },
+      popper: {
+        opacity: '1',
       }
     },
     MuiSelect: {

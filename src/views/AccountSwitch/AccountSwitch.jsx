@@ -7,13 +7,14 @@ import Icon from '@material-ui/core/Icon';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { FormattedMessage } from 'react-intl';
 
 import { authSelectors } from '../../state/auth';
@@ -41,16 +42,16 @@ class AccountSwitch extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-        <DialogTitle id="simple-dialog-title">
-          <FormattedMessage id="accountswitch.switch_account" />
-        </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <h4 className="pageContainerTitle">
+              <FormattedMessage id="accountswitch.switch_account" />
+            </h4>
+            <small>
               <FormattedMessage id="accountswitch.subheadline" />
-            </DialogContentText>
-            <br />
+            </small>
+            <br /><br />
             <Card className="pluginCard">
-              <CardContent style={{ paddingTop: '15px', paddingBottom: '15px' }}>
+              <CardContent style={{ paddingTop: '15px', paddingBottom: '15px', marginBottom: '15px' }}>
                 <List style={{ padding: '0px' }}>
                   <ListItem button>
                     <ListItemAvatar>
@@ -60,9 +61,14 @@ class AccountSwitch extends React.Component {
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={userName} />
-                    <Chip label="Eigener Account" color="secondary" style={{ marginRight: '5px' }} />
                     <Chip label="Vollzugriff" color="primary" />
                   </ListItem>
+                </List>
+              </CardContent>
+            </Card>
+            <Card className="pluginCard">
+              <CardContent style={{ paddingTop: '15px', paddingBottom: '15px' }}>
+                <List style={{ padding: '0px' }}>
                   {accounts.map(account => (
                     <ListItem
                       button
@@ -75,7 +81,48 @@ class AccountSwitch extends React.Component {
                         </Avatar>
                       </ListItemAvatar>
                       <ListItemText primary={account} />
-                      <Chip label="Vollzugriff" color="primary" />
+                      <Tooltip
+                        placement="right"
+                        title={
+                          <React.Fragment>
+                            <Chip
+                              color="primary"
+                              icon={<Icon>add</Icon>}
+                              label="Kann Moderatoren hinzufügen"
+                            />
+                            <Chip
+                              color="primary"
+                              style={{ marginTop: '5px' }}
+                              icon={<Icon>remove</Icon>}
+                              label="Kann Moderatoren entfernen"
+                            />
+                            <Chip
+                              color="primary"
+                              style={{ marginTop: '5px' }}
+                              icon={<Icon>gamepad</Icon>}
+                              label="Kann Titel und Kategorie ändern"
+                            />
+                            <Chip
+                              color="primary"
+                              style={{ marginTop: '5px' }}
+                              icon={<Icon>code</Icon>}
+                              label="Kann Befehle verwalten"
+                            />
+                            <Chip
+                              color="primary"
+                              style={{ marginTop: '5px' }}
+                              icon={<Icon>library_music</Icon>}
+                              label="Kann Songrequests verwalten"
+                            />
+                          </React.Fragment>
+                        }
+                      >
+                        <Avatar style={{ width: '32px', height: '32px', marginRight: '5px' }}>
+                          <Icon>
+                            priority_high
+                          </Icon>
+                        </Avatar>
+                      </Tooltip>
                     </ListItem>
                   ))}
                 </List>

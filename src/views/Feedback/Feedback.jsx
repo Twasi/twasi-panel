@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -39,14 +37,14 @@ class Feedback extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-        <DialogTitle id="simple-dialog-title">
-          <FormattedMessage id="feedbackswitch.headline" />
-        </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <h4 className="pageContainerTitle">
+              <FormattedMessage id="feedbackswitch.headline" />
+            </h4>
+            <small>
               <FormattedMessage id="feedbackswitch.subheadline" />
-            </DialogContentText>
-            <br />
+            </small>
+            <br /><br />
             <Card className="pluginCard">
               <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
                 <FormControl variant="outlined" fullWidth>
