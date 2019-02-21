@@ -11,10 +11,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Hidden from '@material-ui/core/Hidden';
 import Icon from '@material-ui/core/Icon';
 import Fab from '@material-ui/core/Fab';
-import Collapse from '@material-ui/core/Collapse';
 
 import { authSelectors } from '../../state/auth';
-import { getMenuStyle, getHeaderMenuItem, getActiveMenuItem } from './_style';
+import { getMenuStyle } from './_style';
 
 import twasiLogo from '../common/resources/twasi_anim_dark.gif';
 import './_style.css';

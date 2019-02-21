@@ -1,12 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import List from '@material-ui/core/List';
-import Icon from '@material-ui/core/Icon';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -61,7 +54,7 @@ class Ticket extends React.Component {
             </DialogContentText>
             <br />
             <Card className="pluginCard">
-              <CardContent className="pluginCardContent">
+              <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
                 <FormControl variant="outlined" fullWidth>
                   <InputLabel
                     htmlFor="issue-select"
@@ -95,11 +88,11 @@ class Ticket extends React.Component {
                   margin="normal"
                   variant="outlined"
                 />
-                <Button fullWidth style={{ borderRadius: '4px' }} variant="contained" color="primary">
-                  <FormattedMessage id="support.sendbutton" />
-                </Button>
               </CardContent>
             </Card>
+            <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+              <FormattedMessage id="support.sendbutton" />
+            </Button>
           </DialogContent>
       </Dialog>
     );

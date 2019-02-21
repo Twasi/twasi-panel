@@ -18,26 +18,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/OutlinedInput';
 import './_style.css';
 
 class Urlshortener extends Component {
-  /*
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: ''
-    };
-  }
-  updateInputValue(evt) {
-    this.setState({
-      inputValue: evt.target.value
-    });
-  }
-  */
-
   state = {
     protocol: 10,
   };
@@ -91,17 +75,6 @@ class Urlshortener extends Component {
                   />
                 </CardContent>
               </Card>
-              {/*
-              <br />
-              <Card className="pluginCard">
-                <CardContent className="pluginCardContent">
-                  <h4 className="pageContainerTitle">Vorschau</h4>
-                  <samp style={{ color: '#00aeae' }}>
-                    <b>https://twa.si/c/{this.state.inputValue}</b>
-                  </samp>
-                </CardContent>
-              </Card>
-              */}
               <span
                 style={{
                   justifyContent: 'center',

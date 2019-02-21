@@ -1,7 +1,3 @@
-import twasiGlitchBanner from '../resources/twasi_glitch_banner.png';
-//  backgroundImage: `url(${twasiGlitchBanner})`,
-//  backgroundSize: 'cover',
-
 export const getAvatarStyle = () => ({
   width: 45,
   height: 45,

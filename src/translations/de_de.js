@@ -107,6 +107,7 @@ export default {
 
   // AccountSwitch
   'accountswitch.switch_account': 'Account wechseln',
+  'accountswitch.subheadline': 'Hier kannst du die Accounts verwalten, auf die du Zugriff hast.',
 
   // FeedbackSwitch
   'feedbackswitch.headline': 'Feedback, Ideen oder Bugs',

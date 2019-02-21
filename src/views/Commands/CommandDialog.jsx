@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import List from '@material-ui/core/List';
-import Icon from '@material-ui/core/Icon';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import CardContent from '@material-ui/core/CardContent';
 import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
-import Divider from '@material-ui/core/Divider';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
@@ -53,7 +44,7 @@ class Command extends React.Component {
 
   getCooldown() {
     if (this.state.cooldown <= 59) {
-      if (this.state.cooldown == 0) {
+      if (this.state.cooldown === 0) {
         return 'Keinen Cooldown festgelegt';
       } else {
         if (this.state.cooldown > 1) {
@@ -64,7 +55,7 @@ class Command extends React.Component {
       }
     } else if (this.state.cooldown >= 60) {
       this.state.cooldown -= 59;
-      if (this.state.cooldown == 60) {
+      if (this.state.cooldown === 60) {
         return '1 Stunde';
       }
       if (this.state.cooldown > 1) {
@@ -79,7 +70,6 @@ class Command extends React.Component {
 
   render() {
     const { classes, onClose, ...other } = this.props;
-    const { value } = this.state;
     const { cooldown } = this.state;
 
     return (

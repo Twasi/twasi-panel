@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import Icon from '@material-ui/core/Icon';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -51,7 +48,7 @@ class Feedback extends React.Component {
             </DialogContentText>
             <br />
             <Card className="pluginCard">
-              <CardContent className="pluginCardContent">
+              <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
                 <FormControl variant="outlined" fullWidth>
                   <InputLabel
                     htmlFor="issue-select"
@@ -85,11 +82,11 @@ class Feedback extends React.Component {
                   margin="normal"
                   variant="outlined"
                 />
-                <Button fullWidth style={{ borderRadius: '4px' }} variant="contained" color="primary">
-                  <FormattedMessage id="feedbackswitch.sendbutton" />
-                </Button>
               </CardContent>
             </Card>
+            <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+              <FormattedMessage id="feedbackswitch.sendbutton" />
+            </Button>
           </DialogContent>
       </Dialog>
     );

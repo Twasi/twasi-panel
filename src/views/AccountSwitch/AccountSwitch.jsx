@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import Icon from '@material-ui/core/Icon';
@@ -13,7 +13,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Chip from '@material-ui/core/Chip';
 import { FormattedMessage } from 'react-intl';
+
+import { authSelectors } from '../../state/auth';
 // import PersonIcon from '@material-ui/icons/Person';
 // import AddIcon from '@material-ui/icons/Add';
 
@@ -31,7 +34,7 @@ class AccountSwitch extends React.Component {
   };
 
   render() {
-    const { classes, onClose, selectedValue, ...other } = this.props;
+    const { classes, userName, avatar, onClose, selectedValue, ...other } = this.props;
 
     return (
       <Dialog
@@ -43,19 +46,22 @@ class AccountSwitch extends React.Component {
         </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              <FormattedMessage id="feedbackswitch.subheadline" />
+              <FormattedMessage id="accountswitch.subheadline" />
             </DialogContentText>
             <br />
             <Card className="pluginCard">
-              <CardContent className="pluginCardContent">
-                <List>
+              <CardContent style={{ paddingTop: '15px', paddingBottom: '15px' }}>
+                <List style={{ padding: '0px' }}>
                   <ListItem button>
                     <ListItemAvatar>
-                      <Avatar style={{ backgroundColor: '#00aeae' }}>
-                        <Icon style={{ fontSize: 36 }}>check</Icon>
+                      <Avatar className="accountSwitchAvatar">
+                        <Icon style={{ fontSize: 36, position: 'absolute' }}>check</Icon>
+                        <img width="45px" height="45px" src={avatar} alt="Avatar" />
                       </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Blechkelle" />
+                    <ListItemText primary={userName} />
+                    <Chip label="Eigener Account" color="secondary" style={{ marginRight: '5px' }} />
+                    <Chip label="Vollzugriff" color="primary" />
                   </ListItem>
                   {accounts.map(account => (
                     <ListItem
@@ -69,6 +75,7 @@ class AccountSwitch extends React.Component {
                         </Avatar>
                       </ListItemAvatar>
                       <ListItemText primary={account} />
+                      <Chip label="Vollzugriff" color="primary" />
                     </ListItem>
                   ))}
                 </List>
@@ -81,9 +88,21 @@ class AccountSwitch extends React.Component {
 }
 
 AccountSwitch.propTypes = {
+  userName: PropTypes.string,
+  avatar: PropTypes.string,
   onClose: PropTypes.func,
   selectedValue: PropTypes.string,
   classes: PropTypes.isRequired
 };
 
-export default (AccountSwitch);
+AccountSwitch.defaultProps = {
+  userName: 'Unknown',
+  avatar: 'Unknown'
+};
+
+const mapStateToProps = state => ({
+  userName: authSelectors.getUser(state).displayName,
+  avatar: authSelectors.getUserAvatar(state)
+});
+
+export default connect(mapStateToProps)(AccountSwitch);

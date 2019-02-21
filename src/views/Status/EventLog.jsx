@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -22,7 +21,7 @@ class EventLog extends Component {
   }
 
   render() {
-    const { events, intl } = this.props;
+    const { events } = this.props;
 
     const renderedEvents = events.map(message => (
       <TableRow>
