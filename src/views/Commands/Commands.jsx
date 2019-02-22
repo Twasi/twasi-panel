@@ -17,6 +17,8 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
+
 import { commandsSelectors, commandsOperations } from '../../state/commands';
 
 class Commands extends Component {
@@ -99,6 +101,7 @@ class Commands extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.commands" /></Typography>
         </Breadcrumbs>
+        {!disabled &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <h4 className="pageContainerTitle">
             Deine Befehle
@@ -119,8 +122,8 @@ class Commands extends Component {
             Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
           </small>
         </Paper>
+        }{!disabled &&
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
-          {!disabled &&
             <Table>
               <TableHead>
                 <TableRow className="TableRow">
@@ -135,9 +138,8 @@ class Commands extends Component {
                 {this.renderCommands()}
               </TableBody>
             </Table>
-          }
-          {disabled && <span>Du hast dieses Plugin deinstalliert. Bitte installiere es, um hier eine Ansicht zu erhalten</span>}
         </Paper>
+        }{disabled && <NotInstalledAlert />}
       </div>
     );
   }
