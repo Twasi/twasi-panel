@@ -75,7 +75,7 @@ class Sidebar extends Component {
         path: '/songrequests',
         icon: 'library_music',
         name: 'sidebar.songrequests',
-        shown: 'plugins/songrequests'
+        shown: 'plugins/songrequest'
       },
       {
         key: 'giveaways',
