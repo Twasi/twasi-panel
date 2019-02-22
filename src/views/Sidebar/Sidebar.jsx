@@ -23,6 +23,10 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      checked: true
+    };
+
     this.items = [
       {
         key: 'overview',
@@ -97,6 +101,7 @@ class Sidebar extends Component {
     ];
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.resetAnimation = throttle(
       () => {
@@ -107,17 +112,13 @@ class Sidebar extends Component {
     );
   }
 
-  state = {
-    checked: true
-  };
-
   componentWillMount() {
     this.Logo = new Image();
     this.Logo.src = twasiLogo;
   }
 
   handleChange() {
-    this.setState(state => ({ checked: !state.checked }));
+    this.setState({ checked: !this.state.checked });
   }
 
   handleClick(event, value) {
