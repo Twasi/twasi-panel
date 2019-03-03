@@ -12,16 +12,14 @@ import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Chip from '@material-ui/core/Chip';
-import CommandDialog from './CommandDialog';
+import TimersDialog from './TimersDialog';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
-import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
+const timers = [{name: '!hosts', output: 'Zeigt die Liste der Kanäle, die deinen Kanal derzeit hosten.', interval: '10'}];
 
-import { commandsSelectors, commandsOperations } from '../../state/commands';
-
-class Commands extends Component {
+class Timers extends Component {
   constructor(props) {
     super(props);
 
@@ -30,13 +28,6 @@ class Commands extends Component {
     };
 
     this.handleClose = this.handleClose.bind(this);
-
-    this.renderCommands = this.renderCommands.bind(this);
-  }
-
-  componentDidMount() {
-    const { updateCommands } = this.props;
-    updateCommands();
   }
 
   handleClose() {
@@ -44,25 +35,18 @@ class Commands extends Component {
   }
 
   renderCommands() {
-    const { commands } = this.props;
 
-    return commands.map(command => (
+    return timers.map(timer => (
       <TableRow>
         <TableCell>
-          <b>{command.name}</b>
+          <b>{timer.name}</b>
         </TableCell>
         <TableCell
           style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
         >
-          {command.content}
+          {timer.output}
         </TableCell>
-        <TableCell>
-          <Chip
-            label="Jeder"
-            color="primary"
-          />
-        </TableCell>
-        <TableCell>1.337</TableCell>
+        <TableCell>{timer.interval} Minuten</TableCell>
         <TableCell>
           <Tooltip title="Bearbeiten" placement="top">
             <Button
@@ -92,45 +76,41 @@ class Commands extends Component {
   }
 
   render() {
-    const { disabled } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
           <Link color="inherit" href="/">
             <FormattedMessage id="sidebar.overview" />
           </Link>
-          <Typography color="textPrimary"><FormattedMessage id="sidebar.commands" /></Typography>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.timers" /></Typography>
         </Breadcrumbs>
-        {!disabled &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <h4 className="pageContainerTitle">
-            Deine Befehle
+            Deine Timer
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
                 Aktualisieren
               </Button>
-              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>
-                <FormattedMessage id="commands.new_command" />
+              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
+                <FormattedMessage id="timers.new_timer" />
               </Button>
-              <CommandDialog
+              <TimersDialog
                 open={this.state.open}
                 onClose={this.handleClose}
               />
             </span>
           </h4>
           <small>
-            Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
+            Hier hast du die Möglichkeit deine Timer zu verwalten.
           </small>
         </Paper>
-        }{!disabled &&
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
             <Table>
               <TableHead>
                 <TableRow className="TableRow">
-                  <TableCell>Befehl</TableCell>
+                  <TableCell>Timer</TableCell>
                   <TableCell>Ausgabe</TableCell>
-                  <TableCell>Zugriff</TableCell>
-                  <TableCell>Uses</TableCell>
+                  <TableCell>Interval</TableCell>
                   <TableCell style={{ minWidth: '100px' }}>Aktionen</TableCell>
                 </TableRow>
               </TableHead>
@@ -139,31 +119,10 @@ class Commands extends Component {
               </TableBody>
             </Table>
         </Paper>
-        }{disabled && <NotInstalledAlert />}
       </div>
     );
   }
 }
 
-Commands.propTypes = {
-  updateCommands: PropTypes.func.isRequired,
-  commands: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  })),
-  disabled: PropTypes.bool.isRequired
-};
 
-const mapStateToProps = state => ({
-  commands: commandsSelectors.getCommands(state),
-  isLoaded: commandsSelectors.isLoaded(state),
-  disabled: commandsSelectors.isDisabled(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(commandsOperations.verifyData()),
-  updateCommands: () => dispatch(commandsOperations.loadCommands())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Commands);
+export default Timers;

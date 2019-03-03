@@ -14,6 +14,7 @@ export default {
   'sidebar.plugins': 'Plugin Store',
   'sidebar.fakechat': 'Fakechat',
   'sidebar.commands': 'Commands',
+  'sidebar.timers': 'Timers',
   'sidebar.songrequests': 'Songrequests',
   'sidebar.docs': 'Documentation',
   'sidebar.logout': 'Logout',
@@ -89,8 +90,8 @@ export default {
   'profile.social_notconnected': 'Not connected',
 
   // Commands
-  'commands.title': 'Commands',
-  'commands.addcommand': 'Add Commands',
+  'commands.title': 'Your Commands',
+  'commands.addcommand': 'Add Command',
   'commands.new_command': 'Create a new Command',
   'commands.new_command_subheadline': 'Here you can add a new Command.',
   'commands.new_command.command': 'Your Command',
@@ -102,6 +103,15 @@ export default {
   'commands.new_command.mods': 'Moderators or higher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Save Command',
+
+  // Timers
+  'timers.title': 'Your Timers',
+  'timers.addtimer': 'Add Timer',
+  'timers.new_timer': 'Ad a new Timer',
+  'timers.new_timer.subheadline': 'Here you can add new Timers.',
+  'timers.new_timer.timer': 'Your Timer',
+  'timers.new_timer.output': 'Output',
+  'timers.new_timer.savetimer': 'Save Timer',
 
   // AccountSwitch
   'accountswitch.switch_account': 'Switch Account',

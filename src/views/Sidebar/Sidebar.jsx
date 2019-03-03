@@ -71,6 +71,13 @@ class Sidebar extends Component {
         shown: 'plugins/commands'
       },
       {
+        key: 'timers',
+        path: '/timers',
+        icon: 'alarm',
+        name: 'sidebar.timers',
+        shown: 'all'
+      },
+      {
         key: 'songrequests',
         path: '/songrequests',
         icon: 'library_music',

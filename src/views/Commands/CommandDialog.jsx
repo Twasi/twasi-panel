@@ -80,7 +80,7 @@ class Command extends React.Component {
               <FormattedMessage id="commands.new_command" />
             </h4>
             <small>
-              <FormattedMessage id="commands.new_command_subheadline" />
+              <FormattedMessage id="commands.new_command.subheadline" />
             </small>
             <br /><br />
             <Card className="pluginCard">

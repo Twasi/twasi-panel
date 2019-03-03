@@ -14,6 +14,7 @@ export default {
   'sidebar.plugins': 'Plugin Store',
   'sidebar.fakechat': 'Fakechat',
   'sidebar.commands': 'Befehle',
+  'sidebar.timers': 'Timer',
   'sidebar.songrequests': 'Songrequests',
   'sidebar.docs': 'Dokumentation',
   'sidebar.logout': 'Ausloggen',
@@ -91,10 +92,10 @@ export default {
   'profile.social_notconnected': 'Noch nicht verbunden',
 
   // Commands
-  'commands.title': 'Befehle',
+  'commands.title': 'Deine Befehle',
   'commands.addcommand': 'Befehl Hinzufügen',
   'commands.new_command': 'Einen neuen Befehl erstellen',
-  'commands.new_command_subheadline': 'Hier kannst du einen neuen Befehl hinzufügen.',
+  'commands.new_command.subheadline': 'Hier kannst du einen neuen Befehl hinzufügen.',
   'commands.new_command.command': 'Dein Befehl',
   'commands.new_command.aliases': 'Aliase',
   'commands.new_command.output': 'Ausgabe',
@@ -104,6 +105,15 @@ export default {
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Befehl Speichern',
+
+  // Timers
+  'timers.title': 'Deine Timer',
+  'timers.addtimer': 'Timer Hinzufügen',
+  'timers.new_timer': 'Einen neuen Timer erstellen',
+  'timers.new_timer.subheadline': 'Hier kannst du einen neuen Timer hinzufügen.',
+  'timers.new_timer.timer': 'Dein Timer',
+  'timers.new_timer.output': 'Ausgabe',
+  'timers.new_timer.savetimer': 'Timer Speichern',
 
   // AccountSwitch
   'accountswitch.switch_account': 'Account wechseln',
