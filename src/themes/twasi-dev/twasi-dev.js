@@ -136,13 +136,17 @@ export default createMuiTheme({
     },
     MuiTabs: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        backgroundColor: '#232f4a', // Some CSS
+        backgroundColor: '#202940', // Some CSS
         border: '0px !important'
       }
     },
     MuiTab: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         border: '0px'
+      },
+      label: {
+        color: '#afb6c5',
+        textTransform: 'none'
       }
     },
     MuiChip: { // Name of the component ⚛️ / style sheet

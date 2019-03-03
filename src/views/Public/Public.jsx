@@ -25,10 +25,15 @@ const rows = [
   createData( 5, 'Spendendose', 16, '10h 1m'),
 ];
 
+this.state = {
+  value: 0,
+};
+
 const Public = () => (
   <div className="pageContent">
     <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
       <Tabs
+        value={this.state.value}
         indicatorColor="primary"
         textColor="primary"
       >
