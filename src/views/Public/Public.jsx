@@ -5,6 +5,11 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Avatar from '@material-ui/core/Avatar';
 
 let id = 0;
 function createData(place, name, points, viewtime) {
@@ -13,38 +18,68 @@ function createData(place, name, points, viewtime) {
 }
 
 const rows = [
-  createData( 1, 'Blechkelle', 159, 159),
-  createData( 2, 'mekalix', 237, 237),
-  createData( 3, 'DieserMerlin', 262, 262),
-  createData( 4, 'Larcce', 305, 305),
-  createData( 5, 'Spendendose', 356, 356),
+  createData( 1, 'Blechkelle', 512, '24h 31m'),
+  createData( 2, 'mekalix', 128, '20h 15m'),
+  createData( 3, 'DieserMerlin', 64, '19h 10m'),
+  createData( 4, 'Larcce', 32, '15h 5m'),
+  createData( 5, 'Spendendose', 16, '10h 1m'),
 ];
 
 const Public = () => (
   <div className="pageContent">
+    <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
+      <Tabs
+        indicatorColor="primary"
+        textColor="primary"
+      >
+        <Tab label="Bestenliste" />
+        <Tab label="Streamzitate" />
+      </Tabs>
+    </Paper>
     <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-      <h4 className="pageContainerTitle">Bestenliste</h4>
+      <h4 className="pageContainerTitle">Bestenliste
+        <span style={{ float: 'right' }}>
+          <Button variant="contained" color="primary">
+            Mit Twitch verbinden
+          </Button>
+        </span>
+      </h4>
       <small>
         Hier findest du die Bestenliste.
-      </small>
+      </small><br /><br />
+      <Chip
+        color="primary"
+        avatar={<Avatar>5</Avatar>}
+        label="Punkte jede Minute"
+      />
     </Paper>
-    <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', margin: '0px 0px 15px 0px', borderRadius: '0px 0px 4px 4px' }}>
+    <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', marginBottom: '15px', borderRadius: '0px 0px 4px 4px' }}>
       <Table>
         <TableHead>
-          <TableRow>
-            <TableCell><h2>Platzierung</h2></TableCell>
-            <TableCell><h2>Name</h2></TableCell>
-            <TableCell><h2>Points</h2></TableCell>
-            <TableCell><h2>Viewtime</h2></TableCell>
+          <TableRow className="TableRow">
+            <TableCell>Platzierung</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell>Punkte</TableCell>
+            <TableCell>Zugeschaute Zeit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => {
             return (
               <TableRow key={row.id}>
-                <TableCell>{row.place}</TableCell>
+                <TableCell>
+                  <Chip
+                    label={row.place}
+                    color="primary"
+                  />
+                </TableCell>
                 <TableCell>{row.name}</TableCell>
-                <TableCell>{row.points}</TableCell>
+                <TableCell>
+                  <Chip
+                    label={row.points}
+                    color="primary"
+                  />
+                </TableCell>
                 <TableCell>{row.viewtime}</TableCell>
               </TableRow>
             );

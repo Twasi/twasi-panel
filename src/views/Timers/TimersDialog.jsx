@@ -35,15 +35,13 @@ class Timer extends React.Component {
   };
 
   state = {
-    issue: 10,
-    labelWidth: 115,
     interval: 0,
   };
 
   getCooldown() {
     if (this.state.interval <= 60) {
       if (this.state.interval === 0) {
-        return '5 Minuten';
+        return '1 Minute';
       } else if (this.state.interval === 60) {
         this.state.interval = 1;
         return this.state.interval+' Stunde';
@@ -113,7 +111,7 @@ class Timer extends React.Component {
                   style={{ padding: '22px 0px' }}
                   aria-labelledby="label"
                   value={interval}
-                  min={1}
+                  min={0}
                   max={60}
                   step={1}
                   onChange={this.handleChange}
