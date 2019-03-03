@@ -104,7 +104,7 @@ class Commands extends Component {
         {!disabled &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <h4 className="pageContainerTitle">
-            Deine Befehle
+            <FormattedMessage id="commands.title" />
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
                 Aktualisieren

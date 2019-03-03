@@ -48,6 +48,12 @@ class Timers extends Component {
         </TableCell>
         <TableCell>{timer.interval} Minuten</TableCell>
         <TableCell>
+          <Chip
+            label="Aktiviert"
+            color="primary"
+          />
+        </TableCell>
+        <TableCell>
           <Tooltip title="Bearbeiten" placement="top">
             <Button
               variant="fab"
@@ -86,7 +92,7 @@ class Timers extends Component {
         </Breadcrumbs>
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <h4 className="pageContainerTitle">
-            Deine Timer
+            <FormattedMessage id="timers.title" />
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
                 Aktualisieren
@@ -111,6 +117,7 @@ class Timers extends Component {
                   <TableCell>Timer</TableCell>
                   <TableCell>Ausgabe</TableCell>
                   <TableCell>Interval</TableCell>
+                  <TableCell>Status</TableCell>
                   <TableCell style={{ minWidth: '100px' }}>Aktionen</TableCell>
                 </TableRow>
               </TableHead>
