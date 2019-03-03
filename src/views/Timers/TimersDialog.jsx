@@ -113,7 +113,7 @@ class Timer extends React.Component {
                   style={{ padding: '22px 0px' }}
                   aria-labelledby="label"
                   value={interval}
-                  min={5}
+                  min={1}
                   max={60}
                   step={1}
                   onChange={this.handleChange}
