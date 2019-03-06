@@ -134,7 +134,10 @@ class Overview extends Component {
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <h4 className="pageContainerTitle">Dein letzter Stream
                 <span style={{ float: 'right' }}>
-                  <Button variant="contained" color="primary">Streamdaten Aktualisieren</Button>
+                  <Button variant="contained" color="primary">
+                    <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                    Aktualisieren
+                  </Button>
                 </span>
               </h4>
               <small>Hier findest du die Statistiken deines letzten, von Twasi erfassten Streams.</small>

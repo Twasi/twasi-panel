@@ -107,6 +107,7 @@ class Commands extends Component {
             <FormattedMessage id="commands.title" />
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
+                <Icon style={{ marginRight: '5px' }}>cached</Icon>
                 Aktualisieren
               </Button>
               <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>

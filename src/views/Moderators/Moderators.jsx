@@ -33,7 +33,8 @@ class Moderators extends Component {
             Moderatoren Verwaltung
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
-                Liste aktualisieren
+                <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                Aktualisieren
               </Button>
               <Button variant="contained" color="primary">
                 Mod Hinzufügen

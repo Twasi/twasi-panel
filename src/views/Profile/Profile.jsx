@@ -18,6 +18,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Icon from '@material-ui/core/Icon';
 
 import twitterlogo from '../common/resources/twitter.svg';
 import facebooklogo from '../common/resources/facebook.svg';
@@ -51,6 +52,7 @@ class Profile extends Component {
                 <FormattedMessage id="profile.your_data" />
                 <span style={{ float: 'right' }}>
                   <Button variant="contained" color="primary">
+                    <Icon style={{ marginRight: '5px' }}>cached</Icon>
                     <FormattedMessage id="profile.your_data_refreshbutton" />
                   </Button>
                 </span>

@@ -53,6 +53,10 @@ class Support extends Component {
           <h4 className="pageContainerTitle">
             Deine Support Tickets
             <span style={{ float: 'right' }}>
+              <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
+                <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                Aktualisieren
+              </Button>
               <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
                 Neues Ticket erstellen
               </Button>
@@ -89,26 +93,26 @@ class Support extends Component {
                   <Grid item>
                     <Avatar>Du</Avatar>
                   </Grid>
-                  <Grid item xs={8}>
-                    <Typography className="chatBubbleSelf">
-                      Wie funktioniert die Zeitmaschine bei Twasi?
-                      Ich habe noch keine Möglichkeit gefunden sie zum laufen zu bringen...
-                      Muss ich dafür ein Ticket erstellen oder antwortet ihr hier eh nicht drauf?
-                      Habe gehört hinter Twasi sitzt ein voll nettes Team, deswegen dachte ich mir, machste mal ein Ticket auf.
-                    </Typography>
-                  </Grid>
+                    <Grid item xs={8}>
+                      <Typography className="chatBubbleSelf">
+                        Wie funktioniert die Zeitmaschine bei Twasi?
+                        Ich habe noch keine Möglichkeit gefunden sie zum laufen zu bringen...
+                        Muss ich dafür ein Ticket erstellen oder antwortet ihr hier eh nicht drauf?
+                        Habe gehört hinter Twasi sitzt ein voll nettes Team, deswegen dachte ich mir, machste mal ein Ticket auf.
+                      </Typography>
+                    </Grid>
                   <Grid item xs={3} />
                 </Grid>
                 <br />
                 <Grid container spacing={24}>
                   <Grid item xs={3} />
-                  <Grid item xs={8}>
-                    <Typography className="chatBubbleSupport">
-                      Du musst solange auf den Grün/Blau blinkenden Knopf drücken, bis er nichtmehr blinkt.
-                      danach gehst du zum nächsten Supermarkt,
-                      besorgst dir eine PSC und spendest sie an einen wohltätigen Zweck.
-                    </Typography>
-                  </Grid>
+                    <Grid item xs={8}>
+                      <Typography className="chatBubbleSupport">
+                        Du musst solange auf den Grün/Blau blinkenden Knopf drücken, bis er nichtmehr blinkt.
+                        danach gehst du zum nächsten Supermarkt,
+                        besorgst dir eine PSC und spendest sie an einen wohltätigen Zweck.
+                      </Typography>
+                    </Grid>
                   <Grid item>
                     <Avatar>Sup</Avatar>
                   </Grid>

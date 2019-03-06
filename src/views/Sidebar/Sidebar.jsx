@@ -97,7 +97,7 @@ class Sidebar extends Component {
         path: '/votings',
         icon: 'notes',
         name: 'sidebar.votings',
-        shown: 'plugins/votings'
+        shown: 'all'
       },
       {
         key: 'urlshortener',
@@ -111,6 +111,13 @@ class Sidebar extends Component {
         path: '/support',
         icon: 'headset_mic',
         name: 'sidebar.support',
+        shown: 'none'
+      },
+      {
+        key: 'feedback',
+        path: '/feedback',
+        icon: 'favorite_border',
+        name: 'sidebar.userfeedback',
         shown: 'none'
       }
     ];
@@ -196,6 +203,23 @@ class Sidebar extends Component {
               className="Sidebar"
             >
               {renderItems()}
+            </MenuList>
+          </Paper>
+          <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
+            <MenuList
+              className="Sidebar"
+            >
+              <MenuItem
+                style={{ fontSize: 13 }}
+                innerDivStyle={{ padding: '0px 16px 0px 52px' }}
+                value="feedback"
+                key="feedback"
+                selected={selectedKey === 'feedback'}
+                onClick={event => this.handleClick(event, 'feedback')}
+              >
+                <i className="material-icons" style={{ marginRight: '15px' }}>favorite_border</i>
+                {intl.formatMessage({ id: 'sidebar.userfeedback' })}
+              </MenuItem>
             </MenuList>
           </Paper>
           <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">

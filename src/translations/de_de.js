@@ -22,6 +22,7 @@ export default {
   'sidebar.giveaways': 'Giveaways',
   'sidebar.votings': 'Umfragen',
   'sidebar.support': 'Support',
+  'sidebar.userfeedback': 'User Feedback',
   'sidebar.navigation_headline': 'Navigation',
 
   // Sidebar
