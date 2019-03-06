@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
@@ -24,6 +25,8 @@ import Link from '@material-ui/core/Link';
 
 import './_style.css';
 
+import { authSelectors } from '../../state/auth';
+
 class Support extends Component {
 
   constructor(props) {
@@ -41,6 +44,7 @@ class Support extends Component {
   }
 
   render() {
+    const { userName, avatar, ...other } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -94,11 +98,12 @@ class Support extends Component {
                     <Avatar>Du</Avatar>
                   </Grid>
                     <Grid item xs={8}>
-                      <Typography className="chatBubbleSelf">
+                      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSelf">
                         Wie funktioniert die Zeitmaschine bei Twasi?
                         Ich habe noch keine Möglichkeit gefunden sie zum laufen zu bringen...
                         Muss ich dafür ein Ticket erstellen oder antwortet ihr hier eh nicht drauf?
                         Habe gehört hinter Twasi sitzt ein voll nettes Team, deswegen dachte ich mir, machste mal ein Ticket auf.
+                        <Typography style={{ marginTop: '5px', fontSize: '12px', opacity: '.7', position: 'absolute', right: '10px', bottom: '5px' }}>13:37</Typography>
                       </Typography>
                     </Grid>
                   <Grid item xs={3} />
@@ -107,14 +112,18 @@ class Support extends Component {
                 <Grid container spacing={24}>
                   <Grid item xs={3} />
                     <Grid item xs={8}>
-                      <Typography className="chatBubbleSupport">
+                      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSupport">
+                        <Typography style={{ marginBottom: '5px', fontSize: '16px', fontWeight: '600', opacity: '.7' }}>{userName}</Typography>
                         Du musst solange auf den Grün/Blau blinkenden Knopf drücken, bis er nichtmehr blinkt.
                         danach gehst du zum nächsten Supermarkt,
                         besorgst dir eine PSC und spendest sie an einen wohltätigen Zweck.
+                        <Typography style={{ marginTop: '5px', fontSize: '12px', opacity: '.7', position: 'absolute', right: '10px', bottom: '5px' }}>13:37</Typography>
                       </Typography>
                     </Grid>
                   <Grid item>
-                    <Avatar>Sup</Avatar>
+                    <Avatar>
+                      <img width="45px" height="45px" src={avatar} alt="Avatar" />
+                    </Avatar>
                   </Grid>
                 </Grid>
                 <br />
@@ -149,6 +158,19 @@ class Support extends Component {
   }
 }
 
-Support.propTypes = {};
+Support.propTypes = {
+  userName: PropTypes.string,
+  avatar: PropTypes.string
+};
 
-export default withRouter(connect()(Support));
+Support.defaultProps = {
+  userName: 'Unknown',
+  avatar: 'Unknown'
+};
+
+const mapStateToProps = state => ({
+  userName: authSelectors.getUser(state).displayName,
+  avatar: authSelectors.getUserAvatar(state)
+});
+
+export default connect(mapStateToProps)(Support);

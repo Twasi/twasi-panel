@@ -19,7 +19,6 @@ import Songrequests from '../Songrequests';
 import Giveaways from '../Giveaways';
 import Votings from '../Votings';
 import Support from '../Support';
-import Feedback from '../UserFeedback';
 import DevTools from '../DevTools';
 
 const PanelContent = () => (
@@ -43,7 +42,6 @@ const PanelContent = () => (
           <Route path="/giveaways" exact component={Giveaways} />
           <Route path="/votings" exact component={Votings} />
           <Route path="/support" exact component={Support} />
-          <Route path="/feedback" exact component={Feedback} />
         </Switch>
       </div>
       <div style={{ clear: 'both' }} />
