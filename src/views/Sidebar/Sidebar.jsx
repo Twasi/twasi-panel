@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Hidden from '@material-ui/core/Hidden';
 import Icon from '@material-ui/core/Icon';
 import Fab from '@material-ui/core/Fab';
+import Badge from '@material-ui/core/Badge';
 
 import { authSelectors } from '../../state/auth';
 import { pluginsSelectors } from '../../state/plugins';
@@ -104,6 +105,13 @@ class Sidebar extends Component {
         icon: 'link',
         name: 'sidebar.urlshortener',
         shown: 'all'
+      },
+      {
+        key: 'support',
+        path: '/support',
+        icon: 'headset_mic',
+        name: 'sidebar.support',
+        shown: 'none'
       }
     ];
 
@@ -153,6 +161,8 @@ class Sidebar extends Component {
         .filter(item => {
           if (item.shown === 'all') {
             return true;
+          } else if (item.shown === 'none') {
+            return false;
           }
           return plugins.filter(p => p.isInstalled && item.shown === `plugins/${p.name.toLowerCase()}`).length !== 0;
         })
@@ -161,7 +171,7 @@ class Sidebar extends Component {
             style={{ fontSize: 13 }}
             value={item.key}
             key={item.key}
-            selected={item.key === selectedKey}
+            selected={selectedKey === item.key}
             innerDivStyle={{ padding: '0px 16px 0px 52px' }}
             onClick={event => this.handleClick(event, item.key)}
           >
@@ -208,8 +218,10 @@ class Sidebar extends Component {
                 selected={selectedKey === 'support'}
                 onClick={event => this.handleClick(event, 'support')}
               >
-                <i className="material-icons" style={{ marginRight: '15px' }}>headset_mic</i>
-                {intl.formatMessage({ id: 'sidebar.support' })}
+                <Badge color="secondary" variant="dot">
+                  <i className="material-icons" style={{ marginRight: '15px' }}>headset_mic</i>
+                  {intl.formatMessage({ id: 'sidebar.support' })}
+                </Badge>
               </MenuItem>
               <MenuItem
                 style={{ fontSize: 13 }}
