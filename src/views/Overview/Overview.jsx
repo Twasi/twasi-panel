@@ -8,9 +8,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import TooltipM from '@material-ui/core/Tooltip';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import CardContent from '@material-ui/core/CardContent';
+import Card from '@material-ui/core/Card';
 import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
 
 import Kreygasm from '../common/resources/Kreygasm.png';
@@ -134,69 +138,85 @@ class Overview extends Component {
                 </span>
               </h4>
               <small>Hier findest du die Statistiken deines letzten, von Twasi erfassten Streams.</small>
-              <Grid style={{ marginTop: '15px' }} container spacing={16}>
-                <Grid item lg={6}>
-                  <TextField
-                    placeholder="Ich spiele ein mega cooles Spiel!"
-                    label="Titel"
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                </Grid>
-                <Grid item lg={6}>
-                  <TextField
-                    placeholder="Mega cooles Spiel"
-                    label="Spiel"
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                </Grid>
-              </Grid>
+              <Card className="pluginCard" style={{ marginTop: '15px' }}>
+                <CardContent>
+                  <Grid container spacing={16}>
+                    <Grid item lg={6}>
+                      <TextField
+                        placeholder="Ich spiele ein mega cooles Spiel!"
+                        label="Titel"
+                        fullWidth
+                        margin="normal"
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="send-support-message"
+                              >
+                                <Icon>
+                                  save
+                                </Icon>
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Grid>
+                    <Grid item lg={6}>
+                      <TextField
+                        placeholder="Mega cooles Spiel"
+                        label="Spiel"
+                        fullWidth
+                        margin="normal"
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="send-support-message"
+                              >
+                                <Icon>
+                                  save
+                                </Icon>
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
             </Paper>
           </Col>
         </Row>
         <Row>
           <Col sm={9}>
             <Paper className="pageContainer" style={{ height: '250px', paddingRight: '0px', paddingLeft: '0px' }}>
-              <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
+              <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
                 Zuschauerverlauf
               </h4>
-
+              <small style={{ paddingLeft: '23px' }}>Hier siehst du den Zuschauerverlauf deines aktuellen/letzten Streams.</small>
               <ResponsiveContainer height='100%' width='100%'>
-                <AreaChart margin={{ top: 50, right: 0, left: 0, bottom: 0 }} data={data}>
-                  {/*
-                  <ReferenceArea x1={0} x2={20} y1={985} y2={1000} fill="#0088FE" fillOpacity="1">
-                    <Label value="Minecraft" fill="#b7b7b7" offset={10} position="top" />
-                  </ReferenceArea>
-                  <ReferenceArea x1={0} x2={20} y1={0} y2={1000} fill="#0088FE" fillOpacity=".1"/>
-                  <ReferenceArea x1={20} x2={50} y1={985} y2={1000} fill="#00C49F" fillOpacity="1">
-                    <Label value="Grand Theft Auto V" fill="#b7b7b7" offset={10} position="top" />
-                  </ReferenceArea>
-                  <ReferenceArea x1={20} x2={50} y1={0} y2={1000} fill="#00C49F" fillOpacity=".1"/>
-                  <ReferenceArea x1={50} x2={98} y1={985} y2={1000} fill="#FFBB28" fillOpacity="1">
-                    <Label value="Red Dead Redemption 2" fill="#b7b7b7" offset={10} position="top" />
-                  </ReferenceArea>
-                  <ReferenceArea x1={50} x2={98} y1={0} y2={1000} fill="#FFBB28" fillOpacity=".1"/>
-                  */}
+                <AreaChart margin={{ top: 25, right: 0, left: 0, bottom: 23 }} data={data}>
                   <Tooltip/>
                   <Area type='monotone' dataKey='earn' strokeWidth='0' fill={COLORS[0]} fillOpacity="1" />
                 </AreaChart>
               </ResponsiveContainer>
-
             </Paper>
             <Row>
               <Col sm={6}>
                 <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
-                  <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
+                  <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
                     Genutzte Befehle
                   </h4>
+                  <small style={{ paddingLeft: '23px' }}>Häufigkeit der genutzten Befehle</small>
                   <ResponsiveContainer height='100%' width='100%'>
                     <PieChart width={730} height={250}
-                        margin={{top: 15, right: 0, left: 0, bottom: 0}}>
+                        margin={{top: 15, right: 0, left: 0, bottom: 23}}>
                       <Tooltip/>
                       <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" fillOpacity="1">
                       {
@@ -209,9 +229,10 @@ class Overview extends Component {
               </Col>
               <Col sm={6}>
                 <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
-                  <h4 className="pageContainerTitle" style={{ textAlign: 'center' }}>
+                  <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
                     Gespielte Spiele
                   </h4>
+                  <small style={{ paddingLeft: '23px' }}>Deine gespielten Spiele</small>
                   <ResponsiveContainer height='100%' width='100%'>
                     <BarChart backgroundOpacity=".1" width={600} height={300} data={data02}
                         margin={{top: 15, right: 0, left: 0, bottom: 0}}>
@@ -232,154 +253,162 @@ class Overview extends Component {
                 <List dense style={{ padding: '0px' }}>
                   <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
                     <ListItem>
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">1564184945</h4>
-                        <small>Stream ID</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="Jetzt Live" placement="top">
-                      <Icon
-                        color="secondary"
-                        style={{ position: 'absolute', right: '17px', fontSize: '15px' }}
-                      >
-                        brightness_1
-                      </Icon>
-                    </TooltipM>
+                      <Row>
+                        <Col sm={12}>
+                          <h4 className="pageContainerTitle">1564184945</h4>
+                          <small>Stream ID</small>
+                        </Col>
+                      </Row>
+                      <TooltipM title="Jetzt Live" placement="right">
+                        <Icon
+                          color="secondary"
+                          style={{ position: 'absolute', right: '17px', fontSize: '15px' }}
+                        >
+                          brightness_1
+                        </Icon>
+                      </TooltipM>
                     </ListItem>
-
-                    <ListItem className="darkershade">
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">13:37</h4>
-                        <small>Dauer</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="+ 5:12" placement="top">
-                      <Icon
-                        color="primary"
-                        style={{ position: 'absolute', right: '13px' }}
-                      >
-                        trending_up
-                      </Icon>
-                    </TooltipM>
-                    </ListItem>
-
+                    <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
+                      <CardContent style={{ padding: '0px' }}>
+                        <ListItem>
+                          <Row>
+                            <Col sm={12}>
+                              <h4 className="pageContainerTitle">13:37</h4>
+                              <small>Dauer</small>
+                            </Col>
+                          </Row>
+                          <TooltipM title="+ 5:12" placement="right">
+                            <Icon
+                              color="primary"
+                              style={{ position: 'absolute', right: '13px' }}
+                            >
+                              trending_up
+                            </Icon>
+                          </TooltipM>
+                        </ListItem>
+                      </CardContent>
+                    </Card>
                     <ListItem>
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">1.243</h4>
-                        <small>Chatnachrichten</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="+ 125" placement="top">
-                      <Icon
-                        color="primary"
-                        style={{ position: 'absolute', right: '13px' }}
-                      >
-                        trending_up
-                      </Icon>
-                    </TooltipM>
+                      <Row>
+                        <Col sm={12}>
+                          <h4 className="pageContainerTitle">1.243</h4>
+                          <small>Chatnachrichten</small>
+                        </Col>
+                      </Row>
+                      <TooltipM title="+ 125" placement="right">
+                        <Icon
+                          color="primary"
+                          style={{ position: 'absolute', right: '13px' }}
+                        >
+                          trending_up
+                        </Icon>
+                      </TooltipM>
                     </ListItem>
-
-                    <ListItem className="darkershade">
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">354</h4>
-                        <small>Befehle ausgeführt</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="- 5" placement="top">
-                      <Icon
-                        color="secondary"
-                        style={{ position: 'absolute', right: '13px' }}
-                      >
-                        trending_down
-                      </Icon>
-                    </TooltipM>
-                    </ListItem>
-
+                    <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
+                      <CardContent style={{ padding: '0px' }}>
+                        <ListItem>
+                          <Row>
+                            <Col sm={12}>
+                              <h4 className="pageContainerTitle">354</h4>
+                              <small>Befehle ausgeführt</small>
+                            </Col>
+                          </Row>
+                          <TooltipM title="- 5" placement="right">
+                            <Icon
+                              color="secondary"
+                              style={{ position: 'absolute', right: '13px' }}
+                            >
+                              trending_down
+                            </Icon>
+                          </TooltipM>
+                        </ListItem>
+                      </CardContent>
+                    </Card>
                     <ListItem>
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">54</h4>
-                        <small>Follower +</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="+- 0" placement="top">
-                      <Icon
-                        style={{ position: 'absolute', right: '13px', color: '#da7720' }}
-                      >
-                        trending_flat
-                      </Icon>
-                    </TooltipM>
+                      <Row>
+                        <Col sm={12}>
+                          <h4 className="pageContainerTitle">54</h4>
+                          <small>Follower +</small>
+                        </Col>
+                      </Row>
+                      <TooltipM title="+- 0" placement="right">
+                        <Icon
+                          style={{ position: 'absolute', right: '13px', color: '#da7720' }}
+                        >
+                          trending_flat
+                        </Icon>
+                      </TooltipM>
                     </ListItem>
-
-                    <ListItem className="darkershade">
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">263</h4>
-                        <small>Aufrufe +</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="+- 0" placement="top">
-                      <Icon
-                        style={{ position: 'absolute', right: '13px', color: '#da7720' }}
-                      >
-                        trending_flat
-                      </Icon>
-                    </TooltipM>
-                    </ListItem>
-
+                    <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
+                      <CardContent style={{ padding: '0px' }}>
+                        <ListItem>
+                          <Row>
+                            <Col sm={12}>
+                              <h4 className="pageContainerTitle">263</h4>
+                              <small>Aufrufe +</small>
+                            </Col>
+                          </Row>
+                          <TooltipM title="+- 0" placement="right">
+                            <Icon
+                              style={{ position: 'absolute', right: '13px', color: '#da7720' }}
+                            >
+                              trending_flat
+                            </Icon>
+                          </TooltipM>
+                        </ListItem>
+                      </CardContent>
+                    </Card>
                     <ListItem>
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">32</h4>
-                        <small>Zuschauer Maximum</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="+ 7" placement="top">
-                      <Icon
-                        color="primary"
-                        style={{ position: 'absolute', right: '13px' }}
-                      >
-                        trending_up
-                      </Icon>
-                    </TooltipM>
+                      <Row>
+                        <Col sm={12}>
+                          <h4 className="pageContainerTitle">32</h4>
+                          <small>Zuschauer Maximum</small>
+                        </Col>
+                      </Row>
+                      <TooltipM title="+ 7" placement="right">
+                        <Icon
+                          color="primary"
+                          style={{ position: 'absolute', right: '13px' }}
+                        >
+                          trending_up
+                        </Icon>
+                      </TooltipM>
                     </ListItem>
-
-                    <ListItem className="darkershade">
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">25</h4>
-                        <small>Zuschauer Durchschnitt</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="- 2" placement="top">
-                      <Icon
-                        color="secondary"
-                        style={{ position: 'absolute', right: '13px' }}
-                      >
-                        trending_down
-                      </Icon>
-                    </TooltipM>
-                    </ListItem>
-
+                    <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
+                      <CardContent style={{ padding: '0px' }}>
+                        <ListItem>
+                          <Row>
+                            <Col sm={12}>
+                              <h4 className="pageContainerTitle">25</h4>
+                              <small>Zuschauer Durchschnitt</small>
+                            </Col>
+                          </Row>
+                          <TooltipM title="- 2" placement="right">
+                            <Icon
+                              color="secondary"
+                              style={{ position: 'absolute', right: '13px' }}
+                            >
+                              trending_down
+                            </Icon>
+                          </TooltipM>
+                        </ListItem>
+                      </CardContent>
+                    </Card>
                     <ListItem>
-                    <Row>
-                      <Col sm={12}>
-                        <h4 className="pageContainerTitle">197</h4>
-                        <small>Individuelle Zuschauer</small>
-                      </Col>
-                    </Row>
-                    <TooltipM title="- 50" placement="top">
-                      <Icon
-                        color="secondary"
-                        style={{ position: 'absolute', right: '13px' }}
-                      >
-                        trending_down
-                      </Icon>
-                    </TooltipM>
+                      <Row>
+                        <Col sm={12}>
+                          <h4 className="pageContainerTitle">197</h4>
+                          <small>Individuelle Zuschauer</small>
+                        </Col>
+                      </Row>
+                      <TooltipM title="- 50" placement="right">
+                        <Icon
+                          color="secondary"
+                          style={{ position: 'absolute', right: '13px' }}
+                        >
+                          trending_down
+                        </Icon>
+                      </TooltipM>
                     </ListItem>
                   </Paper>
                 </List>
