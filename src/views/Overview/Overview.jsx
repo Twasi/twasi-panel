@@ -139,11 +139,10 @@ class Overview extends Component {
               </h4>
               <small>Hier findest du die Statistiken deines letzten, von Twasi erfassten Streams.</small>
               <Card className="pluginCard" style={{ marginTop: '15px' }}>
-                <CardContent>
+                <CardContent style={{ padding: '24px' }}>
                   <Grid container spacing={16}>
-                    <Grid item lg={6}>
+                    <Grid item lg={6} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                       <TextField
-                        placeholder="Ich spiele ein mega cooles Spiel!"
                         label="Titel"
                         fullWidth
                         margin="normal"
@@ -164,9 +163,8 @@ class Overview extends Component {
                         }}
                       />
                     </Grid>
-                    <Grid item lg={6}>
+                    <Grid item lg={6} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                       <TextField
-                        placeholder="Mega cooles Spiel"
                         label="Spiel"
                         fullWidth
                         margin="normal"
