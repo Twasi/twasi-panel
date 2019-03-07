@@ -1,44 +1,44 @@
-.twasi-dev {
+.twasi-darkblue {
   -webkit-user-select: none;
   user-select: none;
 }
-.twasi-dev img {
+.twasi-darkblue img {
   pointer-events: none;
 }
-.twasi-dev .translucentBox {
+.twasi-darkblue .translucentBox {
   background: #3f51b5;
 }
-.twasi-dev .headerMenuItem {
+.twasi-darkblue .headerMenuItem {
   background: #3f51b5;
 }
-.twasi-dev .TableRow {
+.twasi-darkblue .TableRow {
   border-bottom: 3px solid #3f51b5 !important;
 }
-.twasi-dev .bannerHeader {
+.twasi-darkblue .bannerHeader {
   background-color: #171d2f;
   border-top: 5px solid #3f51b5;
 }
-.twasi-dev .themeIcon:hover{
+.twasi-darkblue .themeIcon:hover{
   background: -webkit-linear-gradient(135deg, #3f51b5, #3f51b5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.twasi-dev a {
+.twasi-darkblue a {
   color: #3f51b5 !important;
 }
-.twasi-dev .urlshortener_arrow {
+.twasi-darkblue .urlshortener_arrow {
   color: #3f51b5;
 }
-.twasi-dev .chatBubbleSelf {
+.twasi-darkblue .chatBubbleSelf {
   background-color: #202940;
   padding: 10px;
   border-radius: 4px;
 }
-.twasi-dev .chatBubbleSupport {
+.twasi-darkblue .chatBubbleSupport {
   background-color: #34456b;
   padding: 10px;
   border-radius: 4px;
 }
-.twasi-dev .tooltipAccountSwitch {
+.twasi-darkblue .tooltipAccountSwitch {
   background-color: #00aeae;
 }

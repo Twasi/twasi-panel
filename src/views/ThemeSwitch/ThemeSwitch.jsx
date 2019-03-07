@@ -40,8 +40,8 @@ const themes = [{
   primaryColor: '#00aeae',
   secondaryColor: '#e53935'
 }, {
-  name: 'Twasi Dev Dark',
-  key: 'twasi-dev',
+  name: 'Twasi Dark Blue',
+  key: 'twasi-darkblue',
   backgroundColor: '#1a2035',
   paperColor: '#202940',
   cardColor: '#232f4a',

@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import './twasi-dev.css';
+import './twasi-darkblue.css';
 
 export default createMuiTheme({
   palette: {

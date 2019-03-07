@@ -2,3 +2,22 @@
   height: 18px !important;
   border-radius: 4px !important;
 }
+.chatName {
+  margin-bottom: 5px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  opacity: .7 !important;
+}
+.chatTime {
+  margin-top: 5px !important;
+  font-size: 12px !important;
+  opacity: .7 !important;
+  position: absolute !important;
+  right: 10px !important;
+  bottom: 5px !important;
+}
+.chatBubbleTicketClosed {
+  background-color: #3f3c46;
+  padding: 10px;
+  border-radius: 4px;
+}

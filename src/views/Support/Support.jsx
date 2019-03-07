@@ -84,7 +84,7 @@ class Support extends Component {
                   <Typography><h4 className="pageContainerTitle">Erstellt am</h4><small>16.01.2019 - 09:45</small></Typography>
                 </Grid>
                 <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Letzte Antwort</h4><small>16.01.2019 - 12:15</small></Typography>
+                  <Typography><h4 className="pageContainerTitle">Erledigt am</h4><small>-</small></Typography>
                 </Grid>
                 <Grid item xs={3}>
                   <Typography><h4 className="pageContainerTitle">Status</h4><Chip className="statusBadgeSupport" color="primary" label="offen" /></Typography>
@@ -99,11 +99,12 @@ class Support extends Component {
                   </Grid>
                     <Grid item xs={8}>
                       <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSelf">
-                        Wie funktioniert die Zeitmaschine bei Twasi?
-                        Ich habe noch keine Möglichkeit gefunden sie zum laufen zu bringen...
-                        Muss ich dafür ein Ticket erstellen oder antwortet ihr hier eh nicht drauf?
-                        Habe gehört hinter Twasi sitzt ein voll nettes Team, deswegen dachte ich mir, machste mal ein Ticket auf.
-                        <Typography style={{ marginTop: '5px', fontSize: '12px', opacity: '.7', position: 'absolute', right: '10px', bottom: '5px' }}>13:37</Typography>
+                        <Typography className='chatName'>Frage zu einer Funktion</Typography>
+                          Wie funktioniert die Zeitmaschine bei Twasi?
+                          Ich habe noch keine Möglichkeit gefunden sie zum laufen zu bringen...
+                          Muss ich dafür ein Ticket erstellen oder antwortet ihr hier eh nicht drauf?
+                          Habe gehört hinter Twasi sitzt ein voll nettes Team, deswegen dachte ich mir, machste mal ein Ticket auf.
+                        <Typography className='chatTime'>13:37</Typography>
                       </Typography>
                     </Grid>
                   <Grid item xs={3} />
@@ -113,11 +114,45 @@ class Support extends Component {
                   <Grid item xs={3} />
                     <Grid item xs={8}>
                       <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSupport">
-                        <Typography style={{ marginBottom: '5px', fontSize: '16px', fontWeight: '600', opacity: '.7' }}>{userName}</Typography>
-                        Du musst solange auf den Grün/Blau blinkenden Knopf drücken, bis er nichtmehr blinkt.
-                        danach gehst du zum nächsten Supermarkt,
-                        besorgst dir eine PSC und spendest sie an einen wohltätigen Zweck.
-                        <Typography style={{ marginTop: '5px', fontSize: '12px', opacity: '.7', position: 'absolute', right: '10px', bottom: '5px' }}>13:37</Typography>
+                        <Typography className='chatName'>{userName}</Typography>
+                          Du musst solange auf den Grün/Blau blinkenden Knopf drücken, bis er nichtmehr blinkt.
+                          danach gehst du zum nächsten Supermarkt,
+                          besorgst dir eine PSC und spendest sie an einen wohltätigen Zweck deiner Wahl.
+                        <Typography className='chatTime'>13:37</Typography>
+                      </Typography>
+                    </Grid>
+                  <Grid item>
+                    <Avatar>
+                      <img width="45px" height="45px" src={avatar} alt="Avatar" />
+                    </Avatar>
+                  </Grid>
+                </Grid>
+                <br />
+                <Grid container spacing={24}>
+                  <Grid item>
+                    <Avatar>Du</Avatar>
+                  </Grid>
+                    <Grid item xs={8}>
+                      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSelf">
+                        <Typography className='chatName'>Frage zu einer Funktion</Typography>
+                          Alles klar, danke für den schnellen und hilfreichen Support! Ihr seid die besten! ♥
+                          Ich liebe euer Supportsystem!
+                        <Typography className='chatTime'>13:37</Typography>
+                      </Typography>
+                    </Grid>
+                  <Grid item xs={3} />
+                </Grid>
+                <br />
+                <Grid container spacing={24}>
+                  <Grid item xs={3} />
+                    <Grid item xs={8}>
+                      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSupport">
+                        <Typography className='chatName'>{userName}</Typography>
+                          Kein Problem, dafür sind wir ja da!
+                        <Typography className='chatTime'>13:37</Typography>
+                      </Typography>
+                      <Typography style={{ position: 'relative', marginTop: '5px' }} className="chatBubbleSupport">
+                        {userName} hat das Ticket um 13:37 geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
                       </Typography>
                     </Grid>
                   <Grid item>
@@ -128,7 +163,7 @@ class Support extends Component {
                 </Grid>
                 <br />
                 <TextField
-                  label="Eine Antwort hinzufügen"
+                  label="Eine Nachricht hinzufügen"
                   fullWidth
                   multiline
                   variant="outlined"
