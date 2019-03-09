@@ -14,6 +14,7 @@ import Icon from '@material-ui/core/Icon';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Link from '@material-ui/core/Link';
 
 import DummyLoadingPage from '../DummyLoadingPage';
 
@@ -42,7 +43,7 @@ class Welcome extends Component {
             <h2>Willkommen zur geschlossenen Beta von Twasi 2</h2>
             <p>
               Hier kannst du deinen persönlichen Beta Key einlösen, um an der geschlossenen Beta von Twasi 2 teilzunehmen.<br />
-              Wie du an einen Beta Code kommst erfährst du <a href="#">hier</a>.<br /><br /><br />
+              Wie du an einen Beta Code kommst erfährst du <Link color="primary" href="/">hier</Link>.<br /><br /><br />
               <TextField
                 label="Dein Beta Key"
                 multiline
@@ -70,7 +71,7 @@ class Welcome extends Component {
                 control={
                   <Checkbox color="primary" value="checkedA" />
                 }
-                label={<Typography>Ich habe die <a href="#">Nutzungsbedingungen</a> gelesen und akzeptiere diese.</Typography>}
+                label={<Typography>Ich habe die <Link color="primary" href="/">Nutzungsbedingungen</Link> gelesen und akzeptiere diese.</Typography>}
               />
               <br />
               <br />
