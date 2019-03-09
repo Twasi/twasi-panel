@@ -15,6 +15,13 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from '@material-ui/core/Link';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableHead from '@material-ui/core/TableHead';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 import DummyLoadingPage from '../DummyLoadingPage';
 
@@ -22,6 +29,17 @@ import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 import { pluginsOperations } from '../../state/plugins';
 
 import './_style.css';
+
+let id = 0;
+function createData(name, description) {
+  id += 1;
+  return { name, description };
+}
+
+const rows = [
+  createData( 'Befehle', 'Ermöglicht das Hinzufügen, Entfernen und Bearbeiten von Textbefehlen im Chat.'),
+  createData( 'Giveaways', 'Funktionen, um ein Giveaway zu veranstallten.'),
+];
 
 class Welcome extends Component {
   state = {
@@ -39,47 +57,50 @@ class Welcome extends Component {
     switch (this.state.stepIndex) {
       case 0:
         return (
-          <div className="setupContent">
+          <div>
             <h2>Willkommen zur geschlossenen Beta von Twasi 2</h2>
-            <p>
-              Hier kannst du deinen persönlichen Beta Key einlösen, um an der geschlossenen Beta von Twasi 2 teilzunehmen.<br />
-              Wie du an einen Beta Code kommst erfährst du <Link color="primary" href="/">hier</Link>.<br /><br /><br />
-              <TextField
-                label="Dein Beta Key"
-                multiline
-                fullWidth
-                variant="outlined"
-                InputLabelProps={{
-                  shrink: true
-                }}
-                placeholder="tWiTcH"
-                // Falls gültig color auf primary und Text abändern.
-                helperText={<Typography color="secondary">Dieser Key ist ungültig.</Typography>}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Icon>
-                        vpn_key
-                      </Icon>
-                    </InputAdornment>
-                  )
-                }}
-              />
-              <br />
-              <br />
-              <FormControlLabel
-                control={
-                  <Checkbox color="primary" value="checkedA" />
-                }
-                label={<Typography>Ich habe die <Link color="primary" href="/">Nutzungsbedingungen</Link> gelesen und akzeptiere diese.</Typography>}
-              />
-              <br />
-              <br />
-              <br />
-              Bitte <b>UNBEDINGT BEACHTEN</b>, dass dies eine sehr Frühe Version ist und viele Funktionen noch nicht bzw. nur bedingt funktionstüchtig sind.<br />
-              Es werden fast täglich neue Elemente und Funktionen hinzugefügt.<br /><br />
-              Wir übernehmen keine Gewähr für verloren gegangene Daten während der neuen Versionen.
-            </p>
+              <Typography>
+                Hier kannst du deinen persönlichen Beta Key einlösen, um an der geschlossenen Beta von Twasi 2 teilzunehmen.<br />
+                Wie du an einen Beta Code kommst erfährst du <Link color="primary" href="/">hier</Link>.
+              </Typography>
+              <Card className="pluginCard" style={{ marginTop: '25px' }}>
+                <CardContent style={{ padding: '24px', marginBottom: '25px' }}>
+                  <TextField
+                    style={{ marginBottom: '25px' }}
+                    label="Dein Beta Key"
+                    multiline
+                    fullWidth
+                    variant="outlined"
+                    InputLabelProps={{
+                      shrink: true
+                    }}
+                    placeholder="tWiTcH"
+                    // Falls gültig color auf primary und Text abändern.
+                    helperText={<Typography color="secondary">Dieser Key ist ungültig.</Typography>}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <Icon>
+                            vpn_key
+                          </Icon>
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                  <FormControlLabel
+                    style={{ margin: '0px' }}
+                    control={
+                      <Checkbox color="primary" value="checkedA" />
+                    }
+                    label={<Typography>Ich habe die <Link color="primary" href="/">Nutzungsbedingungen</Link> gelesen und akzeptiere diese.</Typography>}
+                  />
+                </CardContent>
+              </Card>
+              <Typography>
+                Bitte <b>UNBEDINGT BEACHTEN</b>, dass dies eine sehr frühe Version ist und viele Funktionen noch nicht bzw. nur bedingt funktionieren.<br />
+                Es werden regelmäßig neue Elemente und Funktionen hinzugefügt.<br /><br />
+                Wir übernehmen keine Gewähr für verloren gegangene Daten während der neuen Versionen.
+              </Typography>
 
             {/*
               Wir freuen uns, dass du dich für Twasi als Chatbot entschieden
@@ -104,9 +125,9 @@ class Welcome extends Component {
         );
       case 1:
         return (
-          <div className="setupContent">
-            <h1>Plugins</h1>
-            <p>
+          <div>
+            <h2>Plugins</h2>
+            <Typography>
               Hier kannst du auswählen, welche Plugins du aktiviert bzw.
               deaktiviert haben möchtest.<br /> Plugins beinhalten den
               kompletten Funktionsumfang von Twasi.<br />
@@ -115,9 +136,44 @@ class Welcome extends Component {
               <br />
               Alle Plugins lassen sich auch im nachhinein noch aktivieren,
               deaktivieren und einstellen.
-            </p>
-            <Divider />
-            <br />
+            </Typography>
+            <Table style={{ marginTop: '25px' }}>
+              <TableHead>
+                <TableRow className="TableRow">
+                  <TableCell>
+                    Plugin
+                  </TableCell>
+                  <TableCell>
+                    Beschreibung
+                  </TableCell>
+                  <TableCell>
+                    Installieren / Deinstallieren
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map(row => {
+                  return (
+                  <TableRow>
+                    <TableCell>
+                      {row.name}
+                    </TableCell>
+                    <TableCell>
+                      {row.description}
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                      >
+                        installieren
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
           </div>
         );
       case 2:
@@ -157,17 +213,17 @@ class Welcome extends Component {
             <Paper className="pageContainer">
               <Stepper activeStep={stepIndex}>
                 <Step>
-                  <StepLabel style={{ fontWeight: 'bold' }}>
+                  <StepLabel>
                       Willkommen
                   </StepLabel>
                 </Step>
                 <Step>
-                  <StepLabel style={{ fontWeight: 'bold' }}>
-                      Plugins aktivieren
+                  <StepLabel>
+                      Plugins
                   </StepLabel>
                 </Step>
                 <Step>
-                  <StepLabel style={{ fontWeight: 'bold' }}>Fertig</StepLabel>
+                  <StepLabel>Fertig</StepLabel>
                 </Step>
               </Stepper>
               <div style={contentStyle}>
@@ -199,7 +255,6 @@ class Welcome extends Component {
                           Zurück
                       </Button>
                       <Button
-                        disabled
                         color="primary"
                         variant="contained"
                         onClick={this.handleNext}
@@ -211,7 +266,7 @@ class Welcome extends Component {
                             case 1:
                               return 'Weiter';
                             case 2:
-                              return 'Fertig';
+                              return 'Zum Panel';
                             default:
                               return null;
                           }
