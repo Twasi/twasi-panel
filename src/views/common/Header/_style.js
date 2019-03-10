@@ -24,14 +24,15 @@ export const getLogoStyle = () => ({
 
 export const getLogoDescriptionStyle = () => ({
   marginLeft: 10,
-  float: 'left'
+  float: 'left',
+  lineHeight: '25px'
 });
 
 export const getRankStyle = () => ({
   display: 'block',
   fontWeight: 400,
   fontSize: 18,
-  lineHeight: '100%',
+  lineHeight: '25px',
   marginTop: -3,
   color: 'rgba(255, 255, 255, 0.6)'
 });
