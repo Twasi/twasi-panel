@@ -55,8 +55,7 @@ class Giveaways extends Component {
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">Giveaways</h4>
               <small>Erstelle ein neues Giveaway.</small>
-              <Divider className="marginDivider" />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Grid container spacing={16}>
                     <Grid item lg={3} md={12}>
@@ -221,12 +220,11 @@ class Giveaways extends Component {
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">Teilnehmer</h4>
               <small>Hier werden alle Teilnehmer des aktuellen Giveaways aufgelistet.</small>
-              <Divider className="marginDivider" />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="giveawayCard">
                   <Grid container spacing={0}>
                     <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <h5 className="pageContainerTitle">Blechkelle</h5>
+                      <Typography>Blechkelle</Typography>
                     </Grid>
                     <Grid item md={6} style={{ textAlign: 'center' }}>
                       <Chip
@@ -238,7 +236,7 @@ class Giveaways extends Component {
                   <br/>
                   <Grid container spacing={0}>
                     <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <h5 className="pageContainerTitle">Spendendose</h5>
+                      <Typography>Spendendose</Typography>
                     </Grid>
                     <Grid item md={6} style={{ textAlign: 'center' }}>
                       <Chip
@@ -250,7 +248,7 @@ class Giveaways extends Component {
                   <br/>
                   <Grid container spacing={0}>
                     <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <h5 className="pageContainerTitle">Mekalix</h5>
+                      <Typography>Mekalix</Typography>
                     </Grid>
                     <Grid item md={6} style={{ textAlign: 'center' }}>
                       <Chip

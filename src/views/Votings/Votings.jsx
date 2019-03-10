@@ -37,8 +37,7 @@ class Votings extends Component {
           <small>
             Verwalte deine Umfragen.
           </small>
-          <Divider className="marginDivider" />
-          <Card className="pluginCard">
+          <Card style={{ marginTop: '25px' }} className="pluginCard">
             <CardContent />
           </Card>
         </Paper>

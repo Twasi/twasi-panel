@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
+import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,6 +20,8 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
+import Chip from '@material-ui/core/Chip';
+import Grid from '@material-ui/core/Grid';
 
 import Rank from '../common/Rank';
 
@@ -62,8 +65,7 @@ class Profile extends Component {
               <small>
                 <FormattedMessage id="profile.your_data_subline" />
               </small>
-              <Divider className="marginDivider" />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Table>
                     <TableBody>
@@ -128,15 +130,8 @@ class Profile extends Component {
               <small>
                 <FormattedMessage id="profile.badges_subline" />
               </small>
-              <Divider className="marginDivider" />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
-                  <h4 className="pageContainerTitle">
-                    <FormattedMessage id="profile.badges_yourbadges" />
-                  </h4>
-                  <br />
-                  <Divider />
-                  <br />
                   <Tooltip title="Twasi Team" placement="top">
                     <IconButton>
                       <img
@@ -185,8 +180,7 @@ class Profile extends Component {
               <small>
                 <FormattedMessage id="profile.social_subline" />
               </small>
-              <Divider className="marginDivider" />
-              <Row>
+              <Row style={{ marginTop: '25px' }}>
                 <Col sm={6}>
                   <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                     <span
@@ -378,6 +372,28 @@ class Profile extends Component {
                   </div>
                 </Col>
               </Row>
+            </Paper>
+            <Paper className="pageContainer">
+              <h4 className="pageContainerTitle">
+                Eigener Bot-Account
+              </h4>
+              <small>
+                Hier kannst du einen eigenen Bot-Account mit Twasi verbinden.
+              </small>
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
+                <CardContent className="pluginCardContent">
+                  <Grid container spacing={0}>
+                    <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <Typography>Twasibot</Typography>
+                    </Grid>
+                    <Grid item md={6} style={{ textAlign: 'center' }}>
+                      <Button variant="contained" color="primary">
+                        Account verbinden
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
             </Paper>
           </Col>
         </Row>

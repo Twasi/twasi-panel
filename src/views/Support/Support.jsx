@@ -73,8 +73,7 @@ class Support extends Component {
           <small>
             Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
           </small>
-          <Divider className="marginDivider" />
-          <ExpansionPanel>
+          <ExpansionPanel style={{ marginTop: '25px' }}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Grid container spacing={24}>
                 <Grid item xs={3}>

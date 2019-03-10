@@ -57,8 +57,7 @@ class Urlshortener extends Component {
                 </span>
               </h4>
               <small>Kürze deine URL's um sie mit jedem zu teilen.</small>
-              <Divider className="marginDivider" />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <TextField
                     helperText="Freilassen für eine zufällige URL."
