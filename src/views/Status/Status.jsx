@@ -36,7 +36,6 @@ const Status = ({ status }) => {
             </small>
           </Grid>
         </Grid>
-        <Divider className="marginDivider"/>
         <StatusInfo />
         <br />
         <EventLog />

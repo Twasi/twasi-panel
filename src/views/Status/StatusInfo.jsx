@@ -28,7 +28,7 @@ class StatusInfo extends Component {
     );
 
     return (
-      <Card className="pluginCard">
+      <Card style={{ marginTop: '25px' }} className="pluginCard">
         <CardContent className="pluginCardContent">
           <Grid container spacing={16}>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
