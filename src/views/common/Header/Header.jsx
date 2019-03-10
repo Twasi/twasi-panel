@@ -7,6 +7,7 @@ import { authSelectors } from '../../../state/auth';
 import { AccountSwitchIcon } from '../../AccountSwitch';
 import { ThemeSwitchIcon } from '../../ThemeSwitch';
 import { FeedbackIcon } from '../../Feedback';
+import Rank from '../Rank';
 import twasilogo from '../../common/resources/twasi_flat_white.svg';
 
 import {
@@ -25,7 +26,7 @@ const Header = ({ userName, rank, avatar }) => (
         <div style={getLogoDescriptionStyle()}>
           <span>
             {userName}
-            <small style={getRankStyle()}>{rank}</small>
+            <small style={getRankStyle()}><Rank /></small>
           </span>
         </div>
       </span>

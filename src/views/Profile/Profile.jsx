@@ -20,6 +20,8 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
 
+import Rank from '../common/Rank';
+
 import twitterlogo from '../common/resources/twitter.svg';
 import facebooklogo from '../common/resources/facebook.svg';
 import youtubelogo from '../common/resources/youtube.svg';
@@ -88,7 +90,7 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_rank" />
                         </TableCell>
                         <TableCell>
-                          <b>{this.props.user.rank}</b>
+                          <b><Rank /></b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
