@@ -22,6 +22,7 @@ import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
 import Chip from '@material-ui/core/Chip';
 import Grid from '@material-ui/core/Grid';
+import Fab from '@material-ui/core/Fab';
 
 import Rank from '../common/Rank';
 
@@ -32,15 +33,15 @@ import spotifylogo from '../common/resources/spotify.svg';
 import soundcloudlogo from '../common/resources/soundcloud.svg';
 import telegramlogo from '../common/resources/telegram.svg';
 
+import team_badge from '../common/resources/team_badge.svg';
+import beta_badge from '../common/resources/beta_badge.svg';
+import gc17_badge from '../common/resources/gamescom_badge_blue.svg';
+import gc18_badge from '../common/resources/gamescom_badge_blue18.svg';
+
 import { authSelectors } from '../../state/auth';
 import './_style.css';
 
 class Profile extends Component {
-  /* componentWillMount() {
-    const { verifyData } = this.props;
-    verifyData();
-  } */
-
   render() {
     return (
       <div className="pageContent">
@@ -133,40 +134,40 @@ class Profile extends Component {
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Tooltip title="Twasi Team" placement="top">
-                    <IconButton>
+                    <Fab size="medium" className="badgeButton">
                       <img
-                        src="https://twasi.net/public/img/badges/team_badge.svg"
+                        src={team_badge}
                         alt="Badge"
                         className="profileBadge"
                       />
-                    </IconButton>
+                    </Fab>
                   </Tooltip>
                   <Tooltip title="Twasi Beta" placement="top">
-                    <IconButton>
+                    <Fab size="medium" className="badgeButton">
                       <img
-                        src="https://twasi.net/public/img/badges/beta_badge.svg"
+                        src={beta_badge}
                         alt="Badge"
                         className="profileBadge"
                       />
-                    </IconButton>
+                    </Fab>
                   </Tooltip>
                   <Tooltip title="Gamescom 2017" placement="top">
-                    <IconButton>
+                    <Fab size="medium" className="badgeButton">
                       <img
-                        src="https://twasi.net/public/img/badges/gamescom_badge_blue.svg"
+                        src={gc17_badge}
                         alt="Badge"
                         className="profileBadge"
                       />
-                    </IconButton>
+                    </Fab>
                   </Tooltip>
                   <Tooltip title="Gamescom 2018" placement="top">
-                    <IconButton>
+                    <Fab size="medium" className="badgeButton">
                       <img
-                        src="https://twasi.net/public/img/badges/gamescom_badge_blue18.svg"
+                        src={gc18_badge}
                         alt="Badge"
                         className="profileBadge"
                       />
-                    </IconButton>
+                    </Fab>
                   </Tooltip>
                 </CardContent>
               </Card>

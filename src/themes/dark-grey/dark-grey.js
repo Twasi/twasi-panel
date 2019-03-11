@@ -114,6 +114,16 @@ export default createMuiTheme({
         }
       }
     },
+    MuiFab: {
+      root: {
+        boxShadow: 'none',
+        backgroundColor: '#313131',
+        '&:hover': {
+          boxShadow: 'none',
+          backgroundColor: '#212121'
+        }
+      }
+    },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       body: { // Name of the rule
         color: '#b7b7b7', // Some CSS

@@ -9,7 +9,10 @@
 }
 .profileBadge {
   height: 35px;
-  padding: 5px;
+  padding-top: 1px;
+}
+.badgeButton {
+  margin-right: 15px !important;
 }
 .selected {
   background-color: rgb(224, 224, 224);
