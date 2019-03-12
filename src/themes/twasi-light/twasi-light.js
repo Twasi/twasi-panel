@@ -128,8 +128,10 @@ export default createMuiTheme({
       body: { // Name of the rule
         color: '#636363', // Some CSS
         borderColor: 'transparent',
-        paddingTop: '15px',
-        paddingBottom: '15px'
+        padding: '16px'
+      },
+      root: {
+        padding: '16px'
       }
     },
     MuiTableRow: {

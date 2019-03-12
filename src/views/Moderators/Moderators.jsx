@@ -52,24 +52,32 @@ class Moderators extends Component {
               displaySelectAll={false}
               selectable={false}
             >
+              <TableRow>
+                <TableCell className="TableRow" rowSpan={2} style={{ verticalAlign: 'bottom' }}>Name</TableCell>
+                <TableCell className="TableRow" rowSpan={2} style={{ verticalAlign: 'bottom' }}>Zuletzt angemeldet</TableCell>
+                <TableCell align="center" className="TableRow" colSpan={5} style={{ verticalAlign: 'bottom', paddingBottom: '15px' }}>Berechtigungen</TableCell>
+                <TableCell className="TableRow" rowSpan={2} style={{ minWidth: '100px', verticalAlign: 'bottom' }}>Aktionen</TableCell>
+              </TableRow>
               <TableRow className="TableRow">
-                <TableCell>Name</TableCell>
-                <TableCell>Modden</TableCell>
-                <TableCell>Entmodden</TableCell>
-                <TableCell>Spiel/Titel bearbeiten</TableCell>
-                <TableCell>Befehle verwalten</TableCell>
-                <TableCell>Songrequests verwalten</TableCell>
-                <TableCell style={{ minWidth: '100px' }}>Aktionen</TableCell>
+                <TableCell align="center"><small>Panel Zugriff</small></TableCell>
+                <TableCell align="center"><small>Moderatoren</small></TableCell>
+                <TableCell align="center"><small>Spiel/Titel</small></TableCell>
+                <TableCell align="center"><small>Befehle</small></TableCell>
+                <TableCell align="center"><small>Songrequests</small></TableCell>
               </TableRow>
             </TableHead>
             <TableBody displayRowCheckbox={false}>
               <TableRow>
                 <TableCell>
                   <Chip
+                    color="primary"
                     label="Blechkelle"
                   />
                 </TableCell>
                 <TableCell>
+                  12.03.2019
+                </TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="secondary"
@@ -79,7 +87,7 @@ class Moderators extends Component {
                     <Icon style={{ color: '#ffffff' }}>close</Icon>
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="secondary"
@@ -89,7 +97,7 @@ class Moderators extends Component {
                     <Icon style={{ color: '#ffffff' }}>close</Icon>
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="secondary"
@@ -99,7 +107,7 @@ class Moderators extends Component {
                     <Icon style={{ color: '#ffffff' }}>close</Icon>
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="secondary"
@@ -109,7 +117,7 @@ class Moderators extends Component {
                     <Icon style={{ color: '#ffffff' }}>close</Icon>
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="secondary"
@@ -128,10 +136,14 @@ class Moderators extends Component {
               <TableRow>
                 <TableCell>
                   <Chip
-                    label="Spendendose"
+                    color="primary"
+                    label="FromRadioWaveToGammaRay"
                   />
                 </TableCell>
                 <TableCell>
+                  12.03.2019
+                </TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="primary"
@@ -141,7 +153,7 @@ class Moderators extends Component {
                     <Icon style={{ color: '#ffffff' }}>check</Icon>
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="primary"
@@ -151,7 +163,7 @@ class Moderators extends Component {
                     <Icon style={{ color: '#ffffff' }}>check</Icon>
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="primary"
@@ -161,7 +173,7 @@ class Moderators extends Component {
                     <Icon style={{ color: '#ffffff' }}>check</Icon>
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="primary"
@@ -171,7 +183,7 @@ class Moderators extends Component {
                     <Icon style={{ color: '#ffffff' }}>check</Icon>
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   <Button
                     variant="fab"
                     color="primary"
