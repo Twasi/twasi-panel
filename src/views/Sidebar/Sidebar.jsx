@@ -93,6 +93,13 @@ class Sidebar extends Component {
         shown: 'plugins/giveaways'
       },
       {
+        key: 'quotes',
+        path: '/quotes',
+        icon: 'format_quote',
+        name: 'sidebar.quotes',
+        shown: 'all'
+      },
+      {
         key: 'votings',
         path: '/votings',
         icon: 'notes',

@@ -1,6 +1,10 @@
 export default {
   // General
   'common.save': 'Save',
+  'common.refresh': 'Refresh',
+  'common.actions': 'Actions',
+  'common.delete': 'Delete',
+  'common.edit': 'Edit',
 
   // Welcome
   'welcome.headline': 'Welcome to Twasi',
@@ -20,6 +24,7 @@ export default {
   'sidebar.logout': 'Logout',
   'sidebar.urlshortener': 'URL Shortener',
   'sidebar.giveaways': 'Giveaways',
+  'sidebar.quotes': 'Quotes',
   'sidebar.votings': 'Votings',
   'sidebar.support': 'Support',
   'sidebar.navigation_headline': 'Navigation',
@@ -103,6 +108,14 @@ export default {
   'commands.new_command.mods': 'Moderators or higher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Save Command',
+
+  // Quotes
+  'quotes.title': 'Your Quotes',
+  'quotes.subtitle': 'Here you have the ability to manage your Quotes.',
+  'quotes.game': 'Game',
+  'quotes.time': 'Date/Time',
+  'quotes.quote': 'Quote',
+  'quotes.post': 'Post Quote in Chat',
 
   // Timers
   'timers.title': 'Your Timers',

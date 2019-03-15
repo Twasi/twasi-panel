@@ -136,7 +136,7 @@ class Overview extends Component {
                 <span style={{ float: 'right' }}>
                   <Button variant="contained" color="primary">
                     <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                    Aktualisieren
+                    <FormattedMessage id="common.refresh" />
                   </Button>
                 </span>
               </h4>

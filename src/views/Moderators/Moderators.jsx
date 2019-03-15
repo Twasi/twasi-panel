@@ -34,7 +34,7 @@ class Moderators extends Component {
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
                 <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                Aktualisieren
+                <FormattedMessage id="common.refresh" />
               </Button>
               <Button variant="contained" color="primary">
                 Mod Hinzufügen
@@ -54,15 +54,15 @@ class Moderators extends Component {
             >
               <TableRow>
                 <TableCell className="TableRow" rowSpan={2} style={{ verticalAlign: 'bottom' }}>Name</TableCell>
-                <TableCell className="TableRow" rowSpan={2} style={{ verticalAlign: 'bottom' }}>Zuletzt angemeldet</TableCell>
-                <TableCell align="center" className="TableRow" colSpan={5} style={{ verticalAlign: 'bottom', paddingBottom: '15px' }}>Berechtigungen</TableCell>
-                <TableCell className="TableRow" rowSpan={2} style={{ minWidth: '100px', verticalAlign: 'bottom' }}>Aktionen</TableCell>
+                <TableCell align="center" className="TableRow" colSpan={6} style={{ verticalAlign: 'bottom', paddingBottom: '15px' }}>Berechtigungen</TableCell>
+                <TableCell className="TableRow" rowSpan={2} style={{ minWidth: '100px', verticalAlign: 'bottom' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
               <TableRow className="TableRow">
                 <TableCell align="center"><small>Panel Zugriff</small></TableCell>
                 <TableCell align="center"><small>Moderatoren</small></TableCell>
                 <TableCell align="center"><small>Spiel/Titel</small></TableCell>
                 <TableCell align="center"><small>Befehle</small></TableCell>
+                <TableCell align="center"><small>Timer</small></TableCell>
                 <TableCell align="center"><small>Songrequests</small></TableCell>
               </TableRow>
             </TableHead>
@@ -74,8 +74,15 @@ class Moderators extends Component {
                     label="Blechkelle"
                   />
                 </TableCell>
-                <TableCell>
-                  12.03.2019
+                <TableCell align="center">
+                  <Button
+                    variant="fab"
+                    color="secondary"
+                    className="noshadow"
+                    mini
+                  >
+                    <Icon style={{ color: '#ffffff' }}>close</Icon>
+                  </Button>
                 </TableCell>
                 <TableCell align="center">
                   <Button
@@ -140,8 +147,15 @@ class Moderators extends Component {
                     label="FromRadioWaveToGammaRay"
                   />
                 </TableCell>
-                <TableCell>
-                  12.03.2019
+                <TableCell align="center">
+                  <Button
+                    variant="fab"
+                    color="primary"
+                    className="noshadow"
+                    mini
+                  >
+                    <Icon style={{ color: '#ffffff' }}>check</Icon>
+                  </Button>
                 </TableCell>
                 <TableCell align="center">
                   <Button

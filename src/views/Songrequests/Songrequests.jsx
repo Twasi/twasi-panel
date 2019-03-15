@@ -166,7 +166,7 @@ class Songrequests extends React.Component {
                   <FormattedMessage id="songrequest.table_platform" />
                 </TableCell>
                 <TableCell>
-                  <FormattedMessage id="songrequest.table_actions" />
+                  <FormattedMessage id="common.actions" />
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -199,7 +199,7 @@ class Songrequests extends React.Component {
                       <Icon style={{ color: '#ffffff' }}>star</Icon>
                     </Button>
                   </Tooltip>{' '}
-                  <Tooltip title="Löschen" placement="top">
+                  <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
                     <Button
                       variant="fab"
                       className="noshadow"

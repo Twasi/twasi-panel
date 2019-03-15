@@ -12,14 +12,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Chip from '@material-ui/core/Chip';
-import TimersDialog from './TimersDialog';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
-const timers = [{name: '!hosts', output: 'Zeigt die Liste der Kanäle, die deinen Kanal derzeit hosten.', interval: '10'}];
+const quotes = [{game: 'Minecraft', time: '15.03.2019 - 10:32', quote: 'Niemand hat die Absicht eine Mauer zu errichten!'}];
 
-class Timers extends Component {
+class Quotes extends Component {
   constructor(props) {
     super(props);
 
@@ -33,47 +32,42 @@ class Timers extends Component {
   handleClose() {
     this.setState({ open: false });
   }
+  renderQuotes() {
 
-  renderTimers() {
-
-    return timers.map(timer => (
+    return quotes.map(quote => (
       <TableRow>
         <TableCell>
-          <b>{timer.name}</b>
+          <b>{quote.game}</b>
+        </TableCell>
+        <TableCell>
+          {quote.time}
         </TableCell>
         <TableCell
           style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
         >
-          {timer.output}
-        </TableCell>
-        <TableCell>{timer.interval} Minuten</TableCell>
-        <TableCell>
-          <Chip
-            label="Aktiviert"
-            color="primary"
-          />
+          {quote.quote}
         </TableCell>
         <TableCell>
-          <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-            <Button
-              variant="fab"
-              color="primary"
-              className="noshadow"
-              mini
-              aria-label="editTimer"
-            >
-              <Icon style={{ color: '#ffffff' }}>edit</Icon>
-            </Button>
-          </Tooltip>{' '}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
             <Button
               variant="fab"
               color="secondary"
               className="noshadow"
               mini
-              aria-label="deleteTimer"
+              aria-label="deleteQuote"
             >
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
+            </Button>
+          </Tooltip>{' '}
+          <Tooltip title={<FormattedMessage id="quotes.post" />} placement="top">
+            <Button
+              variant="fab"
+              color="primary"
+              className="noshadow"
+              mini
+              aria-label="postQuote"
+            >
+              <Icon style={{ color: '#ffffff' }}>send</Icon>
             </Button>
           </Tooltip>
         </TableCell>
@@ -88,42 +82,34 @@ class Timers extends Component {
           <Link color="inherit" href="/">
             <FormattedMessage id="sidebar.overview" />
           </Link>
-          <Typography color="textPrimary"><FormattedMessage id="sidebar.timers" /></Typography>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.quotes" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <h4 className="pageContainerTitle">
-            <FormattedMessage id="timers.title" />
+            <FormattedMessage id="quotes.title" />
             <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
+              <Button variant="contained" color="primary">
                 <Icon style={{ marginRight: '5px' }}>cached</Icon>
                 <FormattedMessage id="common.refresh" />
               </Button>
-              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
-                <FormattedMessage id="timers.new_timer" />
-              </Button>
-              <TimersDialog
-                open={this.state.open}
-                onClose={this.handleClose}
-              />
             </span>
           </h4>
           <small>
-            Hier hast du die Möglichkeit deine Timer zu verwalten.
+            <FormattedMessage id="quotes.subtitle" />
           </small>
         </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Table>
             <TableHead>
               <TableRow className="TableRow">
-                <TableCell>Timer</TableCell>
-                <TableCell>Ausgabe</TableCell>
-                <TableCell>Interval</TableCell>
-                <TableCell>Status</TableCell>
+                <TableCell><FormattedMessage id="quotes.game" /></TableCell>
+                <TableCell><FormattedMessage id="quotes.time" /></TableCell>
+                <TableCell><FormattedMessage id="quotes.quote" /></TableCell>
                 <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.renderTimers()}
+              {this.renderQuotes()}
             </TableBody>
           </Table>
         </Paper>
@@ -133,4 +119,4 @@ class Timers extends Component {
 }
 
 
-export default Timers;
+export default Quotes;

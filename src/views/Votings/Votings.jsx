@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-// import { Container, Row, Col } from 'react-grid-system';
+import Icon from '@material-ui/core/Icon';
 
 import './_style.css';
 
@@ -30,7 +30,8 @@ class Votings extends Component {
             Umfragen
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary">
-                Aktualisieren
+                <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                <FormattedMessage id="common.refresh" />
               </Button>
             </span>
           </h4>

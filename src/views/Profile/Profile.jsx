@@ -59,7 +59,7 @@ class Profile extends Component {
                 <span style={{ float: 'right' }}>
                   <Button variant="contained" color="primary">
                     <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                    <FormattedMessage id="profile.your_data_refreshbutton" />
+                    <FormattedMessage id="common.refresh" />
                   </Button>
                 </span>
               </h4>

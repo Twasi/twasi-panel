@@ -147,7 +147,7 @@ class Urlshortener extends Component {
                   <TableRow className="TableRow">
                     <TableCell>Shortlink</TableCell>
                     <TableCell>Weiterleitung</TableCell>
-                    <TableCell>Aktionen</TableCell>
+                    <TableCell><FormattedMessage id="common.actions" /></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody displayRowCheckbox={false}>
@@ -174,7 +174,7 @@ class Urlshortener extends Component {
                           <Icon style={{ color: '#ffffff' }}>edit</Icon>
                         </Button>
                       </Tooltip>{' '}
-                      <Tooltip title="Löschen" placement="top">
+                      <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
                         <Button
                           variant="fab"
                           className="noshadow"
@@ -199,7 +199,7 @@ class Urlshortener extends Component {
                       </a>
                     </TableCell>
                     <TableCell>
-                      <Tooltip title="Bearbeiten" placement="top">
+                      <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
                         <Button
                           variant="fab"
                           className="noshadow"
@@ -210,7 +210,7 @@ class Urlshortener extends Component {
                           <Icon style={{ color: '#ffffff' }}>edit</Icon>
                         </Button>
                       </Tooltip>{' '}
-                      <Tooltip title="Löschen" placement="top">
+                      <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
                         <Button
                           variant="fab"
                           className="noshadow"

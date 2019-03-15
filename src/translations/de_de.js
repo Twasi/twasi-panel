@@ -1,6 +1,10 @@
 export default {
   // General
   'common.save': 'Speichern',
+  'common.refresh': 'Aktualisieren',
+  'common.actions': 'Aktionen',
+  'common.delete': 'Löschen',
+  'common.edit': 'Bearbeiten',
 
   // Welcome
   'welcome.headline': 'Willkommen bei Twasi',
@@ -20,6 +24,7 @@ export default {
   'sidebar.logout': 'Ausloggen',
   'sidebar.urlshortener': 'URL Shortener',
   'sidebar.giveaways': 'Giveaways',
+  'sidebar.quotes': 'Zitate',
   'sidebar.votings': 'Umfragen',
   'sidebar.support': 'Support',
   'sidebar.userfeedback': 'User Feedback',
@@ -106,6 +111,14 @@ export default {
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Befehl Speichern',
+
+  // Quotes
+  'quotes.title': 'Deine Zitate',
+  'quotes.subtitle': 'Hier hast du die Möglichkeit deine Zitate zu verwalten.',
+  'quotes.game': 'Spiel',
+  'quotes.time': 'Datum/Zeit',
+  'quotes.quote': 'Zitat',
+  'quotes.post': 'Zitat im Chat posten',
 
   // Timers
   'timers.title': 'Deine Timer',

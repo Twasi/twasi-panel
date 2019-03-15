@@ -64,7 +64,7 @@ class Commands extends Component {
         </TableCell>
         <TableCell>1.337</TableCell>
         <TableCell>
-          <Tooltip title="Bearbeiten" placement="top">
+          <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
             <Button
               variant="fab"
               color="primary"
@@ -75,7 +75,7 @@ class Commands extends Component {
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
             </Button>
           </Tooltip>{' '}
-          <Tooltip title="Löschen" placement="top">
+          <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
             <Button
               variant="fab"
               color="secondary"
@@ -108,7 +108,7 @@ class Commands extends Component {
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
                 <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                Aktualisieren
+                <FormattedMessage id="common.refresh" />
               </Button>
               <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>
                 <FormattedMessage id="commands.new_command" />
@@ -125,20 +125,20 @@ class Commands extends Component {
         </Paper>
         }{!disabled &&
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
-            <Table>
-              <TableHead>
-                <TableRow className="TableRow">
-                  <TableCell>Befehl</TableCell>
-                  <TableCell>Ausgabe</TableCell>
-                  <TableCell>Zugriff</TableCell>
-                  <TableCell>Uses</TableCell>
-                  <TableCell style={{ minWidth: '100px' }}>Aktionen</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {this.renderCommands()}
-              </TableBody>
-            </Table>
+          <Table>
+            <TableHead>
+              <TableRow className="TableRow">
+                <TableCell>Befehl</TableCell>
+                <TableCell>Ausgabe</TableCell>
+                <TableCell>Zugriff</TableCell>
+                <TableCell>Uses</TableCell>
+                <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.renderCommands()}
+            </TableBody>
+          </Table>
         </Paper>
         }{disabled && <NotInstalledAlert />}
       </div>
