@@ -44,19 +44,19 @@ class Moderators extends Component {
         </Breadcrumbs>
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <h4 className="pageContainerTitle">
-            Moderatoren Verwaltung
+            <FormattedMessage id="moderators.title" />
             <span style={{ float: 'right' }}>
               <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
                 <Icon style={{ marginRight: '5px' }}>cached</Icon>
                 <FormattedMessage id="common.refresh" />
               </Button>
               <Button variant="contained" color="primary">
-                Mod Hinzufügen
+                <FormattedMessage id="moderators.add_moderator" />
               </Button>
             </span>
           </h4>
           <small>
-            Verwalte den Zugriff deiner Moderatoren.
+            <FormattedMessage id="moderators.subtitle" />
           </small>
         </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
@@ -67,17 +67,17 @@ class Moderators extends Component {
               selectable={false}
             >
               <TableRow>
-                <TableCell className="TableRow" rowSpan={2} style={{ verticalAlign: 'bottom' }}>Name</TableCell>
-                <TableCell align="center" className="TableRow" colSpan={6} style={{ verticalAlign: 'bottom', paddingBottom: '15px' }}>Berechtigungen</TableCell>
+                <TableCell className="TableRow" rowSpan={2} style={{ verticalAlign: 'bottom' }}><FormattedMessage id="moderators.table.name" /></TableCell>
+                <TableCell align="center" className="TableRow" colSpan={6} style={{ verticalAlign: 'bottom', paddingBottom: '15px' }}><FormattedMessage id="moderators.table.permissions" /></TableCell>
                 <TableCell className="TableRow" rowSpan={2} style={{ minWidth: '100px', verticalAlign: 'bottom' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
               <TableRow className="TableRow">
-                <TableCell align="center"><small>Panel Zugriff</small></TableCell>
-                <TableCell align="center"><small>Moderatoren</small></TableCell>
-                <TableCell align="center"><small>Spiel/Titel</small></TableCell>
-                <TableCell align="center"><small>Befehle</small></TableCell>
-                <TableCell align="center"><small>Timer</small></TableCell>
-                <TableCell align="center"><small>Songrequests</small></TableCell>
+                <TableCell align="center"><small><FormattedMessage id="moderators.table.permissions.panel" /></small></TableCell>
+                <TableCell align="center"><small><FormattedMessage id="moderators.table.permissions.mods" /></small></TableCell>
+                <TableCell align="center"><small><FormattedMessage id="moderators.table.permissions.game_title" /></small></TableCell>
+                <TableCell align="center"><small><FormattedMessage id="moderators.table.permissions.commands" /></small></TableCell>
+                <TableCell align="center"><small><FormattedMessage id="moderators.table.permissions.timer" /></small></TableCell>
+                <TableCell align="center"><small><FormattedMessage id="moderators.table.permissions.songrequests" /></small></TableCell>
               </TableRow>
             </TableHead>
             <TableBody displayRowCheckbox={false}>
@@ -138,7 +138,7 @@ class Moderators extends Component {
                 </TableCell>
                 <TableCell>
                   <Button variant="contained" color="secondary">
-                    Entmodden
+                    <FormattedMessage id="moderators.table.unmod" />
                   </Button>
                 </TableCell>
               </TableRow>
@@ -199,7 +199,7 @@ class Moderators extends Component {
                 </TableCell>
                 <TableCell>
                   <Button variant="contained" color="secondary">
-                    Entmodden
+                    <FormattedMessage id="moderators.table.unmod" />
                   </Button>
                 </TableCell>
               </TableRow>

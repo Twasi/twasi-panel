@@ -89,6 +89,20 @@ export default {
   'settings.unsaved': 'Ungespeicherte Änderungen',
   'settings.selectLanguage': 'Wähle eine Sprache',
 
+  // Moderators
+  'moderators.title': 'Moderatoren Verwaltung',
+  'moderators.subtitle': 'Verwalte den Zugriff deiner Moderatoren.',
+  'moderators.add_moderator': 'Mod Hinzufügen',
+  'moderators.table.name': 'Name',
+  'moderators.table.permissions': 'Berechtigungen',
+  'moderators.table.permissions.panel': 'Panel Zugriff',
+  'moderators.table.permissions.mods': 'Moderatoren',
+  'moderators.table.permissions.game_title': 'Spiel/Titel',
+  'moderators.table.permissions.commands': 'Befehle',
+  'moderators.table.permissions.timer': 'Timer',
+  'moderators.table.permissions.songrequests': 'Songrequests',
+  'moderators.table.unmod': 'Entmodden',
+
   // Profil
   'profile.your_data': 'Deine Twasi Daten',
   'profile.your_data_subline': 'Hier findest du deine Twasi Daten.',
