@@ -27,13 +27,18 @@ class LanguageSwitchIcon extends React.Component {
           placement="bottom"
         >
           <Icon
-            className="themeIcon"
+            className="languageIcon"
             style={{ fontSize: 36, float: 'right', marginRight: '15px' }}
             onClick={() => this.setState({ open: true })}
           >
             language
           </Icon>
         </Tooltip>
+        <LanguageSwitch
+          selectedValue={this.state.selectedValue}
+          open={this.state.open}
+          onClose={this.handleClose}
+        />
       </div>
     );
   }

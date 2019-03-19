@@ -19,29 +19,46 @@ import CardContent from '@material-ui/core/CardContent';
 import { FormattedMessage } from 'react-intl';
 import storage from 'local-storage';
 
+const languages = ['Deutsch | DE', 'Englisch | EN'];
 
 class LanguageSwitch extends React.Component {
   handleClose = () => {
     this.props.onClose();
   }
 
+  handleListItemClick = value => {
+    this.props.onClose(value);
+  };
+
   render() {
+    const { classes, selectedValue, ...other } = this.props;
 
     return (
       <Dialog
         onClose={this.handleClose}
+        {...other}
       >
         <DialogContent>
           <h4 className="pageContainerTitle">
-            Titel
+            Sprache ändern
           </h4>
           <small>
-            Subtitel
+            Hier kannst du die Sprache ändern.
           </small>
           <br /><br />
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">
-              Content
+              <List style={{ padding: '0px' }}>
+                {languages.map(language => (
+                  <ListItem
+                    button
+                    onClick={() => this.handleListItemClick(language)}
+                    key={language}
+                  >
+                    <ListItemText primary={language} />
+                  </ListItem>
+                ))}
+              </List>
             </CardContent>
           </Card>
         </DialogContent>
