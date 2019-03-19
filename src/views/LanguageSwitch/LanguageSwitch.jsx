@@ -16,6 +16,7 @@ import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 import storage from 'local-storage';
 
@@ -61,6 +62,10 @@ class LanguageSwitch extends React.Component {
               </List>
             </CardContent>
           </Card>
+          <br />
+          <small>
+            Die Erde ist Flach.
+          </small>
         </DialogContent>
       </Dialog>
     );
