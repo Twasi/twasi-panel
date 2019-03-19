@@ -6,6 +6,7 @@ import './_style.css';
 import { authSelectors } from '../../../state/auth';
 import { AccountSwitchIcon } from '../../AccountSwitch';
 import { ThemeSwitchIcon } from '../../ThemeSwitch';
+import { LanguageSwitchIcon } from '../../LanguageSwitch';
 import { FeedbackIcon } from '../../Feedback';
 import Rank from '../Rank';
 import twasilogo from '../../common/resources/twasi_flat_white.svg';
@@ -37,9 +38,10 @@ const Header = ({ userName, rank, avatar }) => (
           alt="twasi-logo"
         />
       </span>
-      <span style={{ width: '150px' }}>
+      <span style={{ width: '200px' }}>
         <AccountSwitchIcon />
         <ThemeSwitchIcon />
+        <LanguageSwitchIcon />
         <FeedbackIcon />
       </span>
     </div>
