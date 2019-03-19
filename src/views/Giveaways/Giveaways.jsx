@@ -53,8 +53,8 @@ class Giveaways extends Component {
         <Grid container spacing={24}>
            <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">Giveaways</h4>
-              <small>Erstelle ein neues Giveaway.</small>
+              <h4 className="pageContainerTitle"><FormattedMessage id="giveaways.new_giveaway.title" /></h4>
+              <small><FormattedMessage id="giveaways.new_giveaway.subtitle" /></small>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Grid container spacing={16}>
@@ -63,7 +63,7 @@ class Giveaways extends Component {
                         fullWidth
                         variant="outlined"
                       >
-                        <Icon>close</Icon> Staff
+                        <Icon>close</Icon> <FormattedMessage id="giveaways.new_giveaway.staff" />
                       </Button>
                     </Grid>
                     <Grid item lg={3} md={12}>
@@ -71,7 +71,7 @@ class Giveaways extends Component {
                         fullWidth
                         variant="outlined"
                       >
-                        <Icon>close</Icon> Mods
+                        <Icon>close</Icon> <FormattedMessage id="giveaways.new_giveaway.mods" />
                       </Button>
                     </Grid>
                     <Grid item lg={3} md={12}>
@@ -79,7 +79,7 @@ class Giveaways extends Component {
                         fullWidth
                         variant="outlined"
                       >
-                        <Icon>close</Icon> Subs
+                        <Icon>close</Icon> <FormattedMessage id="giveaways.new_giveaway.subs" />
                       </Button>
                     </Grid>
                     <Grid item lg={3} md={12}>
@@ -88,7 +88,7 @@ class Giveaways extends Component {
                         color="primary"
                         variant="contained"
                       >
-                        <Icon>check</Icon> User
+                        <Icon>check</Icon> <FormattedMessage id="giveaways.new_giveaway.user" />
                       </Button>
                     </Grid>
                   </Grid>
@@ -104,16 +104,16 @@ class Giveaways extends Component {
                           textColor="primary"
                           fullWidth
                         >
-                          <Tab label="Keyword" />
-                          <Tab label="Zufällige Zahl" />
+                          <Tab label={<FormattedMessage id="giveaways.new_giveaway.keyword" />} />
+                          <Tab label={<FormattedMessage id="giveaways.new_giveaway.random_number" />} />
                         </Tabs>
                       </AppBar>
                         {this.state.value === 0 && <TabContainer>
                           <p>
-                            Bestimme ein Keyword, welches in deinen Chat geschrieben werden muss, um teilzunehmen.
+                            <FormattedMessage id="giveaways.new_giveaway.keyword.description" />
                           </p>
                           <TextField
-                            label="Keyword"
+                            label={<FormattedMessage id="giveaways.new_giveaway.keyword" />}
                             placeholder="#Twasi"
                             fullWidth
                             margin="normal"
@@ -129,7 +129,7 @@ class Giveaways extends Component {
                                 variant="outlined"
                                 color="primary"
                               >
-                                Giveaway öffnen
+                                <FormattedMessage id="giveaways.new_giveaway.open" />
                               </Button>
                             </Grid>
                             <Grid item lg={6}>
@@ -138,19 +138,19 @@ class Giveaways extends Component {
                                 variant="outlined"
                                 color="secondary"
                               >
-                                Giveaway abbrechen
+                                <FormattedMessage id="giveaways.new_giveaway.cancel" />
                               </Button>
                             </Grid>
                           </Grid>
                         </TabContainer>}
                         {this.state.value === 1 && <TabContainer>
                           <p>
-                            Hier wird eine zufällige Zahl bestimmt, welche erraten werden muss. Derjenige, der die Zahl zuerst errät gewinnt.
+                            <FormattedMessage id="giveaways.new_giveaway.random_number.description" />
                           </p>
                           <Grid container spacing={16}>
                             <Grid item lg={6}>
                               <TextField
-                                label="von"
+                                label={<FormattedMessage id="giveaways.new_giveaway.random_number.from" />}
                                 fullWidth
                                 margin="normal"
                                 variant="outlined"
@@ -159,7 +159,7 @@ class Giveaways extends Component {
                             </Grid>
                             <Grid item lg={6}>
                               <TextField
-                                label="bis"
+                                label={<FormattedMessage id="giveaways.new_giveaway.random_number.to" />}
                                 fullWidth
                                 margin="normal"
                                 variant="outlined"
@@ -175,7 +175,7 @@ class Giveaways extends Component {
                                 variant="outlined"
                                 color="primary"
                               >
-                                Giveaway öffnen
+                                <FormattedMessage id="giveaways.new_giveaway.open" />
                               </Button>
                             </Grid>
                             <Grid item lg={6}>
@@ -184,7 +184,7 @@ class Giveaways extends Component {
                                 variant="outlined"
                                 color="secondary"
                               >
-                                Giveaway abbrechen
+                                <FormattedMessage id="giveaways.new_giveaway.cancel" />
                               </Button>
                             </Grid>
                           </Grid>
@@ -201,7 +201,7 @@ class Giveaways extends Component {
                     variant="contained"
                     color="primary"
                   >
-                    Auslosen
+                    <FormattedMessage id="giveaways.new_giveaway.roll" />
                   </Button>
                 </Grid>
                 <Grid item lg={3} md={12}>
@@ -210,7 +210,7 @@ class Giveaways extends Component {
                     variant="contained"
                     color="primary"
                   >
-                    Reroll
+                    <FormattedMessage id="giveaways.new_giveaway.reroll" />
                   </Button>
                 </Grid>
               </Grid>
@@ -218,8 +218,8 @@ class Giveaways extends Component {
           </Grid>
           <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">Teilnehmer</h4>
-              <small>Hier werden alle Teilnehmer des aktuellen Giveaways aufgelistet.</small>
+              <h4 className="pageContainerTitle"><FormattedMessage id="giveaways.contestants.title" /></h4>
+              <small><FormattedMessage id="giveaways.contestants.subtitle" /></small>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="giveawayCard">
                   <Grid container spacing={0}>
@@ -228,7 +228,7 @@ class Giveaways extends Component {
                     </Grid>
                     <Grid item md={6} style={{ textAlign: 'center' }}>
                       <Chip
-                        label="Staff"
+                        label={<FormattedMessage id="giveaways.contestants.team" />}
                         color="primary"
                       />
                     </Grid>
@@ -240,7 +240,7 @@ class Giveaways extends Component {
                     </Grid>
                     <Grid item md={6} style={{ textAlign: 'center' }}>
                       <Chip
-                        label="Zuschauer"
+                        label={<FormattedMessage id="giveaways.contestants.viewer" />}
                         color="primary"
                       />
                     </Grid>
@@ -252,7 +252,7 @@ class Giveaways extends Component {
                     </Grid>
                     <Grid item md={6} style={{ textAlign: 'center' }}>
                       <Chip
-                        label="Moderator"
+                        label={<FormattedMessage id="giveaways.contestants.mod" />}
                         color="primary"
                       />
                     </Grid>
