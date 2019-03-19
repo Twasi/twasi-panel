@@ -14,10 +14,24 @@ import Chip from '@material-ui/core/Chip';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import './_style.css';
 
 class Moderators extends Component {
+
+  state = {
+    access_panel: true,
+    access_moderators: true,
+    access_game_title: true,
+    access_commands: true,
+    access_timers: true,
+    access_songrequests: true,
+  };
+
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
 
   render() {
     return (
@@ -75,64 +89,52 @@ class Moderators extends Component {
                   />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
-                    color="secondary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>close</Icon>
-                  </Button>
+                  <Checkbox
+                    checked={this.state.access_panel}
+                    onChange={this.handleChange('access_panel')}
+                    value="access_panel"
+                    color="primary"
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
-                    color="secondary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>close</Icon>
-                  </Button>
+                  <Checkbox
+                    checked={this.state.access_moderators}
+                    onChange={this.handleChange('access_moderators')}
+                    value="access_moderators"
+                    color="primary"
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
-                    color="secondary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>close</Icon>
-                  </Button>
+                  <Checkbox
+                    checked={this.state.access_game_title}
+                    onChange={this.handleChange('access_game_title')}
+                    value="access_game_title"
+                    color="primary"
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
-                    color="secondary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>close</Icon>
-                  </Button>
+                  <Checkbox
+                    checked={this.state.access_commands}
+                    onChange={this.handleChange('access_commands')}
+                    value="access_commands"
+                    color="primary"
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
-                    color="secondary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>close</Icon>
-                  </Button>
+                  <Checkbox
+                    checked={this.state.access_timers}
+                    onChange={this.handleChange('access_timers')}
+                    value="access_timers"
+                    color="primary"
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
-                    color="secondary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>close</Icon>
-                  </Button>
+                  <Checkbox
+                    checked={this.state.access_songrequests}
+                    onChange={this.handleChange('access_songrequests')}
+                    value="access_songrequests"
+                    color="primary"
+                  />
                 </TableCell>
                 <TableCell>
                   <Button variant="contained" color="secondary">
@@ -148,64 +150,52 @@ class Moderators extends Component {
                   />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
+                  <Checkbox
+                    checked={this.state.access_panel}
+                    onChange={this.handleChange('access_panel')}
+                    value="access_panel"
                     color="primary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>check</Icon>
-                  </Button>
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
+                  <Checkbox
+                    checked={this.state.access_moderators}
+                    onChange={this.handleChange('access_moderators')}
+                    value="access_moderators"
                     color="primary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>check</Icon>
-                  </Button>
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
+                  <Checkbox
+                    checked={this.state.access_game_title}
+                    onChange={this.handleChange('access_game_title')}
+                    value="access_game_title"
                     color="primary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>check</Icon>
-                  </Button>
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
+                  <Checkbox
+                    checked={this.state.access_commands}
+                    onChange={this.handleChange('access_commands')}
+                    value="access_commands"
                     color="primary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>check</Icon>
-                  </Button>
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
+                  <Checkbox
+                    checked={this.state.access_timers}
+                    onChange={this.handleChange('access_timers')}
+                    value="access_timers"
                     color="primary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>check</Icon>
-                  </Button>
+                  />
                 </TableCell>
                 <TableCell align="center">
-                  <Button
-                    variant="fab"
+                  <Checkbox
+                    checked={this.state.access_songrequests}
+                    onChange={this.handleChange('access_songrequests')}
+                    value="access_songrequests"
                     color="primary"
-                    className="noshadow"
-                    mini
-                  >
-                    <Icon style={{ color: '#ffffff' }}>check</Icon>
-                  </Button>
+                  />
                 </TableCell>
                 <TableCell>
                   <Button variant="contained" color="secondary">

@@ -46,21 +46,21 @@ class Urlshortener extends Component {
           <Col sm={6}>
             <Paper className="pageContainer">
               <h4 className="pageContainerTitle">
-                URL Kürzen
+                <FormattedMessage id="urlshortener.headline" />
                 <span style={{ float: 'right' }}>
                   <Button
                     variant="contained"
                     color="primary"
                   >
-                    Speichern
+                    <FormattedMessage id="common.save" />
                   </Button>
                 </span>
               </h4>
-              <small>Kürze deine URL's um sie mit jedem zu teilen.</small>
+              <small><FormattedMessage id="urlshortener.subheadline" /></small>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <TextField
-                    helperText="Freilassen für eine zufällige URL."
+                    helperText={<FormattedMessage id="urlshortener.random_url" />}
                     fullWidth
                     id="shortlink"
                     onChange={evt => this.updateInputValue(evt)}
@@ -100,7 +100,7 @@ class Urlshortener extends Component {
               <Card className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <TextField
-                    helperText="Auf welche Domain soll dein Shortlink leiten?"
+                    helperText={<FormattedMessage id="urlshortener.destination_url" />}
                     fullWidth
                     id="shortlink-redirection"
                     InputProps={{
@@ -132,9 +132,9 @@ class Urlshortener extends Component {
           </Col>
           <Col sm={6}>
             <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-              <h4 className="pageContainerTitle">Deine URL's</h4>
+              <h4 className="pageContainerTitle"><FormattedMessage id="urlshortener.your_urls" /></h4>
               <small>
-                Hier findest du eine Liste deiner bereits gekürzten URL's
+                <FormattedMessage id="urlshortener.headline_urls" />
               </small>
             </Paper>
             <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
@@ -163,7 +163,7 @@ class Urlshortener extends Component {
                       </a>
                     </TableCell>
                     <TableCell>
-                      <Tooltip title="Bearbeiten" placement="top">
+                      <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
                         <Button
                           variant="fab"
                           className="noshadow"

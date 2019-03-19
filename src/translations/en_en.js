@@ -38,22 +38,39 @@ export default {
 
   // Overview
   'overview.follower': 'Follower',
-  'overview.viewer': 'Tracked Viewer',
-  'overview.messages': 'Tracked Messages',
-  'overview.streams': 'Tracked Streams',
-  'overview.laststream': 'Last Stream',
+  'overview.viewer': 'Viewer tracked',
+  'overview.messages': 'Messages tracked',
+  'overview.streams': 'Streams tracked',
+  'overview.laststream': 'Your last Stream',
+  'overview.laststream.subtitle': 'Here you can find Statistics about your latest Stream.',
   'overview.table_id': 'Stream ID',
   'overview.table_duration': 'Duration',
+  'overview.table_chatmessages': 'Chatmessages',
+  'overview.table_commands_used': 'Commands Used',
   'overview.table_follower': 'Follower +',
   'overview.table_views': 'Views +',
-  'overview.table_viewermax': 'Max Viewer',
-  'overview.table_average': 'Average Viewer',
+  'overview.table_viewermax': 'Viewer Maximum',
+  'overview.table_average': 'Viewer Average',
+  'overview.table_individual': 'Individual Viewers',
+  'overview.title': 'Title',
+  'overview.game': 'Game / Category',
+  'overview.viewercourse': 'Viewercourse',
+  'overview.viewercourse.subtitle': 'Here you can see the Viewercourse of your last/current Stream.',
+  'overview.used_commands': 'Used Commands',
+  'overview.used_commands.subtitle': 'Amount of used Commands',
+  'overview.played_games': 'Played Games',
+  'overview.played_games.subtitle': 'Your played Games',
 
   // Status
   'status.started': 'Working',
   'status.stopped': 'Stopped',
   'status.manage': 'Manage',
   'status.eventlog': 'Eventlog',
+  'status.card_headline': 'Bot Status',
+  'status.explanation': 'Hier kannst du den Bot jederzeit starten bzw. stoppen.',
+  'status.start': 'Starten',
+  'status.stop': 'Stoppen',
+  'status.current_status': 'Aktueller Bot Status',
 
   // Plugins
   'plugins.headline': 'Plugin Store',
@@ -79,12 +96,10 @@ export default {
   'profile.your_data_twitchid': 'Twitch ID',
   'profile.your_data_rank': 'Twasi Rank',
   'profile.your_data_registerdate': 'Registered since',
-  'profile.your_data_delete': 'Delete',
   'profile.your_data_deletelink': 'Delete Account',
   'profile.badges': 'Badges',
   'profile.badges_subline':
     'Here you can change your Badges at the Leaderboard. You can use 3 Badges at the same time.',
-  'profile.badges_savebutton': 'Save',
   'profile.badges_yourbadges': 'Your Badges',
   'profile.social': 'Social Media',
   'profile.social_subline':
@@ -119,12 +134,17 @@ export default {
 
   // Timers
   'timers.title': 'Your Timers',
+  'timers.subtitle': 'Here you have the ability to manage your Timers.',
   'timers.addtimer': 'Add Timer',
   'timers.new_timer': 'Ad a new Timer',
   'timers.new_timer.subheadline': 'Here you can add new Timers.',
   'timers.new_timer.timer': 'Your Timer',
   'timers.new_timer.output': 'Output',
   'timers.new_timer.savetimer': 'Save Timer',
+  'timers.timer': 'Timer',
+  'timers.output': 'Output',
+  'timers.interval': 'Interval',
+  'timers.status': 'Status',
 
   // AccountSwitch
   'accountswitch.switch_account': 'Switch Account',
@@ -152,6 +172,21 @@ export default {
 
   // Public
   'public.headline': 'Public',
+
+  // Votings
+  'votings.headline': 'Your Votings',
+  'votings.subheadline': 'Here you can manage your votings and review the results of previous or current votings.',
+  'votings.new_voting': 'Create a new Voting',
+
+  // URL shortener
+  'urlshortener.headline': 'Shorten URL',
+  'urlshortener.subheadline': 'Shorten your URL to share them with your Community.',
+  'urlshortener.random_url': 'Leave free for a random URL.',
+  'urlshortener.destination_url': 'To which Site should your URL redirect?',
+  'urlshortener.your_urls': 'Your URLs',
+  'urlshortener.headline_urls': 'Here you can find a list of already shortened URLs.',
+  'urlshortener.shortlink': 'Shortlink',
+  'urlshortener.redirection': 'Redirection',
 
   // Support
   'support.new_ticket': 'New Support Ticket',

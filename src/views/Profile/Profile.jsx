@@ -124,7 +124,7 @@ class Profile extends Component {
                 <FormattedMessage id="profile.badges" />
                 <span style={{ float: 'right' }}>
                   <Button variant="contained" color="primary">
-                    <FormattedMessage id="profile.badges_savebutton" />
+                    <FormattedMessage id="common.save" />
                   </Button>
                 </span>
               </h4>

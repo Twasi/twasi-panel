@@ -108,17 +108,17 @@ class Timers extends Component {
             </span>
           </h4>
           <small>
-            Hier hast du die Möglichkeit deine Timer zu verwalten.
+            <FormattedMessage id="timers.subtitle" />
           </small>
         </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Table>
             <TableHead>
               <TableRow className="TableRow">
-                <TableCell>Timer</TableCell>
-                <TableCell>Ausgabe</TableCell>
-                <TableCell>Interval</TableCell>
-                <TableCell>Status</TableCell>
+                <TableCell><FormattedMessage id="timers.timer" /></TableCell>
+                <TableCell><FormattedMessage id="timers.output" /></TableCell>
+                <TableCell><FormattedMessage id="timers.interval" /></TableCell>
+                <TableCell><FormattedMessage id="timers.status" /></TableCell>
                 <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>

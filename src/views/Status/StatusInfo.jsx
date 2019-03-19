@@ -33,7 +33,7 @@ class StatusInfo extends Component {
           <Grid container spacing={16}>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
               <h4 className="pageContainerTitle">
-                Starten / Stoppen
+                <FormattedMessage id="status.start" /> / <FormattedMessage id="status.stop" />
               </h4>
               <br/>
               <Button
@@ -45,7 +45,7 @@ class StatusInfo extends Component {
                 variant="contained" color="primary"
                 style={{ marginRight: '16px' }}
               >
-                Starten
+                <FormattedMessage id="status.start" />
               </Button>
               <Button
                 type="primary"
@@ -55,12 +55,12 @@ class StatusInfo extends Component {
                 value="off"
                 variant="contained" color="secondary"
               >
-                Stoppen
+                <FormattedMessage id="status.stop" />
               </Button>
             </Grid>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
               <h4 className="pageContainerTitle">
-                Aktueller Bot Status
+                <FormattedMessage id="status.current_status" />
               </h4>
               <br/>
               {status.isRunning ? running : stopped}

@@ -27,16 +27,19 @@ class Votings extends Component {
         </Breadcrumbs>
         <Paper className="pageContainer">
           <h4 className="pageContainerTitle">
-            Umfragen
+            <FormattedMessage id="votings.headline" />
             <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" style={{ marginRight: 16 }}>
                 <Icon style={{ marginRight: '5px' }}>cached</Icon>
                 <FormattedMessage id="common.refresh" />
+              </Button>
+              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
+                <FormattedMessage id="votings.new_voting" />
               </Button>
             </span>
           </h4>
           <small>
-            Verwalte deine Umfragen.
+            <FormattedMessage id="votings.subheadline" />
           </small>
           <Card style={{ marginTop: '25px' }} className="pluginCard">
             <CardContent />

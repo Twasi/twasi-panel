@@ -132,7 +132,8 @@ class Overview extends Component {
         <Row>
           <Col sm={12}>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
-              <h4 className="pageContainerTitle">Dein letzter Stream
+              <h4 className="pageContainerTitle">
+                <FormattedMessage id="overview.laststream" />
                 <span style={{ float: 'right' }}>
                   <Button variant="contained" color="primary">
                     <Icon style={{ marginRight: '5px' }}>cached</Icon>
@@ -140,13 +141,13 @@ class Overview extends Component {
                   </Button>
                 </span>
               </h4>
-              <small>Hier findest du die Statistiken deines letzten, von Twasi erfassten Streams.</small>
+              <small><FormattedMessage id="overview.laststream.subtitle" /></small>
               <Card className="pluginCard" style={{ marginTop: '15px' }}>
                 <CardContent style={{ padding: '24px' }}>
                   <Grid container spacing={16}>
                     <Grid item lg={6} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                       <TextField
-                        label="Titel"
+                        label={<FormattedMessage id="overview.title" />}
                         fullWidth
                         margin="normal"
                         variant="outlined"
@@ -155,7 +156,6 @@ class Overview extends Component {
                           endAdornment: (
                             <InputAdornment position="end">
                               <IconButton
-                                aria-label="send-support-message"
                               >
                                 <Icon>
                                   save
@@ -168,7 +168,7 @@ class Overview extends Component {
                     </Grid>
                     <Grid item lg={6} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                       <TextField
-                        label="Spiel"
+                        label={<FormattedMessage id="overview.game" />}
                         fullWidth
                         margin="normal"
                         variant="outlined"
@@ -198,9 +198,9 @@ class Overview extends Component {
           <Col sm={9}>
             <Paper className="pageContainer" style={{ height: '250px', paddingRight: '0px', paddingLeft: '0px' }}>
               <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
-                Zuschauerverlauf
+                <FormattedMessage id="overview.viewercourse" />
               </h4>
-              <small style={{ paddingLeft: '23px' }}>Hier siehst du den Zuschauerverlauf deines aktuellen/letzten Streams.</small>
+              <small style={{ paddingLeft: '23px' }}><FormattedMessage id="overview.viewercourse.subtitle" /></small>
               <ResponsiveContainer height='100%' width='100%'>
                 <AreaChart margin={{ top: 25, right: 0, left: 0, bottom: 23 }} data={data}>
                   <Tooltip/>
@@ -212,9 +212,9 @@ class Overview extends Component {
               <Col sm={6}>
                 <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
                   <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
-                    Genutzte Befehle
+                    <FormattedMessage id="overview.used_commands" />
                   </h4>
-                  <small style={{ paddingLeft: '23px' }}>Häufigkeit der genutzten Befehle</small>
+                  <small style={{ paddingLeft: '23px' }}><FormattedMessage id="overview.used_commands.subtitle" /></small>
                   <ResponsiveContainer height='100%' width='100%'>
                     <PieChart width={730} height={250}
                         margin={{top: 15, right: 0, left: 0, bottom: 23}}>
@@ -231,9 +231,9 @@ class Overview extends Component {
               <Col sm={6}>
                 <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
                   <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
-                    Gespielte Spiele
+                    <FormattedMessage id="overview.played_games" />
                   </h4>
-                  <small style={{ paddingLeft: '23px' }}>Deine gespielten Spiele</small>
+                  <small style={{ paddingLeft: '23px' }}><FormattedMessage id="overview.played_games.subtitle" /></small>
                   <ResponsiveContainer height='100%' width='100%'>
                     <BarChart backgroundOpacity=".1" width={600} height={300} data={data02}
                         margin={{top: 15, right: 0, left: 0, bottom: 0}}>
@@ -257,7 +257,7 @@ class Overview extends Component {
                       <Row>
                         <Col sm={12}>
                           <h4 className="pageContainerTitle">1564184945</h4>
-                          <small>Stream ID</small>
+                          <small><FormattedMessage id="overview.table_id" /></small>
                         </Col>
                       </Row>
                       <TooltipM title="Jetzt Live" placement="right">
@@ -275,7 +275,7 @@ class Overview extends Component {
                           <Row>
                             <Col sm={12}>
                               <h4 className="pageContainerTitle">13:37</h4>
-                              <small>Dauer</small>
+                              <small><FormattedMessage id="overview.table_duration" /></small>
                             </Col>
                           </Row>
                           <TooltipM title="+ 5:12" placement="right">
@@ -293,7 +293,7 @@ class Overview extends Component {
                       <Row>
                         <Col sm={12}>
                           <h4 className="pageContainerTitle">1.243</h4>
-                          <small>Chatnachrichten</small>
+                          <small><FormattedMessage id="overview.table_chatmessages" /></small>
                         </Col>
                       </Row>
                       <TooltipM title="+ 125" placement="right">
@@ -311,7 +311,7 @@ class Overview extends Component {
                           <Row>
                             <Col sm={12}>
                               <h4 className="pageContainerTitle">354</h4>
-                              <small>Befehle ausgeführt</small>
+                              <small><FormattedMessage id="overview.table_commands_used" /></small>
                             </Col>
                           </Row>
                           <TooltipM title="- 5" placement="right">
@@ -329,7 +329,7 @@ class Overview extends Component {
                       <Row>
                         <Col sm={12}>
                           <h4 className="pageContainerTitle">54</h4>
-                          <small>Follower +</small>
+                          <small><FormattedMessage id="overview.table_follower" /></small>
                         </Col>
                       </Row>
                       <TooltipM title="+- 0" placement="right">
@@ -346,7 +346,7 @@ class Overview extends Component {
                           <Row>
                             <Col sm={12}>
                               <h4 className="pageContainerTitle">263</h4>
-                              <small>Aufrufe +</small>
+                              <small><FormattedMessage id="overview.table_views" /></small>
                             </Col>
                           </Row>
                           <TooltipM title="+- 0" placement="right">
@@ -363,7 +363,7 @@ class Overview extends Component {
                       <Row>
                         <Col sm={12}>
                           <h4 className="pageContainerTitle">32</h4>
-                          <small>Zuschauer Maximum</small>
+                          <small><FormattedMessage id="overview.table_viewermax" /></small>
                         </Col>
                       </Row>
                       <TooltipM title="+ 7" placement="right">
@@ -381,7 +381,7 @@ class Overview extends Component {
                           <Row>
                             <Col sm={12}>
                               <h4 className="pageContainerTitle">25</h4>
-                              <small>Zuschauer Durchschnitt</small>
+                              <small><FormattedMessage id="overview.table_average" /></small>
                             </Col>
                           </Row>
                           <TooltipM title="- 2" placement="right">
@@ -399,7 +399,7 @@ class Overview extends Component {
                       <Row>
                         <Col sm={12}>
                           <h4 className="pageContainerTitle">197</h4>
-                          <small>Individuelle Zuschauer</small>
+                          <small><FormattedMessage id="overview.table_individual" /></small>
                         </Col>
                       </Row>
                       <TooltipM title="- 50" placement="right">
