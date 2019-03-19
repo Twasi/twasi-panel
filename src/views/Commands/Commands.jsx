@@ -16,6 +16,7 @@ import CommandDialog from './CommandDialog';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
 
@@ -63,6 +64,14 @@ class Commands extends Component {
           />
         </TableCell>
         <TableCell>1.337</TableCell>
+        <TableCell>
+          <Checkbox
+            checked=""
+            onChange=""
+            value="access_commands"
+            color="primary"
+          />
+        </TableCell>
         <TableCell>
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
             <Button
@@ -132,6 +141,7 @@ class Commands extends Component {
                 <TableCell>Ausgabe</TableCell>
                 <TableCell>Zugriff</TableCell>
                 <TableCell>Uses</TableCell>
+                <TableCell>Aktiviert</TableCell>
                 <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>

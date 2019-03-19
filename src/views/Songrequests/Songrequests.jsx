@@ -119,13 +119,13 @@ class Songrequests extends React.Component {
                     <Slider value={volume} onChange={this.handleVolumeChange} style={{ color: '#00aeae' }} />
                 </div>}
                 />
-                <Button style={{ margin: '0px 5px 0px 5px' }} mini variant="fab" color="primary" aria-label="previous">
+                <Button style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="previous">
                   <Icon style={{ color: '#ffffff' }}>skip_previous</Icon>
                 </Button>
-                <Button style={{ margin: '0px 5px 0px 5px' }} mini variant="fab" color="primary" aria-label="play">
+                <Button style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="play">
                   <Icon style={{ color: '#ffffff' }}>play_arrow</Icon>
                 </Button>
-                <Button style={{ margin: '0px 5px 0px 5px' }} mini variant="fab" color="primary" aria-label="skip">
+                <Button style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="skip">
                   <Icon style={{ color: '#ffffff' }}>skip_next</Icon>
                 </Button>
               </div>
