@@ -67,10 +67,10 @@ export default {
   'status.manage': 'Manage',
   'status.eventlog': 'Eventlog',
   'status.card_headline': 'Bot Status',
-  'status.explanation': 'Hier kannst du den Bot jederzeit starten bzw. stoppen.',
-  'status.start': 'Starten',
-  'status.stop': 'Stoppen',
-  'status.current_status': 'Aktueller Bot Status',
+  'status.explanation': 'Here you have the ability to Start or Stop the Bot.',
+  'status.start': 'Start',
+  'status.stop': 'Stop',
+  'status.current_status': 'Current Bot Status',
 
   // Plugins
   'plugins.headline': 'Plugin Store',
