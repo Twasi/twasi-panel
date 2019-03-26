@@ -26,7 +26,42 @@ const data = [
 
 const options = {
   filterType: 'textfield',
-  selectableRows: false
+  selectableRows: false,
+  elevation: 0,
+  rowHover: false,
+  textLabels: {
+    body: {
+      noMatch: <FormattedMessage id="datatables.body.nomatch" />,
+      toolTip: <FormattedMessage id="datatables.body.tooltip" />,
+    },
+    pagination: {
+      next: <FormattedMessage id="datatables.pagination.next" />,
+      previous: <FormattedMessage id="datatables.pagination.previous" />,
+      rowsPerPage: <FormattedMessage id="datatables.pagination.rowsperpage" />,
+      displayRows: <FormattedMessage id="datatables.pagination.rowsperpage" />,
+    },
+    toolbar: {
+      search: <FormattedMessage id="datatables.toolbar.search" />,
+      downloadCsv: <FormattedMessage id="datatables.toolbar.downloadcsv" />,
+      print: <FormattedMessage id="datatables.toolbar.print" />,
+      viewColumns: <FormattedMessage id="datatables.toolbar.viewcolumns" />,
+      filterTable: <FormattedMessage id="datatables.toolbar.filtertable" />,
+    },
+    filter: {
+      all: <FormattedMessage id="datatables.filter.all" />,
+      title: <FormattedMessage id="datatables.filter.title" />,
+      reset: <FormattedMessage id="datatables.filter.reset" />,
+    },
+    viewColumns: {
+      title: <FormattedMessage id="datatables.viewcolumns.title" />,
+      titleAria: <FormattedMessage id="datatables.viewcolumns.titlearia" />,
+    },
+    selectedRows: {
+      text: <FormattedMessage id="datatables.selectedrows.text" />,
+      delete: <FormattedMessage id="datatables.selectedrows.delete" />,
+      deleteAria: <FormattedMessage id="datatables.selectedrows.deletearia" />,
+    },
+  }
 };
 
 const quotes = [{game: 'Minecraft', time: '15.03.2019 - 10:32', quote: 'Niemand hat die Absicht eine Mauer zu errichten!'}];

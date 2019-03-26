@@ -6,6 +6,27 @@ export default {
   'common.delete': 'Löschen',
   'common.edit': 'Bearbeiten',
 
+  // Datatables
+  'datatables.body.nomatch': 'Es wurden keine passenden Einträge gefunden.',
+  'datatables.body.tooltip': 'Sortieren',
+  'datatables.pagination.next': 'Nächste Seite',
+  'datatables.pagination.previous': 'Vorherige Seite',
+  'datatables.pagination.rowsperpage': 'Zeilen pro Seite:',
+  'datatables.pagination.displayrows': 'von',
+  'datatables.toolbar.search': 'Suchen',
+  'datatables.toolbar.downloadcsv': 'Download CSV',
+  'datatables.toolbar.print': 'Drucken',
+  'datatables.toolbar.viewcolumns': 'Spalten ansehen',
+  'datatables.toolbar.filtertable': 'Filter',
+  'datatables.filter.all': 'Alle',
+  'datatables.filter.title': 'Filter',
+  'datatables.filter.reset': 'Zurücksetzen',
+  'datatables.viewcolumns.title': 'Zeige Spalten',
+  'datatables.viewcolumns.titlearia': 'Zeige/Verstecke Spalten',
+  'datatables.selectedrows.text': 'Reihe(n) ausgewählt',
+  'datatables.selectedrows.delete': 'Löschen',
+  'datatables.selectedrows.deletearia': 'Lösche ausgewählte Zeilen',
+
   // Welcome
   'welcome.headline': 'Willkommen bei Twasi',
 
