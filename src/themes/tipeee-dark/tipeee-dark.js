@@ -31,6 +31,15 @@ export default createMuiTheme({
       elevation1: {
         boxShadow: 'none'
       },
+      elevation2: {
+        boxShadow: 'none'
+      },
+      elevation3: {
+        boxShadow: 'none'
+      },
+      elevation4: {
+        boxShadow: 'none'
+      },
     },
     MuiBadge: {
       badge: {
@@ -124,6 +133,12 @@ export default createMuiTheme({
           backgroundColor: '#222631'
         }
       }
+    },
+    MUIDataTableHeadCell: {
+      fixedHeader: {
+        backgroundColor: 'rgba(255, 255, 255, 0.0)',
+        borderBottom: '3px solid #7885a5',
+      },
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       body: { // Name of the rule

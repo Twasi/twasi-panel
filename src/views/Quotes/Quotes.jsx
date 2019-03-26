@@ -15,6 +15,19 @@ import Chip from '@material-ui/core/Chip';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import MUIDataTable from "mui-datatables";
+
+const columns = ['Spiel', 'Zeitpunkt', 'Zitat'];
+
+const data = [
+ ["Minecraft", "26.03.2019 - 09:00", "Niemand hat die Absicht seine Wäsche zu waschen."],
+ ["Grand Theft Auto V", "12.01.2019 - 08:57", "Sehr langes Zitat, um zu testen, wie sich die Datatable bei sehr langen Einträgen verhält. Dies ist wichtig, damit die Tabelle nachwievor lesbar und ordentlich ist."],
+];
+
+const options = {
+  filterType: 'textfield',
+  selectableRows: false
+};
 
 const quotes = [{game: 'Minecraft', time: '15.03.2019 - 10:32', quote: 'Niemand hat die Absicht eine Mauer zu errichten!'}];
 
@@ -31,48 +44,6 @@ class Quotes extends Component {
 
   handleClose() {
     this.setState({ open: false });
-  }
-  renderQuotes() {
-
-    return quotes.map(quote => (
-      <TableRow>
-        <TableCell>
-          <b>{quote.game}</b>
-        </TableCell>
-        <TableCell>
-          {quote.time}
-        </TableCell>
-        <TableCell
-          style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
-        >
-          {quote.quote}
-        </TableCell>
-        <TableCell>
-          <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-            <Button
-              variant="fab"
-              color="secondary"
-              className="noshadow"
-              mini
-              aria-label="deleteQuote"
-            >
-              <Icon style={{ color: '#ffffff' }}>delete</Icon>
-            </Button>
-          </Tooltip>{' '}
-          <Tooltip title={<FormattedMessage id="quotes.post" />} placement="top">
-            <Button
-              variant="fab"
-              color="primary"
-              className="noshadow"
-              mini
-              aria-label="postQuote"
-            >
-              <Icon style={{ color: '#ffffff' }}>send</Icon>
-            </Button>
-          </Tooltip>
-        </TableCell>
-      </TableRow>
-    ));
   }
 
   render() {
@@ -99,19 +70,11 @@ class Quotes extends Component {
           </small>
         </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
-          <Table>
-            <TableHead>
-              <TableRow className="TableRow">
-                <TableCell><FormattedMessage id="quotes.game" /></TableCell>
-                <TableCell><FormattedMessage id="quotes.time" /></TableCell>
-                <TableCell><FormattedMessage id="quotes.quote" /></TableCell>
-                <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.renderQuotes()}
-            </TableBody>
-          </Table>
+          <MUIDataTable
+            data={data}
+            columns={columns}
+            options={options}
+          />
         </Paper>
       </div>
     );
