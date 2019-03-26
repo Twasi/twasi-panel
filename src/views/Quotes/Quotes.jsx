@@ -115,22 +115,9 @@ class Quotes extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.quotes" /></Typography>
         </Breadcrumbs>
-        <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-          <h4 className="pageContainerTitle">
-            <FormattedMessage id="quotes.title" />
-            <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary">
-                <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                <FormattedMessage id="common.refresh" />
-              </Button>
-            </span>
-          </h4>
-          <small>
-            <FormattedMessage id="quotes.subtitle" />
-          </small>
-        </Paper>
-        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
+        <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <MUIDataTable
+            title={<FormattedMessage id="quotes.title" />}
             data={data}
             columns={columns}
             options={options}
