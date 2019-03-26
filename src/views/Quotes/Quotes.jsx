@@ -17,7 +17,32 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import MUIDataTable from "mui-datatables";
 
-const columns = ['Spiel', 'Zeitpunkt', 'Zitat'];
+const columns = [
+ {
+  name: "game",
+  label: <FormattedMessage id="quotes.game" />,
+  options: {
+   filter: true,
+   sort: true,
+  }
+ },
+ {
+  name: "time",
+  label: <FormattedMessage id="quotes.time" />,
+  options: {
+   filter: false,
+   sort: true,
+  }
+ },
+ {
+  name: "quote",
+  label: <FormattedMessage id="quotes.quote" />,
+  options: {
+   filter: false,
+   sort: true,
+  }
+ },
+];
 
 const data = [
  ["Minecraft", "26.03.2019 - 09:00", "Niemand hat die Absicht seine Wäsche zu waschen."],
