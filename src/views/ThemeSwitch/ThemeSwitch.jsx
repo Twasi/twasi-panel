@@ -106,8 +106,7 @@ class ThemeSwitch extends React.Component {
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">
               <List>
-                <Divider />
-                <ListItem>
+                <ListItem style={{ paddingTop: '0px' }}>
                   <FormControlLabel
                     control={
                       <Checkbox

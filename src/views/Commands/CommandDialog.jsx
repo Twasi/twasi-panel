@@ -76,12 +76,14 @@ class Command extends React.Component {
         {...other}
       >
           <DialogContent>
-            <h4 className="pageContainerTitle">
-              <FormattedMessage id="commands.new_command" />
-            </h4>
-            <small>
-              <FormattedMessage id="commands.new_command.subheadline" />
-            </small>
+            <Typography>
+              <h3 className="pageContainerTitle">
+                <FormattedMessage id="commands.new_command" />
+              </h3>
+              <small>
+                <FormattedMessage id="commands.new_command.subheadline" />
+              </small>
+            </Typography>
             <br /><br />
             <Card className="pluginCard">
               <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>

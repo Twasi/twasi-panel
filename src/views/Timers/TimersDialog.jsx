@@ -67,12 +67,14 @@ class Timer extends React.Component {
         {...other}
       >
           <DialogContent>
-            <h4 className="pageContainerTitle">
-              <FormattedMessage id="timers.new_timer" />
-            </h4>
-            <small>
-              <FormattedMessage id="timers.new_timer.subheadline" />
-            </small>
+            <Typography>
+              <h3 className="pageContainerTitle">
+                <FormattedMessage id="timers.new_timer" />
+              </h3>
+              <small>
+                <FormattedMessage id="timers.new_timer.subheadline" />
+              </small>
+            </Typography>
             <br /><br />
             <Card className="pluginCard">
               <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>

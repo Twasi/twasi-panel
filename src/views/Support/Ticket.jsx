@@ -13,6 +13,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
+import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 // import PersonIcon from '@material-ui/icons/Person';
 // import AddIcon from '@material-ui/icons/Add';
@@ -45,14 +46,16 @@ class Ticket extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-        <DialogTitle id="simple-dialog-title">
-          <FormattedMessage id="support.new_ticket" />
-        </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              <FormattedMessage id="support.new_ticket_subheadline" />
-            </DialogContentText>
-            <br />
+            <Typography>
+              <h3 className="pageContainerTitle">
+                <FormattedMessage id="support.new_ticket" />
+              </h3>
+              <small>
+                <FormattedMessage id="support.new_ticket_subheadline" />
+              </small>
+            </Typography>
+            <br /><br />
             <Card className="pluginCard">
               <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
                 <FormControl variant="outlined" fullWidth>
