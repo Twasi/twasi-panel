@@ -245,6 +245,12 @@ export default createMuiTheme({
           display: 'none'
         }
       }
+    },
+    MuiLinearProgress: {
+      colorPrimary: {
+        backgroundColor: '#19171c',
+        height: '20px'
+      }
     }
   }
 });
