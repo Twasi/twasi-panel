@@ -133,6 +133,14 @@ export default createMuiTheme({
         }
       }
     },
+    MUIDataTableToolbar: {
+      titleText: {
+        color: '#ffffff'
+      },
+      icon: {
+        color: '#ffffff'
+      },
+    },
     MUIDataTableHeadCell: {
       fixedHeader: {
         backgroundColor: 'rgba(255, 255, 255, 0.0)',
