@@ -136,7 +136,7 @@ export default createMuiTheme({
     },
     MUIDataTableToolbar: {
       root: {
-        padding: '16px',
+        padding: '23px',
       },
       titleText: {
         color: '#ced3df'
