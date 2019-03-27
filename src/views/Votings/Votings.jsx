@@ -20,8 +20,15 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
 
 import './_style.css';
+
+const COLORS = ['#02d4d4', '#E87722', '#F1B300', '#009A17', '#00B8DE', '#006CB0', '#ff4f4a', '#85459F', '#D12B92', '#F67599'];
+
+const data05 = [{name: 'Das Nutella', value: 936},
+                {name: 'Der Nutella', value: 67},
+                {name: 'Die Nutella', value: 334}];
 
 class Votings extends Component {
 
@@ -71,47 +78,63 @@ class Votings extends Component {
               </ExpansionPanelSummary>
               <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <List>
-                    <ListItem>
-                      <ListItemText>
-                        <Typography>
-                          <h4 className="pageContainerTitle">
-                            Das Nutella
-                          </h4>
-                          <small>
-                            70% haben für diese Antwort gestimmt.
-                          </small>
-                        </Typography>
-                        <LinearProgress variant="determinate" value="70" style={{ marginTop: '5px' }} />
-                      </ListItemText>
-                    </ListItem>
-                    <ListItem>
-                      <ListItemText>
-                        <Typography>
-                          <h4 className="pageContainerTitle">
-                            Der Nutella
-                          </h4>
-                          <small>
-                            5% haben für diese Antwort gestimmt.
-                          </small>
-                        </Typography>
-                        <LinearProgress variant="determinate" value="5" style={{ marginTop: '5px' }} />
-                      </ListItemText>
-                    </ListItem>
-                    <ListItem>
-                      <ListItemText>
-                        <Typography>
-                          <h4 className="pageContainerTitle">
-                            Die Nutella
-                          </h4>
-                          <small>
-                            25% haben für diese Antwort gestimmt.
-                          </small>
-                        </Typography>
-                        <LinearProgress variant="determinate" value="25" style={{ marginTop: '5px' }} />
-                      </ListItemText>
-                    </ListItem>
-                  </List>
+                  <Grid container spacing={24}>
+                    <Grid item xs={6}>
+                      <List>
+                        <ListItem>
+                          <ListItemText>
+                            <Typography>
+                              <h4 className="pageContainerTitle">
+                                Das Nutella
+                              </h4>
+                              <small>
+                                70% (936 Stimmen)
+                              </small>
+                            </Typography>
+                            <LinearProgress variant="determinate" value="70" style={{ marginTop: '5px' }} />
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem>
+                          <ListItemText>
+                            <Typography>
+                              <h4 className="pageContainerTitle">
+                                Der Nutella
+                              </h4>
+                              <small>
+                                5% (67 Stimmen)
+                              </small>
+                            </Typography>
+                            <LinearProgress variant="determinate" value="5" style={{ marginTop: '5px' }} />
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem>
+                          <ListItemText>
+                            <Typography>
+                              <h4 className="pageContainerTitle">
+                                Die Nutella
+                              </h4>
+                              <small>
+                                25% (334 Stimmen)
+                              </small>
+                            </Typography>
+                            <LinearProgress variant="determinate" value="25" style={{ marginTop: '5px' }} />
+                          </ListItemText>
+                        </ListItem>
+                      </List>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <ResponsiveContainer height='100%' width='100%'>
+                        <PieChart width={730} height={250}>
+                          <Tooltip/>
+                          <Pie data={data05} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" fillOpacity="1">
+                          {
+                          	data05.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                          }
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </Grid>
+                  </Grid>
                 </CardContent>
               </Card>
             </ExpansionPanel>
