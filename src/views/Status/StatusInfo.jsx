@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
 import Icon from '@material-ui/core/Icon';
+import Typography from '@material-ui/core/Typography';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -32,9 +33,11 @@ class StatusInfo extends Component {
         <CardContent className="pluginCardContent">
           <Grid container spacing={16}>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
-              <h4 className="pageContainerTitle">
-                <FormattedMessage id="status.start" /> / <FormattedMessage id="status.stop" />
-              </h4>
+              <Typography>
+                <h3 className="pageContainerTitle">
+                  <FormattedMessage id="status.start" /> / <FormattedMessage id="status.stop" />
+                </h3>
+              </Typography>
               <br/>
               <Button
                 type="danger"
@@ -59,9 +62,11 @@ class StatusInfo extends Component {
               </Button>
             </Grid>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
-              <h4 className="pageContainerTitle">
-                <FormattedMessage id="status.current_status" />
-              </h4>
+              <Typography>
+                <h3 className="pageContainerTitle">
+                  <FormattedMessage id="status.current_status" />
+                </h3>
+              </Typography>
               <br/>
               {status.isRunning ? running : stopped}
             </Grid>

@@ -53,8 +53,10 @@ class Giveaways extends Component {
         <Grid container spacing={24}>
            <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle"><FormattedMessage id="giveaways.new_giveaway.title" /></h4>
-              <small><FormattedMessage id="giveaways.new_giveaway.subtitle" /></small>
+              <Typography>
+                <h3 className="pageContainerTitle"><FormattedMessage id="giveaways.new_giveaway.title" /></h3>
+                <small><FormattedMessage id="giveaways.new_giveaway.subtitle" /></small>
+              </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Grid container spacing={16}>
@@ -218,8 +220,10 @@ class Giveaways extends Component {
           </Grid>
           <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle"><FormattedMessage id="giveaways.contestants.title" /></h4>
-              <small><FormattedMessage id="giveaways.contestants.subtitle" /></small>
+              <Typography>
+                <h3 className="pageContainerTitle"><FormattedMessage id="giveaways.contestants.title" /></h3>
+                <small><FormattedMessage id="giveaways.contestants.subtitle" /></small>
+              </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="giveawayCard">
                   <Grid container spacing={0}>

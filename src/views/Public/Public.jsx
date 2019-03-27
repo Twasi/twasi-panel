@@ -95,16 +95,18 @@ class Public extends React.Component {
         {value === 1 && <TabContainer>Item Two</TabContainer>}
         {value === 2 && <TabContainer>
           <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-            <h4 className="pageContainerTitle">Bestenliste
-              <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary">
-                  Mit Twitch verbinden
-                </Button>
-              </span>
-            </h4>
-            <small>
-              Hier findest du die Bestenliste.
-            </small><br /><br />
+            <Typography>
+              <h3 className="pageContainerTitle">Bestenliste
+                <span style={{ float: 'right' }}>
+                  <Button variant="contained" color="primary">
+                    Mit Twitch verbinden
+                  </Button>
+                </span>
+              </h3>
+              <small>
+                Hier findest du die Bestenliste.
+              </small><br /><br />
+            </Typography>
             <Chip
               color="primary"
               avatar={<Avatar>5</Avatar>}

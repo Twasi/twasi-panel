@@ -31,7 +31,7 @@ export const getLogoDescriptionStyle = () => ({
 export const getRankStyle = () => ({
   display: 'block',
   fontWeight: 400,
-  fontSize: 18,
+  fontSize: 25,
   lineHeight: '25px',
   marginTop: -3,
   color: 'rgba(255, 255, 255, 0.6)'

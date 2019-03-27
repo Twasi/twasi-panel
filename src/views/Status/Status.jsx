@@ -28,12 +28,14 @@ const Status = ({ status }) => {
       <Paper className="pageContainer">
         <Grid container spacing={24}>
           <Grid item xs={12}>
-            <h4 className="pageContainerTitle">
-              <FormattedMessage id="status.card_headline" />
-            </h4>
-            <small>
-              <FormattedMessage id="status.explanation" />
-            </small>
+            <Typography>
+              <h3 className="pageContainerTitle">
+                <FormattedMessage id="status.card_headline" />
+              </h3>
+              <small>
+                <FormattedMessage id="status.explanation" />
+              </small>
+            </Typography>
           </Grid>
         </Grid>
         <StatusInfo />

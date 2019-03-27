@@ -15,6 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
 import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
 
 import Kreygasm from '../common/resources/Kreygasm.png';
@@ -132,16 +133,20 @@ class Overview extends Component {
         <Row>
           <Col sm={12}>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
-              <h4 className="pageContainerTitle">
-                <FormattedMessage id="overview.laststream" />
-                <span style={{ float: 'right' }}>
-                  <Button variant="contained" color="primary">
-                    <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                    <FormattedMessage id="common.refresh" />
-                  </Button>
-                </span>
-              </h4>
-              <small><FormattedMessage id="overview.laststream.subtitle" /></small>
+              <Typography>
+                <h3 class="pageContainerTitle">
+                  <FormattedMessage id="overview.laststream" />
+                  <span style={{ float: 'right' }}>
+                    <Button variant="contained" color="primary">
+                      <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                      <FormattedMessage id="common.refresh" />
+                    </Button>
+                  </span>
+                </h3>
+                <small>
+                  <FormattedMessage id="overview.laststream.subtitle" />
+                </small>
+              </Typography>
               <Card className="pluginCard" style={{ marginTop: '15px' }}>
                 <CardContent style={{ padding: '24px' }}>
                   <Grid container spacing={16}>
@@ -197,10 +202,14 @@ class Overview extends Component {
         <Row>
           <Col sm={9}>
             <Paper className="pageContainer" style={{ height: '250px', paddingRight: '0px', paddingLeft: '0px' }}>
-              <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
-                <FormattedMessage id="overview.viewercourse" />
-              </h4>
-              <small style={{ paddingLeft: '23px' }}><FormattedMessage id="overview.viewercourse.subtitle" /></small>
+              <Typography style={{ paddingLeft: '23px' }}>
+                <h3 class="pageContainerTitle">
+                  <FormattedMessage id="overview.viewercourse" />
+                </h3>
+                <small>
+                  <FormattedMessage id="overview.viewercourse.subtitle" />
+                </small>
+              </Typography>
               <ResponsiveContainer height='100%' width='100%'>
                 <AreaChart margin={{ top: 25, right: 0, left: 0, bottom: 23 }} data={data}>
                   <Tooltip/>
@@ -211,10 +220,14 @@ class Overview extends Component {
             <Row>
               <Col sm={6}>
                 <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
-                  <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
-                    <FormattedMessage id="overview.used_commands" />
-                  </h4>
-                  <small style={{ paddingLeft: '23px' }}><FormattedMessage id="overview.used_commands.subtitle" /></small>
+                  <Typography style={{ paddingLeft: '23px' }}>
+                    <h3 class="pageContainerTitle">
+                      <FormattedMessage id="overview.used_commands" />
+                    </h3>
+                    <small>
+                      <FormattedMessage id="overview.used_commands.subtitle" />
+                    </small>
+                  </Typography>
                   <ResponsiveContainer height='100%' width='100%'>
                     <PieChart width={730} height={250}
                         margin={{top: 15, right: 0, left: 0, bottom: 23}}>
@@ -230,10 +243,14 @@ class Overview extends Component {
               </Col>
               <Col sm={6}>
                 <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
-                  <h4 className="pageContainerTitle" style={{ paddingLeft: '23px' }}>
-                    <FormattedMessage id="overview.played_games" />
-                  </h4>
-                  <small style={{ paddingLeft: '23px' }}><FormattedMessage id="overview.played_games.subtitle" /></small>
+                  <Typography style={{ paddingLeft: '23px' }}>
+                    <h3 class="pageContainerTitle">
+                      <FormattedMessage id="overview.played_games" />
+                    </h3>
+                    <small>
+                      <FormattedMessage id="overview.played_games.subtitle" />
+                    </small>
+                  </Typography>
                   <ResponsiveContainer height='100%' width='100%'>
                     <BarChart backgroundOpacity=".1" width={600} height={300} data={data02}
                         margin={{top: 15, right: 0, left: 0, bottom: 0}}>
@@ -256,8 +273,10 @@ class Overview extends Component {
                     <ListItem>
                       <Row>
                         <Col sm={12}>
-                          <h4 className="pageContainerTitle">1564184945</h4>
-                          <small><FormattedMessage id="overview.table_id" /></small>
+                          <Typography>
+                            <h3 className="pageContainerTitle">1564184945</h3>
+                            <small><FormattedMessage id="overview.table_id" /></small>
+                          </Typography>
                         </Col>
                       </Row>
                       <TooltipM title="Jetzt Live" placement="right">
@@ -274,8 +293,10 @@ class Overview extends Component {
                         <ListItem>
                           <Row>
                             <Col sm={12}>
-                              <h4 className="pageContainerTitle">13:37</h4>
-                              <small><FormattedMessage id="overview.table_duration" /></small>
+                              <Typography>
+                                <h3 className="pageContainerTitle">13:37</h3>
+                                <small><FormattedMessage id="overview.table_duration" /></small>
+                              </Typography>
                             </Col>
                           </Row>
                           <TooltipM title="+ 5:12" placement="right">
@@ -292,8 +313,10 @@ class Overview extends Component {
                     <ListItem>
                       <Row>
                         <Col sm={12}>
-                          <h4 className="pageContainerTitle">1.243</h4>
-                          <small><FormattedMessage id="overview.table_chatmessages" /></small>
+                          <Typography>
+                            <h3 className="pageContainerTitle">1.243</h3>
+                            <small><FormattedMessage id="overview.table_chatmessages" /></small>
+                          </Typography>
                         </Col>
                       </Row>
                       <TooltipM title="+ 125" placement="right">
@@ -310,8 +333,10 @@ class Overview extends Component {
                         <ListItem>
                           <Row>
                             <Col sm={12}>
-                              <h4 className="pageContainerTitle">354</h4>
-                              <small><FormattedMessage id="overview.table_commands_used" /></small>
+                              <Typography>
+                                <h3 className="pageContainerTitle">354</h3>
+                                <small><FormattedMessage id="overview.table_commands_used" /></small>
+                              </Typography>
                             </Col>
                           </Row>
                           <TooltipM title="- 5" placement="right">
@@ -328,8 +353,10 @@ class Overview extends Component {
                     <ListItem>
                       <Row>
                         <Col sm={12}>
-                          <h4 className="pageContainerTitle">54</h4>
-                          <small><FormattedMessage id="overview.table_follower" /></small>
+                          <Typography>
+                            <h3 className="pageContainerTitle">54</h3>
+                            <small><FormattedMessage id="overview.table_follower" /></small>
+                          </Typography>
                         </Col>
                       </Row>
                       <TooltipM title="+- 0" placement="right">
@@ -345,8 +372,10 @@ class Overview extends Component {
                         <ListItem>
                           <Row>
                             <Col sm={12}>
-                              <h4 className="pageContainerTitle">263</h4>
-                              <small><FormattedMessage id="overview.table_views" /></small>
+                              <Typography>
+                                <h3 className="pageContainerTitle">263</h3>
+                                <small><FormattedMessage id="overview.table_views" /></small>
+                              </Typography>
                             </Col>
                           </Row>
                           <TooltipM title="+- 0" placement="right">
@@ -362,8 +391,10 @@ class Overview extends Component {
                     <ListItem>
                       <Row>
                         <Col sm={12}>
-                          <h4 className="pageContainerTitle">32</h4>
-                          <small><FormattedMessage id="overview.table_viewermax" /></small>
+                          <Typography>
+                            <h3 className="pageContainerTitle">32</h3>
+                            <small><FormattedMessage id="overview.table_viewermax" /></small>
+                          </Typography>
                         </Col>
                       </Row>
                       <TooltipM title="+ 7" placement="right">
@@ -380,8 +411,10 @@ class Overview extends Component {
                         <ListItem>
                           <Row>
                             <Col sm={12}>
-                              <h4 className="pageContainerTitle">25</h4>
-                              <small><FormattedMessage id="overview.table_average" /></small>
+                              <Typography>
+                                <h3 className="pageContainerTitle">25</h3>
+                                <small><FormattedMessage id="overview.table_average" /></small>
+                              </Typography>
                             </Col>
                           </Row>
                           <TooltipM title="- 2" placement="right">
@@ -398,8 +431,10 @@ class Overview extends Component {
                     <ListItem>
                       <Row>
                         <Col sm={12}>
-                          <h4 className="pageContainerTitle">197</h4>
-                          <small><FormattedMessage id="overview.table_individual" /></small>
+                          <Typography>
+                            <h3 className="pageContainerTitle">197</h3>
+                            <small><FormattedMessage id="overview.table_individual" /></small>
+                          </Typography>
                         </Col>
                       </Row>
                       <TooltipM title="- 50" placement="right">

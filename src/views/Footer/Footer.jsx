@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
@@ -15,12 +16,14 @@ class Footer extends Component {
   render() {
     const { serverVersion } = this.props;
     return (
-      <div style={{ textAlign: 'center', color: '#a2a2a2', marginBottom: '20px' }}>
-        Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-Panel v.{
-          pkgJson.version
-        }{' '}
-        - #{window.env.BUILD_DESC} | Twasi-Core v.{serverVersion}
-      </div>
+      <Typography>
+        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+          Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-Panel v.{
+            pkgJson.version
+          }{' '}
+          - #{window.env.BUILD_DESC} | Twasi-Core v.{serverVersion}
+        </div>
+      </Typography>
     );
   }
 }

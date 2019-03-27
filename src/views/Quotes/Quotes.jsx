@@ -117,7 +117,16 @@ class Quotes extends Component {
         </Breadcrumbs>
         <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <MUIDataTable
-            title={<FormattedMessage id="quotes.title" />}
+            title={
+              <Typography>
+                <h3 class="pageContainerTitle">
+                  <FormattedMessage id="quotes.title" />
+                </h3>
+                <small>
+                  <FormattedMessage id="quotes.subtitle" />
+                </small>
+              </Typography>
+            }
             data={data}
             columns={columns}
             options={options}

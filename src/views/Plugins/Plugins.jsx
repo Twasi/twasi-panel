@@ -32,18 +32,22 @@ class Plugins extends Component {
             <CardContent className="pluginCardContent">
               <Grid container spacing={0} style={{ marginTop: '0px' }}>
                 <Grid item xs={4}>
-                  <h3 className="pageContainerTitle">{plugin.name}</h3>
-                  <br />
-                  <small>
-                    by <i>{plugin.author}</i><br />
-                    <FormattedMessage id="plugins.version" /> {plugin.version}
-                  </small>
+                  <Typography>
+                    <h2 className="pageContainerTitle">{plugin.name}</h2>
+                    <br />
+                    <small>
+                      by <i>{plugin.author}</i><br />
+                      <FormattedMessage id="plugins.version" /> {plugin.version}
+                    </small>
+                  </Typography>
                 </Grid>
                 <Grid item xs={8}>
-                  <h4 className="pageContainerTitle">Plugin Description</h4>
-                  <small>
-                    {plugin.description}
-                  </small>
+                  <Typography>
+                    <h3 className="pageContainerTitle">Plugin Description</h3>
+                    <small>
+                      {plugin.description}
+                    </small>
+                  </Typography>
                 </Grid>
               </Grid>
               <Divider style={{ marginTop: '15px', marginBottom: '15px' }} />
@@ -101,16 +105,20 @@ class Plugins extends Component {
                   )}
                 </Grid>
                 <Grid item xs={4}>
-                  <b>
-                    <FormattedMessage id="plugins.commands" />
-                  </b><br />
-                  <small>{plugin.commands.join(', ')}</small>
+                  <Typography>
+                    <h3 className="pageContainerTitle">Befehle</h3>
+                    <small>
+                      {plugin.commands.join(', ')}
+                    </small>
+                  </Typography>
                 </Grid>
                 <Grid item xs={4}>
-                  <b>
-                    Dependencies
-                  </b><br />
-                  -
+                  <Typography>
+                    <h3 className="pageContainerTitle">Dependencies</h3>
+                    <small>
+                      -
+                    </small>
+                  </Typography>
                 </Grid>
               </Grid>
             </CardContent>
@@ -130,12 +138,14 @@ class Plugins extends Component {
         <Paper className="pageContainer">
           <Grid container spacing={0}>
             <Grid item xs={12}>
-              <h4 className="pageContainerTitle">
-                <FormattedMessage id="plugins.card_headline" />
-              </h4>
-              <small>
-                <FormattedMessage id="plugins.explanation" />
-              </small>
+              <Typography>
+                <h3 className="pageContainerTitle">
+                  <FormattedMessage id="plugins.card_headline" />
+                </h3>
+                <small>
+                  <FormattedMessage id="plugins.explanation" />
+                </small>
+              </Typography>
             </Grid>
           </Grid>
           {renderedPlugins}

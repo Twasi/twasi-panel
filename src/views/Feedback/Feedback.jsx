@@ -11,6 +11,7 @@ import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 
 import './_style.css';
@@ -38,12 +39,14 @@ class Feedback extends React.Component {
         {...other}
       >
           <DialogContent>
-            <h4 className="pageContainerTitle">
-              <FormattedMessage id="feedbackswitch.headline" />
-            </h4>
-            <small>
-              <FormattedMessage id="feedbackswitch.subheadline" />
-            </small>
+            <Typography>
+              <h3 className="pageContainerTitle">
+                <FormattedMessage id="feedbackswitch.headline" />
+              </h3>
+              <small>
+                <FormattedMessage id="feedbackswitch.subheadline" />
+              </small>
+            </Typography>
             <br /><br />
             <Card className="pluginCard">
               <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>

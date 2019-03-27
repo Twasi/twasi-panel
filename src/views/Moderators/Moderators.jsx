@@ -43,21 +43,23 @@ class Moderators extends Component {
           <Typography color="textPrimary"><FormattedMessage id="sidebar.mods" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-          <h4 className="pageContainerTitle">
-            <FormattedMessage id="moderators.title" />
-            <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
-                <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                <FormattedMessage id="common.refresh" />
-              </Button>
-              <Button variant="contained" color="primary">
-                <FormattedMessage id="moderators.add_moderator" />
-              </Button>
-            </span>
-          </h4>
-          <small>
-            <FormattedMessage id="moderators.subtitle" />
-          </small>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="moderators.title" />
+              <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
+                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                  <FormattedMessage id="common.refresh" />
+                </Button>
+                <Button variant="contained" color="primary">
+                  <FormattedMessage id="moderators.add_moderator" />
+                </Button>
+              </span>
+            </h3>
+            <small>
+              <FormattedMessage id="moderators.subtitle" />
+            </small>
+          </Typography>
         </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Table>

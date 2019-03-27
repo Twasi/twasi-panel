@@ -134,6 +134,9 @@ export default createMuiTheme({
       }
     },
     MUIDataTableToolbar: {
+      root: {
+        padding: '16px',
+      },
       titleText: {
         color: '#ffffff'
       },
@@ -203,7 +206,7 @@ export default createMuiTheme({
     },
     MuiTypography: { // Name of the component ⚛️ / style sheet
       body1: { // Name of the rule
-        color: 'rgba(255, 255, 255, 0.7)' // Some CSS
+        color: '#ffffff' // Some CSS
       }
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet

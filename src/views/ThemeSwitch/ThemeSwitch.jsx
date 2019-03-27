@@ -16,6 +16,7 @@ import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 import storage from 'local-storage';
 
@@ -93,12 +94,14 @@ class ThemeSwitch extends React.Component {
         {...other}
       >
         <DialogContent>
-          <h4 className="pageContainerTitle">
-            <FormattedMessage id="themeswitch.switch_theme" />
-          </h4>
-          <small>
-            Hier hast du die Möglichkeit, das Aussehen des Panels für deine Bedürfnisse zu verändern.
-          </small>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="themeswitch.switch_theme" />
+            </h3>
+            <small>
+              Hier hast du die Möglichkeit, das Aussehen des Panels für deine Bedürfnisse zu verändern.
+            </small>
+          </Typography>
           <br /><br />
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">

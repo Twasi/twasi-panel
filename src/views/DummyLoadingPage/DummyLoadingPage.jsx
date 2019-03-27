@@ -12,7 +12,7 @@ class DummyLoadingPage extends Component {
 
   render() {
     return (
-      <div className="pageContent">
+      <div className="pageContent" style={{ marginBottom: '25px' }}>
         <Grid container spacing={24}>
           <Grid item xs={2}>
             <Paper className="pageContainer" style={{ height: '500px' }} />

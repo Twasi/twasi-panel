@@ -54,18 +54,20 @@ class Profile extends Component {
         <Row>
           <Col sm={6}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">
-                <FormattedMessage id="profile.your_data" />
-                <span style={{ float: 'right' }}>
-                  <Button variant="contained" color="primary">
-                    <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                    <FormattedMessage id="common.refresh" />
-                  </Button>
-                </span>
-              </h4>
-              <small>
-                <FormattedMessage id="profile.your_data_subline" />
-              </small>
+              <Typography>
+                <h3 className="pageContainerTitle">
+                  <FormattedMessage id="profile.your_data" />
+                  <span style={{ float: 'right' }}>
+                    <Button variant="contained" color="primary">
+                      <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                      <FormattedMessage id="common.refresh" />
+                    </Button>
+                  </span>
+                </h3>
+                <small>
+                  <FormattedMessage id="profile.your_data_subline" />
+                </small>
+              </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Table>
@@ -120,17 +122,19 @@ class Profile extends Component {
               </Card>
             </Paper>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">
-                <FormattedMessage id="profile.badges" />
-                <span style={{ float: 'right' }}>
-                  <Button variant="contained" color="primary">
-                    <FormattedMessage id="common.save" />
-                  </Button>
-                </span>
-              </h4>
-              <small>
-                <FormattedMessage id="profile.badges_subline" />
-              </small>
+              <Typography>
+                <h3 className="pageContainerTitle">
+                  <FormattedMessage id="profile.badges" />
+                  <span style={{ float: 'right' }}>
+                    <Button variant="contained" color="primary">
+                      <FormattedMessage id="common.save" />
+                    </Button>
+                  </span>
+                </h3>
+                <small>
+                  <FormattedMessage id="profile.badges_subline" />
+                </small>
+              </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Tooltip title="Twasi Team" placement="top">
@@ -175,12 +179,14 @@ class Profile extends Component {
           </Col>
           <Col sm={6}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">
-                <FormattedMessage id="profile.social" />
-              </h4>
-              <small>
-                <FormattedMessage id="profile.social_subline" />
-              </small>
+              <Typography>
+                <h3 className="pageContainerTitle">
+                  <FormattedMessage id="profile.social" />
+                </h3>
+                <small>
+                  <FormattedMessage id="profile.social_subline" />
+                </small>
+              </Typography>
               <Row style={{ marginTop: '25px' }}>
                 <Col sm={6}>
                   <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
@@ -375,12 +381,14 @@ class Profile extends Component {
               </Row>
             </Paper>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">
-                Eigener Bot-Account
-              </h4>
-              <small>
-                Hier kannst du einen eigenen Bot-Account mit Twasi verbinden.
-              </small>
+              <Typography>
+                <h3 className="pageContainerTitle">
+                  Eigener Bot-Account
+                </h3>
+                <small>
+                  Hier kannst du einen eigenen Bot-Account mit Twasi verbinden.
+                </small>
+              </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Grid container spacing={0}>

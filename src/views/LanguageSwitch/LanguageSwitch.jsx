@@ -40,12 +40,14 @@ class LanguageSwitch extends React.Component {
         {...other}
       >
         <DialogContent>
-          <h4 className="pageContainerTitle">
-            Sprache ändern
-          </h4>
-          <small>
-            Hier kannst du die Sprache ändern.
-          </small>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              Sprache ändern
+            </h3>
+            <small>
+              Hier kannst du die Sprache ändern.
+            </small>
+          </Typography>
           <br /><br />
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">

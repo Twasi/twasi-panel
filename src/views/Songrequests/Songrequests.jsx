@@ -92,15 +92,17 @@ class Songrequests extends React.Component {
           </div>
           <Grid container spacing={0} className="songrequestsPlayer">
             <Grid item xs={6}>
-              <h4 style={{ padding: '0px', margin: '0px' }}>
-                Bohemian Rhapsody{' '}
-                <br />
-                <small>Queen</small>
-                <br />
-                <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
-                  <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
-                </em>
-              </h4>
+              <Typography>
+                <h3 style={{ padding: '0px', margin: '0px' }}>
+                  Bohemian Rhapsody{' '}
+                  <br />
+                  <small>Queen</small>
+                  <br />
+                  <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
+                    <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
+                  </em>
+                </h3>
+              </Typography>
             </Grid>
             <Grid item xs={6}>
               <div style={{ textAlign: 'right', float: 'right' }}>

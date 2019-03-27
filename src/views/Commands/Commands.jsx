@@ -112,25 +112,27 @@ class Commands extends Component {
         </Breadcrumbs>
         {!disabled &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-          <h4 className="pageContainerTitle">
-            <FormattedMessage id="commands.title" />
-            <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
-                <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                <FormattedMessage id="common.refresh" />
-              </Button>
-              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>
-                <FormattedMessage id="commands.new_command" />
-              </Button>
-              <CommandDialog
-                open={this.state.open}
-                onClose={this.handleClose}
-              />
-            </span>
-          </h4>
-          <small>
-            Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
-          </small>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="commands.title" />
+              <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
+                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                  <FormattedMessage id="common.refresh" />
+                </Button>
+                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>
+                  <FormattedMessage id="commands.new_command" />
+                </Button>
+                <CommandDialog
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                />
+              </span>
+            </h3>
+            <small>
+              Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
+            </small>
+          </Typography>
         </Paper>
         }{!disabled &&
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>

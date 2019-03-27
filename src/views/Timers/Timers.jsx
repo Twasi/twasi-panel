@@ -91,25 +91,27 @@ class Timers extends Component {
           <Typography color="textPrimary"><FormattedMessage id="sidebar.timers" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-          <h4 className="pageContainerTitle">
-            <FormattedMessage id="timers.title" />
-            <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
-                <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                <FormattedMessage id="common.refresh" />
-              </Button>
-              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
-                <FormattedMessage id="timers.new_timer" />
-              </Button>
-              <TimersDialog
-                open={this.state.open}
-                onClose={this.handleClose}
-              />
-            </span>
-          </h4>
-          <small>
-            <FormattedMessage id="timers.subtitle" />
-          </small>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="timers.title" />
+              <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
+                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                  <FormattedMessage id="common.refresh" />
+                </Button>
+                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
+                  <FormattedMessage id="timers.new_timer" />
+                </Button>
+                <TimersDialog
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                />
+              </span>
+            </h3>
+            <small>
+              <FormattedMessage id="timers.subtitle" />
+            </small>
+          </Typography>
         </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Table>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 
 import Chip from '@material-ui/core/Chip';
@@ -10,14 +11,16 @@ class Rank extends Component {
     const { rank } = this.props;
     return (
       <div>
-        {(() => {
-          switch (rank) {
-            case "TEAM":     return "Teammitglied";
-            case "PARTNER":  return "Partnerstreamer";
-            case "STREAMER": return "Streamer";
-            default:         return "Unknown";
-          }
-        })()}
+        <Typography>
+          {(() => {
+            switch (rank) {
+              case "TEAM":     return "Teammitglied";
+              case "PARTNER":  return "Partnerstreamer";
+              case "STREAMER": return "Streamer";
+              default:         return "Unknown";
+            }
+          })()}
+        </Typography>
       </div>
     )
   }

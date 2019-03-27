@@ -26,21 +26,23 @@ class Votings extends Component {
           <Typography color="textPrimary"><FormattedMessage id="sidebar.votings" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer">
-          <h4 className="pageContainerTitle">
-            <FormattedMessage id="votings.headline" />
-            <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary" style={{ marginRight: 16 }}>
-                <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                <FormattedMessage id="common.refresh" />
-              </Button>
-              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
-                <FormattedMessage id="votings.new_voting" />
-              </Button>
-            </span>
-          </h4>
-          <small>
-            <FormattedMessage id="votings.subheadline" />
-          </small>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="votings.headline" />
+              <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" style={{ marginRight: 16 }}>
+                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                  <FormattedMessage id="common.refresh" />
+                </Button>
+                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
+                  <FormattedMessage id="votings.new_voting" />
+                </Button>
+              </span>
+            </h3>
+            <small>
+              <FormattedMessage id="votings.subheadline" />
+            </small>
+          </Typography>
           <Card style={{ marginTop: '25px' }} className="pluginCard">
             <CardContent />
           </Card>

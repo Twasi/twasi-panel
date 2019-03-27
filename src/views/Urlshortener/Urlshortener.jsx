@@ -45,18 +45,20 @@ class Urlshortener extends Component {
         <Row>
           <Col sm={6}>
             <Paper className="pageContainer">
-              <h4 className="pageContainerTitle">
-                <FormattedMessage id="urlshortener.headline" />
-                <span style={{ float: 'right' }}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                  >
-                    <FormattedMessage id="common.save" />
-                  </Button>
-                </span>
-              </h4>
-              <small><FormattedMessage id="urlshortener.subheadline" /></small>
+              <Typography>
+                <h3 className="pageContainerTitle">
+                  <FormattedMessage id="urlshortener.headline" />
+                  <span style={{ float: 'right' }}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                    >
+                      <FormattedMessage id="common.save" />
+                    </Button>
+                  </span>
+                </h3>
+                <small><FormattedMessage id="urlshortener.subheadline" /></small>
+              </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <TextField
@@ -132,10 +134,12 @@ class Urlshortener extends Component {
           </Col>
           <Col sm={6}>
             <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-              <h4 className="pageContainerTitle"><FormattedMessage id="urlshortener.your_urls" /></h4>
-              <small>
-                <FormattedMessage id="urlshortener.headline_urls" />
-              </small>
+              <Typography>
+                <h3 className="pageContainerTitle"><FormattedMessage id="urlshortener.your_urls" /></h3>
+                <small>
+                  <FormattedMessage id="urlshortener.headline_urls" />
+                </small>
+              </Typography>
             </Paper>
             <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
               <Table>

@@ -54,25 +54,27 @@ class Support extends Component {
           <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer">
-          <h4 className="pageContainerTitle">
-            Deine Support Tickets
-            <span style={{ float: 'right' }}>
-              <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
-                <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                Aktualisieren
-              </Button>
-              <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
-                Neues Ticket erstellen
-              </Button>
-              <Ticket
-                open={this.state.open}
-                onClose={this.handleClose}
-              />
-            </span>
-          </h4>
-          <small>
-            Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
-          </small>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              Deine Support Tickets
+              <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
+                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                  Aktualisieren
+                </Button>
+                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
+                  Neues Ticket erstellen
+                </Button>
+                <Ticket
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                />
+              </span>
+            </h3>
+            <small>
+              Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
+            </small>
+          </Typography>
           <ExpansionPanel style={{ marginTop: '25px' }}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Grid container spacing={24}>

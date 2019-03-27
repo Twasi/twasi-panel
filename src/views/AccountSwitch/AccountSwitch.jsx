@@ -43,12 +43,14 @@ class AccountSwitch extends React.Component {
         {...other}
       >
           <DialogContent>
-            <h4 className="pageContainerTitle">
-              <FormattedMessage id="accountswitch.switch_account" />
-            </h4>
-            <small>
-              <FormattedMessage id="accountswitch.subheadline" />
-            </small>
+            <Typography>
+              <h3 className="pageContainerTitle">
+                <FormattedMessage id="accountswitch.switch_account" />
+              </h3>
+              <small>
+                <FormattedMessage id="accountswitch.subheadline" />
+              </small>
+            </Typography>
             <br /><br />
             <Card className="pluginCard">
               <CardContent style={{ paddingTop: '15px', paddingBottom: '15px', marginBottom: '15px' }}>
