@@ -16,7 +16,7 @@ import TextField from '@material-ui/core/TextField';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
+import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, LabelList } from 'recharts';
 
 import Kreygasm from '../common/resources/Kreygasm.png';
 import LUL from '../common/resources/LUL.png';
@@ -232,10 +232,10 @@ class Overview extends Component {
                     <PieChart width={730} height={250}
                         margin={{top: 15, right: 0, left: 0, bottom: 23}}>
                       <Tooltip/>
-                      <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" fillOpacity="1">
-                      {
-                      	data01.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
-                      }
+                      <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" fillOpacity="1" label>
+                        {
+                        	data01.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                        }
                       </Pie>
                     </PieChart>
                   </ResponsiveContainer>
@@ -256,9 +256,10 @@ class Overview extends Component {
                         margin={{top: 15, right: 0, left: 0, bottom: 0}}>
                      <Tooltip cursor={{ fill: '#283c42' }} />
                      <Bar dataKey="pv" fill="#00aeae">
-                     {
-                       data02.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
-                     }
+                       <LabelList dataKey="pv" position="top" />
+                       {
+                         data02.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                       }
                      </Bar>
                     </BarChart>
                   </ResponsiveContainer>

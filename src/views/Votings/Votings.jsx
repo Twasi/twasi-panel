@@ -126,7 +126,7 @@ class Votings extends Component {
                       <ResponsiveContainer height='100%' width='100%'>
                         <PieChart width={730} height={250}>
                           <Tooltip/>
-                          <Pie data={data05} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" fillOpacity="1">
+                          <Pie data={data05} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" isAnimationActive={false} label>
                           {
                           	data05.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
                           }
