@@ -63,7 +63,7 @@ const options = {
       next: <FormattedMessage id="datatables.pagination.next" />,
       previous: <FormattedMessage id="datatables.pagination.previous" />,
       rowsPerPage: <FormattedMessage id="datatables.pagination.rowsperpage" />,
-      displayRows: <FormattedMessage id="datatables.pagination.rowsperpage" />,
+      displayRows: <FormattedMessage id="datatables.pagination.displayrows" />,
     },
     toolbar: {
       search: <FormattedMessage id="datatables.toolbar.search" />,
