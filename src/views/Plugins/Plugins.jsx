@@ -70,8 +70,8 @@ class Plugins extends Component {
                         Uninstall
                         {plugin.actionInProgress && (
                           <CircularProgress
+                            color="primary"
                             style={{
-                              color: '#00aeae',
                               position: 'absolute',
                               top: '50%',
                               left: '50%',
@@ -95,8 +95,8 @@ class Plugins extends Component {
                         Install
                         {plugin.actionInProgress && (
                           <CircularProgress
+                            color="primary"
                             style={{
-                              color: '#00aeae',
                               position: 'absolute',
                               top: '50%',
                               left: '50%',
