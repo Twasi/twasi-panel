@@ -48,7 +48,7 @@ const verifyData = () => (dispatch, getState) => {
 
 const installPlugin = name => (dispatch, getState) => {
   dispatch(updateActionInProgress(name, true));
-  sleep(getRndInteger(1500, 2500)).then(() => {
+  sleep(getRndInteger(500, 1000)).then(() => {
     const state = getState();
     const jwt = authSelectors.getJwt(state);
 
@@ -74,7 +74,7 @@ const installPlugin = name => (dispatch, getState) => {
 
 const uninstallPlugin = name => (dispatch, getState) => {
   dispatch(updateActionInProgress(name, true));
-  sleep(getRndInteger(1500, 2500)).then(() => {
+  sleep(getRndInteger(500, 1000)).then(() => {
     const state = getState();
     const jwt = authSelectors.getJwt(state);
 
