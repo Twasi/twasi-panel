@@ -29,30 +29,36 @@ class Plugins extends Component {
       <Grid container spacing={0} style={{ marginTop: '23px' }}>
         <Grid item xs={12}>
           <Card className="pluginCard">
-            <CardContent className="pluginCardContent">
-              <Grid container spacing={0} style={{ marginTop: '0px' }}>
-                <Grid item xs={4}>
+            <CardContent className="pluginCardContent" style={{ padding: '16px' }}>
+              <Grid container spacing={16} style={{ marginTop: '0px' }}>
+                <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
-                    <h2 className="pageContainerTitle">{plugin.name}</h2>
-                    <br />
+                    <h2 style={{ marginBottom: '5px' }} className="pageContainerTitle">{plugin.name}</h2>
                     <small>
                       by <i>{plugin.author}</i><br />
                       <FormattedMessage id="plugins.version" /> {plugin.version}
                     </small>
                   </Typography>
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle">Plugin Description</h3>
+                    <h3 className="pageContainerTitle">Short Plugin Description</h3>
                     <small>
                       {plugin.description}
                     </small>
                   </Typography>
                 </Grid>
+                <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+                  <Typography>
+                    <h3 className="pageContainerTitle">Documentation</h3>
+                    <Button style={{ marginTop: '5px' }} variant="contained" color="primary" size="small">
+                      Show
+                    </Button>
+                  </Typography>
+                </Grid>
               </Grid>
-              <Divider style={{ marginTop: '15px', marginBottom: '15px' }} />
-              <Grid container spacing={0}>
-                <Grid item xs={4}>
+              <Grid style={{ marginTop: '16px' }} container spacing={16}>
+                <Grid item xs={4} style={{ paddingBottom: '0px' }}>
                   {plugin.isInstalled && (
                     <div>
                       <Button
@@ -104,7 +110,7 @@ class Plugins extends Component {
                     </div>
                   )}
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={4} style={{ paddingBottom: '0px' }}>
                   <Typography>
                     <h3 className="pageContainerTitle">Befehle</h3>
                     <small>
@@ -112,7 +118,7 @@ class Plugins extends Component {
                     </small>
                   </Typography>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={4} style={{ paddingBottom: '0px' }}>
                   <Typography>
                     <h3 className="pageContainerTitle">Dependencies</h3>
                     <small>
