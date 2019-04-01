@@ -48,52 +48,54 @@ const verifyData = () => (dispatch, getState) => {
 
 const installPlugin = name => (dispatch, getState) => {
   dispatch(updateActionInProgress(name, true));
+  sleep(getRndInteger(1500, 2500)).then(() => {
+    const state = getState();
+    const jwt = authSelectors.getJwt(state);
 
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-
-  getUserGraph(
-    `user { installPlugin(name:"${name}") { isInstalled } }`,
-    jwt
-  ).then(data => {
-    dispatch(
-      setInstalled(name, data.user.installPlugin.isInstalled)
-    );
-    dispatch(updateActionInProgress(name, false));
-  });
-  /* plugins
-    .post({
-      action: 'INSTALL',
-      pluginName: name
-    })
-    .then(() => {
-      dispatch(setInstalled(name, true));
-    }); */
+    getUserGraph(
+      `user { installPlugin(name:"${name}") { isInstalled } }`,
+      jwt
+    ).then(data => {
+      dispatch(
+        setInstalled(name, data.user.installPlugin.isInstalled)
+      );
+      dispatch(updateActionInProgress(name, false));
+    });
+    /* plugins
+      .post({
+        action: 'INSTALL',
+        pluginName: name
+      })
+      .then(() => {
+        dispatch(setInstalled(name, true));
+      }); */
+  })
 };
 
 const uninstallPlugin = name => (dispatch, getState) => {
   dispatch(updateActionInProgress(name, true));
+  sleep(getRndInteger(1500, 2500)).then(() => {
+    const state = getState();
+    const jwt = authSelectors.getJwt(state);
 
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-
-  getUserGraph(
-    `user { uninstallPlugin(name:"${name}") { isInstalled } }`,
-    jwt
-  ).then(data => {
-    dispatch(
-      setInstalled(name, data.user.uninstallPlugin.isInstalled)
-    );
-    dispatch(updateActionInProgress(name, false));
-  });
-  /* plugins
-    .post({
-      action: 'UNINSTALL',
-      pluginName: name
-    })
-    .then(() => {
-      dispatch(setInstalled(name, false));
-    }); */
+    getUserGraph(
+      `user { uninstallPlugin(name:"${name}") { isInstalled } }`,
+      jwt
+    ).then(data => {
+      dispatch(
+        setInstalled(name, data.user.uninstallPlugin.isInstalled)
+      );
+      dispatch(updateActionInProgress(name, false));
+    });
+    /* plugins
+      .post({
+        action: 'UNINSTALL',
+        pluginName: name
+      })
+      .then(() => {
+        dispatch(setInstalled(name, false));
+      }); */
+  })
 };
 
 /* const updateQuery = debounce(
@@ -105,6 +107,13 @@ const uninstallPlugin = name => (dispatch, getState) => {
   },
   1000
 ); */
+
+function sleep(milliseconds) {
+ return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
 const updateQuery = () => {};
 
