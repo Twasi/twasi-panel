@@ -105,6 +105,15 @@ export default {
   'plugins.free': 'Kostenlos',
   'plugins.paid': 'Kostenpflichtig',
   'plugins.installed': 'Installiert',
+  'plugins.short_description': 'Kurze Beschreibung',
+  'plugins.documentation': 'Dokumentation',
+  'plugins.dependencies': 'Abhängigkeiten',
+  'plugins.install': 'Installieren',
+  'plugins.uninstall': 'Deinstallieren',
+  'plugins.show': 'Öffnen',
+  'plugins.by': 'von',
+  'plugins.documentation.headline': 'Dokumentation für das Plugin: ',
+  'plugins.documentation.subheadline': 'Falls du einen Fehler in der Dokumentation finden solltest kannst du diesen über den Feedback Knopf melden.',
 
   // Settings
   'settings.unsaved': 'Ungespeicherte Änderungen',

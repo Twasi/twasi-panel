@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Documentation from './Documentation';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -20,6 +21,20 @@ class Plugins extends Component {
   componentDidMount() {
     const { verifyData } = this.props;
     verifyData();
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false
+    };
+
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClose() {
+    this.setState({ open: false });
   }
 
   render() {
@@ -35,14 +50,14 @@ class Plugins extends Component {
                   <Typography>
                     <h2 style={{ marginBottom: '5px' }} className="pageContainerTitle">{plugin.name}</h2>
                     <small>
-                      by <i>{plugin.author}</i><br />
+                      <FormattedMessage id="plugins.by" /> <i>{plugin.author}</i><br />
                       <FormattedMessage id="plugins.version" /> {plugin.version}
                     </small>
                   </Typography>
                 </Grid>
                 <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle">Short Plugin Description</h3>
+                    <h3 className="pageContainerTitle"><FormattedMessage id="plugins.short_description" /></h3>
                     <small>
                       {plugin.description}
                     </small>
@@ -50,9 +65,9 @@ class Plugins extends Component {
                 </Grid>
                 <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle">Documentation</h3>
-                    <Button style={{ marginTop: '5px' }} variant="contained" color="primary" size="small">
-                      Show
+                    <h3 className="pageContainerTitle"><FormattedMessage id="plugins.documentation" /></h3>
+                    <Button onClick={() => this.setState({ open: true })} style={{ marginTop: '5px' }} variant="contained" color="primary" size="small">
+                      <FormattedMessage id="plugins.show" />
                     </Button>
                   </Typography>
                 </Grid>
@@ -67,7 +82,7 @@ class Plugins extends Component {
                         disabled={plugin.actionInProgress}
                         onClick={() => uninstallPlugin(plugin.name)}
                       >
-                        Uninstall
+                        <FormattedMessage id="plugins.uninstall" />
                         {plugin.actionInProgress && (
                           <CircularProgress
                             color="primary"
@@ -92,7 +107,7 @@ class Plugins extends Component {
                         disabled={plugin.actionInProgress}
                         onClick={() => installPlugin(plugin.name)}
                       >
-                        Install
+                        <FormattedMessage id="plugins.install" />
                         {plugin.actionInProgress && (
                           <CircularProgress
                             color="primary"
@@ -112,7 +127,7 @@ class Plugins extends Component {
                 </Grid>
                 <Grid item xs={4} style={{ paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle">Befehle</h3>
+                    <h3 className="pageContainerTitle"><FormattedMessage id="plugins.commands" /></h3>
                     <small>
                       {plugin.commands.join(', ')}
                     </small>
@@ -120,7 +135,7 @@ class Plugins extends Component {
                 </Grid>
                 <Grid item xs={4} style={{ paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle">Dependencies</h3>
+                    <h3 className="pageContainerTitle"><FormattedMessage id="plugins.dependencies" /></h3>
                     <small>
                       -
                     </small>
@@ -156,6 +171,10 @@ class Plugins extends Component {
           </Grid>
           {renderedPlugins}
         </Paper>
+        <Documentation
+          open={this.state.open}
+          onClose={this.handleClose}
+        />
       </div>
     );
   }

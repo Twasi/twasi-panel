@@ -104,6 +104,15 @@ export default {
   'plugins.free': 'Free plugins',
   'plugins.paid': 'Paid plugins',
   'plugins.installed': 'Installed',
+  'plugins.short_description': 'Short Description',
+  'plugins.documentation': 'Documentation',
+  'plugins.dependencies': 'Dependencies',
+  'plugins.install': 'Install',
+  'plugins.uninstall': 'Uninstall',
+  'plugins.show': 'Open',
+  'plugins.by': 'by',
+  'plugins.documentation.headline': 'Documentation for the Plugin: ',
+  'plugins.documentation.subheadline': 'If you should find a mistake in the documentation please use the feedback function to submit the mistake.',
 
   // Settings
   'settings.unsaved': 'Unsaved Changes',

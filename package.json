@@ -21,6 +21,7 @@
     "react-event-listener": "^0.6.3",
     "react-grid-system": "^3.2.3",
     "react-intl": "^2.4.0",
+    "react-markdown": "^4.0.6",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^1.1.5",
