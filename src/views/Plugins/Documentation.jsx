@@ -72,6 +72,11 @@ class Documentation extends React.Component {
                             className: 'noMarginTop',
                           },
                         },
+                        strong: {
+                          props: {
+                            className: 'parameter',
+                          },
+                        },
                       },
                   }}>
                   {DocumentationText}

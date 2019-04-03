@@ -172,6 +172,7 @@ class Plugins extends Component {
           {renderedPlugins}
         </Paper>
         <Documentation
+          maxWidth="md"
           open={this.state.open}
           onClose={this.handleClose}
         />

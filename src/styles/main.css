@@ -85,6 +85,11 @@ body {
 .noMarginTop {
   margin-top: 0px;
 }
+.parameter {
+  background-color: #00aeae;
+  color: #fff;
+  padding: 0px 5px 2px 5px;
+}
 #simple-dialog-title {
   padding-bottom: 10px;
 }
