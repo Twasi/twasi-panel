@@ -12,7 +12,7 @@ Befehle können Parameter enthalten. Parameter werden im Format **\`\Befehl\`\**
 | Befehl | Alternative Befehle | Parameter | Ausgabe |
 |--------|---------------------|-----------|---------|
 | **\`\!add\`\** | -  | \`\p1:\`\ **\`\Befehl\`\** \`\p2:\`\ **\`\Ausgabe\`\** | \`\Erstellt einen neuen Befehl mit den gegebenen Parametern p1 und p2.\`\ |
-| **\`\!edit\`\** | -  | \`\p1:\`\ **\`\Befehl\`\** | \`\Bearbeitet den Befehl mit dem gegebenen Parameter p1.\`\ |
+| **\`\!edit\`\** | -  | \`\p1:\`\ **\`\Befehl\`\** \`\p2:\`\ **\`\Ausgabe\`\** | \`\Bearbeitet den Befehl mit dem gegebenen Parameter p1.\`\ |
 | **\`\!del\`\** | **\`\!delete\`\**  | \`\p1:\`\ **\`\Befehl\`\** | \`\Löscht den Befehl mit dem gegebenen Parameter p1.\`\ |\n
 
 \`\p1:\`\ **\`\Befehl\`\**: Der Befehl an sich. Beispiel: !twasi\n
