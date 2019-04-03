@@ -79,6 +79,12 @@ body {
 .TableRow {
   border-bottom: 3px solid #00aeae !important;
 }
+.TableRowThin {
+  border-bottom: 0px !important;
+}
+.noMarginTop {
+  margin-top: 0px;
+}
 #simple-dialog-title {
   padding-bottom: 10px;
 }

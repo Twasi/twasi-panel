@@ -14,6 +14,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import '../../themes/twasi-darkblue/twasi-darkblue.css';
+
 class Documentation extends React.Component {
 
   handleClose = () => {
@@ -49,18 +51,26 @@ class Documentation extends React.Component {
                         },
                         thead: {
                           component: TableHead,
+                        },
+                        td: {
+                          component: TableCell,
+                          props: {
+                            className: 'TableRowThin',
+                          },
+                        },
+                        th: {
+                          component: TableCell,
                           props: {
                             className: 'TableRow',
                           },
                         },
-                        td: {
-                          component: TableCell,
-                        },
-                        th: {
-                          component: TableCell,
-                        },
                         tr: {
                           component: TableRow,
+                        },
+                        h2: {
+                          props: {
+                            className: 'noMarginTop',
+                          },
                         },
                       },
                   }}>
