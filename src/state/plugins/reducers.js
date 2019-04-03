@@ -39,7 +39,7 @@ const pluginsReducer = (state = initialState, action) => {
 
     case types.SET_INSTALLED: {
       const newPlugins = state.plugins.map(plugin => {
-        if (plugin.name === action.name) {
+        if (plugin.id === action.id) {
           return {
             ...plugin,
             isInstalled: action.isInstalled
@@ -56,7 +56,7 @@ const pluginsReducer = (state = initialState, action) => {
 
     case types.UPDATE_ACTION_IN_PROGRESS: {
       const newPlugins = state.plugins.map(plugin => {
-        if (plugin.name === action.pluginName) {
+        if (plugin.id === action.id) {
           return {
             ...plugin,
             actionInProgress: action.isLoading

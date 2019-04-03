@@ -23,7 +23,7 @@ const loadData = () => (dispatch, getState) => {
   const jwt = authSelectors.getJwt(state);
 
   getUserGraph(
-    'plugins { isInstalled, name, author, version, description, commands, permissions }',
+    'plugins { isInstalled, name, author, version, description, commands, permissions, id }',
     jwt
   ).then(data => {
     dispatch(
@@ -46,20 +46,20 @@ const verifyData = () => (dispatch, getState) => {
   }
 };
 
-const installPlugin = name => (dispatch, getState) => {
-  dispatch(updateActionInProgress(name, true));
+const installPlugin = id => (dispatch, getState) => {
+  dispatch(updateActionInProgress(id, true));
   sleep(getRndInteger(500, 1000)).then(() => {
     const state = getState();
     const jwt = authSelectors.getJwt(state);
 
     getUserGraph(
-      `user { installPlugin(name:"${name}") { isInstalled } }`,
+      `user { installPlugin(name:"${id}") { isInstalled } }`,
       jwt
     ).then(data => {
       dispatch(
-        setInstalled(name, data.user.installPlugin.isInstalled)
+        setInstalled(id, data.user.installPlugin.isInstalled)
       );
-      dispatch(updateActionInProgress(name, false));
+      dispatch(updateActionInProgress(id, false));
     });
     /* plugins
       .post({
@@ -69,23 +69,23 @@ const installPlugin = name => (dispatch, getState) => {
       .then(() => {
         dispatch(setInstalled(name, true));
       }); */
-  })
+  });
 };
 
-const uninstallPlugin = name => (dispatch, getState) => {
-  dispatch(updateActionInProgress(name, true));
+const uninstallPlugin = id => (dispatch, getState) => {
+  dispatch(updateActionInProgress(id, true));
   sleep(getRndInteger(500, 1000)).then(() => {
     const state = getState();
     const jwt = authSelectors.getJwt(state);
 
     getUserGraph(
-      `user { uninstallPlugin(name:"${name}") { isInstalled } }`,
+      `user { uninstallPlugin(name:"${id}") { isInstalled } }`,
       jwt
     ).then(data => {
       dispatch(
-        setInstalled(name, data.user.uninstallPlugin.isInstalled)
+        setInstalled(id, data.user.uninstallPlugin.isInstalled)
       );
-      dispatch(updateActionInProgress(name, false));
+      dispatch(updateActionInProgress(id, false));
     });
     /* plugins
       .post({
@@ -95,7 +95,7 @@ const uninstallPlugin = name => (dispatch, getState) => {
       .then(() => {
         dispatch(setInstalled(name, false));
       }); */
-  })
+  });
 };
 
 /* const updateQuery = debounce(
@@ -109,10 +109,10 @@ const uninstallPlugin = name => (dispatch, getState) => {
 ); */
 
 function sleep(milliseconds) {
- return new Promise(resolve => setTimeout(resolve, milliseconds));
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 const updateQuery = () => {};

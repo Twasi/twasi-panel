@@ -10,15 +10,15 @@ const updatePlugins = plugins => ({
   plugins
 });
 
-const updateActionInProgress = (pluginName, isLoading) => ({
+const updateActionInProgress = (id, isLoading) => ({
   type: types.UPDATE_ACTION_IN_PROGRESS,
-  pluginName,
+  id,
   isLoading
 });
 
-const setInstalled = (name, isInstalled) => ({
+const setInstalled = (id, isInstalled) => ({
   type: types.SET_INSTALLED,
-  name,
+  id,
   isInstalled
 });
 

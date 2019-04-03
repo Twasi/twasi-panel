@@ -80,7 +80,7 @@ class Plugins extends Component {
                         variant="contained"
                         color="secondary"
                         disabled={plugin.actionInProgress}
-                        onClick={() => uninstallPlugin(plugin.name)}
+                        onClick={() => uninstallPlugin(plugin.id)}
                       >
                         <FormattedMessage id="plugins.uninstall" />
                         {plugin.actionInProgress && (
@@ -105,7 +105,7 @@ class Plugins extends Component {
                         variant="contained"
                         color="primary"
                         disabled={plugin.actionInProgress}
-                        onClick={() => installPlugin(plugin.name)}
+                        onClick={() => installPlugin(plugin.id)}
                       >
                         <FormattedMessage id="plugins.install" />
                         {plugin.actionInProgress && (
