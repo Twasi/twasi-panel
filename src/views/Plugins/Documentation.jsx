@@ -32,57 +32,44 @@ class Documentation extends React.Component {
         {...other}
       >
           <DialogContent>
-            <Typography>
-              <h3 className="pageContainerTitle">
-                <FormattedMessage id="plugins.documentation.headline" /> Beispiel
-              </h3>
-              <small>
-                <FormattedMessage id="plugins.documentation.subheadline" />
-              </small>
-            </Typography>
-            <br /><br />
-            <Card className="pluginCard">
-              <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
-                <Markdown
-                  options={{
-                    overrides: {
-                        table: {
-                          component: Table,
-                        },
-                        thead: {
-                          component: TableHead,
-                        },
-                        td: {
-                          component: TableCell,
-                          props: {
-                            className: 'TableRowThin',
-                          },
-                        },
-                        th: {
-                          component: TableCell,
-                          props: {
-                            className: 'TableRow',
-                          },
-                        },
-                        tr: {
-                          component: TableRow,
-                        },
-                        h2: {
-                          props: {
-                            className: 'noMarginTop',
-                          },
-                        },
-                        strong: {
-                          props: {
-                            className: 'parameter',
-                          },
-                        },
+            <Markdown
+              options={{
+                overrides: {
+                    table: {
+                      component: Table,
+                    },
+                    thead: {
+                      component: TableHead,
+                    },
+                    td: {
+                      component: TableCell,
+                      props: {
+                        className: 'TableRowThin',
                       },
-                  }}>
-                  {DocumentationText}
-                </Markdown>
-              </CardContent>
-            </Card>
+                    },
+                    th: {
+                      component: TableCell,
+                      props: {
+                        className: 'TableRow',
+                      },
+                    },
+                    tr: {
+                      component: TableRow,
+                    },
+                    h2: {
+                      props: {
+                        className: 'noMarginTop',
+                      },
+                    },
+                    strong: {
+                      props: {
+                        className: 'parameter',
+                      },
+                    },
+                  },
+              }}>
+              {DocumentationText}
+            </Markdown>
           </DialogContent>
       </Dialog>
     );
