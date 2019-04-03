@@ -37,18 +37,34 @@ const verifyData = () => (dispatch, getState) => {
 };
 
 const stopBot = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
+  dispatch(updateStopping(true));
+  sleep(1000).then(() => {
+    const state = getState();
+    const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('status{changeStatus(isRunning:false){isRunning}}', jwt).then(data => dispatch(updateStatus(data.status.changeStatus)));
+    getUserGraph('status{changeStatus(isRunning:false){isRunning}}', jwt).then(data => {
+      dispatch(updateStatus(data.status.changeStatus));
+      dispatch(updateStopping(false));
+    });
+  })
 };
 
 const startBot = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
+  dispatch(updateStarting(true));
+  sleep(1000).then(() => {
+    const state = getState();
+    const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('status{changeStatus(isRunning:true){isRunning}}', jwt).then(data => dispatch(updateStatus(data.status.changeStatus)));
+    getUserGraph('status{changeStatus(isRunning:true){isRunning}}', jwt).then(data => {
+      dispatch(updateStatus(data.status.changeStatus))
+      dispatch(updateStarting(false));
+    });
+  })
 };
+
+function sleep(milliseconds) {
+ return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
 
 export default {
   updateStatus,

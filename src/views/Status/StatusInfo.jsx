@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -39,27 +40,56 @@ class StatusInfo extends Component {
                 </h3>
               </Typography>
               <br/>
-              <Button
-                type="danger"
-                disabled={status.isRunning}
-                onClick={startBot}
-                loading={isStarting}
-                value="on"
-                variant="contained" color="primary"
-                style={{ marginRight: '16px' }}
-              >
-                <FormattedMessage id="status.start" />
-              </Button>
-              <Button
-                type="primary"
-                disabled={!status.isRunning}
-                onClick={stopBot}
-                loading={isStopping}
-                value="off"
-                variant="contained" color="secondary"
-              >
-                <FormattedMessage id="status.stop" />
-              </Button>
+              {status.isRunning && (
+                <div>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    disabled={isStopping}
+                    onClick={stopBot}
+                  >
+                    <FormattedMessage id="status.stop" />
+                    {isStopping && (
+                      <CircularProgress
+                        color="primary"
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          marginTop: -12,
+                          marginLeft: -12
+                        }}
+                        size={24}
+                      />
+                    )}
+                  </Button>
+                </div>
+              )}
+              {!status.isRunning && (
+                <div>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    disabled={isStarting}
+                    onClick={startBot}
+                  >
+                    <FormattedMessage id="status.start" />
+                    {isStarting && (
+                      <CircularProgress
+                        color="primary"
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          marginTop: -12,
+                          marginLeft: -12
+                        }}
+                        size={24}
+                      />
+                    )}
+                  </Button>
+                </div>
+              )}
             </Grid>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
               <Typography>
