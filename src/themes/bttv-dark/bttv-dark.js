@@ -23,7 +23,7 @@ export default createMuiTheme({
   overrides: {
     MuiPaper: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#ffffff', // Some CSS
+        color: '#b7b7b7', // Some CSS
         backgroundColor: '#19171c',
         borderRadius: '4px',
         border: '0px solid #25373e'
@@ -138,10 +138,10 @@ export default createMuiTheme({
         padding: '23px',
       },
       titleText: {
-        color: '#ffffff'
+        color: '#b7b7b7'
       },
       icon: {
-        color: '#ffffff'
+        color: '#b7b7b7'
       },
     },
     MUIDataTableHeadCell: {
@@ -152,7 +152,7 @@ export default createMuiTheme({
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       body: { // Name of the rule
-        color: '#ffffff', // Some CSS
+        color: '#b7b7b7', // Some CSS
         borderColor: 'transparent',
         padding: '16px'
       },
@@ -183,7 +183,7 @@ export default createMuiTheme({
         border: '0px'
       },
       label: {
-        color: '#ffffff',
+        color: '#b7b7b7',
         textTransform: 'none'
       }
     },
@@ -206,7 +206,7 @@ export default createMuiTheme({
     },
     MuiTypography: { // Name of the component ⚛️ / style sheet
       body1: { // Name of the rule
-        color: '#ffffff' // Some CSS
+        color: '#b7b7b7' // Some CSS
       }
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet
