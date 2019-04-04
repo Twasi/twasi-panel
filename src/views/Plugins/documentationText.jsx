@@ -29,7 +29,8 @@ Variablen können in einen Befehl eingebaut werden. Variablen erzeugen eine zuge
 
 | Variable | Parameter | Ausgabe |
 |----------|-----------|---------|
-| **\`\$uses(p1)\`\** | \`\p1:\`\ **\`\Befehl\`\** | \`\Zeigt an, wie oft der Befehl (p1) genutzt wurde.\`\ |\n
+| **\`\$uses(p1)\`\** | \`\p1:\`\ **\`\Befehl\`\** | \`\Zeigt an, wie oft der Befehl (p1) genutzt wurde.\`\ |
+| **\`\$random(p1,p2)\`\** | \`\p1:\`\ **\`\Zahl 1\`\** \`\p2:\`\ **\`\Zahl 2\`\** | \`\Zeigt eine zufällige Zahl von p1 bis p2 an.\`\ |\n
 
 ***
 

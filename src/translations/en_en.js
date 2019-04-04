@@ -141,6 +141,7 @@ export default {
   'profile.your_data_rank': 'Twasi Rank',
   'profile.your_data_registerdate': 'Registered since',
   'profile.your_data_deletelink': 'Delete Account',
+  'profile.your_data_delete': 'Delete your Account',
   'profile.badges': 'Badges',
   'profile.badges_subline':
     'Here you can change your Badges at the Leaderboard. You can use 3 Badges at the same time.',

@@ -142,6 +142,7 @@ export default {
   'profile.your_data_rank': 'Twasi Rang',
   'profile.your_data_registerdate': 'Registriert seit',
   'profile.your_data_deletelink': 'Account Löschen',
+  'profile.your_data_delete': 'Deinen Account Löschen',
   'profile.badges': 'Abzeichen',
   'profile.badges_subline':
     'Hier kannst du dein Aussehen in Leaderboards anpassen. Du kannst bis zu 3 Badges gleichzeitig auswählen.',
