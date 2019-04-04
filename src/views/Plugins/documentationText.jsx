@@ -6,7 +6,10 @@ Befehle können mit verschiedenen Zugriffsleveln (Zuschauer, Subs oder höher, M
 Befehle müssen NICHT zwingend mit einem ! beginnen.
 Desweiteren lässt sich über das Nutzerpanel ein Cooldown und der Status (Aktiviert/Deaktiviert) für Befehle einstellen.
 
+***
+
 ### Befehle\n
+
 Befehle können Parameter enthalten. Parameter werden im Format **\`\Befehl\`\** **\`\Parameter\`\** an einen Befehl angehängt. \n
 
 | Befehl | Alternative Befehle | Parameter | Ausgabe |
@@ -17,6 +20,18 @@ Befehle können Parameter enthalten. Parameter werden im Format **\`\Befehl\`\**
 
 \`\p1:\`\ **\`\Befehl\`\**: Der Befehl an sich. Beispiel: !twasi\n
 \`\p2:\`\ **\`\Ausgabe\`\**: Die Ausgabe eines Befehls. Beispiel: Mein Bot läuft über Twasi.
+
+***
+
+### Variablen\n
+
+Variablen können in einen Befehl eingebaut werden. Variablen erzeugen eine zugewiesene Ausgabe, sie werden wie folgt angewendet **\`\!Befehl\`\** **\`\$Variable(Parameter)\`\**. \n
+
+| Variable | Parameter | Ausgabe |
+|----------|-----------|---------|
+| **\`\$uses(p1)\`\** | \`\p1:\`\ **\`\Befehl\`\** | \`\Zeigt an, wie oft der Befehl (p1) genutzt wurde.\`\ |\n
+
+***
 
 ### Abhängigkeiten\n
 
