@@ -18,7 +18,7 @@ const loadVariables = () => (dispatch, getState) => {
       dispatch(updateDisabled(true));
       return;
     }
-    dispatch(updateVariables(data.customvariables.allVariables));
+    dispatch(updateVariables(data.allVariables));
   });
 };
 
