@@ -173,7 +173,7 @@ export default {
 
   // Variables
   'variables.title': 'Deine Variablen',
-  'variables.subtitle': 'Hier kannst du eine neue Variable hinzufügen.',
+  'variables.subtitle': 'Hier kannst du deine Variablen verwalten.',
   'variables.new_variable': 'Variable Hinzufügen',
 
   // Quotes
