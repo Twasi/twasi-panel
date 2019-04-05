@@ -39,6 +39,7 @@ export default {
   'sidebar.plugins': 'Plugin Store',
   'sidebar.fakechat': 'Fakechat',
   'sidebar.commands': 'Befehle',
+  'sidebar.variables': 'Variablen',
   'sidebar.timers': 'Timer',
   'sidebar.songrequests': 'Songrequests',
   'sidebar.docs': 'Dokumentation',
@@ -169,6 +170,11 @@ export default {
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Befehl Speichern',
+
+  // Variables
+  'variables.title': 'Deine Variablen',
+  'variables.subtitle': 'Hier kannst du eine neue Variable hinzufügen.',
+  'variables.new_variable': 'Variable Hinzufügen',
 
   // Quotes
   'quotes.title': 'Deine Zitate',

@@ -6,7 +6,7 @@ export const initialState = {
   isConnected: false,
   serverVersion: 'DISCONNECTED',
   userStatus: 'LOADING',
-  theme: 'twasi-dark'
+  theme: 'twasi-darkblue'
 };
 
 const appInfoReducer = (state = initialState, action) => {

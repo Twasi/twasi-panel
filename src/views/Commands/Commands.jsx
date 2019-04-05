@@ -73,7 +73,7 @@ class Commands extends Component {
           />
         </TableCell>
         <TableCell>
-          <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
+          <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
             <Button
               variant="fab"
               color="primary"

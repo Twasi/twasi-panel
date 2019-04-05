@@ -169,6 +169,11 @@ export default {
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Save Command',
 
+  // Variables
+  'variables.title': 'Your Variables',
+  'variables.subtitle': 'Here you can manage your Variables.',
+  'variables.new_variable': 'Add Variable',
+
   // Quotes
   'quotes.title': 'Your Quotes',
   'quotes.subtitle': 'Here you have the ability to manage your Quotes.',

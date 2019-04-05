@@ -72,11 +72,18 @@ class Sidebar extends Component {
         shown: 'plugins/commands'
       },
       {
-        key: 'timers',
+        key: 'variables',
+        path: '/variables',
+        icon: 'settings_ethernet',
+        name: 'sidebar.variables',
+        shown: 'plugins/variablen'
+      },
+      {
+        key: 'timedmessages',
         path: '/timers',
         icon: 'alarm',
         name: 'sidebar.timers',
-        shown: 'all'
+        shown: 'plugins/timed messages'
       },
       {
         key: 'songrequests',
@@ -97,7 +104,7 @@ class Sidebar extends Component {
         path: '/quotes',
         icon: 'format_quote',
         name: 'sidebar.quotes',
-        shown: 'all'
+        shown: 'plugins/quotes'
       },
       {
         key: 'votings',

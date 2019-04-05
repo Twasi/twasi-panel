@@ -14,6 +14,7 @@ import Profile from '../Profile';
 import Moderators from '../Moderators';
 import Urlshortener from '../Urlshortener';
 import Commands from '../Commands';
+import Variables from '../Variables';
 import Timers from '../Timers';
 import Songrequests from '../Songrequests';
 import Giveaways from '../Giveaways';
@@ -36,6 +37,7 @@ const PanelContent = () => (
           <Route path="/profile" exact component={Profile} />
           <Route path="/mods" exact component={Moderators} />
           <Route path="/commands" exact component={Commands} />
+          <Route path="/variables" exact component={Variables} />
           <Route path="/timers" exact component={Timers} />
           <Route path="/urlshortener" exact component={Urlshortener} />
           <Route path="/dev" exact component={DevTools} />
