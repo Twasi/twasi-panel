@@ -50,7 +50,7 @@ class Variables extends Component {
     return variables.map(variable => (
       <TableRow>
         <TableCell>
-          <b>{variable.variable}</b>
+          <b>{variable.name}</b>
         </TableCell>
         <TableCell
           style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
@@ -141,7 +141,7 @@ Variables.propTypes = {
   updateVariables: PropTypes.func.isRequired,
   variables: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    variable: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     output: PropTypes.string.isRequired
   })),
   disabled: PropTypes.bool.isRequired
