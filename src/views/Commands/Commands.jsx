@@ -63,7 +63,7 @@ class Commands extends Component {
             color="primary"
           />
         </TableCell>
-        <TableCell>1.337</TableCell>
+        <TableCell>{command.uses}</TableCell>
         <TableCell>
           <Checkbox
             checked=""

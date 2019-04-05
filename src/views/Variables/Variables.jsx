@@ -17,9 +17,73 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Checkbox from '@material-ui/core/Checkbox';
 
+import { variablesSelectors, variablesOperations } from '../../state/variables';
+
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
 
 class Variables extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false
+    };
+
+    this.handleClose = this.handleClose.bind(this);
+
+    this.renderVariables = this.renderVariables.bind(this);
+  }
+
+  componentDidMount() {
+    const { updateVariables } = this.props;
+    updateVariables();
+  }
+
+  handleClose() {
+    this.setState({ open: false });
+  }
+
+  renderVariables() {
+    const { variables } = this.props;
+
+    return variables.map(variable => (
+      <TableRow>
+        <TableCell>
+          <b>{variable.variable}</b>
+        </TableCell>
+        <TableCell
+          style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
+        >
+          {variable.output}
+        </TableCell>
+        <TableCell>
+          <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
+            <Button
+              variant="fab"
+              color="primary"
+              className="noshadow"
+              mini
+              aria-label="editCommand"
+            >
+              <Icon style={{ color: '#ffffff' }}>edit</Icon>
+            </Button>
+          </Tooltip>{' '}
+          <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
+            <Button
+              variant="fab"
+              color="secondary"
+              className="noshadow"
+              mini
+              aria-label="deleteCommand"
+            >
+              <Icon style={{ color: '#ffffff' }}>delete</Icon>
+            </Button>
+          </Tooltip>
+        </TableCell>
+      </TableRow>
+    ));
+  }
 
   render() {
     const { disabled } = this.props;
@@ -37,7 +101,7 @@ class Variables extends Component {
             <h3 className="pageContainerTitle">
               <FormattedMessage id="variables.title" />
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: 16 }}>
+                <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateVariables}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
@@ -63,33 +127,7 @@ class Variables extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableCell>$test</TableCell>
-              <TableCell>1.337</TableCell>
-              <TableCell>Dies ist eine Testvariable.</TableCell>
-              <TableCell>
-                <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
-                  <Button
-                    variant="fab"
-                    color="primary"
-                    className="noshadow"
-                    mini
-                    aria-label="editCommand"
-                  >
-                    <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                  </Button>
-                </Tooltip>{' '}
-                <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-                  <Button
-                    variant="fab"
-                    color="secondary"
-                    className="noshadow"
-                    mini
-                    aria-label="deleteCommand"
-                  >
-                    <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                  </Button>
-                </Tooltip>
-              </TableCell>
+              {this.renderVariables()}
             </TableBody>
           </Table>
         </Paper>
@@ -99,4 +137,25 @@ class Variables extends Component {
   }
 }
 
-export default Variables;
+Variables.propTypes = {
+  updateVariables: PropTypes.func.isRequired,
+  variables: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    variable: PropTypes.string.isRequired,
+    output: PropTypes.string.isRequired
+  })),
+  disabled: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = state => ({
+  variables: variablesSelectors.getVariables(state),
+  isLoaded: variablesSelectors.isLoaded(state),
+  disabled: variablesSelectors.isDisabled(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(variablesOperations.verifyData()),
+  updateVariables: () => dispatch(variablesOperations.loadVariables())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Variables);

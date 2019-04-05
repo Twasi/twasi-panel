@@ -5,20 +5,20 @@ import { getUserGraph } from '../../services/graphqlService';
 import { authSelectors } from '../auth';
 
 const {
-  updateCommands,
+  updateVariables,
   updateDisabled
 } = actions;
 
-const loadCommands = () => (dispatch, getState) => {
+const loadVariables = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('commands{id,name,content,uses}', jwt, 'commands').then(data => {
+  getUserGraph('variables{id,variable,output}', jwt, 'variables').then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
     }
-    dispatch(updateCommands(data.commands));
+    dispatch(updateVariables(data.variables));
   });
 };
 
@@ -28,11 +28,11 @@ const verifyData = () => (dispatch, getState) => {
   const isLoaded = selectors.isLoaded(state);
 
   if (!isLoaded) {
-    dispatch(loadCommands());
+    dispatch(loadVariables());
   }
 };
 
 export default {
-  loadCommands,
+  loadVariables,
   verifyData
 };
