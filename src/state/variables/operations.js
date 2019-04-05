@@ -13,7 +13,7 @@ const loadVariables = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('variables{id,variable,output}', jwt, 'variables').then(data => {
+  getUserGraph('variables{id,variable,output}', jwt, 'customvariables').then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
