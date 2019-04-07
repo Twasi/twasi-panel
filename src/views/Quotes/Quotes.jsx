@@ -17,6 +17,8 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import MUIDataTable from "mui-datatables";
 
+import { quotesSelectors, quotesOperations } from '../../state/quotes';
+
 const columns = [
  {
   name: "game",
@@ -92,6 +94,7 @@ const options = {
 const quotes = [{game: 'Minecraft', time: '15.03.2019 - 10:32', quote: 'Niemand hat die Absicht eine Mauer zu errichten!'}];
 
 class Quotes extends Component {
+
   constructor(props) {
     super(props);
 
@@ -100,6 +103,13 @@ class Quotes extends Component {
     };
 
     this.handleClose = this.handleClose.bind(this);
+
+    this.renderQuotes = this.renderQuotes.bind(this);
+  }
+
+  componentDidMount() {
+    const { updateQuotes } = this.props;
+    updateQuotes();
   }
 
   handleClose() {
@@ -138,4 +148,28 @@ class Quotes extends Component {
 }
 
 
-export default Quotes;
+Quotes.propTypes = {
+  updateQuotes: PropTypes.func.isRequired,
+  quotes: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    numid: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    game: PropTypes.string.isRequired,
+    reporter: PropTypes.string.isRequired
+  })),
+  disabled: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = state => ({
+  quotes: quotesSelectors.getQuotes(state),
+  isLoaded: quotesSelectors.isLoaded(state),
+  disabled: quotesSelectors.isDisabled(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(quotesOperations.verifyData()),
+  updateQuotes: () => dispatch(quotesOperations.loadQuotes())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Quotes);
