@@ -15,40 +15,59 @@ import Chip from '@material-ui/core/Chip';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import Divider from '@material-ui/core/Divider';
 import MUIDataTable from "mui-datatables";
 
+import { authSelectors } from '../../state/auth';
 import { quotesSelectors, quotesOperations } from '../../state/quotes';
 
 const columns = [
- {
-  name: "game",
-  label: <FormattedMessage id="quotes.game" />,
-  options: {
-   filter: true,
-   sort: true,
-  }
- },
- {
-  name: "time",
-  label: <FormattedMessage id="quotes.time" />,
-  options: {
-   filter: false,
-   sort: true,
-  }
- },
- {
+  {
+   name: "id",
+   label: "id",
+    options: {
+    filter: false,
+    sort: true,
+    }
+  },
+  {
   name: "quote",
   label: <FormattedMessage id="quotes.quote" />,
-  options: {
-   filter: false,
-   sort: true,
-  }
- },
-];
-
-const data = [
- ["Minecraft", "26.03.2019 - 09:00", "Niemand hat die Absicht seine Wäsche zu waschen."],
- ["Grand Theft Auto V", "12.01.2019 - 08:57", "Sehr langes Zitat, um zu testen, wie sich die Datatable bei sehr langen Einträgen verhält. Dies ist wichtig, damit die Tabelle nachwievor lesbar und ordentlich ist."],
+    options: {
+     filter: false,
+     sort: true,
+    }
+  },
+  {
+  name: "game",
+  label: <FormattedMessage id="quotes.game" />,
+    options: {
+     filter: true,
+     sort: true,
+    }
+  },
+  {
+  name: "reporter",
+  label: <FormattedMessage id="quotes.reporter" />,
+    options: {
+     filter: true,
+     sort: true,
+    }
+  },
+  {
+  name: "time",
+  label: <FormattedMessage id="quotes.time" />,
+    options: {
+     filter: false,
+     sort: true,
+    }
+  },
 ];
 
 const options = {
@@ -116,7 +135,15 @@ class Quotes extends Component {
     this.setState({ open: false });
   }
 
+  renderQuotes() {
+    const { quotes } = this.props;
+    return quotes.map(quote => (
+      Object.values(quote)
+    ));
+  }
+
   render() {
+    const { userName, avatar, ...other } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -125,6 +152,42 @@ class Quotes extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.quotes" /></Typography>
         </Breadcrumbs>
+        <Paper className="pageContainer" style={{ borderRadius: '0px 0px 4px 4px' }}>
+          <Grid container spacing={16}>
+            <Grid item xs={3}>
+              <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateQuotes}>
+                <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                <FormattedMessage id="common.refresh" />
+              </Button>
+            </Grid>
+            <Grid item xs={9}>
+              <List style={{ margin: "0px", padding: "0px" }}>
+                <ListItem style={{ margin: "0px", padding: "0px" }} alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar alt="Remy Sharp" src={avatar} />
+                  </ListItemAvatar>
+                  <ListItemText
+                    secondary={
+                      <React.Fragment>
+                        <Typography style={{ float: 'left' }} color="textPrimary">
+                          {userName}
+                        </Typography>
+                        <Typography style={{ float: 'left', marginLeft: '5px' }} color="textSecondary">
+                          (Grand Theft Auto V)
+                        </Typography>
+                        <Typography style={{ float: 'left', marginLeft: '5px' }} color="textPrimary">
+                          #420
+                        </Typography>
+                        <br />
+                        {'- "Ich bin einfach mal so frei und schleich mich in dein Panel :D"'}
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+              </List>
+            </Grid>
+          </Grid>
+        </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <MUIDataTable
             title={
@@ -137,7 +200,7 @@ class Quotes extends Component {
                 </small>
               </Typography>
             }
-            data={data}
+            data={this.renderQuotes()}
             columns={columns}
             options={options}
           />
@@ -149,6 +212,8 @@ class Quotes extends Component {
 
 
 Quotes.propTypes = {
+  userName: PropTypes.string,
+  avatar: PropTypes.string,
   updateQuotes: PropTypes.func.isRequired,
   quotes: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
@@ -164,7 +229,9 @@ Quotes.propTypes = {
 const mapStateToProps = state => ({
   quotes: quotesSelectors.getQuotes(state),
   isLoaded: quotesSelectors.isLoaded(state),
-  disabled: quotesSelectors.isDisabled(state)
+  disabled: quotesSelectors.isDisabled(state),
+  userName: authSelectors.getUser(state).displayName,
+  avatar: authSelectors.getUserAvatar(state)
 });
 
 const mapDispatchToProps = dispatch => ({

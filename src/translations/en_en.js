@@ -180,6 +180,7 @@ export default {
   'quotes.game': 'Game',
   'quotes.time': 'Date/Time',
   'quotes.quote': 'Quote',
+  'quotes.reporter': 'Addet by',
   'quotes.post': 'Post Quote in Chat',
 
   // Timers

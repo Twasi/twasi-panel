@@ -13,8 +13,7 @@ const loadQuotes = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('publicAll(name: "Blechkelle"){id}', jwt, 'quotes').then(data => {
-    console.log(data.publicAll);
+  getUserGraph('publicAll(name:"blechkelle"){numId,content,game,reporter,createdAt}', jwt, 'quotes').then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;

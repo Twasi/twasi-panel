@@ -9,6 +9,7 @@ import settings from './settings';
 import plugins from './plugins';
 import commands from './commands';
 import variables from './variables';
+import quotes from './quotes';
 
 import { initialState as i18nInitialState } from './i18n/reducers';
 
@@ -27,7 +28,8 @@ const configureStore = (translations = {}) => {
     settingsState: settings,
     pluginsState: plugins,
     commandsState: commands,
-    variablesState: variables
+    variablesState: variables,
+    quotesState: quotes
   };
 
   const initialState = {
