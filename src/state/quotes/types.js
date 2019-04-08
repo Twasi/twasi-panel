@@ -1,4 +1,4 @@
-const UPDATE_QUOTES = 'quotes/UPDATE_Quotes';
+const UPDATE_QUOTES = 'quotes/UPDATE_QUOTES';
 const UPDATE_DISABLED = 'quotes/UPDATE_DISABLED';
 
 export default {

@@ -1,0 +1,7 @@
+const UPDATE_LASTSTREAM = 'laststream/UPDATE_LASTSTREAM';
+const UPDATE_DISABLED = 'laststream/UPDATE_DISABLED';
+
+export default {
+  UPDATE_LASTSTREAM,
+  UPDATE_DISABLED
+};

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
@@ -18,22 +19,14 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, LabelList } from 'recharts';
 
+import { laststreamSelectors, laststreamOperations } from '../../state/laststream';
+
 import Kreygasm from '../common/resources/Kreygasm.png';
 import LUL from '../common/resources/LUL.png';
 import Kappa from '../common/resources/Kappa.png';
 import PogChamp from '../common/resources/PogChamp.png';
 
 import './_style.css';
-
-const data = [
-      {name: 'January', spent: 2000, earn: 2500},
-      {name: 'February', spent: 2400, earn: 2600},
-      {name: 'March', spent: 2000, earn: 2100},
-      {name: 'April', spent: 2780, earn: 2500},
-      {name: 'May', spent: 2600, earn: 2300},
-      {name: 'June', spent: 2500, earn: 2700},
-      {name: 'July', spent: 2600, earn: 2650},
-];
 
 const COLORS = ['#02d4d4', '#E87722', '#F1B300', '#009A17', '#00B8DE', '#006CB0', '#ff4f4a', '#85459F', '#D12B92', '#F67599'];
 
@@ -55,6 +48,212 @@ const data02 = [
 ];
 
 class Overview extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.renderViewerChart = this.renderViewerChart.bind(this);
+    this.renderListItems = this.renderListItems.bind(this);
+  }
+
+  componentDidMount() {
+    const { updateLaststream } = this.props;
+    updateLaststream();
+  }
+
+  renderViewerChart() {
+    const { laststream } = this.props;
+    return (
+      laststream.data
+    );
+  }
+
+  renderListItems() {
+    const { laststream } = this.props;
+    return (
+      <List dense style={{ padding: '0px' }}>
+        <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
+          <ListItem>
+            <Row>
+              <Col sm={12}>
+                <Typography>
+                  <h3 className="pageContainerTitle">{laststream.streamId}</h3>
+                  <small><FormattedMessage id="overview.table_id" /></small>
+                </Typography>
+              </Col>
+            </Row>
+            <TooltipM title="Jetzt Live" placement="right">
+              <Icon
+                color="secondary"
+                style={{ position: 'absolute', right: '17px', fontSize: '15px' }}
+              >
+                brightness_1
+              </Icon>
+            </TooltipM>
+          </ListItem>
+          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
+            <CardContent style={{ padding: '0px' }}>
+              <ListItem>
+                <Row>
+                  <Col sm={12}>
+                    <Typography>
+                      <h3 className="pageContainerTitle">13:37</h3>
+                      <small><FormattedMessage id="overview.table_duration" /></small>
+                    </Typography>
+                  </Col>
+                </Row>
+                <TooltipM title="+ 5:12" placement="right">
+                  <Icon
+                    color="primary"
+                    style={{ position: 'absolute', right: '13px' }}
+                  >
+                    trending_up
+                  </Icon>
+                </TooltipM>
+              </ListItem>
+            </CardContent>
+          </Card>
+          <ListItem>
+            <Row>
+              <Col sm={12}>
+                <Typography>
+                  <h3 className="pageContainerTitle">1.243</h3>
+                  <small><FormattedMessage id="overview.table_chatmessages" /></small>
+                </Typography>
+              </Col>
+            </Row>
+            <TooltipM title="+ 125" placement="right">
+              <Icon
+                color="primary"
+                style={{ position: 'absolute', right: '13px' }}
+              >
+                trending_up
+              </Icon>
+            </TooltipM>
+          </ListItem>
+          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
+            <CardContent style={{ padding: '0px' }}>
+              <ListItem>
+                <Row>
+                  <Col sm={12}>
+                    <Typography>
+                      <h3 className="pageContainerTitle">354</h3>
+                      <small><FormattedMessage id="overview.table_commands_used" /></small>
+                    </Typography>
+                  </Col>
+                </Row>
+                <TooltipM title="- 5" placement="right">
+                  <Icon
+                    color="secondary"
+                    style={{ position: 'absolute', right: '13px' }}
+                  >
+                    trending_down
+                  </Icon>
+                </TooltipM>
+              </ListItem>
+            </CardContent>
+          </Card>
+          <ListItem>
+            <Row>
+              <Col sm={12}>
+                <Typography>
+                  <h3 className="pageContainerTitle">54</h3>
+                  <small><FormattedMessage id="overview.table_follower" /></small>
+                </Typography>
+              </Col>
+            </Row>
+            <TooltipM title="+- 0" placement="right">
+              <Icon
+                style={{ position: 'absolute', right: '13px', color: '#da7720' }}
+              >
+                trending_flat
+              </Icon>
+            </TooltipM>
+          </ListItem>
+          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
+            <CardContent style={{ padding: '0px' }}>
+              <ListItem>
+                <Row>
+                  <Col sm={12}>
+                    <Typography>
+                      <h3 className="pageContainerTitle">263</h3>
+                      <small><FormattedMessage id="overview.table_views" /></small>
+                    </Typography>
+                  </Col>
+                </Row>
+                <TooltipM title="+- 0" placement="right">
+                  <Icon
+                    style={{ position: 'absolute', right: '13px', color: '#da7720' }}
+                  >
+                    trending_flat
+                  </Icon>
+                </TooltipM>
+              </ListItem>
+            </CardContent>
+          </Card>
+          <ListItem>
+            <Row>
+              <Col sm={12}>
+                <Typography>
+                  <h3 className="pageContainerTitle">32</h3>
+                  <small><FormattedMessage id="overview.table_viewermax" /></small>
+                </Typography>
+              </Col>
+            </Row>
+            <TooltipM title="+ 7" placement="right">
+              <Icon
+                color="primary"
+                style={{ position: 'absolute', right: '13px' }}
+              >
+                trending_up
+              </Icon>
+            </TooltipM>
+          </ListItem>
+          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
+            <CardContent style={{ padding: '0px' }}>
+              <ListItem>
+                <Row>
+                  <Col sm={12}>
+                    <Typography>
+                      <h3 className="pageContainerTitle">25</h3>
+                      <small><FormattedMessage id="overview.table_average" /></small>
+                    </Typography>
+                  </Col>
+                </Row>
+                <TooltipM title="- 2" placement="right">
+                  <Icon
+                    color="secondary"
+                    style={{ position: 'absolute', right: '13px' }}
+                  >
+                    trending_down
+                  </Icon>
+                </TooltipM>
+              </ListItem>
+            </CardContent>
+          </Card>
+          <ListItem>
+            <Row>
+              <Col sm={12}>
+                <Typography>
+                  <h3 className="pageContainerTitle">197</h3>
+                  <small><FormattedMessage id="overview.table_individual" /></small>
+                </Typography>
+              </Col>
+            </Row>
+            <TooltipM title="- 50" placement="right">
+              <Icon
+                color="secondary"
+                style={{ position: 'absolute', right: '13px' }}
+              >
+                trending_down
+              </Icon>
+            </TooltipM>
+          </ListItem>
+        </Paper>
+      </List>
+    );
+  }
+
   render() {
     return (
       <div className="pageContent">
@@ -137,7 +336,7 @@ class Overview extends Component {
                 <h3 class="pageContainerTitle">
                   <FormattedMessage id="overview.laststream" />
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" onClick={this.props.updateLaststream}>
                       <Icon style={{ marginRight: '5px' }}>cached</Icon>
                       <FormattedMessage id="common.refresh" />
                     </Button>
@@ -211,9 +410,9 @@ class Overview extends Component {
                 </small>
               </Typography>
               <ResponsiveContainer height='100%' width='100%'>
-                <AreaChart margin={{ top: 25, right: 0, left: 0, bottom: 23 }} data={data}>
+                <AreaChart margin={{ top: 25, right: 0, left: 0, bottom: 23 }} data={this.renderViewerChart()}>
                   <Tooltip/>
-                  <Area type='monotone' dataKey='earn' strokeWidth='0' fill={COLORS[0]} fillOpacity="1" />
+                  <Area type='monotone' dataKey="viewerCount" strokeWidth='0' fill={COLORS[0]} fillOpacity="1" />
                 </AreaChart>
               </ResponsiveContainer>
             </Paper>
@@ -268,188 +467,9 @@ class Overview extends Component {
             </Row>
           </Col>
           <Col sm={3}>
-              <div>
-                <List dense style={{ padding: '0px' }}>
-                  <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
-                    <ListItem>
-                      <Row>
-                        <Col sm={12}>
-                          <Typography>
-                            <h3 className="pageContainerTitle">1564184945</h3>
-                            <small><FormattedMessage id="overview.table_id" /></small>
-                          </Typography>
-                        </Col>
-                      </Row>
-                      <TooltipM title="Jetzt Live" placement="right">
-                        <Icon
-                          color="secondary"
-                          style={{ position: 'absolute', right: '17px', fontSize: '15px' }}
-                        >
-                          brightness_1
-                        </Icon>
-                      </TooltipM>
-                    </ListItem>
-                    <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-                      <CardContent style={{ padding: '0px' }}>
-                        <ListItem>
-                          <Row>
-                            <Col sm={12}>
-                              <Typography>
-                                <h3 className="pageContainerTitle">13:37</h3>
-                                <small><FormattedMessage id="overview.table_duration" /></small>
-                              </Typography>
-                            </Col>
-                          </Row>
-                          <TooltipM title="+ 5:12" placement="right">
-                            <Icon
-                              color="primary"
-                              style={{ position: 'absolute', right: '13px' }}
-                            >
-                              trending_up
-                            </Icon>
-                          </TooltipM>
-                        </ListItem>
-                      </CardContent>
-                    </Card>
-                    <ListItem>
-                      <Row>
-                        <Col sm={12}>
-                          <Typography>
-                            <h3 className="pageContainerTitle">1.243</h3>
-                            <small><FormattedMessage id="overview.table_chatmessages" /></small>
-                          </Typography>
-                        </Col>
-                      </Row>
-                      <TooltipM title="+ 125" placement="right">
-                        <Icon
-                          color="primary"
-                          style={{ position: 'absolute', right: '13px' }}
-                        >
-                          trending_up
-                        </Icon>
-                      </TooltipM>
-                    </ListItem>
-                    <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-                      <CardContent style={{ padding: '0px' }}>
-                        <ListItem>
-                          <Row>
-                            <Col sm={12}>
-                              <Typography>
-                                <h3 className="pageContainerTitle">354</h3>
-                                <small><FormattedMessage id="overview.table_commands_used" /></small>
-                              </Typography>
-                            </Col>
-                          </Row>
-                          <TooltipM title="- 5" placement="right">
-                            <Icon
-                              color="secondary"
-                              style={{ position: 'absolute', right: '13px' }}
-                            >
-                              trending_down
-                            </Icon>
-                          </TooltipM>
-                        </ListItem>
-                      </CardContent>
-                    </Card>
-                    <ListItem>
-                      <Row>
-                        <Col sm={12}>
-                          <Typography>
-                            <h3 className="pageContainerTitle">54</h3>
-                            <small><FormattedMessage id="overview.table_follower" /></small>
-                          </Typography>
-                        </Col>
-                      </Row>
-                      <TooltipM title="+- 0" placement="right">
-                        <Icon
-                          style={{ position: 'absolute', right: '13px', color: '#da7720' }}
-                        >
-                          trending_flat
-                        </Icon>
-                      </TooltipM>
-                    </ListItem>
-                    <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-                      <CardContent style={{ padding: '0px' }}>
-                        <ListItem>
-                          <Row>
-                            <Col sm={12}>
-                              <Typography>
-                                <h3 className="pageContainerTitle">263</h3>
-                                <small><FormattedMessage id="overview.table_views" /></small>
-                              </Typography>
-                            </Col>
-                          </Row>
-                          <TooltipM title="+- 0" placement="right">
-                            <Icon
-                              style={{ position: 'absolute', right: '13px', color: '#da7720' }}
-                            >
-                              trending_flat
-                            </Icon>
-                          </TooltipM>
-                        </ListItem>
-                      </CardContent>
-                    </Card>
-                    <ListItem>
-                      <Row>
-                        <Col sm={12}>
-                          <Typography>
-                            <h3 className="pageContainerTitle">32</h3>
-                            <small><FormattedMessage id="overview.table_viewermax" /></small>
-                          </Typography>
-                        </Col>
-                      </Row>
-                      <TooltipM title="+ 7" placement="right">
-                        <Icon
-                          color="primary"
-                          style={{ position: 'absolute', right: '13px' }}
-                        >
-                          trending_up
-                        </Icon>
-                      </TooltipM>
-                    </ListItem>
-                    <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-                      <CardContent style={{ padding: '0px' }}>
-                        <ListItem>
-                          <Row>
-                            <Col sm={12}>
-                              <Typography>
-                                <h3 className="pageContainerTitle">25</h3>
-                                <small><FormattedMessage id="overview.table_average" /></small>
-                              </Typography>
-                            </Col>
-                          </Row>
-                          <TooltipM title="- 2" placement="right">
-                            <Icon
-                              color="secondary"
-                              style={{ position: 'absolute', right: '13px' }}
-                            >
-                              trending_down
-                            </Icon>
-                          </TooltipM>
-                        </ListItem>
-                      </CardContent>
-                    </Card>
-                    <ListItem>
-                      <Row>
-                        <Col sm={12}>
-                          <Typography>
-                            <h3 className="pageContainerTitle">197</h3>
-                            <small><FormattedMessage id="overview.table_individual" /></small>
-                          </Typography>
-                        </Col>
-                      </Row>
-                      <TooltipM title="- 50" placement="right">
-                        <Icon
-                          color="secondary"
-                          style={{ position: 'absolute', right: '13px' }}
-                        >
-                          trending_down
-                        </Icon>
-                      </TooltipM>
-                    </ListItem>
-                  </Paper>
-                </List>
-              </div>
+            <div>
+              {this.renderListItems()}
+            </div>
           </Col>
         </Row>
       </div>
@@ -457,6 +477,32 @@ class Overview extends Component {
   }
 }
 
-Overview.propTypes = {};
+Overview.propTypes = {
+  updateLaststream: PropTypes.func.isRequired,
+  laststream: PropTypes.arrayOf(PropTypes.shape({
+    streamId: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
+    startedAt: PropTypes.string.isRequired,
+    streamType: PropTypes.string.isRequired
+  })),
+  data: PropTypes.arrayOf(PropTypes.shape({
+    gameId: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    viewerCount: PropTypes.string.isRequired,
+    timestamp: PropTypes.string.isRequired
+  })),
+  disabled: PropTypes.bool.isRequired
+};
 
-export default withRouter(connect()(Overview));
+const mapStateToProps = state => ({
+  laststream: laststreamSelectors.getLaststream(state),
+  isLoaded: laststreamSelectors.isLoaded(state),
+  disabled: laststreamSelectors.isDisabled(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(laststreamOperations.verifyData()),
+  updateLaststream: () => dispatch(laststreamOperations.loadLaststream())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Overview);

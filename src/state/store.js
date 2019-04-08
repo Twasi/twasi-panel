@@ -10,6 +10,7 @@ import plugins from './plugins';
 import commands from './commands';
 import variables from './variables';
 import quotes from './quotes';
+import laststream from './laststream';
 
 import { initialState as i18nInitialState } from './i18n/reducers';
 
@@ -29,7 +30,8 @@ const configureStore = (translations = {}) => {
     pluginsState: plugins,
     commandsState: commands,
     variablesState: variables,
-    quotesState: quotes
+    quotesState: quotes,
+    laststreamState: laststream
   };
 
   const initialState = {
