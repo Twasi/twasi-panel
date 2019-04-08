@@ -154,12 +154,6 @@ class Quotes extends Component {
         </Breadcrumbs>
         <Paper className="pageContainer" style={{ borderRadius: '0px 0px 4px 4px' }}>
           <Grid container spacing={16}>
-            <Grid item xs={3}>
-              <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateQuotes}>
-                <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                <FormattedMessage id="common.refresh" />
-              </Button>
-            </Grid>
             <Grid item xs={9}>
               <List style={{ margin: "0px", padding: "0px" }}>
                 <ListItem style={{ margin: "0px", padding: "0px" }} alignItems="flex-start">
@@ -185,6 +179,14 @@ class Quotes extends Component {
                   />
                 </ListItem>
               </List>
+            </Grid>
+            <Grid item xs={3}>
+              <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" onClick={this.props.updateQuotes}>
+                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                  <FormattedMessage id="common.refresh" />
+                </Button>
+              </span>
             </Grid>
           </Grid>
         </Paper>
