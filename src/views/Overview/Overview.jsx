@@ -400,8 +400,8 @@ class Overview extends Component {
         </Row>
         <Row>
           <Col sm={9}>
-            <Paper className="pageContainer" style={{ height: '250px', paddingRight: '0px', paddingLeft: '0px' }}>
-              <Typography style={{ paddingLeft: '23px' }}>
+            <Paper className="pageContainer" style={{ height: '250px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+              <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
                 <h3 class="pageContainerTitle">
                   <FormattedMessage id="overview.viewercourse" />
                 </h3>
@@ -409,8 +409,8 @@ class Overview extends Component {
                   <FormattedMessage id="overview.viewercourse.subtitle" />
                 </small>
               </Typography>
-              <ResponsiveContainer height='100%' width='100%'>
-                <AreaChart margin={{ top: 25, right: 0, left: 0, bottom: 23 }} data={this.renderViewerChart()}>
+              <ResponsiveContainer height='100%' width='100%' style={{ paddingTop: '100px' }}>
+                <AreaChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }} data={this.renderViewerChart()}>
                   <Tooltip/>
                   <Area type='monotone' dataKey="viewerCount" strokeWidth='0' fill={COLORS[0]} fillOpacity="1" />
                 </AreaChart>
