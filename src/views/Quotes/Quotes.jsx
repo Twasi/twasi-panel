@@ -152,7 +152,7 @@ class Quotes extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.quotes" /></Typography>
         </Breadcrumbs>
-        <Paper className="pageContainer" style={{ borderRadius: '0px 0px 4px 4px' }}>
+        <Paper className="pageContainer" style={{ borderRadius: '4px' }}>
           <Grid container spacing={16}>
             <Grid item xs={9}>
               <List style={{ margin: "0px", padding: "0px" }}>
@@ -190,7 +190,7 @@ class Quotes extends Component {
             </Grid>
           </Grid>
         </Paper>
-        <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '0px 0px 4px 4px' }}>
+        <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '4px' }}>
           <MUIDataTable
             title={
               <Typography>
