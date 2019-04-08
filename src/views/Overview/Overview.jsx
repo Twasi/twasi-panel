@@ -411,8 +411,10 @@ class Overview extends Component {
               </Typography>
               <ResponsiveContainer height='100%' width='100%' style={{ paddingTop: '100px' }}>
                 <AreaChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }} data={this.renderViewerChart()}>
-                  <Tooltip/>
-                  <Area type='monotone' dataKey="viewerCount" strokeWidth='0' fill={COLORS[0]} fillOpacity="1" />
+                  <Tooltip
+                    labelFormatter={() => ""}
+                  />
+                  <Area type='monotone' dataKey="viewerCount" name="Zuschauer" strokeWidth='2' stroke={COLORS[0]} fill={COLORS[0]} fillOpacity=".8" />
                 </AreaChart>
               </ResponsiveContainer>
             </Paper>
@@ -431,9 +433,9 @@ class Overview extends Component {
                     <PieChart width={730} height={250}
                         margin={{top: 15, right: 0, left: 0, bottom: 23}}>
                       <Tooltip/>
-                      <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="0" fillOpacity="1" label>
+                      <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="2" fillOpacity=".8" label>
                         {
-                        	data01.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                        	data01.map((entry, index) => <Cell stroke={COLORS[index % COLORS.length]} fill={COLORS[index % COLORS.length]}/>)
                         }
                       </Pie>
                     </PieChart>
@@ -454,10 +456,10 @@ class Overview extends Component {
                     <BarChart backgroundOpacity=".1" width={600} height={300} data={data02}
                         margin={{top: 15, right: 0, left: 0, bottom: 0}}>
                      <Tooltip cursor={{ fill: '#283c42' }} />
-                     <Bar dataKey="pv" fill="#00aeae">
+                     <Bar dataKey="pv" strokeWidth="2" fillOpacity=".8">
                        <LabelList dataKey="pv" position="top" />
                        {
-                         data02.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                         data02.map((entry, index) => <Cell stroke={COLORS[index % COLORS.length]} fill={COLORS[index % COLORS.length]}/>)
                        }
                      </Bar>
                     </BarChart>
