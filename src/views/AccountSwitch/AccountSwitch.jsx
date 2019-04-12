@@ -15,6 +15,9 @@ import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
 import { FormattedMessage } from 'react-intl';
 
 import { authSelectors } from '../../state/auth';
@@ -35,7 +38,12 @@ class AccountSwitch extends React.Component {
   };
 
   render() {
-    const { classes, userName, avatar, onClose, selectedValue, ...other } = this.props;
+    const { classes, userName, avatar, rank, onClose, selectedValue, ...other } = this.props;
+
+    let adminAccess = false;
+    if(rank==="TEAM"){
+      adminAccess = true;
+    }
 
     return (
       <Dialog
@@ -68,6 +76,36 @@ class AccountSwitch extends React.Component {
                 </List>
               </CardContent>
             </Card>
+            {adminAccess &&
+            <Card className="pluginCard">
+              <CardContent style={{ marginBottom: '15px', paddingTop: '0px', paddingBottom: '0px' }}>
+                <List style={{ padding: '0px' }}>
+                  <ListItem>
+                    <TextField
+                      label="Nutzeraccount"
+                      fullWidth
+                      margin="normal"
+                      variant="outlined"
+                      InputLabelProps={{ shrink: true }}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="send-support-message"
+                            >
+                              <Icon>
+                                exit_to_app
+                              </Icon>
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </ListItem>
+                </List>
+              </CardContent>
+            </Card>
+            }
             <Card className="pluginCard">
               <CardContent style={{ paddingTop: '15px', paddingBottom: '15px' }}>
                 <List style={{ padding: '0px' }}>
@@ -139,6 +177,7 @@ class AccountSwitch extends React.Component {
 AccountSwitch.propTypes = {
   userName: PropTypes.string,
   avatar: PropTypes.string,
+  rank: PropTypes.string,
   onClose: PropTypes.func,
   selectedValue: PropTypes.string,
   classes: PropTypes.isRequired
@@ -146,12 +185,14 @@ AccountSwitch.propTypes = {
 
 AccountSwitch.defaultProps = {
   userName: 'Unknown',
-  avatar: 'Unknown'
+  avatar: 'Unknown',
+  rank: 'Unknown'
 };
 
 const mapStateToProps = state => ({
   userName: authSelectors.getUser(state).displayName,
-  avatar: authSelectors.getUserAvatar(state)
+  avatar: authSelectors.getUserAvatar(state),
+  rank: authSelectors.getUser(state).rank
 });
 
 export default connect(mapStateToProps)(AccountSwitch);
