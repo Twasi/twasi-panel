@@ -20,7 +20,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import { FormattedMessage } from 'react-intl';
 
+import storage from 'local-storage';
+
 import { authSelectors } from '../../state/auth';
+import { impersonateOperations } from '../../state/impersonate';
 // import PersonIcon from '@material-ui/icons/Person';
 // import AddIcon from '@material-ui/icons/Add';
 
@@ -29,6 +32,14 @@ import './_style.css';
 const accounts = ['Larcce', 'DieserMerlin', 'mekalix', 'Spendendose'];
 
 class AccountSwitch extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      impersonate: ""
+    }
+  }
+
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
@@ -41,6 +52,7 @@ class AccountSwitch extends React.Component {
     const { classes, userName, avatar, rank, onClose, selectedValue, ...other } = this.props;
 
     let adminAccess = false;
+
     if(rank==="TEAM"){
       adminAccess = true;
     }
@@ -76,9 +88,9 @@ class AccountSwitch extends React.Component {
                 </List>
               </CardContent>
             </Card>
-            {adminAccess &&
+            {adminAccess && !window.originalJwt &&
             <Card className="pluginCard">
-              <CardContent style={{ marginBottom: '15px', paddingTop: '0px', paddingBottom: '0px' }}>
+              <CardContent style={{ marginBottom: 15, paddingTop: 0, paddingBottom: 0 }}>
                 <List style={{ padding: '0px' }}>
                   <ListItem>
                     <TextField
@@ -86,12 +98,14 @@ class AccountSwitch extends React.Component {
                       fullWidth
                       margin="normal"
                       variant="outlined"
+                      onChange={e => this.setState({ impersonate: e.target.value })}
                       InputLabelProps={{ shrink: true }}
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
                             <IconButton
                               aria-label="send-support-message"
+                              onClick={() => this.props.impersonate(this.state.impersonate)}
                             >
                               <Icon>
                                 exit_to_app
@@ -105,6 +119,13 @@ class AccountSwitch extends React.Component {
                 </List>
               </CardContent>
             </Card>
+            }
+            {window.originalJwt &&
+              <Card className="pluginCard">
+                <CardContent style={{ marginBottom: 15, paddingTop: 0, paddingBottom: 0 }}>
+                  <Button onClick={() => this.props.resetImpersonation()}>Go back</Button>
+                </CardContent>
+              </Card>
             }
             <Card className="pluginCard">
               <CardContent style={{ paddingTop: '15px', paddingBottom: '15px' }}>
@@ -180,7 +201,9 @@ AccountSwitch.propTypes = {
   rank: PropTypes.string,
   onClose: PropTypes.func,
   selectedValue: PropTypes.string,
-  classes: PropTypes.isRequired
+  classes: PropTypes.isRequired,
+  impersonate: PropTypes.func.isRequired,
+  resetImpersonation: PropTypes.func.isRequired
 };
 
 AccountSwitch.defaultProps = {
@@ -189,10 +212,15 @@ AccountSwitch.defaultProps = {
   rank: 'Unknown'
 };
 
+const mapDispatchToProps = dispatch => ({
+  impersonate: userName => dispatch(impersonateOperations.impersonateUser(userName)),
+  resetImpersonation: () => dispatch(impersonateOperations.resetImpersonation())
+});
+
 const mapStateToProps = state => ({
   userName: authSelectors.getUser(state).displayName,
   avatar: authSelectors.getUserAvatar(state),
   rank: authSelectors.getUser(state).rank
 });
 
-export default connect(mapStateToProps)(AccountSwitch);
+export default connect(mapStateToProps, mapDispatchToProps)(AccountSwitch);

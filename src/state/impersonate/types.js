@@ -1,0 +1,5 @@
+const UPDATE_IMPERSONATING = 'impersonate/UPDATE_IMPERSONATING';
+
+export default {
+  UPDATE_IMPERSONATING
+};
