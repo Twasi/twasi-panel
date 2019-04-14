@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { Row, Col } from 'react-grid-system';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
@@ -38,7 +39,7 @@ import beta_badge from '../common/resources/beta_badge.svg';
 import gc17_badge from '../common/resources/gamescom_badge_blue.svg';
 import gc18_badge from '../common/resources/gamescom_badge_blue18.svg';
 
-import { authSelectors } from '../../state/auth';
+import { authSelectors, authOperations } from '../../state/auth';
 import './_style.css';
 
 class Profile extends Component {
@@ -58,9 +59,22 @@ class Profile extends Component {
                 <h3 className="pageContainerTitle">
                   <FormattedMessage id="profile.your_data" />
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" onClick={this.props.updateUser} disabled={this.props.isUserUpdating}>
                       <Icon style={{ marginRight: '5px' }}>cached</Icon>
                       <FormattedMessage id="common.refresh" />
+                      {this.props.isUserUpdating && (
+                        <CircularProgress
+                          color="primary"
+                          style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            marginTop: -12,
+                            marginLeft: -12
+                          }}
+                          size={24}
+                        />
+                      )}
                     </Button>
                   </span>
                 </h3>
@@ -420,8 +434,13 @@ Profile.propTypes = {
   })
 };
 
-const mapStateToProps = state => ({
-  user: authSelectors.getUser(state)
+const mapDispatchToProps = dispatch => ({
+  updateUser: () => dispatch(authOperations.updateUser())
 });
 
-export default withRouter(connect(mapStateToProps, null)(Profile));
+const mapStateToProps = state => ({
+  user: authSelectors.getUser(state),
+  isUserUpdating: authSelectors.isUserUpdating(state)
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));

@@ -5,6 +5,7 @@ const initialState = {
   user: {
     displayName: ''
   },
+  isUserUpdating: false,
   isAuthenticated: false,
   jwt: null,
   isLoading: false,
@@ -36,6 +37,10 @@ const authReducer = (state = initialState, action) => {
 
     case types.UPDATE_USER_DATA: {
       return { ...state, userData: action.data };
+    }
+
+    case types.UPDATE_IS_USER_UPDATING: {
+      return { ...state, isUserUpdating: action.isUserUpdating };
     }
 
     default:

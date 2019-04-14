@@ -2,7 +2,10 @@ import jwtDecode from 'jwt-decode';
 
 import actions from './actions';
 
-const { updateUserData } = actions;
+import { authSelectors } from '../auth';
+import { getUserGraph } from '../../services/graphqlService';
+
+const { updateUserData, updateIsUserUpdating } = actions;
 
 const authenticate = jwt => dispatch => {
   const user = jwtDecode(jwt);
@@ -13,13 +16,24 @@ const authenticate = jwt => dispatch => {
   dispatch(actions.isAuthenticated(true));
 };
 
-const reloadData = () => (dispatch, getState) => {
+const updateUser = () => (dispatch, getState) => {
+  const state = getState();
+  const jwt = authSelectors.getJwt(state);
 
+  dispatch(updateIsUserUpdating(true));
+
+  getUserGraph(
+    'user { twitchAccount { update { name } } }',
+    jwt
+  ).then(data => {
+    dispatch(updateIsUserUpdating(false));
+  });
 };
 
 export default {
   authenticate,
   updateUserData,
+  updateUser,
   updateIsAuthenticated: actions.isAuthenticated,
   updateIsLoading: actions.isLoading
 };

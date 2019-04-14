@@ -25,10 +25,16 @@ const isAuthenticated = authenticated => ({
   authenticated
 });
 
+const updateIsUserUpdating = isUserUpdating => ({
+  type: types.UPDATE_IS_USER_UPDATING,
+  isUserUpdating
+});
+
 export default {
   updateJwt,
   updateUser,
   isLoading,
   isAuthenticated,
-  updateUserData
+  updateUserData,
+  updateIsUserUpdating
 };

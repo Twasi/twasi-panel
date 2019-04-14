@@ -6,10 +6,13 @@ const isAuthenticated = state => state.authState.auth.isAuthenticated;
 
 const getUserAvatar = state => state.authState.auth.userData.twitchAccount.avatar;
 
+const isUserUpdating = state => state.authState.auth.isUserUpdating;
+
 export default {
   getJwt,
   getUser,
   isLoading,
   isAuthenticated,
-  getUserAvatar
+  getUserAvatar,
+  isUserUpdating
 };
