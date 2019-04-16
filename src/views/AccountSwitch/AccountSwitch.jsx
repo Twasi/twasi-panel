@@ -78,7 +78,6 @@ class AccountSwitch extends React.Component {
                   <ListItem button>
                     <ListItemAvatar>
                       <Avatar className="accountSwitchAvatar">
-                        <Icon style={{ fontSize: 36, position: 'absolute' }}>check</Icon>
                         <img width="45px" height="45px" src={avatar} alt="Avatar" />
                       </Avatar>
                     </ListItemAvatar>
@@ -123,7 +122,11 @@ class AccountSwitch extends React.Component {
             {window.originalJwt &&
               <Card className="pluginCard">
                 <CardContent style={{ marginBottom: 15, paddingTop: 0, paddingBottom: 0 }}>
-                  <Button onClick={() => this.props.resetImpersonation()}>Go back</Button>
+                  <List style={{ padding: '0px' }}>
+                    <ListItem>
+                      <Button variant="outlined" color="secondary" fullWidth onClick={() => this.props.resetImpersonation()}>Go back</Button>
+                    </ListItem>
+                  </List>
                 </CardContent>
               </Card>
             }

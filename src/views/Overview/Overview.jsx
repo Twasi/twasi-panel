@@ -409,8 +409,8 @@ class Overview extends Component {
                   <FormattedMessage id="overview.viewercourse.subtitle" />
                 </small>
               </Typography>
-              <ResponsiveContainer height='100%' width='100%' style={{ paddingTop: '100px' }}>
-                <AreaChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }} data={this.renderViewerChart()}>
+              <ResponsiveContainer height='100%' width='100%'>
+                <AreaChart margin={{ top: 40, right: 0, left: 0, bottom: 0 }} data={this.renderViewerChart()}>
                   <Tooltip
                     labelFormatter={() => ""}
                   />
