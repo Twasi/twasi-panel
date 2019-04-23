@@ -1,8 +1,13 @@
 import types from './types';
 
-const updateLaststream = laststream => ({
+const updateLastStream = laststream => ({
   type: types.UPDATE_LASTSTREAM,
   laststream
+});
+
+const updateAllStreamData = allstreamdata => ({
+  type: types.UPDATE_ALLSTREAMDATA,
+  allstreamdata
 });
 
 const updateDisabled = isDisabled => ({
@@ -11,6 +16,7 @@ const updateDisabled = isDisabled => ({
 });
 
 export default {
-  updateLaststream,
+  updateLastStream,
+  updateAllStreamData,
   updateDisabled
 };

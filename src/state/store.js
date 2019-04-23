@@ -10,7 +10,7 @@ import plugins from './plugins';
 import commands from './commands';
 import variables from './variables';
 import quotes from './quotes';
-import laststream from './laststream';
+import streamtracker from './streamtracker';
 import impersonate from './impersonate';
 
 import { initialState as i18nInitialState } from './i18n/reducers';
@@ -32,7 +32,7 @@ const configureStore = (translations = {}) => {
     commandsState: commands,
     variablesState: variables,
     quotesState: quotes,
-    laststreamState: laststream,
+    streamtrackerState: streamtracker,
     impersonateState: impersonate
   };
 

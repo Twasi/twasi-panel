@@ -4,6 +4,7 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   laststream: [],
+  allstreamdata: [],
   isDisabled: false
 };
 
@@ -11,6 +12,9 @@ const statusReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_LASTSTREAM: {
       return { ...state, isLoaded: true, isDisabled: false, laststream: action.laststream };
+    }
+    case types.UPDATE_ALLSTREAMDATA: {
+      return { ...state, isLoaded: true, isDisabled: false, allstreamdata: action.allstreamdata };
     }
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };
@@ -21,5 +25,6 @@ const statusReducer = (state = initialState, action) => {
 };
 
 export default combineReducers({
-  laststream: statusReducer
+  laststream: statusReducer,
+  allstreamdata: statusReducer
 });

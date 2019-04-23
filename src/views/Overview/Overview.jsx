@@ -17,9 +17,11 @@ import TextField from '@material-ui/core/TextField';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, LabelList } from 'recharts';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { AreaChart, Area, LineChart, Line, ReferenceArea, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, LabelList } from 'recharts';
 
-import { laststreamSelectors, laststreamOperations } from '../../state/laststream';
+import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
 import Kreygasm from '../common/resources/Kreygasm.png';
 import LUL from '../common/resources/LUL.png';
@@ -52,20 +54,12 @@ class Overview extends Component {
   constructor(props) {
     super(props);
 
-    this.renderViewerChart = this.renderViewerChart.bind(this);
     this.renderListItems = this.renderListItems.bind(this);
   }
 
   componentDidMount() {
-    const { updateLaststream } = this.props;
-    updateLaststream();
-  }
-
-  renderViewerChart() {
-    const { laststream } = this.props;
-    return (
-      laststream.data
-    );
+    const { updateLastStream } = this.props;
+    updateLastStream();
   }
 
   renderListItems() {
@@ -255,6 +249,8 @@ class Overview extends Component {
   }
 
   render() {
+    const { laststream } = this.props;
+    const currentGame = "";
     return (
       <div className="pageContent">
         <Container className="overviewHead">
@@ -410,12 +406,16 @@ class Overview extends Component {
                 </small>
               </Typography>
               <ResponsiveContainer height='100%' width='100%'>
-                <AreaChart margin={{ top: 40, right: 0, left: 0, bottom: 0 }} data={this.renderViewerChart()}>
+                <LineChart margin={{ top: 55, right: 0, left: 0, bottom: 0 }} data={laststream.data}>
                   <Tooltip
                     labelFormatter={() => ""}
                   />
-                  <Area type='monotone' dataKey="viewerCount" name="Zuschauer" strokeWidth='2' stroke={COLORS[0]} fill={COLORS[0]} fillOpacity=".8" />
-                </AreaChart>
+                  <ReferenceArea x1={0} x2={10} fill={COLORS[0]} fillOpacity={0.4} />
+                  <ReferenceArea x1={10} x2={25} fill={COLORS[1]} fillOpacity={0.4} />
+                  <ReferenceArea x1={25} x2={40} fill={COLORS[2]} fillOpacity={0.4} />
+                  <ReferenceArea x1={40} x2={100} fill={COLORS[3]} fillOpacity={0.4} />
+                  <Line type='monotone' dataKey="viewerCount" name="Zuschauer" strokeWidth='2' stroke={COLORS[0]} dot={false} />
+                </LineChart>
               </ResponsiveContainer>
             </Paper>
             <Row>
@@ -497,14 +497,14 @@ Overview.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  laststream: laststreamSelectors.getLaststream(state),
-  isLoaded: laststreamSelectors.isLoaded(state),
-  disabled: laststreamSelectors.isDisabled(state)
+  laststream: streamtrackerSelectors.getLastStream(state),
+  isLoaded: streamtrackerSelectors.isLoaded(state),
+  disabled: streamtrackerSelectors.isDisabled(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(laststreamOperations.verifyData()),
-  updateLaststream: () => dispatch(laststreamOperations.loadLaststream())
+  verifyData: () => dispatch(streamtrackerOperations.verifyData()),
+  updateLastStream: () => dispatch(streamtrackerOperations.loadLastStream())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Overview);
