@@ -1,13 +1,8 @@
 import types from './types';
 
-const updateLastStream = laststream => ({
-  type: types.UPDATE_LASTSTREAM,
-  laststream
-});
-
-const updateAllStreamData = allstreamdata => ({
-  type: types.UPDATE_ALLSTREAMDATA,
-  allstreamdata
+const updateStreamtracker = streamtracker => ({
+  type: types.UPDATE_STREAMTRACKER,
+  streamtracker
 });
 
 const updateDisabled = isDisabled => ({
@@ -16,7 +11,6 @@ const updateDisabled = isDisabled => ({
 });
 
 export default {
-  updateLastStream,
-  updateAllStreamData,
+  updateStreamtracker,
   updateDisabled
 };

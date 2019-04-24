@@ -5,12 +5,11 @@ import { getUserGraph } from '../../services/graphqlService';
 import { authSelectors } from '../auth';
 
 const {
-  updateLastStream,
-  updateAllStreamData,
+  updateStreamtracker,
   updateDisabled
 } = actions;
 
-const loadLastStream = () => (dispatch, getState) => {
+const loadStreamtracker = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
@@ -19,20 +18,14 @@ const loadLastStream = () => (dispatch, getState) => {
       dispatch(updateDisabled(true));
       return;
     }
-    dispatch(updateLastStream(data.lastStream));
+    dispatch(updateStreamtracker(data.lastStream));
   });
-};
-
-const loadAllStreamData = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-
   getUserGraph('allStreamData{gameId,game,title,viewerCount,timestamp}', jwt, 'streamtracker').then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
     }
-    dispatch(updateAllStreamData(data.allStreamData));
+    dispatch(updateStreamtracker(data.allStreamData));
   });
 };
 
@@ -42,13 +35,11 @@ const verifyData = () => (dispatch, getState) => {
   const isLoaded = selectors.isLoaded(state);
 
   if (!isLoaded) {
-    dispatch(loadLastStream());
-    dispatch(loadAllStreamData());
+    dispatch(loadStreamtracker());
   }
 };
 
 export default {
-  loadLastStream,
-  loadAllStreamData,
+  loadStreamtracker,
   verifyData
 };

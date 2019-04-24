@@ -3,18 +3,14 @@ import types from './types';
 
 export const initialState = {
   isLoaded: false,
-  laststream: [],
-  allstreamdata: [],
+  streamtracker: [],
   isDisabled: false
 };
 
 const statusReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.UPDATE_LASTSTREAM: {
-      return { ...state, isLoaded: true, isDisabled: false, laststream: action.laststream };
-    }
-    case types.UPDATE_ALLSTREAMDATA: {
-      return { ...state, isLoaded: true, isDisabled: false, allstreamdata: action.allstreamdata };
+    case types.UPDATE_STREAMTRACKER: {
+      return { ...state, isLoaded: true, isDisabled: false, streamtracker: action.streamtracker };
     }
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };
@@ -25,6 +21,5 @@ const statusReducer = (state = initialState, action) => {
 };
 
 export default combineReducers({
-  laststream: statusReducer,
-  allstreamdata: statusReducer
+  streamtracker: statusReducer
 });

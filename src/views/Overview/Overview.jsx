@@ -30,6 +30,14 @@ import PogChamp from '../common/resources/PogChamp.png';
 
 import './_style.css';
 
+function TabContainer(props) {
+  return (
+    <div>
+      {props.children}
+    </div>
+  );
+}
+
 const COLORS = ['#02d4d4', '#E87722', '#F1B300', '#009A17', '#00B8DE', '#006CB0', '#ff4f4a', '#85459F', '#D12B92', '#F67599'];
 
 const data01 = [{name: '!twitter', value: 400},
@@ -50,6 +58,13 @@ const data02 = [
 ];
 
 class Overview extends Component {
+  state = {
+    value: 0,
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
 
   constructor(props) {
     super(props);
@@ -58,12 +73,12 @@ class Overview extends Component {
   }
 
   componentDidMount() {
-    const { updateLastStream } = this.props;
-    updateLastStream();
+    const { updateStreamtracker } = this.props;
+    updateStreamtracker();
   }
 
   renderListItems() {
-    const { laststream } = this.props;
+    const { streamtracker } = this.props;
     return (
       <List dense style={{ padding: '0px' }}>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
@@ -71,7 +86,7 @@ class Overview extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">{laststream.streamId}</h3>
+                  <h3 className="pageContainerTitle">{streamtracker.streamId}</h3>
                   <small><FormattedMessage id="overview.table_id" /></small>
                 </Typography>
               </Col>
@@ -249,8 +264,8 @@ class Overview extends Component {
   }
 
   render() {
-    const { laststream } = this.props;
-    const currentGame = "";
+    const { streamtracker } = this.props;
+    const { value } = this.state;
     return (
       <div className="pageContent">
         <Container className="overviewHead">
@@ -325,9 +340,22 @@ class Overview extends Component {
             </Col>
           </Row>
         </Container>
+        <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
+          <Tabs
+            value={value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+          >
+            <Tab label="Letzter Stream" />
+            <Tab label="Letzten 30 Tage" />
+            <Tab label="Gesamt" />
+          </Tabs>
+        </Paper>
+        {value === 0 && <TabContainer>
         <Row>
           <Col sm={12}>
-            <Paper className="pageContainer" style={{ marginTop: '0px' }}>
+            <Paper className="pageContainer">
               <Typography>
                 <h3 class="pageContainerTitle">
                   <FormattedMessage id="overview.laststream" />
@@ -396,7 +424,7 @@ class Overview extends Component {
         </Row>
         <Row>
           <Col sm={9}>
-            <Paper className="pageContainer" style={{ height: '250px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+            <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
               <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
                 <h3 class="pageContainerTitle">
                   <FormattedMessage id="overview.viewercourse" />
@@ -406,7 +434,7 @@ class Overview extends Component {
                 </small>
               </Typography>
               <ResponsiveContainer height='100%' width='100%'>
-                <LineChart margin={{ top: 55, right: 0, left: 0, bottom: 0 }} data={laststream.data}>
+                <LineChart margin={{ top: 55, right: 0, left: 0, bottom: 0 }} data={streamtracker.data}>
                   <Tooltip
                     labelFormatter={() => ""}
                   />
@@ -474,37 +502,68 @@ class Overview extends Component {
             </div>
           </Col>
         </Row>
+        </TabContainer>}
+        {value === 2 && <TabContainer>
+        <Row>
+          <Col sm={12}>
+            <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+              <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                <h3 class="pageContainerTitle">
+                  <FormattedMessage id="overview.viewercourse" />
+                </h3>
+                <small>
+                  Hier siehst du den Zuschauerverlauf aller deiner Streams.
+                </small>
+              </Typography>
+              <ResponsiveContainer height='100%' width='100%'>
+                <LineChart margin={{ top: 55, right: 0, left: 0, bottom: 0 }} data={streamtracker} >
+                  <Tooltip
+                    labelFormatter={() => ""}
+                  />
+                  <Line type='monotone' dataKey="viewerCount" name="Zuschauer" strokeWidth='2' stroke={COLORS[0]} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </Paper>
+          </Col>
+        </Row>
+        </TabContainer>}
       </div>
     );
   }
 }
 
 Overview.propTypes = {
-  updateLaststream: PropTypes.func.isRequired,
-  laststream: PropTypes.arrayOf(PropTypes.shape({
+  updateStreamtracker: PropTypes.func.isRequired,
+  gameId: PropTypes.string.isRequired,
+  game: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  viewerCount: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.isRequired,
+  streamtracker: PropTypes.arrayOf(PropTypes.shape({
     streamId: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
     startedAt: PropTypes.string.isRequired,
-    streamType: PropTypes.string.isRequired
-  })),
-  data: PropTypes.arrayOf(PropTypes.shape({
-    gameId: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    viewerCount: PropTypes.string.isRequired,
-    timestamp: PropTypes.string.isRequired
+    streamType: PropTypes.string.isRequired,
+    data: PropTypes.arrayOf(PropTypes.shape({
+      gameId: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      game: PropTypes.string.isRequired,
+      viewerCount: PropTypes.string.isRequired,
+      timestamp: PropTypes.string.isRequired
+    })),
   })),
   disabled: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-  laststream: streamtrackerSelectors.getLastStream(state),
+  streamtracker: streamtrackerSelectors.getStreamtracker(state),
   isLoaded: streamtrackerSelectors.isLoaded(state),
   disabled: streamtrackerSelectors.isDisabled(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(streamtrackerOperations.verifyData()),
-  updateLastStream: () => dispatch(streamtrackerOperations.loadLastStream())
+  updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Overview);

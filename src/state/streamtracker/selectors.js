@@ -1,11 +1,9 @@
-const getLastStream = state => state.streamtrackerState.laststream.laststream;
-const getAllStreamData = state => state.streamtrackerState.allstreamdata.allstreamdata;
-const isLoaded = state => state.streamtrackerState.laststream.isLoaded;
-const isDisabled = state => state.streamtrackerState.laststream.isDisabled;
+const getStreamtracker = state => state.streamtrackerState.streamtracker.streamtracker;
+const isLoaded = state => state.streamtrackerState.streamtracker.isLoaded;
+const isDisabled = state => state.streamtrackerState.streamtracker.isDisabled;
 
 export default {
-  getLastStream,
-  getAllStreamData,
+  getStreamtracker,
   isLoaded,
   isDisabled
 };
