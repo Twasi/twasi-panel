@@ -182,7 +182,7 @@ export default {
   'quotes.game': 'Spiel',
   'quotes.time': 'Datum/Zeit',
   'quotes.quote': 'Zitat',
-  'quotes.reporter': 'Hinzugefügt duch',
+  'quotes.reporter': 'Reporter',
   'quotes.post': 'Zitat im Chat posten',
 
   // Timers

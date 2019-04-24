@@ -33,7 +33,7 @@ const columns = [
    label: "id",
     options: {
     filter: false,
-    sort: true,
+    sort: false,
     }
   },
   {
@@ -41,7 +41,7 @@ const columns = [
   label: <FormattedMessage id="quotes.quote" />,
     options: {
      filter: false,
-     sort: true,
+     sort: false,
     }
   },
   {
@@ -49,7 +49,7 @@ const columns = [
   label: <FormattedMessage id="quotes.game" />,
     options: {
      filter: true,
-     sort: true,
+     sort: false,
     }
   },
   {
@@ -57,7 +57,7 @@ const columns = [
   label: <FormattedMessage id="quotes.reporter" />,
     options: {
      filter: true,
-     sort: true,
+     sort: false,
     }
   },
   {
@@ -65,7 +65,7 @@ const columns = [
   label: <FormattedMessage id="quotes.time" />,
     options: {
      filter: false,
-     sort: true,
+     sort: false,
     }
   },
 ];
@@ -84,7 +84,7 @@ const options = {
       next: <FormattedMessage id="datatables.pagination.next" />,
       previous: <FormattedMessage id="datatables.pagination.previous" />,
       rowsPerPage: <FormattedMessage id="datatables.pagination.rowsperpage" />,
-      displayRows: <FormattedMessage id="datatables.pagination.displayrows" />,
+      displayRows: "of",
     },
     toolbar: {
       search: <FormattedMessage id="datatables.toolbar.search" />,
@@ -109,8 +109,6 @@ const options = {
     },
   }
 };
-
-const quotes = [{game: 'Minecraft', time: '15.03.2019 - 10:32', quote: 'Niemand hat die Absicht eine Mauer zu errichten!'}];
 
 class Quotes extends Component {
 

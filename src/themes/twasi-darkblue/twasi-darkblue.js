@@ -146,7 +146,7 @@ export default createMuiTheme({
     },
     MUIDataTableHeadCell: {
       fixedHeader: {
-        backgroundColor: 'rgba(255, 255, 255, 0.0)',
+        backgroundColor: '#202940',
         borderBottom: '3px solid #3f51b5',
       },
     },
