@@ -20,13 +20,6 @@ const loadStreamtracker = () => (dispatch, getState) => {
     }
     dispatch(updateStreamtracker(data.lastStream));
   });
-  getUserGraph('allStreamData{gameId,game,title,viewerCount,timestamp}', jwt, 'streamtracker').then(data => {
-    if (data == null) {
-      dispatch(updateDisabled(true));
-      return;
-    }
-    dispatch(updateStreamtracker(data.allStreamData));
-  });
 };
 
 const verifyData = () => (dispatch, getState) => {
