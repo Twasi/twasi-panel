@@ -265,6 +265,7 @@ class Overview extends Component {
 
   render() {
     const { streamtracker } = this.props;
+    console.log(streamtracker);
     const { value } = this.state;
     return (
       <div className="pageContent">
@@ -438,10 +439,12 @@ class Overview extends Component {
                   <Tooltip
                     labelFormatter={() => ""}
                   />
+                  {/*
                   <ReferenceArea x1={0} x2={10} fill={COLORS[0]} fillOpacity={0.4} />
                   <ReferenceArea x1={10} x2={25} fill={COLORS[1]} fillOpacity={0.4} />
                   <ReferenceArea x1={25} x2={40} fill={COLORS[2]} fillOpacity={0.4} />
                   <ReferenceArea x1={40} x2={100} fill={COLORS[3]} fillOpacity={0.4} />
+                  */}
                   <Line type='monotone' dataKey="viewerCount" name="Zuschauer" strokeWidth='2' stroke={COLORS[0]} dot={false} />
                 </LineChart>
               </ResponsiveContainer>
@@ -503,29 +506,9 @@ class Overview extends Component {
           </Col>
         </Row>
         </TabContainer>}
+        {value === 1 && <TabContainer>
+        </TabContainer>}
         {value === 2 && <TabContainer>
-        <Row>
-          <Col sm={12}>
-            <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
-              <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                <h3 class="pageContainerTitle">
-                  <FormattedMessage id="overview.viewercourse" />
-                </h3>
-                <small>
-                  Hier siehst du den Zuschauerverlauf aller deiner Streams.
-                </small>
-              </Typography>
-              <ResponsiveContainer height='100%' width='100%'>
-                <LineChart margin={{ top: 55, right: 0, left: 0, bottom: 0 }} data={streamtracker} >
-                  <Tooltip
-                    labelFormatter={() => ""}
-                  />
-                  <Line type='monotone' dataKey="viewerCount" name="Zuschauer" strokeWidth='2' stroke={COLORS[0]} dot={false} />
-                </LineChart>
-              </ResponsiveContainer>
-            </Paper>
-          </Col>
-        </Row>
         </TabContainer>}
       </div>
     );
@@ -534,11 +517,6 @@ class Overview extends Component {
 
 Overview.propTypes = {
   updateStreamtracker: PropTypes.func.isRequired,
-  gameId: PropTypes.string.isRequired,
-  game: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  viewerCount: PropTypes.string.isRequired,
-  timestamp: PropTypes.string.isRequired,
   streamtracker: PropTypes.arrayOf(PropTypes.shape({
     streamId: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
