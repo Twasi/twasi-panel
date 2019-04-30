@@ -22,7 +22,7 @@ export default {
   'datatables.filter.title': 'Filter',
   'datatables.filter.reset': 'Zurücksetzen',
   'datatables.viewcolumns.title': 'Zeige Spalten',
-  'datatables.viewcolumns.titlearia': 'Zeige/Verstecke Spalten',
+  'datatables.viewcolumns.titlearia': 'Zeige / Verstecke Spalten',
   'datatables.selectedrows.text': 'Reihe(n) ausgewählt',
   'datatables.selectedrows.delete': 'Löschen',
   'datatables.selectedrows.deletearia': 'Lösche ausgewählte Zeilen',
@@ -57,14 +57,14 @@ export default {
 
   // fakechat
   'fakechat.explanation':
-    'Im Fakechat kannst du alle Funktionen des Bots unabhängig deines Chats testen.',
+    'Im Fakechat kannst du alle Funktionen des Bots unabhängig von deinem Chat testen.',
 
   // Overview
   'overview.follower': 'Follower',
   'overview.viewer': 'Zuschauer getrackt',
   'overview.messages': 'Chatnachrichten getrackt',
   'overview.streams': 'Streams getrackt',
-  'overview.laststream': 'Dein Letzter Stream',
+  'overview.laststream': 'Dein letzter Stream',
   'overview.laststream.subtitle': 'Hier findest du die Statistiken deines letzten, von Twasi erfassten Streams.',
   'overview.table_id': 'Stream ID',
   'overview.table_duration': 'Dauer',
@@ -78,7 +78,7 @@ export default {
   'overview.title': 'Title',
   'overview.game': 'Spiel / Kategorie',
   'overview.viewercourse': 'Zuschauerverlauf',
-  'overview.viewercourse.subtitle': 'Hier siehst du den Zuschauerverlauf deines aktuellen/letzten Streams.',
+  'overview.viewercourse.subtitle': 'Hier siehst du den Zuschauerverlauf deines aktuellen / letzten Streams.',
   'overview.used_commands': 'Genutzte Befehle',
   'overview.used_commands.subtitle': 'Häufigkeit der genutzten Befehle',
   'overview.played_games': 'Gespielte Spiele',
@@ -97,8 +97,7 @@ export default {
 
   // Plugins
   'plugins.headline': 'Plugin Store',
-  'plugins.explanation':
-  'Plugins sind Erweiterungen für Twasi. Du bestimmst, welche Plugins du für deinen Persönlichen Bot installieren bzw. deinstallieren möchtest.',
+  'plugins.explanation': 'Plugins sind Erweiterungen für Twasi. Du bestimmst, welche Plugins du für deinen persönlichen Bot installieren bzw. deinstallieren möchtest.',
   'plugins.card_headline': 'Was sind Plugins?',
   'plugins.version': 'Version',
   'plugins.commands': 'Befehle',
@@ -114,7 +113,7 @@ export default {
   'plugins.show': 'Öffnen',
   'plugins.by': 'von',
   'plugins.documentation.headline': 'Dokumentation für das Plugin: ',
-  'plugins.documentation.subheadline': 'Falls du einen Fehler in der Dokumentation finden solltest kannst du diesen über den Feedback Knopf melden.',
+  'plugins.documentation.subheadline': 'Falls du einen Fehler in der Dokumentation finden solltest, kannst du diesen über den Feedback Knopf melden.',
 
   // Settings
   'settings.unsaved': 'Ungespeicherte Änderungen',
@@ -128,7 +127,7 @@ export default {
   'moderators.table.permissions': 'Berechtigungen',
   'moderators.table.permissions.panel': 'Panel Zugriff',
   'moderators.table.permissions.mods': 'Moderatoren',
-  'moderators.table.permissions.game_title': 'Spiel/Titel',
+  'moderators.table.permissions.game_title': 'Spiel / Titel',
   'moderators.table.permissions.commands': 'Befehle',
   'moderators.table.permissions.timer': 'Timer',
   'moderators.table.permissions.songrequests': 'Songrequests',
@@ -142,15 +141,13 @@ export default {
   'profile.your_data_twitchid': 'Twitch ID',
   'profile.your_data_rank': 'Twasi Rang',
   'profile.your_data_registerdate': 'Registriert seit',
-  'profile.your_data_deletelink': 'Account Löschen',
-  'profile.your_data_delete': 'Deinen Account Löschen',
+  'profile.your_data_deletelink': 'Account löschen',
+  'profile.your_data_delete': 'Deinen Account löschen',
   'profile.badges': 'Abzeichen',
-  'profile.badges_subline':
-    'Hier kannst du dein Aussehen in Leaderboards anpassen. Du kannst bis zu 3 Badges gleichzeitig auswählen.',
+  'profile.badges_subline': 'Hier kannst du dein Aussehen in Leaderboards anpassen. Du kannst bis zu 3 Badges gleichzeitig auswählen.',
   'profile.badges_yourbadges': 'Deine Abzeichen',
   'profile.social': 'Social Media',
-  'profile.social_subline':
-    'Hier kannst du deine Social Media Pages verlinken. Plugins können mit deiner Zustimmung auf bestimmte Daten der verbundenen Accounts zurückgreifen.',
+  'profile.social_subline': 'Hier kannst du deine Social Media Pages verlinken. Plugins können mit deiner Zustimmung auf bestimmte Daten der verbundenen Accounts zurückgreifen.',
   'profile.social_connected_as': 'Verbunden als',
   'profile.social_disconnect': 'Trennen',
   'profile.social_permissions': 'Berechtigungen',
@@ -158,7 +155,7 @@ export default {
 
   // Commands
   'commands.title': 'Deine Befehle',
-  'commands.addcommand': 'Befehl Hinzufügen',
+  'commands.addcommand': 'Befehl hinzufügen',
   'commands.new_command': 'Einen neuen Befehl erstellen',
   'commands.new_command.subheadline': 'Hier kannst du einen neuen Befehl hinzufügen.',
   'commands.new_command.command': 'Dein Befehl',
@@ -169,18 +166,18 @@ export default {
   'commands.new_command.subs': 'Subscriber oder höher',
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',
-  'commands.new_command.savecommand': 'Befehl Speichern',
+  'commands.new_command.savecommand': 'Befehl speichern',
 
   // Variables
   'variables.title': 'Deine Variablen',
   'variables.subtitle': 'Hier kannst du deine Variablen verwalten.',
-  'variables.new_variable': 'Variable Hinzufügen',
+  'variables.new_variable': 'Variable hinzufügen',
 
   // Quotes
   'quotes.title': 'Deine Zitate',
   'quotes.subtitle': 'Hier hast du die Möglichkeit deine Zitate zu verwalten.',
   'quotes.game': 'Spiel',
-  'quotes.time': 'Datum/Zeit',
+  'quotes.time': 'Datum / Zeit',
   'quotes.quote': 'Zitat',
   'quotes.reporter': 'Reporter',
   'quotes.post': 'Zitat im Chat posten',
@@ -188,12 +185,12 @@ export default {
   // Timers
   'timers.title': 'Deine Timer',
   'timers.subtitle': 'Hier hast du die Möglichkeit deine Timer zu verwalten.',
-  'timers.addtimer': 'Timer Hinzufügen',
+  'timers.addtimer': 'Timer hinzufügen',
   'timers.new_timer': 'Einen neuen Timer erstellen',
   'timers.new_timer.subheadline': 'Hier kannst du einen neuen Timer hinzufügen.',
   'timers.new_timer.timer': 'Dein Timer',
   'timers.new_timer.output': 'Ausgabe',
-  'timers.new_timer.savetimer': 'Timer Speichern',
+  'timers.new_timer.savetimer': 'Timer speichern',
   'timers.timer': 'Timer',
   'timers.output': 'Ausgabe',
   'timers.interval': 'Interval',
@@ -211,7 +208,7 @@ export default {
   'giveaways.new_giveaway.keyword.description': 'Bestimme ein Keyword, welches in deinen Chat geschrieben werden muss, um teilzunehmen.',
   'giveaways.new_giveaway.open': 'Giveaway öffnen',
   'giveaways.new_giveaway.cancel': 'Giveaway abbrechen',
-  'giveaways.new_giveaway.random_number.description': 'Hier wird eine zufällige Zahl bestimmt, welche erraten werden muss. Derjenige, der die Zahl zuerst errät gewinnt.',
+  'giveaways.new_giveaway.random_number.description': 'Hier wird eine zufällige Zahl bestimmt, welche erraten werden muss. Derjenige, der die Zahl zuerst errät, gewinnt.',
   'giveaways.new_giveaway.random_number.from': 'von',
   'giveaways.new_giveaway.random_number.to': 'bis',
   'giveaways.new_giveaway.roll': 'Auslosen',
@@ -283,6 +280,6 @@ export default {
   'songrequest.table_channel': 'Kanal',
   'songrequest.table_duration': 'Dauer',
   'songrequest.table_requestby': 'Requestet von',
-  'songrequest.table_platform': 'Platform',
+  'songrequest.table_platform': 'Plattform',
   'songrequest.table_actions': 'Aktionen'
 };
