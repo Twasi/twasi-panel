@@ -513,10 +513,10 @@ class Overview extends Component {
               <Paper className="pageContainer">
                 <Typography style={{ paddingLeft: '23px' }}>
                   <h3 class="pageContainerTitle">
-                    Du hast noch keinen Stream mit Twasi gestartet.
+                    <FormattedMessage id="overview.no_streams_tracked_title" />
                   </h3>
                   <small>
-                    Starte deinen Stream und Twasi sammelt automatisch Daten zu deinem Stream und erstellt Statistiken, die du hier einsehen kannst.
+                    <FormattedMessage id="overview.no_streams_tracked_subtitle" />
                   </small>
                 </Typography>
               </Paper>

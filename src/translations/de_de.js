@@ -83,6 +83,8 @@ export default {
   'overview.used_commands.subtitle': 'Häufigkeit der genutzten Befehle',
   'overview.played_games': 'Gespielte Spiele',
   'overview.played_games.subtitle': 'Deine gespielten Spiele',
+  'overview.no_streams_tracked_title': 'Du hast noch keinen Stream mit Twasi gestartet.',
+  'overview.no_streams_tracked_subtitle': 'Starte deinen Stream und Twasi sammelt automatisch Daten zu deinem Stream und erstellt Statistiken, die du hier einsehen kannst.',
 
   // Status
   'status.started': 'Läuft',
