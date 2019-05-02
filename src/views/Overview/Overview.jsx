@@ -340,6 +340,7 @@ class Overview extends Component {
             </Col>
           </Row>
         </Container>
+        {streamtracker.streamId != null &&
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs
             value={value}
@@ -352,6 +353,7 @@ class Overview extends Component {
             <Tab label="Gesamt" />
           </Tabs>
         </Paper>
+        }
         {value === 0 && <TabContainer>
         {streamtracker.streamId != null &&
         <Row>
