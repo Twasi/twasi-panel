@@ -83,6 +83,10 @@ export default {
   'overview.played_games.subtitle': 'Your played games',
   'overview.no_streams_tracked_title': 'You havent started a stream with twasi yet.',
   'overview.no_streams_tracked_subtitle': 'Start a stream with twasi in your channel and twasi will collect data from your stream to display here.',
+  'overview.no_streams_tracked_plugins': 'Manage Plugins',
+  'overview.no_streams_tracked_docs': 'View Documentation',
+  'overview.no_streams_tracked_support': 'Create Supportticket',
+  'overview.no_streams_tracked_feedback': 'Give Feedback',
 
   // Status
   'status.started': 'Working',

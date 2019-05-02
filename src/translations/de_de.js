@@ -85,6 +85,10 @@ export default {
   'overview.played_games.subtitle': 'Deine gespielten Spiele',
   'overview.no_streams_tracked_title': 'Du hast noch keinen Stream mit Twasi gestartet.',
   'overview.no_streams_tracked_subtitle': 'Starte deinen Stream und Twasi sammelt automatisch Daten zu deinem Stream und erstellt Statistiken, die du hier einsehen kannst.',
+  'overview.no_streams_tracked_plugins': 'Plugins verwalten',
+  'overview.no_streams_tracked_docs': 'Dokumentation ansehen',
+  'overview.no_streams_tracked_support': 'Supportticket erstellen',
+  'overview.no_streams_tracked_feedback': 'Feedback geben',
 
   // Status
   'status.started': 'Läuft',

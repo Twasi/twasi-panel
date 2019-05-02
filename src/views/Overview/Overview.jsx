@@ -508,20 +508,54 @@ class Overview extends Component {
           </Col>
         </Row>
         } {streamtracker.streamId == null &&
+        <Paper className="pageContainer">
+          <Typography>
+            <h3 class="pageContainerTitle">
+              <FormattedMessage id="overview.no_streams_tracked_title" />
+            </h3>
+            <small>
+              <FormattedMessage id="overview.no_streams_tracked_subtitle" />
+            </small>
+          </Typography>
           <Row>
-            <Col sm={12}>
-              <Paper className="pageContainer">
-                <Typography style={{ paddingLeft: '23px' }}>
-                  <h3 class="pageContainerTitle">
-                    <FormattedMessage id="overview.no_streams_tracked_title" />
-                  </h3>
-                  <small>
-                    <FormattedMessage id="overview.no_streams_tracked_subtitle" />
-                  </small>
-                </Typography>
-              </Paper>
+            <Col sm={3}>
+              <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
+                <CardContent className="pluginCardContent">
+                  <Button variant="contained" color="primary">
+                    <FormattedMessage id="overview.no_streams_tracked_plugins" />
+                  </Button>
+                </CardContent>
+              </Card>
+            </Col>
+            <Col sm={3}>
+              <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
+                <CardContent className="pluginCardContent">
+                  <Button variant="contained" color="primary">
+                    <FormattedMessage id="overview.no_streams_tracked_docs" />
+                  </Button>
+                </CardContent>
+              </Card>
+            </Col>
+            <Col sm={3}>
+              <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
+                <CardContent className="pluginCardContent">
+                  <Button variant="contained" color="primary">
+                    <FormattedMessage id="overview.no_streams_tracked_support" />
+                  </Button>
+                </CardContent>
+              </Card>
+            </Col>
+            <Col sm={3}>
+              <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
+                <CardContent className="pluginCardContent">
+                  <Button variant="contained" color="primary">
+                    <FormattedMessage id="overview.no_streams_tracked_feedback" />
+                  </Button>
+                </CardContent>
+              </Card>
             </Col>
           </Row>
+        </Paper>
         }
         </TabContainer>}
         {value === 1 && <TabContainer>
