@@ -512,20 +512,22 @@ class Overview extends Component {
         </Row>
         } {streamtracker.streamId == null &&
         <div>
-          <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
-            <h1 class="pageContainerTitle">
-              <FormattedMessage id="overview.no_streams_tracked_title" />
-              <img
-                style={{ position: 'relative', top: '15px', left: '10px', height: '50px' }}
-                src={SeriousSloth}
-                alt="SeriousSloth"
-              />
-            </h1>
-            <br />
-            <small>
-              <FormattedMessage id="overview.no_streams_tracked_subtitle" />
-            </small>
-          </Typography>
+          <Paper className="pageContainer">
+            <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+              <h1 class="pageContainerTitle">
+                <FormattedMessage id="overview.no_streams_tracked_title" />
+                <img
+                  style={{ position: 'relative', top: '15px', left: '10px', height: '50px' }}
+                  src={SeriousSloth}
+                  alt="SeriousSloth"
+                />
+              </h1>
+              <br />
+              <small>
+                <FormattedMessage id="overview.no_streams_tracked_subtitle" />
+              </small>
+            </Typography>
+          </Paper>
           <Paper className="pageContainer">
             <Row>
               <Col sm={3}>
