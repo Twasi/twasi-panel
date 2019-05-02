@@ -265,7 +265,6 @@ class Overview extends Component {
 
   render() {
     const { streamtracker } = this.props;
-    console.log(streamtracker);
     const { value } = this.state;
     return (
       <div className="pageContent">
@@ -354,6 +353,7 @@ class Overview extends Component {
           </Tabs>
         </Paper>
         {value === 0 && <TabContainer>
+        {streamtracker.streamId != null &&
         <Row>
           <Col sm={12}>
             <Paper className="pageContainer">
@@ -423,6 +423,8 @@ class Overview extends Component {
             </Paper>
           </Col>
         </Row>
+        }
+        {streamtracker.streamId != null &&
         <Row>
           <Col sm={9}>
             <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
@@ -505,6 +507,22 @@ class Overview extends Component {
             </div>
           </Col>
         </Row>
+        } {streamtracker.streamId == null &&
+          <Row>
+            <Col sm={12}>
+              <Paper className="pageContainer">
+                <Typography style={{ paddingLeft: '23px' }}>
+                  <h3 class="pageContainerTitle">
+                    Du hast noch keinen Stream mit Twasi gestartet.
+                  </h3>
+                  <small>
+                    Starte deinen Stream und Twasi sammelt automatisch Daten zu deinem Stream und erstellt Statistiken, die du hier einsehen kannst.
+                  </small>
+                </Typography>
+              </Paper>
+            </Col>
+          </Row>
+        }
         </TabContainer>}
         {value === 1 && <TabContainer>
         </TabContainer>}
