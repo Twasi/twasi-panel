@@ -364,7 +364,7 @@ class Overview extends Component {
                 <h3 class="pageContainerTitle">
                   <FormattedMessage id="overview.laststream" />
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary" onClick={this.props.updateLastStream}>
+                    <Button variant="contained" color="primary" onClick={this.props.updateStreamtracker}>
                       <Icon style={{ marginRight: '5px' }}>cached</Icon>
                       <FormattedMessage id="common.refresh" />
                     </Button>
