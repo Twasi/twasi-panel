@@ -30,6 +30,7 @@ import PogChamp from '../common/resources/PogChamp.png';
 import SeriousSloth  from '../common/resources/SeriousSloth.png';
 
 import ViewerChart  from './ViewerChart';
+import PlayedGamesChart  from './PlayedGamesChart';
 
 import './_style.css';
 
@@ -469,7 +470,7 @@ class Overview extends Component {
               </Col>
               <Col sm={6}>
                 <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
-                  <Typography style={{ paddingLeft: '23px' }}>
+                  <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
                     <h3 class="pageContainerTitle">
                       <FormattedMessage id="overview.played_games" />
                     </h3>
@@ -477,6 +478,8 @@ class Overview extends Component {
                       <FormattedMessage id="overview.played_games.subtitle" />
                     </small>
                   </Typography>
+                  <PlayedGamesChart />
+                  {/*
                   <ResponsiveContainer height='100%' width='100%'>
                     <BarChart backgroundOpacity=".1" width={600} height={300} data={data02}
                         margin={{top: 15, right: 0, left: 0, bottom: 0}}>
@@ -489,6 +492,7 @@ class Overview extends Component {
                      </Bar>
                     </BarChart>
                   </ResponsiveContainer>
+                  */}
                 </Paper>
               </Col>
             </Row>

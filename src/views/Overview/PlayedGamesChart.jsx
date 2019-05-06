@@ -27,77 +27,78 @@ function hashCode(str) {
   return hash;
 }
 
-class ViewerChart extends Component {
+class PlayedGamesChart extends Component {
   componentDidMount() {
     const { streamtracker } = this.props;
-    let chart = am4core.create("chartdiv", am4charts.XYChart);
+    let chart = am4core.create("chartdiv_playedgames", am4charts.XYChart);
 
     chart.paddingTop = 65;
-    chart.paddingRight = 0;
-    chart.paddingLeft = 0;
     chart.paddingBottom = 0;
 
     let data = [];
-    var game = ""
+    var game = "";
+    var count = 1;
     streamtracker.data.forEach((entry, index) => {
-      game = entry.game
-      if(game != entry.game) {
-        data.push({
-          viewerCount: entry.viewerCount,
-          game: entry.game,
-          timestamp: entry.timestamp,
-          lineColor: chart.colors.next()
-        });
+      if(entry.game != game) {
+        count=1;
       } else {
-        data.push({
-          viewerCount: entry.viewerCount,
-          game: entry.game,
-          timestamp: entry.timestamp
-        });
+        count++;
       }
+      game = entry.game
+      data.push({
+        color: "#" + generateStringColor(entry.game),
+        viewerCount: entry.viewerCount,
+        game: entry.game,
+        timestamp: entry.timestamp,
+        count: count,
+      });
       if (index === 0 || data[index - 1].game !== entry.game) {
-        data[data.length - 1].lineColor =
+        data[data.length - 1].color =
           "#" + generateStringColor(entry.game);
       }
     });
     chart.data = data;
 
-    let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.tooltip.disabled = true;
-    categoryAxis.renderer.line.opacity = 0;
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.renderer.ticks.template.disabled = true;
-    categoryAxis.renderer.line.opacity = 0;
+    // Create axes
+    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "game";
     categoryAxis.renderer.grid.template.disabled = true;
-    categoryAxis.renderer.minGridDistance = 10;
-    categoryAxis.dataFields.category = "timestamp";
-    categoryAxis.startLocation = 1;
-    categoryAxis.endLocation = 0;
-    categoryAxis.renderer.disabled = true;
+    categoryAxis.renderer.minGridDistance = 30;
+    categoryAxis.renderer.inside = true;
+    categoryAxis.renderer.labels.template.disabled = true;
 
-    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.tooltip.disabled = true;
-    valueAxis.renderer.line.opacity = 0;
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+    valueAxis.renderer.labels.template.disabled = true;
     valueAxis.renderer.grid.template.disabled = true;
-    valueAxis.renderer.ticks.template.disabled = true;
     valueAxis.min = 0;
-    valueAxis.renderer.disabled = true;
 
-    let lineSeries = chart.series.push(new am4charts.LineSeries());
-    lineSeries.dataFields.categoryX = "timestamp";
-    lineSeries.dataFields.valueY = "viewerCount";
-    lineSeries.tooltipText = "Zuschauer: [bold]{viewerCount}[/b]\nSpiel: [bold]{game}[/b]\nZeitpunkt: [bold]{timestamp}[/b]";
-    lineSeries.fillOpacity = 0.3;
-    lineSeries.strokeWidth = 2;
-    lineSeries.propertyFields.stroke = "lineColor";
-    lineSeries.propertyFields.fill = "lineColor";
-    lineSeries.tensionX = 0.77;
+    // Do not crop bullets
+    chart.maskBullets = true;
 
-    chart.cursor = new am4charts.XYCursor();
-    chart.cursor.behavior = "panX";
-    chart.cursor.lineX.opacity = 0;
-    chart.cursor.lineY.opacity = 0;
-    chart.cursor = new am4charts.XYCursor();
+    // Create series
+    var series = chart.series.push(new am4charts.ColumnSeries());
+    series.dataFields.valueY = "count";
+    series.dataFields.categoryX = "game";
+    series.columns.template.propertyFields.fill = "color";
+    series.columns.template.propertyFields.stroke = "color";
+    series.columns.template.column.cornerRadiusTopLeft = 3;
+    series.columns.template.column.cornerRadiusTopRight = 3;
+    series.columns.template.tooltipText = "Spiel: [bold]{game}[/b]\nMinuten: [bold]{count}[/b]";
+    series.fillOpacity = 1;
+    series.strokeWidth = 2;
+
+    // Add bullets
+    var bullet = series.bullets.push(new am4charts.Bullet());
+    var image = bullet.createChild(am4core.Image);
+    image.horizontalCenter = "middle";
+    image.verticalCenter = "bottom";
+    image.dy = 20;
+    image.y = am4core.percent(100);
+    image.propertyFields.href = "bullet";
+    image.tooltipText = series.columns.template.tooltipText;
+    image.propertyFields.fill = "color";
+    image.filters.push(new am4core.DropShadowFilter());
 
     this.chart = chart;
   }
@@ -110,12 +111,12 @@ class ViewerChart extends Component {
 
   render() {
     return (
-      <div id="chartdiv" style={{ width: "100%", height: "100%" }}></div>
+      <div id="chartdiv_playedgames" style={{ width: "100%", height: "325px" }}></div>
     );
   }
 }
 
-ViewerChart.propTypes = {
+PlayedGamesChart.propTypes = {
   updateStreamtracker: PropTypes.func.isRequired,
   streamtracker: PropTypes.arrayOf(PropTypes.shape({
     streamId: PropTypes.string.isRequired,
@@ -144,4 +145,4 @@ const mapDispatchToProps = dispatch => ({
   updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewerChart);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayedGamesChart);
