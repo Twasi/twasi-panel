@@ -19,7 +19,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { AreaChart, Area, LineChart, Line, ReferenceArea, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, LabelList } from 'recharts';
+import { AreaChart, Area, LineChart, Line, XAxis, ReferenceArea, ReferenceLine, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, LabelList } from 'recharts';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
@@ -29,6 +29,8 @@ import Kappa from '../common/resources/Kappa.png';
 import PogChamp from '../common/resources/PogChamp.png';
 import SeriousSloth  from '../common/resources/SeriousSloth.png';
 
+import ViewerChart  from './ViewerChart';
+
 import './_style.css';
 
 function TabContainer(props) {
@@ -37,6 +39,17 @@ function TabContainer(props) {
       {props.children}
     </div>
   );
+}
+
+function objectLength(obj) {
+  var result = 0;
+  for(var prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+      // or Object.prototype.hasOwnProperty.call(obj, prop)
+      result++;
+    }
+  }
+  return result;
 }
 
 const COLORS = ['#02d4d4', '#E87722', '#F1B300', '#009A17', '#00B8DE', '#006CB0', '#ff4f4a', '#85459F', '#D12B92', '#F67599'];
@@ -439,20 +452,21 @@ class Overview extends Component {
                   <FormattedMessage id="overview.viewercourse.subtitle" />
                 </small>
               </Typography>
+              <ViewerChart />
+              {/*
               <ResponsiveContainer height='100%' width='100%'>
                 <LineChart margin={{ top: 55, right: 0, left: 0, bottom: 0 }} data={streamtracker.data}>
                   <Tooltip
                     labelFormatter={() => ""}
                   />
-                  {/*
                   <ReferenceArea x1={0} x2={10} fill={COLORS[0]} fillOpacity={0.4} />
                   <ReferenceArea x1={10} x2={25} fill={COLORS[1]} fillOpacity={0.4} />
                   <ReferenceArea x1={25} x2={40} fill={COLORS[2]} fillOpacity={0.4} />
                   <ReferenceArea x1={40} x2={100} fill={COLORS[3]} fillOpacity={0.4} />
-                  */}
                   <Line type='monotone' dataKey="viewerCount" name="Zuschauer" strokeWidth='2' stroke={COLORS[0]} dot={false} />
                 </LineChart>
               </ResponsiveContainer>
+              */}
             </Paper>
             <Row>
               <Col sm={6}>

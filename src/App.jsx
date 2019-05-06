@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+
 import AuthLoader from './auth/AuthLoader';
 import RequireAuth from './auth/RequireAuth';
 import configureStore from './state/store';
