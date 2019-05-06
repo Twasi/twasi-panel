@@ -87,11 +87,12 @@ class ViewerChart extends Component {
     let lineSeries = chart.series.push(new am4charts.LineSeries());
     lineSeries.dataFields.categoryX = "timestamp";
     lineSeries.dataFields.valueY = "viewerCount";
-    lineSeries.tooltipText = "Zuschauer: {viewerCount}\nSpiel: {game}";
+    lineSeries.tooltipText = "Zuschauer: {viewerCount}\nSpiel: {game}\nUhrzeit: {timestamp}";
     lineSeries.fillOpacity = 0.3;
     lineSeries.strokeWidth = 2;
     lineSeries.propertyFields.stroke = "lineColor";
     lineSeries.propertyFields.fill = "lineColor";
+    lineSeries.tensionX = 0.77;
 
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.behavior = "panX";
