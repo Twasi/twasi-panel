@@ -53,7 +53,6 @@ class PlayedGamesChart extends Component {
           color: "#" + generateStringColor(game)
         }
     })
-    console.log(result)
 
     chart.data = result;
 

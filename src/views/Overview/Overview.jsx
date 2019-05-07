@@ -31,6 +31,7 @@ import SeriousSloth  from '../common/resources/SeriousSloth.png';
 
 import ViewerChart  from './ViewerChart';
 import PlayedGamesChart  from './PlayedGamesChart';
+import StatsList  from './StatsList';
 
 import './_style.css';
 
@@ -72,199 +73,11 @@ class Overview extends Component {
 
   constructor(props) {
     super(props);
-
-    this.renderListItems = this.renderListItems.bind(this);
   }
 
   componentDidMount() {
     const { updateStreamtracker } = this.props;
     updateStreamtracker();
-  }
-
-  renderListItems() {
-    const { streamtracker } = this.props;
-    return (
-      <List dense style={{ padding: '0px' }}>
-        <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
-          <ListItem>
-            <Row>
-              <Col sm={12}>
-                <Typography>
-                  <h3 className="pageContainerTitle">{streamtracker.streamId}</h3>
-                  <small><FormattedMessage id="overview.table_id" /></small>
-                </Typography>
-              </Col>
-            </Row>
-            <TooltipM title="Jetzt Live" placement="right">
-              <Icon
-                color="secondary"
-                style={{ position: 'absolute', right: '17px', fontSize: '15px' }}
-              >
-                brightness_1
-              </Icon>
-            </TooltipM>
-          </ListItem>
-          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-            <CardContent style={{ padding: '0px' }}>
-              <ListItem>
-                <Row>
-                  <Col sm={12}>
-                    <Typography>
-                      <h3 className="pageContainerTitle">13:37</h3>
-                      <small><FormattedMessage id="overview.table_duration" /></small>
-                    </Typography>
-                  </Col>
-                </Row>
-                <TooltipM title="+ 5:12" placement="right">
-                  <Icon
-                    color="primary"
-                    style={{ position: 'absolute', right: '13px' }}
-                  >
-                    trending_up
-                  </Icon>
-                </TooltipM>
-              </ListItem>
-            </CardContent>
-          </Card>
-          <ListItem>
-            <Row>
-              <Col sm={12}>
-                <Typography>
-                  <h3 className="pageContainerTitle">1.243</h3>
-                  <small><FormattedMessage id="overview.table_chatmessages" /></small>
-                </Typography>
-              </Col>
-            </Row>
-            <TooltipM title="+ 125" placement="right">
-              <Icon
-                color="primary"
-                style={{ position: 'absolute', right: '13px' }}
-              >
-                trending_up
-              </Icon>
-            </TooltipM>
-          </ListItem>
-          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-            <CardContent style={{ padding: '0px' }}>
-              <ListItem>
-                <Row>
-                  <Col sm={12}>
-                    <Typography>
-                      <h3 className="pageContainerTitle">354</h3>
-                      <small><FormattedMessage id="overview.table_commands_used" /></small>
-                    </Typography>
-                  </Col>
-                </Row>
-                <TooltipM title="- 5" placement="right">
-                  <Icon
-                    color="secondary"
-                    style={{ position: 'absolute', right: '13px' }}
-                  >
-                    trending_down
-                  </Icon>
-                </TooltipM>
-              </ListItem>
-            </CardContent>
-          </Card>
-          <ListItem>
-            <Row>
-              <Col sm={12}>
-                <Typography>
-                  <h3 className="pageContainerTitle">54</h3>
-                  <small><FormattedMessage id="overview.table_follower" /></small>
-                </Typography>
-              </Col>
-            </Row>
-            <TooltipM title="+- 0" placement="right">
-              <Icon
-                style={{ position: 'absolute', right: '13px', color: '#da7720' }}
-              >
-                trending_flat
-              </Icon>
-            </TooltipM>
-          </ListItem>
-          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-            <CardContent style={{ padding: '0px' }}>
-              <ListItem>
-                <Row>
-                  <Col sm={12}>
-                    <Typography>
-                      <h3 className="pageContainerTitle">263</h3>
-                      <small><FormattedMessage id="overview.table_views" /></small>
-                    </Typography>
-                  </Col>
-                </Row>
-                <TooltipM title="+- 0" placement="right">
-                  <Icon
-                    style={{ position: 'absolute', right: '13px', color: '#da7720' }}
-                  >
-                    trending_flat
-                  </Icon>
-                </TooltipM>
-              </ListItem>
-            </CardContent>
-          </Card>
-          <ListItem>
-            <Row>
-              <Col sm={12}>
-                <Typography>
-                  <h3 className="pageContainerTitle">32</h3>
-                  <small><FormattedMessage id="overview.table_viewermax" /></small>
-                </Typography>
-              </Col>
-            </Row>
-            <TooltipM title="+ 7" placement="right">
-              <Icon
-                color="primary"
-                style={{ position: 'absolute', right: '13px' }}
-              >
-                trending_up
-              </Icon>
-            </TooltipM>
-          </ListItem>
-          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-            <CardContent style={{ padding: '0px' }}>
-              <ListItem>
-                <Row>
-                  <Col sm={12}>
-                    <Typography>
-                      <h3 className="pageContainerTitle">25</h3>
-                      <small><FormattedMessage id="overview.table_average" /></small>
-                    </Typography>
-                  </Col>
-                </Row>
-                <TooltipM title="- 2" placement="right">
-                  <Icon
-                    color="secondary"
-                    style={{ position: 'absolute', right: '13px' }}
-                  >
-                    trending_down
-                  </Icon>
-                </TooltipM>
-              </ListItem>
-            </CardContent>
-          </Card>
-          <ListItem>
-            <Row>
-              <Col sm={12}>
-                <Typography>
-                  <h3 className="pageContainerTitle">197</h3>
-                  <small><FormattedMessage id="overview.table_individual" /></small>
-                </Typography>
-              </Col>
-            </Row>
-            <TooltipM title="- 50" placement="right">
-              <Icon
-                color="secondary"
-                style={{ position: 'absolute', right: '13px' }}
-              >
-                trending_down
-              </Icon>
-            </TooltipM>
-          </ListItem>
-        </Paper>
-      </List>
-    );
   }
 
   render() {
@@ -485,7 +298,7 @@ class Overview extends Component {
           </Col>
           <Col sm={3}>
             <div>
-              {this.renderListItems()}
+              <StatsList />
             </div>
           </Col>
         </Row>
