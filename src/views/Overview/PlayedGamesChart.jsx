@@ -35,29 +35,27 @@ class PlayedGamesChart extends Component {
     chart.paddingTop = 65;
     chart.paddingBottom = 0;
 
-    let data = [];
-    var game = "";
-    var count = 1;
-    streamtracker.data.forEach((entry, index) => {
-      if(entry.game != game) {
-        count=1;
-      } else {
-        count++;
-      }
-      game = entry.game
-      data.push({
-        color: "#" + generateStringColor(entry.game),
-        viewerCount: entry.viewerCount,
-        game: entry.game,
-        timestamp: entry.timestamp,
-        count: count,
+    function getLength(game) {
+      var count = 0;
+      streamtracker.data.forEach((entry, index) => {
+        if(game == entry.game){
+          count++
+        }
       });
-      if (index === 0 || data[index - 1].game !== entry.game) {
-        data[data.length - 1].color =
-          "#" + generateStringColor(entry.game);
-      }
-    });
-    chart.data = data;
+      return count;
+    }
+
+    const result = Array.from(new Set(streamtracker.data.map(s => s.game)))
+      .map(game => {
+        return {
+          game: game,
+          count: getLength(game),
+          color: "#" + generateStringColor(game)
+        }
+    })
+    console.log(result)
+
+    chart.data = result;
 
     // Create axes
     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -85,7 +83,7 @@ class PlayedGamesChart extends Component {
     series.columns.template.column.cornerRadiusTopLeft = 3;
     series.columns.template.column.cornerRadiusTopRight = 3;
     series.columns.template.tooltipText = "Spiel: [bold]{game}[/b]\nMinuten: [bold]{count}[/b]";
-    series.fillOpacity = 1;
+    series.fillOpacity = 0.3;
     series.strokeWidth = 2;
 
     // Add bullets
