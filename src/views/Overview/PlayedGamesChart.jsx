@@ -33,7 +33,7 @@ class PlayedGamesChart extends Component {
     let chart = am4core.create("chartdiv_playedgames", am4charts.XYChart);
 
     chart.paddingTop = 65;
-    chart.paddingBottom = 0;
+    chart.paddingBottom = -1;
 
     function getLength(game) {
       var count = 0;
@@ -109,7 +109,7 @@ class PlayedGamesChart extends Component {
 
   render() {
     return (
-      <div id="chartdiv_playedgames" style={{ width: "100%", height: "325px" }}></div>
+      <div id="chartdiv_playedgames" style={{ width: "100%", height: "100%" }}></div>
     );
   }
 }
