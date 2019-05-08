@@ -95,6 +95,14 @@ class ViewerChart extends Component {
     lineSeries.propertyFields.fill = "lineColor";
     lineSeries.tensionX = 0.77;
 
+    let valueAxisMessages = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxisMessages.tooltip.disabled = true;
+    valueAxisMessages.renderer.line.opacity = 0;
+    valueAxisMessages.renderer.grid.template.disabled = true;
+    valueAxisMessages.renderer.ticks.template.disabled = true;
+    valueAxisMessages.min = 0;
+    valueAxisMessages.renderer.disabled = true;
+
     var messageslineSeries = chart.series.push(new am4charts.LineSeries());
     messageslineSeries.name = "Chatnachrichten";
     messageslineSeries.dataFields.valueY = "chatMessages";
@@ -102,6 +110,7 @@ class ViewerChart extends Component {
     messageslineSeries.tooltipText = "Nachrichten pro Minute: [bold]{chatMessages}[/b]";
     messageslineSeries.stroke = '#fdd400';
     messageslineSeries.fill = '#fdd400';
+    messageslineSeries.yAxis = valueAxisMessages;
     messageslineSeries.strokeWidth = 1;
     messageslineSeries.tensionX = 0.77;
 
