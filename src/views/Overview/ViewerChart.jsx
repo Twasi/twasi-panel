@@ -45,6 +45,7 @@ class ViewerChart extends Component {
         data.push({
           viewerCount: entry.viewerCount,
           game: entry.game,
+          chatMessages: entry.chatMessages,
           timestamp: entry.timestamp,
           lineColor: chart.colors.next()
         });
@@ -52,6 +53,7 @@ class ViewerChart extends Component {
         data.push({
           viewerCount: entry.viewerCount,
           game: entry.game,
+          chatMessages: entry.chatMessages,
           timestamp: entry.timestamp
         });
       }
@@ -92,6 +94,16 @@ class ViewerChart extends Component {
     lineSeries.propertyFields.stroke = "lineColor";
     lineSeries.propertyFields.fill = "lineColor";
     lineSeries.tensionX = 0.77;
+
+    var messageslineSeries = chart.series.push(new am4charts.LineSeries());
+    messageslineSeries.name = "Chatnachrichten";
+    messageslineSeries.dataFields.valueY = "chatMessages";
+    messageslineSeries.dataFields.categoryX = "timestamp";
+    messageslineSeries.tooltipText = "Nachrichten pro Minute: [bold]{chatMessages}[/b]";
+    messageslineSeries.stroke = '#fdd400';
+    messageslineSeries.fill = '#fdd400';
+    messageslineSeries.strokeWidth = 1;
+    messageslineSeries.tensionX = 0.77;
 
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.behavior = "panX";

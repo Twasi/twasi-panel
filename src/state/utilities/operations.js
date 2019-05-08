@@ -13,12 +13,12 @@ const loadUtilities = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('utilities{getTitle,getGame}', jwt, 'utilities').then(data => {
-    if (data == null) {
+  getUserGraph('twitchAPI{retrieve{title,game}}', jwt, 'utilities').then(data => {
+    if (data.twitchAPI == null) {
       dispatch(updateDisabled(true));
       return;
     }
-    dispatch(updateUtilities(data.utilities));
+    dispatch(updateUtilities(data.twitchAPI));
   });
 };
 

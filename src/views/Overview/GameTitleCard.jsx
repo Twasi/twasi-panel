@@ -15,9 +15,21 @@ import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 
 class GameTitleCard extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const { updateUtilities } = this.props;
+    updateUtilities();
+  }
+
   render() {
     const { utilities } = this.props;
-    console.log(utilities)
+    if(utilities.retrieve != null){
+      var title = utilities.retrieve.title
+      var game = utilities.retrieve.game
+    }
     return (
       <Card className="pluginCard" style={{ marginTop: '15px' }}>
         <CardContent style={{ padding: '24px' }}>
@@ -26,6 +38,7 @@ class GameTitleCard extends Component {
               <TextField
                 label={<FormattedMessage id="overview.title" />}
                 fullWidth
+                value={title}
                 margin="normal"
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}
@@ -47,6 +60,7 @@ class GameTitleCard extends Component {
               <TextField
                 label={<FormattedMessage id="overview.game" />}
                 fullWidth
+                value={game}
                 margin="normal"
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}
@@ -75,8 +89,10 @@ class GameTitleCard extends Component {
 GameTitleCard.propTypes = {
   updateUtilities: PropTypes.func.isRequired,
   utilities: PropTypes.arrayOf(PropTypes.shape({
-    getTitle: PropTypes.string.isRequired,
-    getGame: PropTypes.string.isRequired
+    retrieve: PropTypes.arrayOf(PropTypes.shape({
+      game: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired
+    })),
   })),
   disabled: PropTypes.bool.isRequired
 };
