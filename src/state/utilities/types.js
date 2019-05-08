@@ -1,0 +1,7 @@
+const UPDATE_UTILITIES = 'utilities/UPDATE_UTILITIES';
+const UPDATE_DISABLED = 'utilities/UPDATE_DISABLED';
+
+export default {
+  UPDATE_UTILITIES,
+  UPDATE_DISABLED
+};

@@ -32,6 +32,7 @@ import SeriousSloth  from '../common/resources/SeriousSloth.png';
 import ViewerChart  from './ViewerChart';
 import PlayedGamesChart  from './PlayedGamesChart';
 import StatsList  from './StatsList';
+import GameTitleCard  from './GameTitleCard';
 
 import './_style.css';
 
@@ -190,55 +191,7 @@ class Overview extends Component {
                   <FormattedMessage id="overview.laststream.subtitle" />
                 </small>
               </Typography>
-              <Card className="pluginCard" style={{ marginTop: '15px' }}>
-                <CardContent style={{ padding: '24px' }}>
-                  <Grid container spacing={16}>
-                    <Grid item lg={6} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                      <TextField
-                        label={<FormattedMessage id="overview.title" />}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        InputLabelProps={{ shrink: true }}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <IconButton
-                              >
-                                <Icon>
-                                  save
-                                </Icon>
-                              </IconButton>
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Grid>
-                    <Grid item lg={6} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                      <TextField
-                        label={<FormattedMessage id="overview.game" />}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        InputLabelProps={{ shrink: true }}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <IconButton
-                                aria-label="send-support-message"
-                              >
-                                <Icon>
-                                  save
-                                </Icon>
-                              </IconButton>
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </Grid>
-                  </Grid>
-                </CardContent>
-              </Card>
+              <GameTitleCard />
             </Paper>
           </Col>
         </Row>

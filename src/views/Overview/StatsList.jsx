@@ -27,7 +27,6 @@ function getStreamLength(data) {
 function getBiggestViewerCount(data) {
   var count = 0;
   data.forEach((entry, index) => {
-    console.log(entry)
     if(entry.viewerCount > count){
       count = entry.viewerCount
     }
@@ -36,10 +35,6 @@ function getBiggestViewerCount(data) {
 }
 
 class StatsList extends Component {
-  componentDidMount() {
-    const { streamtracker } = this.props;
-  }
-
   render() {
     const { streamtracker } = this.props;
     return (
