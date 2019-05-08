@@ -10,6 +10,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import TooltipM from '@material-ui/core/Tooltip';
 import Icon from '@material-ui/core/Icon';
+import Badge from '@material-ui/core/Badge';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -30,6 +31,14 @@ function getBiggestViewerCount(data) {
     if(entry.viewerCount > count){
       count = entry.viewerCount
     }
+  });
+  return count;
+}
+
+function getChatMessagesCount(data) {
+  var count = 0;
+  data.forEach((entry, index) => {
+    count += entry.chatMessages
   });
   return count;
 }
@@ -84,7 +93,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">1.243</h3>
+                  <h3 className="pageContainerTitle">{getChatMessagesCount(streamtracker.data)}</h3>
                   <small><FormattedMessage id="overview.table_chatmessages" /></small>
                 </Typography>
               </Col>
@@ -104,7 +113,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">354</h3>
+                      <h3 className="pageContainerTitle">---</h3>
                       <small><FormattedMessage id="overview.table_commands_used" /></small>
                     </Typography>
                   </Col>
@@ -124,7 +133,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">54</h3>
+                  <h3 className="pageContainerTitle">---</h3>
                   <small><FormattedMessage id="overview.table_follower" /></small>
                 </Typography>
               </Col>
@@ -143,7 +152,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">263</h3>
+                      <h3 className="pageContainerTitle">---</h3>
                       <small><FormattedMessage id="overview.table_views" /></small>
                     </Typography>
                   </Col>
@@ -182,7 +191,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">25</h3>
+                      <h3 className="pageContainerTitle">---</h3>
                       <small><FormattedMessage id="overview.table_average" /></small>
                     </Typography>
                   </Col>
@@ -202,7 +211,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">197</h3>
+                  <h3 className="pageContainerTitle">---</h3>
                   <small><FormattedMessage id="overview.table_individual" /></small>
                 </Typography>
               </Col>
