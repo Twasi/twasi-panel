@@ -142,6 +142,11 @@ export default createMuiTheme({
         color: '#000000'
       }
     },
+    MuiFormHelperText: {
+      root: {
+        color: '#000000'
+      }
+    },
     MuiFab: {
       root: {
         boxShadow: 'none',
@@ -238,7 +243,7 @@ export default createMuiTheme({
     },
     MuiChip: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        backgroundColor: '#232f4a', // Some CSS
+        backgroundColor: '#bdbebd', // Some CSS
         borderWidth: '2px',
         borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
         borderStyle: 'solid',
@@ -251,16 +256,22 @@ export default createMuiTheme({
       colorSecondary: {
         backgroundColor: '#bdbebd',
         color: '#000000'
+      },
+      avatar: {
+        color: '#000000'
       }
     },
     MuiAvatar: { // Name of the component ⚛️ / style sheet
       colorDefault: { // Name of the rule
-        backgroundColor: '#dbdbdb', // Some CSS
+        backgroundColor: 'rgba(204, 204, 204, 0)', // Some CSS
         color: '#000000'
       }
     },
     MuiTypography: { // Name of the component ⚛️ / style sheet
       colorInherit: {
+        color: '#000000'
+      },
+      colorTextSecondary: {
         color: '#000000'
       },
       body1: { // Name of the rule
@@ -270,7 +281,7 @@ export default createMuiTheme({
     MuiTooltip: { // Name of the component ⚛️ / style sheet
       tooltip: { // Name of the rule
         color: '#ffffff', // Some CSS
-        backgroundColor: 'rgba(0,0,0,0.0)',
+        backgroundColor: 'rgba(0,0,0,1)',
         opacity: '1',
       },
       popper: {
