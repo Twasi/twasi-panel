@@ -1,0 +1,77 @@
+.windows95 {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.windows95 img {
+  pointer-events: none;
+}
+.windows95 .translucentBox {
+  background: #000080;
+  border-width:2px;
+  border-color:#dbdbdb #535353 #535353 #dbdbdb;
+  border-style:solid;
+  border-radius: 0px;
+}
+.windows95 .headerMenuItem {
+  background: #000080;
+  border-radius: 0px;
+}
+.windows95 .pageContainer {
+  border-radius: 0px !important;
+}
+.windows95 .MuiPaper-rounded-306 {
+  border-radius: 0px;
+}
+.windows95 .MuiOutlinedInput-root-549 .MuiOutlinedInput-notchedOutline-556 {
+  border: 0px;
+  border-radius: 0px;
+}
+.windows95 .MuiPrivateNotchedOutline-legend-581 {
+  color: #000000;
+}
+.windows95 .MuiSelect-outlined-599 {
+  border-radius: 0px !important;
+}
+.windows95 .MuiInputLabel-outlined-541.MuiInputLabel-shrink-538 {
+  transform: translate(14px, -12px) scale(0.75) !important;
+}
+.windows95 .MuiInputLabel-outlined-444.MuiInputLabel-shrink-441 {
+  transform: translate(14px, -12px) scale(0.75) !important;
+}
+.windows95 .TableRow {
+  border-bottom: 3px solid #000080 !important;
+}
+.windows95 .bannerHeader {
+  background-color: #008080;
+  border-top: 5px solid #000080;
+}
+.windows95 .themeIcon:hover{
+  background-color: #000080;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.windows95 a {
+  color: #000080 !important;
+}
+.windows95 .urlshortener_arrow {
+  color: #000080;
+}
+.windows95 .chatBubbleSelf {
+  background-color: #dbdbdb;
+  border-width:2px;
+  border-color:#dbdbdb #535353 #535353 #dbdbdb;
+  border-style:solid;
+  padding: 10px;
+  border-radius: 0px;
+}
+.windows95 .chatBubbleSupport {
+  background-color: #dbdbdb;
+  border-width:2px;
+  border-color:#dbdbdb #535353 #535353 #dbdbdb;
+  border-style:solid;
+  padding: 10px;
+  border-radius: 0px;
+}
+.windows95 .tooltipAccountSwitch {
+  background-color: #00aeae;
+}

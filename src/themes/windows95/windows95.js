@@ -1,20 +1,21 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import './twasi-darkblue.css';
+import windows95background  from '../../views/common/resources/windows95-background.png';
+import './windows95.css';
 
 export default createMuiTheme({
   palette: {
     type: 'dark',
     background: {
-      default: '#1a2035',
+      default: '#008080'
     },
     primary: {
-      main: '#3f51b5',
-      contrastText: '#ffffff'
+      main: '#000080',
+      contrastText: '#000000'
     },
     secondary: {
       main: '#de6464',
-      contrastText: '#ffffff'
+      contrastText: '#000000'
     }
   },
   neutral: {
@@ -23,10 +24,12 @@ export default createMuiTheme({
   overrides: {
     MuiPaper: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#afb6c5', // Some CSS
-        backgroundColor: '#202940',
-        borderRadius: '4px',
-        border: '0px solid #25373e'
+        color: 'black', // Some CSS
+        backgroundColor: '#bdbebd',
+        borderRadius: '0px',
+        borderWidth: '2px',
+        borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
+        borderStyle: 'solid'
       },
       elevation1: {
         boxShadow: 'none'
@@ -49,33 +52,39 @@ export default createMuiTheme({
     },
     MuiCardContent: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#afb6c5', // Some CSS
-        backgroundColor: '#232f4a' // Some CSS
+        color: '#000000', // Some CSS
+        backgroundColor: '#bdbebd' // Some CSS
       }
     },
     MuiMenuItem: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#afb6c5', // Some CSS
+        color: '#000000', // Some CSS
         padding: '10px',
         '&:hover': {
-          backgroundColor: '#1a2035'
+          backgroundColor: '#bdbebd'
         }
       },
       selected: { // Name of the rule
-        color: '#ffffff',
-        background: 'linear-gradient(135deg,#3f51b5,#3f51b5)'
+        color: '#000000',
+        backgroundColor: '#000080'
       }
     },
     MuiListItemText: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: '#afb6c5'
+        color: '#000000'
       }
     },
     MuiButton: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         textTransform: 'none', // Some CSS
-        color: '#afb6c5', // Some CSS
-        borderRadius: '50px'
+        color: '#ffffff', // Some CSS
+        borderRadius: '0px',
+        borderWidth: '2px',
+        borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
+        borderStyle: 'solid'
+      },
+      fab: {
+        borderRadius: '0px',
       },
       mini: {
         minHeight: '32px',
@@ -84,18 +93,23 @@ export default createMuiTheme({
       },
       containedPrimary: {
         boxShadow: 'none',
-        background: 'linear-gradient(135deg,#3f51b5,#3f51b5)',
+        borderWidth: '2px',
+        color: '#ffffff',
+        borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
+        backgroundColor: '#000080',
         '&$disabled': {
           background: '#232f4a',
-          color: '#afb6c5'
+          color: '#ffffff'
         }
       },
       containedSecondary: {
         boxShadow: 'none',
-        background: 'linear-gradient(135deg,#de6464,#de6464)',
+        borderWidth: '2px',
+        borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
+        backgroundColor: '#bdbebd',
         '&$disabled': {
           background: '#232f4a',
-          color: '#afb6c5'
+          color: '#000000'
         }
       },
       outlinedPrimary: {
@@ -112,24 +126,33 @@ export default createMuiTheme({
       },
       contained: {
         boxShadow: 'none',
-        backgroundColor: '#232f4a',
-        color: '#afb6c5',
+        backgroundColor: '#bdbebd',
+        color: '#ffffff',
         '&$disabled': {
-          backgroundColor: '#232f4a',
-          color: '#afb6c5'
+          backgroundColor: '#bdbebd',
+          color: '#ffffff'
         },
         '&:hover': {
-          backgroundColor: '#1a2035'
+          backgroundColor: '#dbdbdb'
         }
+      }
+    },
+    MuiIconButton: {
+      label: {
+        color: '#000000'
       }
     },
     MuiFab: {
       root: {
         boxShadow: 'none',
-        backgroundColor: '#232f4a',
+        backgroundColor: '#bdbebd',
+        borderRadius: '0px',
+        borderWidth: '2px',
+        borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
+        borderStyle: 'solid',
         '&:hover': {
           boxShadow: 'none',
-          backgroundColor: '#1a2035'
+          backgroundColor: '#dbdbdb'
         }
       }
     },
@@ -138,21 +161,24 @@ export default createMuiTheme({
         padding: '23px',
       },
       titleText: {
-        color: '#afb6c5'
+        color: '#000000'
       },
       icon: {
-        color: '#afb6c5'
+        color: '#000000'
       },
     },
     MUIDataTableHeadCell: {
       fixedHeader: {
-        backgroundColor: '#202940',
-        borderBottom: '3px solid #3f51b5',
+        backgroundColor: '#bdbebd',
+        borderBottom: '3px solid #000080',
       },
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
+      head: { // Name of the rule
+        color: '#000000', // Some CSS
+      },
       body: { // Name of the rule
-        color: '#afb6c5', // Some CSS
+        color: '#000000', // Some CSS
         borderColor: 'transparent',
         padding: '16px'
       },
@@ -163,56 +189,87 @@ export default createMuiTheme({
     MuiTableRow: {
       root: {
         '&:nth-of-type(even)': {
-          backgroundColor: '#232f4a'
+          backgroundColor: '#bdbebd'
         }
       }
     },
     MuiInputAdornment: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        backgroundColor: '#1b292d' // Some CSS
+        backgroundColor: '#bdbebd' // Some CSS
       }
+    },
+    MuiInputBase: {
+      input: {
+        color: '#000000',
+      }
+    },
+    MuiOutlinedInput: {
+      root: {
+        backgroundColor: '#dbdbdb',
+        borderWidth: '2px',
+        borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
+        borderStyle: 'inset',
+      },
+      legend: {
+        color: '#000000',
+      }
+    },
+    MuiFormLabel: {
+      root: {
+        color: '#000000',
+      },
     },
     MuiTabs: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        backgroundColor: '#202940', // Some CSS
+        backgroundColor: '#bdbebd', // Some CSS
         border: '0px !important',
-        borderRadius: '4px'
+        borderRadius: '0px'
       }
     },
     MuiTab: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        border: '0px'
+        border: '0px',
+        borderRadius: '0px'
       },
       label: {
-        color: '#afb6c5',
+        color: '#000000',
         textTransform: 'none'
       }
     },
     MuiChip: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        backgroundColor: '#232f4a' // Some CSS
+        backgroundColor: '#232f4a', // Some CSS
+        borderWidth: '2px',
+        borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
+        borderStyle: 'solid',
+        borderRadius: '0px',
       },
       colorPrimary: {
-        background: 'linear-gradient(135deg,#3f51b5,#3f51b5)'
+        backgroundColor: '#000080',
+        color: '#ffffff'
       },
       colorSecondary: {
-        background: 'linear-gradient(135deg,#de6464,#de6464)'
+        backgroundColor: '#bdbebd',
+        color: '#000000'
       }
     },
     MuiAvatar: { // Name of the component ⚛️ / style sheet
       colorDefault: { // Name of the rule
-        backgroundColor: '#1a2035', // Some CSS
-        color: '#ffffff'
+        backgroundColor: '#dbdbdb', // Some CSS
+        color: '#000000'
       }
     },
     MuiTypography: { // Name of the component ⚛️ / style sheet
+      colorInherit: {
+        color: '#000000'
+      },
       body1: { // Name of the rule
-        color: '#afb6c5' // Some CSS
+        color: '#000000' // Some CSS
       }
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet
       tooltip: { // Name of the rule
-        color: '#afb6c5', // Some CSS
+        color: '#ffffff', // Some CSS
         backgroundColor: 'rgba(0,0,0,0.0)',
         opacity: '1',
       },
@@ -225,16 +282,20 @@ export default createMuiTheme({
         color: 'rgba(255, 255, 255, 0.7)',
         fontSize: '0.875em',
         borderBottom: '0px',
+        borderRadius: '0px'
       },
       icon: {
         color: 'rgba(255, 255, 255, 0.7)',
       },
+      outlined: {
+        borderRadius: '0px'
+      }
     },
     MuiExpansionPanelSummary: {
       root: {
-        borderRadius: '4px 4px 0px 0px',
-        backgroundColor: '#232f4a',
-        borderBottom: '3px solid #3f51b5'
+        borderRadius: '0px',
+        backgroundColor: '#bdbebd',
+        borderBottom: '3px solid #000080'
       }
     },
     MuiExpansionPanel: {
@@ -245,8 +306,13 @@ export default createMuiTheme({
       }
     },
     MuiLinearProgress: {
+      root: {
+        borderWidth: '2px',
+        borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
+        borderStyle: 'inset',
+      },
       colorPrimary: {
-        backgroundColor: '#202940',
+        backgroundColor: '#dbdbdb',
         height: '20px'
       }
     }

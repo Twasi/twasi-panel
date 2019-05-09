@@ -176,7 +176,8 @@ export default createMuiTheme({
       root: { // Name of the rule
         backgroundColor: '#ffffff', // Some CSS
         border: '0px !important',
-        textTransform: 'none'
+        textTransform: 'none',
+        borderRadius: '4px'
       }
     },
     MuiTab: { // Name of the component ⚛️ / style sheet

@@ -72,6 +72,14 @@ const themes = [{
   cardColor: '#474e62',
   primaryColor: '#7885a5',
   secondaryColor: '#e53935'
+}, {
+  name: 'Windows 95',
+  key: 'windows95',
+  backgroundColor: '#008080',
+  paperColor: '#bdbebd',
+  cardColor: '#dbdbdb',
+  primaryColor: '#000080',
+  secondaryColor: '#bdbebd'
 }];
 
 class ThemeSwitch extends React.Component {

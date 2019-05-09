@@ -28,6 +28,7 @@ import twasiDarkBlue from './themes/twasi-darkblue/twasi-darkblue';
 import darkGrey from './themes/dark-grey/dark-grey';
 import bttvDark from './themes/bttv-dark/bttv-dark';
 import tipeeeDark from './themes/tipeee-dark/tipeee-dark';
+import windows95 from './themes/windows95/windows95';
 
 const App = () => {
   const store = configureStore();
@@ -55,6 +56,8 @@ const App = () => {
       selectedTheme = bttvDark;
     } else if (props.theme.toLowerCase() === 'tipeee-dark') {
       selectedTheme = tipeeeDark;
+    } else if (props.theme.toLowerCase() === 'windows95') {
+      selectedTheme = windows95;
     }
 
     return (
