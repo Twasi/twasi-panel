@@ -31,6 +31,7 @@ import SeriousSloth  from '../common/resources/SeriousSloth.png';
 
 import ViewerChart  from './ViewerChart';
 import PlayedGamesChart  from './PlayedGamesChart';
+import CommandsChart  from './CommandsChart';
 import StatsList  from './StatsList';
 import GameTitleCard  from './GameTitleCard';
 
@@ -212,8 +213,8 @@ class Overview extends Component {
             </Paper>
             <Row>
               <Col sm={6}>
-                <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 23px 0px' }}>
-                  <Typography style={{ paddingLeft: '23px' }}>
+                <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
+                  <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
                     <h3 class="pageContainerTitle">
                       <FormattedMessage id="overview.used_commands" />
                     </h3>
@@ -221,17 +222,7 @@ class Overview extends Component {
                       <FormattedMessage id="overview.used_commands.subtitle" />
                     </small>
                   </Typography>
-                  <ResponsiveContainer height='100%' width='100%'>
-                    <PieChart width={730} height={250}
-                        margin={{top: 15, right: 0, left: 0, bottom: 23}}>
-                      <Tooltip/>
-                      <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} strokeWidth="2" fillOpacity=".8" label>
-                        {
-                        	data01.map((entry, index) => <Cell stroke={COLORS[index % COLORS.length]} fill={COLORS[index % COLORS.length]}/>)
-                        }
-                      </Pie>
-                    </PieChart>
-                  </ResponsiveContainer>
+                  <CommandsChart />
                 </Paper>
               </Col>
               <Col sm={6}>

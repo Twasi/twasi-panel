@@ -35,7 +35,7 @@ class ViewerChart extends Component {
     chart.paddingTop = 65;
     chart.paddingRight = 0;
     chart.paddingLeft = 0;
-    chart.paddingBottom = 0;
+    chart.paddingBottom = -1;
 
     let data = [];
     var game = ""
