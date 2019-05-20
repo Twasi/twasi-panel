@@ -22,6 +22,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import DummyLoadingPage from '../DummyLoadingPage';
 
@@ -58,11 +62,48 @@ class Welcome extends Component {
       case 0:
         return (
           <div>
-            <h2>Willkommen zur geschlossenen Beta von Twasi 2</h2>
-              <Typography>
+            <Grid container spacing={16} style={{ marginTop: '0px' }}>
+              <Grid item xs={6}>
+                <div className="translucentBox">
+                  <div className="media-body">
+                    <Typography style={{ color: '#ffffff' }}>
+                      <h2 style={{ margin: '7px 0px 7px 0px' }}>
+                        <span>Ich bin Moderator oder Zuschauer</span>
+                      </h2>
+                      <small>
+                        Wähle diese Option, wenn du Moderator oder Zuschauer bei einem Streamer bist, der Twasi als Chatbot nutzt.
+                      </small>
+                    </Typography>
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs={6}>
+                <div className="translucentBox">
+                  <div className="media-body">
+                    <Typography style={{ color: '#ffffff' }}>
+                      <h2 style={{ margin: '7px 0px 7px 0px' }}>
+                        <span>Ich bin Streamer</span>
+                      </h2>
+                      <small>
+                        Wähle diese Option, wenn du Streamer bist und Twasi als Chatbot auf deinem Kanal nutzen möchtest. Es folgt die Einrichtung des Bots.
+                      </small>
+                    </Typography>
+                  </div>
+                </div>
+              </Grid>
+            </Grid>
+          </div>
+        );
+      case 1:
+        return (
+          <div>
+            <Typography>
+              <h2 style={{ marginBottom: '5px' }} className="pageContainerTitle">Willkommen zur geschlossenen Beta von Twasi 2</h2>
+              <small>
                 Hier kannst du deinen persönlichen Beta Key einlösen, um an der geschlossenen Beta von Twasi 2 teilzunehmen.<br />
                 Wie du an einen Beta Code kommst erfährst du <Link color="primary" href="/">hier</Link>.
-              </Typography>
+              </small>
+            </Typography>
               <Card className="pluginCard" style={{ marginTop: '25px' }}>
                 <CardContent style={{ padding: '24px', marginBottom: '25px' }}>
                   <TextField
@@ -123,11 +164,11 @@ class Welcome extends Component {
           </div>
 
         );
-      case 1:
+      case 2:
         return (
           <div>
-            <h2>Plugins</h2>
             <Typography>
+              <h2>Plugins</h2>
               Hier kannst du auswählen, welche Plugins du aktiviert bzw.
               deaktiviert haben möchtest.<br /> Plugins beinhalten den
               kompletten Funktionsumfang von Twasi.<br />
@@ -176,7 +217,7 @@ class Welcome extends Component {
             </Table>
           </div>
         );
-      case 2:
+      case 3:
         return 'Test';
       default:
         return 'Fehler';
@@ -211,10 +252,15 @@ class Welcome extends Component {
         <div className="contentWelcome">
           <div className="pageContent">
             <Paper className="pageContainer">
-              <Stepper activeStep={stepIndex}>
+              <Stepper alternativeLabel nonLinear activeStep={stepIndex}>
                 <Step>
                   <StepLabel>
                       Willkommen
+                  </StepLabel>
+                </Step>
+                <Step>
+                  <StepLabel>
+                      Closed Beta
                   </StepLabel>
                 </Step>
                 <Step>
@@ -227,20 +273,6 @@ class Welcome extends Component {
                 </Step>
               </Stepper>
               <div style={contentStyle}>
-                {finished ? (
-                  <p>
-                    <a
-                      href="#"
-                      onClick={event => {
-                        event.preventDefault();
-                        this.setState({ stepIndex: 0, finished: false });
-                      }}
-                    >
-                        Click here
-                    </a>{' '}
-                      to reset the example.
-                  </p>
-                ) : (
                   <div>
                     <p>{this.getStepContent(stepIndex)}</p>
                     <Divider />
@@ -266,6 +298,8 @@ class Welcome extends Component {
                             case 1:
                               return 'Weiter';
                             case 2:
+                              return 'Weiter';
+                            case 3:
                               return 'Zum Panel';
                             default:
                               return null;
@@ -274,7 +308,6 @@ class Welcome extends Component {
                       </Button>
                     </div>
                   </div>
-                )}
               </div>
             </Paper>
           </div>
