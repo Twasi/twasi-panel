@@ -87,6 +87,8 @@ export default {
   'overview.no_streams_tracked_docs': 'View Documentation',
   'overview.no_streams_tracked_support': 'Create Supportticket',
   'overview.no_streams_tracked_feedback': 'Give Feedback',
+  'overview.chatterchart': 'Chatter',
+  'overview.chatterchart.subtitle': 'Here you can see all Chatters of your current / last Stream.',
 
   // Status
   'status.started': 'Working',

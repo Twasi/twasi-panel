@@ -89,7 +89,8 @@ class ViewerChart extends Component {
     lineSeries.dataFields.categoryX = "timestamp";
     lineSeries.dataFields.valueY = "viewerCount";
     lineSeries.tooltipText = "Zuschauer: [bold]{viewerCount}[/b]\nSpiel: [bold]{game}[/b]\nZeitpunkt: [bold]{timestamp}[/b]";
-    lineSeries.fillOpacity = 0.3;
+    lineSeries.tooltip.getStrokeFromObject = true;
+    lineSeries.fillOpacity = .4;
     lineSeries.strokeWidth = 2;
     lineSeries.propertyFields.stroke = "lineColor";
     lineSeries.propertyFields.fill = "lineColor";
@@ -108,6 +109,7 @@ class ViewerChart extends Component {
     messageslineSeries.dataFields.valueY = "chatMessages";
     messageslineSeries.dataFields.categoryX = "timestamp";
     messageslineSeries.tooltipText = "Nachrichten pro Minute: [bold]{chatMessages}[/b]";
+    messageslineSeries.tooltip.getStrokeFromObject = true;
     messageslineSeries.stroke = '#fdd400';
     messageslineSeries.fill = '#fdd400';
     messageslineSeries.yAxis = valueAxisMessages;

@@ -66,6 +66,7 @@ class CommandsChart extends Component {
     pieSeries.dataFields.category = "command";
     pieSeries.slices.template.propertyFields.stroke = "lineColor";
     pieSeries.slices.template.propertyFields.fill = "lineColor";
+    pieSeries.tooltip.getStrokeFromObject = true;
     pieSeries.slices.template.strokeWidth = 2;
     pieSeries.slices.template.strokeOpacity = 1;
     pieSeries.slices.template.fillOpacity = 0.3;

@@ -32,6 +32,7 @@ import SeriousSloth  from '../common/resources/SeriousSloth.png';
 import ViewerChart  from './ViewerChart';
 import PlayedGamesChart  from './PlayedGamesChart';
 import CommandsChart  from './CommandsChart';
+import ChattersChart  from './ChattersChart';
 import StatsList  from './StatsList';
 import GameTitleCard  from './GameTitleCard';
 
@@ -239,6 +240,17 @@ class Overview extends Component {
                 </Paper>
               </Col>
             </Row>
+            <Paper className="pageContainer" style={{ height: '500px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+              <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                <h3 class="pageContainerTitle">
+                  <FormattedMessage id="overview.chatterchart" />
+                </h3>
+                <small>
+                  <FormattedMessage id="overview.chatterchart.subtitle" />
+                </small>
+              </Typography>
+              <ChattersChart />
+            </Paper>
           </Col>
           <Col sm={3}>
             <div>
