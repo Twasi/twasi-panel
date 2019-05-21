@@ -175,7 +175,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(commandsOperations.verifyData()),
   updateCommands: () => dispatch(commandsOperations.loadCommands())
 });
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -25,10 +25,9 @@ import Link from '@material-ui/core/Link';
 
 import './_style.css';
 
-import { authSelectors } from '../../state/auth';
+import { supportSelectors, supportOperations } from '../../state/support';
 
 class Support extends Component {
-
   constructor(props) {
     super(props);
 
@@ -39,8 +38,114 @@ class Support extends Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
+  componentDidMount() {
+    const { loadMyTickets } = this.props;
+    loadMyTickets();
+  }
+
   handleClose() {
     this.setState({ open: false });
+  }
+
+  renderSupportTickets() {
+    const renderMyCard = (message, displayCloseMessage) => {
+      if (!message.staff) {
+        return (
+          <Fragment>
+            <Grid container spacing={24}>
+              <Grid item>
+                <Avatar>
+                  <img width="45px" height="45px" src={message.sender.avatar} alt="Avatar" />
+                </Avatar>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSelf">
+                  <Typography className="chatName">{message.sender.name}</Typography>
+                  {message.message}
+                  <Typography className="chatTime">{message.createdAt}</Typography>
+                </Typography>
+                {displayCloseMessage && <Typography style={{ position: 'relative', marginTop: '5px' }} className="chatBubbleSelf">
+                  {message.sender.name} hat das Ticket um {message.createdAt} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
+                </Typography>}
+              </Grid>
+              <Grid item xs={3} />
+            </Grid>
+            <br />
+          </Fragment>
+        );
+      }
+      return (
+        <Fragment>
+          <Grid container spacing={24}>
+            <Grid item xs={3} />
+            <Grid item xs={8}>
+              <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSupport">
+                <Typography className="chatName">{message.sender.name}</Typography>
+                {message.message}
+                <Typography className="chatTime">{message.createdAt}</Typography>
+              </Typography>
+              {displayCloseMessage && <Typography style={{ position: 'relative', marginTop: '5px' }} className="chatBubbleSupport">
+                {message.sender.name} hat das Ticket um {message.createdAt} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
+              </Typography>}
+            </Grid>
+            <Grid item>
+              <Avatar>
+                <img width="45px" height="45px" src={message.sender.avatar} alt="Avatar" />
+              </Avatar>
+            </Grid>
+          </Grid>
+          <br />
+        </Fragment>
+      );
+    };
+
+    return this.props.myTickets.map(ticket => (
+      <ExpansionPanel style={{ marginTop: '25px' }}>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Grid container spacing={24}>
+            <Grid item xs={3}>
+              <Typography><h4 className="pageContainerTitle">Betreff</h4><small>{ticket.topic}</small></Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <Typography><h4 className="pageContainerTitle">Erstellt am</h4><small>{ticket.createdAt}</small></Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <Typography><h4 className="pageContainerTitle">Erledigt am</h4><small>{ticket.closedAt}</small></Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <Typography><h4 className="pageContainerTitle">Status</h4><Chip className="statusBadgeSupport" color="primary" label={ticket.state} /></Typography>
+            </Grid>
+          </Grid>
+        </ExpansionPanelSummary>
+        <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
+          <CardContent style={{ padding: '24px' }}>
+            {ticket.messages.map((message, index) => renderMyCard(message, index === ticket.messages.length - 1))}
+            <TextField
+              label="Eine Nachricht hinzufügen"
+              fullWidth
+              multiline
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="send-support-message"
+                    >
+                      <Icon>
+                        send
+                      </Icon>
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+            />
+          </CardContent>
+        </Card>
+      </ExpansionPanel>
+    ));
   }
 
   render() {
@@ -58,7 +163,7 @@ class Support extends Component {
             <h3 className="pageContainerTitle">
               Deine Support Tickets
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
+                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={this.props.loadMyTickets}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   Aktualisieren
                 </Button>
@@ -75,119 +180,7 @@ class Support extends Component {
               Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
             </small>
           </Typography>
-          <ExpansionPanel style={{ marginTop: '25px' }}>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Grid container spacing={24}>
-                <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Betreff</h4><small>Frage zu einer Funktion</small></Typography>
-                </Grid>
-                <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Erstellt am</h4><small>16.01.2019 - 09:45</small></Typography>
-                </Grid>
-                <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Erledigt am</h4><small>-</small></Typography>
-                </Grid>
-                <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Status</h4><Chip className="statusBadgeSupport" color="primary" label="offen" /></Typography>
-                </Grid>
-              </Grid>
-            </ExpansionPanelSummary>
-            <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
-              <CardContent style={{ padding: '24px' }}>
-                <Grid container spacing={24}>
-                  <Grid item>
-                    <Avatar>Du</Avatar>
-                  </Grid>
-                    <Grid item xs={8}>
-                      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSelf">
-                        <Typography className='chatName'>Frage zu einer Funktion</Typography>
-                          Wie funktioniert die Zeitmaschine bei Twasi?
-                          Ich habe noch keine Möglichkeit gefunden sie zum laufen zu bringen...
-                          Muss ich dafür ein Ticket erstellen oder antwortet ihr hier eh nicht drauf?
-                          Habe gehört hinter Twasi sitzt ein voll nettes Team, deswegen dachte ich mir, machste mal ein Ticket auf.
-                        <Typography className='chatTime'>13:37</Typography>
-                      </Typography>
-                    </Grid>
-                  <Grid item xs={3} />
-                </Grid>
-                <br />
-                <Grid container spacing={24}>
-                  <Grid item xs={3} />
-                    <Grid item xs={8}>
-                      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSupport">
-                        <Typography className='chatName'>{userName}</Typography>
-                          Du musst solange auf den Grün/Blau blinkenden Knopf drücken, bis er nichtmehr blinkt.
-                          danach gehst du zum nächsten Supermarkt,
-                          besorgst dir eine PSC und spendest sie an einen wohltätigen Zweck deiner Wahl.
-                        <Typography className='chatTime'>13:37</Typography>
-                      </Typography>
-                    </Grid>
-                  <Grid item>
-                    <Avatar>
-                      <img width="45px" height="45px" src={avatar} alt="Avatar" />
-                    </Avatar>
-                  </Grid>
-                </Grid>
-                <br />
-                <Grid container spacing={24}>
-                  <Grid item>
-                    <Avatar>Du</Avatar>
-                  </Grid>
-                    <Grid item xs={8}>
-                      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSelf">
-                        <Typography className='chatName'>Frage zu einer Funktion</Typography>
-                          Alles klar, danke für den schnellen und hilfreichen Support! Ihr seid die besten! ♥
-                          Ich liebe euer Supportsystem!
-                        <Typography className='chatTime'>13:37</Typography>
-                      </Typography>
-                    </Grid>
-                  <Grid item xs={3} />
-                </Grid>
-                <br />
-                <Grid container spacing={24}>
-                  <Grid item xs={3} />
-                    <Grid item xs={8}>
-                      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className="chatBubbleSupport">
-                        <Typography className='chatName'>{userName}</Typography>
-                          Kein Problem, dafür sind wir ja da!
-                        <Typography className='chatTime'>13:37</Typography>
-                      </Typography>
-                      <Typography style={{ position: 'relative', marginTop: '5px' }} className="chatBubbleSupport">
-                        {userName} hat das Ticket um 13:37 geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
-                      </Typography>
-                    </Grid>
-                  <Grid item>
-                    <Avatar>
-                      <img width="45px" height="45px" src={avatar} alt="Avatar" />
-                    </Avatar>
-                  </Grid>
-                </Grid>
-                <br />
-                <TextField
-                  label="Eine Nachricht hinzufügen"
-                  fullWidth
-                  multiline
-                  variant="outlined"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="send-support-message"
-                        >
-                          <Icon>
-                            send
-                          </Icon>
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </CardContent>
-            </Card>
-          </ExpansionPanel>
+          {this.renderSupportTickets()}
         </Paper>
       </div>
     );
@@ -205,8 +198,11 @@ Support.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  userName: authSelectors.getUser(state).displayName,
-  avatar: authSelectors.getUserAvatar(state)
+  myTickets: supportSelectors.getMyTickets(state)
 });
 
-export default connect(mapStateToProps)(Support);
+const mapDispatchToProps = dispatch => ({
+  loadMyTickets: () => dispatch(supportOperations.loadMyTickets())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Support);

@@ -13,6 +13,7 @@ import quotes from './quotes';
 import streamtracker from './streamtracker';
 import impersonate from './impersonate';
 import utilities from './utilities';
+import support from './support';
 
 import { initialState as i18nInitialState } from './i18n/reducers';
 
@@ -35,7 +36,8 @@ const configureStore = (translations = {}) => {
     quotesState: quotes,
     streamtrackerState: streamtracker,
     impersonateState: impersonate,
-    utilitiesState: utilities
+    utilitiesState: utilities,
+    supportState: support
   };
 
   const initialState = {
@@ -48,11 +50,11 @@ const configureStore = (translations = {}) => {
 
   const rootReducer = (state, action) => {
     if (action.type === 'RESET') {
-      state = initialState
+      state = initialState;
     }
 
     return appReducer(state, action);
-  }
+  };
 
   const enhancer = compose(
     applyMiddleware(thunk),
