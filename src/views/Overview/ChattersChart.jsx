@@ -9,6 +9,8 @@ import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDire
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
+import crown from '../common/resources/crown.svg';
+
 am4core.useTheme(am4themes_animated);
 
 function generateStringColor(string) {
@@ -101,11 +103,20 @@ class ChattersChart extends Component {
     } ];
     let data = [];
     chattersdata.forEach((entry, index) => {
-      data.push({
-        chatter: entry.chatter,
-        messages: entry.messages,
-        lineColor: "#" + generateStringColor(entry.chatter)
-      });
+      if(entry.chatter.toLowerCase() == "blechkelle" || entry.chatter.toLowerCase() ==  "diesermerlin" || entry.chatter.toLowerCase() ==  "larcce" || entry.chatter.toLowerCase() ==  "tom_meka"){
+        data.push({
+          chatter: entry.chatter,
+          messages: entry.messages,
+          lineColor: "#" + generateStringColor(entry.chatter),
+          image: crown
+        });
+      } else {
+        data.push({
+          chatter: entry.chatter,
+          messages: entry.messages,
+          lineColor: "#" + generateStringColor(entry.chatter)
+        });
+      }
     });
     chart.data = data;
 
@@ -122,6 +133,13 @@ class ChattersChart extends Component {
     series.strokeWidth = 2;
     series.fontSize = 10;
     series.minRadius = 20;
+
+    let icon = series.nodes.template.createChild(am4core.Image);
+    icon.propertyFields.href = "image";
+    icon.horizontalCenter = "middle";
+    icon.verticalCenter = "bottom";
+    icon.width = 40;
+    icon.height = 40;
 
     this.chart = chart;
   }
