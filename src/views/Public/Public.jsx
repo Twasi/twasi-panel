@@ -27,6 +27,23 @@ function createData(place, name, points, viewtime) {
   return { id, place, name, points, viewtime };
 }
 
+function generateStringColor(string) {
+  var num = hashCode(string);
+  return intToRGB(num);
+}
+function intToRGB(i) {
+  var c = (i & 0x00ffffff).toString(16).toUpperCase();
+
+  return "00000".substring(0, 6 - c.length) + c;
+}
+function hashCode(str) {
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return hash;
+}
+
 const rows = [
   createData( 1, 'Blechkelle', 512, '24h 31m'),
   createData( 2, 'mekalix', 128, '20h 15m'),
@@ -133,7 +150,7 @@ class Public extends React.Component {
                           color="primary"
                         />
                       </TableCell>
-                      <TableCell>{row.name}</TableCell>
+                      <TableCell style={{ color: "#" + generateStringColor(row.name) }}><b>{row.name}</b></TableCell>
                       <TableCell>
                         <Chip
                           label={row.points}
