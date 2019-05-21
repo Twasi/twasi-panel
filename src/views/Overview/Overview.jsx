@@ -19,7 +19,6 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { AreaChart, Area, LineChart, Line, XAxis, ReferenceArea, ReferenceLine, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar, LabelList } from 'recharts';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
