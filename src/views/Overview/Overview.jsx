@@ -46,25 +46,6 @@ function TabContainer(props) {
   );
 }
 
-const COLORS = ['#02d4d4', '#E87722', '#F1B300', '#009A17', '#00B8DE', '#006CB0', '#ff4f4a', '#85459F', '#D12B92', '#F67599'];
-
-const data01 = [{name: '!twitter', value: 400},
-                {name: '!check', value: 200},
-                {name: '!noob', value: 278}, {name: '!sr', value: 189}]
-
-const data02 = [
-      {name: 'Page A', pv: 2400},
-      {name: 'Page B', pv: 1398},
-      {name: 'Page C', pv: 9800},
-      {name: 'Page D', pv: 3908},
-      {name: 'Page E', pv: 4800},
-      {name: 'Page F', pv: 3800},
-      {name: 'Page G', pv: 4300},
-      {name: 'Page H', pv: 9800},
-      {name: 'Page I', pv: 3908},
-      {name: 'Page J', pv: 4800},
-];
-
 class Overview extends Component {
   state = {
     value: 0,
