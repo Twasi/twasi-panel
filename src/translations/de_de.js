@@ -27,6 +27,12 @@ export default {
   'datatables.selectedrows.delete': 'Löschen',
   'datatables.selectedrows.deletearia': 'Lösche ausgewählte Zeilen',
 
+  'languageswitch.german': 'Deutsch',
+  'languageswitch.english': 'Englisch',
+  'languageswitch.title': 'Sprache ändern',
+  'languageswitch.subtitle': 'Hier kannst du die Sprache ändern.',
+  'languageswitch.earth': 'Die Erde ist flach.',
+
   // Welcome
   'welcome.headline': 'Willkommen bei Twasi',
 

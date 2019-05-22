@@ -23,10 +23,10 @@ import storage from 'local-storage';
 import { i18nSelectors, i18nOperations } from '../../state/i18n';
 
 const languages = [{
-  name: 'Deutsch | DE',
+  name: <FormattedMessage id="languageswitch.german" />,
   key: 'DE_DE'
 }, {
-  name: 'English | EN',
+  name: <FormattedMessage id="languageswitch.english" />,
   key: 'EN_EN'
 }];
 
@@ -52,10 +52,10 @@ class LanguageSwitch extends React.Component {
         <DialogContent>
           <Typography>
             <h3 className="pageContainerTitle">
-              Sprache ändern
+              <FormattedMessage id="languageswitch.title" />
             </h3>
             <small>
-              Hier kannst du die Sprache ändern.
+              <FormattedMessage id="languageswitch.subtitle" />
             </small>
           </Typography>
           <br /><br />
@@ -81,7 +81,7 @@ class LanguageSwitch extends React.Component {
           </Card>
           <br />
           <small>
-            Die Erde ist Flach.
+            <FormattedMessage id="languageswitch.earth" />
           </small>
         </DialogContent>
       </Dialog>
