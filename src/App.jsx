@@ -4,12 +4,13 @@ import { Provider as ReduxProvider, connect } from 'react-redux';
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
+import { addLocaleData, IntlProvider } from 'react-intl';
 
 import AuthLoader from './auth/AuthLoader';
 import RequireAuth from './auth/RequireAuth';
 import configureStore from './state/store';
 import { appInfoSelectors, appInfoOperations } from './state/appInfo';
+import { i18nSelectors, i18nOperations } from './state/i18n';
 
 import Header from './views/common/Header';
 import Content from './views/common/Content';
@@ -17,7 +18,6 @@ import Public from './views/Public/Public';
 import Footer from './views/Footer/Footer';
 
 import PanelContent from './views/Panel/PanelContent';
-import LanguageProvider from './translations/LanguageProvider';
 
 import './styles/main.css';
 
@@ -30,19 +30,30 @@ import bttvDark from './themes/bttv-dark/bttv-dark';
 import tipeeeDark from './themes/tipeee-dark/tipeee-dark';
 import windows95 from './themes/windows95/windows95';
 
+import germanData from 'react-intl/locale-data/de';
+import german from './translations/de_de';
+import englishData from 'react-intl/locale-data/en';
+import english from './translations/en_en';
+
+addLocaleData(germanData);
+addLocaleData(englishData);
+
 const App = () => {
   const store = configureStore();
 
   const mapStateToProps = state => ({
-    theme: appInfoSelectors.getTheme(state)
+    theme: appInfoSelectors.getTheme(state),
+    language: i18nSelectors.getLocale(state)
   });
 
   const mapDispatchToProps = dispatch => ({
-    loadTheme: () => dispatch(appInfoOperations.loadTheme())
+    loadTheme: () => dispatch(appInfoOperations.loadTheme()),
+    loadLanguage: () => dispatch(i18nOperations.loadLanguage())
   });
 
   const Themed = withRouter(connect(mapStateToProps, mapDispatchToProps)(props => {
     props.loadTheme();
+    props.loadLanguage();
 
     let selectedTheme = twasiDarkBlue;
 
@@ -60,37 +71,47 @@ const App = () => {
       selectedTheme = windows95;
     }
 
+    let selectedLanguage = german;
+
+    if (props.language.toLowerCase() === 'de_de') {
+      selectedLanguage = german;
+    } else if (props.language.toLowerCase() === 'en_en') {
+      selectedLanguage = english;
+    }
+
     return (
-      <MuiThemeProvider theme={selectedTheme}>
-        <CssBaseline />
-        <AuthLoader>
-          <RequireAuth optional />
-          <Content className={props.theme.toLowerCase()}>
-            <Header />
-            <Switch>
-              <Route path="/profile/:name" component={Public} />
-              <Route path="/" component={PanelContent} />
-            </Switch>
-            <Footer />
-          </Content>
-        </AuthLoader>
-      </MuiThemeProvider>
+      <IntlProvider locale="de" messages={selectedLanguage}>
+        <MuiThemeProvider theme={selectedTheme}>
+          <CssBaseline />
+          <AuthLoader>
+            <RequireAuth optional />
+            <Content className={props.theme.toLowerCase()}>
+              <Header />
+              <Switch>
+                <Route path="/profile/:name" component={Public} />
+                <Route path="/" component={PanelContent} />
+              </Switch>
+              <Footer />
+            </Content>
+          </AuthLoader>
+        </MuiThemeProvider>
+      </IntlProvider>
     );
   }));
 
   Themed.propTypes = {
     theme: PropTypes.string,
-    loadTheme: PropTypes.func
+    loadTheme: PropTypes.func,
+    language: PropTypes.string,
+    loadLanguage: PropTypes.func
   };
 
   return (
-    <LanguageProvider>
-      <ReduxProvider store={store}>
-        <BrowserRouter>
-          <Themed />
-        </BrowserRouter>
-      </ReduxProvider>
-    </LanguageProvider>
+    <ReduxProvider store={store}>
+      <BrowserRouter>
+        <Themed />
+      </BrowserRouter>
+    </ReduxProvider>
   );
 };
 

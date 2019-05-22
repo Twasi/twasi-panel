@@ -69,8 +69,8 @@ class LanguageSwitch extends React.Component {
                     key={language}
                   >
                     <ListItemAvatar>
-                      <Avatar style={{ backgroundColor: this.props.selectedValue === language.key }}>
-                        <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === language.key ? 'check' : 'color_lens'}</Icon>
+                      <Avatar>
+                        <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === language.key ? 'check' : 'translate'}</Icon>
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={language.name} />
