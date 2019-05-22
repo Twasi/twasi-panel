@@ -20,7 +20,15 @@ import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 import storage from 'local-storage';
 
-const languages = ['Deutsch | DE', 'Englisch | EN'];
+import { i18nSelectors, i18nOperations } from '../../state/i18n';
+
+const languages = [{
+  name: 'Deutsch | DE',
+  key: 'DE_DE'
+}, {
+  name: 'English | EN',
+  key: 'EN_EN'
+}];
 
 class LanguageSwitch extends React.Component {
   handleClose = () => {
@@ -28,11 +36,13 @@ class LanguageSwitch extends React.Component {
   }
 
   handleListItemClick = value => {
+    storage('language', value.key);
+    this.props.updateLanguage(value.key);
     this.props.onClose(value);
   };
 
   render() {
-    const { classes, selectedValue, ...other } = this.props;
+    const { classes, onClose, selectedValue, ...other } = this.props;
 
     return (
       <Dialog
@@ -58,7 +68,12 @@ class LanguageSwitch extends React.Component {
                     onClick={() => this.handleListItemClick(language)}
                     key={language}
                   >
-                    <ListItemText primary={language} />
+                    <ListItemAvatar>
+                      <Avatar style={{ backgroundColor: this.props.selectedValue === language.key }}>
+                        <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === language.key ? 'check' : 'color_lens'}</Icon>
+                      </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={language.name} />
                   </ListItem>
                 ))}
               </List>
@@ -74,4 +89,20 @@ class LanguageSwitch extends React.Component {
   }
 }
 
-export default LanguageSwitch;
+LanguageSwitch.propTypes = {
+  onClose: PropTypes.func,
+  selectedValue: PropTypes.string,
+  updateLanguage: PropTypes.func.isRequired
+};
+
+const LanguageSwitchWrapped = (LanguageSwitch);
+
+const mapStateToProps = state => ({
+  selectedValue: i18nSelectors.getLocale(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateLanguage: language => dispatch(i18nOperations.updateLanguage(language))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LanguageSwitchWrapped);
