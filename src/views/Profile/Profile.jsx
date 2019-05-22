@@ -85,7 +85,7 @@ class Profile extends Component {
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Table>
-                    <TableBody>
+                    <TableBody className="anim">
                       <TableRow>
                         <TableCell>
                           <FormattedMessage id="profile.your_data_twitchname" />
@@ -150,7 +150,7 @@ class Profile extends Component {
                 </small>
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
-                <CardContent className="pluginCardContent">
+                <CardContent className="pluginCardContent anim">
                   <Tooltip title="Twasi Team" placement="top">
                     <Fab size="medium" className="badgeButton">
                       <img
@@ -201,198 +201,200 @@ class Profile extends Component {
                   <FormattedMessage id="profile.social_subline" />
                 </small>
               </Typography>
-              <Row style={{ marginTop: '25px' }}>
-                <Col sm={6}>
-                  <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#1da1f2'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={twitterlogo}
-                        alt="twitter-logo"
-                      />
-                    </span>
-                    <small>
-                      <b>@Blechkelle</b>{' '}
-                    </small>
-                  </Button>
-                </Col>
-                <Col sm={6}>
-                  <Button color="primary" size="small">
-                    <FormattedMessage id="profile.social_permissions" />
-                  </Button>
-                  <Button color="secondary" size="small">
-                    <FormattedMessage id="profile.social_disconnect" />
-                  </Button>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <Button fullWidth variant="contained" color="default" style={{ boxShadow: 'none' }}>
-                    <small>
-                      Telegram
-                    </small>
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#0088cc'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={telegramlogo}
-                        alt="telegram-logo"
-                      />
-                    </span>
-                  </Button>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    <small>
-                      Facebook
-                    </small>
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#3b5998'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={facebooklogo}
-                        alt="facebook-logo"
-                      />
-                    </span>
-                  </Button>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    <small>
-                      Youtube
-                    </small>
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#ff0000'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={youtubelogo}
-                        alt="youtube-logo"
-                      />
-                    </span>
-                  </Button>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    <small>
-                      Soundcloud
-                    </small>
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#ff8800'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={soundcloudlogo}
-                        alt="soundcloud-logo"
-                      />
-                    </span>
-                  </Button>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col sm={6}>
-                  <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
-                    <small>
-                      Spotify
-                    </small>
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '0',
-                        width: '36px',
-                        height: '36px',
-                        backgroundColor: '#1db954'
-                      }}
-                    >
-                      <img
-                        className="socialIcon"
-                        src={spotifylogo}
-                        alt="spotify-logo"
-                      />
-                    </span>
-                  </Button>
-                </Col>
-                <Col sm={6}>
-                  <div style={{ marginTop: '6px' }}>
-                    <small>
-                      <FormattedMessage id="profile.social_notconnected" />
-                    </small>
-                  </div>
-                </Col>
-              </Row>
+              <div className="anim">
+                <Row style={{ marginTop: '25px' }}>
+                  <Col sm={6}>
+                    <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                      <span
+                        style={{
+                          position: 'absolute',
+                          left: '0',
+                          width: '36px',
+                          height: '36px',
+                          backgroundColor: '#1da1f2'
+                        }}
+                      >
+                        <img
+                          className="socialIcon"
+                          src={twitterlogo}
+                          alt="twitter-logo"
+                        />
+                      </span>
+                      <small>
+                        <b>@Blechkelle</b>{' '}
+                      </small>
+                    </Button>
+                  </Col>
+                  <Col sm={6}>
+                    <Button color="primary" size="small">
+                      <FormattedMessage id="profile.social_permissions" />
+                    </Button>
+                    <Button color="secondary" size="small">
+                      <FormattedMessage id="profile.social_disconnect" />
+                    </Button>
+                  </Col>
+                </Row>
+                <br />
+                <Row>
+                  <Col sm={6}>
+                    <Button fullWidth variant="contained" color="default" style={{ boxShadow: 'none' }}>
+                      <small>
+                        Telegram
+                      </small>
+                      <span
+                        style={{
+                          position: 'absolute',
+                          left: '0',
+                          width: '36px',
+                          height: '36px',
+                          backgroundColor: '#0088cc'
+                        }}
+                      >
+                        <img
+                          className="socialIcon"
+                          src={telegramlogo}
+                          alt="telegram-logo"
+                        />
+                      </span>
+                    </Button>
+                  </Col>
+                  <Col sm={6}>
+                    <div style={{ marginTop: '6px' }}>
+                      <small>
+                        <FormattedMessage id="profile.social_notconnected" />
+                      </small>
+                    </div>
+                  </Col>
+                </Row>
+                <br />
+                <Row>
+                  <Col sm={6}>
+                    <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                      <small>
+                        Facebook
+                      </small>
+                      <span
+                        style={{
+                          position: 'absolute',
+                          left: '0',
+                          width: '36px',
+                          height: '36px',
+                          backgroundColor: '#3b5998'
+                        }}
+                      >
+                        <img
+                          className="socialIcon"
+                          src={facebooklogo}
+                          alt="facebook-logo"
+                        />
+                      </span>
+                    </Button>
+                  </Col>
+                  <Col sm={6}>
+                    <div style={{ marginTop: '6px' }}>
+                      <small>
+                        <FormattedMessage id="profile.social_notconnected" />
+                      </small>
+                    </div>
+                  </Col>
+                </Row>
+                <br />
+                <Row>
+                  <Col sm={6}>
+                    <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                      <small>
+                        Youtube
+                      </small>
+                      <span
+                        style={{
+                          position: 'absolute',
+                          left: '0',
+                          width: '36px',
+                          height: '36px',
+                          backgroundColor: '#ff0000'
+                        }}
+                      >
+                        <img
+                          className="socialIcon"
+                          src={youtubelogo}
+                          alt="youtube-logo"
+                        />
+                      </span>
+                    </Button>
+                  </Col>
+                  <Col sm={6}>
+                    <div style={{ marginTop: '6px' }}>
+                      <small>
+                        <FormattedMessage id="profile.social_notconnected" />
+                      </small>
+                    </div>
+                  </Col>
+                </Row>
+                <br />
+                <Row>
+                  <Col sm={6}>
+                    <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                      <small>
+                        Soundcloud
+                      </small>
+                      <span
+                        style={{
+                          position: 'absolute',
+                          left: '0',
+                          width: '36px',
+                          height: '36px',
+                          backgroundColor: '#ff8800'
+                        }}
+                      >
+                        <img
+                          className="socialIcon"
+                          src={soundcloudlogo}
+                          alt="soundcloud-logo"
+                        />
+                      </span>
+                    </Button>
+                  </Col>
+                  <Col sm={6}>
+                    <div style={{ marginTop: '6px' }}>
+                      <small>
+                        <FormattedMessage id="profile.social_notconnected" />
+                      </small>
+                    </div>
+                  </Col>
+                </Row>
+                <br />
+                <Row>
+                  <Col sm={6}>
+                    <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                      <small>
+                        Spotify
+                      </small>
+                      <span
+                        style={{
+                          position: 'absolute',
+                          left: '0',
+                          width: '36px',
+                          height: '36px',
+                          backgroundColor: '#1db954'
+                        }}
+                      >
+                        <img
+                          className="socialIcon"
+                          src={spotifylogo}
+                          alt="spotify-logo"
+                        />
+                      </span>
+                    </Button>
+                  </Col>
+                  <Col sm={6}>
+                    <div style={{ marginTop: '6px' }}>
+                      <small>
+                        <FormattedMessage id="profile.social_notconnected" />
+                      </small>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
             </Paper>
             <Paper className="pageContainer">
               <Typography>
