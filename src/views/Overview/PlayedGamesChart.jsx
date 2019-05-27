@@ -44,13 +44,18 @@ class PlayedGamesChart extends Component {
       });
       return count;
     }
-
+    var color = ""
     const result = Array.from(new Set(streamtracker.data.map(s => s.game)))
       .map(game => {
+        if(game == "Kein Spiel eingestellt"){
+          color = "#ff0000";
+        } else {
+          color= "#" + generateStringColor(game)
+        }
         return {
           game: game,
           count: getLength(game),
-          color: "#" + generateStringColor(game)
+          color: color
         }
     })
 
