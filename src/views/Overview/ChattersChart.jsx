@@ -33,6 +33,7 @@ function hashCode(str) {
 class ChattersChart extends Component {
   componentDidMount() {
     const { streamtracker } = this.props;
+    console.log(streamtracker)
     let chart = am4core.create("chatterschartdiv", am4plugins_forceDirected.ForceDirectedTree);
 
     chart.paddingTop = 65;
@@ -40,81 +41,21 @@ class ChattersChart extends Component {
     chart.paddingLeft = 0;
     chart.paddingBottom = -1;
 
-    let chattersdata = [ {
-      "chatter": "Blechkelle",
-      "messages": 1024
-    }, {
-      "chatter": "DieserMerlin",
-      "messages": 431
-    }, {
-      "chatter": "TossyTV",
-      "messages": 241
-    }, {
-      "chatter": "Pandorsaurus",
-      "messages": 296
-    }, {
-      "chatter": "Schnabelino",
-      "messages": 138
-    }, {
-      "chatter": "Larcce",
-      "messages": 5
-    }, {
-      "chatter": "Bumphunk",
-      "messages": 55
-    }, {
-      "chatter": "tom_meka",
-      "messages": 823
-    }, {
-      "chatter": "AkuhTV",
-      "messages": 138
-    }, {
-      "chatter": "JustVarietyTV",
-      "messages": 723
-    }, {
-      "chatter": "ItsDailyTY",
-      "messages": 37
-    }, {
-      "chatter": "PlayNowHD",
-      "messages": 223
-    }, {
-      "chatter": "FromRadioWaveToGammaRay",
-      "messages": 20
-    }, {
-      "chatter": "drflo",
-      "messages": 592
-    }, {
-      "chatter": "DonCarnivore",
-      "messages": 312
-    }, {
-      "chatter": "der_Bobbel",
-      "messages": 156
-    }, {
-      "chatter": "GreenJens",
-      "messages": 206
-    }, {
-      "chatter": "jana_nh",
-      "messages": 498
-    }, {
-      "chatter": "KatrinKeks",
-      "messages": 201
-    }, {
-      "chatter": "karololfggt",
-      "messages": 712
-    } ];
+    let chattersdata = streamtracker.topChatters
     let data = [];
     chattersdata.forEach((entry, index) => {
-      if(entry.chatter.toLowerCase() == "blechkelle" || entry.chatter.toLowerCase() ==  "diesermerlin" || entry.chatter.toLowerCase() ==  "larcce" || entry.chatter.toLowerCase() ==  "tom_meka"){
+      if(entry.displayName.toLowerCase() == "blechkelle" || entry.displayName.toLowerCase() ==  "diesermerlin" || entry.displayName.toLowerCase() ==  "larcce" || entry.displayName.toLowerCase() ==  "tom_meka"){
         data.push({
-          chatter: entry.chatter,
+          displayName: entry.displayName,
           messages: entry.messages,
-          lineColor: "#" + generateStringColor(entry.chatter),
+          lineColor: "#" + generateStringColor(entry.displayName),
           image: crown
         });
       } else {
         data.push({
-          chatter: entry.chatter,
+          displayName: entry.displayName,
           messages: entry.messages,
-          lineColor: "#" + generateStringColor(entry.chatter)
+          lineColor: "#" + generateStringColor(entry.displayName)
         });
       }
     });
@@ -123,10 +64,10 @@ class ChattersChart extends Component {
     // Add and configure Series
     var series = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
     series.dataFields.value = "messages";
-    series.dataFields.name = "chatter";
+    series.dataFields.name = "displayName";
 
-    series.nodes.template.label.text = "{chatter}";
-    series.nodes.template.tooltipText = "{chatter}: [bold]{messages}[/]";
+    series.nodes.template.label.text = "{displayName}";
+    series.nodes.template.tooltipText = "{displayName}: [bold]{messages}[/]";
     series.tooltip.getStrokeFromObject = true;
     series.dataFields.color = "lineColor";
     series.fillOpacity = 0.4;
@@ -157,4 +98,29 @@ class ChattersChart extends Component {
   }
 }
 
-export default ChattersChart;
+
+ChattersChart.propTypes = {
+  updateStreamtracker: PropTypes.func.isRequired,
+  streamtracker: PropTypes.arrayOf(PropTypes.shape({
+    topChatters: PropTypes.arrayOf(PropTypes.shape({
+      twitchId: PropTypes.string.isRequired,
+      displayName: PropTypes.string.isRequired,
+      messages: PropTypes.string.isRequired,
+      commands: PropTypes.string.isRequired
+    })),
+  })),
+  disabled: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = state => ({
+  streamtracker: streamtrackerSelectors.getStreamtracker(state),
+  isLoaded: streamtrackerSelectors.isLoaded(state),
+  disabled: streamtrackerSelectors.isDisabled(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(streamtrackerOperations.verifyData()),
+  updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChattersChart);
