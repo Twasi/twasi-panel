@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as am4core from "@amcharts/amcharts4/core";
@@ -41,25 +42,33 @@ class ViewerChart extends Component {
     var game = ""
     streamtracker.data.forEach((entry, index) => {
       game = entry.game
-      if(game != entry.game) {
+      if(game == "" ) {
+        entry.game = "Kein Spiel eingestellt"
         data.push({
           viewerCount: entry.viewerCount,
-          game: entry.game,
+          game: "Kein Spiel eingestellt",
           chatMessages: entry.chatMessages,
           timestamp: entry.timestamp,
-          lineColor: chart.colors.next()
+          lineColor: "#ff0000"
         });
       } else {
-        data.push({
-          viewerCount: entry.viewerCount,
-          game: entry.game,
-          chatMessages: entry.chatMessages,
-          timestamp: entry.timestamp
-        });
-      }
-      if (index === 0 || data[index - 1].game !== entry.game) {
-        data[data.length - 1].lineColor =
-          "#" + generateStringColor(entry.game);
+        if(game != entry.game) {
+          data.push({
+            viewerCount: entry.viewerCount,
+            game: entry.game,
+            chatMessages: entry.chatMessages,
+            timestamp: entry.timestamp,
+            lineColor: "#" + generateStringColor(entry.game)
+          });
+        } else {
+          data.push({
+            viewerCount: entry.viewerCount,
+            game: entry.game,
+            chatMessages: entry.chatMessages,
+            timestamp: entry.timestamp,
+            lineColor: "#" + generateStringColor(entry.game)
+          });
+        }
       }
     });
     chart.data = data;
