@@ -42,33 +42,25 @@ class ViewerChart extends Component {
     var game = ""
     streamtracker.data.forEach((entry, index) => {
       game = entry.game
-      if(game == "" ) {
-        entry.game = "Kein Spiel eingestellt"
+      if(game != entry.game) {
         data.push({
           viewerCount: entry.viewerCount,
-          game: "Kein Spiel eingestellt",
+          game: entry.game,
           chatMessages: entry.chatMessages,
           timestamp: entry.timestamp,
-          lineColor: "#ff0000"
+          lineColor: chart.colors.next()
         });
       } else {
-        if(game != entry.game) {
-          data.push({
-            viewerCount: entry.viewerCount,
-            game: entry.game,
-            chatMessages: entry.chatMessages,
-            timestamp: entry.timestamp,
-            lineColor: "#" + generateStringColor(entry.game)
-          });
-        } else {
-          data.push({
-            viewerCount: entry.viewerCount,
-            game: entry.game,
-            chatMessages: entry.chatMessages,
-            timestamp: entry.timestamp,
-            lineColor: "#" + generateStringColor(entry.game)
-          });
-        }
+        data.push({
+          viewerCount: entry.viewerCount,
+          game: entry.game,
+          chatMessages: entry.chatMessages,
+          timestamp: entry.timestamp,
+        });
+      }
+      if (index === 0 || data[index - 1].game !== entry.game) {
+        data[data.length - 1].lineColor =
+          "#" + generateStringColor(entry.game);
       }
     });
     chart.data = data;
