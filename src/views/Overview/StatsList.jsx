@@ -163,7 +163,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">---</h3>
+                  <h3 className="pageContainerTitle">{streamtracker.newFollowers}</h3>
                   <small><FormattedMessage id="overview.table_follower" /></small>
                 </Typography>
               </Col>
@@ -182,7 +182,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">---</h3>
+                      <h3 className="pageContainerTitle">{streamtracker.newViews}</h3>
                       <small><FormattedMessage id="overview.table_views" /></small>
                     </Typography>
                   </Col>
