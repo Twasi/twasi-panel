@@ -13,7 +13,7 @@ const {
 const loadStreamtracker = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
-  getUserGraph('lastStream{streamId,language,startedAt,streamType,communityIds,tagIds,data{gameId,game,title,viewerCount,timestamp,chatMessages},topChatters{twitchId,displayName,messages,commands}}', jwt, 'streamtracker').then(data => {
+  getUserGraph('lastStream{streamId,language,startedAt,streamType,communityIds,tagIds,data{gameId,game,title,viewerCount,timestamp,chatMessages,chatCommands},topChatters{twitchId,displayName,messages,commands}}', jwt, 'streamtracker').then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;

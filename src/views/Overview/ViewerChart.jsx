@@ -47,6 +47,7 @@ class ViewerChart extends Component {
           viewerCount: entry.viewerCount,
           game: entry.game,
           chatMessages: entry.chatMessages,
+          chatCommands: entry.chatCommands,
           timestamp: entry.timestamp,
           lineColor: chart.colors.next()
         });
@@ -55,6 +56,7 @@ class ViewerChart extends Component {
           viewerCount: entry.viewerCount,
           game: entry.game,
           chatMessages: entry.chatMessages,
+          chatCommands: entry.chatCommands,
           timestamp: entry.timestamp,
         });
       }
@@ -105,7 +107,7 @@ class ViewerChart extends Component {
     valueAxisMessages.min = 0;
     valueAxisMessages.renderer.disabled = true;
 
-    var messageslineSeries = chart.series.push(new am4charts.LineSeries());
+    var messageslineSeries = chart.series.push(new am4charts.ColumnSeries());
     messageslineSeries.name = "Chatnachrichten";
     messageslineSeries.dataFields.valueY = "chatMessages";
     messageslineSeries.dataFields.categoryX = "timestamp";
@@ -113,9 +115,31 @@ class ViewerChart extends Component {
     messageslineSeries.tooltip.getStrokeFromObject = true;
     messageslineSeries.stroke = '#fdd400';
     messageslineSeries.fill = '#fdd400';
+    messageslineSeries.fillOpacity = .4;
     messageslineSeries.yAxis = valueAxisMessages;
-    messageslineSeries.strokeWidth = 1;
+    messageslineSeries.strokeWidth = 0;
     messageslineSeries.tensionX = 0.77;
+
+    let valueAxisCommands = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxisCommands.tooltip.disabled = true;
+    valueAxisCommands.renderer.line.opacity = 0;
+    valueAxisCommands.renderer.grid.template.disabled = true;
+    valueAxisCommands.renderer.ticks.template.disabled = true;
+    valueAxisCommands.min = 0;
+    valueAxisCommands.renderer.disabled = true;
+
+    var commandslineSeries = chart.series.push(new am4charts.ColumnSeries());
+    commandslineSeries.name = "Befehle";
+    commandslineSeries.dataFields.valueY = "chatCommands";
+    commandslineSeries.dataFields.categoryX = "timestamp";
+    commandslineSeries.tooltipText = "Befehle pro Minute: [bold]{chatCommands}[/b]";
+    commandslineSeries.tooltip.getStrokeFromObject = true;
+    commandslineSeries.stroke = '#00aeae';
+    commandslineSeries.fill = '#00aeae';
+    messageslineSeries.fillOpacity = .4;
+    commandslineSeries.yAxis = valueAxisCommands;
+    commandslineSeries.strokeWidth = 0;
+    commandslineSeries.tensionX = 0.77;
 
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.behavior = "panX";
