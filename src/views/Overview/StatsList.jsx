@@ -35,6 +35,20 @@ function getBiggestViewerCount(data) {
   return count;
 }
 
+function getAverageViewerCount(data) {
+    var numbers = [];
+
+    data.forEach((entry, index) => {
+      numbers.push(entry.viewerCount)
+    });
+
+    var total = 0, i;
+    for (i = 0; i < numbers.length; i += 1) {
+        total += numbers[i];
+    }
+    return Math.round(total / numbers.length);
+}
+
 function getChatMessagesCount(data) {
   var count = 0;
   data.forEach((entry, index) => {
@@ -46,6 +60,7 @@ function getChatMessagesCount(data) {
 class StatsList extends Component {
   render() {
     const { streamtracker } = this.props;
+    console.log(streamtracker.data.viewerCount)
     return (
       <List dense style={{ padding: '0px' }}>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
@@ -191,7 +206,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">---</h3>
+                      <h3 className="pageContainerTitle">{getAverageViewerCount(streamtracker.data)}</h3>
                       <small><FormattedMessage id="overview.table_average" /></small>
                     </Typography>
                   </Col>
