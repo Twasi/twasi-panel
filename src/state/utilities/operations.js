@@ -13,7 +13,7 @@ const loadUtilities = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('twitchAPI{retrieve{title,game}}', jwt, 'utilities').then(data => {
+  getUserGraph('twitchAPI{retrieve{title,game,followers}}', jwt, 'utilities').then(data => {
     if (data.twitchAPI == null) {
       dispatch(updateDisabled(true));
       return;

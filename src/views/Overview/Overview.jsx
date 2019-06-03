@@ -21,6 +21,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
+import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 
 import Kreygasm from '../common/resources/Kreygasm.png';
 import LUL from '../common/resources/LUL.png';
@@ -61,10 +62,15 @@ class Overview extends Component {
   componentDidMount() {
     const { updateStreamtracker } = this.props;
     updateStreamtracker();
+    const { updateGlobalStreamtracker } = this.props;
+    updateGlobalStreamtracker();
   }
 
   render() {
-    const { streamtracker } = this.props;
+    const { streamtracker, globalstreamtracker, utilities } = this.props;
+    if(utilities.retrieve != null) {
+      var totalTrackedFollowers = utilities.retrieve.followers
+    }
     const { value } = this.state;
     return (
       <div className="pageContent">
@@ -74,7 +80,7 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    <span>1337</span>
+                    <span>{totalTrackedFollowers}</span>
                   </h2>
                   <small>
                     <FormattedMessage id="overview.follower" />
@@ -91,7 +97,7 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    <span>1337</span>
+                    <span>{globalstreamtracker.totalTrackedViewers}</span>
                   </h2>
                   <small>
                     <FormattedMessage id="overview.viewer" />
@@ -108,7 +114,7 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    <span>1337</span>
+                    <span>{globalstreamtracker.totalTrackedMessages}</span>
                   </h2>
                   <small>
                     <FormattedMessage id="overview.messages" />
@@ -125,7 +131,7 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    <span>1337</span>
+                    <span>{globalstreamtracker.totalTrackedStreams}</span>
                   </h2>
                   <small>
                     <FormattedMessage id="overview.streams" />
@@ -323,18 +329,31 @@ Overview.propTypes = {
       timestamp: PropTypes.string.isRequired
     })),
   })),
-  disabled: PropTypes.bool.isRequired
+  disabled: PropTypes.bool.isRequired,
+  globalstreamtracker: PropTypes.arrayOf(PropTypes.shape({
+    totalTrackedViewers: PropTypes.string.isRequired,
+    totalTrackedStreams: PropTypes.string.isRequired,
+    totalTrackedMessages: PropTypes.string.isRequired,
+  })),
+  updateUtilities: PropTypes.func.isRequired,
+  utilities: PropTypes.arrayOf(PropTypes.shape({
+    retrieve: PropTypes.arrayOf(PropTypes.shape({
+      game: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired
+    })),
+  })),
 };
 
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),
-  isLoaded: streamtrackerSelectors.isLoaded(state),
-  disabled: streamtrackerSelectors.isDisabled(state)
+  globalstreamtracker: streamtrackerSelectors.getGlobalStreamtracker(state),
+  utilities: utilitiesSelectors.getUtilities(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(streamtrackerOperations.verifyData()),
   updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
+  updateGlobalStreamtracker: () => dispatch(streamtrackerOperations.loadGlobalStreamtracker()),
+  updateUtilities: () => dispatch(utilitiesOperations.loadUtilities()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Overview);

@@ -33,7 +33,6 @@ function hashCode(str) {
 class ChattersChart extends Component {
   componentDidMount() {
     const { streamtracker } = this.props;
-    console.log(streamtracker)
     let chart = am4core.create("chatterschartdiv", am4plugins_forceDirected.ForceDirectedTree);
 
     chart.paddingTop = 65;
