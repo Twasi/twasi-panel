@@ -88,6 +88,7 @@ class StatsList extends Component {
                 </Typography>
               </Col>
             </Row>
+            {/*
             <TooltipM title="Jetzt Live" placement="right">
               <Icon
                 color="secondary"
@@ -96,6 +97,7 @@ class StatsList extends Component {
                 brightness_1
               </Icon>
             </TooltipM>
+            */}
           </ListItem>
           <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
             <CardContent style={{ padding: '0px' }}>
@@ -108,6 +110,7 @@ class StatsList extends Component {
                     </Typography>
                   </Col>
                 </Row>
+                {/*
                 <TooltipM title="+ 5:12" placement="right">
                   <Icon
                     color="primary"
@@ -116,6 +119,7 @@ class StatsList extends Component {
                     trending_up
                   </Icon>
                 </TooltipM>
+                */}
               </ListItem>
             </CardContent>
           </Card>
@@ -128,6 +132,7 @@ class StatsList extends Component {
                 </Typography>
               </Col>
             </Row>
+            {/*
             <TooltipM title="+ 125" placement="right">
               <Icon
                 color="primary"
@@ -136,6 +141,7 @@ class StatsList extends Component {
                 trending_up
               </Icon>
             </TooltipM>
+            */}
           </ListItem>
           <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
             <CardContent style={{ padding: '0px' }}>
@@ -148,6 +154,7 @@ class StatsList extends Component {
                     </Typography>
                   </Col>
                 </Row>
+                {/*
                 <TooltipM title="- 5" placement="right">
                   <Icon
                     color="secondary"
@@ -156,6 +163,7 @@ class StatsList extends Component {
                     trending_down
                   </Icon>
                 </TooltipM>
+                */}
               </ListItem>
             </CardContent>
           </Card>
@@ -168,6 +176,7 @@ class StatsList extends Component {
                 </Typography>
               </Col>
             </Row>
+            {/*
             <TooltipM title="+- 0" placement="right">
               <Icon
                 style={{ position: 'absolute', right: '13px', color: '#da7720' }}
@@ -175,6 +184,7 @@ class StatsList extends Component {
                 trending_flat
               </Icon>
             </TooltipM>
+            */}
           </ListItem>
           <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
             <CardContent style={{ padding: '0px' }}>
@@ -187,6 +197,7 @@ class StatsList extends Component {
                     </Typography>
                   </Col>
                 </Row>
+                {/*
                 <TooltipM title="+- 0" placement="right">
                   <Icon
                     style={{ position: 'absolute', right: '13px', color: '#da7720' }}
@@ -194,6 +205,7 @@ class StatsList extends Component {
                     trending_flat
                   </Icon>
                 </TooltipM>
+                */}
               </ListItem>
             </CardContent>
           </Card>
@@ -206,6 +218,7 @@ class StatsList extends Component {
                 </Typography>
               </Col>
             </Row>
+            {/*
             <TooltipM title="+ 7" placement="right">
               <Icon
                 color="primary"
@@ -214,6 +227,7 @@ class StatsList extends Component {
                 trending_up
               </Icon>
             </TooltipM>
+            */}
           </ListItem>
           <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
             <CardContent style={{ padding: '0px' }}>
@@ -226,6 +240,7 @@ class StatsList extends Component {
                     </Typography>
                   </Col>
                 </Row>
+                {/*
                 <TooltipM title="- 2" placement="right">
                   <Icon
                     color="secondary"
@@ -234,6 +249,7 @@ class StatsList extends Component {
                     trending_down
                   </Icon>
                 </TooltipM>
+                */}
               </ListItem>
             </CardContent>
           </Card>
@@ -246,6 +262,7 @@ class StatsList extends Component {
                 </Typography>
               </Col>
             </Row>
+            {/*
             <TooltipM title="- 50" placement="right">
               <Icon
                 color="secondary"
@@ -254,6 +271,7 @@ class StatsList extends Component {
                 trending_down
               </Icon>
             </TooltipM>
+            */}
           </ListItem>
         </Paper>
       </List>

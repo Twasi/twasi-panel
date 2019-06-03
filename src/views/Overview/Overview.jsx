@@ -20,8 +20,11 @@ import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
+
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
+import { commandsSelectors, commandsOperations } from '../../state/commands';
 
 import Kreygasm from '../common/resources/Kreygasm.png';
 import LUL from '../common/resources/LUL.png';
@@ -64,10 +67,13 @@ class Overview extends Component {
     updateStreamtracker();
     const { updateGlobalStreamtracker } = this.props;
     updateGlobalStreamtracker();
+    const { updateCommands } = this.props;
+    updateCommands();
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, utilities } = this.props;
+    const { streamtracker, globalstreamtracker, utilities, disabled } = this.props;
+    console.log(disabled)
     if(utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers
     }
@@ -209,7 +215,14 @@ class Overview extends Component {
                       <FormattedMessage id="overview.used_commands.subtitle" />
                     </small>
                   </Typography>
-                  <CommandsChart />
+                  {!disabled && <CommandsChart />}
+                  {disabled &&
+                    <Card style={{ margin: '60px 23px 23px 23px' }} className="pluginCard">
+                      <CardContent className="pluginCardContent">
+                        <Typography>Das Plugin für die Befehle ist nicht installiert. Um dieses Diagramm anzuzeigen, installiere bitte das Plugin "<b>Befehle</b>".</Typography>
+                      </CardContent>
+                    </Card>
+                  }
                 </Paper>
               </Col>
               <Col sm={6}>
@@ -347,13 +360,15 @@ Overview.propTypes = {
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),
   globalstreamtracker: streamtrackerSelectors.getGlobalStreamtracker(state),
-  utilities: utilitiesSelectors.getUtilities(state)
+  utilities: utilitiesSelectors.getUtilities(state),
+  disabled: commandsSelectors.isDisabled(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
   updateGlobalStreamtracker: () => dispatch(streamtrackerOperations.loadGlobalStreamtracker()),
   updateUtilities: () => dispatch(utilitiesOperations.loadUtilities()),
+  updateCommands: () => dispatch(commandsOperations.loadCommands())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Overview);
