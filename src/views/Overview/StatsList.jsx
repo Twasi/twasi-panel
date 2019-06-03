@@ -57,10 +57,25 @@ function getChatMessagesCount(data) {
   return count;
 }
 
+function getChatCommandsCount(data) {
+  var count = 0;
+  data.forEach((entry, index) => {
+    count += entry.chatCommands
+  });
+  return count;
+}
+
+function getChattersCount(data) {
+  var count = 0;
+  data.forEach((entry, index) => {
+    count++
+  });
+  return count;
+}
+
 class StatsList extends Component {
   render() {
     const { streamtracker } = this.props;
-    console.log(streamtracker.data.viewerCount)
     return (
       <List dense style={{ padding: '0px' }}>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
@@ -128,7 +143,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">---</h3>
+                      <h3 className="pageContainerTitle">{getChatCommandsCount(streamtracker.data)}</h3>
                       <small><FormattedMessage id="overview.table_commands_used" /></small>
                     </Typography>
                   </Col>
@@ -226,7 +241,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">---</h3>
+                  <h3 className="pageContainerTitle">{getChattersCount(streamtracker.topChatters)}</h3>
                   <small><FormattedMessage id="overview.table_individual" /></small>
                 </Typography>
               </Col>
@@ -272,7 +287,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(streamtrackerOperations.verifyData()),
-  updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
+  updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatsList);
