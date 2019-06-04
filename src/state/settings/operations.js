@@ -13,17 +13,18 @@ const verifyData = () => (dispatch, getState) => {
   }
 };
 
-const pushChanges = () => (dispatch, getState) => {
+/* const pushChanges = () => (dispatch, getState) => {
   const state = getState();
 
-  const request = selectors.getRequest(state);
+  // const request = selectors.getRequest(state);
 
   /* return settings.put(request).then(answer => {
     if (answer.status) {
       dispatch(updateDirty(false));
     }
-  }); */
-};
+  });
+}; */
+const pushChanges = () => () => {};
 
 export default {
   updateLoaded,

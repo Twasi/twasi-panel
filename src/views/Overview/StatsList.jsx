@@ -17,58 +17,59 @@ import { withRouter } from 'react-router-dom';
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
 function getStreamLength(data) {
-  var time = parseInt(data.length)
-  var hour = time / 60;
-  var rhour = Math.floor(hour);
-  var min = (hour - rhour) * 60;
-  var rmin = Math.floor(min);
-  return rhour + "h " + rmin + "min";
+  const time = parseInt(data.length);
+  const hour = time / 60;
+  const rhour = Math.floor(hour);
+  const min = (hour - rhour) * 60;
+  const rmin = Math.floor(min);
+  return `${rhour}h ${rmin}min`;
 }
 
 function getBiggestViewerCount(data) {
-  var count = 0;
+  let count = 0;
   data.forEach((entry, index) => {
-    if(entry.viewerCount > count){
-      count = entry.viewerCount
+    if (entry.viewerCount > count) {
+      count = entry.viewerCount;
     }
   });
   return count;
 }
 
 function getAverageViewerCount(data) {
-    var numbers = [];
+  const numbers = [];
 
-    data.forEach((entry, index) => {
-      numbers.push(entry.viewerCount)
-    });
+  data.forEach((entry, index) => {
+    numbers.push(entry.viewerCount);
+  });
 
-    var total = 0, i;
-    for (i = 0; i < numbers.length; i += 1) {
-        total += numbers[i];
-    }
-    return Math.round(total / numbers.length);
+  let total = 0; let
+    i;
+  for (i = 0; i < numbers.length; i += 1) {
+    total += numbers[i];
+  }
+  return Math.round(total / numbers.length);
 }
 
 function getChatMessagesCount(data) {
-  var count = 0;
+  let count = 0;
   data.forEach((entry, index) => {
-    count += entry.chatMessages
+    count += entry.chatMessages;
   });
   return count;
 }
 
 function getChatCommandsCount(data) {
-  var count = 0;
+  let count = 0;
   data.forEach((entry, index) => {
-    count += entry.chatCommands
+    count += entry.chatCommands;
   });
   return count;
 }
 
 function getChattersCount(data) {
-  var count = 0;
+  let count = 0;
   data.forEach((entry, index) => {
-    count++
+    count++;
   });
   return count;
 }
@@ -292,7 +293,7 @@ StatsList.propTypes = {
       game: PropTypes.string.isRequired,
       viewerCount: PropTypes.string.isRequired,
       timestamp: PropTypes.string.isRequired
-    })),
+    }))
   })),
   disabled: PropTypes.bool.isRequired
 };

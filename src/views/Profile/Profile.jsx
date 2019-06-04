@@ -2,26 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link as RouterLink } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Row, Col } from 'react-grid-system';
-import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip'
+import Tooltip from '@material-ui/core/Tooltip';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
-import Chip from '@material-ui/core/Chip';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 
@@ -125,9 +121,9 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_delete" />
                         </TableCell>
                         <TableCell style={{ borderBottom: '0px' }}>
-                          <a href="#" className="red">
+                          <RouterLink to="/" className="red">
                             <FormattedMessage id="profile.your_data_deletelink" />
-                          </a>
+                          </RouterLink>
                         </TableCell>
                       </TableRow>
                     </TableBody>

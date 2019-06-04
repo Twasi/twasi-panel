@@ -15,13 +15,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 class Documentation extends React.Component {
-
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
 
   render() {
-
     const { onClose, ...other } = this.props;
 
     return (
@@ -29,53 +27,53 @@ class Documentation extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-          <DialogContent>
-            <Markdown
-              options={{
-                overrides: {
-                    table: {
-                      component: Table,
-                    },
-                    thead: {
-                      component: TableHead,
-                    },
-                    td: {
-                      component: TableCell,
-                      props: {
-                        className: 'TableRowThin',
-                      },
-                    },
-                    th: {
-                      component: TableCell,
-                      props: {
-                        className: 'TableRow',
-                      },
-                    },
-                    tr: {
-                      component: TableRow,
-                    },
-                    h2: {
-                      props: {
-                        className: 'noMarginTop',
-                      },
-                    },
-                    strong: {
-                      props: {
-                        className: 'parameter',
-                      },
-                    },
-                  },
-              }}>
-              {DocumentationText}
-            </Markdown>
-          </DialogContent>
+        <DialogContent>
+          <Markdown
+            options={{
+              overrides: {
+                table: {
+                  component: Table
+                },
+                thead: {
+                  component: TableHead
+                },
+                td: {
+                  component: TableCell,
+                  props: {
+                    className: 'TableRowThin'
+                  }
+                },
+                th: {
+                  component: TableCell,
+                  props: {
+                    className: 'TableRow'
+                  }
+                },
+                tr: {
+                  component: TableRow
+                },
+                h2: {
+                  props: {
+                    className: 'noMarginTop'
+                  }
+                },
+                strong: {
+                  props: {
+                    className: 'parameter'
+                  }
+                }
+              }
+            }}>
+            {DocumentationText}
+          </Markdown>
+        </DialogContent>
       </Dialog>
     );
   }
 }
 
 Documentation.propTypes = {
-  onClose: PropTypes.func,
+  onClose: PropTypes.func
 };
 
 export default (Documentation);

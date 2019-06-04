@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -28,33 +27,33 @@ function createData(place, name, points, viewtime) {
 }
 
 function generateStringColor(string) {
-  var num = hashCode(string);
+  const num = hashCode(string);
   return intToRGB(num);
 }
 function intToRGB(i) {
-  var c = (i & 0x00ffffff).toString(16).toUpperCase();
+  const c = (i & 0x00ffffff).toString(16).toUpperCase();
 
-  return "00000".substring(0, 6 - c.length) + c;
+  return '00000'.substring(0, 6 - c.length) + c;
 }
 function hashCode(str) {
-  var hash = 0;
-  for (var i = 0; i < str.length; i++) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
   return hash;
 }
 
 const rows = [
-  createData( 1, 'Blechkelle', 512, '24h 31m'),
-  createData( 2, 'mekalix', 128, '20h 15m'),
-  createData( 3, 'DieserMerlin', 64, '19h 10m'),
-  createData( 4, 'Larcce', 32, '15h 5m'),
-  createData( 5, 'Spendendose', 16, '10h 1m'),
+  createData(1, 'Blechkelle', 512, '24h 31m'),
+  createData(2, 'mekalix', 128, '20h 15m'),
+  createData(3, 'DieserMerlin', 64, '19h 10m'),
+  createData(4, 'Larcce', 32, '15h 5m'),
+  createData(5, 'Spendendose', 16, '10h 1m')
 ];
 
 class Public extends React.Component {
   state = {
-    value: 0,
+    value: 0
   };
 
   handleChange = (event, value) => {
@@ -141,26 +140,24 @@ class Public extends React.Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map(row => {
-                  return (
-                    <TableRow key={row.id}>
-                      <TableCell>
-                        <Chip
-                          label={row.place}
-                          color="primary"
-                        />
-                      </TableCell>
-                      <TableCell style={{ color: "#" + generateStringColor(row.name) }}><b>{row.name}</b></TableCell>
-                      <TableCell>
-                        <Chip
-                          label={row.points}
-                          color="primary"
-                        />
-                      </TableCell>
-                      <TableCell>{row.viewtime}</TableCell>
-                    </TableRow>
-                  );
-                })}
+                {rows.map(row => (
+                  <TableRow key={row.id}>
+                    <TableCell>
+                      <Chip
+                        label={row.place}
+                        color="primary"
+                      />
+                    </TableCell>
+                    <TableCell style={{ color: `#${generateStringColor(row.name)}` }}><b>{row.name}</b></TableCell>
+                    <TableCell>
+                      <Chip
+                        label={row.points}
+                        color="primary"
+                      />
+                    </TableCell>
+                    <TableCell>{row.viewtime}</TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </Paper>

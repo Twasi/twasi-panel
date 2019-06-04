@@ -22,52 +22,52 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
-import MUIDataTable from "mui-datatables";
+import MUIDataTable from 'mui-datatables';
 
 import { authSelectors } from '../../state/auth';
 import { quotesSelectors, quotesOperations } from '../../state/quotes';
 
 const columns = [
   {
-   name: "id",
-   label: "id",
+    name: 'id',
+    label: 'id',
     options: {
-    filter: false,
-    sort: false,
+      filter: false,
+      sort: false
     }
   },
   {
-  name: "quote",
-  label: <FormattedMessage id="quotes.quote" />,
+    name: 'quote',
+    label: <FormattedMessage id="quotes.quote" />,
     options: {
-     filter: false,
-     sort: false,
+      filter: false,
+      sort: false
     }
   },
   {
-  name: "game",
-  label: <FormattedMessage id="quotes.game" />,
+    name: 'game',
+    label: <FormattedMessage id="quotes.game" />,
     options: {
-     filter: true,
-     sort: false,
+      filter: true,
+      sort: false
     }
   },
   {
-  name: "reporter",
-  label: <FormattedMessage id="quotes.reporter" />,
+    name: 'reporter',
+    label: <FormattedMessage id="quotes.reporter" />,
     options: {
-     filter: true,
-     sort: false,
+      filter: true,
+      sort: false
     }
   },
   {
-  name: "time",
-  label: <FormattedMessage id="quotes.time" />,
+    name: 'time',
+    label: <FormattedMessage id="quotes.time" />,
     options: {
-     filter: false,
-     sort: false,
+      filter: false,
+      sort: false
     }
-  },
+  }
 ];
 
 const options = {
@@ -78,40 +78,39 @@ const options = {
   textLabels: {
     body: {
       noMatch: <FormattedMessage id="datatables.body.nomatch" />,
-      toolTip: <FormattedMessage id="datatables.body.tooltip" />,
+      toolTip: <FormattedMessage id="datatables.body.tooltip" />
     },
     pagination: {
       next: <FormattedMessage id="datatables.pagination.next" />,
       previous: <FormattedMessage id="datatables.pagination.previous" />,
       rowsPerPage: <FormattedMessage id="datatables.pagination.rowsperpage" />,
-      displayRows: "of",
+      displayRows: 'of'
     },
     toolbar: {
       search: <FormattedMessage id="datatables.toolbar.search" />,
       downloadCsv: <FormattedMessage id="datatables.toolbar.downloadcsv" />,
       print: <FormattedMessage id="datatables.toolbar.print" />,
       viewColumns: <FormattedMessage id="datatables.toolbar.viewcolumns" />,
-      filterTable: <FormattedMessage id="datatables.toolbar.filtertable" />,
+      filterTable: <FormattedMessage id="datatables.toolbar.filtertable" />
     },
     filter: {
       all: <FormattedMessage id="datatables.filter.all" />,
       title: <FormattedMessage id="datatables.filter.title" />,
-      reset: <FormattedMessage id="datatables.filter.reset" />,
+      reset: <FormattedMessage id="datatables.filter.reset" />
     },
     viewColumns: {
       title: <FormattedMessage id="datatables.viewcolumns.title" />,
-      titleAria: <FormattedMessage id="datatables.viewcolumns.titlearia" />,
+      titleAria: <FormattedMessage id="datatables.viewcolumns.titlearia" />
     },
     selectedRows: {
       text: <FormattedMessage id="datatables.selectedrows.text" />,
       delete: <FormattedMessage id="datatables.selectedrows.delete" />,
-      deleteAria: <FormattedMessage id="datatables.selectedrows.deletearia" />,
-    },
+      deleteAria: <FormattedMessage id="datatables.selectedrows.deletearia" />
+    }
   }
 };
 
 class Quotes extends Component {
-
   constructor(props) {
     super(props);
 
@@ -153,8 +152,8 @@ class Quotes extends Component {
         <Paper className="pageContainer" style={{ borderRadius: '4px' }}>
           <Grid container spacing={16}>
             <Grid item xs={9}>
-              <List style={{ margin: "0px", padding: "0px" }}>
-                <ListItem style={{ margin: "0px", padding: "0px" }} alignItems="flex-start">
+              <List style={{ margin: '0px', padding: '0px' }}>
+                <ListItem style={{ margin: '0px', padding: '0px' }} alignItems="flex-start">
                   <ListItemAvatar>
                     <Avatar alt="Remy Sharp" src={avatar} />
                   </ListItemAvatar>
@@ -192,7 +191,7 @@ class Quotes extends Component {
           <MUIDataTable
             title={
               <Typography>
-                <h3 class="pageContainerTitle">
+                <h3 className="pageContainerTitle">
                   <FormattedMessage id="quotes.title" />
                 </h3>
                 <small>

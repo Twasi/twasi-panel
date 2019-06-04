@@ -19,14 +19,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 import './_style.css';
 
 class Moderators extends Component {
-
   state = {
     access_panel: true,
     access_moderators: true,
     access_game_title: true,
     access_commands: true,
     access_timers: true,
-    access_songrequests: true,
+    access_songrequests: true
   };
 
   handleChange = name => event => {

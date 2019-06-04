@@ -35,7 +35,7 @@ class Ticket extends React.Component {
 
   state = {
     issue: 10,
-    labelWidth: 125,
+    labelWidth: 125
   };
 
   render() {
@@ -46,57 +46,57 @@ class Ticket extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-          <DialogContent>
-            <Typography>
-              <h3 className="pageContainerTitle">
-                <FormattedMessage id="support.new_ticket" />
-              </h3>
-              <small>
-                <FormattedMessage id="support.new_ticket_subheadline" />
-              </small>
-            </Typography>
-            <br /><br />
-            <Card className="pluginCard">
-              <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
-                <FormControl variant="outlined" fullWidth>
-                  <InputLabel
-                    htmlFor="issue-select"
-                  >
-                    <FormattedMessage id="support.issue" />
-                  </InputLabel>
-                  <Select
-                    value={this.state.issue}
-                    onChange={this.handleChange}
-                    input={
-                      <OutlinedInput
-                        labelWidth={this.state.labelWidth}
-                        name="issue"
-                        id="issue-select"
-                      />
-                    }
-                  >
-                    <MenuItem value={10}><FormattedMessage id="support.chatbot" /></MenuItem>
-                    <MenuItem value={20}><FormattedMessage id="support.userpanel" /></MenuItem>
-                    <MenuItem value={30}><FormattedMessage id="support.function" /></MenuItem>
-                    <MenuItem value={40}><FormattedMessage id="support.other" /></MenuItem>
-                  </Select>
-                </FormControl>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  id="outlined-textarea"
-                  label={<FormattedMessage id="support.issue_content_headline" />}
-                  multiline
-                  fullWidth
-                  rows="6"
-                  margin="normal"
-                  variant="outlined"
-                />
-              </CardContent>
-            </Card>
-            <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
-              <FormattedMessage id="support.sendbutton" />
-            </Button>
-          </DialogContent>
+        <DialogContent>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="support.new_ticket" />
+            </h3>
+            <small>
+              <FormattedMessage id="support.new_ticket_subheadline" />
+            </small>
+          </Typography>
+          <br /><br />
+          <Card className="pluginCard">
+            <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel
+                  htmlFor="issue-select"
+                >
+                  <FormattedMessage id="support.issue" />
+                </InputLabel>
+                <Select
+                  value={this.state.issue}
+                  onChange={this.handleChange}
+                  input={
+                    <OutlinedInput
+                      labelWidth={this.state.labelWidth}
+                      name="issue"
+                      id="issue-select"
+                    />
+                  }
+                >
+                  <MenuItem value={10}><FormattedMessage id="support.chatbot" /></MenuItem>
+                  <MenuItem value={20}><FormattedMessage id="support.userpanel" /></MenuItem>
+                  <MenuItem value={30}><FormattedMessage id="support.function" /></MenuItem>
+                  <MenuItem value={40}><FormattedMessage id="support.other" /></MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                id="outlined-textarea"
+                label={<FormattedMessage id="support.issue_content_headline" />}
+                multiline
+                fullWidth
+                rows="6"
+                margin="normal"
+                variant="outlined"
+              />
+            </CardContent>
+          </Card>
+          <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+            <FormattedMessage id="support.sendbutton" />
+          </Button>
+        </DialogContent>
       </Dialog>
     );
   }
@@ -104,7 +104,7 @@ class Ticket extends React.Component {
 
 Ticket.propTypes = {
   onClose: PropTypes.func,
-  classes: PropTypes.isRequired
+  classes: PropTypes.string
 };
 
 export default (Ticket);

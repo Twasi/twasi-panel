@@ -19,7 +19,7 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
-import SongrequestConnectionStatus from './SongrequestConnectionStatus';
+// import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import songrequestSync from '../../services/songrequestSync';
 import { authSelectors } from '../../state/auth';
 
@@ -28,7 +28,6 @@ import spotifylogo from '../common/resources/spotifyIcon.png';
 import './_style.css';
 
 class Songrequests extends React.Component {
-
   handleVolumeChange = (event, volume) => {
     this.setState({ volume });
   };
@@ -119,7 +118,7 @@ class Songrequests extends React.Component {
                     marginBottom: '11px',
                     width: '150px' }}>
                     <Slider value={volume} onChange={this.handleVolumeChange} style={{ color: '#00aeae' }} />
-                </div>}
+                         </div>}
                 />
                 <Button style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="previous">
                   <Icon style={{ color: '#ffffff' }}>skip_previous</Icon>

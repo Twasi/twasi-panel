@@ -16,14 +16,14 @@ class Footer extends Component {
   render() {
     const { serverVersion } = this.props;
     return (
-      <Typography>
-        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <Typography>
           Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-Panel v.{
             pkgJson.version
           }{' '}
           - #{window.env.BUILD_DESC} | Twasi-Core v.{serverVersion}
-        </div>
-      </Typography>
+        </Typography>
+      </div>
     );
   }
 }

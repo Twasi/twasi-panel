@@ -31,7 +31,7 @@ function TabContainer(props) {
 
 class Giveaways extends Component {
   state = {
-    value: 0,
+    value: 0
   };
 
   handleChange = (event, value) => {
@@ -51,7 +51,7 @@ class Giveaways extends Component {
           <Typography color="textPrimary"><FormattedMessage id="sidebar.giveaways" /></Typography>
         </Breadcrumbs>
         <Grid container spacing={24}>
-           <Grid item lg={6} md={12}>
+          <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
               <Typography>
                 <h3 className="pageContainerTitle"><FormattedMessage id="giveaways.new_giveaway.title" /></h3>
@@ -110,86 +110,86 @@ class Giveaways extends Component {
                           <Tab label={<FormattedMessage id="giveaways.new_giveaway.random_number" />} />
                         </Tabs>
                       </AppBar>
-                        {this.state.value === 0 && <TabContainer>
-                          <p>
-                            <FormattedMessage id="giveaways.new_giveaway.keyword.description" />
-                          </p>
-                          <TextField
-                            label={<FormattedMessage id="giveaways.new_giveaway.keyword" />}
-                            placeholder="#Twasi"
-                            fullWidth
-                            margin="normal"
-                            variant="outlined"
-                            InputLabelProps={{ shrink: true }}
-                          />
-                          <br />
-                          <br />
-                          <Grid container spacing={16}>
-                            <Grid item lg={6}>
-                              <Button
-                                fullWidth
-                                variant="outlined"
-                                color="primary"
-                              >
-                                <FormattedMessage id="giveaways.new_giveaway.open" />
-                              </Button>
-                            </Grid>
-                            <Grid item lg={6}>
-                              <Button
-                                fullWidth
-                                variant="outlined"
-                                color="secondary"
-                              >
-                                <FormattedMessage id="giveaways.new_giveaway.cancel" />
-                              </Button>
-                            </Grid>
+                      {this.state.value === 0 && <TabContainer>
+                        <p>
+                          <FormattedMessage id="giveaways.new_giveaway.keyword.description" />
+                        </p>
+                        <TextField
+                          label={<FormattedMessage id="giveaways.new_giveaway.keyword" />}
+                          placeholder="#Twasi"
+                          fullWidth
+                          margin="normal"
+                          variant="outlined"
+                          InputLabelProps={{ shrink: true }}
+                        />
+                        <br />
+                        <br />
+                        <Grid container spacing={16}>
+                          <Grid item lg={6}>
+                            <Button
+                              fullWidth
+                              variant="outlined"
+                              color="primary"
+                            >
+                              <FormattedMessage id="giveaways.new_giveaway.open" />
+                            </Button>
                           </Grid>
-                        </TabContainer>}
-                        {this.state.value === 1 && <TabContainer>
-                          <p>
-                            <FormattedMessage id="giveaways.new_giveaway.random_number.description" />
-                          </p>
-                          <Grid container spacing={16}>
-                            <Grid item lg={6}>
-                              <TextField
-                                label={<FormattedMessage id="giveaways.new_giveaway.random_number.from" />}
-                                fullWidth
-                                margin="normal"
-                                variant="outlined"
-                                InputLabelProps={{ shrink: true }}
-                              />
-                            </Grid>
-                            <Grid item lg={6}>
-                              <TextField
-                                label={<FormattedMessage id="giveaways.new_giveaway.random_number.to" />}
-                                fullWidth
-                                margin="normal"
-                                variant="outlined"
-                                InputLabelProps={{ shrink: true }}
-                              />
-                            </Grid>
+                          <Grid item lg={6}>
+                            <Button
+                              fullWidth
+                              variant="outlined"
+                              color="secondary"
+                            >
+                              <FormattedMessage id="giveaways.new_giveaway.cancel" />
+                            </Button>
                           </Grid>
-                          <br />
-                          <Grid container spacing={16}>
-                            <Grid item lg={6}>
-                              <Button
-                                fullWidth
-                                variant="outlined"
-                                color="primary"
-                              >
-                                <FormattedMessage id="giveaways.new_giveaway.open" />
-                              </Button>
-                            </Grid>
-                            <Grid item lg={6}>
-                              <Button
-                                fullWidth
-                                variant="outlined"
-                                color="secondary"
-                              >
-                                <FormattedMessage id="giveaways.new_giveaway.cancel" />
-                              </Button>
-                            </Grid>
+                        </Grid>
+                                                 </TabContainer>}
+                      {this.state.value === 1 && <TabContainer>
+                        <p>
+                          <FormattedMessage id="giveaways.new_giveaway.random_number.description" />
+                        </p>
+                        <Grid container spacing={16}>
+                          <Grid item lg={6}>
+                            <TextField
+                              label={<FormattedMessage id="giveaways.new_giveaway.random_number.from" />}
+                              fullWidth
+                              margin="normal"
+                              variant="outlined"
+                              InputLabelProps={{ shrink: true }}
+                            />
                           </Grid>
+                          <Grid item lg={6}>
+                            <TextField
+                              label={<FormattedMessage id="giveaways.new_giveaway.random_number.to" />}
+                              fullWidth
+                              margin="normal"
+                              variant="outlined"
+                              InputLabelProps={{ shrink: true }}
+                            />
+                          </Grid>
+                        </Grid>
+                        <br />
+                        <Grid container spacing={16}>
+                          <Grid item lg={6}>
+                            <Button
+                              fullWidth
+                              variant="outlined"
+                              color="primary"
+                            >
+                              <FormattedMessage id="giveaways.new_giveaway.open" />
+                            </Button>
+                          </Grid>
+                          <Grid item lg={6}>
+                            <Button
+                              fullWidth
+                              variant="outlined"
+                              color="secondary"
+                            >
+                              <FormattedMessage id="giveaways.new_giveaway.cancel" />
+                            </Button>
+                          </Grid>
+                        </Grid>
                       </TabContainer>}
                     </Grid>
                   </Grid>
@@ -237,7 +237,7 @@ class Giveaways extends Component {
                       />
                     </Grid>
                   </Grid>
-                  <br/>
+                  <br />
                   <Grid container spacing={0}>
                     <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                       <Typography>Spendendose</Typography>
@@ -249,7 +249,7 @@ class Giveaways extends Component {
                       />
                     </Grid>
                   </Grid>
-                  <br/>
+                  <br />
                   <Grid container spacing={0}>
                     <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                       <Typography>Mekalix</Typography>

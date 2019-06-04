@@ -17,7 +17,7 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
-const timers = [{name: '!hosts', output: 'Zeigt die Liste der Kanäle, die deinen Kanal derzeit hosten.', interval: '10'}];
+const timers = [{ name: '!hosts', output: 'Zeigt die Liste der Kanäle, die deinen Kanal derzeit hosten.', interval: '10' }];
 
 class Timers extends Component {
   constructor(props) {
@@ -35,7 +35,6 @@ class Timers extends Component {
   }
 
   renderTimers() {
-
     return timers.map(timer => (
       <TableRow>
         <TableCell>

@@ -37,33 +37,29 @@ class Command extends React.Component {
   state = {
     issue: 10,
     labelWidth: 115,
-    cooldown: 0,
+    cooldown: 0
   };
 
   getCooldown() {
     if (this.state.cooldown <= 59) {
       if (this.state.cooldown === 0) {
         return 'Keinen Cooldown festgelegt';
-      } else {
-        if (this.state.cooldown > 1) {
-          return this.state.cooldown+' Sekunden';
-        } else {
-          return this.state.cooldown+' Sekunde';
-        }
       }
+      if (this.state.cooldown > 1) {
+        return `${this.state.cooldown} Sekunden`;
+      }
+      return `${this.state.cooldown} Sekunde`;
     } else if (this.state.cooldown >= 60) {
       this.state.cooldown -= 59;
       if (this.state.cooldown === 60) {
         return '1 Stunde';
       }
       if (this.state.cooldown > 1) {
-        return this.state.cooldown+' Minuten';
-      } else {
-        return this.state.cooldown+' Minute';
+        return `${this.state.cooldown} Minuten`;
       }
-    } else {
-      return 'Fehler';
+      return `${this.state.cooldown} Minute`;
     }
+    return 'Fehler';
   }
 
   render() {
@@ -75,107 +71,107 @@ class Command extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-          <DialogContent>
-            <Typography>
-              <h3 className="pageContainerTitle">
-                <FormattedMessage id="commands.new_command" />
-              </h3>
-              <small>
-                <FormattedMessage id="commands.new_command.subheadline" />
-              </small>
-            </Typography>
-            <br /><br />
-            <Card className="pluginCard">
-              <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  id="outlined-textarea"
-                  label={<FormattedMessage id="commands.new_command.command" />}
-                  fullWidth
-                  placeholder="Beispiel: !bot"
-                  helperText="Das ist dein Befehl. Der Befehl wird so ausgelöst, wie du ihn hier hinterlegst."
-                  margin="normal"
-                  variant="outlined"
-                />
-              </CardContent>
-            </Card>
-            <Card className="pluginCard" style={{ marginTop: '15px' }}>
-              <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  id="outlined-textarea"
-                  label={<FormattedMessage id="commands.new_command.aliases" />}
-                  fullWidth
-                  placeholder="Beispiel: !chatbot, !twasi"
-                  helperText="Das sind Alternativen zu deinem Befehl, welche die selbe Ausgabe erzeugen. (Mit Komma trennen.)"
-                  margin="normal"
-                  variant="outlined"
-                />
-              </CardContent>
-            </Card>
-            <Card className="pluginCard" style={{ marginTop: '15px' }}>
-              <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  id="outlined-textarea"
-                  label={<FormattedMessage id="commands.new_command.output" />}
-                  fullWidth
-                  placeholder="Beispiel: Mein Bot heißt Twasibot."
-                  multiline
-                  rows="3"
-                  helperText="Das ist die Ausgabe deines Befehls. Du kannst Variablen nutzen, um die Ausgabe dynamisch zu gestallten."
-                  margin="normal"
-                  variant="outlined"
-                />
-              </CardContent>
-            </Card>
-            <Card className="pluginCard" style={{ marginTop: '15px' }}>
-              <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-                <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
-                  <InputLabel
-                    htmlFor="access-select"
-                  >
-                    <FormattedMessage id="commands.new_command.access" />
-                  </InputLabel>
-                  <Select
-                    value={this.state.issue}
-                    onChange={this.handleChange}
-                    input={
-                      <OutlinedInput
-                        labelWidth={this.state.labelWidth}
-                        name="access"
-                        id="access-select"
-                      />
-                    }
-                  >
-                    <MenuItem value={10}><FormattedMessage id="commands.new_command.everyone" /></MenuItem>
-                    <MenuItem value={20}><FormattedMessage id="commands.new_command.subs" /></MenuItem>
-                    <MenuItem value={30}><FormattedMessage id="commands.new_command.mods" /></MenuItem>
-                    <MenuItem value={40}><FormattedMessage id="commands.new_command.streamer" /></MenuItem>
-                  </Select>
-                  <FormHelperText>Wer hat Zugriff auf den Befehl?</FormHelperText>
-                </FormControl>
-              </CardContent>
-            </Card>
-            <Card className="pluginCard" style={{ marginTop: '15px' }}>
-              <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-                <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {this.getCooldown()}</Typography>
-                <Slider
-                  style={{ padding: '22px 0px' }}
-                  aria-labelledby="label"
-                  value={cooldown}
-                  min={0}
-                  max={119}
-                  step={1}
+        <DialogContent>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="commands.new_command" />
+            </h3>
+            <small>
+              <FormattedMessage id="commands.new_command.subheadline" />
+            </small>
+          </Typography>
+          <br /><br />
+          <Card className="pluginCard">
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                id="outlined-textarea"
+                label={<FormattedMessage id="commands.new_command.command" />}
+                fullWidth
+                placeholder="Beispiel: !bot"
+                helperText="Das ist dein Befehl. Der Befehl wird so ausgelöst, wie du ihn hier hinterlegst."
+                margin="normal"
+                variant="outlined"
+              />
+            </CardContent>
+          </Card>
+          <Card className="pluginCard" style={{ marginTop: '15px' }}>
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                id="outlined-textarea"
+                label={<FormattedMessage id="commands.new_command.aliases" />}
+                fullWidth
+                placeholder="Beispiel: !chatbot, !twasi"
+                helperText="Das sind Alternativen zu deinem Befehl, welche die selbe Ausgabe erzeugen. (Mit Komma trennen.)"
+                margin="normal"
+                variant="outlined"
+              />
+            </CardContent>
+          </Card>
+          <Card className="pluginCard" style={{ marginTop: '15px' }}>
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                id="outlined-textarea"
+                label={<FormattedMessage id="commands.new_command.output" />}
+                fullWidth
+                placeholder="Beispiel: Mein Bot heißt Twasibot."
+                multiline
+                rows="3"
+                helperText="Das ist die Ausgabe deines Befehls. Du kannst Variablen nutzen, um die Ausgabe dynamisch zu gestallten."
+                margin="normal"
+                variant="outlined"
+              />
+            </CardContent>
+          </Card>
+          <Card className="pluginCard" style={{ marginTop: '15px' }}>
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
+              <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
+                <InputLabel
+                  htmlFor="access-select"
+                >
+                  <FormattedMessage id="commands.new_command.access" />
+                </InputLabel>
+                <Select
+                  value={this.state.issue}
                   onChange={this.handleChange}
-                />
-                <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Cooldown von bis zu einer Stunde einstellen.</Typography>
-              </CardContent>
-            </Card>
-            <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
-              <FormattedMessage id="commands.new_command.savecommand" />
-            </Button>
-          </DialogContent>
+                  input={
+                    <OutlinedInput
+                      labelWidth={this.state.labelWidth}
+                      name="access"
+                      id="access-select"
+                    />
+                  }
+                >
+                  <MenuItem value={10}><FormattedMessage id="commands.new_command.everyone" /></MenuItem>
+                  <MenuItem value={20}><FormattedMessage id="commands.new_command.subs" /></MenuItem>
+                  <MenuItem value={30}><FormattedMessage id="commands.new_command.mods" /></MenuItem>
+                  <MenuItem value={40}><FormattedMessage id="commands.new_command.streamer" /></MenuItem>
+                </Select>
+                <FormHelperText>Wer hat Zugriff auf den Befehl?</FormHelperText>
+              </FormControl>
+            </CardContent>
+          </Card>
+          <Card className="pluginCard" style={{ marginTop: '15px' }}>
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
+              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {this.getCooldown()}</Typography>
+              <Slider
+                style={{ padding: '22px 0px' }}
+                aria-labelledby="label"
+                value={cooldown}
+                min={0}
+                max={119}
+                step={1}
+                onChange={this.handleChange}
+              />
+              <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Cooldown von bis zu einer Stunde einstellen.</Typography>
+            </CardContent>
+          </Card>
+          <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+            <FormattedMessage id="commands.new_command.savecommand" />
+          </Button>
+        </DialogContent>
       </Dialog>
     );
   }

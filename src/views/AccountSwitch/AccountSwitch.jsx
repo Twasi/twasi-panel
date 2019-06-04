@@ -20,8 +20,6 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import { FormattedMessage } from 'react-intl';
 
-import storage from 'local-storage';
-
 import { authSelectors } from '../../state/auth';
 import { impersonateOperations } from '../../state/impersonate';
 // import PersonIcon from '@material-ui/icons/Person';
@@ -36,8 +34,8 @@ class AccountSwitch extends React.Component {
     super(props);
 
     this.state = {
-      impersonate: ""
-    }
+      impersonate: ''
+    };
   }
 
   handleClose = () => {
@@ -53,7 +51,7 @@ class AccountSwitch extends React.Component {
 
     let adminAccess = false;
 
-    if(rank==="TEAM"){
+    if (rank === 'TEAM') {
       adminAccess = true;
     }
 
@@ -62,32 +60,32 @@ class AccountSwitch extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-          <DialogContent>
-            <Typography>
-              <h3 className="pageContainerTitle">
-                <FormattedMessage id="accountswitch.switch_account" />
-              </h3>
-              <small>
-                <FormattedMessage id="accountswitch.subheadline" />
-              </small>
-            </Typography>
-            <br /><br />
-            <Card className="pluginCard">
-              <CardContent style={{ paddingTop: '15px', paddingBottom: '15px', marginBottom: '15px' }}>
-                <List style={{ padding: '0px' }}>
-                  <ListItem button>
-                    <ListItemAvatar>
-                      <Avatar className="accountSwitchAvatar">
-                        <img width="45px" height="45px" src={avatar} alt="Avatar" />
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={userName} />
-                    <Chip label="Vollzugriff" color="primary" />
-                  </ListItem>
-                </List>
-              </CardContent>
-            </Card>
-            {adminAccess && !window.originalJwt &&
+        <DialogContent>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="accountswitch.switch_account" />
+            </h3>
+            <small>
+              <FormattedMessage id="accountswitch.subheadline" />
+            </small>
+          </Typography>
+          <br /><br />
+          <Card className="pluginCard">
+            <CardContent style={{ paddingTop: '15px', paddingBottom: '15px', marginBottom: '15px' }}>
+              <List style={{ padding: '0px' }}>
+                <ListItem button>
+                  <ListItemAvatar>
+                    <Avatar className="accountSwitchAvatar">
+                      <img width="45px" height="45px" src={avatar} alt="Avatar" />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={userName} />
+                  <Chip label="Vollzugriff" color="primary" />
+                </ListItem>
+              </List>
+            </CardContent>
+          </Card>
+          {adminAccess && !window.originalJwt &&
             <Card className="pluginCard">
               <CardContent style={{ marginBottom: 15, paddingTop: 0, paddingBottom: 0 }}>
                 <List style={{ padding: '0px' }}>
@@ -111,88 +109,88 @@ class AccountSwitch extends React.Component {
                               </Icon>
                             </IconButton>
                           </InputAdornment>
-                        ),
+                        )
                       }}
                     />
                   </ListItem>
                 </List>
               </CardContent>
             </Card>
-            }
-            {window.originalJwt &&
-              <Card className="pluginCard">
-                <CardContent style={{ marginBottom: 15, paddingTop: 0, paddingBottom: 0 }}>
-                  <List style={{ padding: '0px' }}>
-                    <ListItem>
-                      <Button variant="outlined" color="secondary" fullWidth onClick={() => this.props.resetImpersonation()}>Go back</Button>
-                    </ListItem>
-                  </List>
-                </CardContent>
-              </Card>
-            }
-            <Card className="pluginCard">
-              <CardContent style={{ paddingTop: '15px', paddingBottom: '15px' }}>
-                <List style={{ padding: '0px' }}>
-                  {accounts.map(account => (
-                    <ListItem
-                      button
-                      onClick={() => this.handleListItemClick(account)}
-                      key={account}
+          }
+          {window.originalJwt &&
+          <Card className="pluginCard">
+            <CardContent style={{ marginBottom: 15, paddingTop: 0, paddingBottom: 0 }}>
+              <List style={{ padding: '0px' }}>
+                <ListItem>
+                  <Button variant="outlined" color="secondary" fullWidth onClick={() => this.props.resetImpersonation()}>Go back</Button>
+                </ListItem>
+              </List>
+            </CardContent>
+          </Card>
+          }
+          <Card className="pluginCard">
+            <CardContent style={{ paddingTop: '15px', paddingBottom: '15px' }}>
+              <List style={{ padding: '0px' }}>
+                {accounts.map(account => (
+                  <ListItem
+                    button
+                    onClick={() => this.handleListItemClick(account)}
+                    key={account}
+                  >
+                    <ListItemAvatar>
+                      <Avatar>
+                        <Icon style={{ fontSize: 36 }}>person</Icon>
+                      </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={account} />
+                    <Tooltip
+                      placement="right"
+                      title={
+                        <React.Fragment>
+                          <Chip
+                            color="primary"
+                            icon={<Icon>add</Icon>}
+                            label="Kann Moderatoren hinzufügen"
+                          />
+                          <Chip
+                            color="primary"
+                            style={{ marginTop: '5px' }}
+                            icon={<Icon>remove</Icon>}
+                            label="Kann Moderatoren entfernen"
+                          />
+                          <Chip
+                            color="primary"
+                            style={{ marginTop: '5px' }}
+                            icon={<Icon>gamepad</Icon>}
+                            label="Kann Titel und Kategorie ändern"
+                          />
+                          <Chip
+                            color="primary"
+                            style={{ marginTop: '5px' }}
+                            icon={<Icon>code</Icon>}
+                            label="Kann Befehle verwalten"
+                          />
+                          <Chip
+                            color="primary"
+                            style={{ marginTop: '5px' }}
+                            icon={<Icon>library_music</Icon>}
+                            label="Kann Songrequests verwalten"
+                          />
+                        </React.Fragment>
+                      }
                     >
-                      <ListItemAvatar>
-                        <Avatar>
-                          <Icon style={{ fontSize: 36 }}>person</Icon>
-                        </Avatar>
-                      </ListItemAvatar>
-                      <ListItemText primary={account} />
-                      <Tooltip
-                        placement="right"
-                        title={
-                          <React.Fragment>
-                            <Chip
-                              color="primary"
-                              icon={<Icon>add</Icon>}
-                              label="Kann Moderatoren hinzufügen"
-                            />
-                            <Chip
-                              color="primary"
-                              style={{ marginTop: '5px' }}
-                              icon={<Icon>remove</Icon>}
-                              label="Kann Moderatoren entfernen"
-                            />
-                            <Chip
-                              color="primary"
-                              style={{ marginTop: '5px' }}
-                              icon={<Icon>gamepad</Icon>}
-                              label="Kann Titel und Kategorie ändern"
-                            />
-                            <Chip
-                              color="primary"
-                              style={{ marginTop: '5px' }}
-                              icon={<Icon>code</Icon>}
-                              label="Kann Befehle verwalten"
-                            />
-                            <Chip
-                              color="primary"
-                              style={{ marginTop: '5px' }}
-                              icon={<Icon>library_music</Icon>}
-                              label="Kann Songrequests verwalten"
-                            />
-                          </React.Fragment>
-                        }
-                      >
-                        <Avatar style={{ width: '32px', height: '32px', marginRight: '5px' }}>
-                          <Icon>
+                      <Avatar style={{ width: '32px', height: '32px', marginRight: '5px' }}>
+                        <Icon>
                             priority_high
-                          </Icon>
-                        </Avatar>
-                      </Tooltip>
-                    </ListItem>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
-          </DialogContent>
+                        </Icon>
+                      </Avatar>
+                    </Tooltip>
+                  </ListItem>
+                ))}
+              </List>
+            </CardContent>
+          </Card>
+        </DialogContent>
       </Dialog>
     );
   }
@@ -204,7 +202,7 @@ AccountSwitch.propTypes = {
   rank: PropTypes.string,
   onClose: PropTypes.func,
   selectedValue: PropTypes.string,
-  classes: PropTypes.isRequired,
+  classes: PropTypes.string,
   impersonate: PropTypes.func.isRequired,
   resetImpersonation: PropTypes.func.isRequired
 };

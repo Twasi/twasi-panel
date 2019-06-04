@@ -14,7 +14,7 @@ const impersonateUser = userName => (dispatch, getState) => {
     return;
   }
 
-  getUserGraph('admin{impersonate(twitchname: "' + userName + '")}', jwt).then(
+  getUserGraph(`admin{impersonate(twitchname: "${userName}")}`, jwt).then(
     data => {
       // dispatch(updateImpersonating(userName, data.admin.impersonate))
       dispatch({ type: 'RESET', jwt: data.admin.impersonate });
@@ -39,7 +39,7 @@ const resetImpersonation = () => (dispatch, getState) => {
   });
 
   window.originalJwt = null;
-}
+};
 
 export default {
   impersonateUser,

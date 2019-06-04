@@ -52,7 +52,7 @@ class EventLog extends Component {
 
 EventLog.propTypes = {
   loadEvents: PropTypes.func.isRequired,
-  events: PropTypes.arrayOf(PropTypes.shape({})),
+  events: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 const mapStateToProps = state => ({

@@ -14,15 +14,15 @@ class Rank extends Component {
         <Typography>
           {(() => {
             switch (rank) {
-              case "TEAM":     return "Teammitglied";
-              case "PARTNER":  return "Partnerstreamer";
-              case "STREAMER": return "Streamer";
-              default:         return "Unknown";
+              case 'TEAM': return 'Teammitglied';
+              case 'PARTNER': return 'Partnerstreamer';
+              case 'STREAMER': return 'Streamer';
+              default: return 'Unknown';
             }
           })()}
         </Typography>
       </div>
-    )
+    );
   }
 }
 

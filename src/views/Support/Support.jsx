@@ -104,7 +104,7 @@ class Support extends Component {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Grid container spacing={24}>
             <Grid item xs={3}>
-              <Typography><h4 className="pageContainerTitle">Betreff</h4><small>{ticket.topic}</small></Typography>
+              <h4 className="pageContainerTitle"><Typography>Betreff</Typography></h4><Typography><small>{ticket.topic}</small></Typography>
             </Grid>
             <Grid item xs={3}>
               <Typography><h4 className="pageContainerTitle">Erstellt am</h4><small>{ticket.createdAt}</small></Typography>
@@ -159,8 +159,8 @@ class Support extends Component {
           <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer">
-          <Typography>
-            <h3 className="pageContainerTitle">
+          <h3 className="pageContainerTitle">
+            <Typography>
               Deine Support Tickets
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={this.props.loadMyTickets}>
@@ -175,11 +175,11 @@ class Support extends Component {
                   onClose={this.handleClose}
                 />
               </span>
-            </h3>
-            <small>
-              Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
-            </small>
-          </Typography>
+            </Typography>
+          </h3>
+          <small>
+            Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
+          </small>
           {this.renderSupportTickets()}
         </Paper>
       </div>

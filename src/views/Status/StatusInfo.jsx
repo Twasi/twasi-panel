@@ -39,7 +39,7 @@ class StatusInfo extends Component {
                   <FormattedMessage id="status.start" /> / <FormattedMessage id="status.stop" />
                 </h3>
               </Typography>
-              <br/>
+              <br />
               {status.isRunning && (
                 <div>
                   <Button
@@ -97,7 +97,7 @@ class StatusInfo extends Component {
                   <FormattedMessage id="status.current_status" />
                 </h3>
               </Typography>
-              <br/>
+              <br />
               {status.isRunning ? running : stopped}
             </Grid>
           </Grid>

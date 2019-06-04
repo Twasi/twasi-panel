@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import windows95background  from '../../views/common/resources/windows95-background.png';
+import windows95background from '../../views/common/resources/windows95-background.png';
 import './windows95.css';
 
 export default createMuiTheme({
@@ -42,7 +42,7 @@ export default createMuiTheme({
       },
       elevation4: {
         boxShadow: 'none'
-      },
+      }
     },
     MuiBadge: {
       badge: {
@@ -63,10 +63,6 @@ export default createMuiTheme({
         '&:hover': {
           backgroundColor: '#bdbebd'
         }
-      },
-      selected: { // Name of the rule
-        color: '#000000',
-        backgroundColor: '#000080'
       }
     },
     MuiListItemText: { // Name of the component ⚛️ / style sheet
@@ -84,7 +80,7 @@ export default createMuiTheme({
         borderStyle: 'solid'
       },
       fab: {
-        borderRadius: '0px',
+        borderRadius: '0px'
       },
       mini: {
         minHeight: '32px',
@@ -163,24 +159,24 @@ export default createMuiTheme({
     },
     MUIDataTableToolbar: {
       root: {
-        padding: '23px',
+        padding: '23px'
       },
       titleText: {
         color: '#000000'
       },
       icon: {
         color: '#000000'
-      },
+      }
     },
     MUIDataTableHeadCell: {
       fixedHeader: {
         backgroundColor: '#bdbebd',
-        borderBottom: '3px solid #000080',
-      },
+        borderBottom: '3px solid #000080'
+      }
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       head: { // Name of the rule
-        color: '#000000', // Some CSS
+        color: '#000000' // Some CSS
       },
       body: { // Name of the rule
         color: '#000000', // Some CSS
@@ -205,7 +201,7 @@ export default createMuiTheme({
     },
     MuiInputBase: {
       input: {
-        color: '#000000',
+        color: '#000000'
       }
     },
     MuiOutlinedInput: {
@@ -213,16 +209,16 @@ export default createMuiTheme({
         backgroundColor: '#dbdbdb',
         borderWidth: '2px',
         borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
-        borderStyle: 'inset',
+        borderStyle: 'inset'
       },
       legend: {
-        color: '#000000',
+        color: '#000000'
       }
     },
     MuiFormLabel: {
       root: {
-        color: '#000000',
-      },
+        color: '#000000'
+      }
     },
     MuiTabs: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
@@ -247,7 +243,7 @@ export default createMuiTheme({
         borderWidth: '2px',
         borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
         borderStyle: 'solid',
-        borderRadius: '0px',
+        borderRadius: '0px'
       },
       colorPrimary: {
         backgroundColor: '#000080',
@@ -282,10 +278,10 @@ export default createMuiTheme({
       tooltip: { // Name of the rule
         color: '#ffffff', // Some CSS
         backgroundColor: 'rgba(0,0,0,1)',
-        opacity: '1',
+        opacity: '1'
       },
       popper: {
-        opacity: '1',
+        opacity: '1'
       }
     },
     MuiSelect: {
@@ -296,7 +292,7 @@ export default createMuiTheme({
         borderRadius: '0px'
       },
       icon: {
-        color: 'rgba(255, 255, 255, 0.7)',
+        color: 'rgba(255, 255, 255, 0.7)'
       },
       outlined: {
         borderRadius: '0px'
@@ -320,12 +316,15 @@ export default createMuiTheme({
       root: {
         borderWidth: '2px',
         borderColor: '#dbdbdb #535353 #535353 #dbdbdb',
-        borderStyle: 'inset',
+        borderStyle: 'inset'
       },
       colorPrimary: {
         backgroundColor: '#dbdbdb',
         height: '20px'
       }
     }
+  },
+  typography: {
+    useNextVariants: true
   }
 });

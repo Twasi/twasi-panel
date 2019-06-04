@@ -7,7 +7,6 @@ import { authSelectors } from '../auth';
 const {
   updateStatus,
   updateEvents,
-  updateLoaded,
   updateStarting,
   updateStopping
 } = actions;
@@ -46,7 +45,7 @@ const stopBot = () => (dispatch, getState) => {
       dispatch(updateStatus(data.status.changeStatus));
       dispatch(updateStopping(false));
     });
-  })
+  });
 };
 
 const startBot = () => (dispatch, getState) => {
@@ -56,14 +55,14 @@ const startBot = () => (dispatch, getState) => {
     const jwt = authSelectors.getJwt(state);
 
     getUserGraph('status{changeStatus(isRunning:true){isRunning}}', jwt).then(data => {
-      dispatch(updateStatus(data.status.changeStatus))
+      dispatch(updateStatus(data.status.changeStatus));
       dispatch(updateStarting(false));
     });
-  })
+  });
 };
 
 function sleep(milliseconds) {
- return new Promise(resolve => setTimeout(resolve, milliseconds));
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 export default {

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected";
+import * as am4core from '@amcharts/amcharts4/core';
+import * as am4charts from '@amcharts/amcharts4/charts';
+import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
@@ -14,17 +14,17 @@ import crown from '../common/resources/crown.svg';
 am4core.useTheme(am4themes_animated);
 
 function generateStringColor(string) {
-  var num = hashCode(string);
+  const num = hashCode(string);
   return intToRGB(num);
 }
 function intToRGB(i) {
-  var c = (i & 0x00ffffff).toString(16).toUpperCase();
+  const c = (i & 0x00ffffff).toString(16).toUpperCase();
 
-  return "00000".substring(0, 6 - c.length) + c;
+  return '00000'.substring(0, 6 - c.length) + c;
 }
 function hashCode(str) {
-  var hash = 0;
-  for (var i = 0; i < str.length; i++) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
   return hash;
@@ -33,51 +33,51 @@ function hashCode(str) {
 class ChattersChart extends Component {
   componentDidMount() {
     const { streamtracker } = this.props;
-    let chart = am4core.create("chatterschartdiv", am4plugins_forceDirected.ForceDirectedTree);
+    const chart = am4core.create('chatterschartdiv', am4plugins_forceDirected.ForceDirectedTree);
 
     chart.paddingTop = 65;
     chart.paddingRight = 0;
     chart.paddingLeft = 0;
     chart.paddingBottom = -1;
 
-    let chattersdata = streamtracker.topChatters
-    let data = [];
+    const chattersdata = streamtracker.topChatters;
+    const data = [];
     chattersdata.forEach((entry, index) => {
-      if(entry.displayName.toLowerCase() == "blechkelle" || entry.displayName.toLowerCase() ==  "diesermerlin" || entry.displayName.toLowerCase() ==  "larcce" || entry.displayName.toLowerCase() ==  "tom_meka"){
+      if (entry.displayName.toLowerCase() == 'blechkelle' || entry.displayName.toLowerCase() == 'diesermerlin' || entry.displayName.toLowerCase() == 'larcce' || entry.displayName.toLowerCase() == 'tom_meka') {
         data.push({
           displayName: entry.displayName,
           messages: entry.messages,
-          lineColor: "#" + generateStringColor(entry.displayName),
+          lineColor: `#${generateStringColor(entry.displayName)}`,
           image: crown
         });
       } else {
         data.push({
           displayName: entry.displayName,
           messages: entry.messages,
-          lineColor: "#" + generateStringColor(entry.displayName)
+          lineColor: `#${generateStringColor(entry.displayName)}`
         });
       }
     });
     chart.data = data;
 
     // Add and configure Series
-    var series = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
-    series.dataFields.value = "messages";
-    series.dataFields.name = "displayName";
+    const series = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
+    series.dataFields.value = 'messages';
+    series.dataFields.name = 'displayName';
 
-    series.nodes.template.label.text = "{displayName}";
-    series.nodes.template.tooltipText = "{displayName}: [bold]{messages}[/]";
+    series.nodes.template.label.text = '{displayName}';
+    series.nodes.template.tooltipText = '{displayName}: [bold]{messages}[/]';
     series.tooltip.getStrokeFromObject = true;
-    series.dataFields.color = "lineColor";
+    series.dataFields.color = 'lineColor';
     series.fillOpacity = 0.4;
     series.strokeWidth = 2;
     series.fontSize = 10;
     series.minRadius = 20;
 
-    let icon = series.nodes.template.createChild(am4core.Image);
-    icon.propertyFields.href = "image";
-    icon.horizontalCenter = "middle";
-    icon.verticalCenter = "bottom";
+    const icon = series.nodes.template.createChild(am4core.Image);
+    icon.propertyFields.href = 'image';
+    icon.horizontalCenter = 'middle';
+    icon.verticalCenter = 'bottom';
     icon.width = 40;
     icon.height = 40;
 
@@ -92,7 +92,7 @@ class ChattersChart extends Component {
 
   render() {
     return (
-      <div id="chatterschartdiv" style={{ width: "100%", height: "100%" }}></div>
+      <div id="chatterschartdiv" style={{ width: '100%', height: '100%' }} />
     );
   }
 }
@@ -106,7 +106,7 @@ ChattersChart.propTypes = {
       displayName: PropTypes.string.isRequired,
       messages: PropTypes.string.isRequired,
       commands: PropTypes.string.isRequired
-    })),
+    }))
   })),
   disabled: PropTypes.bool.isRequired
 };
@@ -119,7 +119,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(streamtrackerOperations.verifyData()),
-  updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
+  updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChattersChart);

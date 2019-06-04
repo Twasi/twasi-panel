@@ -6,7 +6,7 @@ export default createMuiTheme({
   palette: {
     type: 'dark',
     background: {
-      default: '#151e21',
+      default: '#151e21'
     },
     primary: {
       main: '#00aeae',
@@ -39,7 +39,7 @@ export default createMuiTheme({
       },
       elevation4: {
         boxShadow: 'none'
-      },
+      }
     },
     MuiBadge: {
       badge: {
@@ -60,10 +60,6 @@ export default createMuiTheme({
         '&:hover': {
           backgroundColor: '#162226'
         }
-      },
-      selected: { // Name of the rule
-        color: '#ffffff',
-        background: 'linear-gradient(135deg,#00aeae,#02d4d4)'
       }
     },
     MuiListItemText: { // Name of the component ⚛️ / style sheet
@@ -135,20 +131,20 @@ export default createMuiTheme({
     },
     MUIDataTableToolbar: {
       root: {
-        padding: '23px',
+        padding: '23px'
       },
       titleText: {
         color: '#b7b7b7'
       },
       icon: {
         color: '#b7b7b7'
-      },
+      }
     },
     MUIDataTableHeadCell: {
       fixedHeader: {
         backgroundColor: '#1b292d',
-        borderBottom: '3px solid #00aeae',
-      },
+        borderBottom: '3px solid #00aeae'
+      }
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       body: { // Name of the rule
@@ -214,21 +210,21 @@ export default createMuiTheme({
       tooltip: { // Name of the rule
         color: '#b7b7b7', // Some CSS
         backgroundColor: 'rgba(0,0,0,0.0)',
-        opacity: '1',
+        opacity: '1'
       },
       popper: {
-        opacity: '1',
+        opacity: '1'
       }
     },
     MuiSelect: {
       root: {
         color: 'rgba(255, 255, 255, 0.7)',
         fontSize: '0.875em',
-        borderBottom: '0px',
+        borderBottom: '0px'
       },
       icon: {
-        color: 'rgba(255, 255, 255, 0.7)',
-      },
+        color: 'rgba(255, 255, 255, 0.7)'
+      }
     },
     MuiExpansionPanelSummary: {
       root: {
@@ -250,5 +246,8 @@ export default createMuiTheme({
         height: '20px'
       }
     }
+  },
+  typography: {
+    useNextVariants: true
   }
 });

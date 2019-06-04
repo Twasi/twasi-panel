@@ -27,7 +27,7 @@ class Feedback extends React.Component {
 
   state = {
     issue: 10,
-    labelWidth: 125,
+    labelWidth: 125
   };
 
   render() {
@@ -38,57 +38,57 @@ class Feedback extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-          <DialogContent>
-            <Typography>
-              <h3 className="pageContainerTitle">
-                <FormattedMessage id="feedbackswitch.headline" />
-              </h3>
-              <small>
-                <FormattedMessage id="feedbackswitch.subheadline" />
-              </small>
-            </Typography>
-            <br /><br />
-            <Card className="pluginCard">
-              <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
-                <FormControl variant="outlined" fullWidth>
-                  <InputLabel
-                    htmlFor="issue-select"
-                  >
-                    <FormattedMessage id="feedbackswitch.issue" />
-                  </InputLabel>
-                  <Select
-                    value={this.state.issue}
-                    onChange={this.handleChange}
-                    input={
-                      <OutlinedInput
-                        labelWidth={this.state.labelWidth}
-                        name="issue"
-                        id="issue-select"
-                      />
-                    }
-                  >
-                    <MenuItem value={10}><FormattedMessage id="feedbackswitch.issue_feedback" /></MenuItem>
-                    <MenuItem value={20}><FormattedMessage id="feedbackswitch.issue_idea" /></MenuItem>
-                    <MenuItem value={30}><FormattedMessage id="feedbackswitch.issue_bug" /></MenuItem>
-                    <MenuItem value={40}><FormattedMessage id="feedbackswitch.issue_joke" /></MenuItem>
-                  </Select>
-                </FormControl>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  id="outlined-textarea"
-                  label={<FormattedMessage id="feedbackswitch.issue_content_headline" />}
-                  multiline
-                  fullWidth
-                  rows="6"
-                  margin="normal"
-                  variant="outlined"
-                />
-              </CardContent>
-            </Card>
-            <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
-              <FormattedMessage id="feedbackswitch.sendbutton" />
-            </Button>
-          </DialogContent>
+        <DialogContent>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="feedbackswitch.headline" />
+            </h3>
+            <small>
+              <FormattedMessage id="feedbackswitch.subheadline" />
+            </small>
+          </Typography>
+          <br /><br />
+          <Card className="pluginCard">
+            <CardContent className="pluginCardContent" style={{ paddingBottom: '10px' }}>
+              <FormControl variant="outlined" fullWidth>
+                <InputLabel
+                  htmlFor="issue-select"
+                >
+                  <FormattedMessage id="feedbackswitch.issue" />
+                </InputLabel>
+                <Select
+                  value={this.state.issue}
+                  onChange={this.handleChange}
+                  input={
+                    <OutlinedInput
+                      labelWidth={this.state.labelWidth}
+                      name="issue"
+                      id="issue-select"
+                    />
+                  }
+                >
+                  <MenuItem value={10}><FormattedMessage id="feedbackswitch.issue_feedback" /></MenuItem>
+                  <MenuItem value={20}><FormattedMessage id="feedbackswitch.issue_idea" /></MenuItem>
+                  <MenuItem value={30}><FormattedMessage id="feedbackswitch.issue_bug" /></MenuItem>
+                  <MenuItem value={40}><FormattedMessage id="feedbackswitch.issue_joke" /></MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                id="outlined-textarea"
+                label={<FormattedMessage id="feedbackswitch.issue_content_headline" />}
+                multiline
+                fullWidth
+                rows="6"
+                margin="normal"
+                variant="outlined"
+              />
+            </CardContent>
+          </Card>
+          <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+            <FormattedMessage id="feedbackswitch.sendbutton" />
+          </Button>
+        </DialogContent>
       </Dialog>
     );
   }
@@ -96,7 +96,7 @@ class Feedback extends React.Component {
 
 Feedback.propTypes = {
   onClose: PropTypes.func,
-  classes: PropTypes.isRequired
+  classes: PropTypes.string
 };
 
 export default (Feedback);

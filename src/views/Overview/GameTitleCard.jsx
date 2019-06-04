@@ -14,7 +14,6 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 
 class GameTitleCard extends Component {
-
   constructor(props) {
     super(props);
   }
@@ -26,9 +25,9 @@ class GameTitleCard extends Component {
 
   render() {
     const { utilities } = this.props;
-    if(utilities.retrieve != null){
-      var title = utilities.retrieve.title
-      var game = utilities.retrieve.game
+    if (utilities.retrieve != null) {
+      var { title } = utilities.retrieve;
+      var { game } = utilities.retrieve;
     }
     return (
       <Card className="pluginCard" style={{ marginTop: '15px' }}>
@@ -52,7 +51,7 @@ class GameTitleCard extends Component {
                         </Icon>
                       </IconButton>
                     </InputAdornment>
-                  ),
+                  )
                 }}
               />
             </Grid>
@@ -75,7 +74,7 @@ class GameTitleCard extends Component {
                         </Icon>
                       </IconButton>
                     </InputAdornment>
-                  ),
+                  )
                 }}
               />
             </Grid>
@@ -92,7 +91,7 @@ GameTitleCard.propTypes = {
     retrieve: PropTypes.arrayOf(PropTypes.shape({
       game: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired
-    })),
+    }))
   })),
   disabled: PropTypes.bool.isRequired
 };
@@ -105,7 +104,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(utilitiesOperations.verifyData()),
-  updateUtilities: () => dispatch(utilitiesOperations.loadUtilities()),
+  updateUtilities: () => dispatch(utilitiesOperations.loadUtilities())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameTitleCard);

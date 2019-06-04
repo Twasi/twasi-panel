@@ -186,7 +186,6 @@ class Sidebar extends Component {
             value={item.key}
             key={item.key}
             selected={selectedKey === item.key}
-            innerDivStyle={{ padding: '0px 16px 0px 52px' }}
             onClick={event => this.handleClick(event, item.key)}
           >
             <i className="material-icons" style={{ marginRight: '15px' }}>{item.icon}</i>
@@ -218,7 +217,6 @@ class Sidebar extends Component {
             >
               <MenuItem
                 style={{ fontSize: 13 }}
-                innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 onClick={() => window.open('https://docs.twasi.net', '_blank')}
               >
                 <i className="material-icons" style={{ marginRight: '15px' }}>language</i>
@@ -226,7 +224,6 @@ class Sidebar extends Component {
               </MenuItem>
               <MenuItem
                 style={{ fontSize: 13 }}
-                innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 value="support"
                 key="support"
                 selected={selectedKey === 'support'}
@@ -239,7 +236,6 @@ class Sidebar extends Component {
               </MenuItem>
               <MenuItem
                 style={{ fontSize: 13 }}
-                innerDivStyle={{ padding: '0px 16px 0px 52px' }}
                 onClick={() => {
                   localStorage.clear();
                   window.location = 'https://twasi.net';
@@ -265,7 +261,7 @@ Sidebar.propTypes = {
   }).isRequired,
   intl: intlShape,
   userName: PropTypes.string,
-  plugins: PropTypes.shape({})
+  plugins: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 const mapStateToProps = state => ({

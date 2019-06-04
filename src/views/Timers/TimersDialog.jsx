@@ -35,7 +35,7 @@ class Timer extends React.Component {
   };
 
   state = {
-    interval: 0,
+    interval: 0
   };
 
   getCooldown() {
@@ -44,17 +44,14 @@ class Timer extends React.Component {
         return '1 Minute';
       } else if (this.state.interval === 60) {
         this.state.interval = 1;
-        return this.state.interval+' Stunde';
-      } else {
-        if (this.state.interval > 1) {
-          return this.state.interval+' Minuten';
-        } else {
-          return this.state.interval+' Minute';
-        }
+        return `${this.state.interval} Stunde`;
       }
-    } else {
-      return 'Fehler';
+      if (this.state.interval > 1) {
+        return `${this.state.interval} Minuten`;
+      }
+      return `${this.state.interval} Minute`;
     }
+    return 'Fehler';
   }
 
   render() {
@@ -66,65 +63,65 @@ class Timer extends React.Component {
         onClose={this.handleClose}
         {...other}
       >
-          <DialogContent>
-            <Typography>
-              <h3 className="pageContainerTitle">
-                <FormattedMessage id="timers.new_timer" />
-              </h3>
-              <small>
-                <FormattedMessage id="timers.new_timer.subheadline" />
-              </small>
-            </Typography>
-            <br /><br />
-            <Card className="pluginCard">
-              <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  id="outlined-textarea"
-                  label={<FormattedMessage id="timers.new_timer.timer" />}
-                  fullWidth
-                  placeholder="Beispiel: !hosts"
-                  helperText="Das ist dein Timer. Der Timer wird automatisch in dem eingestellten Interval ausgelöst."
-                  margin="normal"
-                  variant="outlined"
-                />
-              </CardContent>
-            </Card>
-            <Card className="pluginCard" style={{ marginTop: '15px' }}>
-              <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  id="outlined-textarea"
-                  label={<FormattedMessage id="timers.new_timer.output" />}
-                  fullWidth
-                  placeholder="Beispiel: Mein Bot heißt Twasibot."
-                  multiline
-                  rows="3"
-                  helperText="Das ist die Ausgabe deines Timers."
-                  margin="normal"
-                  variant="outlined"
-                />
-              </CardContent>
-            </Card>
-            <Card className="pluginCard" style={{ marginTop: '15px' }}>
-              <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-                <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Interval: {this.getCooldown()}</Typography>
-                <Slider
-                  style={{ padding: '22px 0px' }}
-                  aria-labelledby="label"
-                  value={interval}
-                  min={0}
-                  max={60}
-                  step={1}
-                  onChange={this.handleChange}
-                />
-                <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Interval von bis zu einer Stunde einstellen.</Typography>
-              </CardContent>
-            </Card>
-            <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
-              <FormattedMessage id="timers.new_timer.savetimer" />
-            </Button>
-          </DialogContent>
+        <DialogContent>
+          <Typography>
+            <h3 className="pageContainerTitle">
+              <FormattedMessage id="timers.new_timer" />
+            </h3>
+            <small>
+              <FormattedMessage id="timers.new_timer.subheadline" />
+            </small>
+          </Typography>
+          <br /><br />
+          <Card className="pluginCard">
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                id="outlined-textarea"
+                label={<FormattedMessage id="timers.new_timer.timer" />}
+                fullWidth
+                placeholder="Beispiel: !hosts"
+                helperText="Das ist dein Timer. Der Timer wird automatisch in dem eingestellten Interval ausgelöst."
+                margin="normal"
+                variant="outlined"
+              />
+            </CardContent>
+          </Card>
+          <Card className="pluginCard" style={{ marginTop: '15px' }}>
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                id="outlined-textarea"
+                label={<FormattedMessage id="timers.new_timer.output" />}
+                fullWidth
+                placeholder="Beispiel: Mein Bot heißt Twasibot."
+                multiline
+                rows="3"
+                helperText="Das ist die Ausgabe deines Timers."
+                margin="normal"
+                variant="outlined"
+              />
+            </CardContent>
+          </Card>
+          <Card className="pluginCard" style={{ marginTop: '15px' }}>
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
+              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Interval: {this.getCooldown()}</Typography>
+              <Slider
+                style={{ padding: '22px 0px' }}
+                aria-labelledby="label"
+                value={interval}
+                min={0}
+                max={60}
+                step={1}
+                onChange={this.handleChange}
+              />
+              <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Interval von bis zu einer Stunde einstellen.</Typography>
+            </CardContent>
+          </Card>
+          <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+            <FormattedMessage id="timers.new_timer.savetimer" />
+          </Button>
+        </DialogContent>
       </Dialog>
     );
   }

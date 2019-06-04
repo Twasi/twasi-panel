@@ -6,7 +6,7 @@ export default createMuiTheme({
   palette: {
     type: 'dark',
     background: {
-      default: '#0f0e11',
+      default: '#0f0e11'
     },
     primary: {
       main: '#5f459a',
@@ -39,7 +39,7 @@ export default createMuiTheme({
       },
       elevation4: {
         boxShadow: 'none'
-      },
+      }
     },
     MuiBadge: {
       badge: {
@@ -60,10 +60,6 @@ export default createMuiTheme({
         '&:hover': {
           backgroundColor: '#0f0e11'
         }
-      },
-      selected: { // Name of the rule
-        color: '#ffffff',
-        background: 'linear-gradient(135deg, #4b367c, #5f459a)'
       }
     },
     MuiListItemText: { // Name of the component ⚛️ / style sheet
@@ -135,20 +131,20 @@ export default createMuiTheme({
     },
     MUIDataTableToolbar: {
       root: {
-        padding: '23px',
+        padding: '23px'
       },
       titleText: {
         color: '#b7b7b7'
       },
       icon: {
         color: '#b7b7b7'
-      },
+      }
     },
     MUIDataTableHeadCell: {
       fixedHeader: {
         backgroundColor: '#19171c',
-        borderBottom: '3px solid #5f459a',
-      },
+        borderBottom: '3px solid #5f459a'
+      }
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       body: { // Name of the rule
@@ -214,10 +210,10 @@ export default createMuiTheme({
       tooltip: { // Name of the rule
         color: '#ffffff', // Some CSS
         backgroundColor: 'rgba(0,0,0,0.0)',
-        opacity: '1',
+        opacity: '1'
       },
       popper: {
-        opacity: '1',
+        opacity: '1'
       }
     },
     MuiDivider: {
@@ -227,11 +223,11 @@ export default createMuiTheme({
       root: {
         color: 'rgba(255, 255, 255, 0.7)',
         fontSize: '0.875em',
-        borderBottom: '0px',
+        borderBottom: '0px'
       },
       icon: {
-        color: 'rgba(255, 255, 255, 0.7)',
-      },
+        color: 'rgba(255, 255, 255, 0.7)'
+      }
     },
     MuiExpansionPanelSummary: {
       root: {
@@ -253,5 +249,8 @@ export default createMuiTheme({
         height: '20px'
       }
     }
+  },
+  typography: {
+    useNextVariants: true
   }
 });

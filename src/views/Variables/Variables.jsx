@@ -11,18 +11,15 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
-import Chip from '@material-ui/core/Chip';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import Checkbox from '@material-ui/core/Checkbox';
 
 import { variablesSelectors, variablesOperations } from '../../state/variables';
 
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
 
 class Variables extends Component {
-
   constructor(props) {
     super(props);
 

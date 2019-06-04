@@ -26,7 +26,7 @@ import './_style.css';
 
 class Urlshortener extends Component {
   state = {
-    protocol: 10,
+    protocol: 10
   };
 
   handleChange = event => {
@@ -110,20 +110,20 @@ class Urlshortener extends Component {
                         <InputAdornment
                           style={{
                             padding: '0px',
-                            zIndex: '1',
+                            zIndex: '1'
                           }}
                           position="start"
                         >
-                            <Select
-                              disableUnderline={true}
-                              value={this.state.protocol}
-                              onChange={this.handleChange}
-                              inputProps={{
-                                name: 'protocol',
-                              }}>
-                              <MenuItem value={10}>http://</MenuItem>
-                              <MenuItem value={20}>https://</MenuItem>
-                            </Select>
+                          <Select
+                            disableUnderline
+                            value={this.state.protocol}
+                            onChange={this.handleChange}
+                            inputProps={{
+                              name: 'protocol'
+                            }}>
+                            <MenuItem value={10}>http://</MenuItem>
+                            <MenuItem value={20}>https://</MenuItem>
+                          </Select>
                         </InputAdornment>
                       )
                     }}

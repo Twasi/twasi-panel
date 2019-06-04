@@ -6,7 +6,7 @@ export default createMuiTheme({
   palette: {
     type: 'light',
     background: {
-      default: '#e6e6e6',
+      default: '#e6e6e6'
     },
     primary: {
       main: '#00aeae',
@@ -39,7 +39,7 @@ export default createMuiTheme({
       },
       elevation4: {
         boxShadow: 'none'
-      },
+      }
     },
     MuiBadge: {
       badge: {
@@ -60,10 +60,6 @@ export default createMuiTheme({
         '&:hover': {
           backgroundColor: '#efefef'
         }
-      },
-      selected: { // Name of the rule
-        color: '#ffffff',
-        background: 'linear-gradient(135deg,#00aeae,#02d4d4)'
       }
     },
     MuiListItemText: { // Name of the component ⚛️ / style sheet
@@ -135,20 +131,20 @@ export default createMuiTheme({
     },
     MUIDataTableToolbar: {
       root: {
-        padding: '23px',
+        padding: '23px'
       },
       titleText: {
         color: '#636363'
       },
       icon: {
         color: '#636363'
-      },
+      }
     },
     MUIDataTableHeadCell: {
       fixedHeader: {
         backgroundColor: '#fff',
-        borderBottom: '3px solid #00aeae',
-      },
+        borderBottom: '3px solid #00aeae'
+      }
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
       body: { // Name of the rule
@@ -209,27 +205,27 @@ export default createMuiTheme({
     MuiTypography: { // Name of the component ⚛️ / style sheet
       body1: { // Name of the rule
         color: '#636363' // Some CSS
-      },
+      }
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet
       tooltip: { // Name of the rule
         color: '#b7b7b7', // Some CSS
         backgroundColor: 'rgba(0,0,0,0.0)',
-        opacity: '1',
+        opacity: '1'
       },
       popper: {
-        opacity: '1',
+        opacity: '1'
       }
     },
     MuiSelect: {
       root: {
         color: 'rgba(0, 0, 0, 0.54)',
         fontSize: '0.875em',
-        borderBottom: '0px',
+        borderBottom: '0px'
       },
       icon: {
-        color: 'rgba(0, 0, 0, 0.54)',
-      },
+        color: 'rgba(0, 0, 0, 0.54)'
+      }
     },
     MuiExpansionPanelSummary: {
       root: {
@@ -251,5 +247,8 @@ export default createMuiTheme({
         height: '20px'
       }
     }
+  },
+  typography: {
+    useNextVariants: true
   }
 });

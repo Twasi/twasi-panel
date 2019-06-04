@@ -23,9 +23,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 
 import DummyLoadingPage from '../DummyLoadingPage';
 
@@ -34,15 +31,15 @@ import { pluginsOperations } from '../../state/plugins';
 
 import './_style.css';
 
-let id = 0;
+// let id = 0;
 function createData(name, description) {
-  id += 1;
+  // id += 1;
   return { name, description };
 }
 
 const rows = [
-  createData( 'Befehle', 'Ermöglicht das Hinzufügen, Entfernen und Bearbeiten von Textbefehlen im Chat.'),
-  createData( 'Giveaways', 'Funktionen, um ein Giveaway zu veranstallten.'),
+  createData('Befehle', 'Ermöglicht das Hinzufügen, Entfernen und Bearbeiten von Textbefehlen im Chat.'),
+  createData('Giveaways', 'Funktionen, um ein Giveaway zu veranstallten.')
 ];
 
 class Welcome extends Component {
@@ -104,44 +101,44 @@ class Welcome extends Component {
                 Wie du an einen Beta Code kommst erfährst du <Link color="primary" href="/">hier</Link>.
               </small>
             </Typography>
-              <Card className="pluginCard" style={{ marginTop: '25px' }}>
-                <CardContent style={{ padding: '24px', marginBottom: '25px' }}>
-                  <TextField
-                    style={{ marginBottom: '25px' }}
-                    label="Dein Beta Key"
-                    multiline
-                    fullWidth
-                    variant="outlined"
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                    placeholder="tWiTcH"
-                    // Falls gültig color auf primary und Text abändern.
-                    helperText={<Typography color="secondary">Dieser Key ist ungültig.</Typography>}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <Icon>
+            <Card className="pluginCard" style={{ marginTop: '25px' }}>
+              <CardContent style={{ padding: '24px', marginBottom: '25px' }}>
+                <TextField
+                  style={{ marginBottom: '25px' }}
+                  label="Dein Beta Key"
+                  multiline
+                  fullWidth
+                  variant="outlined"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  placeholder="tWiTcH"
+                  // Falls gültig color auf primary und Text abändern.
+                  helperText={<Typography color="secondary">Dieser Key ist ungültig.</Typography>}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Icon>
                             vpn_key
-                          </Icon>
-                        </InputAdornment>
-                      )
-                    }}
-                  />
-                  <FormControlLabel
-                    style={{ margin: '0px' }}
-                    control={
-                      <Checkbox color="primary" value="checkedA" />
-                    }
-                    label={<Typography>Ich habe die <Link color="primary" href="/">Nutzungsbedingungen</Link> gelesen und akzeptiere diese.</Typography>}
-                  />
-                </CardContent>
-              </Card>
-              <Typography>
+                        </Icon>
+                      </InputAdornment>
+                    )
+                  }}
+                />
+                <FormControlLabel
+                  style={{ margin: '0px' }}
+                  control={
+                    <Checkbox color="primary" value="checkedA" />
+                  }
+                  label={<Typography>Ich habe die <Link color="primary" href="/">Nutzungsbedingungen</Link> gelesen und akzeptiere diese.</Typography>}
+                />
+              </CardContent>
+            </Card>
+            <Typography>
                 Bitte <b>UNBEDINGT BEACHTEN</b>, dass dies eine sehr frühe Version ist und viele Funktionen noch nicht bzw. nur bedingt funktionieren.<br />
                 Es werden regelmäßig neue Elemente und Funktionen hinzugefügt.<br /><br />
                 Wir übernehmen keine Gewähr für verloren gegangene Daten während der neuen Versionen.
-              </Typography>
+            </Typography>
 
             {/*
               Wir freuen uns, dass du dich für Twasi als Chatbot entschieden
@@ -193,8 +190,7 @@ class Welcome extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map(row => {
-                  return (
+                {rows.map(row => (
                   <TableRow>
                     <TableCell>
                       {row.name}
@@ -211,8 +207,7 @@ class Welcome extends Component {
                       </Button>
                     </TableCell>
                   </TableRow>
-                  );
-                })}
+                ))}
               </TableBody>
             </Table>
           </div>
@@ -246,7 +241,7 @@ class Welcome extends Component {
       return children;
     }
     if (userStatus === 'SETUP') {
-      const { finished, stepIndex } = this.state;
+      const { stepIndex } = this.state;
       const contentStyle = { margin: '0 16px' };
       return (
         <div className="contentWelcome">
@@ -273,41 +268,41 @@ class Welcome extends Component {
                 </Step>
               </Stepper>
               <div style={contentStyle}>
-                  <div>
-                    <p>{this.getStepContent(stepIndex)}</p>
-                    <Divider />
-                    <div style={{ marginTop: 20 }}>
-                      <Button
-                        color="primary"
-                        variant="contained"
-                        disabled={stepIndex === 0}
-                        onClick={this.handlePrev}
-                        style={{ marginRight: 12 }}
-                      >
+                <div>
+                  <p>{this.getStepContent(stepIndex)}</p>
+                  <Divider />
+                  <div style={{ marginTop: 20 }}>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      disabled={stepIndex === 0}
+                      onClick={this.handlePrev}
+                      style={{ marginRight: 12 }}
+                    >
                           Zurück
-                      </Button>
-                      <Button
-                        color="primary"
-                        variant="contained"
-                        onClick={this.handleNext}
-                      >
-                        {(() => {
-                          switch (stepIndex) {
-                            case 0:
-                              return "Los Geht's";
-                            case 1:
-                              return 'Weiter';
-                            case 2:
-                              return 'Weiter';
-                            case 3:
-                              return 'Zum Panel';
-                            default:
-                              return null;
-                          }
-                        })()}
-                      </Button>
-                    </div>
+                    </Button>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      onClick={this.handleNext}
+                    >
+                      {(() => {
+                        switch (stepIndex) {
+                          case 0:
+                            return "Los Geht's";
+                          case 1:
+                            return 'Weiter';
+                          case 2:
+                            return 'Weiter';
+                          case 3:
+                            return 'Zum Panel';
+                          default:
+                            return null;
+                        }
+                      })()}
+                    </Button>
                   </div>
+                </div>
               </div>
             </Paper>
           </div>
