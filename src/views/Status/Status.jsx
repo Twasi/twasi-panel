@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';

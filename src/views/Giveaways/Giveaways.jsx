@@ -4,7 +4,6 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
-import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';

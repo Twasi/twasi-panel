@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import * as am4core from '@amcharts/amcharts4/core';
-import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected';
 
@@ -42,8 +40,8 @@ class ChattersChart extends Component {
 
     const chattersdata = streamtracker.topChatters;
     const data = [];
-    chattersdata.forEach((entry, index) => {
-      if (entry.displayName.toLowerCase() == 'blechkelle' || entry.displayName.toLowerCase() == 'diesermerlin' || entry.displayName.toLowerCase() == 'larcce' || entry.displayName.toLowerCase() == 'tom_meka') {
+    chattersdata.forEach(entry => {
+      if (['blechkelle', 'diesermerlin', 'larcce', 'tom_meka'].contains(entry.displayName.toLowerCase())) {
         data.push({
           displayName: entry.displayName,
           messages: entry.messages,

@@ -59,6 +59,10 @@ export default createMuiTheme({
         padding: '10px',
         '&:hover': {
           backgroundColor: '#162226'
+        },
+        '&$selected': { // Name of the rule
+          color: '#ffffff',
+          background: 'linear-gradient(135deg,#00aeae,#02d4d4)'
         }
       }
     },

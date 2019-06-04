@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
@@ -14,10 +13,6 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 
 class GameTitleCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { updateUtilities } = this.props;
     updateUtilities();

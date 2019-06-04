@@ -63,9 +63,7 @@ class Songrequests extends React.Component {
   }
 
   render() {
-    const { volume } = this.state;
-    const { time } = this.state;
-    const { anchorEl } = this.state;
+    const { volume, time } = this.state;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">

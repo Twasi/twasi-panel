@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import Button from '@material-ui/core/Button';

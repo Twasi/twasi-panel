@@ -1,6 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import windows95background from '../../views/common/resources/windows95-background.png';
 import './windows95.css';
 
 export default createMuiTheme({
@@ -62,6 +61,10 @@ export default createMuiTheme({
         padding: '10px',
         '&:hover': {
           backgroundColor: '#bdbebd'
+        },
+        '&$selected': { // Name of the rule
+          color: '#000000',
+          backgroundColor: '#000080'
         }
       }
     },

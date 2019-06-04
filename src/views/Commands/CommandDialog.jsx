@@ -15,8 +15,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
-// import PersonIcon from '@material-ui/icons/Person';
-// import AddIcon from '@material-ui/icons/Add';
 
 import './_style.css';
 
@@ -41,23 +39,25 @@ class Command extends React.Component {
   };
 
   getCooldown() {
-    if (this.state.cooldown <= 59) {
-      if (this.state.cooldown === 0) {
+    let cd = this.state.cooldown;
+
+    if (cd <= 59) {
+      if (cd === 0) {
         return 'Keinen Cooldown festgelegt';
       }
-      if (this.state.cooldown > 1) {
-        return `${this.state.cooldown} Sekunden`;
+      if (cd > 1) {
+        return `${cd} Sekunden`;
       }
-      return `${this.state.cooldown} Sekunde`;
-    } else if (this.state.cooldown >= 60) {
-      this.state.cooldown -= 59;
-      if (this.state.cooldown === 60) {
+      return `${cd} Sekunde`;
+    } else if (cd >= 60) {
+      cd -= 59;
+      if (cd === 60) {
         return '1 Stunde';
       }
-      if (this.state.cooldown > 1) {
-        return `${this.state.cooldown} Minuten`;
+      if (cd > 1) {
+        return `${cd} Minuten`;
       }
-      return `${this.state.cooldown} Minute`;
+      return `${cd} Minute`;
     }
     return 'Fehler';
   }

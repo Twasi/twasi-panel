@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
@@ -42,7 +40,7 @@ class ViewerChart extends Component {
     let game = '';
     streamtracker.data.forEach((entry, index) => {
       game = entry.game;
-      if (game != entry.game) {
+      if (game !== entry.game) {
         data.push({
           viewerCount: entry.viewerCount,
           game: entry.game,

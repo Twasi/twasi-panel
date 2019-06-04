@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 
-import Chip from '@material-ui/core/Chip';
 import { authSelectors } from '../../../state/auth';
 
 class Rank extends Component {

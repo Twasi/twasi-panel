@@ -2,11 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
@@ -149,7 +147,6 @@ class Support extends Component {
   }
 
   render() {
-    const { userName, avatar, ...other } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
