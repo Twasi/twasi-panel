@@ -209,6 +209,9 @@ export default createMuiTheme({
     MuiTypography: { // Name of the component ⚛️ / style sheet
       body1: { // Name of the rule
         color: '#ced3df' // Some CSS
+      },
+      body2: { // Name of the rule
+        color: '#ced3df' // Some CSS
       }
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet

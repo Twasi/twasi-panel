@@ -41,7 +41,7 @@ class ChattersChart extends Component {
     const chattersdata = streamtracker.topChatters;
     const data = [];
     chattersdata.forEach(entry => {
-      if (['blechkelle', 'diesermerlin', 'larcce', 'tom_meka'].contains(entry.displayName.toLowerCase())) {
+      if (entry.displayName.toLowerCase() === 'blechkelle' || entry.displayName.toLowerCase() === 'diesermerlin' || entry.displayName.toLowerCase() === 'larcce' || entry.displayName.toLowerCase() === 'tom_meka') {
         data.push({
           displayName: entry.displayName,
           messages: entry.messages,

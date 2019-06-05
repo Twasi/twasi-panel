@@ -63,7 +63,7 @@ export default createMuiTheme({
           backgroundColor: '#bdbebd'
         },
         '&$selected': { // Name of the rule
-          color: '#000000',
+          color: '#ffffff',
           backgroundColor: '#000080'
         }
       }
@@ -274,6 +274,9 @@ export default createMuiTheme({
         color: '#000000'
       },
       body1: { // Name of the rule
+        color: '#000000' // Some CSS
+      },
+      body2: { // Name of the rule
         color: '#000000' // Some CSS
       }
     },
