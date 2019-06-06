@@ -5,7 +5,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Button from '@material-ui/core/Button';
 import Chip from '@material-ui/core/Chip';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -143,12 +142,13 @@ class Public extends React.Component {
                         <TableCell>
                           {(() => {
                             switch (row.place) {
-                              case 1: return ( <img
-                                className="rank_trophy"
-                                style={{ height: '32px' }}
-                                src={first_place}
-                                alt="first_place"
-                              />);
+                              case 1: return ( <div className="rank_trophy">
+                                <img
+                                  style={{ height: '32px' }}
+                                  src={first_place}
+                                  alt="first_place"
+                                />
+                              </div>);
                               case 2: return ( <img
                                 className="rank_trophy_two"
                                 style={{ height: '32px' }}
@@ -171,6 +171,7 @@ class Public extends React.Component {
                         <TableCell style={{ color: `#${generateStringColor(row.name)}` }}><b>{row.name}</b></TableCell>
                         <TableCell>
                           <Chip
+                            style={{ height: '21px' }}
                             label={row.points}
                             color="primary"
                           />
