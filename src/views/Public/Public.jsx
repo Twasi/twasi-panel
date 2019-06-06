@@ -11,6 +11,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 import first_place from '../common/resources/first_place.svg';
 import second_place from '../common/resources/second_place.svg';
@@ -70,7 +71,7 @@ class Public extends React.Component {
     const { value } = this.state;
 
     return (
-      <div className="pageContent">
+      <div>
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs
             value={value}
@@ -113,81 +114,75 @@ class Public extends React.Component {
             </Table>
           </Paper>
         </TabContainer>}
-        {value === 1 && <TabContainer>Item Two</TabContainer>}
+        {value === 1 && <TabContainer></TabContainer>}
         {value === 2 && <TabContainer>
-          <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-            <Typography>
-              <h3 className="pageContainerTitle">Bestenliste
-                <span style={{ float: 'right' }}>
-                  <Button variant="contained" color="primary">
-                    Mit Twitch verbinden
-                  </Button>
-                </span>
-              </h3>
-              <small>
-                Hier findest du die Bestenliste.
-              </small><br /><br />
-            </Typography>
-            <Chip
-              color="primary"
-              avatar={<Avatar>5</Avatar>}
-              label="Punkte jede Minute"
-            />
-          </Paper>
-          <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', marginBottom: '15px', borderRadius: '0px 0px 4px 4px' }}>
-            <Table>
-              <TableHead>
-                <TableRow className="TableRow">
-                  <TableCell>Platzierung</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Punkte</TableCell>
-                  <TableCell>Zugeschaute Zeit</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map(row => (
-                  <TableRow key={row.id}>
-                    <TableCell>
-                      {(() => {
-                        switch (row.place) {
-                          case 1: return ( <img
-                            className="rank_trophy"
-                            style={{ height: '32px' }}
-                            src={first_place}
-                            alt="first_place"
-                          />);
-                          case 2: return ( <img
-                            className="rank_trophy_two"
-                            style={{ height: '32px' }}
-                            src={second_place}
-                            alt="second_place"
-                          />);
-                          case 3: return ( <img
-                            className="rank_trophy_three"
-                            style={{ height: '32px' }}
-                            src={third_place}
-                            alt="third_place"
-                          />);
-                          default: return ( <Chip
-                            label={row.place}
+          <Grid container spacing={24}>
+            <Grid item xs={12} sm={3}>
+              <Paper className="pageContainer">
+                <Chip
+                  color="primary"
+                  avatar={<Avatar>5</Avatar>}
+                  label="Punkte jede Minute"
+                />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', marginBottom: '15px' }}>
+                <Table>
+                  <TableHead>
+                    <TableRow className="TableRow">
+                      <TableCell>Platzierung</TableCell>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Punkte</TableCell>
+                      <TableCell>Zugeschaute Zeit</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rows.map(row => (
+                      <TableRow key={row.id}>
+                        <TableCell>
+                          {(() => {
+                            switch (row.place) {
+                              case 1: return ( <img
+                                className="rank_trophy"
+                                style={{ height: '32px' }}
+                                src={first_place}
+                                alt="first_place"
+                              />);
+                              case 2: return ( <img
+                                className="rank_trophy_two"
+                                style={{ height: '32px' }}
+                                src={second_place}
+                                alt="second_place"
+                              />);
+                              case 3: return ( <img
+                                className="rank_trophy_three"
+                                style={{ height: '32px' }}
+                                src={third_place}
+                                alt="third_place"
+                              />);
+                              default: return ( <Chip
+                                label={row.place}
+                                color="primary"
+                              />);
+                            }
+                          })()}
+                        </TableCell>
+                        <TableCell style={{ color: `#${generateStringColor(row.name)}` }}><b>{row.name}</b></TableCell>
+                        <TableCell>
+                          <Chip
+                            label={row.points}
                             color="primary"
-                          />);
-                        }
-                      })()}
-                    </TableCell>
-                    <TableCell style={{ color: `#${generateStringColor(row.name)}` }}><b>{row.name}</b></TableCell>
-                    <TableCell>
-                      <Chip
-                        label={row.points}
-                        color="primary"
-                      />
-                    </TableCell>
-                    <TableCell>{row.viewtime}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Paper>
+                          />
+                        </TableCell>
+                        <TableCell>{row.viewtime}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </Paper>
+            </Grid>
+          </Grid>
         </TabContainer>}
       </div>
     );
