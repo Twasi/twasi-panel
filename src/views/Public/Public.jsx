@@ -12,6 +12,12 @@ import Tab from '@material-ui/core/Tab';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
+import first_place from '../common/resources/first_place.svg';
+import second_place from '../common/resources/second_place.svg';
+import third_place from '../common/resources/third_place.svg';
+
+import './_style.css';
+
 function TabContainer(props) {
   return (
     <div>
@@ -142,10 +148,32 @@ class Public extends React.Component {
                 {rows.map(row => (
                   <TableRow key={row.id}>
                     <TableCell>
-                      <Chip
-                        label={row.place}
-                        color="primary"
-                      />
+                      {(() => {
+                        switch (row.place) {
+                          case 1: return ( <img
+                            className="rank_trophy"
+                            style={{ height: '32px' }}
+                            src={first_place}
+                            alt="first_place"
+                          />);
+                          case 2: return ( <img
+                            className="rank_trophy_two"
+                            style={{ height: '32px' }}
+                            src={second_place}
+                            alt="second_place"
+                          />);
+                          case 3: return ( <img
+                            className="rank_trophy_three"
+                            style={{ height: '32px' }}
+                            src={third_place}
+                            alt="third_place"
+                          />);
+                          default: return ( <Chip
+                            label={row.place}
+                            color="primary"
+                          />);
+                        }
+                      })()}
                     </TableCell>
                     <TableCell style={{ color: `#${generateStringColor(row.name)}` }}><b>{row.name}</b></TableCell>
                     <TableCell>

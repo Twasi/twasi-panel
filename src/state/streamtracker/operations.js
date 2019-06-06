@@ -24,7 +24,7 @@ const loadStreamtracker = () => (dispatch, getState) => {
 const loadGlobalStreamtracker = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
-  getUserGraph('globalStats{totalTrackedViewers,totalTrackedStreams,totalTrackedMessages}', jwt, 'streamtracker').then(data => {
+  getUserGraph('globalStats{totalTrackedViewers,totalTrackedStreams,totalTrackedMessages,viewTime{twitchId,displayName,minutes}}', jwt, 'streamtracker').then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
