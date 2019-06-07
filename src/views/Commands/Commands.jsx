@@ -31,6 +31,7 @@ class Commands extends Component {
     };
 
     this.handleClose = this.handleClose.bind(this);
+    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
 
     this.renderCommands = this.renderCommands.bind(this);
   }
@@ -42,6 +43,12 @@ class Commands extends Component {
 
   handleClose() {
     this.setState({ open: false });
+  }
+
+  handleClickBreadCrumb(event, value) {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
   }
 
   renderCommands() {
@@ -105,7 +112,7 @@ class Commands extends Component {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" href="/">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.commands" /></Typography>

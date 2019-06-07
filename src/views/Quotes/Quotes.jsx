@@ -111,8 +111,14 @@ class Quotes extends Component {
     };
 
     this.handleClose = this.handleClose.bind(this);
-
+    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.renderQuotes = this.renderQuotes.bind(this);
+  }
+
+  handleClickBreadCrumb(event, value) {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
   }
 
   componentDidMount() {
@@ -136,7 +142,7 @@ class Quotes extends Component {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" href="/">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.quotes" /></Typography>
