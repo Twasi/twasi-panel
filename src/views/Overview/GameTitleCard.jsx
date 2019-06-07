@@ -12,12 +12,11 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 
-var isRendered = false;
-
 class GameTitleCard extends Component {
   state = {
     title: '',
     game: '',
+    isRendered: false
   };
 
   componentDidMount() {
@@ -39,8 +38,8 @@ class GameTitleCard extends Component {
 
   render() {
     const { utilities } = this.props;
-    if(!isRendered && utilities.retrieve != null) {
-      isRendered = true;
+    if(!this.state.isRendered && utilities.retrieve != null) {
+      this.state.isRendered = true;
       this.setState({
         title: utilities.retrieve.title,
         game: utilities.retrieve.game
