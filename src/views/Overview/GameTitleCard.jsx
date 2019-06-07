@@ -37,10 +37,10 @@ class GameTitleCard extends Component {
   };
 
   render() {
-    const { utilities, ...other } = this.props;
+    const { utilities } = this.props;
     if(!this.state.isRendered && utilities.retrieve != null) {
-      this.state.isRendered = true;
       this.setState({
+        isRendered: true,
         title: utilities.retrieve.title,
         game: utilities.retrieve.game
       });
