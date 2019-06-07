@@ -27,7 +27,7 @@ import { impersonateOperations } from '../../state/impersonate';
 
 import './_style.css';
 
-const accounts = ['Larcce', 'DieserMerlin', 'mekalix', 'Spendendose'];
+const accounts = ['ProjektPing', 'Blechkelle', 'JustvarietyTV', 'Fosuak', 'Sklipie', 'ItsDailyTV'];
 
 class AccountSwitch extends React.Component {
   constructor(props) {
@@ -128,13 +128,14 @@ class AccountSwitch extends React.Component {
             </CardContent>
           </Card>
           }
+          {!window.originalJwt && adminAccess &&
           <Card className="pluginCard">
             <CardContent style={{ paddingTop: '15px', paddingBottom: '15px' }}>
               <List style={{ padding: '0px' }}>
                 {accounts.map(account => (
                   <ListItem
                     button
-                    onClick={() => this.handleListItemClick(account)}
+                    onClick={() => this.props.impersonate(account.toLowerCase())}
                     key={account}
                   >
                     <ListItemAvatar>
@@ -190,6 +191,7 @@ class AccountSwitch extends React.Component {
               </List>
             </CardContent>
           </Card>
+          }
         </DialogContent>
       </Dialog>
     );
