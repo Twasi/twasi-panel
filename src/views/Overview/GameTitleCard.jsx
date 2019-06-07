@@ -37,7 +37,7 @@ class GameTitleCard extends Component {
   };
 
   render() {
-    const { utilities } = this.props;
+    const { utilities, ...other } = this.props;
     if(!this.state.isRendered && utilities.retrieve != null) {
       this.state.isRendered = true;
       this.setState({
@@ -62,6 +62,7 @@ class GameTitleCard extends Component {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
+                      onClick={() => this.props.changeTitleGame(this.state.title, this.state.game)}
                       >
                         <Icon>
                           save
@@ -85,7 +86,7 @@ class GameTitleCard extends Component {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
-                        aria-label="send-support-message"
+                        onClick={() => this.props.changeTitleGame(this.state.title, this.state.game)}
                       >
                         <Icon>
                           save
@@ -121,6 +122,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  changeTitleGame: (newTitle, newGame) => dispatch(utilitiesOperations.changeTitleGame(newTitle, newGame)),
   verifyData: () => dispatch(utilitiesOperations.verifyData()),
   updateUtilities: () => dispatch(utilitiesOperations.loadUtilities())
 });

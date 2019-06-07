@@ -5,6 +5,12 @@ const updateUtilities = utilities => ({
   utilities
 });
 
+const updateTitleGame = (newTitle, newGame) => ({
+  type: types.UPDATE_TITLEGAME,
+  newTitle,
+  newGame
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -12,5 +18,6 @@ const updateDisabled = isDisabled => ({
 
 export default {
   updateUtilities,
+  updateTitleGame,
   updateDisabled
 };
