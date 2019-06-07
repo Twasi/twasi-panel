@@ -28,6 +28,8 @@ function hashCode(str) {
   return hash;
 }
 
+var chatters = 0
+
 class ChattersChart extends Component {
   componentDidMount() {
     const { streamtracker } = this.props;
@@ -41,6 +43,7 @@ class ChattersChart extends Component {
     const chattersdata = streamtracker.topChatters;
     const data = [];
     chattersdata.forEach(entry => {
+      chatters++
       if (entry.displayName.toLowerCase() === 'blechkelle' || entry.displayName.toLowerCase() === 'diesermerlin' || entry.displayName.toLowerCase() === 'larcce' || entry.displayName.toLowerCase() === 'tom_meka') {
         data.push({
           displayName: entry.displayName,
@@ -70,7 +73,12 @@ class ChattersChart extends Component {
     series.fillOpacity = 0.4;
     series.strokeWidth = 2;
     series.fontSize = 10;
-    series.minRadius = 20;
+    if(chatters > 30) {
+      series.minRadius = 10;
+      series.maxRadius = 20;
+    } else {
+      series.minRadius = 25;
+    }
 
     const icon = series.nodes.template.createChild(am4core.Image);
     icon.propertyFields.href = 'image';
