@@ -80,7 +80,7 @@ export default {
   'overview.table_views': 'Aufrufe +',
   'overview.table_viewermax': 'Zuschauer Maximum',
   'overview.table_average': 'Zuschauer Durchschnitt',
-  'overview.table_individual': 'Individuelle Zuschauer',
+  'overview.table_individual': 'Individuelle Chatter',
   'overview.title': 'Title',
   'overview.game': 'Spiel / Kategorie',
   'overview.viewercourse': 'Streamverlauf',

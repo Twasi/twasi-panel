@@ -12,17 +12,39 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 
+var isRendered = false;
+
 class GameTitleCard extends Component {
+  state = {
+    title: '',
+    game: '',
+  };
+
   componentDidMount() {
     const { updateUtilities } = this.props;
     updateUtilities();
   }
 
+  handleTitleChange = (event, props) => {
+    this.setState({
+      title: event.target.value
+    });
+  };
+
+  handleGameChange = (event) => {
+    this.setState({
+      game: event.target.value
+    });
+  };
+
   render() {
     const { utilities } = this.props;
-    if (utilities.retrieve != null) {
-      var { title } = utilities.retrieve;
-      var { game } = utilities.retrieve;
+    if(!isRendered && utilities.retrieve != null) {
+      isRendered = true;
+      this.setState({
+        title: utilities.retrieve.title,
+        game: utilities.retrieve.game
+      });
     }
     return (
       <Card className="pluginCard" style={{ marginTop: '15px' }}>
@@ -32,7 +54,8 @@ class GameTitleCard extends Component {
               <TextField
                 label={<FormattedMessage id="overview.title" />}
                 fullWidth
-                value={title}
+                value={this.state.title}
+                onChange={this.handleTitleChange}
                 margin="normal"
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}
@@ -54,7 +77,8 @@ class GameTitleCard extends Component {
               <TextField
                 label={<FormattedMessage id="overview.game" />}
                 fullWidth
-                value={game}
+                value={this.state.game}
+                onChange={this.handleGameChange}
                 margin="normal"
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}

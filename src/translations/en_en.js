@@ -79,7 +79,7 @@ export default {
   'overview.table_views': 'Views +',
   'overview.table_viewermax': 'Viewer Maximum',
   'overview.table_average': 'Viewer Average',
-  'overview.table_individual': 'Individual Viewers',
+  'overview.table_individual': 'Individual Chatters',
   'overview.title': 'Title',
   'overview.game': 'Game / Category',
   'overview.viewercourse': 'Streamcourse',

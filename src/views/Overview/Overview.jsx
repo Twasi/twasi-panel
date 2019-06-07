@@ -59,7 +59,6 @@ class Overview extends Component {
 
   render() {
     const { streamtracker, globalstreamtracker, utilities, disabled } = this.props;
-    console.log(disabled);
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }
