@@ -27,7 +27,7 @@ import { impersonateOperations } from '../../state/impersonate';
 
 import './_style.css';
 
-const accounts = ['ProjektPing', 'ZanderLP', 'Blechkelle', 'JustvarietyTV', 'Fosuak', 'Sklipie', 'ItsDailyTV'];
+const accounts = ['ProjektPing', 'ZanderLP', 'Pandorsaurus', 'JustvarietyTV', 'Fosuak', 'Sklipie', 'ItsDailyTV'];
 
 class AccountSwitch extends React.Component {
   constructor(props) {
