@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 
@@ -16,7 +17,8 @@ class GameTitleCard extends Component {
   state = {
     title: '',
     game: '',
-    isRendered: false
+    isRendered: false,
+    open: false,
   };
 
   componentDidMount() {
@@ -24,7 +26,7 @@ class GameTitleCard extends Component {
     updateUtilities();
   }
 
-  handleTitleChange = (event, props) => {
+  handleTitleChange = (event) => {
     this.setState({
       title: event.target.value
     });
@@ -35,6 +37,21 @@ class GameTitleCard extends Component {
       game: event.target.value
     });
   };
+
+  handleClick = (event) => {
+    this.setState({
+      open: true
+    });
+  };
+
+  handleClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    this.setState({
+      open: false
+    });
+  }
 
   render() {
     const { utilities } = this.props;
@@ -62,7 +79,7 @@ class GameTitleCard extends Component {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
-                      onClick={() => this.props.changeTitleGame(this.state.title, this.state.game)}
+                      onClick={() => this.props.changeTitleGame(this.state.title, this.state.game), this.handleClick}
                       >
                         <Icon>
                           save
@@ -86,7 +103,7 @@ class GameTitleCard extends Component {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
-                        onClick={() => this.props.changeTitleGame(this.state.title, this.state.game)}
+                        onClick={() => this.props.changeTitleGame(this.state.title, this.state.game), this.handleClick}
                       >
                         <Icon>
                           save
@@ -99,6 +116,16 @@ class GameTitleCard extends Component {
             </Grid>
           </Grid>
         </CardContent>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={5000}
+          onClose={this.handleClose}
+          message={"Der Titel und das Spiel wurden erfolgreich geändert."}
+        />
       </Card>
     );
   }
