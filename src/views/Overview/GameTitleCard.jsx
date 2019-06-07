@@ -79,7 +79,7 @@ class GameTitleCard extends Component {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
-                      onClick={() => this.props.changeTitleGame(this.state.title, this.state.game), this.handleClick}
+                      onClick={() => {this.props.changeTitleGame(this.state.title, this.state.game); this.handleClick()}}
                       >
                         <Icon>
                           save
@@ -103,7 +103,7 @@ class GameTitleCard extends Component {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
-                        onClick={() => this.props.changeTitleGame(this.state.title, this.state.game), this.handleClick}
+                        onClick={() => {this.props.changeTitleGame(this.state.title, this.state.game); this.handleClick()}}
                       >
                         <Icon>
                           save
