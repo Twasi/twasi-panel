@@ -140,7 +140,6 @@ class ViewerChart extends Component {
     commandslineSeries.tensionX = 0.77;
 
     chart.cursor = new am4charts.XYCursor();
-    chart.cursor.behavior = 'panX';
     chart.cursor.lineX.opacity = 1;
     chart.cursor.lineY.opacity = 0;
     chart.cursor.lineX.strokeWidth = 3;
