@@ -141,9 +141,12 @@ class ViewerChart extends Component {
 
     chart.cursor = new am4charts.XYCursor();
     chart.cursor.behavior = 'panX';
-    chart.cursor.lineX.opacity = 0;
+    chart.cursor.lineX.opacity = 1;
     chart.cursor.lineY.opacity = 0;
-    chart.cursor = new am4charts.XYCursor();
+    chart.cursor.lineX.strokeWidth = 3;
+    chart.cursor.lineX.strokeOpacity = 0.2;
+    chart.cursor.lineX.strokeDasharray = "";
+    chart.cursor.lineX.stroke = am4core.color("#ffffff");
 
     this.chart = chart;
   }
