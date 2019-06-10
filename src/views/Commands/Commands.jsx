@@ -182,7 +182,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateCommands: () => dispatch(commandsOperations.loadCommands())
+  updateCommands: () => dispatch(commandsOperations.loadCommands()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Commands);

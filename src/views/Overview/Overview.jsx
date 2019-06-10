@@ -65,6 +65,7 @@ class Overview extends Component {
     const { value } = this.state;
     return (
       <div className="pageContent">
+        {streamtracker.streamId != null &&
         <Container className="overviewHead">
           <Row>
             <Col sm={3}>
@@ -137,6 +138,7 @@ class Overview extends Component {
             </Col>
           </Row>
         </Container>
+        }
         {streamtracker.streamId != null &&
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs

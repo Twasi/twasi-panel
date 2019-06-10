@@ -6,6 +6,7 @@ import { authSelectors } from '../auth';
 
 const {
   updateCommands,
+  updateAddCommand,
   updateDisabled
 } = actions;
 
@@ -22,6 +23,16 @@ const loadCommands = () => (dispatch, getState) => {
   });
 };
 
+const addCommand = (name, content, cooldown) => (dispatch, getState) => {
+  const state = getState();
+  const jwt = authSelectors.getJwt(state);
+  getUserGraph(`commands{create(name: "${name}", content: "${content}", cooldown: ${cooldown})}`, jwt, 'commands').then(
+    data => {
+      dispatch(updateAddCommand(data.commands));
+    }
+  );
+};
+
 const verifyData = () => (dispatch, getState) => {
   const state = getState();
 
@@ -34,5 +45,6 @@ const verifyData = () => (dispatch, getState) => {
 
 export default {
   loadCommands,
+  addCommand,
   verifyData
 };

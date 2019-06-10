@@ -5,6 +5,13 @@ const updateCommands = commands => ({
   commands
 });
 
+const updateAddCommand = (name, content, cooldown) => ({
+  type: types.UPDATE_ADDCOMMAND,
+  name,
+  content,
+  cooldown
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -12,5 +19,6 @@ const updateDisabled = isDisabled => ({
 
 export default {
   updateCommands,
+  updateAddCommand,
   updateDisabled
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
@@ -16,9 +17,21 @@ import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 
+import { commandsSelectors, commandsOperations } from '../../state/commands';
+
 import './_style.css';
 
 class Command extends React.Component {
+
+  state = {
+    commandName: "",
+    commandContent: "",
+    commandCooldown: 0,
+    issue: 10,
+    labelWidth: 115,
+    cooldown: 0
+  };
+
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
@@ -27,15 +40,21 @@ class Command extends React.Component {
     this.props.onClose(value);
   };
 
-  handleChange = (event, cooldown) => {
+  handleCommandCooldown = (event, cooldown) => {
     this.setState({ [event.target.name]: event.target.value });
     this.setState({ cooldown });
   };
 
-  state = {
-    issue: 10,
-    labelWidth: 115,
-    cooldown: 0
+  handleCommandNameChange = (event) => {
+    this.setState({
+      commandName: event.target.value
+    });
+  };
+
+  handleCommandContentChange = (event) => {
+    this.setState({
+      commandContent: event.target.value
+    });
   };
 
   getCooldown() {
@@ -58,6 +77,27 @@ class Command extends React.Component {
         return `${cd} Minuten`;
       }
       return `${cd} Minute`;
+    }
+    return 'Fehler';
+  }
+
+  getSecondsFromCooldown() {
+    let cd = this.state.cooldown;
+
+    if (cd <= 59) {
+      return cd;
+    } else if (cd >= 60) {
+      cd -= 59;
+      if (cd === 60) {
+        //return '1 Stunde';
+        return 3600;
+      }
+      if (cd > 1) {
+        //return `${cd} Minuten`;
+        return cd * 60;
+      }
+      //return `${cd} Minute`;
+      return cd * 60;
     }
     return 'Fehler';
   }
@@ -88,6 +128,8 @@ class Command extends React.Component {
                 id="outlined-textarea"
                 label={<FormattedMessage id="commands.new_command.command" />}
                 fullWidth
+                value={this.state.commandName}
+                onChange={this.handleCommandNameChange}
                 placeholder="Beispiel: !bot"
                 helperText="Das ist dein Befehl. Der Befehl wird so ausgelöst, wie du ihn hier hinterlegst."
                 margin="normal"
@@ -95,6 +137,7 @@ class Command extends React.Component {
               />
             </CardContent>
           </Card>
+          {/*
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
               <TextField
@@ -109,6 +152,7 @@ class Command extends React.Component {
               />
             </CardContent>
           </Card>
+          */}
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
               <TextField
@@ -116,6 +160,8 @@ class Command extends React.Component {
                 id="outlined-textarea"
                 label={<FormattedMessage id="commands.new_command.output" />}
                 fullWidth
+                value={this.state.commandContent}
+                onChange={this.handleCommandContentChange}
                 placeholder="Beispiel: Mein Bot heißt Twasibot."
                 multiline
                 rows="3"
@@ -125,6 +171,7 @@ class Command extends React.Component {
               />
             </CardContent>
           </Card>
+          {/*
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
               <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
@@ -153,22 +200,28 @@ class Command extends React.Component {
               </FormControl>
             </CardContent>
           </Card>
+          */}
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
               <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {this.getCooldown()}</Typography>
               <Slider
                 style={{ padding: '22px 0px' }}
                 aria-labelledby="label"
-                value={cooldown}
+                value={this.state.cooldown}
                 min={0}
                 max={119}
                 step={1}
-                onChange={this.handleChange}
+                onChange={this.handleCommandCooldown}
               />
               <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Cooldown von bis zu einer Stunde einstellen.</Typography>
             </CardContent>
           </Card>
-          <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+          <Button
+            fullWidth
+            style={{ borderRadius: '4px', marginTop: '15px' }}
+            variant="contained"
+            color="primary"
+            onClick={() => {this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown())}}>
             <FormattedMessage id="commands.new_command.savecommand" />
           </Button>
         </DialogContent>
@@ -178,8 +231,17 @@ class Command extends React.Component {
 }
 
 Command.propTypes = {
-  onClose: PropTypes.func,
-  classes: PropTypes.isRequired
+  addCommand: PropTypes.func.isRequired,
 };
 
-export default (Command);
+const mapStateToProps = state => ({
+  isLoaded: commandsSelectors.isLoaded(state),
+  disabled: commandsSelectors.isDisabled(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  addCommand: (name, content, cooldown) => dispatch(commandsOperations.addCommand(name, content, cooldown)),
+  verifyData: () => dispatch(commandsOperations.verifyData()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Command);
