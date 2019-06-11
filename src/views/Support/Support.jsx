@@ -162,8 +162,8 @@ class Support extends Component {
           <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer">
-          <h3 className="pageContainerTitle">
-            <Typography>
+          <Typography>
+            <h3 className="pageContainerTitle">
               Deine Support Tickets
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={this.props.loadMyTickets}>
@@ -178,11 +178,11 @@ class Support extends Component {
                   onClose={this.handleClose}
                 />
               </span>
-            </Typography>
-          </h3>
-          <small>
-            Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
-          </small>
+            </h3>
+            <small>
+              Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
+            </small>
+          </Typography>
           {this.renderSupportTickets()}
         </Paper>
       </div>
