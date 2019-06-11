@@ -12,13 +12,14 @@ import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Chip from '@material-ui/core/Chip';
-import CommandAddDialog from './CommandAddDialog';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Checkbox from '@material-ui/core/Checkbox';
 import Snackbar from '@material-ui/core/Snackbar';
 
+import CommandAddDialog from './CommandAddDialog';
+import CommandEditDialog from './CommandEditDialog';
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
@@ -26,9 +27,9 @@ import { commandsSelectors, commandsOperations } from '../../state/commands';
 class Commands extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      open: false,
+      openAddCommandDialog: false,
+      openEditCommandDialog: false,
       openNotification: false,
       notification: ''
     };
@@ -39,8 +40,12 @@ class Commands extends Component {
     updateCommands();
   }
 
-  handleCloseDialog = () => {
-    this.setState({ open: false });
+  handleCloseAddCommandDialog = () => {
+    this.setState({ openAddCommandDialog: false });
+  };
+
+  handleCloseEditCommandDialog = () => {
+    this.setState({ openEditCommandDialog: false });
   };
 
   handleOpenNotification = commandName => {
@@ -124,7 +129,9 @@ class Commands extends Component {
               className="noshadow"
               mini
               aria-label="editCommand"
-            >
+              onClick={() => {
+                  this.setState({ openEditCommandDialog: true })
+              }}>
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
             </Button>
           </Tooltip>{' '}
@@ -167,13 +174,9 @@ class Commands extends Component {
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
-                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>
+                <Button onClick={() => this.setState({ openAddCommandDialog: true })} variant="contained" color="primary" disabled={disabled}>
                   <FormattedMessage id="commands.new_command" />
                 </Button>
-                <CommandAddDialog
-                  open={this.state.open}
-                  onClose={this.handleCloseDialog}
-                />
               </span>
             </h3>
             <small>
@@ -199,6 +202,14 @@ class Commands extends Component {
               {this.renderCommands()}
             </TableBody>
           </Table>
+          <CommandAddDialog
+            open={this.state.openAddCommandDialog}
+            onClose={this.handleCloseAddCommandDialog}
+          />
+          <CommandEditDialog
+            open={this.state.openEditCommandDialog}
+            onClose={this.handleCloseEditCommandDialog}
+          />
           <Snackbar
             anchorOrigin={{
               vertical: 'bottom',
