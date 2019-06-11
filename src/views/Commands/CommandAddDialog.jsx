@@ -32,6 +32,11 @@ class Command extends React.Component {
     cooldown: 0
   };
 
+  componentDidMount() {
+    const { updateCommands } = this.props;
+    updateCommands();
+  }
+
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
@@ -220,7 +225,7 @@ class Command extends React.Component {
             style={{ borderRadius: '4px', marginTop: '15px' }}
             variant="contained"
             color="primary"
-            onClick={() => {this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown())}}>
+            onClick={() => {this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown()); this.props.updateCommands()}}>
             <FormattedMessage id="commands.new_command.savecommand" />
           </Button>
         </DialogContent>
@@ -239,6 +244,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  updateCommands: () => dispatch(commandsOperations.loadCommands()),
   addCommand: (name, content, cooldown) => dispatch(commandsOperations.addCommand(name, content, cooldown)),
   verifyData: () => dispatch(commandsOperations.verifyData()),
 });

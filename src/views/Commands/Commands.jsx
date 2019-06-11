@@ -17,6 +17,7 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Checkbox from '@material-ui/core/Checkbox';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
 
@@ -27,10 +28,14 @@ class Commands extends Component {
     super(props);
 
     this.state = {
-      open: false
+      open: false,
+      openNotification: false,
+      notification: ''
     };
 
     this.handleClose = this.handleClose.bind(this);
+    this.handleOpenNotification = this.handleOpenNotification.bind(this);
+    this.handleCloseNotification = this.handleCloseNotification.bind(this);
     this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
 
     this.renderCommands = this.renderCommands.bind(this);
@@ -43,6 +48,18 @@ class Commands extends Component {
 
   handleClose() {
     this.setState({ open: false });
+  }
+
+  handleOpenNotification(commandName) {
+    this.props.updateCommands()
+    this.setState({
+      openNotification: true,
+      notification: 'Der Befehl ' + commandName + ' wurde erfolgreich gelöscht.'
+    });
+  }
+
+  handleCloseNotification() {
+    this.setState({ openNotification: false });
   }
 
   handleClickBreadCrumb(event, value) {
@@ -123,7 +140,7 @@ class Commands extends Component {
               className="noshadow"
               mini
               aria-label="deleteCommand"
-              onClick={() => {this.props.delCommand(command.id); this.props.updateCommands()}}
+              onClick={() => {this.props.delCommand(command.id); this.handleOpenNotification(command.name); this.props.updateCommands()}}
             >
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
             </Button>
@@ -185,6 +202,16 @@ class Commands extends Component {
               {this.renderCommands()}
             </TableBody>
           </Table>
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={this.state.openNotification}
+            autoHideDuration={5000}
+            onClose={this.handleCloseNotification}
+            message={this.state.notification}
+          />
         </Paper>
         }{disabled && <NotInstalledAlert />}
       </div>

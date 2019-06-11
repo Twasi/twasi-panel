@@ -16,7 +16,13 @@ const statusReducer = (state = initialState, action) => {
     case types.UPDATE_COMMANDS: {
       return { ...state, isLoaded: true, isDisabled: false, commands: action.commands };
     }
+    case types.UPDATE_SINGLECOMMAND: {
+      return { ...state, isLoaded: true, isDisabled: false, id: action.id };
+    }
     case types.UPDATE_ADDCOMMAND: {
+      return { ...state, isLoaded: true, name: action.name, content: action.content, cooldown: action.cooldown };
+    }
+    case types.UPDATE_EDITCOMMAND: {
       return { ...state, isLoaded: true, name: action.name, content: action.content, cooldown: action.cooldown };
     }
     case types.UPDATE_DELCOMMAND: {
