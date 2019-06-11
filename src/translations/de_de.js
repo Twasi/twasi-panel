@@ -169,6 +169,7 @@ export default {
 
   // Commands
   'commands.title': 'Deine Befehle',
+  'commands.subtitle': 'Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.',
   'commands.addcommand': 'Befehl hinzufügen',
   'commands.new_command': 'Einen neuen Befehl erstellen',
   'commands.new_command.subheadline': 'Hier kannst du einen neuen Befehl hinzufügen.',
@@ -181,6 +182,19 @@ export default {
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Befehl speichern',
+  'commands.table.command': 'Befehl',
+  'commands.table.output': 'Ausgabe',
+  'commands.table.access': 'Zugriff',
+  'commands.table.uses': 'Genutzt',
+  'commands.table.cooldown': 'Cooldown',
+  'commands.table.active': 'Aktiviert',
+  'commands.cooldown.no_cooldown': 'Kein Cooldown',
+  'commands.cooldown.second': 'Sekunde',
+  'commands.cooldown.seconds': 'Sekunden',
+  'commands.cooldown.minute': 'Minute',
+  'commands.cooldown.minutes': 'Minuten',
+  'commands.cooldown.hour': 'Stunde',
+
 
   // Variables
   'variables.title': 'Deine Variablen',

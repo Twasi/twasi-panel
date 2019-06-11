@@ -32,13 +32,6 @@ class Commands extends Component {
       openNotification: false,
       notification: ''
     };
-
-    this.handleClose = this.handleClose.bind(this);
-    this.handleOpenNotification = this.handleOpenNotification.bind(this);
-    this.handleCloseNotification = this.handleCloseNotification.bind(this);
-    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
-
-    this.renderCommands = this.renderCommands.bind(this);
   }
 
   componentDidMount() {
@@ -46,27 +39,29 @@ class Commands extends Component {
     updateCommands();
   }
 
-  handleClose() {
+  handleCloseDialog = () => {
     this.setState({ open: false });
-  }
+  };
 
-  handleOpenNotification(commandName) {
-    this.props.updateCommands()
+  handleOpenNotification = commandName => {
     this.setState({
       openNotification: true,
-      notification: 'Der Befehl ' + commandName + ' wurde erfolgreich gelöscht.'
+      notification: 'Der Befehl "' + commandName + '" wurde erfolgreich gelöscht.'
     });
-  }
+    setTimeout(function() {
+        this.props.updateCommands()
+    }.bind(this), 100)
+  };
 
-  handleCloseNotification() {
+  handleCloseNotification = () => {
     this.setState({ openNotification: false });
-  }
+  };
 
-  handleClickBreadCrumb(event, value) {
+  handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);
     this.setState({});
-  }
+  };
 
   getCooldown(seconds) {
     if (seconds <= 59) {
@@ -140,8 +135,10 @@ class Commands extends Component {
               className="noshadow"
               mini
               aria-label="deleteCommand"
-              onClick={() => {this.props.delCommand(command.id); this.handleOpenNotification(command.name); this.props.updateCommands()}}
-            >
+              onClick={() => {
+                  this.props.delCommand(command.id);
+                  this.handleOpenNotification(command.name)
+              }}>
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
             </Button>
           </Tooltip>
@@ -175,12 +172,12 @@ class Commands extends Component {
                 </Button>
                 <CommandAddDialog
                   open={this.state.open}
-                  onClose={this.handleClose}
+                  onClose={this.handleCloseDialog}
                 />
               </span>
             </h3>
             <small>
-              Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.
+              <FormattedMessage id="commands.subtitle" />
             </small>
           </Typography>
         </Paper>
@@ -189,12 +186,12 @@ class Commands extends Component {
           <Table>
             <TableHead>
               <TableRow className="TableRow">
-                <TableCell>Befehl</TableCell>
-                <TableCell>Ausgabe</TableCell>
-                <TableCell>Zugriff</TableCell>
-                <TableCell style={{ textAlign: 'center' }}>Uses</TableCell>
-                <TableCell style={{ textAlign: 'center' }}>Cooldown</TableCell>
-                <TableCell>Aktiviert</TableCell>
+                <TableCell><FormattedMessage id="commands.table.command" /></TableCell>
+                <TableCell><FormattedMessage id="commands.table.output" /></TableCell>
+                <TableCell><FormattedMessage id="commands.table.access" /></TableCell>
+                <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.uses" /></TableCell>
+                <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.cooldown" /></TableCell>
+                <TableCell><FormattedMessage id="commands.table.active" /></TableCell>
                 <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>

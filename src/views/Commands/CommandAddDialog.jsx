@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button';
 //import InputLabel from '@material-ui/core/InputLabel';
 import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
+import Snackbar from '@material-ui/core/Snackbar';
 import { FormattedMessage } from 'react-intl';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
@@ -29,13 +30,30 @@ class Command extends React.Component {
     commandCooldown: 0,
     issue: 10,
     labelWidth: 115,
-    cooldown: 0
+    cooldown: 0,
+    openNotification: false,
+    notification: ''
   };
 
   componentDidMount() {
     const { updateCommands } = this.props;
     updateCommands();
   }
+
+  handleOpenNotification = commandName => {
+    this.setState({
+      openNotification: true,
+      open: false,
+      notification: 'Der Befehl "' + commandName + '" wurde erfolgreich erstellt.'
+    });
+    setTimeout(function() {
+        this.props.updateCommands()
+    }.bind(this), 100)
+  };
+
+  handleCloseNotification = () => {
+    this.setState({ openNotification: false });
+  };
 
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
@@ -67,7 +85,7 @@ class Command extends React.Component {
 
     if (cd <= 59) {
       if (cd === 0) {
-        return 'Keinen Cooldown festgelegt';
+        return <FormattedMessage id="commands.cooldown.no_cooldown" />;
       }
       if (cd > 1) {
         return `${cd} Sekunden`;
@@ -225,10 +243,23 @@ class Command extends React.Component {
             style={{ borderRadius: '4px', marginTop: '15px' }}
             variant="contained"
             color="primary"
-            onClick={() => {this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown()); this.props.updateCommands()}}>
+            onClick={() => {
+                this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown());
+                this.handleOpenNotification(this.state.commandName)
+            }}>
             <FormattedMessage id="commands.new_command.savecommand" />
           </Button>
         </DialogContent>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.openNotification}
+          autoHideDuration={5000}
+          onClose={this.handleCloseNotification}
+          message={this.state.notification}
+        />
       </Dialog>
     );
   }

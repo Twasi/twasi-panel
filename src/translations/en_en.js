@@ -168,6 +168,7 @@ export default {
 
   // Commands
   'commands.title': 'Your Commands',
+  'commands.subtitle': 'Here you can manage your custom Chatcommands.',
   'commands.addcommand': 'Add Command',
   'commands.new_command': 'Create a new Command',
   'commands.new_command_subheadline': 'Here you can add a new Command.',
@@ -180,6 +181,18 @@ export default {
   'commands.new_command.mods': 'Moderators or higher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Save Command',
+  'commands.table.command': 'Command',
+  'commands.table.output': 'Output',
+  'commands.table.access': 'Access',
+  'commands.table.uses': 'Uses',
+  'commands.table.cooldown': 'Cooldown',
+  'commands.table.active': 'Active',
+  'commands.cooldown.no_cooldown': 'No Cooldown',
+  'commands.cooldown.second': 'Second',
+  'commands.cooldown.seconds': 'Seconds',
+  'commands.cooldown.minute': 'Minute',
+  'commands.cooldown.minutes': 'Minutes',
+  'commands.cooldown.hour': 'Hour',
 
   // Variables
   'variables.title': 'Your Variables',
