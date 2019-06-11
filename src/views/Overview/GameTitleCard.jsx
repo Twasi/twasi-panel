@@ -10,6 +10,7 @@ import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Snackbar from '@material-ui/core/Snackbar';
+import Fab from '@material-ui/core/Fab';
 
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 
@@ -66,7 +67,7 @@ class GameTitleCard extends Component {
       <Card className="pluginCard" style={{ marginTop: '15px' }}>
         <CardContent style={{ padding: '24px' }}>
           <Grid container spacing={16}>
-            <Grid item lg={6} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+            <Grid item lg={7} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
               <TextField
                 label={<FormattedMessage id="overview.title" />}
                 fullWidth
@@ -75,22 +76,9 @@ class GameTitleCard extends Component {
                 margin="normal"
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                      onClick={() => {this.props.changeTitleGame(this.state.title, this.state.game); this.handleClick()}}
-                      >
-                        <Icon>
-                          save
-                        </Icon>
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
               />
             </Grid>
-            <Grid item lg={6} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+            <Grid item lg={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
               <TextField
                 label={<FormattedMessage id="overview.game" />}
                 fullWidth
@@ -99,20 +87,19 @@ class GameTitleCard extends Component {
                 margin="normal"
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => {this.props.changeTitleGame(this.state.title, this.state.game); this.handleClick()}}
-                      >
-                        <Icon>
-                          save
-                        </Icon>
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
               />
+            </Grid>
+            <Grid item lg={1} style={{ paddingTop: '15px' }}>
+              <Fab
+                variant="contained"
+                color="primary"
+                size="large"
+                onClick={() => {this.props.changeTitleGame(this.state.title, this.state.game); this.handleClick()}}
+              >
+                <Icon>
+                  save
+                </Icon>
+              </Fab>
             </Grid>
           </Grid>
         </CardContent>
