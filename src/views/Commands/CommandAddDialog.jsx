@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
-import MenuItem from '@material-ui/core/MenuItem';
+//import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Select from '@material-ui/core/Select';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+//import FormControl from '@material-ui/core/FormControl';
+//import FormHelperText from '@material-ui/core/FormHelperText';
+//import Select from '@material-ui/core/Select';
+//import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import InputLabel from '@material-ui/core/InputLabel';
+//import InputLabel from '@material-ui/core/InputLabel';
 import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
@@ -104,7 +104,6 @@ class Command extends React.Component {
 
   render() {
     const { classes, onClose, ...other } = this.props;
-    const { cooldown } = this.state;
 
     return (
       <Dialog
@@ -231,7 +230,7 @@ class Command extends React.Component {
 }
 
 Command.propTypes = {
-  addCommand: PropTypes.func.isRequired,
+  addCommand: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

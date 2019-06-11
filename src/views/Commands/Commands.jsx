@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Chip from '@material-ui/core/Chip';
-import CommandDialog from './CommandDialog';
+import CommandAddDialog from './CommandAddDialog';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -51,6 +51,30 @@ class Commands extends Component {
     this.setState({});
   }
 
+  getCooldown(seconds) {
+    if (seconds <= 59) {
+      if (seconds === 0) {
+        return 'Kein Cooldown';
+      }
+      if (seconds > 1) {
+        return `${seconds} Sekunden`;
+      }
+      return `${seconds} Sekunde`;
+    } else if (seconds >= 60) {
+      if (seconds === 3600) {
+        return '1 Stunde';
+      }
+      if (seconds === 60) {
+        return '1 Minute';
+      }
+      if (seconds > 60) {
+        seconds = seconds / 60
+        return `${seconds} Minuten`;
+      }
+    }
+    return 'Fehler';
+  }
+
   renderCommands() {
     const { commands } = this.props;
 
@@ -70,7 +94,8 @@ class Commands extends Component {
             color="primary"
           />
         </TableCell>
-        <TableCell>{command.uses}</TableCell>
+        <TableCell style={{ textAlign: 'center' }}>{command.uses}</TableCell>
+        <TableCell style={{ textAlign: 'center' }}>{this.getCooldown(command.cooldown)}</TableCell>
         <TableCell>
           <Checkbox
             checked=""
@@ -98,6 +123,7 @@ class Commands extends Component {
               className="noshadow"
               mini
               aria-label="deleteCommand"
+              onClick={() => {this.props.delCommand(command.id); this.props.updateCommands()}}
             >
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
             </Button>
@@ -130,7 +156,7 @@ class Commands extends Component {
                 <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>
                   <FormattedMessage id="commands.new_command" />
                 </Button>
-                <CommandDialog
+                <CommandAddDialog
                   open={this.state.open}
                   onClose={this.handleClose}
                 />
@@ -149,7 +175,8 @@ class Commands extends Component {
                 <TableCell>Befehl</TableCell>
                 <TableCell>Ausgabe</TableCell>
                 <TableCell>Zugriff</TableCell>
-                <TableCell>Uses</TableCell>
+                <TableCell style={{ textAlign: 'center' }}>Uses</TableCell>
+                <TableCell style={{ textAlign: 'center' }}>Cooldown</TableCell>
                 <TableCell>Aktiviert</TableCell>
                 <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
@@ -167,6 +194,7 @@ class Commands extends Component {
 
 Commands.propTypes = {
   updateCommands: PropTypes.func.isRequired,
+  delCommand: PropTypes.func.isRequired,
   commands: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
@@ -183,6 +211,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
+  delCommand: (id) => dispatch(commandsOperations.delCommand(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Commands);

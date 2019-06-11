@@ -12,6 +12,11 @@ const updateAddCommand = (name, content, cooldown) => ({
   cooldown
 });
 
+const updateDelCommand = (id) => ({
+  type: types.UPDATE_DELCOMMAND,
+  id
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -20,5 +25,6 @@ const updateDisabled = isDisabled => ({
 export default {
   updateCommands,
   updateAddCommand,
+  updateDelCommand,
   updateDisabled
 };

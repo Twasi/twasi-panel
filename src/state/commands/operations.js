@@ -7,6 +7,7 @@ import { authSelectors } from '../auth';
 const {
   updateCommands,
   updateAddCommand,
+  updateDelCommand,
   updateDisabled
 } = actions;
 
@@ -14,7 +15,7 @@ const loadCommands = () => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
 
-  getUserGraph('commands{id,name,content,uses}', jwt, 'commands').then(data => {
+  getUserGraph('commands{id,name,content,uses,cooldown}', jwt, 'commands').then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
@@ -26,9 +27,21 @@ const loadCommands = () => (dispatch, getState) => {
 const addCommand = (name, content, cooldown) => (dispatch, getState) => {
   const state = getState();
   const jwt = authSelectors.getJwt(state);
-  getUserGraph(`commands{create(name: "${name}", content: "${content}", cooldown: ${cooldown})}`, jwt, 'commands').then(
+
+  getUserGraph(`create(name: "${name}", content: "${content}", cooldown: ${cooldown}){id}`, jwt, 'commands').then(
     data => {
       dispatch(updateAddCommand(data.commands));
+    }
+  );
+};
+
+const delCommand = (id) => (dispatch, getState) => {
+  const state = getState();
+  const jwt = authSelectors.getJwt(state);
+
+  getUserGraph(`delete(id: "${id}"){id}`, jwt, 'commands').then(
+    data => {
+      dispatch(updateDelCommand(data.commands));
     }
   );
 };
@@ -46,5 +59,6 @@ const verifyData = () => (dispatch, getState) => {
 export default {
   loadCommands,
   addCommand,
+  delCommand,
   verifyData
 };
