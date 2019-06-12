@@ -363,8 +363,6 @@ Command.propTypes = {
 
 const mapStateToProps = state => ({
   variables: variablesSelectors.getVariables(state),
-  isLoaded: variablesSelectors.isLoaded(state),
-  disabled: variablesSelectors.isDisabled(state),
   isLoaded: commandsSelectors.isLoaded(state),
   disabled: commandsSelectors.isDisabled(state)
 });
@@ -373,7 +371,6 @@ const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
   addCommand: (name, content, cooldown) => dispatch(commandsOperations.addCommand(name, content, cooldown)),
   verifyData: () => dispatch(commandsOperations.verifyData()),
-  verifyData: () => dispatch(variablesOperations.verifyData()),
   updateVariables: () => dispatch(variablesOperations.loadVariables())
 });
 
