@@ -45,6 +45,8 @@ class Command extends React.Component {
     updateCommands();
     const { updateVariables } = this.props;
     updateVariables();
+    this.textInput = React.createRef();
+    this.focusTextInput = this.focusTextInput.bind(this);
   }
 
   handleOpenNotification = commandName => {
@@ -89,8 +91,15 @@ class Command extends React.Component {
 
   chipFilter = (item) => {
     this.setState({
-      commandContent: this.state.commandContent+item
+      commandContent: this.state.commandContent+item+" "
     });
+    this.focusTextInput()
+  }
+
+  focusTextInput() {
+    // Explicitly focus the text input using the raw DOM API
+    // Note: we're accessing "current" to get the DOM node
+    this.textInput.current.focus();
   }
 
   getCooldown() {
@@ -176,6 +185,7 @@ class Command extends React.Component {
                 id="outlined-textarea"
                 label={<FormattedMessage id="commands.new_command.command" />}
                 fullWidth
+                autoFocus
                 value={this.state.commandName}
                 onChange={this.handleCommandNameChange}
                 placeholder="Beispiel: !bot"
@@ -208,6 +218,7 @@ class Command extends React.Component {
                 id="outlined-textarea"
                 label={<FormattedMessage id="commands.new_command.output" />}
                 fullWidth
+                inputRef={this.textInput}
                 value={this.state.commandContent}
                 onChange={this.handleCommandContentChange}
                 placeholder="Beispiel: Mein Bot heißt Twasibot."
