@@ -16,9 +16,14 @@ import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
+import Chip from '@material-ui/core/Chip';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { FormattedMessage } from 'react-intl';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
+import { variablesSelectors, variablesOperations } from '../../state/variables';
 
 import './_style.css';
 
@@ -38,6 +43,8 @@ class Command extends React.Component {
   componentDidMount() {
     const { updateCommands } = this.props;
     updateCommands();
+    const { updateVariables } = this.props;
+    updateVariables();
   }
 
   handleOpenNotification = commandName => {
@@ -79,6 +86,12 @@ class Command extends React.Component {
       commandContent: event.target.value
     });
   };
+
+  chipFilter = (item) => {
+    this.setState({
+      commandContent: this.state.commandContent+item
+    });
+  }
 
   getCooldown() {
     let cd = this.state.cooldown;
@@ -123,6 +136,19 @@ class Command extends React.Component {
       return cd * 60;
     }
     return 'Fehler';
+  }
+
+  renderVariables() {
+    const { variables } = this.props;
+
+    return variables.map(variable => (
+      <Chip
+        className="commandOutputChip"
+        size="small"
+        color="secondary"
+        label={"$"+variable.name}
+        onClick={ () => this.chipFilter("$"+variable.name) }/>
+    ));
   }
 
   render() {
@@ -193,6 +219,72 @@ class Command extends React.Component {
               />
             </CardContent>
           </Card>
+          <ExpansionPanel style={{ marginTop: '5px' }}>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>
+                <h4 className="pageContainerTitle">
+                  Variablen
+                </h4>
+                <small>
+                  Aufklappen, um Variablen zu sehen.
+                </small>
+              </Typography>
+            </ExpansionPanelSummary>
+            <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
+              <CardContent style={{ padding: '24px' }}>
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$sender"
+                  onClick={ () => this.chipFilter("$sender") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$streamer"
+                  onClick={ () => this.chipFilter("$streamer") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$readapi()"
+                  onClick={ () => this.chipFilter("$readapi()") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$random()"
+                  onClick={ () => this.chipFilter("$random()") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$args()"
+                  onClick={ () => this.chipFilter("$args()") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$uses"
+                  onClick={ () => this.chipFilter("$uses") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$viewtime"
+                  onClick={ () => this.chipFilter("$viewtime") }
+                />
+                {this.renderVariables()}
+              </CardContent>
+            </Card>
+          </ExpansionPanel>
           {/*
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
@@ -270,6 +362,9 @@ Command.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  variables: variablesSelectors.getVariables(state),
+  isLoaded: variablesSelectors.isLoaded(state),
+  disabled: variablesSelectors.isDisabled(state),
   isLoaded: commandsSelectors.isLoaded(state),
   disabled: commandsSelectors.isDisabled(state)
 });
@@ -278,6 +373,8 @@ const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
   addCommand: (name, content, cooldown) => dispatch(commandsOperations.addCommand(name, content, cooldown)),
   verifyData: () => dispatch(commandsOperations.verifyData()),
+  verifyData: () => dispatch(variablesOperations.verifyData()),
+  updateVariables: () => dispatch(variablesOperations.loadVariables())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Command);
