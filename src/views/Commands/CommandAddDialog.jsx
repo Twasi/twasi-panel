@@ -102,6 +102,16 @@ class Command extends React.Component {
     this.textInput.current.focus();
   }
 
+  clearTextInput() {
+    this.setState({
+      commandName: "",
+      commandContent: "",
+      commandCooldown: 0,
+      cooldown: 0,
+      issue: 10
+    });
+  }
+
   getCooldown() {
     let cd = this.state.cooldown;
 
@@ -186,6 +196,7 @@ class Command extends React.Component {
                 label={<FormattedMessage id="commands.new_command.command" />}
                 fullWidth
                 autoFocus
+                inputRef={this.textInput}
                 value={this.state.commandName}
                 onChange={this.handleCommandNameChange}
                 placeholder="Beispiel: !bot"
@@ -349,6 +360,7 @@ class Command extends React.Component {
             onClick={() => {
                 this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown());
                 this.handleOpenNotification(this.state.commandName)
+                this.clearTextInput()
             }}>
             <FormattedMessage id="commands.new_command.savecommand" />
           </Button>
