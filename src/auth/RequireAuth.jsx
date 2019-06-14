@@ -6,14 +6,14 @@ import queryString from 'query-string';
 import storage from 'local-storage';
 
 import { authSelectors, authOperations } from '../state/auth';
-import withService from '../views/common/withService';
+import { getRawGraph } from "../services/graphqlService";
 
 // 2 Hours
 const tokenExpiration = 2 * 60 * 60 * 1000;
 
 class RequireAuth extends React.Component {
   componentWillMount() {
-    const { isAuthenticated, isLoading, authenticate, updateIsLoading, updateUserData, graph, history, location, optional } = this.props;
+    const { isAuthenticated, isLoading, authenticate, updateIsLoading, updateUserData, history, location, optional } = this.props;
 
     // Are we returning from auth provider?
     const urlParams = queryString.parse(window.location.search);
@@ -21,7 +21,7 @@ class RequireAuth extends React.Component {
       // eslint-disable-next-line
       console.log('Welcome back from the auth provider! Let\'s look if we can get you authenticated...');
 
-      graph('user{id,twitchAccount{twitchid,name,displayName,avatar,email}}', urlParams.jwt).then(data => {
+      getRawGraph('query{panel(token:"' + urlParams.jwt + '"){user{id,twitchAccount{twitchid,name,displayName,avatar,email}}}}').then(data => {
         if (data.data.panel == null) {
           window.location.href = window.env.AUTH_URL;
         } else {
@@ -63,7 +63,7 @@ class RequireAuth extends React.Component {
         return;
       }
 
-      graph('user{id,twitchAccount{twitchid,name,displayName,avatar,email}}', cacheData.token).then(data => {
+      getRawGraph('query{panel(token:"' + cacheData.token + '"){user{id,twitchAccount{twitchid,name,displayName,avatar,email}}}}').then(data => {
         if (data.data.panel == null) {
           if (!optional) {
             storage('originalUrl', location.pathname);
@@ -126,4 +126,4 @@ const mapDispatchToProps = dispatch => ({
   updateUserData: data => dispatch(authOperations.updateUserData(data))
 });
 
-export default withRouter(withService(connect(mapStateToProps, mapDispatchToProps)(RequireAuth)));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RequireAuth));

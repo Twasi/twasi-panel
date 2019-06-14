@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 const initialState = {
@@ -48,6 +47,4 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  auth: authReducer
-});
+export default authReducer;

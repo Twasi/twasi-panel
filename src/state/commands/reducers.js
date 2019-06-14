@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 export const initialState = {
@@ -8,10 +7,11 @@ export const initialState = {
   content: '',
   id: '',
   cooldown: 0,
-  isDisabled: false
+  isDisabled: false,
+  isLoading: false
 };
 
-const statusReducer = (state = initialState, action) => {
+const commandsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_COMMANDS: {
       return { ...state, isLoaded: true, isDisabled: false, commands: action.commands };
@@ -31,11 +31,12 @@ const statusReducer = (state = initialState, action) => {
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };
     }
+    case types.UPDATE_IS_LOADING: {
+      return { ...state, isLoading: action.isLoading };
+    }
     default:
       return state;
   }
 };
 
-export default combineReducers({
-  commands: statusReducer
-});
+export default commandsReducer;

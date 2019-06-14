@@ -1,8 +1,7 @@
 import actions from './actions';
 import selectors from './selectors';
 
-import { getUserGraph } from '../../services/graphqlService';
-import { authSelectors } from '../auth';
+import { getGraph } from '../../services/graphqlService';
 
 const {
   updateUtilities,
@@ -10,11 +9,8 @@ const {
   updateDisabled
 } = actions;
 
-const loadUtilities = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-
-  getUserGraph('twitchAPI{retrieve{title,game,followers}}', jwt, 'utilities').then(data => {
+const loadUtilities = () => dispatch => {
+  dispatch(getGraph('twitchAPI{retrieve{title,game,followers}}', 'utilities')).then(data => {
     if (data.twitchAPI == null) {
       dispatch(updateDisabled(true));
       return;
@@ -23,10 +19,8 @@ const loadUtilities = () => (dispatch, getState) => {
   });
 };
 
-const changeTitleGame = (newTitle, newGame) => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-  getUserGraph(`twitchAPI{update{channel(newTitle: "${newTitle}", newGame: "${newGame}")}}`, jwt, 'utilities').then(
+const changeTitleGame = (newTitle, newGame) => dispatch => {
+  dispatch(getGraph(`twitchAPI{update{channel(newTitle: "${newTitle}", newGame: "${newGame}")}}`, 'utilities')).then(
     data => {
       dispatch(updateTitleGame(data.twitchAPI));
     }

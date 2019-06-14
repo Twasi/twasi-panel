@@ -34,11 +34,17 @@ const updateDisabled = isDisabled => ({
   isDisabled
 });
 
+const updateIsLoading = isLoading => ({
+  type: types.UPDATE_IS_LOADING,
+  isLoading
+});
+
 export default {
   updateCommands,
   updateSingleCommand,
   updateAddCommand,
   updateEditCommand,
   updateDelCommand,
-  updateDisabled
+  updateDisabled,
+  updateIsLoading
 };

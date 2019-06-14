@@ -1,7 +1,7 @@
 import actions from './actions';
 import selectors from './selectors';
 
-import { getUserGraph } from '../../services/graphqlService';
+import { getGraph } from '../../services/graphqlService';
 import { authSelectors } from '../auth';
 
 const {
@@ -11,10 +11,9 @@ const {
 
 const loadQuotes = () => (dispatch, getState) => {
   const state = getState();
-  const jwt = authSelectors.getJwt(state);
   const user = authSelectors.getUser(state);
 
-  getUserGraph(`publicAll(name:"${user.name}"){numId,content,game,reporter,createdAt}`, jwt, 'quotes').then(data => {
+  dispatch(getGraph(`publicAll(name:"${user.name}"){numId,content,game,reporter,createdAt}`, 'quotes')).then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;

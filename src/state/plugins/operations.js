@@ -1,9 +1,7 @@
 import actions from './actions';
 import selectors from './selectors';
 
-import { authSelectors } from '../auth';
-
-import { getUserGraph } from '../../services/graphqlService';
+import { getGraph } from '../../services/graphqlService';
 
 const {
   updateLoaded,
@@ -13,19 +11,10 @@ const {
   updateActionInProgress
 } = actions;
 
-const loadData = () => (dispatch, getState) => {
+const loadData = () => dispatch => {
   dispatch(updateLoading(true));
-  /* plugins.get().then(data => {
-    dispatch(updatePlugins(data.plugins));
-    dispatch(updateLoading(false));
-  }); */
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
 
-  getUserGraph(
-    'plugins { isInstalled, name, author, version, description, commands, permissions, id }',
-    jwt
-  ).then(data => {
+  dispatch(getGraph('plugins { isInstalled, name, author, version, description, commands, permissions, id }')).then(data => {
     dispatch(
       updatePlugins(
         data.plugins.map(p => ({ ...p, actionInProgress: false }))
@@ -46,55 +35,29 @@ const verifyData = () => (dispatch, getState) => {
   }
 };
 
-const installPlugin = id => (dispatch, getState) => {
+const installPlugin = id => dispatch => {
   dispatch(updateActionInProgress(id, true));
   sleep(getRndInteger(500, 1000)).then(() => {
-    const state = getState();
-    const jwt = authSelectors.getJwt(state);
 
-    getUserGraph(
-      `user { installPlugin(name:"${id}") { isInstalled } }`,
-      jwt
-    ).then(data => {
+    dispatch(getGraph(`user { installPlugin(name:"${id}") { isInstalled } }`)).then(data => {
       dispatch(
         setInstalled(id, data.user.installPlugin.isInstalled)
       );
       dispatch(updateActionInProgress(id, false));
     });
-    /* plugins
-      .post({
-        action: 'INSTALL',
-        pluginName: name
-      })
-      .then(() => {
-        dispatch(setInstalled(name, true));
-      }); */
   });
 };
 
-const uninstallPlugin = id => (dispatch, getState) => {
+const uninstallPlugin = id => dispatch => {
   dispatch(updateActionInProgress(id, true));
   sleep(getRndInteger(500, 1000)).then(() => {
-    const state = getState();
-    const jwt = authSelectors.getJwt(state);
 
-    getUserGraph(
-      `user { uninstallPlugin(name:"${id}") { isInstalled } }`,
-      jwt
-    ).then(data => {
+    dispatch(getGraph(`user { uninstallPlugin(name:"${id}") { isInstalled } }`)).then(data => {
       dispatch(
         setInstalled(id, data.user.uninstallPlugin.isInstalled)
       );
       dispatch(updateActionInProgress(id, false));
     });
-    /* plugins
-      .post({
-        action: 'UNINSTALL',
-        pluginName: name
-      })
-      .then(() => {
-        dispatch(setInstalled(name, false));
-      }); */
   });
 };
 

@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 export const initialState = {
@@ -7,7 +6,7 @@ export const initialState = {
   isDisabled: false
 };
 
-const statusReducer = (state = initialState, action) => {
+const quotesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_QUOTES: {
       return { ...state, isLoaded: true, isDisabled: false, quotes: action.quotes };
@@ -20,6 +19,4 @@ const statusReducer = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  quotes: statusReducer
-});
+export default quotesReducer;

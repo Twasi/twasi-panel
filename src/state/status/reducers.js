@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 export const initialState = {
@@ -36,6 +35,4 @@ const statusReducer = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  status: statusReducer
-});
+export default statusReducer;

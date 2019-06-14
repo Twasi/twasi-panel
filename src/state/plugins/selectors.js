@@ -1,6 +1,6 @@
-const isLoaded = state => state.pluginsState.plugins.isLoaded;
-const isLoading = state => state.pluginsState.plugins.isLoading;
-const getPlugins = state => state.pluginsState.plugins.plugins;
+const isLoaded = state => state.plugins.isLoaded;
+const isLoading = state => state.plugins.isLoading;
+const getPlugins = state => state.plugins.plugins;
 
 export default {
   isLoaded,

@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 export const initialState = {
@@ -20,6 +19,4 @@ const i18nReducer = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  i18n: i18nReducer
-});
+export default i18nReducer;

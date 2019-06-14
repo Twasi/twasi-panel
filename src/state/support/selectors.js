@@ -1,6 +1,6 @@
-const isLoaded = state => state.commandsState.commands.isLoaded;
-const getMyTickets = state => state.supportState.support.myTickets;
-const getAdminTickets = state => state.supportState.support.adminTickets;
+const isLoaded = state => state.support.isLoaded;
+const getMyTickets = state => state.support.myTickets;
+const getAdminTickets = state => state.support.adminTickets;
 
 export default {
   isLoaded,

@@ -1,6 +1,6 @@
-const getQuotes = state => state.quotesState.quotes.quotes;
-const isLoaded = state => state.quotesState.quotes.isLoaded;
-const isDisabled = state => state.quotesState.quotes.isDisabled;
+const getQuotes = state => state.quotes.quotes;
+const isLoaded = state => state.quotes.isLoaded;
+const isDisabled = state => state.quotes.isDisabled;
 
 export default {
   getQuotes,

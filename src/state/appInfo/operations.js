@@ -3,9 +3,9 @@ import storage from 'local-storage';
 import actions from './actions';
 
 import { authSelectors } from '../auth';
-import { getUserGraph } from '../../services/graphqlService';
+import getGraph from '../../services/graphqlService';
 
-const { updateLoaded, updateConnected, updateVersion, updateUserStatus, updateTheme } = actions;
+const { updateLoaded, updateConnected, updateVersion, updateUserStatus, updateTheme, addNotification } = actions;
 
 const loadTheme = () => dispatch => {
   const themeInStorage = storage('twasi-theme');
@@ -23,7 +23,7 @@ const loadUserStatus = () => (dispatch, getState) => {
     return;
   }
 
-  getUserGraph('userStatus{status}', jwt).then(data => dispatch(updateUserStatus(data.userStatus.status)));
+  dispatch(getGraph('userStatus{status}')).then(data => dispatch(updateUserStatus(data.userStatus.status)));
 };
 
 const loadVersion = () => (dispatch, getState) => {
@@ -34,7 +34,7 @@ const loadVersion = () => (dispatch, getState) => {
     return;
   }
 
-  getUserGraph('appInfo{version}', jwt).then(data => {
+  dispatch(getGraph('appInfo{version}', jwt)).then(data => {
     dispatch(updateVersion(data.appInfo.version));
     dispatch(updateConnected(true));
     dispatch(updateLoaded(true));
@@ -48,5 +48,6 @@ export default {
   loadUserStatus,
   loadVersion,
   loadTheme,
-  updateTheme
+  updateTheme,
+  addNotification
 };

@@ -1,8 +1,7 @@
 import actions from './actions';
 import selectors from './selectors';
 
-import { getUserGraph } from '../../services/graphqlService';
-import { authSelectors } from '../auth';
+import { getGraph } from '../../services/graphqlService';
 
 const {
   updateStreamtracker,
@@ -10,10 +9,8 @@ const {
   updateDisabled
 } = actions;
 
-const loadStreamtracker = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-  getUserGraph('lastStream{streamId,language,startedAt,streamType,communityIds,tagIds,newFollowers,newViews,data{gameId,game,title,viewerCount,timestamp,chatMessages,chatCommands},topChatters{twitchId,displayName,messages,commands}}', jwt, 'streamtracker').then(data => {
+const loadStreamtracker = () => dispatch => {
+  dispatch(getGraph('lastStream{streamId,language,startedAt,streamType,communityIds,tagIds,newFollowers,newViews,data{gameId,game,title,viewerCount,timestamp,chatMessages,chatCommands},topChatters{twitchId,displayName,messages,commands}}', 'streamtracker')).then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
@@ -21,10 +18,9 @@ const loadStreamtracker = () => (dispatch, getState) => {
     dispatch(updateStreamtracker(data.lastStream));
   });
 };
-const loadGlobalStreamtracker = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-  getUserGraph('globalStats{totalTrackedViewers,totalTrackedStreams,totalTrackedMessages,viewTime{twitchId,displayName,minutes}}', jwt, 'streamtracker').then(data => {
+
+const loadGlobalStreamtracker = () => dispatch => {
+  dispatch(getGraph('globalStats{totalTrackedViewers,totalTrackedStreams,totalTrackedMessages,viewTime{twitchId,displayName,minutes}}', 'streamtracker')).then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
