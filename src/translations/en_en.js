@@ -276,10 +276,10 @@ export default {
   'urlshortener.redirection': 'Redirection',
 
   // Support
-  'support.new_ticket': 'New Support Ticket',
-  'support.new_ticket_subheadline': 'You are about to open a new Support Ticket. please give us the best Details about your Problem so we can give you the best possible Answers.',
-  'support.sendbutton': 'Create Ticket',
-  'support.issue_content_headline': 'Your Ticket',
+  'support.new_ticket': 'New Support SupportTicket',
+  'support.new_ticket_subheadline': 'You are about to open a new Support SupportTicket. please give us the best Details about your Problem so we can give you the best possible Answers.',
+  'support.sendbutton': 'Create SupportTicket',
+  'support.issue_content_headline': 'Your SupportTicket',
   'support.issue': 'What is it about?',
   'support.chatbot': 'Chatbot',
   'support.userpanel': 'Userpanel',

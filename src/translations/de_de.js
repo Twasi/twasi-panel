@@ -277,10 +277,10 @@ export default {
   'urlshortener.redirection': 'Weiterleitung',
 
   // Support
-  'support.new_ticket': 'Neues Support Ticket',
-  'support.new_ticket_subheadline': 'Hier kannst du ein neues Support Ticket eröffnen. Bitte achte darauf, dass du dein Problem möglichst genau schilderst, damit wir dir effektiv helfen können.',
-  'support.sendbutton': 'Ticket erstellen',
-  'support.issue_content_headline': 'Dein Ticket',
+  'support.new_ticket': 'Neues Support SupportTicket',
+  'support.new_ticket_subheadline': 'Hier kannst du ein neues Support SupportTicket eröffnen. Bitte achte darauf, dass du dein Problem möglichst genau schilderst, damit wir dir effektiv helfen können.',
+  'support.sendbutton': 'SupportTicket erstellen',
+  'support.issue_content_headline': 'Dein SupportTicket',
   'support.issue': 'Um was geht es?',
   'support.chatbot': 'Chatbot',
   'support.userpanel': 'Userpanel',

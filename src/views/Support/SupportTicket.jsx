@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import CardContent from '@material-ui/core/CardContent';
 import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
@@ -15,12 +13,10 @@ import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
-// import PersonIcon from '@material-ui/icons/Person';
-// import AddIcon from '@material-ui/icons/Add';
 
 import './_style.css';
 
-class Ticket extends React.Component {
+class SupportTicket extends React.Component {
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
@@ -102,9 +98,9 @@ class Ticket extends React.Component {
   }
 }
 
-Ticket.propTypes = {
+SupportTicket.propTypes = {
   onClose: PropTypes.func,
   classes: PropTypes.string
 };
 
-export default (Ticket);
+export default (SupportTicket);
