@@ -46,7 +46,7 @@ class Songrequests extends React.Component {
         ping: -1
       }
     };
-
+    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.sync = songrequestSync;
   }
 
@@ -62,14 +62,18 @@ class Songrequests extends React.Component {
     this.sync.requestStatus();
   }
 
+  handleClickBreadCrumb(event, value) {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
+  }
+
   render() {
-    const { volume } = this.state;
-    const { time } = this.state;
-    const { anchorEl } = this.state;
+    const { volume, time } = this.state;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" href="/">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.songrequests" /></Typography>

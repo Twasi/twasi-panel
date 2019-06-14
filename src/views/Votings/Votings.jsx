@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
@@ -20,7 +19,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { AreaChart, Area, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
+import { Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 import './_style.css';
 
@@ -31,11 +30,21 @@ const data05 = [{ name: 'Das Nutella', value: 936 },
   { name: 'Die Nutella', value: 334 }];
 
 class Votings extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
+  }
+
+  handleClickBreadCrumb(event, value) {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
+  }
   render() {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" href="/">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.votings" /></Typography>

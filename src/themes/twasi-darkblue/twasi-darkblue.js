@@ -59,6 +59,10 @@ export default createMuiTheme({
         padding: '10px',
         '&:hover': {
           backgroundColor: '#1a2035'
+        },
+        '&$selected': { // Name of the rule
+          color: '#ffffff',
+          background: 'linear-gradient(135deg,#3f51b5,#3f51b5)'
         }
       }
     },
@@ -203,6 +207,9 @@ export default createMuiTheme({
     },
     MuiTypography: { // Name of the component ⚛️ / style sheet
       body1: { // Name of the rule
+        color: '#afb6c5' // Some CSS
+      },
+      body2: { // Name of the rule
         color: '#afb6c5' // Some CSS
       }
     },

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
@@ -42,7 +40,7 @@ class ViewerChart extends Component {
     let game = '';
     streamtracker.data.forEach((entry, index) => {
       game = entry.game;
-      if (game != entry.game) {
+      if (game !== entry.game) {
         data.push({
           viewerCount: entry.viewerCount,
           game: entry.game,
@@ -142,10 +140,12 @@ class ViewerChart extends Component {
     commandslineSeries.tensionX = 0.77;
 
     chart.cursor = new am4charts.XYCursor();
-    chart.cursor.behavior = 'panX';
-    chart.cursor.lineX.opacity = 0;
+    chart.cursor.lineX.opacity = 1;
     chart.cursor.lineY.opacity = 0;
-    chart.cursor = new am4charts.XYCursor();
+    chart.cursor.lineX.strokeWidth = 3;
+    chart.cursor.lineX.strokeOpacity = 0.2;
+    chart.cursor.lineX.strokeDasharray = "";
+    chart.cursor.lineX.stroke = am4core.color("#ffffff");
 
     this.chart = chart;
   }

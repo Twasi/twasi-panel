@@ -28,6 +28,17 @@ class Moderators extends Component {
     access_songrequests: true
   };
 
+  constructor(props) {
+    super(props);
+    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
+  }
+
+  handleClickBreadCrumb(event, value) {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
+  }
+
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
@@ -36,7 +47,7 @@ class Moderators extends Component {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" href="/">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.mods" /></Typography>

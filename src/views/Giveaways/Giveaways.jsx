@@ -4,7 +4,6 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
-import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -30,6 +29,18 @@ function TabContainer(props) {
 }
 
 class Giveaways extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
+  }
+
+  handleClickBreadCrumb(event, value) {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
+  }
+
   state = {
     value: 0
   };
@@ -45,7 +56,7 @@ class Giveaways extends Component {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" href="/">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.giveaways" /></Typography>

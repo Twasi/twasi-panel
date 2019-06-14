@@ -1,0 +1,51 @@
+.rank_trophy {
+	transform: translatey(0px);
+	animation: float 4s ease-in-out infinite;
+  overflow: hidden;
+  width: fit-content;
+}
+.rank_trophy:before {
+	background-color: rgba(255, 255, 255, 0.3);
+	content: '';
+	height: 100%;
+	left: -125%;
+	position: absolute;
+	top: 0;
+	transform: skew(-30deg);
+	transition: left 0.5s ease;
+	width: 50%;
+  animation: shine 5s ease-in-out infinite;
+}
+.rank_trophy_two {
+	transform: translatey(0px);
+	animation: float 5s ease-in-out infinite;
+}
+.rank_trophy_three {
+	transform: translatey(0px);
+	animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-5px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+@keyframes shine {
+	0% {
+		left: -125%
+	}
+  10% {
+		left: -125%
+	}
+  25% {
+		left: 130%
+	}
+	100% {
+		left: 130%
+	}
+}

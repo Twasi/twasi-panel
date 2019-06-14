@@ -2,25 +2,15 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import { Container, Row, Col } from 'react-grid-system';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import TooltipM from '@material-ui/core/Tooltip';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
-import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
@@ -58,10 +48,6 @@ class Overview extends Component {
     this.setState({ value });
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { updateStreamtracker } = this.props;
     updateStreamtracker();
@@ -73,13 +59,13 @@ class Overview extends Component {
 
   render() {
     const { streamtracker, globalstreamtracker, utilities, disabled } = this.props;
-    console.log(disabled);
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }
     const { value } = this.state;
     return (
       <div className="pageContent">
+        {streamtracker.streamId != null &&
         <Container className="overviewHead">
           <Row>
             <Col sm={3}>
@@ -152,6 +138,7 @@ class Overview extends Component {
             </Col>
           </Row>
         </Container>
+        }
         {streamtracker.streamId != null &&
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs
@@ -259,7 +246,7 @@ class Overview extends Component {
           </Row>
           } {streamtracker.streamId == null &&
           <div>
-            <Paper className="pageContainer">
+            <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                 <h1 className="pageContainerTitle">
                   <FormattedMessage id="overview.no_streams_tracked_title" />

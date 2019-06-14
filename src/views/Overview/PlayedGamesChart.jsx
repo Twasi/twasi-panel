@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
@@ -38,7 +37,7 @@ class PlayedGamesChart extends Component {
     function getLength(game) {
       let count = 0;
       streamtracker.data.forEach((entry, index) => {
-        if (game == entry.game) {
+        if (game === entry.game) {
           count++;
         }
       });

@@ -6,6 +6,7 @@ import { authSelectors } from '../auth';
 
 const {
   updateUtilities,
+  updateTitleGame,
   updateDisabled
 } = actions;
 
@@ -22,6 +23,16 @@ const loadUtilities = () => (dispatch, getState) => {
   });
 };
 
+const changeTitleGame = (newTitle, newGame) => (dispatch, getState) => {
+  const state = getState();
+  const jwt = authSelectors.getJwt(state);
+  getUserGraph(`twitchAPI{update{channel(newTitle: "${newTitle}", newGame: "${newGame}")}}`, jwt, 'utilities').then(
+    data => {
+      dispatch(updateTitleGame(data.twitchAPI));
+    }
+  );
+};
+
 const verifyData = () => (dispatch, getState) => {
   const state = getState();
 
@@ -34,5 +45,6 @@ const verifyData = () => (dispatch, getState) => {
 
 export default {
   loadUtilities,
+  changeTitleGame,
   verifyData
 };

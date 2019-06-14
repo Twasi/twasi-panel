@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-grid-system';
-import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -33,11 +32,22 @@ class Urlshortener extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  constructor(props) {
+    super(props);
+    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
+  }
+
+  handleClickBreadCrumb(event, value) {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
+  }
+
   render() {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" href="/">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.urlshortener" /></Typography>
@@ -157,12 +167,12 @@ class Urlshortener extends Component {
                 <TableBody displayRowCheckbox={false}>
                   <TableRow>
                     <TableCell style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '100px' }}>
-                      <a style={{ color: '#00aeae' }} href="#">
+                      <a style={{ color: '#00aeae' }} href="/" target="_blank">
                         https://twa.si/c/test
                       </a>
                     </TableCell>
                     <TableCell style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '100px' }}>
-                      <a style={{ color: '#00aeae' }} href="#">
+                      <a style={{ color: '#00aeae' }} href="/">
                         https://blechkelle.com
                       </a>
                     </TableCell>
@@ -193,12 +203,12 @@ class Urlshortener extends Component {
                   </TableRow>
                   <TableRow>
                     <TableCell style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '100px' }}>
-                      <a style={{ color: '#00aeae' }} href="#">
+                      <a style={{ color: '#00aeae' }} href="/">
                         https://twa.si/c/twitter
                       </a>
                     </TableCell>
                     <TableCell style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '100px' }}>
-                      <a style={{ color: '#00aeae' }} href="#">
+                      <a style={{ color: '#00aeae' }} href="/">
                         https://twitter.com/blechkelle
                       </a>
                     </TableCell>

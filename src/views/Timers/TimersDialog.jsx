@@ -3,20 +3,12 @@ import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
-import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Select from '@material-ui/core/Select';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import InputLabel from '@material-ui/core/InputLabel';
 import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
-// import PersonIcon from '@material-ui/icons/Person';
-// import AddIcon from '@material-ui/icons/Add';
 
 import './_style.css';
 
@@ -39,17 +31,19 @@ class Timer extends React.Component {
   };
 
   getCooldown() {
-    if (this.state.interval <= 60) {
-      if (this.state.interval === 0) {
+    let iv = this.state.interval;
+
+    if (iv <= 60) {
+      if (iv === 0) {
         return '1 Minute';
-      } else if (this.state.interval === 60) {
-        this.state.interval = 1;
-        return `${this.state.interval} Stunde`;
+      } else if (iv === 60) {
+        iv = 1;
+        return `${iv} Stunde`;
       }
-      if (this.state.interval > 1) {
-        return `${this.state.interval} Minuten`;
+      if (iv > 1) {
+        return `${iv} Minuten`;
       }
-      return `${this.state.interval} Minute`;
+      return `${iv} Minute`;
     }
     return 'Fehler';
   }

@@ -4,7 +4,7 @@ import selectors from './selectors';
 import { authSelectors } from '../auth';
 import { getUserGraph } from '../../services/graphqlService';
 
-const { updateLoaded, updateMyTickets, updateAdminTickets } = actions;
+const { updateLoaded, updateMyTickets } = actions;
 
 const loadMyTickets = () => (dispatch, getState) => {
   const state = getState();
@@ -14,7 +14,7 @@ const loadMyTickets = () => (dispatch, getState) => {
     return;
   }
 
-  getUserGraph('support{myTickets{id,owner{name,avatar},topic,state,createdAt,closedAt,messages{sender{name,avatar},message,createdAt,staff}}}', jwt).then(
+  getUserGraph('support{myTickets{id,owner{name,avatar},topic,state,messages{sender{name,avatar},message,createdAt,staff}}}', jwt).then(
     data => {
       dispatch(updateMyTickets(data.support.myTickets));
       dispatch(updateLoaded(true));
@@ -34,6 +34,5 @@ const verifyData = () => (dispatch, getState) => {
 
 export default {
   loadMyTickets,
-  verifyData,
-  loadMyTickets
+  verifyData
 };

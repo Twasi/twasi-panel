@@ -33,8 +33,14 @@ class Support extends Component {
     this.state = {
       open: false
     };
-
+    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClickBreadCrumb(event, value) {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
   }
 
   componentDidMount() {
@@ -101,18 +107,17 @@ class Support extends Component {
   }
 
   render() {
-    const { userName, avatar, ...other } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" href="/">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer">
-          <h3 className="pageContainerTitle">
-            <Typography>
+          <Typography>
+            <h3 className="pageContainerTitle">
               Deine Support Tickets
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={this.props.loadMyTickets}>
@@ -127,11 +132,11 @@ class Support extends Component {
                   onClose={this.handleClose}
                 />
               </span>
-            </Typography>
-          </h3>
-          <small>
-            Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
-          </small>
+            </h3>
+            <small>
+              Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
+            </small>
+          </Typography>
           {this.renderSupportTickets()}
         </Paper>
       </div>

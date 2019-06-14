@@ -4,15 +4,11 @@ import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Paper from '@material-ui/core/Paper';
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import TooltipM from '@material-ui/core/Tooltip';
-import Icon from '@material-ui/core/Icon';
-import Badge from '@material-ui/core/Badge';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 

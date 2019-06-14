@@ -1,10 +1,6 @@
-import actions from './actions';
-
 import { authSelectors, authOperations } from '../auth';
 import { appInfoOperations } from '../appInfo';
 import { getUserGraph } from '../../services/graphqlService';
-
-const { updateImpersonating } = actions;
 
 const impersonateUser = userName => (dispatch, getState) => {
   const state = getState();
@@ -29,7 +25,7 @@ const impersonateUser = userName => (dispatch, getState) => {
   );
 };
 
-const resetImpersonation = () => (dispatch, getState) => {
+const resetImpersonation = () => dispatch => {
   dispatch({ type: 'RESET', jwt: window.originalJwt });
   dispatch(authOperations.authenticate(window.originalJwt));
 
