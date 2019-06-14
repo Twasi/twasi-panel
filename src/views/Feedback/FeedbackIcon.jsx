@@ -16,7 +16,7 @@ class FeedbackIcon extends React.Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -29,14 +29,14 @@ class FeedbackIcon extends React.Component {
           <Icon
             className="feedbackIcon"
             style={{ fontSize: 36, float: 'right', marginRight: '15px' }}
-            onClick={() => this.setState({ open: true })}
+            onClick={() => this.setState({ modalOpen: true })}
           >
             favorite_border
           </Icon>
         </Tooltip>
         <Feedback
           selectedValue={this.state.selectedValue}
-          open={this.state.open}
+          open={this.state.modalOpen}
           onClose={this.handleClose}
         />
       </div>

@@ -52,7 +52,7 @@ class Command extends React.Component {
   handleOpenNotification = commandName => {
     this.setState({
       openNotification: true,
-      open: false,
+      modalOpen: false,
       notification: 'Der Befehl "' + commandName + '" wurde erfolgreich erstellt.'
     });
     setTimeout(function() {

@@ -127,7 +127,7 @@ class Quotes extends Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   renderQuotes() {

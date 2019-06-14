@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -13,7 +13,6 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -23,7 +22,7 @@ import Link from '@material-ui/core/Link';
 import './_style.css';
 
 import { supportSelectors, supportOperations } from '../../state/support';
-import SupportTicket from './SupportTicket';
+import SupportTicketModal from './SupportTicketModal';
 import SupportTicketMessage from "./SupportTicketMessage";
 
 class Support extends Component {
@@ -31,7 +30,7 @@ class Support extends Component {
     super(props);
 
     this.state = {
-      open: false
+      modalOpen: false
     };
     this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -49,7 +48,7 @@ class Support extends Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   renderSupportTickets() {
@@ -124,11 +123,11 @@ class Support extends Component {
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   Aktualisieren
                 </Button>
-                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
+                <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary">
                   Neues Ticket erstellen
                 </Button>
-                <SupportTicket
-                  open={this.state.open}
+                <SupportTicketModal
+                  open={this.state.modalOpen}
                   onClose={this.handleClose}
                 />
               </span>

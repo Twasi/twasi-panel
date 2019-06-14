@@ -39,7 +39,7 @@ class GameTitleCard extends Component {
 
   handleClick = (event) => {
     this.setState({
-      open: true
+      modalOpen: true
     });
   };
 
@@ -48,7 +48,7 @@ class GameTitleCard extends Component {
       return;
     }
     this.setState({
-      open: false
+      modalOpen: false
     });
   }
 
@@ -106,7 +106,7 @@ class GameTitleCard extends Component {
             vertical: 'bottom',
             horizontal: 'left',
           }}
-          open={this.state.open}
+          open={this.state.modalOpen}
           autoHideDuration={5000}
           onClose={this.handleClose}
           message={"Der Titel und das Spiel wurden erfolgreich geändert."}

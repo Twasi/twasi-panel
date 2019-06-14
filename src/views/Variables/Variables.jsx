@@ -44,7 +44,7 @@ class Variables extends Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   renderVariables() {
@@ -108,7 +108,7 @@ class Variables extends Component {
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
-                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary" disabled={disabled}>
+                <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary" disabled={disabled}>
                   <FormattedMessage id="variables.new_variable" />
                 </Button>
               </span>

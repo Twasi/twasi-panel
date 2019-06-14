@@ -16,22 +16,17 @@ import { FormattedMessage } from 'react-intl';
 
 import './_style.css';
 
-class SupportTicket extends React.Component {
+class SupportTicketModal extends React.Component {
+  state = {
+    issue: 10
+  };
+
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
 
-  handleListItemClick = value => {
-    this.props.onClose(value);
-  };
-
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  };
-
-  state = {
-    issue: 10,
-    labelWidth: 125
   };
 
   render() {
@@ -65,7 +60,7 @@ class SupportTicket extends React.Component {
                   onChange={this.handleChange}
                   input={
                     <OutlinedInput
-                      labelWidth={this.state.labelWidth}
+                      labelWidth={125}
                       name="issue"
                       id="issue-select"
                     />
@@ -77,6 +72,13 @@ class SupportTicket extends React.Component {
                   <MenuItem value={40}><FormattedMessage id="support.other" /></MenuItem>
                 </Select>
               </FormControl>
+              <TextField
+                  labelWidth={this.state.labelWidth}
+                  label={<FormattedMessage id="support.title" />}
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+              />
               <TextField
                 InputLabelProps={{ shrink: true }}
                 id="outlined-textarea"
@@ -98,9 +100,9 @@ class SupportTicket extends React.Component {
   }
 }
 
-SupportTicket.propTypes = {
+SupportTicketModal.propTypes = {
   onClose: PropTypes.func,
   classes: PropTypes.string
 };
 
-export default (SupportTicket);
+export default (SupportTicketModal);

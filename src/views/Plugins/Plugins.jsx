@@ -40,7 +40,7 @@ class Plugins extends Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -72,7 +72,7 @@ class Plugins extends Component {
                 <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
                     <h3 className="pageContainerTitle"><FormattedMessage id="plugins.documentation" /></h3>
-                    <Button onClick={() => this.setState({ open: true })} style={{ marginTop: '5px' }} variant="contained" color="primary" size="small">
+                    <Button onClick={() => this.setState({ modalOpen: true })} style={{ marginTop: '5px' }} variant="contained" color="primary" size="small">
                       <FormattedMessage id="plugins.show" />
                     </Button>
                   </Typography>
@@ -180,7 +180,7 @@ class Plugins extends Component {
         <Documentation
           scroll="body"
           maxWidth="md"
-          open={this.state.open}
+          open={this.state.modalOpen}
           onClose={this.handleClose}
         />
       </div>
