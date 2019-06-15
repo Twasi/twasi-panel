@@ -28,7 +28,7 @@ const getGraph = (query, target, jwt) => (dispatch, getState) => {
           message: error.message
         };
 
-        console.log(error);
+        //console.log(error);
 
         if (error.extensions && error.extensions.localisedKey) {
           // LocalisedKey provided by backend

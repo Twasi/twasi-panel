@@ -16,13 +16,21 @@ class GameTitleCard extends Component {
   state = {
     title: '',
     game: '',
-    isRendered: false,
     open: false,
   };
 
   componentDidMount() {
     const { updateUtilities } = this.props;
     updateUtilities();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state && this.props.utilities && this.props.utilities.retrieve) {
+      this.setState({
+        title: this.props.utilities.retrieve.title,
+        game: this.props.utilities.retrieve.game
+      });
+    }
   }
 
   handleTitleChange = (event) => {
@@ -53,14 +61,6 @@ class GameTitleCard extends Component {
   }
 
   render() {
-    const { utilities } = this.props;
-    if(!this.state.isRendered && utilities.retrieve != null) {
-      this.setState({
-        isRendered: true,
-        title: utilities.retrieve.title,
-        game: utilities.retrieve.game
-      });
-    }
     return (
       <Card className="pluginCard" style={{ marginTop: '15px' }}>
         <CardContent style={{ padding: '24px' }}>

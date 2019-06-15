@@ -31,7 +31,8 @@ class Commands extends Component {
       openAddCommandDialog: false,
       openEditCommandDialog: false,
       openNotification: false,
-      notification: ''
+      notification: '',
+      editDialogContent: ''
     };
   }
 
@@ -130,7 +131,7 @@ class Commands extends Component {
               mini
               aria-label="editCommand"
               onClick={() => {
-                  this.setState({ openEditCommandDialog: true })
+                  this.setState({ openEditCommandDialog: true, editDialogContent: command })
               }}>
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
             </Button>
@@ -202,14 +203,19 @@ class Commands extends Component {
               {this.renderCommands()}
             </TableBody>
           </Table>
-          <CommandAddDialog
-            open={this.state.openAddCommandDialog}
-            onClose={this.handleCloseAddCommandDialog}
-          />
-          <CommandEditDialog
-            open={this.state.openEditCommandDialog}
-            onClose={this.handleCloseEditCommandDialog}
-          />
+          {this.state.openAddCommandDialog &&
+            <CommandAddDialog
+              open
+              onClose={this.handleCloseAddCommandDialog}
+            />
+          }
+          {this.state.openEditCommandDialog &&
+            <CommandEditDialog
+              open
+              onClose={this.handleCloseEditCommandDialog}
+              commandObject={this.state.editDialogContent}
+            />
+          }
           <Snackbar
             anchorOrigin={{
               vertical: 'bottom',

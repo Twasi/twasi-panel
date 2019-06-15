@@ -24,27 +24,34 @@ import './_style.css';
 
 class Command extends React.Component {
 
-  state = {
-    commandName: "",
-    commandContent: "",
-    commandCooldown: 0,
-    issue: 10,
-    labelWidth: 115,
-    cooldown: 0,
-    openNotification: false,
-    notification: ''
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      commandName: "",
+      commandContent: "",
+      commandCooldown: 0,
+      issue: 10,
+      labelWidth: 115,
+      cooldown: 0,
+      openNotification: false,
+      notification: ''
+    };
+  }
 
   componentDidMount() {
-    const { updateCommands } = this.props;
-    updateCommands();
+    const { commandObject } = this.props;
+    this.setState({
+      commandName: commandObject.name,
+      commandContent: commandObject.content,
+      commandCooldown: commandObject.cooldown
+    });
   }
 
   handleOpenNotification = commandName => {
     this.setState({
       openNotification: true,
       modalOpen: false,
-      notification: 'Der Befehl "' + commandName + '" wurde erfolgreich erstellt.'
+      notification: 'Der Befehl "' + commandName + '" wurde erfolgreich bearbeitet.'
     });
     setTimeout(function() {
         this.props.updateCommands()
@@ -53,10 +60,6 @@ class Command extends React.Component {
 
   handleCloseNotification = () => {
     this.setState({ openNotification: false });
-  };
-
-  handleClose = () => {
-    this.props.onClose(this.props.selectedValue);
   };
 
   handleListItemClick = value => {
@@ -126,17 +129,15 @@ class Command extends React.Component {
   }
 
   render() {
-    const { classes, onClose, ...other } = this.props;
-
+    const { commandObject, ...other } = this.props;
     return (
       <Dialog
-        onClose={this.handleClose}
         {...other}
       >
         <DialogContent>
           <Typography>
             <h3 className="pageContainerTitle">
-              <FormattedMessage id="commands.new_command" />
+              Befehl {commandObject.name} bearbeiten
             </h3>
             <small>
               <FormattedMessage id="commands.new_command.subheadline" />
@@ -229,7 +230,7 @@ class Command extends React.Component {
               <Slider
                 style={{ padding: '22px 0px' }}
                 aria-labelledby="label"
-                value={this.state.cooldown}
+                value={commandObject.cooldown}
                 min={0}
                 max={119}
                 step={1}
