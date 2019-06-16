@@ -17,6 +17,7 @@ import second_place from '../common/resources/second_place.svg';
 import third_place from '../common/resources/third_place.svg';
 
 import './_style.css';
+import RequireAuth from '../../auth/RequireAuth';
 
 function TabContainer(props) {
   return (
@@ -70,7 +71,7 @@ class Public extends React.Component {
     const { value } = this.state;
 
     return (
-      <div>
+      <RequireAuth optional>
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs
             value={value}
@@ -185,7 +186,7 @@ class Public extends React.Component {
             </Grid>
           </Grid>
         </TabContainer>}
-      </div>
+      </RequireAuth>
     );
   }
 }

@@ -14,7 +14,7 @@ const loadMyTickets = () => (dispatch, getState) => {
     return;
   }
 
-  getUserGraph('support{myTickets{id,owner{name,avatar},topic,state,createdAt,closedAt,messages{sender{name,avatar},message,createdAt,staff}}}', jwt).then(
+  getUserGraph('support{myTickets{id,owner{name,avatar},topic,state,createdAt,category,closedAt,messages{sender{name,avatar},message,createdAt,staff}}}', jwt).then(
     data => {
       dispatch(updateMyTickets(data.support.myTickets));
       dispatch(updateLoaded(true));

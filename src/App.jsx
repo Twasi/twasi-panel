@@ -7,7 +7,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { addLocaleData, IntlProvider } from 'react-intl';
 
 import AuthLoader from './auth/AuthLoader';
-import RequireAuth from './auth/RequireAuth';
 import configureStore from './state/store';
 import { appInfoSelectors, appInfoOperations } from './state/appInfo';
 import { i18nSelectors, i18nOperations } from './state/i18n';
@@ -84,7 +83,6 @@ const App = () => {
         <MuiThemeProvider theme={selectedTheme}>
           <CssBaseline />
           <AuthLoader>
-            <RequireAuth optional />
             <Content className={props.theme.toLowerCase()}>
               <Header />
               <Switch>

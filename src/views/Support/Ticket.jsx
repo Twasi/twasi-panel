@@ -13,12 +13,15 @@ import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
-// import PersonIcon from '@material-ui/icons/Person';
-// import AddIcon from '@material-ui/icons/Add';
 
 import './_style.css';
 
 class Ticket extends React.Component {
+  state = {
+    issue: 10,
+    labelWidth: 125
+  };
+
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
@@ -29,11 +32,6 @@ class Ticket extends React.Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  };
-
-  state = {
-    issue: 10,
-    labelWidth: 125
   };
 
   render() {
