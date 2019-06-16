@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 export const initialState = {
@@ -8,7 +7,7 @@ export const initialState = {
   originalJwt: ''
 };
 
-const appInfoReducer = (state = initialState, action) => {
+const impersonateReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_IMPERSONATING: {
       if (action.jwt !== null && action.jwt !== '') {
@@ -23,6 +22,4 @@ const appInfoReducer = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  appInfo: appInfoReducer
-});
+export default impersonateReducer;

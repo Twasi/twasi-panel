@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 export const initialState = {
@@ -8,7 +7,7 @@ export const initialState = {
   isDisabled: false
 };
 
-const statusReducer = (state = initialState, action) => {
+const streamtrackerReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_STREAMTRACKER: {
       return { ...state, isLoaded: true, isDisabled: false, streamtracker: action.streamtracker };
@@ -24,7 +23,4 @@ const statusReducer = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  streamtracker: statusReducer,
-  globalstreamtracker: statusReducer
-});
+export default streamtrackerReducer;

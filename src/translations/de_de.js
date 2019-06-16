@@ -169,6 +169,7 @@ export default {
 
   // Commands
   'commands.title': 'Deine Befehle',
+  'commands.subtitle': 'Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.',
   'commands.addcommand': 'Befehl hinzufügen',
   'commands.new_command': 'Einen neuen Befehl erstellen',
   'commands.new_command.subheadline': 'Hier kannst du einen neuen Befehl hinzufügen.',
@@ -181,6 +182,19 @@ export default {
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Befehl speichern',
+  'commands.table.command': 'Befehl',
+  'commands.table.output': 'Ausgabe',
+  'commands.table.access': 'Zugriff',
+  'commands.table.uses': 'Genutzt',
+  'commands.table.cooldown': 'Cooldown',
+  'commands.table.active': 'Aktiviert',
+  'commands.cooldown.no_cooldown': 'Kein Cooldown',
+  'commands.cooldown.second': 'Sekunde',
+  'commands.cooldown.seconds': 'Sekunden',
+  'commands.cooldown.minute': 'Minute',
+  'commands.cooldown.minutes': 'Minuten',
+  'commands.cooldown.hour': 'Stunde',
+
 
   // Variables
   'variables.title': 'Deine Variablen',
@@ -286,6 +300,14 @@ export default {
   'support.userpanel': 'Userpanel',
   'support.function': 'Funktionen',
   'support.other': 'Sonstiges',
+  'support.title': 'Betreff',
+  'support.type.feedback': 'Ich möchte Feedback geben',
+  'support.type.idea': 'Ich möchte eine Idee einbringen',
+  'support.type.joke': 'Ich möchte einen Witz erzählen',
+  'support.type.question': 'Ich habe eine Frage',
+  'support.type.problem': 'Ich habe ein Problem',
+  'support.type.bug': 'Ich möchte einen Bug melden',
+  'support.type.other': 'Ich habe ein anderes Anliegen',
 
   // Songrequests
   'songrequest.requestby': 'Requestet von',

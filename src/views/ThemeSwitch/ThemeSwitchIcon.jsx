@@ -16,7 +16,7 @@ class ThemeSwitchIcon extends React.Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -29,13 +29,13 @@ class ThemeSwitchIcon extends React.Component {
           <Icon
             className="themeIcon"
             style={{ fontSize: 36, float: 'right', marginRight: '15px' }}
-            onClick={() => this.setState({ open: true })}
+            onClick={() => this.setState({ modalOpen: true })}
           >
             color_lens
           </Icon>
         </Tooltip>
         <ThemeSwitch
-          open={this.state.open}
+          open={this.state.modalOpen}
           onClose={this.handleClose}
         />
       </div>

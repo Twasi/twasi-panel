@@ -1,6 +1,6 @@
-const getUtilities = state => state.utilitiesState.utilities.utilities;
-const isLoaded = state => state.utilitiesState.utilities.isLoaded;
-const isDisabled = state => state.utilitiesState.utilities.isDisabled;
+const getUtilities = state => state.utilities.utilities;
+const isLoaded = state => state.utilities.isLoaded;
+const isDisabled = state => state.utilities.isDisabled;
 
 export default {
   getUtilities,

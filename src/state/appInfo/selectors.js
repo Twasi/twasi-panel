@@ -1,11 +1,13 @@
-const isLoaded = state => state.appInfoState.appInfo.isLoaded;
-const getVersion = state => state.appInfoState.appInfo.serverVersion;
-const getUserStatus = state => state.appInfoState.appInfo.userStatus;
-const getTheme = state => state.appInfoState.appInfo.theme;
+const isLoaded = state => state.appInfo.isLoaded;
+const getVersion = state => state.appInfo.serverVersion;
+const getUserStatus = state => state.appInfo.userStatus;
+const getTheme = state => state.appInfo.theme;
+const getNotifications = state => state.appInfo.notifications;
 
 export default {
   isLoaded,
   getVersion,
   getUserStatus,
-  getTheme
+  getTheme,
+  getNotifications
 };

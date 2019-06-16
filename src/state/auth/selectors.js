@@ -1,12 +1,12 @@
-const getJwt = state => state.authState.auth.jwt;
-const getUser = state => state.authState.auth.user;
-const isLoading = state => state.authState.auth.isLoading;
+const getJwt = state => state.auth.jwt;
+const getUser = state => state.auth.user;
+const isLoading = state => state.auth.isLoading;
 
-const isAuthenticated = state => state.authState.auth.isAuthenticated;
+const isAuthenticated = state => state.auth.isAuthenticated;
 
-const getUserAvatar = state => state.authState.auth.userData.twitchAccount.avatar;
+const getUserAvatar = state => state.auth.userData.twitchAccount.avatar;
 
-const isUserUpdating = state => state.authState.auth.isUserUpdating;
+const isUserUpdating = state => state.auth.isUserUpdating;
 
 export default {
   getJwt,

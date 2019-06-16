@@ -12,26 +12,58 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { FormattedMessage } from 'react-intl';
 
 import './_style.css';
 
-class Ticket extends React.Component {
-  state = {
-    issue: 10,
-    labelWidth: 125
-  };
+const initialState = {
+  type: 'OTHER',
+  isLoading: false,
+  topic: '',
+  message: '',
+  topicError: '',
+  messageError: ''
+};
+
+class SupportTicketModal extends React.Component {
+  state = initialState;
+
+  categories = [
+    'FEEDBACK',
+    'IDEA',
+    'JOKE',
+    'BUG',
+    'QUESTION',
+    'PROBLEM',
+    'OTHER'
+  ];
 
   handleClose = () => {
-    this.props.onClose(this.props.selectedValue);
+    this.setState(initialState);
+    this.props.onClose();
   };
 
-  handleListItemClick = value => {
-    this.props.onClose(value);
+  handleTypeChange = event => {
+    this.setState({ type: event.target.value });
   };
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleTopicChange = event => {
+    this.setState({ topic: event.target.value });
+  };
+
+  handleMessageChange = event => {
+    this.setState({ message: event.target.value });
+  };
+
+  handleButtonClick = () => {
+    this.setState({ isLoading: true });
+
+    this.props.createTicket(this.state.type, this.state.topic, this.state.message).then(() => {
+      this.handleClose();
+    }).finally(() => {
+      this.setState({ isLoading: false });
+    });
   };
 
   render() {
@@ -61,26 +93,34 @@ class Ticket extends React.Component {
                   <FormattedMessage id="support.issue" />
                 </InputLabel>
                 <Select
-                  value={this.state.issue}
-                  onChange={this.handleChange}
+                  value={this.state.type}
+                  onChange={this.handleTypeChange}
                   input={
                     <OutlinedInput
-                      labelWidth={this.state.labelWidth}
+                      labelWidth={125}
                       name="issue"
                       id="issue-select"
                     />
                   }
                 >
-                  <MenuItem value={10}><FormattedMessage id="support.chatbot" /></MenuItem>
-                  <MenuItem value={20}><FormattedMessage id="support.userpanel" /></MenuItem>
-                  <MenuItem value={30}><FormattedMessage id="support.function" /></MenuItem>
-                  <MenuItem value={40}><FormattedMessage id="support.other" /></MenuItem>
+                  {this.categories.map(category => <MenuItem value={category}><FormattedMessage id={`support.type.${category.toLowerCase()}`} /></MenuItem>)}
                 </Select>
               </FormControl>
+              <TextField
+                labelWidth={this.state.labelWidth}
+                label={<FormattedMessage id="support.title" />}
+                onChange={this.handleTopicChange}
+                value={this.state.topic}
+                fullWidth
+                margin="normal"
+                variant="outlined"
+              />
               <TextField
                 InputLabelProps={{ shrink: true }}
                 id="outlined-textarea"
                 label={<FormattedMessage id="support.issue_content_headline" />}
+                onChange={this.handleMessageChange}
+                value={this.state.message}
                 multiline
                 fullWidth
                 rows="6"
@@ -89,8 +129,9 @@ class Ticket extends React.Component {
               />
             </CardContent>
           </Card>
-          <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
-            <FormattedMessage id="support.sendbutton" />
+          <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary" disabled={this.state.isLoading} onClick={this.handleButtonClick}>
+            {!this.state.isLoading && <FormattedMessage id="support.sendbutton" />}
+            {this.state.isLoading && <CircularProgress size={24} />}
           </Button>
         </DialogContent>
       </Dialog>
@@ -98,9 +139,10 @@ class Ticket extends React.Component {
   }
 }
 
-Ticket.propTypes = {
+SupportTicketModal.propTypes = {
   onClose: PropTypes.func,
-  classes: PropTypes.string
+  classes: PropTypes.string,
+  createTicket: PropTypes.func
 };
 
-export default (Ticket);
+export default (SupportTicketModal);

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunk from 'redux-thunk';
 
 import auth from './auth';
@@ -15,62 +15,60 @@ import impersonate from './impersonate';
 import utilities from './utilities';
 import support from './support';
 
-import { initialState as i18nInitialState } from './i18n/reducers';
+import {initialState as i18nInitialState} from './i18n/reducers';
 
 let store = null;
 
 const configureStore = (translations = {}) => {
-  if (store) {
+    if (store) {
+        return store;
+    }
+
+    const reducers = {
+        auth,
+        i18n,
+        appInfo,
+        status,
+        settings,
+        plugins,
+        commands,
+        variables,
+        quotes,
+        streamtracker,
+        impersonate,
+        utilities,
+        support
+    };
+
+    const initialState = {
+        i18n: {translations, ...i18nInitialState}
+    };
+
+    const appReducer = combineReducers(reducers);
+
+    const rootReducer = (state, action) => {
+        if (action.type === 'RESET') {
+            state = initialState;
+        }
+
+        return appReducer(state, action);
+    };
+
+    const enhancer = compose(
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+    );
+
+    store = createStore(rootReducer, initialState, enhancer);
     return store;
-  }
-
-  const reducers = {
-    authState: auth,
-    i18nState: i18n,
-    appInfoState: appInfo,
-    statusState: status,
-    settingsState: settings,
-    pluginsState: plugins,
-    commandsState: commands,
-    variablesState: variables,
-    quotesState: quotes,
-    streamtrackerState: streamtracker,
-    impersonateState: impersonate,
-    utilitiesState: utilities,
-    supportState: support
-  };
-
-  const initialState = {
-    i18nState: {
-      i18n: { translations, ...i18nInitialState }
-    }
-  };
-
-  const appReducer = combineReducers(reducers);
-
-  const rootReducer = (state, action) => {
-    if (action.type === 'RESET') {
-      state = initialState;
-    }
-
-    return appReducer(state, action);
-  };
-
-  const enhancer = compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
-  );
-
-  store = createStore(rootReducer, initialState, enhancer);
-  return store;
 };
 
 export const getState = () => {
-  if (store) {
-    return store.getState();
-  }
+    if (store) {
+        return store.getState();
+    }
 
-  return {};
+    return {};
 };
 
 export default configureStore;

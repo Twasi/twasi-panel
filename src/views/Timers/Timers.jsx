@@ -35,7 +35,7 @@ class Timers extends Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   renderTimers() {
@@ -102,11 +102,11 @@ class Timers extends Component {
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
-                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
+                <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary">
                   <FormattedMessage id="timers.new_timer" />
                 </Button>
                 <TimersDialog
-                  open={this.state.open}
+                  open={this.state.modalOpen}
                   onClose={this.handleClose}
                 />
               </span>

@@ -15,7 +15,7 @@ class LanguageSwitchIcon extends React.Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -28,14 +28,14 @@ class LanguageSwitchIcon extends React.Component {
           <Icon
             className="languageIcon"
             style={{ fontSize: 36, float: 'right', marginRight: '15px' }}
-            onClick={() => this.setState({ open: true })}
+            onClick={() => this.setState({ modalOpen: true })}
           >
             language
           </Icon>
         </Tooltip>
         <LanguageSwitch
           selectedValue={this.state.selectedValue}
-          open={this.state.open}
+          open={this.state.modalOpen}
           onClose={this.handleClose}
         />
       </div>

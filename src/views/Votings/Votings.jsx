@@ -58,7 +58,7 @@ class Votings extends Component {
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
-                <Button onClick={() => this.setState({ open: true })} variant="contained" color="primary">
+                <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary">
                   <FormattedMessage id="votings.new_voting" />
                 </Button>
               </span>

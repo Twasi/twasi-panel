@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 export const initialState = {
@@ -76,6 +75,4 @@ const pluginsReducer = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  plugins: pluginsReducer
-});
+export default pluginsReducer;

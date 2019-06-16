@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import types from './types';
 
 export const initialState = {
@@ -6,7 +5,9 @@ export const initialState = {
   isConnected: false,
   serverVersion: 'DISCONNECTED',
   userStatus: 'LOADING',
-  theme: 'twasi-darkblue'
+  theme: 'twasi-darkblue',
+  notifications: [],
+  lastNotificationId: 0
 };
 
 const appInfoReducer = (state = initialState, action) => {
@@ -31,11 +32,13 @@ const appInfoReducer = (state = initialState, action) => {
       return { ...state, theme: action.theme };
     }
 
+    case types.ADD_NOTIFICATION: {
+      return { ...state, notifications: [...state.notifications, {...action.notification, id: state.lastNotificationId + 1}], lastNotificationId: state.lastNotificationId + 1}
+    }
+
     default:
       return state;
   }
 };
 
-export default combineReducers({
-  appInfo: appInfoReducer
-});
+export default appInfoReducer;

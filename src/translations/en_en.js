@@ -168,6 +168,7 @@ export default {
 
   // Commands
   'commands.title': 'Your Commands',
+  'commands.subtitle': 'Here you can manage your custom Chatcommands.',
   'commands.addcommand': 'Add Command',
   'commands.new_command': 'Create a new Command',
   'commands.new_command_subheadline': 'Here you can add a new Command.',
@@ -180,6 +181,18 @@ export default {
   'commands.new_command.mods': 'Moderators or higher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Save Command',
+  'commands.table.command': 'Command',
+  'commands.table.output': 'Output',
+  'commands.table.access': 'Access',
+  'commands.table.uses': 'Uses',
+  'commands.table.cooldown': 'Cooldown',
+  'commands.table.active': 'Active',
+  'commands.cooldown.no_cooldown': 'No Cooldown',
+  'commands.cooldown.second': 'Second',
+  'commands.cooldown.seconds': 'Seconds',
+  'commands.cooldown.minute': 'Minute',
+  'commands.cooldown.minutes': 'Minutes',
+  'commands.cooldown.hour': 'Hour',
 
   // Variables
   'variables.title': 'Your Variables',
@@ -276,10 +289,10 @@ export default {
   'urlshortener.redirection': 'Redirection',
 
   // Support
-  'support.new_ticket': 'New Support Ticket',
-  'support.new_ticket_subheadline': 'You are about to open a new Support Ticket. please give us the best Details about your Problem so we can give you the best possible Answers.',
-  'support.sendbutton': 'Create Ticket',
-  'support.issue_content_headline': 'Your Ticket',
+  'support.new_ticket': 'New Support SupportTicket',
+  'support.new_ticket_subheadline': 'You are about to open a new Support SupportTicket. please give us the best Details about your Problem so we can give you the best possible Answers.',
+  'support.sendbutton': 'Create SupportTicket',
+  'support.issue_content_headline': 'Your SupportTicket',
   'support.issue': 'What is it about?',
   'support.chatbot': 'Chatbot',
   'support.userpanel': 'Userpanel',

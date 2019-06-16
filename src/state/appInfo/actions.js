@@ -25,10 +25,16 @@ const updateTheme = theme => ({
   theme
 });
 
+const addNotification = notification => ({
+  type: types.ADD_NOTIFICATION,
+  notification
+});
+
 export default {
   updateLoaded,
   updateConnected,
   updateVersion,
   updateUserStatus,
-  updateTheme
+  updateTheme,
+  addNotification
 };

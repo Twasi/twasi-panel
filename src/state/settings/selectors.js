@@ -1,7 +1,7 @@
-const isLoaded = state => state.settingsState.settings.isLoaded;
-const isDirty = state => state.settingsState.settings.isDirty;
+const isLoaded = state => state.settings.isLoaded;
+const isDirty = state => state.settings.isDirty;
 
-const getLanguage = state => state.settingsState.settings.language;
+const getLanguage = state => state.settings.language;
 
 const getRequest = state => ({
   language: getLanguage(state)

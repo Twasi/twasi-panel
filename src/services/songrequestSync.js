@@ -23,7 +23,7 @@ class SongrequestSync {
     SongrequestSync.log(`Connecting to ${this.socketAddress}`);
     this.socket = new WebSocket(this.socketAddress);
 
-    this.socket.addEventListener('open', this.onOpen);
+    this.socket.addEventListener('modalOpen', this.onOpen);
     this.socket.addEventListener('message', this.onMessage);
   }
 

@@ -1,26 +1,24 @@
 import actions from './actions';
 import selectors from './selectors';
 
-import { authSelectors } from '../auth';
-import { getUserGraph } from '../../services/graphqlService';
+import { getGraph } from '../../services/graphqlService';
 
 const { updateLoaded, updateMyTickets } = actions;
 
-const loadMyTickets = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
+const ticketQuery = 'id,owner{name,avatar},topic,state,createdAt,category,closedAt,messages{sender{name,avatar},message,createdAt,staff}}';
 
-  if (jwt === null) {
-    return;
-  }
-
-  getUserGraph('support{myTickets{id,owner{name,avatar},topic,state,createdAt,category,closedAt,messages{sender{name,avatar},message,createdAt,staff}}}', jwt).then(
+const loadMyTickets = () => dispatch => {
+  dispatch(getGraph(`support{myTickets{${ticketQuery}}`)).then(
     data => {
       dispatch(updateMyTickets(data.support.myTickets));
       dispatch(updateLoaded(true));
     }
   );
 };
+
+const createTicket = (category, topic, message) => (dispatch, getState) => dispatch(getGraph(`support{create(topic:"${topic}",message:"${message}",category:"${category}"){${ticketQuery}}`)).then(data => {
+  dispatch(updateMyTickets([...selectors.getMyTickets(getState()), data.support.create]));
+});
 
 const verifyData = () => (dispatch, getState) => {
   const state = getState();
@@ -34,5 +32,6 @@ const verifyData = () => (dispatch, getState) => {
 
 export default {
   loadMyTickets,
-  verifyData
+  verifyData,
+  createTicket
 };

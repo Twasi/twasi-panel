@@ -16,7 +16,7 @@ class AccountSwitchIcon extends React.Component {
   }
 
   handleClose() {
-    this.setState({ open: false });
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -29,14 +29,14 @@ class AccountSwitchIcon extends React.Component {
           <Icon
             className="swapIcon"
             style={{ fontSize: 36, float: 'right' }}
-            onClick={() => this.setState({ open: true })}
+            onClick={() => this.setState({ modalOpen: true })}
           >
             swap_horizontal_circle
           </Icon>
         </Tooltip>
         <AccountSwitch
           selectedValue={this.state.selectedValue}
-          open={this.state.open}
+          open={this.state.modalOpen}
           onClose={this.handleClose}
         />
       </div>

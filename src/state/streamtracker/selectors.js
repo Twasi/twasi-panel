@@ -1,7 +1,7 @@
-const getStreamtracker = state => state.streamtrackerState.streamtracker.streamtracker;
-const getGlobalStreamtracker = state => state.streamtrackerState.globalstreamtracker.globalstreamtracker;
-const isLoaded = state => state.streamtrackerState.streamtracker.isLoaded;
-const isDisabled = state => state.streamtrackerState.streamtracker.isDisabled;
+const getStreamtracker = state => state.streamtracker.streamtracker;
+const getGlobalStreamtracker = state => state.streamtracker.globalstreamtracker;
+const isLoaded = state => state.streamtracker.isLoaded;
+const isDisabled = state => state.streamtracker.isDisabled;
 
 export default {
   getStreamtracker,

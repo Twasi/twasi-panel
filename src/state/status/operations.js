@@ -1,8 +1,7 @@
 import actions from './actions';
 import selectors from './selectors';
 
-import { getUserGraph } from '../../services/graphqlService';
-import { authSelectors } from '../auth';
+import { getGraph } from '../../services/graphqlService';
 
 const {
   updateStatus,
@@ -11,18 +10,12 @@ const {
   updateStopping
 } = actions;
 
-const loadData = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-
-  getUserGraph('status{isRunning}', jwt).then(data => dispatch(updateStatus(data.status)));
+const loadData = () => dispatch => {
+  dispatch(getGraph('status{isRunning}')).then(data => dispatch(updateStatus(data.status)));
 };
 
-const loadEvents = () => (dispatch, getState) => {
-  const state = getState();
-  const jwt = authSelectors.getJwt(state);
-
-  getUserGraph('user{events{message,messageType,createdAt}}', jwt).then(data => dispatch(updateEvents(data.user.events)));
+const loadEvents = () => dispatch => {
+  dispatch(getGraph('user{events{message,messageType,createdAt}}')).then(data => dispatch(updateEvents(data.user.events)));
 };
 
 const verifyData = () => (dispatch, getState) => {
@@ -35,26 +28,22 @@ const verifyData = () => (dispatch, getState) => {
   }
 };
 
-const stopBot = () => (dispatch, getState) => {
+const stopBot = () => dispatch => {
   dispatch(updateStopping(true));
   sleep(1000).then(() => {
-    const state = getState();
-    const jwt = authSelectors.getJwt(state);
 
-    getUserGraph('status{changeStatus(isRunning:false){isRunning}}', jwt).then(data => {
+    dispatch(getGraph('status{changeStatus(isRunning:false){isRunning}}')).then(data => {
       dispatch(updateStatus(data.status.changeStatus));
       dispatch(updateStopping(false));
     });
   });
 };
 
-const startBot = () => (dispatch, getState) => {
+const startBot = () => dispatch => {
   dispatch(updateStarting(true));
   sleep(1000).then(() => {
-    const state = getState();
-    const jwt = authSelectors.getJwt(state);
 
-    getUserGraph('status{changeStatus(isRunning:true){isRunning}}', jwt).then(data => {
+    dispatch(getGraph('status{changeStatus(isRunning:true){isRunning}}')).then(data => {
       dispatch(updateStatus(data.status.changeStatus));
       dispatch(updateStarting(false));
     });

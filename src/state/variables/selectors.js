@@ -1,6 +1,6 @@
-const getVariables = state => state.variablesState.variables.variables;
-const isLoaded = state => state.variablesState.variables.isLoaded;
-const isDisabled = state => state.variablesState.variables.isDisabled;
+const getVariables = state => state.variables.variables;
+const isLoaded = state => state.variables.isLoaded;
+const isDisabled = state => state.variables.isDisabled;
 
 export default {
   getVariables,
