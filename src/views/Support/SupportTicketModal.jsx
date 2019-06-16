@@ -107,6 +107,7 @@ class SupportTicketModal extends React.Component {
                 </Select>
               </FormControl>
               <TextField
+                InputLabelProps={{ shrink: true }}
                 labelWidth={this.state.labelWidth}
                 label={<FormattedMessage id="support.title" />}
                 onChange={this.handleTopicChange}

@@ -59,14 +59,14 @@ class Support extends Component {
         <Paper className="pageContainer">
           <Typography>
             <h3 className="pageContainerTitle">
-              Deine Support Tickets
+              <FormattedMessage id="support.headline" />
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={this.props.loadMyTickets}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                  Aktualisieren
+                  <FormattedMessage id="common.refresh" />
                 </Button>
                 <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary">
-                  Neues Ticket erstellen
+                  <FormattedMessage id="support.create_new_ticket" />
                 </Button>
                 <SupportTicketModal
                   open={this.state.modalOpen}
@@ -76,7 +76,7 @@ class Support extends Component {
               </span>
             </h3>
             <small>
-              Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.
+              <FormattedMessage id="support.subheadline" />
             </small>
           </Typography>
           {this.renderSupportTickets()}

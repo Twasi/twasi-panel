@@ -308,6 +308,9 @@ export default {
   'support.type.problem': 'Ich habe ein Problem',
   'support.type.bug': 'Ich möchte einen Bug melden',
   'support.type.other': 'Ich habe ein anderes Anliegen',
+  'support.create_new_ticket': 'Neues Ticket erstellen',
+  'support.headline': 'Deine Support Tickets',
+  'support.subheadline': 'Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.',
 
   // Songrequests
   'songrequest.requestby': 'Requestet von',

@@ -13,6 +13,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import SupportTicketMessage from './SupportTicketMessage';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const SupportTicket = props => {
   const { ticket } = props;
@@ -21,7 +23,7 @@ const SupportTicket = props => {
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={24}>
           <Grid item xs={3}>
-            <h4 className="pageContainerTitle"><Typography>Betreff</Typography></h4><Typography><small>{ticket.topic}</small></Typography>
+            <Typography><h4 className="pageContainerTitle">Betreff</h4><small>{ticket.topic}</small></Typography>
           </Grid>
           <Grid item xs={3}>
             <Typography><h4 className="pageContainerTitle">Erstellt am</h4><small>{ticket.createdAt}</small></Typography>
@@ -50,6 +52,14 @@ const SupportTicket = props => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        value="close_ticket"
+                      />
+                    }
+                    label="Ticket schließen"
+                  />
                   <IconButton
                     aria-label="send-support-message"
                   >

@@ -298,6 +298,17 @@ export default {
   'support.userpanel': 'Userpanel',
   'support.function': 'Functions',
   'support.other': 'Miscellaneous',
+  'support.title': 'Subject',
+  'support.type.feedback': 'I want to give Feedback',
+  'support.type.idea': 'I want to bring up an Idea',
+  'support.type.joke': 'I want to tell you a Joke',
+  'support.type.question': 'I have a Question',
+  'support.type.problem': 'I have a Problem',
+  'support.type.bug': 'I want to report a Bug',
+  'support.type.other': 'I have another Issue',
+  'support.create_new_ticket': 'Create new Ticket',
+  'support.headline': 'Your Support Tickets',
+  'support.subheadline': 'If you have Questions or want to give Feedback you can do it here.',
 
   // Songrequests
   'songrequest.requestby': 'Requested by',
