@@ -22,6 +22,9 @@ const SupportTicket = props => {
     <ExpansionPanel style={{ marginTop: '25px' }}>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <Typography><small>{ticket.id}</small></Typography>
+          </Grid>
           <Grid item xs={3}>
             <Typography><h4 className="pageContainerTitle">Betreff</h4><small>{ticket.topic}</small></Typography>
           </Grid>

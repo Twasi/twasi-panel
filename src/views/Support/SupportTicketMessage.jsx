@@ -17,13 +17,13 @@ const SupportTicketMessage = props => {
 
   const getMessage = () => (
     <Grid item xs={8} key="message">
-      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className={isStaff ? 'chatBubbleSelf' : 'chatBubbleSupport'}>
+      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         <Typography className="chatName">{sender.name}</Typography>
         {message.message}
         <Typography className="chatTime">{message.createdAt}</Typography>
       </Typography>
       {displayCloseMessage &&
-      <Typography style={{ position: 'relative', marginTop: '5px' }} className={isStaff ? 'chatBubbleSelf' : 'chatBubbleSupport'}>
+      <Typography style={{ position: 'relative', marginTop: '5px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         {sender.name} hat das Ticket um {message.createdAt} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
       </Typography>}
     </Grid>
