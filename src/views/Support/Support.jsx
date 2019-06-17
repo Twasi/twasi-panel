@@ -8,6 +8,8 @@ import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 import './_style.css';
 
@@ -15,16 +17,29 @@ import { supportSelectors, supportOperations } from '../../state/support';
 import SupportTicketModal from './SupportTicketModal';
 import SupportTicket from './SupportTicket';
 
+function TabContainer(props) {
+  return (
+    <div>
+      {props.children}
+    </div>
+  );
+}
+
 class Support extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalOpen: false
+      modalOpen: false,
+      tabValue: 0
     };
     this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
+
+  handleTabChange = (event, tabValue) => {
+    this.setState({ tabValue });
+  };
 
   handleClickBreadCrumb(event, value) {
     const { history } = this.props;
@@ -79,7 +94,24 @@ class Support extends Component {
               <FormattedMessage id="support.subheadline" />
             </small>
           </Typography>
-          {this.renderSupportTickets()}
+        </Paper>
+        <Tabs
+          style={{ marginTop: '23px', borderRadius: '3px 3px 0px 0px' }}
+          value={this.state.tabValue}
+          onChange={this.handleTabChange}
+          indicatorColor="primary"
+          textColor="primary"
+        >
+          <Tab label="Offene Tickets" />
+          <Tab label="Geschlossene Tickets" />
+        </Tabs>
+        <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
+          {this.state.tabValue === 0 && <TabContainer>
+            {this.renderSupportTickets()}
+          </TabContainer>}
+          {this.state.tabValue === 1 && <TabContainer>
+
+          </TabContainer>}
         </Paper>
       </div>
     );
