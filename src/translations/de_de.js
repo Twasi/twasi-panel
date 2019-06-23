@@ -97,6 +97,7 @@ export default {
   'overview.no_streams_tracked_feedback': 'Feedback geben',
   'overview.chatterchart': 'Top 30 Chatter',
   'overview.chatterchart.subtitle': 'Hier siehst du die Top 30 Chatter deines letzten Streams.',
+  'overview.saveasimage': 'Statistiken als Bild speichern',
 
   // Status
   'status.started': 'Läuft',

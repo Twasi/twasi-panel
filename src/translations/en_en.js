@@ -96,6 +96,7 @@ export default {
   'overview.no_streams_tracked_feedback': 'Give Feedback',
   'overview.chatterchart': 'Chatter',
   'overview.chatterchart.subtitle': 'Here you can see all Chatters of your current / last Stream.',
+  'overview.saveasimage': 'Save Statistics as Image',
 
   // Status
   'status.started': 'Working',

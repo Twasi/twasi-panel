@@ -10,6 +10,7 @@
     "@material-ui/lab": "^3.0.0-alpha.30",
     "graphiql": "^0.13.0",
     "graphql": "^14.3.0",
+    "html2canvas": "^1.0.0-rc.3",
     "jwt-decode": "^2.2.0",
     "local-storage": "^1.4.2",
     "lodash": "^4.17.11",

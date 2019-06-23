@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+import html2canvas from 'html2canvas';
+
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 import { commandsSelectors, commandsOperations } from '../../state/commands';
@@ -47,6 +49,21 @@ class Overview extends Component {
   handleChange = (event, value) => {
     this.setState({ value });
   };
+
+  handleSaveAsImage = () => {
+    var backgroundColorCanvas = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
+    html2canvas(document.querySelector("#canvas_twasi_stats"), {
+      backgroundColor: backgroundColorCanvas
+    }).then(canvas => {
+      //document.body.appendChild(canvas)
+      console.log(canvas)
+      var a = document.createElement('a');
+      // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+      a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+      a.download = 'twasi-statistics.jpg';
+      a.click();
+    });
+  }
 
   componentDidMount() {
     const { updateStreamtracker } = this.props;
@@ -162,6 +179,10 @@ class Overview extends Component {
                   <h3 className="pageContainerTitle">
                     <FormattedMessage id="overview.laststream" />
                     <span style={{ float: 'right' }}>
+                      <Button style={{ marginRight: '16px' }} variant="contained" color="primary" onClick={this.handleSaveAsImage}>
+                        <Icon style={{ marginRight: '5px' }}>save</Icon>
+                        <FormattedMessage id="overview.saveasimage" />
+                      </Button>
                       <Button variant="contained" color="primary" onClick={this.props.updateStreamtracker}>
                         <Icon style={{ marginRight: '5px' }}>cached</Icon>
                         <FormattedMessage id="common.refresh" />
@@ -178,72 +199,74 @@ class Overview extends Component {
           </Row>
           }
           {streamtracker.streamId != null &&
-          <Row>
-            <Col sm={9}>
-              <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
-                <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                  <h3 className="pageContainerTitle">
-                    <FormattedMessage id="overview.viewercourse" />
-                  </h3>
-                  <small>
-                    <FormattedMessage id="overview.viewercourse.subtitle" />
-                  </small>
-                </Typography>
-                <ViewerChart />
-              </Paper>
-              <Row>
-                <Col sm={6}>
-                  <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
-                    <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                      <h3 className="pageContainerTitle">
-                        <FormattedMessage id="overview.used_commands" />
-                      </h3>
-                      <small>
-                        <FormattedMessage id="overview.used_commands.subtitle" />
-                      </small>
-                    </Typography>
-                    {!disabled && <CommandsChart />}
-                    {disabled &&
-                    <Card style={{ margin: '60px 23px 23px 23px' }} className="pluginCard">
-                      <CardContent className="pluginCardContent">
-                        <Typography>Das Plugin für die Befehle ist nicht installiert. Um dieses Diagramm anzuzeigen, installiere bitte das Plugin "<b>Befehle</b>".</Typography>
-                      </CardContent>
-                    </Card>
-                    }
-                  </Paper>
-                </Col>
-                <Col sm={6}>
-                  <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
-                    <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                      <h3 className="pageContainerTitle">
-                        <FormattedMessage id="overview.played_games" />
-                      </h3>
-                      <small>
-                        <FormattedMessage id="overview.played_games.subtitle" />
-                      </small>
-                    </Typography>
-                    <PlayedGamesChart />
-                  </Paper>
-                </Col>
-              </Row>
-              <Paper className="pageContainer" style={{ height: '500px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
-                <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                  <h3 className="pageContainerTitle">
-                    <FormattedMessage id="overview.chatterchart" />
-                  </h3>
-                  <small>
-                    <FormattedMessage id="overview.chatterchart.subtitle" />
-                  </small>
-                </Typography>
-                <ChattersChart />
-              </Paper>
-            </Col>
-            <Col sm={3}>
-              <div>
-                <StatsList />
-              </div>
-            </Col>
-          </Row>
+          <div id="canvas_twasi_stats">
+            <Row>
+              <Col sm={9}>
+                <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+                  <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                    <h3 className="pageContainerTitle">
+                      <FormattedMessage id="overview.viewercourse" />
+                    </h3>
+                    <small>
+                      <FormattedMessage id="overview.viewercourse.subtitle" />
+                    </small>
+                  </Typography>
+                  <ViewerChart />
+                </Paper>
+                <Row>
+                  <Col sm={6}>
+                    <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
+                      <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                        <h3 className="pageContainerTitle">
+                          <FormattedMessage id="overview.used_commands" />
+                        </h3>
+                        <small>
+                          <FormattedMessage id="overview.used_commands.subtitle" />
+                        </small>
+                      </Typography>
+                      {!disabled && <CommandsChart />}
+                      {disabled &&
+                      <Card style={{ margin: '60px 23px 23px 23px' }} className="pluginCard">
+                        <CardContent className="pluginCardContent">
+                          <Typography>Das Plugin für die Befehle ist nicht installiert. Um dieses Diagramm anzuzeigen, installiere bitte das Plugin "<b>Befehle</b>".</Typography>
+                        </CardContent>
+                      </Card>
+                      }
+                    </Paper>
+                  </Col>
+                  <Col sm={6}>
+                    <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
+                      <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                        <h3 className="pageContainerTitle">
+                          <FormattedMessage id="overview.played_games" />
+                        </h3>
+                        <small>
+                          <FormattedMessage id="overview.played_games.subtitle" />
+                        </small>
+                      </Typography>
+                      <PlayedGamesChart />
+                    </Paper>
+                  </Col>
+                </Row>
+                <Paper className="pageContainer" style={{ height: '500px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+                  <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                    <h3 className="pageContainerTitle">
+                      <FormattedMessage id="overview.chatterchart" />
+                    </h3>
+                    <small>
+                      <FormattedMessage id="overview.chatterchart.subtitle" />
+                    </small>
+                  </Typography>
+                  <ChattersChart />
+                </Paper>
+              </Col>
+              <Col sm={3}>
+                <div>
+                  <StatsList />
+                </div>
+              </Col>
+            </Row>
+          </div>
           } {streamtracker.streamId == null &&
           <div>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
