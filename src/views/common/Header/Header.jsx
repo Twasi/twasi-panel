@@ -18,7 +18,7 @@ import {
   getLogoDescriptionStyle
 } from './_style';
 
-const Header = ({ userName, rank, avatar, banner }) => (
+const Header = ({ userName, avatar, banner }) => (
   <header>
     <div className="bannerHeader" style={{ backgroundImage: banner ? `url(${banner})` : null }} />
     <div style={getLogoStyle()}>
@@ -50,14 +50,12 @@ const Header = ({ userName, rank, avatar, banner }) => (
 
 Header.propTypes = {
   userName: PropTypes.string,
-  rank: PropTypes.string,
   avatar: PropTypes.string,
   banner: PropTypes.string
 };
 
 Header.defaultProps = {
   userName: 'Unknown',
-  rank: 'Unknown',
   avatar: 'Unknown'
 };
 
