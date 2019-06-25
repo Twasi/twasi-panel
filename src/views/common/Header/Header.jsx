@@ -18,9 +18,9 @@ import {
   getLogoDescriptionStyle
 } from './_style';
 
-const Header = ({ userName, rank, avatar }) => (
+const Header = ({ userName, rank, avatar, banner }) => (
   <header>
-    <div className="bannerHeader" />
+    <div className="bannerHeader" style={{ backgroundImage: banner ? `url(${banner})` : null }} />
     <div style={getLogoStyle()}>
       <span>
         <img src={avatar} alt="Avatar" style={getAvatarStyle()} />
@@ -51,7 +51,8 @@ const Header = ({ userName, rank, avatar }) => (
 Header.propTypes = {
   userName: PropTypes.string,
   rank: PropTypes.string,
-  avatar: PropTypes.string
+  avatar: PropTypes.string,
+  banner: PropTypes.string
 };
 
 Header.defaultProps = {
@@ -63,7 +64,8 @@ Header.defaultProps = {
 const mapStateToProps = state => ({
   userName: authSelectors.getUser(state).displayName,
   rank: authSelectors.getUser(state).rank,
-  avatar: authSelectors.getUserAvatar(state)
+  avatar: authSelectors.getUserAvatar(state),
+  banner: authSelectors.getUserBanner(state)
 });
 
 export default connect(mapStateToProps)(Header);
