@@ -19,9 +19,10 @@ const updateUser = () => dispatch => {
   dispatch(updateIsUserUpdating(true));
 
   dispatch(getGraph('user { twitchAccount { update { name } } }')).then(data => {
-    dispatch(updateUserData(data));
+    // dispatch(updateUserData(data));
+    // dispatch()
   }).finally(() => {
-    dispatch(updateIsUserUpdating(false))
+    dispatch(updateIsUserUpdating(false));
   });
 };
 

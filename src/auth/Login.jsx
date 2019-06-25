@@ -5,15 +5,16 @@ import queryString from 'query-string';
 import { Redirect, withRouter } from 'react-router-dom';
 import storage from 'local-storage';
 
-import withService from '../views/common/withService';
+import { getRawGraph } from '../services/graphqlService';
 import { authSelectors, authOperations } from '../state/auth';
 
 // 2 Hours
 const tokenExpiration = 2 * 60 * 60 * 1000;
+const userGraphString = 'user{id,twitchAccount{twitchid,name,avatar,email},banner}';
 
 class Login extends React.Component {
   componentWillMount() {
-    const { isAuthenticated, authenticate, graph, updateUserData } = this.props;
+    const { isAuthenticated, authenticate, updateUserData } = this.props;
 
     if (isAuthenticated) {
       return;
@@ -24,7 +25,7 @@ class Login extends React.Component {
     if (urlParams.jwt) {
       authenticate(urlParams.jwt);
       storage('jwt', { token: urlParams.jwt, since: new Date().getTime() });
-      graph('user{id,twitchAccount{twitchid,name,avatar,email}}', urlParams.jwt).then(data => {
+      getRawGraph(`query{panel(token:"${urlParams.jwt}"){${userGraphString}}}`).then(data => {
         if (data.data.panel == null) {
           window.location.href = window.env.AUTH_URL;
         } else {
@@ -44,7 +45,7 @@ class Login extends React.Component {
       }
 
       authenticate(cacheData.token);
-      graph('user{id,twitchAccount{twitchid,name,displayName,avatar,email}}', cacheData.token).then(data => {
+      getRawGraph(`query{panel(token:"${urlParams.jwt}"){${userGraphString}}}`).then(data => {
         if (data.data.panel == null) {
           window.location.href = window.env.AUTH_URL;
         } else {
@@ -84,4 +85,5 @@ const mapDispatchToProps = dispatch => ({
   updateUserData: data => dispatch(authOperations.updateUserData(data))
 });
 
-export default withService(withRouter(connect(mapStateToProps, mapDispatchToProps)(Login)));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export { userGraphString };

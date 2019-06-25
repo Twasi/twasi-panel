@@ -10,7 +10,7 @@ const pkgJson = require('../../../package.json');
 class Footer extends Component {
   componentDidMount() {
     const { loadVersion } = this.props;
-    loadVersion();
+    setTimeout(loadVersion, 200);
   }
 
   render() {

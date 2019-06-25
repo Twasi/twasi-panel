@@ -1,6 +1,6 @@
 import fetch from './fetch';
 import { authSelectors } from '../state/auth';
-import { appInfoOperations } from "../state/appInfo";
+import { appInfoOperations } from '../state/appInfo';
 
 const getRawGraph = query => fetch(window.env.GRAPHQL_URL, 'post', `query=${encodeURI(query)}`);
 
@@ -28,11 +28,11 @@ const getGraph = (query, target, jwt) => (dispatch, getState) => {
           message: error.message
         };
 
-        //console.log(error);
+        // console.log(error);
 
         if (error.extensions && error.extensions.localisedKey) {
           // LocalisedKey provided by backend
-          notification.localKey = error.extensions.localisedKey
+          notification.localKey = error.extensions.localisedKey;
         }
 
         // Store in state

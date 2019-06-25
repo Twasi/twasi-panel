@@ -6,7 +6,8 @@ import queryString from 'query-string';
 import storage from 'local-storage';
 
 import { authSelectors, authOperations } from '../state/auth';
-import { getRawGraph } from "../services/graphqlService";
+import { getRawGraph } from '../services/graphqlService';
+import { userGraphString } from './Login';
 
 // 2 Hours
 const tokenExpiration = 2 * 60 * 60 * 1000;
@@ -21,7 +22,7 @@ class RequireAuth extends React.Component {
       // eslint-disable-next-line
       console.log('Welcome back from the auth provider! Let\'s look if we can get you authenticated...');
 
-      getRawGraph('query{panel(token:"' + urlParams.jwt + '"){user{id,twitchAccount{twitchid,name,displayName,avatar,email}}}}').then(data => {
+      getRawGraph(`query{panel(token:"${urlParams.jwt}"){${userGraphString}}}`).then(data => {
         if (data.data.panel == null) {
           window.location.href = window.env.AUTH_URL;
         } else {
@@ -63,7 +64,7 @@ class RequireAuth extends React.Component {
         return;
       }
 
-      getRawGraph('query{panel(token:"' + cacheData.token + '"){user{id,twitchAccount{twitchid,name,displayName,avatar,email}}}}').then(data => {
+      getRawGraph(`query{panel(token:"${cacheData.token}"){${userGraphString}}}`).then(data => {
         if (data.data.panel == null) {
           if (!optional) {
             storage('originalUrl', location.pathname);
