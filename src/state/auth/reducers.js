@@ -10,6 +10,7 @@ const initialState = {
   isLoading: false,
   userData: {
     id: '',
+    banner: '',
     twitchAccount: {
       avatar: ''
     }
