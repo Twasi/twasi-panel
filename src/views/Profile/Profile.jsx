@@ -38,6 +38,8 @@ import gc18_badge from '../common/resources/gamescom_badge_blue18.svg';
 import { authSelectors, authOperations } from '../../state/auth';
 import './_style.css';
 
+import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
+
 class Profile extends Component {
 
   constructor(props) {
@@ -60,6 +62,7 @@ class Profile extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.profile" /></Typography>
         </Breadcrumbs>
+        <NotFunctionalAlert/>
         <Row>
           <Col sm={6}>
             <Paper className="pageContainer">
@@ -125,7 +128,7 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_registerdate" />
                         </TableCell>
                         <TableCell>
-                          <b>01.01.1997</b>
+                          <b>--.--.----</b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -148,7 +151,7 @@ class Profile extends Component {
                 <h3 className="pageContainerTitle">
                   <FormattedMessage id="profile.badges" />
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary">
+                    <Button disabled variant="contained" color="primary">
                       <FormattedMessage id="common.save" />
                     </Button>
                   </span>
@@ -234,10 +237,10 @@ class Profile extends Component {
                     </Button>
                   </Col>
                   <Col sm={6}>
-                    <Button color="primary" size="small">
+                    <Button disabled color="primary" size="small">
                       <FormattedMessage id="profile.social_permissions" />
                     </Button>
-                    <Button color="secondary" size="small">
+                    <Button disabled color="secondary" size="small">
                       <FormattedMessage id="profile.social_disconnect" />
                     </Button>
                   </Col>
@@ -245,7 +248,7 @@ class Profile extends Component {
                 <br />
                 <Row>
                   <Col sm={6}>
-                    <Button fullWidth variant="contained" color="default" style={{ boxShadow: 'none' }}>
+                    <Button disabled fullWidth variant="contained" color="default" style={{ boxShadow: 'none' }}>
                       <small>
                         Telegram
                       </small>
@@ -277,7 +280,7 @@ class Profile extends Component {
                 <br />
                 <Row>
                   <Col sm={6}>
-                    <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                       <small>
                         Facebook
                       </small>
@@ -309,7 +312,7 @@ class Profile extends Component {
                 <br />
                 <Row>
                   <Col sm={6}>
-                    <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                       <small>
                         Youtube
                       </small>
@@ -341,7 +344,7 @@ class Profile extends Component {
                 <br />
                 <Row>
                   <Col sm={6}>
-                    <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                       <small>
                         Soundcloud
                       </small>
@@ -373,7 +376,7 @@ class Profile extends Component {
                 <br />
                 <Row>
                   <Col sm={6}>
-                    <Button fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                       <small>
                         Spotify
                       </small>
@@ -420,7 +423,7 @@ class Profile extends Component {
                       <Typography>Twasibot</Typography>
                     </Grid>
                     <Grid item md={6} style={{ textAlign: 'center' }}>
-                      <Button variant="contained" color="primary">
+                      <Button disabled variant="contained" color="primary">
                         Account verbinden
                       </Button>
                     </Grid>

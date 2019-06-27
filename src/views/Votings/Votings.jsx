@@ -19,6 +19,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 import { Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 import './_style.css';
@@ -49,16 +50,17 @@ class Votings extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.votings" /></Typography>
         </Breadcrumbs>
+        <NotFunctionalAlert/>
         <Paper className="pageContainer">
           <Typography>
             <h3 className="pageContainerTitle">
               <FormattedMessage id="votings.headline" />
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: 16 }}>
+                <Button disabled variant="contained" color="primary" style={{ marginRight: 16 }}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
-                <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary">
+                <Button disabled onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary">
                   <FormattedMessage id="votings.new_voting" />
                 </Button>
               </span>
@@ -67,7 +69,7 @@ class Votings extends Component {
               <FormattedMessage id="votings.subheadline" />
             </small>
           </Typography>
-          <ExpansionPanel style={{ marginTop: '25px' }}>
+          <ExpansionPanel disabled style={{ marginTop: '25px' }}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Grid container spacing={24}>
                 <Grid item xs={3}>

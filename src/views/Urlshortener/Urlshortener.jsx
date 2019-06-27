@@ -21,6 +21,7 @@ import Select from '@material-ui/core/Select';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 import './_style.css';
 
 class Urlshortener extends Component {
@@ -52,6 +53,7 @@ class Urlshortener extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.urlshortener" /></Typography>
         </Breadcrumbs>
+        <NotFunctionalAlert/>
         <Row>
           <Col sm={6}>
             <Paper className="pageContainer">
@@ -60,6 +62,7 @@ class Urlshortener extends Component {
                   <FormattedMessage id="urlshortener.headline" />
                   <span style={{ float: 'right' }}>
                     <Button
+                      disabled
                       variant="contained"
                       color="primary"
                     >
@@ -72,6 +75,7 @@ class Urlshortener extends Component {
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <TextField
+                    disabled
                     helperText={<FormattedMessage id="urlshortener.random_url" />}
                     fullWidth
                     id="shortlink"
@@ -112,6 +116,7 @@ class Urlshortener extends Component {
               <Card className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <TextField
+                    disabled
                     helperText={<FormattedMessage id="urlshortener.destination_url" />}
                     fullWidth
                     id="shortlink-redirection"
@@ -179,6 +184,7 @@ class Urlshortener extends Component {
                     <TableCell>
                       <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
                         <Button
+                          disabled
                           variant="fab"
                           className="noshadow"
                           color="primary"
@@ -190,6 +196,7 @@ class Urlshortener extends Component {
                       </Tooltip>{' '}
                       <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
                         <Button
+                          disabled
                           variant="fab"
                           className="noshadow"
                           color="secondary"
@@ -215,6 +222,7 @@ class Urlshortener extends Component {
                     <TableCell>
                       <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
                         <Button
+                          disabled
                           variant="fab"
                           className="noshadow"
                           color="primary"
@@ -226,6 +234,7 @@ class Urlshortener extends Component {
                       </Tooltip>{' '}
                       <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
                         <Button
+                          disabled
                           variant="fab"
                           className="noshadow"
                           color="secondary"

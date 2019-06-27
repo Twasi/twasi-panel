@@ -15,6 +15,7 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Checkbox from '@material-ui/core/Checkbox';
+import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 
 import './_style.css';
 
@@ -52,16 +53,17 @@ class Moderators extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.mods" /></Typography>
         </Breadcrumbs>
+        <NotFunctionalAlert/>
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography>
             <h3 className="pageContainerTitle">
               <FormattedMessage id="moderators.title" />
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
+                <Button disabled variant="contained" color="primary" style={{ marginRight: '16px' }}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
-                <Button variant="contained" color="primary">
+                <Button disabled variant="contained" color="primary">
                   <FormattedMessage id="moderators.add_moderator" />
                 </Button>
               </span>
@@ -149,7 +151,7 @@ class Moderators extends Component {
                   />
                 </TableCell>
                 <TableCell>
-                  <Button variant="contained" color="secondary">
+                  <Button disabled variant="contained" color="secondary">
                     <FormattedMessage id="moderators.table.unmod" />
                   </Button>
                 </TableCell>
@@ -210,7 +212,7 @@ class Moderators extends Component {
                   />
                 </TableCell>
                 <TableCell>
-                  <Button variant="contained" color="secondary">
+                  <Button disabled variant="contained" color="secondary">
                     <FormattedMessage id="moderators.table.unmod" />
                   </Button>
                 </TableCell>

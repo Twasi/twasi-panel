@@ -72,7 +72,7 @@ class Plugins extends Component {
                 <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
                     <h3 className="pageContainerTitle"><FormattedMessage id="plugins.documentation" /></h3>
-                    <Button onClick={() => this.setState({ modalOpen: true })} style={{ marginTop: '5px' }} variant="contained" color="primary" size="small">
+                    <Button disabled onClick={() => this.setState({ modalOpen: true })} style={{ marginTop: '5px' }} variant="contained" color="primary" size="small">
                       <FormattedMessage id="plugins.show" />
                     </Button>
                   </Typography>
