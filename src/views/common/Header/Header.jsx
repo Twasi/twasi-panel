@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
+import { appInfoSelectors } from '../../../state/appInfo';
 import { AccountSwitchIcon } from '../../AccountSwitch';
 import { ThemeSwitchIcon } from '../../ThemeSwitch';
 import { LanguageSwitchIcon } from '../../LanguageSwitch';
@@ -18,9 +19,9 @@ import {
   getLogoDescriptionStyle
 } from './_style';
 
-const Header = ({ userName, avatar, banner }) => (
+const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue }) => (
   <header>
-    <div className="bannerHeader" style={{ backgroundImage: banner ? `url(${banner})` : null }} />
+    <div className="bannerHeader" style={{ backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />
     <div style={getLogoStyle()}>
       <span>
         <img src={avatar} alt="Avatar" style={getAvatarStyle()} />
@@ -64,7 +65,8 @@ const mapStateToProps = state => ({
   userName: authSelectors.getUser(state).displayName,
   rank: authSelectors.getUser(state).rank,
   avatar: authSelectors.getUserAvatar(state),
-  banner: authSelectors.getUserBanner(state)
+  banner: authSelectors.getUserBanner(state),
+  selectedBannerAsHeaderValue: appInfoSelectors.getBannerAsHeader(state),
 });
 
 export default connect(mapStateToProps)(Header);

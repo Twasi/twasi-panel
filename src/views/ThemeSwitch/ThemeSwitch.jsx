@@ -93,9 +93,13 @@ class ThemeSwitch extends React.Component {
     this.props.onClose(value);
   };
 
-  render() {
-    const { classes, onClose, selectedValue, ...other } = this.props;
+  handleBannerAsHeader = value => {
+    storage('bannerAsHeader', value.target.checked);
+    this.props.updateBannerAsHeader(value.target.checked);
+  };
 
+  render() {
+    const { classes, onClose, selectedValue, selectedBannerAsHeaderValue, ...other } = this.props;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -118,8 +122,9 @@ class ThemeSwitch extends React.Component {
                   <FormControlLabel
                     control={
                       <Checkbox
+                        onChange={this.handleBannerAsHeader}
                         color="primary"
-                        value="bannerAsHeader"
+                        checked={selectedBannerAsHeaderValue}
                       />
                     }
                     label={<FormattedMessage id="themeswitch.banner_as_header" />}
@@ -175,11 +180,13 @@ ThemeSwitch.propTypes = {
 const ThemeSwitchWrapped = (ThemeSwitch);
 
 const mapStateToProps = state => ({
-  selectedValue: appInfoSelectors.getTheme(state)
+  selectedValue: appInfoSelectors.getTheme(state),
+  selectedBannerAsHeaderValue: appInfoSelectors.getBannerAsHeader(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateTheme: name => dispatch(appInfoOperations.updateTheme(name))
+  updateTheme: name => dispatch(appInfoOperations.updateTheme(name)),
+  updateBannerAsHeader: bannerAsHeader => dispatch(appInfoOperations.updateBannerAsHeader(bannerAsHeader)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThemeSwitchWrapped);

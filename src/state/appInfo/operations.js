@@ -5,13 +5,21 @@ import actions from './actions';
 import { authSelectors } from '../auth';
 import { getGraph } from '../../services/graphqlService';
 
-const { updateLoaded, updateConnected, updateVersion, updateUserStatus, updateTheme, addNotification } = actions;
+const { updateLoaded, updateConnected, updateVersion, updateUserStatus, updateTheme, updateBannerAsHeader, addNotification } = actions;
 
 const loadTheme = () => dispatch => {
   const themeInStorage = storage('twasi-theme');
 
   if (themeInStorage !== null) {
     dispatch(updateTheme(themeInStorage));
+  }
+};
+
+const loadBannerAsHeader = () => dispatch => {
+  const bannerAsHeaderInStorage = storage('bannerAsHeader');
+
+  if (bannerAsHeaderInStorage !== null) {
+    dispatch(updateBannerAsHeader(bannerAsHeaderInStorage));
   }
 };
 
@@ -41,6 +49,8 @@ export default {
   loadUserStatus,
   loadVersion,
   loadTheme,
+  loadBannerAsHeader,
   updateTheme,
+  updateBannerAsHeader,
   addNotification
 };

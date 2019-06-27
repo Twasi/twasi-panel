@@ -25,6 +25,11 @@ const updateTheme = theme => ({
   theme
 });
 
+const updateBannerAsHeader = bannerAsHeader => ({
+  type: types.UPDATE_BANNERASHEADER,
+  bannerAsHeader
+});
+
 const addNotification = notification => ({
   type: types.ADD_NOTIFICATION,
   notification
@@ -36,5 +41,6 @@ export default {
   updateVersion,
   updateUserStatus,
   updateTheme,
+  updateBannerAsHeader,
   addNotification
 };

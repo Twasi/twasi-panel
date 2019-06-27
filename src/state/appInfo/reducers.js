@@ -6,6 +6,7 @@ export const initialState = {
   serverVersion: 'DISCONNECTED',
   userStatus: 'LOADING',
   theme: 'twasi-darkblue',
+  bannerAsHeader: false,
   notifications: [],
   lastNotificationId: 0
 };
@@ -30,6 +31,10 @@ const appInfoReducer = (state = initialState, action) => {
 
     case types.UPDATE_THEME: {
       return { ...state, theme: action.theme };
+    }
+
+    case types.UPDATE_BANNERASHEADER: {
+      return { ...state, bannerAsHeader: action.bannerAsHeader };
     }
 
     case types.ADD_NOTIFICATION: {
