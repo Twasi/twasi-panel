@@ -8,6 +8,9 @@
 .twasi-light .bannerHeader {
  background-color: #213335;
 }
+.twasi-light .bannerHeaderTopBar {
+  background-color: #00aeae;
+}
 .twasi-light .urlshortener_arrow {
   color: #00aeae;
 }

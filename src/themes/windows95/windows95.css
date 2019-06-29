@@ -43,7 +43,9 @@
 }
 .windows95 .bannerHeader {
   background-color: #008080;
-  border-top: 5px solid #000080;
+}
+.windows95 .bannerHeaderTopBar {
+  background-color: #000080;
 }
 .windows95 .themeIcon:hover{
   background-color: #000080;

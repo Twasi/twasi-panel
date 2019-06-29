@@ -42,17 +42,20 @@ const App = () => {
 
   const mapStateToProps = state => ({
     theme: appInfoSelectors.getTheme(state),
+    bannerAsHeader: appInfoSelectors.getBannerAsHeader(state),
     language: i18nSelectors.getLocale(state)
   });
 
   const mapDispatchToProps = dispatch => ({
     loadTheme: () => dispatch(appInfoOperations.loadTheme()),
+    loadBannerAsHeader: () => dispatch(appInfoOperations.loadBannerAsHeader()),
     loadLanguage: () => dispatch(i18nOperations.loadLanguage())
   });
 
   const Themed = withRouter(connect(mapStateToProps, mapDispatchToProps)(props => {
     props.loadTheme();
     props.loadLanguage();
+    props.loadBannerAsHeader();
 
     let selectedTheme = twasiDarkBlue;
 

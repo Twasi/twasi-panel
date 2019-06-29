@@ -5,6 +5,12 @@
 .twasi-dark img {
   pointer-events: none;
 }
+.twasi-dark .bannerHeader {
+  background-color: #0d1315;
+}
+.twasi-dark .bannerHeaderTopBar {
+  background-color: #00aeae;
+}
 .twasi-dark .urlshortener_arrow {
   color: #00aeae;
 }

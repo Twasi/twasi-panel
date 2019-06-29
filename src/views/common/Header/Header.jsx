@@ -21,7 +21,8 @@ import {
 
 const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue }) => (
   <header>
-    <div className="bannerHeader" style={{ backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />
+    <div className="bannerHeaderTopBar" />
+    <div className="bannerHeader" style={{ opacity: banner && selectedBannerAsHeaderValue ? '0.4' : '1', backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />
     <div style={getLogoStyle()}>
       <span>
         <img src={avatar} alt="Avatar" style={getAvatarStyle()} />

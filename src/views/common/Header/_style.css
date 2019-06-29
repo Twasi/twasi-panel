@@ -1,12 +1,23 @@
+#header {
+  border-top: 5px solid #00aeae;
+}
+
 .bannerHeader {
-  background-color: #0d1315;
   height: 265px;
   width: 100%;
   position: absolute;
   left: 0;
   top: 0;
-  border-top: 5px solid #00aeae;
   z-index: -100;
+}
+
+.bannerHeaderTopBar {
+  height: 5px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -99;
 }
 
 .swapIcon {

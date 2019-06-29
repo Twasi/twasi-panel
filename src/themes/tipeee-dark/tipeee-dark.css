@@ -16,7 +16,9 @@
 }
 .tipeee-dark .bannerHeader {
   background-color: #1b1e27;
-  border-top: 5px solid #d84759;
+}
+.tipeee-dark .bannerHeaderTopBar {
+  background-color: #d84759;
 }
 .tipeee-dark .themeIcon:hover{
   background: -webkit-linear-gradient(135deg, #7885a5, #7885a5);
