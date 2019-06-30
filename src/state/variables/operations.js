@@ -5,6 +5,9 @@ import { getGraph } from '../../services/graphqlService';
 
 const {
   updateVariables,
+  updateAddVariable,
+  updateEditVariable,
+  updateRemoveVariable,
   updateDisabled
 } = actions;
 
@@ -16,6 +19,30 @@ const loadVariables = () => dispatch => {
     }
     dispatch(updateVariables(data.allVariables));
   });
+};
+
+const addVariable = (name, output) => dispatch => {
+    dispatch(getGraph(`addVariable(name: "${name}", output: "${output}"){id}`, 'customvariables')).then(
+        data => {
+            dispatch(updateAddVariable(data.customvariables));
+        }
+    );
+};
+
+const editVariable = (id, name, output) => dispatch => {
+    dispatch(getGraph(`editVariable(id: "${id}",name: "${name}", output: "${output}"){id}`, 'customvariables')).then(
+        data => {
+            dispatch(updateEditVariable(data.customvariables));
+        }
+    );
+};
+
+const removeVariable = (id) => dispatch => {
+    dispatch(getGraph(`removeVariable(id: "${id}"){id}`, 'customvariables')).then(
+        data => {
+            dispatch(updateRemoveVariable(data.customvariables));
+        }
+    );
 };
 
 const verifyData = () => (dispatch, getState) => {
@@ -30,5 +57,8 @@ const verifyData = () => (dispatch, getState) => {
 
 export default {
   loadVariables,
+  addVariable,
+  editVariable,
+  removeVariable,
   verifyData
 };

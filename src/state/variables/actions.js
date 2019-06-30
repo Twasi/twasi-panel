@@ -5,6 +5,24 @@ const updateVariables = variables => ({
   variables
 });
 
+const updateAddVariable = (name, output) => ({
+  type: types.UPDATE_ADDVARIABLE,
+  name,
+  output
+});
+
+const updateEditVariable = (id, name, output) => ({
+  type: types.UPDATE_EDITVARIABLE,
+  id,
+  name,
+  output
+});
+
+const updateRemoveVariable = id => ({
+  type: types.UPDATE_REMOVEVARIABLE,
+  id
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -12,5 +30,8 @@ const updateDisabled = isDisabled => ({
 
 export default {
   updateVariables,
+  updateAddVariable,
+  updateEditVariable,
+  updateRemoveVariable,
   updateDisabled
 };
