@@ -15,6 +15,8 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+import VariableAddDialog from './VariableAddDialog';
+
 import { variablesSelectors, variablesOperations } from '../../state/variables';
 
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
@@ -24,10 +26,10 @@ class Variables extends Component {
     super(props);
 
     this.state = {
-      open: false
+      open: false,
+      openAddVariableDialog: false
     };
 
-    this.handleClose = this.handleClose.bind(this);
     this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.renderVariables = this.renderVariables.bind(this);
   }
@@ -43,9 +45,10 @@ class Variables extends Component {
     updateVariables();
   }
 
-  handleClose() {
-    this.setState({ modalOpen: false });
-  }
+  handleCloseAddVariableDialog = () => {
+    this.setState({ openAddVariableDialog: false });
+  };
+
 
   renderVariables() {
     const { variables } = this.props;
@@ -108,7 +111,7 @@ class Variables extends Component {
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
-                <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary" disabled={disabled}>
+                <Button onClick={() => this.setState({ openAddVariableDialog: true })} variant="contained" color="primary" disabled={disabled}>
                   <FormattedMessage id="variables.new_variable" />
                 </Button>
               </span>
@@ -132,6 +135,12 @@ class Variables extends Component {
               {this.renderVariables()}
             </TableBody>
           </Table>
+          {this.state.openAddVariableDialog &&
+            <VariableAddDialog
+              open
+              onClose={this.handleCloseAddVariableDialog}
+            />
+          }
         </Paper>
         }{disabled && <NotInstalledAlert />}
       </div>
