@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -15,9 +15,9 @@ import Button from '@material-ui/core/Button';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import SupportTicketMessage from './SupportTicketMessage';
-import Tooltip from '@material-ui/core/Tooltip';
 
 const SupportTicket = props => {
   const { ticket, reply, isAdminContext, open, setOpen } = props;
@@ -56,7 +56,7 @@ const SupportTicket = props => {
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <Typography>
-              <small>{ticket.id}</small>
+              <small>#{ticket.id}</small>
               <Tooltip title={`Copy: #${ticket.id}`} placement="top">
                 <Button
                   style={{ marginLeft: '5px' }}
@@ -138,7 +138,9 @@ const SupportTicket = props => {
 SupportTicket.propTypes = {
   ticket: PropTypes.shape({}).isRequired,
   reply: PropTypes.func.isRequired,
-  isAdminContext: PropTypes.bool.isRequired
+  isAdminContext: PropTypes.bool.isRequired,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func
 };
 
 export default SupportTicket;

@@ -57,8 +57,8 @@ class Support extends Component {
     this.setState({ modalOpen: false });
   }
 
-  renderSupportTickets() {
-    return this.props.myTickets.map(ticket => (
+  renderSupportTickets(open) {
+    return this.props.myTickets.filter(t => open ? t.state !== 'CLOSED' : t.state === 'CLOSED').map(ticket => (
       <SupportTicket
         ticket={ticket}
         isAdminContext={false}
@@ -123,9 +123,11 @@ class Support extends Component {
         </Tabs>
         <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
           {this.state.tabValue === 0 && <TabContainer>
-            {this.renderSupportTickets()}
+            {this.renderSupportTickets(true)}
           </TabContainer>}
-          {this.state.tabValue === 1 && <TabContainer />}
+          {this.state.tabValue === 1 && <TabContainer>
+            {this.renderSupportTickets(false)}
+          </TabContainer>}
         </Paper>
       </div>
     );
