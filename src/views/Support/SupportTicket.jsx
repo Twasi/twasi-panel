@@ -19,7 +19,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import SupportTicketMessage from './SupportTicketMessage';
 
 const SupportTicket = props => {
-  const { ticket, reply, isAdminContext } = props;
+  const { ticket, reply, isAdminContext, open, setOpen } = props;
 
   const [message, setMessage] = useState('');
   const [close, setClose] = useState(false);
@@ -41,7 +41,16 @@ const SupportTicket = props => {
   };
 
   return (
-    <ExpansionPanel style={{ marginTop: '25px' }}>
+    <ExpansionPanel
+      style={{ marginTop: '25px' }}
+      expanded={open}
+      onChange={(e, expanded) => {
+        if (expanded) {
+          setOpen(ticket.id);
+        } else {
+          setOpen('');
+        }
+      }}>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={24}>
           <Grid item xs={12}>

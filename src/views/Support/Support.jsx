@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -6,7 +7,6 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -32,7 +32,7 @@ class Support extends Component {
     this.state = {
       modalOpen: false,
       tabValue: 0,
-      selectedTicket: ''
+      selectedTicket: window.location.hash.substr(1)
     };
     this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -64,6 +64,14 @@ class Support extends Component {
         isAdminContext={false}
         reply={this.props.reply}
         open={ticket.id === this.state.selectedTicket}
+        setOpen={id => {
+          if (id === '') {
+            window.location.hash = '';
+          } else {
+            window.location.hash = id;
+          }
+          this.setState({ selectedTicket: id });
+        }}
       />
     ));
   }
@@ -72,10 +80,12 @@ class Support extends Component {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
+          <Link color="inherit" to="/">
             <FormattedMessage id="sidebar.overview" />
           </Link>
-          <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>
+          {this.state.selectedTicket === '' && <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>}
+          {this.state.selectedTicket !== '' && <Typography color="textPrimary"><Link color="inherit" to="/support" onClick={() => this.setState({ selectedTicket: '' })}><FormattedMessage id="sidebar.support" /></Link></Typography>}
+          {this.state.selectedTicket !== '' && <Typography color="textPrimary">Ticket #{this.state.selectedTicket}</Typography>}
         </Breadcrumbs>
         <Paper className="pageContainer">
           <Typography>

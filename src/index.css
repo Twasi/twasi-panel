@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 @keyframes anim-in-1 {
     from, 15% {
         opacity: 0;
