@@ -10,35 +10,35 @@ import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
-import Chip from '@material-ui/core/Chip';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { FormattedMessage } from 'react-intl';
 
 import { variablesSelectors, variablesOperations } from '../../state/variables';
 
 class Variable extends React.Component {
 
-  state = {
-    variableName: "",
-    variableOutput: "",
-    openNotification: false,
-    notification: ""
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      variableName: "",
+      variableOutput: "",
+      openNotification: false,
+      notification: ""
+    };
+  }
 
   componentDidMount() {
-    const { updateVariables } = this.props;
-    updateVariables();
-    this.textInput = React.createRef();
-    this.focusTextInput = this.focusTextInput.bind(this);
+    const { variableObject } = this.props;
+    this.setState({
+      variableName: variableObject.name,
+      variableOutput: variableObject.output
+    });
   }
 
   handleOpenNotification = variableName => {
     this.setState({
       openNotification: true,
       modalOpen: false,
-      notification: 'Die Variable "' + variableName + '" wurde erfolgreich erstellt.'
+      notification: 'Die Variable "' + variableName + '" wurde erfolgreich bearbeitet.'
     });
     setTimeout(function() {
         this.props.updateVariables()
@@ -61,35 +61,16 @@ class Variable extends React.Component {
     });
   };
 
-  handleClose = () => {
-    this.props.onClose(this.props.selectedValue);
-  };
-
-  focusTextInput() {
-    // Explicitly focus the text input using the raw DOM API
-    // Note: we're accessing "current" to get the DOM node
-    this.textInput.current.focus();
-  }
-
-  clearTextInput() {
-    this.setState({
-      variableName: "",
-      variableOutput: ""
-    });
-  }
-
   render() {
-    const { classes, onClose, ...other } = this.props;
-
+    const { variableObject, ...other } = this.props;
     return (
       <Dialog
-        onClose={this.handleClose}
         {...other}
       >
         <DialogContent>
           <Typography>
             <h3 className="pageContainerTitle">
-              <FormattedMessage id="variables.new_variable" />
+              Variable {variableObject.name} bearbeiten
             </h3>
             <small>
               <FormattedMessage id="variables.new_variable.subheadline" />
@@ -103,11 +84,8 @@ class Variable extends React.Component {
                 id="outlined-textarea"
                 label={<FormattedMessage id="variables.new_variable.variable" />}
                 fullWidth
-                autoFocus
-                inputRef={this.textInput}
                 value={this.state.variableName}
                 onChange={this.handleVariableNameChange}
-                placeholder="Beispiel: $teamspeak"
                 helperText="Das ist deine Variable. Du kannst Variablen in jeden deiner Befehle einbinden."
                 margin="normal"
                 variant="outlined"
@@ -121,10 +99,8 @@ class Variable extends React.Component {
                 id="outlined-textarea"
                 label={<FormattedMessage id="variables.new_variable.output" />}
                 fullWidth
-                inputRef={this.textInput}
                 value={this.state.variableOutput}
                 onChange={this.handleVariableOutputChange}
-                placeholder="Beispiel: Teamspeak IP: 127.0.0.1"
                 multiline
                 rows="3"
                 helperText="Das ist die Ausgabe deiner Variable."
@@ -139,9 +115,8 @@ class Variable extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.addVariable(this.state.variableName, this.state.variableOutput);
+                this.props.editVariable(variableObject.id, this.state.variableName, this.state.variableOutput);
                 this.handleOpenNotification(this.state.variableName)
-                this.clearTextInput()
             }}>
             <FormattedMessage id="variables.new_variable.savevariable" />
           </Button>
@@ -162,18 +137,17 @@ class Variable extends React.Component {
 }
 
 Variable.propTypes = {
-  addVariable: PropTypes.func.isRequired
+  editVariable: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  variables: variablesSelectors.getVariables(state),
   isLoaded: variablesSelectors.isLoaded(state),
   disabled: variablesSelectors.isDisabled(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   updateVariables: () => dispatch(variablesOperations.loadVariables()),
-  addVariable: (name, output) => dispatch(variablesOperations.addVariable(name, output)),
+  editVariable: (id, name, output) => dispatch(variablesOperations.editVariable(id, name, output)),
   verifyData: () => dispatch(variablesOperations.verifyData()),
 });
 

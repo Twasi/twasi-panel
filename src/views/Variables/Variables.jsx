@@ -14,8 +14,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import VariableAddDialog from './VariableAddDialog';
+import VariableEditDialog from './VariableEditDialog';
 
 import { variablesSelectors, variablesOperations } from '../../state/variables';
 
@@ -27,7 +29,11 @@ class Variables extends Component {
 
     this.state = {
       open: false,
-      openAddVariableDialog: false
+      openAddVariableDialog: false,
+      openEditVariableDialog: false,
+      openNotification: false,
+      notification: '',
+      editDialogContent: ''
     };
 
     this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
@@ -49,6 +55,23 @@ class Variables extends Component {
     this.setState({ openAddVariableDialog: false });
   };
 
+  handleCloseEditVariableDialog = () => {
+    this.setState({ openEditVariableDialog: false });
+  };
+
+  handleOpenNotification = variableName => {
+    this.setState({
+      openNotification: true,
+      notification: 'Die Variable "' + variableName + '" wurde erfolgreich gelöscht.'
+    });
+    setTimeout(function() {
+        this.props.updateVariables()
+    }.bind(this), 100)
+  };
+
+  handleCloseNotification = () => {
+    this.setState({ openNotification: false });
+  };
 
   renderVariables() {
     const { variables } = this.props;
@@ -71,6 +94,9 @@ class Variables extends Component {
               className="noshadow"
               mini
               aria-label="editCommand"
+              onClick={() => {
+                  this.setState({ openEditVariableDialog: true, editDialogContent: variable })
+              }}
             >
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
             </Button>
@@ -81,7 +107,11 @@ class Variables extends Component {
               color="secondary"
               className="noshadow"
               mini
-              aria-label="deleteCommand"
+              aria-label="deleteVariable"
+              onClick={() => {
+                  this.props.removeVariable(variable.id);
+                  this.handleOpenNotification(variable.name)
+              }}
             >
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
             </Button>
@@ -141,6 +171,23 @@ class Variables extends Component {
               onClose={this.handleCloseAddVariableDialog}
             />
           }
+          {this.state.openEditVariableDialog &&
+            <VariableEditDialog
+              open
+              onClose={this.handleCloseEditVariableDialog}
+              variableObject={this.state.editDialogContent}
+            />
+          }
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={this.state.openNotification}
+            autoHideDuration={5000}
+            onClose={this.handleCloseNotification}
+            message={this.state.notification}
+          />
         </Paper>
         }{disabled && <NotInstalledAlert />}
       </div>
@@ -150,6 +197,7 @@ class Variables extends Component {
 
 Variables.propTypes = {
   updateVariables: PropTypes.func.isRequired,
+  removeVariable: PropTypes.func.isRequired,
   variables: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -166,6 +214,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(variablesOperations.verifyData()),
+  removeVariable: (id) => dispatch(variablesOperations.removeVariable(id)),
   updateVariables: () => dispatch(variablesOperations.loadVariables())
 });
 

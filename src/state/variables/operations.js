@@ -22,7 +22,7 @@ const loadVariables = () => dispatch => {
 };
 
 const addVariable = (name, output) => dispatch => {
-    dispatch(getGraph(`addVariable(name: "${name}", output: "${output}"){id}`, 'customvariables')).then(
+    dispatch(getGraph(`addVariable(name: "${name}", output: "${output}")`, 'customvariables')).then(
         data => {
             dispatch(updateAddVariable(data.customvariables));
         }
@@ -30,7 +30,7 @@ const addVariable = (name, output) => dispatch => {
 };
 
 const editVariable = (id, name, output) => dispatch => {
-    dispatch(getGraph(`editVariable(id: "${id}",name: "${name}", output: "${output}"){id}`, 'customvariables')).then(
+    dispatch(getGraph(`editVariable(id: "${id}",name: "${name}", output: "${output}")`, 'customvariables')).then(
         data => {
             dispatch(updateEditVariable(data.customvariables));
         }
@@ -38,7 +38,7 @@ const editVariable = (id, name, output) => dispatch => {
 };
 
 const removeVariable = (id) => dispatch => {
-    dispatch(getGraph(`removeVariable(id: "${id}"){id}`, 'customvariables')).then(
+    dispatch(getGraph(`removeVariable(id: "${id}")`, 'customvariables')).then(
         data => {
             dispatch(updateRemoveVariable(data.customvariables));
         }

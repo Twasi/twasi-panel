@@ -199,6 +199,10 @@ export default {
   'variables.title': 'Your Variables',
   'variables.subtitle': 'Here you can manage your Variables.',
   'variables.new_variable': 'Add Variable',
+  'variables.new_variable.subheadline': 'Add a new Variable',
+  'variables.new_variable.variable': 'Your Variable',
+  'variables.new_variable.output': 'Output',
+  'variables.new_variable.savevariable': 'Save Variable',
 
   // Quotes
   'quotes.title': 'Your Quotes',
