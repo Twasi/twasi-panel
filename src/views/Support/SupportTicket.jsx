@@ -17,6 +17,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import SupportTicketMessage from './SupportTicketMessage';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const SupportTicket = props => {
   const { ticket, reply, isAdminContext, open, setOpen } = props;
@@ -56,12 +57,18 @@ const SupportTicket = props => {
           <Grid item xs={12}>
             <Typography>
               <small>{ticket.id}</small>
-              <Button
-                style={{ marginLeft: '5px' }}
-                color="primary"
-                size="small">
-                Ticket ID kopieren
-              </Button>
+              <Tooltip title={`Copy: #${ticket.id}`} placement="top">
+                <Button
+                  style={{ marginLeft: '5px' }}
+                  color="primary"
+                  size="small"
+                  onClick={e => {
+                    navigator.clipboard.writeText(`#${ticket.id}`);
+                    e.stopPropagation();
+                  }}>
+                  Ticket ID kopieren
+                </Button>
+              </Tooltip>
             </Typography>
           </Grid>
           <Grid item xs={3}>
