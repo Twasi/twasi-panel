@@ -35,8 +35,8 @@ const addCommand = (name, content, cooldown) => dispatch => {
     );
 };
 
-const editCommand = (name, content, cooldown) => dispatch => {
-    dispatch(getGraph(`update(name: "${name}", content: "${content}", cooldown: ${cooldown}){id}`, 'commands')).then(
+const editCommand = (id, name, content, cooldown) => dispatch => {
+    dispatch(getGraph(`update(id: "${id}", name: "${name}", content: "${content}", cooldown: ${cooldown}){id}`, 'commands')).then(
         data => {
             dispatch(updateEditCommand(data.commands));
         }

@@ -23,7 +23,7 @@ const commandsReducer = (state = initialState, action) => {
       return { ...state, isLoaded: true, name: action.name, content: action.content, cooldown: action.cooldown };
     }
     case types.UPDATE_EDITCOMMAND: {
-      return { ...state, isLoaded: true, name: action.name, content: action.content, cooldown: action.cooldown };
+      return { ...state, isLoaded: true, id: action.id, name: action.name, content: action.content, cooldown: action.cooldown };
     }
     case types.UPDATE_DELCOMMAND: {
       return { ...state, isLoaded: true, id: action.id };

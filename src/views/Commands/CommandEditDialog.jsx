@@ -245,7 +245,7 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown());
+                this.props.editCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.state.commandCooldown);
                 this.handleOpenNotification(this.state.commandName)
             }}>
             <FormattedMessage id="commands.new_command.savecommand" />
@@ -267,7 +267,7 @@ class Command extends React.Component {
 }
 
 Command.propTypes = {
-  addCommand: PropTypes.func.isRequired
+  editCommand: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -277,7 +277,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
-  addCommand: (name, content, cooldown) => dispatch(commandsOperations.addCommand(name, content, cooldown)),
+  editCommand: (id, name, content, cooldown) => dispatch(commandsOperations.editCommand(id, name, content, cooldown)),
   verifyData: () => dispatch(commandsOperations.verifyData()),
 });
 

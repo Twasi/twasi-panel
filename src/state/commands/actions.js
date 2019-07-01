@@ -17,8 +17,9 @@ const updateAddCommand = (name, content, cooldown) => ({
   cooldown
 });
 
-const updateEditCommand = (name, content, cooldown) => ({
+const updateEditCommand = (id, name, content, cooldown) => ({
   type: types.UPDATE_EDITCOMMAND,
+  id,
   name,
   content,
   cooldown
