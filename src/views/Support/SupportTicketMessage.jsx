@@ -20,11 +20,11 @@ const SupportTicketMessage = props => {
       <Typography style={{ position: 'relative', paddingBottom: '25px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         <Typography className="chatName">{sender.name}</Typography>
         {message.message}
-        <Typography className="chatTime">{message.createdAt}</Typography>
+        <Typography className="chatTime">{new Date(message.createdAt).toLocaleString()}</Typography>
       </Typography>
       {displayCloseMessage &&
       <Typography style={{ position: 'relative', marginTop: '5px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
-        {sender.name} hat das Ticket um {message.createdAt} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
+        {sender.name} hat das Ticket am {new Date(message.createdAt).toLocaleString()} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
       </Typography>}
     </Grid>
   );

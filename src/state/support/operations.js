@@ -20,6 +20,10 @@ const createTicket = (category, topic, message) => (dispatch, getState) => dispa
   dispatch(updateMyTickets([...selectors.getMyTickets(getState()), data.support.create]));
 });
 
+const replyToTicket = (id, close, isAdminContext, message) => (dispatch, getState) => dispatch(getGraph(`support{reply(id:"${id}",close:${close},isAdminContext:${isAdminContext},message:"${message}"){${ticketQuery}}`)).then(data => {
+  dispatch(updateMyTickets([...selectors.getMyTickets(getState()).filter(t => t.id !== id), data.support.reply]));
+});
+
 const verifyData = () => (dispatch, getState) => {
   const state = getState();
 
@@ -33,5 +37,6 @@ const verifyData = () => (dispatch, getState) => {
 export default {
   loadMyTickets,
   verifyData,
-  createTicket
+  createTicket,
+  replyToTicket
 };

@@ -31,7 +31,8 @@ class Support extends Component {
 
     this.state = {
       modalOpen: false,
-      tabValue: 0
+      tabValue: 0,
+      selectedTicket: ''
     };
     this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -58,7 +59,12 @@ class Support extends Component {
 
   renderSupportTickets() {
     return this.props.myTickets.map(ticket => (
-      <SupportTicket ticket={ticket} />
+      <SupportTicket
+        ticket={ticket}
+        isAdminContext={false}
+        reply={this.props.reply}
+        open={ticket.id === this.state.selectedTicket}
+      />
     ));
   }
 
@@ -109,9 +115,7 @@ class Support extends Component {
           {this.state.tabValue === 0 && <TabContainer>
             {this.renderSupportTickets()}
           </TabContainer>}
-          {this.state.tabValue === 1 && <TabContainer>
-
-          </TabContainer>}
+          {this.state.tabValue === 1 && <TabContainer />}
         </Paper>
       </div>
     );
@@ -121,7 +125,8 @@ class Support extends Component {
 Support.propTypes = {
   userName: PropTypes.string,
   avatar: PropTypes.string,
-  myTicket: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  myTicket: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  reply: PropTypes.func.isRequired
 };
 
 Support.defaultProps = {
@@ -135,7 +140,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loadMyTickets: () => dispatch(supportOperations.loadMyTickets()),
-  createTicket: (category, topic, message) => dispatch(supportOperations.createTicket(category, topic, message))
+  createTicket: (category, topic, message) => dispatch(supportOperations.createTicket(category, topic, message)),
+  reply: (id, close, isAdminContext, message) => dispatch(supportOperations.replyToTicket(id, close, isAdminContext, message))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Support);

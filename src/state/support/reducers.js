@@ -13,7 +13,7 @@ const supportReducer = (state = initialState, action) => {
     }
 
     case types.UPDATE_MY_TICKETS: {
-      return { ...state, myTickets: action.myTickets };
+      return { ...state, myTickets: action.myTickets.sort((a, b) => b.createdAt - a.createdAt) };
     }
 
     case types.UPDATE_ADMIN_TICKETS: {
