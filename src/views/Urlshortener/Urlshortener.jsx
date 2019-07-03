@@ -33,10 +33,6 @@ class Urlshortener extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);

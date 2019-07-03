@@ -42,10 +42,6 @@ import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 
 class Profile extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);

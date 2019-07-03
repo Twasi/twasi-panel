@@ -31,15 +31,13 @@ const data05 = [{ name: 'Das Nutella', value: 936 },
   { name: 'Die Nutella', value: 334 }];
 
 class Votings extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);
     this.setState({});
   }
+
   render() {
     return (
       <div className="pageContent">

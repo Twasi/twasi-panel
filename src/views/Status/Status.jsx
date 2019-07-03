@@ -15,9 +15,6 @@ import StatusInfo from './StatusInfo';
 import EventLog from './EventLog';
 
 class Status extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleClickBreadCrumb = (event, value) => {
       const { history } = this.props;
