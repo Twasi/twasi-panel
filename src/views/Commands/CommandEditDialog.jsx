@@ -32,7 +32,7 @@ class Command extends React.Component {
       commandCooldown: 0,
       issue: 10,
       labelWidth: 115,
-      cooldown: 0,
+      cooldown: '',
       openNotification: false,
       notification: ''
     };
@@ -83,26 +83,34 @@ class Command extends React.Component {
     });
   };
 
-  getCooldown() {
-    let cd = this.state.cooldown;
+  getSliderValueByMilliseconds() {
+    let ms = this.state.commandCooldown;
+    console.log(ms)
+    if (ms <= 60) {
+      return ms;
+    } else if (ms >= 61) {
+        // To-Do
+    }
+  }
 
+  getCooldown(cd) {
     if (cd <= 59) {
-      if (cd === 0) {
-        return <FormattedMessage id="commands.cooldown.no_cooldown" />;
+      if (cd === 1) {
+        return cd + ' Sekunde';
       }
-      if (cd > 1) {
-        return `${cd} Sekunden`;
-      }
-      return `${cd} Sekunde`;
+      return cd + ' Sekunden';
     } else if (cd >= 60) {
-      cd -= 59;
       if (cd === 60) {
+        //return '1 Stunde';
+        return '1 Minute';
+      }
+      if (cd === 3600) {
         return '1 Stunde';
       }
       if (cd > 1) {
-        return `${cd} Minuten`;
+        //return `${cd} Minuten`;
+        return Math.round(cd / 60) + ' Minuten';
       }
-      return `${cd} Minute`;
     }
     return 'Fehler';
   }
@@ -140,7 +148,7 @@ class Command extends React.Component {
               Befehl {commandObject.name} bearbeiten
             </h3>
             <small>
-              <FormattedMessage id="commands.new_command.subheadline" />
+              <FormattedMessage id="commands.edit_command.subheadline" />
             </small>
           </Typography>
           <br /><br />
@@ -226,11 +234,11 @@ class Command extends React.Component {
           */}
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {this.getCooldown()}</Typography>
+              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {this.getCooldown(this.state.commandCooldown)}</Typography>
               <Slider
                 style={{ padding: '22px 0px' }}
                 aria-labelledby="label"
-                value={commandObject.cooldown}
+                value={this.getSliderValueByMilliseconds()}
                 min={0}
                 max={119}
                 step={1}

@@ -183,6 +183,7 @@ export default {
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Befehl speichern',
+  'commands.edit_command.subheadline': 'Hier kannst du deinen Befehl bearbeiten.',
   'commands.table.command': 'Befehl',
   'commands.table.output': 'Ausgabe',
   'commands.table.access': 'Zugriff',
