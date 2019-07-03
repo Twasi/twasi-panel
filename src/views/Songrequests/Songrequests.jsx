@@ -46,7 +46,6 @@ class Songrequests extends React.Component {
         ping: -1
       }
     };
-    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
     this.sync = songrequestSync;
   }
 
@@ -62,7 +61,7 @@ class Songrequests extends React.Component {
     this.sync.requestStatus();
   }
 
-  handleClickBreadCrumb(event, value) {
+  handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);
     this.setState({});

@@ -26,7 +26,6 @@ class Variable extends React.Component {
     const { updateVariables } = this.props;
     updateVariables();
     this.textInput = React.createRef();
-    this.focusTextInput = this.focusTextInput.bind(this);
   }
 
   handleOpenNotification = variableName => {
@@ -60,7 +59,7 @@ class Variable extends React.Component {
     this.props.onClose(this.props.selectedValue);
   };
 
-  focusTextInput() {
+  focusTextInput(){
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
     this.textInput.current.focus();

@@ -28,18 +28,15 @@ class Plugins extends Component {
     this.state = {
       open: false
     };
-
-    this.handleClose = this.handleClose.bind(this);
-    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
   }
 
-  handleClickBreadCrumb(event, value) {
+  handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);
     this.setState({});
   }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({ modalOpen: false });
   }
 

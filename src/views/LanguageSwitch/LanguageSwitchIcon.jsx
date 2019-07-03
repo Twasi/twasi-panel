@@ -10,11 +10,9 @@ class LanguageSwitchIcon extends React.Component {
     this.state = {
       open: false
     };
-
-    this.handleClose = this.handleClose.bind(this);
   }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({ modalOpen: false });
   }
 

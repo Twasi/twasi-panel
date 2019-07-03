@@ -129,9 +129,6 @@ class Sidebar extends Component {
       }
     ];
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-
     this.resetAnimation = throttle(
       () => {
         this.LogoDOM.src = this.Logo.src;
@@ -146,11 +143,11 @@ class Sidebar extends Component {
     this.Logo.src = twasiLogo;
   }
 
-  handleChange() {
+  handleChange = () => {
     this.setState({ checked: !this.state.checked });
   }
 
-  handleClick(event, value) {
+  handleClick = (event, value) => {
     const { history } = this.props;
 
     const { path } = find(newItem => newItem.key === value, this.items);

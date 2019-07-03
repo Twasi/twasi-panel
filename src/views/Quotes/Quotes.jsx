@@ -109,16 +109,6 @@ class Quotes extends Component {
     this.state = {
       open: false
     };
-
-    this.handleClose = this.handleClose.bind(this);
-    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
-    this.renderQuotes = this.renderQuotes.bind(this);
-  }
-
-  handleClickBreadCrumb(event, value) {
-    const { history } = this.props;
-    history.push(value);
-    this.setState({});
   }
 
   componentDidMount() {
@@ -126,11 +116,17 @@ class Quotes extends Component {
     updateQuotes();
   }
 
-  handleClose() {
+  handleClickBreadCrumb = (event, value) => {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
+  }
+
+  handleClose = () => {
     this.setState({ modalOpen: false });
   }
 
-  renderQuotes() {
+  renderQuotes = () => {
     const { quotes } = this.props;
     return quotes.map(quote => (
       Object.values(quote)

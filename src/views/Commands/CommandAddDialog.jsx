@@ -46,7 +46,6 @@ class Command extends React.Component {
     const { updateVariables } = this.props;
     updateVariables();
     this.textInput = React.createRef();
-    this.focusTextInput = this.focusTextInput.bind(this);
   }
 
   handleOpenNotification = commandName => {
@@ -96,7 +95,7 @@ class Command extends React.Component {
     this.focusTextInput()
   }
 
-  focusTextInput() {
+  focusTextInput = () => {
     // Explicitly focus the text input using the raw DOM API
     // Note: we're accessing "current" to get the DOM node
     this.textInput.current.focus();

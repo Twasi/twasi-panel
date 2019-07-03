@@ -17,10 +17,9 @@ import EventLog from './EventLog';
 class Status extends Component {
   constructor(props) {
     super(props);
-    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
   }
 
-  handleClickBreadCrumb(event, value) {
+  handleClickBreadCrumb = (event, value) => {
       const { history } = this.props;
       history.push(value);
       this.setState({});
