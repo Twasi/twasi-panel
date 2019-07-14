@@ -2,6 +2,10 @@
   -webkit-user-select: none;
   user-select: none;
 }
+.dark-grey .outline-textlogo { fill:#1b292d !important; }
+.dark-grey .shadow-primary-textlogo { fill:#004a4a !important; }
+.dark-grey .shadow-secondary-textlogo { fill:#008e8e !important; }
+.dark-grey .main-textlogo { fill:#00aeae !important; }
 .dark-grey img {
   pointer-events: none;
 }

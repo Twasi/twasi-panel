@@ -2,6 +2,10 @@
   -webkit-user-select: none;
   user-select: none;
 }
+.twasi-light .outline-textlogo { fill:#1b292d !important; }
+.twasi-light .shadow-primary-textlogo { fill:#004a4a !important; }
+.twasi-light .shadow-secondary-textlogo { fill:#008e8e !important; }
+.twasi-light .main-textlogo { fill:#00aeae !important; }
 .twasi-light img {
   pointer-events: none;
 }
