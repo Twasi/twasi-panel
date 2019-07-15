@@ -55,12 +55,12 @@ class Profile extends Component {
     this.setState({});
   }
 
-  handleSpotifyAuthentication = (uri) => {
+  handleAuthentication = (uri) => {
     window.location = encodeURI(uri);
   }
 
   render() {
-    const { spotify, user, jwt } = this.props;
+    const { spotify, updateSpotifyDisconnect, user, jwt } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -383,7 +383,7 @@ class Profile extends Component {
                 <Row>
                   <Col sm={6}>
                     <Button
-                      onClick={() => { this.handleSpotifyAuthentication(spotify.spotifyUri + "?environment=" + window.location + "&jwt=" + jwt) }}
+                      onClick={() => { this.handleAuthentication(spotify.spotifyUri + "?environment=" + window.location + "&jwt=" + jwt) }}
                       fullWidth
                       disabled={spotify.spotify != null}
                       variant="contained"
@@ -422,7 +422,10 @@ class Profile extends Component {
                         <Button color="primary" size="small">
                           <FormattedMessage id="profile.social_permissions" />
                         </Button>
-                        <Button color="secondary" size="small">
+                        <Button
+                          onClick={() => { updateSpotifyDisconnect(); window.location.reload(); }}
+                          color="secondary"
+                          size="small">
                           <FormattedMessage id="profile.social_disconnect" />
                         </Button>
                       </div>
@@ -475,6 +478,7 @@ const mapDispatchToProps = dispatch => ({
   updateUser: () => dispatch(authOperations.updateUser()),
   updateSpotifyAccount: () => dispatch(spotifyOperations.loadSpotifyAccount()),
   updateSpotifyAuthUri: () => dispatch(spotifyOperations.loadSpotifyAuthUri()),
+  updateSpotifyDisconnect: () => dispatch(spotifyOperations.loadSpotifyDisconnect())
 });
 
 const mapStateToProps = state => ({
@@ -482,6 +486,7 @@ const mapStateToProps = state => ({
   isUserUpdating: authSelectors.isUserUpdating(state),
   spotify: spotifySelectors.getSpotifyAccount(state),
   spotifyUri: spotifySelectors.getSpotifyAuthUri(state),
+  spotifyDisconnect: spotifySelectors.getSpotifyDisconnect(state),
   jwt: authSelectors.getJwt(state)
 });
 

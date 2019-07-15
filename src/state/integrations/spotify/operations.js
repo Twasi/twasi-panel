@@ -6,6 +6,7 @@ import {getGraph} from '../../../services/graphqlService';
 const {
     updateSpotifyAccount,
     updateSpotifyAuthUri,
+    updateSpotifyDisconnect,
     updateDisabled,
     updateIsLoading
 } = actions;
@@ -24,6 +25,11 @@ const loadSpotifyAuthUri = () => dispatch => {
     });
 }
 
+const loadSpotifyDisconnect = () => dispatch => {
+    dispatch(getGraph('account{logout}', 'spotifyintegration'))
+}
+
+
 const verifyData = () => (dispatch, getState) => {
     const state = getState();
 
@@ -37,5 +43,6 @@ const verifyData = () => (dispatch, getState) => {
 export default {
     loadSpotifyAccount,
     loadSpotifyAuthUri,
+    loadSpotifyDisconnect,
     verifyData
 };

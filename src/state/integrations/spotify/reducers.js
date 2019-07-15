@@ -4,8 +4,9 @@ export const initialState = {
   isLoaded: false,
   spotify: [],
   spotifyUri: '',
+  spotifyDisconnect: '',
   isDisabled: false,
-  isLoading: false
+  isLoading: false,
 };
 
 const spotifyReducer = (state = initialState, action) => {
@@ -15,6 +16,9 @@ const spotifyReducer = (state = initialState, action) => {
     }
     case types.UPDATE_SPOTIFYAUTHURI: {
       return ({ ...state, isLoaded: true, isDisabled: false, spotifyUri: action.spotifyUri});
+    }
+    case types.UPDATE_SPOTIFYDISCONNECT: {
+      return ({ ...state, isLoaded: true, isDisabled: false, spotifyDisconnect: action.spotifyDisconnect});
     }
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };
