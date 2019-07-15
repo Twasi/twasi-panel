@@ -44,8 +44,9 @@ import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 class Profile extends Component {
 
   componentDidMount() {
-    const { updateSpotifyAccount } = this.props;
+    const { updateSpotifyAccount, updateSpotifyAuthUri } = this.props;
     updateSpotifyAccount();
+    updateSpotifyAuthUri();
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -54,8 +55,13 @@ class Profile extends Component {
     this.setState({});
   }
 
+  handleSpotifyAuthentication = (uri) => {
+    window.location = uri;
+  }
+
   render() {
     const { spotify, user, jwt } = this.props;
+    console.log(spotify)
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -272,7 +278,7 @@ class Profile extends Component {
                     </Button>
                   </Col>
                   <Col sm={6}>
-                    <div style={{ marginTop: '6px' }}>
+                    <div style={{ marginTop: '3px' }}>
                       <small>
                         <FormattedMessage id="profile.social_notconnected" />
                       </small>
@@ -304,7 +310,7 @@ class Profile extends Component {
                     </Button>
                   </Col>
                   <Col sm={6}>
-                    <div style={{ marginTop: '6px' }}>
+                    <div style={{ marginTop: '3px' }}>
                       <small>
                         <FormattedMessage id="profile.social_notconnected" />
                       </small>
@@ -336,7 +342,7 @@ class Profile extends Component {
                     </Button>
                   </Col>
                   <Col sm={6}>
-                    <div style={{ marginTop: '6px' }}>
+                    <div style={{ marginTop: '3px' }}>
                       <small>
                         <FormattedMessage id="profile.social_notconnected" />
                       </small>
@@ -368,7 +374,7 @@ class Profile extends Component {
                     </Button>
                   </Col>
                   <Col sm={6}>
-                    <div style={{ marginTop: '6px' }}>
+                    <div style={{ marginTop: '3px' }}>
                       <small>
                         <FormattedMessage id="profile.social_notconnected" />
                       </small>
@@ -378,9 +384,15 @@ class Profile extends Component {
                 <br />
                 <Row>
                   <Col sm={6}>
-                    <Button href={spotify.spotify + "?enviroment=" + window.location + "&jwt=" + jwt} fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    <Button
+                      onClick={() => { encodeURIComponent(this.handleSpotifyAuthentication(spotify.spotifyUri + "?enviroment=" + window.location + "&jwt=" + jwt)) }}
+                      fullWidth
+                      disabled={spotify.spotify != null}
+                      variant="contained"
+                      style={{ boxShadow: 'none' }}>
                       <small>
-                        Spotify
+                        {spotify.spotify == null && "Spotify"}
+                        {spotify.spotify != null && spotify.spotify.userName}
                       </small>
                       <span
                         style={{
@@ -401,12 +413,22 @@ class Profile extends Component {
                     </Button>
                   </Col>
                   <Col sm={6}>
-                    <div style={{ marginTop: '6px' }}>
-                      <small>
-                        {spotify.account == null && <FormattedMessage id="profile.social_notconnected" />}
-                        {spotify.account != null && <b>{spotify.account.userName}</b>}
-                      </small>
-                    </div>
+                    {spotify.spotify == null &&
+                      <div style={{ marginTop: '3px' }}>
+                          <small>
+                            <FormattedMessage id="profile.social_notconnected" />
+                          </small>
+                      </div>
+                    } {spotify.spotify != null &&
+                      <div>
+                        <Button color="primary" size="small">
+                          <FormattedMessage id="profile.social_permissions" />
+                        </Button>
+                        <Button color="secondary" size="small">
+                          <FormattedMessage id="profile.social_disconnect" />
+                        </Button>
+                      </div>
+                    }
                   </Col>
                 </Row>
               </div>
@@ -454,12 +476,14 @@ Profile.propTypes = {
 const mapDispatchToProps = dispatch => ({
   updateUser: () => dispatch(authOperations.updateUser()),
   updateSpotifyAccount: () => dispatch(spotifyOperations.loadSpotifyAccount()),
+  updateSpotifyAuthUri: () => dispatch(spotifyOperations.loadSpotifyAuthUri()),
 });
 
 const mapStateToProps = state => ({
   user: authSelectors.getUser(state),
   isUserUpdating: authSelectors.isUserUpdating(state),
   spotify: spotifySelectors.getSpotifyAccount(state),
+  spotifyUri: spotifySelectors.getSpotifyAuthUri(state),
   jwt: authSelectors.getJwt(state)
 });
 

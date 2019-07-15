@@ -5,6 +5,11 @@ const updateSpotifyAccount = spotify => ({
   spotify
 });
 
+const updateSpotifyAuthUri = spotifyUri => ({
+  type: types.UPDATE_SPOTIFYAUTHURI,
+  spotifyUri
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -17,6 +22,7 @@ const updateIsLoading = isLoading => ({
 
 export default {
   updateSpotifyAccount,
+  updateSpotifyAuthUri,
   updateDisabled,
   updateIsLoading
 };
