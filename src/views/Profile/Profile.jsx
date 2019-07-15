@@ -56,12 +56,13 @@ class Profile extends Component {
   }
 
   handleSpotifyAuthentication = (uri) => {
-    window.location = uri;
+    console.log(encodeURI(uri))
+    console.log(uri)
+    //window.location = encodeURI(uri);
   }
 
   render() {
     const { spotify, user, jwt } = this.props;
-    console.log(spotify)
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -240,17 +241,16 @@ class Profile extends Component {
                         />
                       </span>
                       <small>
-                        <b>@Blechkelle</b>{' '}
+                        Twitter
                       </small>
                     </Button>
                   </Col>
                   <Col sm={6}>
-                    <Button disabled color="primary" size="small">
-                      <FormattedMessage id="profile.social_permissions" />
-                    </Button>
-                    <Button disabled color="secondary" size="small">
-                      <FormattedMessage id="profile.social_disconnect" />
-                    </Button>
+                    <div style={{ marginTop: '3px' }}>
+                      <small>
+                        <FormattedMessage id="profile.social_notconnected" />
+                      </small>
+                    </div>
                   </Col>
                 </Row>
                 <br />
@@ -385,7 +385,7 @@ class Profile extends Component {
                 <Row>
                   <Col sm={6}>
                     <Button
-                      onClick={() => { encodeURIComponent(this.handleSpotifyAuthentication(spotify.spotifyUri + "?enviroment=" + window.location + "&jwt=" + jwt)) }}
+                      onClick={() => { this.handleSpotifyAuthentication(spotify.spotifyUri + "?enviroment=" + window.location + "&jwt=" + jwt) }}
                       fullWidth
                       disabled={spotify.spotify != null}
                       variant="contained"
