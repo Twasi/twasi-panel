@@ -14,6 +14,7 @@ import streamtracker from './streamtracker';
 import impersonate from './impersonate';
 import utilities from './utilities';
 import support from './support';
+import spotify from './integrations/spotify';
 
 import {initialState as i18nInitialState} from './i18n/reducers';
 
@@ -37,7 +38,8 @@ const configureStore = (translations = {}) => {
         streamtracker,
         impersonate,
         utilities,
-        support
+        support,
+        spotify
     };
 
     const initialState = {

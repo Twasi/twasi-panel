@@ -36,11 +36,17 @@ import gc17_badge from '../common/resources/gamescom_badge_blue.svg';
 import gc18_badge from '../common/resources/gamescom_badge_blue18.svg';
 
 import { authSelectors, authOperations } from '../../state/auth';
+import { spotifySelectors, spotifyOperations } from '../../state/integrations/spotify';
 import './_style.css';
 
 import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 
 class Profile extends Component {
+
+  componentDidMount() {
+    const { updateSpotifyAccount } = this.props;
+    updateSpotifyAccount();
+  }
 
   handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
@@ -49,6 +55,7 @@ class Profile extends Component {
   }
 
   render() {
+    const { spotify, user, jwt } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -65,10 +72,10 @@ class Profile extends Component {
                 <h3 className="pageContainerTitle">
                   <FormattedMessage id="profile.your_data" />
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary" onClick={this.props.updateUser} disabled={this.props.isUserUpdating}>
+                    <Button variant="contained" color="primary" onClick={user.updateUser} disabled={user.isUserUpdating}>
                       <Icon style={{ marginRight: '5px' }}>cached</Icon>
                       <FormattedMessage id="common.refresh" />
-                      {this.props.isUserUpdating && (
+                      {user.isUserUpdating && (
                         <CircularProgress
                           color="primary"
                           style={{
@@ -97,8 +104,8 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_twitchname" />
                         </TableCell>
                         <TableCell>
-                          <b title={this.props.user.name}>
-                            {this.props.user.displayName}
+                          <b title={user.name}>
+                            {user.displayName}
                           </b>
                         </TableCell>
                       </TableRow>
@@ -107,7 +114,7 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_twitchid" />
                         </TableCell>
                         <TableCell>
-                          <b>{this.props.user.twitchid}</b>
+                          <b>{user.twitchid}</b>
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -371,7 +378,7 @@ class Profile extends Component {
                 <br />
                 <Row>
                   <Col sm={6}>
-                    <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
+                    <Button href={spotify.spotify + "?enviroment=" + window.location + "&jwt=" + jwt} fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                       <small>
                         Spotify
                       </small>
@@ -381,6 +388,7 @@ class Profile extends Component {
                           left: '0',
                           width: '36px',
                           height: '36px',
+                          textAlign: 'center',
                           backgroundColor: '#1db954'
                         }}
                       >
@@ -395,7 +403,8 @@ class Profile extends Component {
                   <Col sm={6}>
                     <div style={{ marginTop: '6px' }}>
                       <small>
-                        <FormattedMessage id="profile.social_notconnected" />
+                        {spotify.account == null && <FormattedMessage id="profile.social_notconnected" />}
+                        {spotify.account != null && <b>{spotify.account.userName}</b>}
                       </small>
                     </div>
                   </Col>
@@ -443,12 +452,15 @@ Profile.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  updateUser: () => dispatch(authOperations.updateUser())
+  updateUser: () => dispatch(authOperations.updateUser()),
+  updateSpotifyAccount: () => dispatch(spotifyOperations.loadSpotifyAccount()),
 });
 
 const mapStateToProps = state => ({
   user: authSelectors.getUser(state),
-  isUserUpdating: authSelectors.isUserUpdating(state)
+  isUserUpdating: authSelectors.isUserUpdating(state),
+  spotify: spotifySelectors.getSpotifyAccount(state),
+  jwt: authSelectors.getJwt(state)
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));
