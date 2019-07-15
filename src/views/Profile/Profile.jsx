@@ -383,7 +383,7 @@ class Profile extends Component {
                 <Row>
                   <Col sm={6}>
                     <Button
-                      onClick={() => { this.handleSpotifyAuthentication(spotify.spotifyUri + "?enviroment=" + window.location + "&jwt=" + jwt) }}
+                      onClick={() => { this.handleSpotifyAuthentication(spotify.spotifyUri + "?environment=" + window.location + "&jwt=" + jwt) }}
                       fullWidth
                       disabled={spotify.spotify != null}
                       variant="contained"
