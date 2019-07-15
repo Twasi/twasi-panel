@@ -56,9 +56,7 @@ class Profile extends Component {
   }
 
   handleSpotifyAuthentication = (uri) => {
-    console.log(encodeURI(uri))
-    console.log(uri)
-    //window.location = encodeURI(uri);
+    window.location = encodeURI(uri);
   }
 
   render() {
