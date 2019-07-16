@@ -5,6 +5,15 @@
 .windows95 img {
   pointer-events: none;
 }
+.windows95 .text_logo {
+  display: none;
+}
+.windows95 .text_logo_wrapper {
+  background-image: url("../../views/common/resources/text_logo_twasi_retro.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 49px;
+}
 .windows95 .translucentBox {
   background: #000080;
   border-width:2px;

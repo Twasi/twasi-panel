@@ -33,8 +33,10 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue }) => (
           </span>
         </div>
       </span>
-      <span style={{ marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
-        {SvgWithXlink()}
+      <span className="text_logo_wrapper" style={{ marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
+        <div className="text_logo">
+          {SvgWithXlink()}
+        </div>
       </span>
       <span style={{ width: '200px' }}>
         <AccountSwitchIcon />
