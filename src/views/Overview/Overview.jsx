@@ -11,6 +11,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import html2canvas from 'html2canvas';
 
@@ -75,13 +76,19 @@ class Overview extends Component {
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, utilities, disabled } = this.props;
+    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading } = this.props;
+    console.log(isLoading)
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }
     const { value } = this.state;
     return (
       <div className="pageContent">
+        {isLoading &&
+          <Paper className="pageContainer progressWrapper" style={{ marginTop: '0px', height: '800px' }}>
+            <CircularProgress className="progressCircle" />
+          </Paper>
+        }
         {streamtracker.streamId != null &&
         <Container className="overviewHead">
           <Row>
@@ -267,7 +274,7 @@ class Overview extends Component {
               </Col>
             </Row>
           </div>
-          } {streamtracker.streamId == null &&
+          } {streamtracker.streamId == null && !isLoading &&
           <div>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
@@ -369,7 +376,8 @@ const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),
   globalstreamtracker: streamtrackerSelectors.getGlobalStreamtracker(state),
   utilities: utilitiesSelectors.getUtilities(state),
-  disabled: commandsSelectors.isDisabled(state)
+  disabled: commandsSelectors.isDisabled(state),
+  isLoading: streamtrackerSelectors.isLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({

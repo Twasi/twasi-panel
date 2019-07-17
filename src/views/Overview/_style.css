@@ -28,3 +28,13 @@
 .recharts-surface {
   border-radius: 4px;
 }
+.progressWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progressCircle {
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+}

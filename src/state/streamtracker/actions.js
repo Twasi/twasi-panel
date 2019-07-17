@@ -15,8 +15,20 @@ const updateDisabled = isDisabled => ({
   isDisabled
 });
 
+const updateLoaded = isLoaded => ({
+  type: types.UPDATE_LOADED,
+  isLoaded
+});
+
+const updateLoading = isLoading => ({
+  type: types.UPDATE_LOADING,
+  isLoading
+});
+
 export default {
   updateStreamtracker,
   updateGlobalStreamtracker,
-  updateDisabled
+  updateDisabled,
+  updateLoaded,
+  updateLoading,
 };
