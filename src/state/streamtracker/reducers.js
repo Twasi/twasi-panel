@@ -3,6 +3,7 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   isLoading: true,
+  isGlobalLoading: true,
   streamtracker: [],
   globalstreamtracker: [],
   isDisabled: false
@@ -24,6 +25,9 @@ const streamtrackerReducer = (state = initialState, action) => {
     }
     case types.UPDATE_LOADING: {
       return { ...state, isLoading: action.isLoading };
+    }
+    case types.UPDATE_GLOBALLOADING: {
+      return { ...state, isGlobalLoading: action.isGlobalLoading };
     }
     default:
       return state;

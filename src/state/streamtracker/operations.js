@@ -8,7 +8,8 @@ const {
   updateGlobalStreamtracker,
   updateDisabled,
   updateLoading,
-  updateLoaded
+  updateLoaded,
+  updateGlobalLoading
 } = actions;
 
 const loadStreamtracker = () => dispatch => {
@@ -25,12 +26,14 @@ const loadStreamtracker = () => dispatch => {
 };
 
 const loadGlobalStreamtracker = () => dispatch => {
+  dispatch(updateGlobalLoading(true));
   dispatch(getGraph('globalStats{totalTrackedViewers,totalTrackedStreams,totalTrackedMessages,viewTime{twitchId,displayName,minutes}}', 'streamtracker')).then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
     }
     dispatch(updateGlobalStreamtracker(data.globalStats));
+    dispatch(updateGlobalLoading(false));
   });
 };
 
@@ -50,5 +53,6 @@ export default {
   loadGlobalStreamtracker,
   verifyData,
   updateLoaded,
-  updateLoading
+  updateLoading,
+  updateGlobalLoading
 };

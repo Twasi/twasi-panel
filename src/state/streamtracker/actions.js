@@ -25,10 +25,16 @@ const updateLoading = isLoading => ({
   isLoading
 });
 
+const updateGlobalLoading = isGlobalLoading => ({
+  type: types.UPDATE_GLOBALLOADING,
+  isGlobalLoading
+});
+
 export default {
   updateStreamtracker,
   updateGlobalStreamtracker,
   updateDisabled,
   updateLoaded,
   updateLoading,
+  updateGlobalLoading
 };

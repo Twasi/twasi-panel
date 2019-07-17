@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import html2canvas from 'html2canvas';
 
@@ -76,8 +77,8 @@ class Overview extends Component {
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading } = this.props;
-    console.log(isLoading)
+    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading } = this.props;
+    console.log(isGlobalLoading)
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }
@@ -113,7 +114,12 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    <span>{globalstreamtracker.totalTrackedViewers}</span>
+                    {!isGlobalLoading &&
+                      <span>{globalstreamtracker.totalTrackedViewers}</span>
+                    }
+                    {isGlobalLoading &&
+                      <LinearProgress style={{ marginRight: '45px' }} />
+                    }
                   </h2>
                   <small>
                     <FormattedMessage id="overview.viewer" />
@@ -130,7 +136,12 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    <span>{globalstreamtracker.totalTrackedMessages}</span>
+                    {!isGlobalLoading &&
+                      <span>{globalstreamtracker.totalTrackedMessages}</span>
+                    }
+                    {isGlobalLoading &&
+                      <LinearProgress style={{ marginRight: '45px' }} />
+                    }
                   </h2>
                   <small>
                     <FormattedMessage id="overview.messages" />
@@ -147,7 +158,12 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    <span>{globalstreamtracker.totalTrackedStreams}</span>
+                    {!isGlobalLoading &&
+                      <span>{globalstreamtracker.totalTrackedStreams}</span>
+                    }
+                    {isGlobalLoading &&
+                      <LinearProgress style={{ marginRight: '45px' }} />
+                    }
                   </h2>
                   <small>
                     <FormattedMessage id="overview.streams" />
@@ -378,6 +394,7 @@ const mapStateToProps = state => ({
   utilities: utilitiesSelectors.getUtilities(state),
   disabled: commandsSelectors.isDisabled(state),
   isLoading: streamtrackerSelectors.isLoading(state),
+  isGlobalLoading: streamtrackerSelectors.isGlobalLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
