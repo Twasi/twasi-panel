@@ -212,6 +212,12 @@ export default createMuiTheme({
       },
       body2: { // Name of the rule
         color: '#636363' // Some CSS
+      },
+      colorTextSecondary: {
+        color: '#d0d0d0'
+      },
+      colorTextPrimary: {
+        color: '#ffffff'
       }
     },
     MuiTooltip: { // Name of the component ⚛️ / style sheet

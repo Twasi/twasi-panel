@@ -25,7 +25,7 @@ import Rank from '../common/Rank';
 
 import twitterlogo from '../common/resources/twitter.svg';
 import facebooklogo from '../common/resources/facebook.svg';
-import youtubelogo from '../common/resources/youtube.svg';
+import googlelogo from '../common/resources/google.svg';
 import spotifylogo from '../common/resources/spotify.svg';
 import soundcloudlogo from '../common/resources/soundcloud.svg';
 import telegramlogo from '../common/resources/telegram.svg';
@@ -320,7 +320,7 @@ class Profile extends Component {
                   <Col sm={6}>
                     <Button disabled fullWidth variant="contained" style={{ boxShadow: 'none' }}>
                       <small>
-                        Youtube
+                        Google
                       </small>
                       <span
                         style={{
@@ -328,13 +328,13 @@ class Profile extends Component {
                           left: '0',
                           width: '36px',
                           height: '36px',
-                          backgroundColor: '#ff0000'
+                          backgroundColor: '#db3236'
                         }}
                       >
                         <img
                           className="socialIcon"
-                          src={youtubelogo}
-                          alt="youtube-logo"
+                          src={googlelogo}
+                          alt="google-logo"
                         />
                       </span>
                     </Button>

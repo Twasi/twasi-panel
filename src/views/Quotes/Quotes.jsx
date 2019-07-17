@@ -15,6 +15,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import MUIDataTable from 'mui-datatables';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import { authSelectors } from '../../state/auth';
 import { quotesSelectors, quotesOperations } from '../../state/quotes';
@@ -76,7 +78,7 @@ const options = {
       next: <FormattedMessage id="datatables.pagination.next" />,
       previous: <FormattedMessage id="datatables.pagination.previous" />,
       rowsPerPage: <FormattedMessage id="datatables.pagination.rowsperpage" />,
-      displayRows: 'of'
+      displayRows: 'von'
     },
     toolbar: {
       search: <FormattedMessage id="datatables.toolbar.search" />,
@@ -146,30 +148,34 @@ class Quotes extends Component {
         <Paper className="pageContainer" style={{ borderRadius: '4px' }}>
           <Grid container spacing={16}>
             <Grid item xs={9}>
-              <List style={{ margin: '0px', padding: '0px' }}>
-                <ListItem style={{ margin: '0px', padding: '0px' }} alignItems="flex-start">
-                  <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src={avatar} />
-                  </ListItemAvatar>
-                  <ListItemText
-                    secondary={
-                      <React.Fragment>
-                        <Typography style={{ float: 'left' }} color="textPrimary">
-                          {userName}
-                        </Typography>
-                        <Typography style={{ float: 'left', marginLeft: '5px' }} color="textSecondary">
-                          (Grand Theft Auto V)
-                        </Typography>
-                        <Typography style={{ float: 'left', marginLeft: '5px' }} color="textPrimary">
-                          #420
-                        </Typography>
-                        <br />
-                        {'- "Ich bin einfach mal so frei und schleich mich in dein Panel :D"'}
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-              </List>
+              <Card className="pluginCard">
+                <CardContent className="pluginCardContent anim">
+                  <List style={{ margin: '0px', padding: '0px' }}>
+                    <ListItem style={{ margin: '0px', padding: '0px' }} alignItems="flex-start">
+                      <ListItemAvatar>
+                        <Avatar alt="Remy Sharp" src={avatar} />
+                      </ListItemAvatar>
+                      <ListItemText
+                        secondary={
+                          <React.Fragment>
+                            <Typography style={{ float: 'left' }} color="textPrimary">
+                              {userName}
+                            </Typography>
+                            <Typography style={{ float: 'left', marginLeft: '5px' }} color="textSecondary">
+                              (Grand Theft Auto V)
+                            </Typography>
+                            <Typography style={{ float: 'left', marginLeft: '5px' }} color="textPrimary">
+                              #420
+                            </Typography>
+                            <br />
+                            {'- "Ich bin einfach mal so frei und schleich mich in dein Panel :D"'}
+                          </React.Fragment>
+                        }
+                      />
+                    </ListItem>
+                  </List>
+                </CardContent>
+              </Card>
             </Grid>
             <Grid item xs={3}>
               <span style={{ float: 'right' }}>

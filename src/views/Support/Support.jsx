@@ -34,15 +34,13 @@ class Support extends Component {
       tabValue: 0,
       selectedTicket: window.location.hash.substr(1)
     };
-    this.handleClickBreadCrumb = this.handleClickBreadCrumb.bind(this);
-    this.handleClose = this.handleClose.bind(this);
   }
 
   handleTabChange = (event, tabValue) => {
     this.setState({ tabValue });
   };
 
-  handleClickBreadCrumb(event, value) {
+  handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);
     this.setState({});
@@ -53,7 +51,7 @@ class Support extends Component {
     loadMyTickets();
   }
 
-  handleClose() {
+  handleClose = () => {
     this.setState({ modalOpen: false });
   }
 
@@ -80,11 +78,11 @@ class Support extends Component {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" to="/">
+          <Link style={{ color: '#d0d0d0' }} to="/" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           {this.state.selectedTicket === '' && <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>}
-          {this.state.selectedTicket !== '' && <Typography color="textPrimary"><Link color="inherit" to="/support" onClick={() => this.setState({ selectedTicket: '' })}><FormattedMessage id="sidebar.support" /></Link></Typography>}
+          {this.state.selectedTicket !== '' && <Typography color="textPrimary"><Link style={{ color: '#d0d0d0' }} to="/support" onClick={() => this.setState({ selectedTicket: '' })}><FormattedMessage id="sidebar.support" /></Link></Typography>}
           {this.state.selectedTicket !== '' && <Typography color="textPrimary">Ticket #{this.state.selectedTicket}</Typography>}
         </Breadcrumbs>
         <Paper className="pageContainer">

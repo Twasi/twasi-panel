@@ -122,7 +122,7 @@ class Timers extends Component {
                 <TableCell><FormattedMessage id="timers.output" /></TableCell>
                 <TableCell><FormattedMessage id="timers.interval" /></TableCell>
                 <TableCell><FormattedMessage id="timers.status" /></TableCell>
-                <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
+                <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

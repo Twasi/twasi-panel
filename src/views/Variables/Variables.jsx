@@ -158,7 +158,7 @@ class Variables extends Component {
               <TableRow className="TableRow">
                 <TableCell>Variable</TableCell>
                 <TableCell>Ausgabe</TableCell>
-                <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
+                <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

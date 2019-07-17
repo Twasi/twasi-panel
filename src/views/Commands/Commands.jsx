@@ -196,7 +196,7 @@ class Commands extends Component {
                 <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.uses" /></TableCell>
                 <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.cooldown" /></TableCell>
                 <TableCell><FormattedMessage id="commands.table.active" /></TableCell>
-                <TableCell style={{ minWidth: '100px' }}><FormattedMessage id="common.actions" /></TableCell>
+                <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

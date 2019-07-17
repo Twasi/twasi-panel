@@ -1,5 +1,5 @@
 export const getContentStyle = () => ({
-  width: '65%',
+  width: '70%',
   marginLeft: 'auto',
   marginRight: 'auto',
   marginTop: 40,
