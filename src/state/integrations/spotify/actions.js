@@ -10,11 +10,6 @@ const updateSpotifyAuthUri = spotifyUri => ({
   spotifyUri
 });
 
-const updateSpotifyDisconnect = spotifyDisconnect => ({
-  type: types.UPDATE_SPOTIFYDISCONNECT,
-  spotifyDisconnect
-});
-
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled

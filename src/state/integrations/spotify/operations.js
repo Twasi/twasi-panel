@@ -5,10 +5,7 @@ import {getGraph} from '../../../services/graphqlService';
 
 const {
     updateSpotifyAccount,
-    updateSpotifyAuthUri,
-    updateSpotifyDisconnect,
-    updateDisabled,
-    updateIsLoading
+    updateSpotifyAuthUri
 } = actions;
 
 const loadSpotifyAccount = () => dispatch => {
