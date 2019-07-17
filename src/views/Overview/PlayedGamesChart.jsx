@@ -79,8 +79,14 @@ class PlayedGamesChart extends Component {
     series.columns.template.column.cornerRadiusTopRight = 3;
     series.columns.template.tooltipText = 'Spiel: [bold]{game}[/b]\nMinuten: [bold]{count}[/b]';
     series.tooltip.getStrokeFromObject = true;
-    series.fillOpacity = 0.4;
-    series.strokeWidth = 2;
+    series.fillOpacity = 1;
+    series.strokeWidth = 0;
+
+    let fillModifier = new am4core.LinearGradientModifier();
+    fillModifier.opacities = [1, 0.5];
+    fillModifier.offsets = [0, 1];
+    fillModifier.gradient.rotation = 90;
+    series.columns.template.fillModifier = fillModifier;
 
     // Add bullets
     const bullet = series.bullets.push(new am4charts.Bullet());

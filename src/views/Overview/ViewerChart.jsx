@@ -91,11 +91,17 @@ class ViewerChart extends Component {
     lineSeries.dataFields.valueY = 'viewerCount';
     lineSeries.tooltipText = 'Zuschauer: [bold]{viewerCount}[/b]\nSpiel: [bold]{game}[/b]\nZeitpunkt: [bold]{timestamp}[/b]';
     lineSeries.tooltip.getStrokeFromObject = true;
-    lineSeries.fillOpacity = 0.4;
-    lineSeries.strokeWidth = 2;
+    lineSeries.fillOpacity = 1;
+    lineSeries.strokeWidth = 0;
     lineSeries.propertyFields.stroke = 'lineColor';
     lineSeries.propertyFields.fill = 'lineColor';
     lineSeries.tensionX = 0.77;
+
+    let fillModifier = new am4core.LinearGradientModifier();
+    fillModifier.opacities = [1, 0.5];
+    fillModifier.offsets = [0, 1];
+    fillModifier.gradient.rotation = 90;
+    lineSeries.segments.template.fillModifier = fillModifier;
 
     const valueAxisMessages = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxisMessages.tooltip.disabled = true;

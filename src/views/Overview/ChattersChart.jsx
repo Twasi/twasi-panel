@@ -71,10 +71,16 @@ class ChattersChart extends Component {
     series.nodes.template.tooltipText = '{displayName}: [bold]{messages}[/]';
     series.tooltip.getStrokeFromObject = true;
     series.dataFields.color = 'lineColor';
-    series.fillOpacity = 0.4;
-    series.strokeWidth = 2;
+    series.fillOpacity = 1;
+    series.strokeWidth = 0;
     series.fontSize = 10;
     series.minRadius = 20;
+
+    let fillModifier = new am4core.LinearGradientModifier();
+    fillModifier.opacities = [1, 0.5];
+    fillModifier.offsets = [0, 1];
+    fillModifier.gradient.rotation = 90;
+    series.nodes.template.fillModifier = fillModifier;
 
     const icon = series.nodes.template.createChild(am4core.Image);
     icon.propertyFields.href = 'image';

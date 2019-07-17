@@ -61,11 +61,17 @@ class CommandsChart extends Component {
     pieSeries.slices.template.propertyFields.stroke = 'lineColor';
     pieSeries.slices.template.propertyFields.fill = 'lineColor';
     pieSeries.tooltip.getStrokeFromObject = true;
-    pieSeries.slices.template.strokeWidth = 2;
+    pieSeries.slices.template.strokeWidth = 0;
     pieSeries.slices.template.strokeOpacity = 1;
-    pieSeries.slices.template.fillOpacity = 0.3;
+    pieSeries.slices.template.fillOpacity = 1;
     pieSeries.labels.template.disabled = true;
     pieSeries.ticks.template.disabled = true;
+
+    let fillModifier = new am4core.LinearGradientModifier();
+    fillModifier.opacities = [1, 0.5];
+    fillModifier.offsets = [0, 1];
+    fillModifier.gradient.rotation = 90;
+    pieSeries.slices.template.fillModifier = fillModifier;
 
     // This creates initial animation
     pieSeries.hiddenState.properties.opacity = 1;
