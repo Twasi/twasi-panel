@@ -114,11 +114,8 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    {!isGlobalLoading &&
-                      <span>{globalstreamtracker.totalTrackedViewers}</span>
-                    }
-                    {isGlobalLoading &&
-                      <LinearProgress style={{ marginRight: '45px' }} />
+                    {!isGlobalLoading ?
+                      <span>{globalstreamtracker.totalTrackedViewers}</span> : <LinearProgress style={{ marginRight: '45px', marginBottom: '2px' }} />
                     }
                   </h2>
                   <small>
@@ -136,11 +133,8 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    {!isGlobalLoading &&
-                      <span>{globalstreamtracker.totalTrackedMessages}</span>
-                    }
-                    {isGlobalLoading &&
-                      <LinearProgress style={{ marginRight: '45px' }} />
+                    {!isGlobalLoading ?
+                      <span>{globalstreamtracker.totalTrackedMessages}</span> : <LinearProgress style={{ marginRight: '45px', marginBottom: '2px' }} />
                     }
                   </h2>
                   <small>
@@ -158,11 +152,8 @@ class Overview extends Component {
               <div className="translucentBox">
                 <div className="media-body">
                   <h2 style={{ margin: '7px 0px 0px' }}>
-                    {!isGlobalLoading &&
-                      <span>{globalstreamtracker.totalTrackedStreams}</span>
-                    }
-                    {isGlobalLoading &&
-                      <LinearProgress style={{ marginRight: '45px' }} />
+                    {!isGlobalLoading ?
+                      <span>{globalstreamtracker.totalTrackedStreams}</span> : <LinearProgress style={{ marginRight: '45px', marginBottom: '2px' }} />
                     }
                   </h2>
                   <small>
