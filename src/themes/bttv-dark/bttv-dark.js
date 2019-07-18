@@ -123,6 +123,22 @@ export default createMuiTheme({
         }
       }
     },
+    MuiToggleButtonGroup: {
+      selected: {
+        backgroundColor: 'transparent',
+        boxShadow: 'none'
+      }
+    },
+    MuiToggleButton: {
+      label: {
+        textTransform: 'none'
+      },
+      root: {
+        '&$selected': {
+          backgroundColor: '#5f459a'
+        }
+      }
+    },
     MuiFab: {
       root: {
         boxShadow: 'none',

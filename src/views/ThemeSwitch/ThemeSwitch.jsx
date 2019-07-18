@@ -25,22 +25,6 @@ import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 import './_style.css';
 
 const themes = [{
-  name: 'Twasi Dark',
-  key: 'twasi-dark',
-  backgroundColor: '#151e21',
-  paperColor: '#1b292d',
-  cardColor: '#162226',
-  primaryColor: '#00aeae',
-  secondaryColor: '#e53935'
-}, {
-  name: 'Twasi Light',
-  key: 'twasi-light',
-  backgroundColor: '#e6e6e6',
-  paperColor: '#fff',
-  cardColor: '#f9f9f9',
-  primaryColor: '#00aeae',
-  secondaryColor: '#e53935'
-}, {
   name: 'Twasi Dark Blue',
   key: 'twasi-darkblue',
   backgroundColor: '#1a2035',
@@ -48,6 +32,14 @@ const themes = [{
   cardColor: '#232f4a',
   primaryColor: '#3f51b5',
   secondaryColor: '#de6464'
+}, {
+  name: 'Twasi Dark',
+  key: 'twasi-dark',
+  backgroundColor: '#151e21',
+  paperColor: '#1b292d',
+  cardColor: '#162226',
+  primaryColor: '#00aeae',
+  secondaryColor: '#e53935'
 }, {
   name: 'Dark Grey',
   key: 'dark-grey',
@@ -80,6 +72,15 @@ const themes = [{
   cardColor: '#dbdbdb',
   primaryColor: '#000080',
   secondaryColor: '#bdbebd'
+}, {
+  name: 'Twasi Light (deprecated)',
+  key: 'twasi-light',
+  backgroundColor: '#e6e6e6',
+  paperColor: '#fff',
+  cardColor: '#f9f9f9',
+  primaryColor: '#00aeae',
+  secondaryColor: '#e53935',
+  disabled: true
 }];
 
 class ThemeSwitch extends React.Component {
@@ -137,6 +138,7 @@ class ThemeSwitch extends React.Component {
                     button
                     onClick={() => this.handleListItemClick(theme)}
                     key={theme}
+                    disabled={theme.disabled}
                   >
                     <ListItemAvatar>
                       <Avatar style={{ backgroundColor: this.props.selectedValue === theme.key ? theme.primaryColor : '' }}>

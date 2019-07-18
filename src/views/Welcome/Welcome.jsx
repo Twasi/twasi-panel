@@ -23,8 +23,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Grid from '@material-ui/core/Grid';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 import DummyLoadingPage from '../DummyLoadingPage';
+import SetupPlugins from './SetupPlugins'
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 import { pluginsOperations } from '../../state/plugins';
@@ -42,10 +45,40 @@ const rows = [
   createData('Giveaways', 'Funktionen, um ein Giveaway zu veranstallten.')
 ];
 
+const userGroups = [
+  <ToggleButton className="welcomeToggleButton" key={1} value="viewer">
+    <div className="media-body">
+      <Typography style={{ color: '#ffffff' }}>
+        <h2 style={{ margin: '7px 0px 7px 0px' }}>
+          <span>Ich bin Moderator oder Zuschauer</span>
+        </h2>
+        <small>
+          Wähle diese Option, wenn du Moderator oder Zuschauer bei einem Streamer bist, der Twasi als Chatbot nutzt.
+          Mit dieser Option kannst du, falls du von einem Streamer freigeschaltet wurdest, auf dessen Panel Zugreifen.
+        </small>
+      </Typography>
+    </div>
+  </ToggleButton>,
+  <ToggleButton className="welcomeToggleButton" key={2} value="streamer">
+    <div className="media-body">
+      <Typography style={{ color: '#ffffff' }}>
+        <h2 style={{ margin: '7px 0px 7px 0px' }}>
+          <span>Ich bin Streamer</span>
+        </h2>
+        <small>
+          Wähle diese Option, wenn du Streamer bist und Twasi als Chatbot auf deinem Kanal nutzen möchtest.
+          Es folgt die Einrichtung des Bots.
+        </small>
+      </Typography>
+    </div>
+  </ToggleButton>,
+];
+
 class Welcome extends Component {
   state = {
     finished: false,
-    stepIndex: 0
+    stepIndex: 0,
+    userGroup: 'viewer'
   };
 
   componentWillMount() {
@@ -54,39 +87,23 @@ class Welcome extends Component {
     loadPlugins();
   }
 
+  handleUserGroupChange = (event, newUserGroup) => {
+    if (newUserGroup == null) {
+      this.setState({ userGroup: 'streamer' });
+    }
+    this.setState({ userGroup: newUserGroup });
+  }
+
   getStepContent() {
     switch (this.state.stepIndex) {
       case 0:
         return (
           <div>
             <Grid container spacing={16} style={{ marginTop: '0px' }}>
-              <Grid item xs={6}>
-                <div className="translucentBox">
-                  <div className="media-body">
-                    <Typography style={{ color: '#ffffff' }}>
-                      <h2 style={{ margin: '7px 0px 7px 0px' }}>
-                        <span>Ich bin Moderator oder Zuschauer</span>
-                      </h2>
-                      <small>
-                        Wähle diese Option, wenn du Moderator oder Zuschauer bei einem Streamer bist, der Twasi als Chatbot nutzt.
-                      </small>
-                    </Typography>
-                  </div>
-                </div>
-              </Grid>
-              <Grid item xs={6}>
-                <div className="translucentBox">
-                  <div className="media-body">
-                    <Typography style={{ color: '#ffffff' }}>
-                      <h2 style={{ margin: '7px 0px 7px 0px' }}>
-                        <span>Ich bin Streamer</span>
-                      </h2>
-                      <small>
-                        Wähle diese Option, wenn du Streamer bist und Twasi als Chatbot auf deinem Kanal nutzen möchtest. Es folgt die Einrichtung des Bots.
-                      </small>
-                    </Typography>
-                  </div>
-                </div>
+              <Grid item xs={12}>
+                <ToggleButtonGroup size="small" value={this.state.userGroup} onChange={this.handleUserGroupChange} exclusive>
+                  {userGroups}
+                </ToggleButtonGroup>
               </Grid>
             </Grid>
           </div>
@@ -112,7 +129,6 @@ class Welcome extends Component {
                   InputLabelProps={{
                     shrink: true
                   }}
-                  placeholder="tWiTcH"
                   // Falls gültig color auf primary und Text abändern.
                   helperText={<Typography color="secondary">Dieser Key ist ungültig.</Typography>}
                   InputProps={{
@@ -175,41 +191,7 @@ class Welcome extends Component {
               Alle Plugins lassen sich auch im nachhinein noch aktivieren,
               deaktivieren und einstellen.
             </Typography>
-            <Table style={{ marginTop: '25px' }}>
-              <TableHead>
-                <TableRow className="TableRow">
-                  <TableCell>
-                    Plugin
-                  </TableCell>
-                  <TableCell>
-                    Beschreibung
-                  </TableCell>
-                  <TableCell>
-                    Installieren / Deinstallieren
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map(row => (
-                  <TableRow>
-                    <TableCell>
-                      {row.name}
-                    </TableCell>
-                    <TableCell>
-                      {row.description}
-                    </TableCell>
-                    <TableCell>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                      >
-                        installieren
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <SetupPlugins />
           </div>
         );
       case 3:

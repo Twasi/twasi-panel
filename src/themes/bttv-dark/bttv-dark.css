@@ -12,6 +12,9 @@
 .bttv-dark .translucentBox {
   background: linear-gradient(135deg, #4b367c, #5f459a);
 }
+.bttv-dark .translucentBoxWelcome {
+  background: linear-gradient(135deg, #4b367c, #5f459a);
+}
 .bttv-dark .headerMenuItem {
   background: linear-gradient(135deg, #4b367c, #5f459a);
 }
