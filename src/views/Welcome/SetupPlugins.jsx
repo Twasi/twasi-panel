@@ -10,6 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
@@ -98,22 +100,26 @@ class SetupPlugins extends Component {
           Alle Plugins lassen sich auch im nachhinein noch aktivieren,
           deaktivieren und einstellen.
         </Typography>
-        <Table style={{ marginTop: '25px' }}>
-          <TableHead>
-            <TableRow className="TableRow">
-              <TableCell>
-                Plugin
-              </TableCell>
-              <TableCell>
-                Beschreibung
-              </TableCell>
-              <TableCell>
-                Installieren / Deinstallieren
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          {renderedPlugins}
-        </Table>
+        <Card style={{ marginTop: '25px' }} className="pluginCard">
+          <CardContent className="pluginCardContent anim">
+            <Table style={{ marginTop: '25px' }}>
+              <TableHead>
+                <TableRow className="TableRow">
+                  <TableCell>
+                    Plugin
+                  </TableCell>
+                  <TableCell>
+                    Beschreibung
+                  </TableCell>
+                  <TableCell>
+                    Installieren / Deinstallieren
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              {renderedPlugins}
+            </Table>
+          </CardContent>
+        </Card>
       </div>
     );
   }
