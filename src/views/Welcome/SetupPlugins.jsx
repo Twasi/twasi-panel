@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -85,22 +86,35 @@ class SetupPlugins extends Component {
       </TableBody>
     ));
     return (
-      <Table style={{ marginTop: '25px' }}>
-        <TableHead>
-          <TableRow className="TableRow">
-            <TableCell>
-              Plugin
-            </TableCell>
-            <TableCell>
-              Beschreibung
-            </TableCell>
-            <TableCell>
-              Installieren / Deinstallieren
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        {renderedPlugins}
-      </Table>
+      <div>
+        <Typography>
+          <h2>Plugins</h2>
+          Hier kannst du auswählen, welche Plugins du aktiviert bzw.
+          deaktiviert haben möchtest.<br /> Plugins beinhalten den
+          kompletten Funktionsumfang von Twasi.<br />
+          Es gibt Plugins, die du nicht deaktivieren kannst, da sie
+          essentiell für den Betrieb des Bots sind.<br />
+          <br />
+          Alle Plugins lassen sich auch im nachhinein noch aktivieren,
+          deaktivieren und einstellen.
+        </Typography>
+        <Table style={{ marginTop: '25px' }}>
+          <TableHead>
+            <TableRow className="TableRow">
+              <TableCell>
+                Plugin
+              </TableCell>
+              <TableCell>
+                Beschreibung
+              </TableCell>
+              <TableCell>
+                Installieren / Deinstallieren
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          {renderedPlugins}
+        </Table>
+      </div>
     );
   }
 }

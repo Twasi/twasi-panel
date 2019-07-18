@@ -17,11 +17,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from '@material-ui/core/Link';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableHead from '@material-ui/core/TableHead';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
 import Grid from '@material-ui/core/Grid';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
@@ -33,17 +28,6 @@ import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 import { pluginsOperations } from '../../state/plugins';
 
 import './_style.css';
-
-// let id = 0;
-function createData(name, description) {
-  // id += 1;
-  return { name, description };
-}
-
-const rows = [
-  createData('Befehle', 'Ermöglicht das Hinzufügen, Entfernen und Bearbeiten von Textbefehlen im Chat.'),
-  createData('Giveaways', 'Funktionen, um ein Giveaway zu veranstallten.')
-];
 
 const userGroups = [
   <ToggleButton className="welcomeToggleButton" key={1} value="viewer">
@@ -179,20 +163,7 @@ class Welcome extends Component {
         );
       case 2:
         return (
-          <div>
-            <Typography>
-              <h2>Plugins</h2>
-              Hier kannst du auswählen, welche Plugins du aktiviert bzw.
-              deaktiviert haben möchtest.<br /> Plugins beinhalten den
-              kompletten Funktionsumfang von Twasi.<br />
-              Es gibt Plugins, die du nicht deaktivieren kannst, da sie
-              essentiell für den Betrieb des Bots sind.<br />
-              <br />
-              Alle Plugins lassen sich auch im nachhinein noch aktivieren,
-              deaktivieren und einstellen.
-            </Typography>
-            <SetupPlugins />
-          </div>
+          <SetupPlugins />
         );
       case 3:
         return 'Test';
