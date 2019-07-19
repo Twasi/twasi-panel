@@ -40,10 +40,10 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, userSta
         </div>
       </span>
       <span style={{ width: '200px' }}>
-        {userStatus == "OK" && <AccountSwitchIcon />}
+        {userStatus === "OK" && <AccountSwitchIcon />}
         <ThemeSwitchIcon />
         <LanguageSwitchIcon />
-        {userStatus == "OK" && <FeedbackIcon />}
+        {userStatus === "OK" && <FeedbackIcon />}
       </span>
     </div>
   </header>

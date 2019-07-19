@@ -13,7 +13,7 @@ import StepConnector from '@material-ui/core/StepConnector';
 import DummyLoadingPage from '../DummyLoadingPage';
 import SetupPlugins from './SetupPlugins'
 import SetupBeta from './SetupBeta'
-import SetupStart from './SetupStart'
+//import SetupStart from './SetupStart'
 import SetupDone from './SetupDone'
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
