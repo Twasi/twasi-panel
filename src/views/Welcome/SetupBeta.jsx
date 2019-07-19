@@ -21,7 +21,7 @@ class SetupBeta extends Component {
           </small>
         </Typography>
         <Card className="pluginCard" style={{ marginTop: '25px' }}>
-          <CardContent style={{ padding: '24px', marginBottom: '25px' }}>
+          <CardContent style={{ padding: '24px' }}>
             <TextField
               style={{ marginBottom: '25px' }}
               label="Dein Beta Key"
@@ -52,11 +52,6 @@ class SetupBeta extends Component {
             />
           </CardContent>
         </Card>
-        <Typography>
-            Bitte <b>UNBEDINGT BEACHTEN</b>, dass dies eine sehr frühe Version ist und viele Funktionen noch nicht bzw. nur bedingt funktionieren.<br />
-            Es werden regelmäßig neue Elemente und Funktionen hinzugefügt.<br /><br />
-            Wir übernehmen keine Gewähr für verloren gegangene Daten während der neuen Versionen.
-        </Typography>
       </div>
     );
   }

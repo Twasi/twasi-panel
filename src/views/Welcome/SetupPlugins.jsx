@@ -91,14 +91,16 @@ class SetupPlugins extends Component {
       <div>
         <Typography>
           <h2>Plugins</h2>
-          Hier kannst du auswählen, welche Plugins du aktiviert bzw.
-          deaktiviert haben möchtest.<br /> Plugins beinhalten den
-          kompletten Funktionsumfang von Twasi.<br />
-          Es gibt Plugins, die du nicht deaktivieren kannst, da sie
-          essentiell für den Betrieb des Bots sind.<br />
-          <br />
-          Alle Plugins lassen sich auch im nachhinein noch aktivieren,
-          deaktivieren und einstellen.
+            <small>
+              Hier kannst du auswählen, welche Plugins du aktiviert bzw.
+              deaktiviert haben möchtest.<br /> Plugins beinhalten den
+              kompletten Funktionsumfang von Twasi.<br />
+              Es gibt Plugins, die du nicht deaktivieren kannst, da sie
+              essentiell für den Betrieb des Bots sind.<br />
+              <br />
+              Alle Plugins lassen sich auch im nachhinein noch aktivieren,
+              deaktivieren und einstellen.
+            </small>
         </Typography>
         <Card style={{ marginTop: '25px' }} className="pluginCard">
           <CardContent className="pluginCardContent anim">

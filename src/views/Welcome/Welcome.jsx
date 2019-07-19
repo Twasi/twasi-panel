@@ -14,6 +14,7 @@ import DummyLoadingPage from '../DummyLoadingPage';
 import SetupPlugins from './SetupPlugins'
 import SetupBeta from './SetupBeta'
 import SetupStart from './SetupStart'
+import SetupDone from './SetupDone'
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 import { pluginsOperations } from '../../state/plugins';
@@ -33,20 +34,22 @@ class Welcome extends Component {
 
   getStepContent() {
     switch (this.state.stepIndex) {
+      //case 0:
+        //return (
+          //<SetupStart />
+        //);
       case 0:
-        return (
-          <SetupStart />
-        );
-      case 1:
         return (
           <SetupBeta />
         );
-      case 2:
+      case 1:
         return (
           <SetupPlugins />
         );
-      case 3:
-        return 'Test';
+      case 2:
+        return (
+          <SetupDone />
+        );
       default:
         return 'Fehler';
     }
@@ -84,12 +87,14 @@ class Welcome extends Component {
         <div className="contentWelcome">
           <div className="pageContent">
             <Paper className="pageContainer">
-              <Stepper alternativeLabel nonLinear activeStep={stepIndex} connector={connector}>
+              <Stepper alternativeLabel activeStep={stepIndex} connector={connector}>
+                {/*
                 <Step>
                   <StepLabel>
                     Willkommen
                   </StepLabel>
                 </Step>
+                */}
                 <Step>
                   <StepLabel>
                     Closed Beta
@@ -127,13 +132,13 @@ class Welcome extends Component {
                     >
                       {(() => {
                         switch (stepIndex) {
+                          //case 0:
+                            //return "Los Geht's";
                           case 0:
-                            return "Los Geht's";
+                            return 'Weiter';
                           case 1:
                             return 'Weiter';
                           case 2:
-                            return 'Weiter';
-                          case 3:
                             return 'Zum Panel';
                           default:
                             return null;
