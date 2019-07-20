@@ -11,7 +11,6 @@ import { LanguageSwitchIcon } from '../../LanguageSwitch';
 import { FeedbackIcon } from '../../Feedback';
 import Rank from '../Rank';
 import Logo from './Logo';
-//import Twasilogo from '../../common/resources/text_logo_twasi.svg';
 
 import {
   getAvatarStyle,
@@ -26,7 +25,7 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, userSta
     <div className="bannerHeader" style={{ opacity: banner && selectedBannerAsHeaderValue ? '0.4' : '1', backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />
     <div style={getLogoStyle()}>
       <span>
-        <img src={avatar} alt="Avatar" style={getAvatarStyle()} />
+        {avatar && <img src={avatar} alt="Avatar" style={getAvatarStyle()} />}
         <div style={getLogoDescriptionStyle()}>
           <span>
             {userName}
@@ -40,10 +39,10 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, userSta
         </div>
       </span>
       <span style={{ width: '200px' }}>
-        {userStatus === "OK" && <AccountSwitchIcon />}
+        {userStatus === 'OK' && <AccountSwitchIcon />}
         <ThemeSwitchIcon />
         <LanguageSwitchIcon />
-        {userStatus === "OK" && <FeedbackIcon />}
+        {userStatus === 'OK' && <FeedbackIcon />}
       </span>
     </div>
   </header>

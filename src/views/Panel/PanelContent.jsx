@@ -5,8 +5,6 @@ import Sidebar from '../Sidebar/Sidebar';
 
 import RequireAuth from '../../auth/RequireAuth';
 
-import Welcome from '../Welcome/Welcome';
-
 import Overview from '../Overview';
 import Status from '../Status';
 import Plugins from '../Plugins';
@@ -25,31 +23,29 @@ import DevTools from '../DevTools';
 
 const PanelContent = () => (
   <RequireAuth>
-    <Welcome>
-      <div style={{ float: 'left' }}>
-        <Sidebar />
-      </div>
-      <div className="content">
-        <Switch>
-          <Route path="/" exact component={Overview} />
-          <Route path="/status" exact component={Status} />
-          <Route path="/plugins" exact component={Plugins} />
-          <Route path="/profile" exact component={Profile} />
-          <Route path="/mods" exact component={Moderators} />
-          <Route path="/commands" exact component={Commands} />
-          <Route path="/variables" exact component={Variables} />
-          <Route path="/timers" exact component={Timers} />
-          <Route path="/urlshortener" exact component={Urlshortener} />
-          <Route path="/dev" exact component={DevTools} />
-          <Route path="/songrequests" exact component={Songrequests} />
-          <Route path="/giveaways" exact component={Giveaways} />
-          <Route path="/quotes" exact component={Quotes} />
-          <Route path="/votings" exact component={Votings} />
-          <Route path="/support" exact component={Support} />
-        </Switch>
-      </div>
-      <div style={{ clear: 'both' }} />
-    </Welcome>
+    <div style={{ float: 'left' }}>
+      <Sidebar />
+    </div>
+    <div className="content">
+      <Switch>
+        <Route path="/" exact component={Overview} />
+        <Route path="/status" exact component={Status} />
+        <Route path="/plugins" exact component={Plugins} />
+        <Route path="/profile" exact component={Profile} />
+        <Route path="/mods" exact component={Moderators} />
+        <Route path="/commands" exact component={Commands} />
+        <Route path="/variables" exact component={Variables} />
+        <Route path="/timers" exact component={Timers} />
+        <Route path="/urlshortener" exact component={Urlshortener} />
+        <Route path="/dev" exact component={DevTools} />
+        <Route path="/songrequests" exact component={Songrequests} />
+        <Route path="/giveaways" exact component={Giveaways} />
+        <Route path="/quotes" exact component={Quotes} />
+        <Route path="/votings" exact component={Votings} />
+        <Route path="/support" exact component={Support} />
+      </Switch>
+    </div>
+    <div style={{ clear: 'both' }} />
   </RequireAuth>
 );
 

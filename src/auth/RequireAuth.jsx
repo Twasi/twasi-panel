@@ -1,20 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import queryString from 'query-string';
 import storage from 'local-storage';
 
 import { authSelectors, authOperations } from '../state/auth';
 import { getRawGraph } from '../services/graphqlService';
-import { userGraphString } from './Login';
 
 // 2 Hours
 const tokenExpiration = 2 * 60 * 60 * 1000;
+const setupCheckString = 'isSetUp';
 
 class RequireAuth extends React.Component {
   componentWillMount() {
-    const { isAuthenticated, isLoading, authenticate, updateIsLoading, updateUserData, history, location, optional } = this.props;
+    const { isAuthenticated, isLoading, authenticate, updateIsLoading, history, location, optional, updateSetup } = this.props;
+
+    const checkToken = jwt => new Promise((resolve, reject) => {
+      getRawGraph(`query{setup(token:"${jwt}"){${setupCheckString}}}`).then(data => {
+        if (data.data.setup == null) {
+          if (!optional) {
+            window.location.href = window.env.AUTH_URL;
+            reject();
+          } else {
+            updateIsLoading(false);
+            resolve();
+          }
+        } else {
+          authenticate(jwt);
+          updateSetup(data.data.setup.isSetUp);
+          resolve();
+        }
+      });
+    });
 
     // Are we returning from auth provider?
     const urlParams = queryString.parse(window.location.search);
@@ -22,22 +40,14 @@ class RequireAuth extends React.Component {
       // eslint-disable-next-line
       console.log('Welcome back from the auth provider! Let\'s look if we can get you authenticated...');
 
-      getRawGraph(`query{panel(token:"${urlParams.jwt}"){${userGraphString}}}`).then(data => {
-        if (data.data.panel == null) {
-          window.location.href = window.env.AUTH_URL;
+      checkToken(urlParams.jwt).then(() => {
+        storage('jwt', { token: urlParams.jwt, since: new Date().getTime() });
+
+        const originalUrl = storage('originalUrl');
+        if (typeof originalUrl === 'undefined' || originalUrl === null) {
+          history.push('/');
         } else {
-          authenticate(urlParams.jwt);
-          updateUserData(data.data.panel.user);
-
-          // store it in local storage
-          storage('jwt', { token: urlParams.jwt, since: new Date().getTime() });
-
-          const originalUrl = storage('originalUrl');
-          if (typeof originalUrl === 'undefined' || originalUrl === null) {
-            history.push('/');
-          } else {
-            history.push(originalUrl);
-          }
+          history.push(originalUrl);
         }
       });
       return;
@@ -64,30 +74,24 @@ class RequireAuth extends React.Component {
         return;
       }
 
-      getRawGraph(`query{panel(token:"${cacheData.token}"){${userGraphString}}}`).then(data => {
-        if (data.data.panel == null) {
-          if (!optional) {
-            storage('originalUrl', location.pathname);
-            window.location.href = window.env.AUTH_URL;
-          } else {
-            updateIsLoading(false);
-          }
-        } else {
-          authenticate(cacheData.token);
-          updateUserData(data.data.panel.user);
-        }
-      });
+      checkToken(cacheData.token);
     }
   }
 
   render() {
-    const { isAuthenticated, children } = this.props;
+    const { isAuthenticated, children, isSetUp, doNotRequireSetup } = this.props;
 
-    window.testLocal = () => {
-      window.location.href = `http://localhost:3000/callback?jwt=${this.props.jwt}`;
-    };
+    let setUpCheck = isSetUp;
 
-    if (isAuthenticated && children) {
+    if (doNotRequireSetup) {
+      setUpCheck = true;
+    }
+
+    if (isAuthenticated && !setUpCheck) {
+      return <Redirect to="/setup" />;
+    }
+
+    if (isAuthenticated && children && setUpCheck) {
       return children;
     }
     return null;
@@ -97,11 +101,9 @@ class RequireAuth extends React.Component {
 RequireAuth.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  jwt: PropTypes.string,
   authenticate: PropTypes.func.isRequired,
-  graph: PropTypes.func.isRequired,
   updateIsLoading: PropTypes.func.isRequired,
-  updateUserData: PropTypes.func.isRequired,
+  updateSetup: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
@@ -112,19 +114,22 @@ RequireAuth.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
   ]),
-  optional: PropTypes.bool
+  optional: PropTypes.bool,
+  isSetUp: PropTypes.bool,
+  doNotRequireSetup: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
   isAuthenticated: authSelectors.isAuthenticated(state),
   isLoading: authSelectors.isLoading(state),
-  jwt: authSelectors.getJwt(state)
+  isSetUp: authSelectors.isSetUp(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   authenticate: jwt => dispatch(authOperations.authenticate(jwt)),
   updateIsLoading: loading => dispatch(authOperations.updateIsLoading(loading)),
-  updateUserData: data => dispatch(authOperations.updateUserData(data))
+  updateUserData: data => dispatch(authOperations.updateUserData(data)),
+  updateSetup: isSetUp => dispatch(authOperations.updateIsSetUp(isSetUp))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RequireAuth));

@@ -9,22 +9,29 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import StepConnector from '@material-ui/core/StepConnector';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import DummyLoadingPage from '../DummyLoadingPage';
-import SetupPlugins from './SetupPlugins'
-import SetupBeta from './SetupBeta'
-//import SetupStart from './SetupStart'
-import SetupDone from './SetupDone'
+import SetupPlugins from './SetupPlugins';
+import SetupBeta from './SetupBeta';
+import SetupDone from './SetupDone';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
-import { pluginsOperations } from '../../state/plugins';
+import { authOperations, authSelectors } from '../../state/auth';
 
 import './_style.css';
+import RequireAuth from '../../auth/RequireAuth';
+import { getGraph } from '../../services/graphqlService';
 
 class Welcome extends Component {
   state = {
     finished: false,
-    stepIndex: 0
+    stepIndex: 0,
+    acceptsTos: false,
+    tosError: false,
+    betaKey: '',
+    betaKeyError: false,
+    loadings1: false
   };
 
   componentWillMount() {
@@ -33,14 +40,16 @@ class Welcome extends Component {
   }
 
   getStepContent() {
-    switch (this.state.stepIndex) {
-      //case 0:
-        //return (
-          //<SetupStart />
-        //);
+    const { stepIndex, acceptsTos, betaKey, tosError, betaKeyError } = this.state;
+
+    switch (stepIndex) {
+      // case 0:
+      // return (
+      // <SetupStart />
+      // );
       case 0:
         return (
-          <SetupBeta />
+          <SetupBeta acceptsTos={acceptsTos} setAcceptsTos={value => this.setState({ acceptsTos: value })} tosError={tosError} betaKey={betaKey} setBetaKey={value => this.setState({ betaKey: value })} betaKeyError={betaKeyError} />
         );
       case 1:
         return (
@@ -56,101 +65,126 @@ class Welcome extends Component {
   }
 
   handleNext = () => {
-    const { stepIndex } = this.state;
-    this.setState({
-      stepIndex: stepIndex + 1,
-      finished: stepIndex >= 2
+    const { stepIndex, acceptsTos, betaKey } = this.state;
+    const { submitBetaKey } = this.props;
+
+    if (stepIndex === 0) {
+      if (!acceptsTos) {
+        return this.setState({ tosError: true });
+      }
+
+      this.setState({ loadings1: true, tosError: false });
+      return submitBetaKey(betaKey).then(() => {
+        this.setState({
+          stepIndex: stepIndex + 1
+        });
+      }).catch(error => {
+        if (error.extensions.localisedKey === 'setup_invalid_code') {
+          this.setState({ loadings1: false, betaKeyError: true });
+        }
+      });
+    }
+
+    if (stepIndex === 2) {
+      window.location.href = '/';
+      return null;
+    }
+
+    return this.setState({
+      stepIndex: stepIndex + 1
     });
   };
 
   handlePrev = () => {
     const { stepIndex } = this.state;
+
     if (stepIndex > 0) {
       this.setState({ stepIndex: stepIndex - 1 });
     }
   };
 
   render() {
-    const { userStatus, children } = this.props;
+    const { isSetUp } = this.props;
 
-    if (userStatus === 'OK') {
-      return children;
-    }
-    if (userStatus === 'SETUP') {
-      const { stepIndex } = this.state;
+    if (!isSetUp) {
+      const { stepIndex, loadings1 } = this.state;
       const contentStyle = { margin: '0 16px' };
       const connector = (
-        <StepConnector/>
+        <StepConnector />
       );
 
       return (
-        <div className="contentWelcome">
-          <div className="pageContent">
-            <Paper className="pageContainer">
-              <Stepper alternativeLabel activeStep={stepIndex} connector={connector}>
-                {/*
-                <Step>
-                  <StepLabel>
-                    Willkommen
-                  </StepLabel>
-                </Step>
-                */}
-                <Step>
-                  <StepLabel>
-                    Closed Beta
-                  </StepLabel>
-                </Step>
-                <Step>
-                  <StepLabel>
-                    Plugins
-                  </StepLabel>
-                </Step>
-                <Step>
-                  <StepLabel>
-                    Fertig
-                  </StepLabel>
-                </Step>
-              </Stepper>
-              <div style={contentStyle}>
-                <div>
-                  <p>{this.getStepContent(stepIndex)}</p>
-                  <Divider />
-                  <div style={{ marginTop: 20 }}>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      disabled={stepIndex === 0}
-                      onClick={this.handlePrev}
-                      style={{ marginRight: 12 }}
-                    >
-                          Zurück
-                    </Button>
-                    <Button
-                      color="primary"
-                      variant="contained"
-                      onClick={this.handleNext}
-                    >
-                      {(() => {
-                        switch (stepIndex) {
-                          //case 0:
-                            //return "Los Geht's";
-                          case 0:
-                            return 'Weiter';
-                          case 1:
-                            return 'Weiter';
-                          case 2:
-                            return 'Zum Panel';
-                          default:
-                            return null;
-                        }
-                      })()}
-                    </Button>
+        <RequireAuth doNotRequireSetup>
+          <div className="contentWelcome">
+            <div className="pageContent">
+              <Paper className="pageContainer">
+                <Stepper alternativeLabel activeStep={stepIndex} connector={connector}>
+                  {/*
+                  <Step>
+                    <StepLabel>
+                      Willkommen
+                    </StepLabel>
+                  </Step>
+                  */}
+                  <Step>
+                    <StepLabel>
+                      Closed Beta
+                    </StepLabel>
+                  </Step>
+                  <Step>
+                    <StepLabel>
+                      Plugins
+                    </StepLabel>
+                  </Step>
+                  <Step>
+                    <StepLabel>
+                      Fertig
+                    </StepLabel>
+                  </Step>
+                </Stepper>
+                <div style={contentStyle}>
+                  <div>
+                    <p>{this.getStepContent(stepIndex)}</p>
+                    <Divider />
+                    <div style={{ marginTop: 20 }}>
+                      {stepIndex >= 2 &&
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        onClick={this.handlePrev}
+                        style={{ marginRight: 12 }}
+                      >
+                            Zurück
+                      </Button>}
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        onClick={this.handleNext}
+                        disabled={stepIndex === 0 && loadings1}
+                      >
+                        {stepIndex === 0 && loadings1 && [<CircularProgress size={20} color="white" style={{ marginRight: 10 }} />]}
+                        {(() => {
+                          switch (stepIndex) {
+                            // case 0:
+                            // return "Los Geht's";
+                            case 0:
+                              return 'Weiter';
+                            case 1:
+                              return 'Weiter';
+                            case 2:
+                              return 'Zum Panel';
+                            default:
+                              return null;
+                          }
+                        })()}
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Paper>
+              </Paper>
+            </div>
           </div>
-        </div>
+        </RequireAuth>
       );
     }
 
@@ -159,19 +193,19 @@ class Welcome extends Component {
 }
 
 Welcome.propTypes = {
-  children: PropTypes.node,
-  userStatus: PropTypes.string,
-  updateUserStatus: PropTypes.func.isRequired,
-  loadPlugins: PropTypes.func.isRequired
+  isSetUp: PropTypes.bool,
+  updateUserStatus: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  userStatus: appInfoSelectors.getUserStatus(state)
+  userStatus: appInfoSelectors.getUserStatus(state),
+  isSetUp: authSelectors.isSetUp(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   updateUserStatus: () => dispatch(appInfoOperations.loadUserStatus()),
-  loadPlugins: () => dispatch(pluginsOperations.loadData())
+  submitBetaKey: betaKey => dispatch(getGraph(`setup(betaCode:"${betaKey}")`, 'setup')),
+  updateIsSetUp: isSetUp => dispatch(authOperations.updateIsSetUp(isSetUp))
 });
 
 export default withRouter(

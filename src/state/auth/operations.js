@@ -6,15 +6,6 @@ import { getGraph } from '../../services/graphqlService';
 
 const { updateUserData, updateIsUserUpdating } = actions;
 
-const authenticate = jwt => dispatch => {
-  const user = jwtDecode(jwt);
-
-  dispatch(actions.updateJwt(jwt));
-  dispatch(actions.updateUser(user));
-  dispatch(actions.isLoading(false));
-  dispatch(actions.isAuthenticated(true));
-};
-
 const updateUser = () => dispatch => {
   dispatch(updateIsUserUpdating(true));
 
@@ -26,10 +17,29 @@ const updateUser = () => dispatch => {
   });
 };
 
+const loadUser = () => dispatch => {
+  dispatch(getGraph('user{id,twitchAccount{twitchid,name,avatar,email},banner}')).then(data => {
+    dispatch(updateUserData(data.user));
+  });
+};
+
+const authenticate = jwt => dispatch => {
+  const user = jwtDecode(jwt);
+
+  dispatch(actions.updateJwt(jwt));
+  dispatch(actions.updateUser(user));
+  dispatch(actions.isLoading(false));
+  dispatch(actions.isAuthenticated(true));
+
+  dispatch(loadUser());
+};
+
 export default {
   authenticate,
   updateUserData,
   updateUser,
   updateIsAuthenticated: actions.isAuthenticated,
-  updateIsLoading: actions.isLoading
+  updateIsLoading: actions.isLoading,
+  updateIsSetUp: actions.updateIsSetUp,
+  loadUser
 };

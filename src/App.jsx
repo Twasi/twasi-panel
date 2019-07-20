@@ -15,6 +15,7 @@ import Header from './views/common/Header';
 import Content from './views/common/Content';
 import Public from './views/Public/Public';
 import Footer from './views/Footer/Footer';
+import Welcome from './views/Welcome/Welcome';
 
 import PanelContent from './views/Panel/PanelContent';
 
@@ -90,6 +91,7 @@ const App = () => {
               <Header />
               <Switch>
                 <Route path="/profile/:name" component={Public} />
+                <Route path="/setup" component={Welcome} />
                 <Route path="/" component={PanelContent} />
               </Switch>
               <Footer />

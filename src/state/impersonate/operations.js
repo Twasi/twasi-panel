@@ -1,5 +1,5 @@
 import { authSelectors, authOperations } from '../auth';
-import { appInfoOperations } from "../appInfo";
+import { appInfoOperations } from '../appInfo';
 import { getGraph, getRawGraph } from '../../services/graphqlService';
 
 const impersonateUser = userName => (dispatch, getState) => {
@@ -18,7 +18,7 @@ const impersonateUser = userName => (dispatch, getState) => {
 
       window.originalJwt = jwt;
 
-      getRawGraph('query{panel(token:"' + data.admin.impersonate + '"){user{id,banner,twitchAccount{twitchid,name,avatar,email}}}}', data.admin.impersonate).then(data => {
+      getRawGraph(`query{panel(token:"${data.admin.impersonate}"){user{id,banner,twitchAccount{twitchid,name,avatar,email}}}}`, data.admin.impersonate).then(data => {
         dispatch(authOperations.updateUserData(data.data.panel.user));
       });
     }
@@ -29,7 +29,7 @@ const resetImpersonation = () => dispatch => {
   dispatch({ type: 'RESET', jwt: window.originalJwt });
   dispatch(authOperations.authenticate(window.originalJwt));
 
-  getRawGraph('query{panel(token:"' + window.originalJwt + '"){user{id,banner,twitchAccount{twitchid,name,avatar,email}}}}').then(data => {
+  getRawGraph(`query{panel(token:"${window.originalJwt}"){user{id,banner,twitchAccount{twitchid,name,avatar,email}}}}`).then(data => {
     dispatch(authOperations.updateUserData(data.data.panel.user));
     dispatch(appInfoOperations.loadUserStatus());
   });

@@ -8,6 +8,7 @@ const getUserAvatar = state => state.auth.userData.twitchAccount.avatar;
 const getUserBanner = state => state.auth.userData.banner;
 
 const isUserUpdating = state => state.auth.isUserUpdating;
+const isSetUp = state => state.auth.isSetUp;
 
 export default {
   getJwt,
@@ -16,5 +17,6 @@ export default {
   isAuthenticated,
   getUserAvatar,
   isUserUpdating,
-  getUserBanner
+  getUserBanner,
+  isSetUp
 };

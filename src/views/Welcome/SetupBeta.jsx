@@ -11,6 +11,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 class SetupBeta extends Component {
   render() {
+    const { tosError, acceptsTos, setAcceptsTos, betaKey, setBetaKey, betaKeyError } = this.props;
+
     return (
       <div>
         <Typography>
@@ -31,13 +33,15 @@ class SetupBeta extends Component {
               InputLabelProps={{
                 shrink: true
               }}
+              value={betaKey}
+              onChange={e => setBetaKey(e.target.value)}
               // Falls gültig color auf primary und Text abändern.
-              helperText={<Typography color="secondary">Dieser Key ist ungültig.</Typography>}
+              helperText={betaKeyError && <Typography color="secondary">Dieser Key ist ungültig.</Typography>}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
                     <Icon>
-                        vpn_key
+                      vpn_key
                     </Icon>
                   </InputAdornment>
                 )
@@ -46,10 +50,17 @@ class SetupBeta extends Component {
             <FormControlLabel
               style={{ margin: '0px' }}
               control={
-                <Checkbox color="primary" value="checkedA" />
+                <Checkbox
+                  color="primary"
+                  value="checkedA"
+                  checked={acceptsTos}
+                  onChange={(e, isChecked) => setAcceptsTos(isChecked)} />
               }
-              label={<Typography>Ich habe die <Link color="primary" href="/">Nutzungsbedingungen</Link> gelesen und akzeptiere diese.</Typography>}
+              label={<Typography>Ich habe die <Link color="primary" href="/">Nutzungsbedingungen</Link> gelesen und
+                akzeptiere diese.
+              </Typography>}
             />
+            {tosError && <Typography color="secondary">Du musst die Nutzungsbedingungen akzeptieren.</Typography>}
           </CardContent>
         </Card>
       </div>

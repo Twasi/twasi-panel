@@ -30,11 +30,17 @@ const updateIsUserUpdating = isUserUpdating => ({
   isUserUpdating
 });
 
+const updateIsSetUp = isSetUp => ({
+  type: types.UPDATE_IS_SET_UP,
+  isSetUp
+});
+
 export default {
   updateJwt,
   updateUser,
   isLoading,
   isAuthenticated,
   updateUserData,
-  updateIsUserUpdating
+  updateIsUserUpdating,
+  updateIsSetUp
 };

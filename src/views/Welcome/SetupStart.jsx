@@ -31,7 +31,7 @@ const userGroups = [
         </small>
       </Typography>
     </div>
-  </ToggleButton>,
+  </ToggleButton>
 ];
 
 class SetupStart extends Component {

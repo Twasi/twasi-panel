@@ -8,11 +8,6 @@ import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 const pkgJson = require('../../../package.json');
 
 class Footer extends Component {
-  componentDidMount() {
-    const { loadVersion } = this.props;
-    setTimeout(loadVersion, 200);
-  }
-
   render() {
     const { serverVersion } = this.props;
     return (
