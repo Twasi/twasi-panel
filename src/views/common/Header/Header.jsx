@@ -19,7 +19,7 @@ import {
   getLogoDescriptionStyle
 } from './_style';
 
-const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, userStatus }) => (
+const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp }) => (
   <header>
     <div className="bannerHeaderTopBar" />
     <div className="bannerHeader" style={{ opacity: banner && selectedBannerAsHeaderValue ? '0.4' : '1', backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />
@@ -39,10 +39,10 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, userSta
         </div>
       </span>
       <span style={{ width: '200px' }}>
-        {userStatus === 'OK' && <AccountSwitchIcon />}
+        {isSetUp && <AccountSwitchIcon />}
         <ThemeSwitchIcon />
         <LanguageSwitchIcon />
-        {userStatus === 'OK' && <FeedbackIcon />}
+        {isSetUp && <FeedbackIcon />}
       </span>
     </div>
   </header>
@@ -61,7 +61,7 @@ Header.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  userStatus: appInfoSelectors.getUserStatus(state),
+  isSetUp: authSelectors.isSetUp(state),
   userName: authSelectors.getUser(state).displayName,
   rank: authSelectors.getUser(state).rank,
   avatar: authSelectors.getUserAvatar(state),
