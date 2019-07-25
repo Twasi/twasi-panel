@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
@@ -104,7 +104,7 @@ class Welcome extends Component {
   };
 
   render() {
-    const { isSetUp } = this.props;
+    const { isSetUp, history } = this.props;
 
     if (!isSetUp) {
       const { stepIndex, loadings1 } = this.state;
@@ -188,6 +188,7 @@ class Welcome extends Component {
       );
     }
 
+    history.goBack();
     return <DummyLoadingPage />;
   }
 }

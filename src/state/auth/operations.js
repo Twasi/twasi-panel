@@ -23,6 +23,14 @@ const loadUser = () => dispatch => {
   });
 };
 
+const checkSetup = () => dispatch => {
+  console.log("Checking setup...");
+  dispatch(getGraph('isSetUp', 'setup')).then(data => {
+    console.log("Response: " + data);
+    dispatch(actions.updateIsSetUp(data.isSetUp));
+  });
+};
+
 const authenticate = jwt => dispatch => {
   const user = jwtDecode(jwt);
 
@@ -41,5 +49,6 @@ export default {
   updateIsAuthenticated: actions.isAuthenticated,
   updateIsLoading: actions.isLoading,
   updateIsSetUp: actions.updateIsSetUp,
-  loadUser
+  loadUser,
+  checkSetup
 };

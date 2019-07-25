@@ -18,11 +18,12 @@ const impersonateUser = userName => (dispatch, getState) => {
 
       window.originalJwt = jwt;
 
-      getRawGraph(`query{panel(token:"${data.admin.impersonate}"){user{id,banner,twitchAccount{twitchid,name,avatar,email}}}}`, data.admin.impersonate).then(data => {
-        dispatch(authOperations.updateUserData(data.data.panel.user));
-        getRawGraph(`query{setup(token:"${data.admin.impersonate}"){isSetUp}}`).then(data => {
-          if (data.data.setup !== null) {
-            dispatch(authOperations.updateIsSetUp(data.data.isSetUp));
+      getRawGraph(`query{panel(token:"${data.admin.impersonate}"){user{id,banner,twitchAccount{twitchid,name,avatar,email}}}}`, data.admin.impersonate).then(newData => {
+        dispatch(authOperations.updateUserData(newData.data.panel.user));
+        getRawGraph(`query{setup(token:"${data.admin.impersonate}"){isSetUp}}`).then(setupData => {
+          console.log(setupData)
+          if (setupData.data.setup !== null) {
+            dispatch(authOperations.updateIsSetUp(setupData.data.setup.isSetUp));
           }
         });
       });
@@ -36,6 +37,7 @@ const resetImpersonation = () => dispatch => {
 
   getRawGraph(`query{panel(token:"${window.originalJwt}"){user{id,banner,twitchAccount{twitchid,name,avatar,email}}}}`).then(data => {
     dispatch(authOperations.updateUserData(data.data.panel.user));
+    dispatch(authOperations.checkSetup());
     dispatch(appInfoOperations.loadUserStatus());
   });
 
