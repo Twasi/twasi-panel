@@ -14,13 +14,19 @@ import Fab from '@material-ui/core/Fab';
 import Badge from '@material-ui/core/Badge';
 
 import { authSelectors } from '../../state/auth';
-import { pluginsSelectors } from '../../state/plugins';
+import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 import { getMenuStyle } from './_style';
 
 import twasiLogo from '../common/resources/twasi_anim_dark.gif';
 import './_style.css';
 
 class Sidebar extends Component {
+
+  componentDidMount() {
+    const { verifyData } = this.props;
+    verifyData();
+  }
+
   constructor(props) {
     super(props);
 
@@ -266,4 +272,8 @@ const mapStateToProps = state => ({
   plugins: pluginsSelectors.getPlugins(state)
 });
 
-export default injectIntl(withRouter(connect(mapStateToProps)(Sidebar)));
+const mapDispatchToProps = dispatch => ({
+  verifyData: () => dispatch(pluginsOperations.verifyData()),
+});
+
+export default injectIntl(withRouter(connect(mapStateToProps, mapDispatchToProps)(Sidebar)));
