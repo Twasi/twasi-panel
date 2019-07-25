@@ -188,8 +188,7 @@ class Welcome extends Component {
       );
     }
 
-    history.goBack();
-    return <DummyLoadingPage />;
+    return <Redirect to="/" />;
   }
 }
 
