@@ -17,6 +17,8 @@ const loadStreamtracker = () => dispatch => {
   dispatch(getGraph('lastStream{streamId,language,startedAt,streamType,communityIds,tagIds,newFollowers,newViews,data{gameId,game,title,viewerCount,timestamp,chatMessages,chatCommands},topChatters{twitchId,displayName,messages,commands}}', 'streamtracker')).then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
+      dispatch(updateLoading(false));
+      dispatch(updateLoaded(true));
       return;
     }
     dispatch(updateStreamtracker(data.lastStream));

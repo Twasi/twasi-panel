@@ -280,7 +280,7 @@ class Overview extends Component {
               </Col>
             </Row>
           </div>
-          } {streamtracker.streamId == null &&
+          } {streamtracker.streamId == null && !isLoading &&
           <div>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
