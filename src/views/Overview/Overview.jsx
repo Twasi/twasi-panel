@@ -283,20 +283,19 @@ class Overview extends Component {
           } {streamtracker.streamId == null && !isLoading &&
           <div>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
-              <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
-                <h1 className="pageContainerTitle">
-                  <FormattedMessage id="overview.no_streams_tracked_title" />
+              <div>
+                <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img
-                    style={{ position: 'relative', top: '15px', left: '10px', height: '50px' }}
+                    style={{ position: 'relative', height: '100px' }}
                     src={SeriousSloth}
                     alt="SeriousSloth"
                   />
-                </h1>
-                <br />
-                <small>
+                  <h2 className="pageContainerTitle">
+                    <FormattedMessage id="overview.no_streams_tracked_title" />
+                  </h2>
                   <FormattedMessage id="overview.no_streams_tracked_subtitle" />
-                </small>
-              </Typography>
+                </Typography>
+              </div>
             </Paper>
             <Paper className="pageContainer">
               <Row>

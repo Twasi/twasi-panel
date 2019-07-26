@@ -13,6 +13,9 @@ import Tab from '@material-ui/core/Tab';
 
 import './_style.css';
 
+import SoonerLater from '../common/resources/SoonerLater.png';
+import ResidentSleeper from '../common/resources/ResidentSleeper.png';
+
 import { supportSelectors, supportOperations } from '../../state/support';
 import SupportTicketModal from './SupportTicketModal';
 import SupportTicket from './SupportTicket';
@@ -74,6 +77,43 @@ class Support extends Component {
     ));
   }
 
+  renderSupportTicketsEmpty(open) {
+    if (open) {
+      return (
+        <div>
+          <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+            <img
+              style={{ position: 'relative', height: '100px' }}
+              src={SoonerLater}
+              alt="SoonerLater"
+            />
+            <h2 className="pageContainerTitle">
+              Wir konnten keine offenen Supporttickets finden.
+            </h2>
+            Das kann daran liegen, dass du noch kein Ticket erstellt hast oder, dass unser Supportteam bereits all deine Fragen bearbeitet hat.<br/>
+            Deine bereits fertig bearbeiteten Tickets findest du unter dem Tab "Geschlossene Tickets".
+          </Typography>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+            <img
+              style={{ position: 'relative', height: '100px' }}
+              src={ResidentSleeper}
+              alt="ResidentSleeper"
+            />
+            <h2 className="pageContainerTitle">
+              Wir konnten keine geschlossenen Supporttickets finden.
+            </h2>
+            Hier siehst du alle Tickets, die bereits bearbeitet wurden.
+          </Typography>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="pageContent">
@@ -121,10 +161,10 @@ class Support extends Component {
         </Tabs>
         <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
           {this.state.tabValue === 0 && <TabContainer>
-            {this.renderSupportTickets(true)}
+            {this.renderSupportTickets(true).length === 0 ? this.renderSupportTicketsEmpty(true) : this.renderSupportTickets(true)}
           </TabContainer>}
           {this.state.tabValue === 1 && <TabContainer>
-            {this.renderSupportTickets(false)}
+            {this.renderSupportTickets(false).length === 0 ? this.renderSupportTicketsEmpty(false) : this.renderSupportTickets(false)}
           </TabContainer>}
         </Paper>
       </div>
