@@ -78,7 +78,6 @@ class Overview extends Component {
 
   render() {
     const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading } = this.props;
-    console.log(isGlobalLoading)
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }
@@ -281,7 +280,7 @@ class Overview extends Component {
               </Col>
             </Row>
           </div>
-          } {streamtracker.streamId == null && !isLoading &&
+          } {streamtracker.streamId == null &&
           <div>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>

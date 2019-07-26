@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import StepConnector from '@material-ui/core/StepConnector';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import DummyLoadingPage from '../DummyLoadingPage';
+//import DummyLoadingPage from '../DummyLoadingPage';
 import SetupPlugins from './SetupPlugins';
 import SetupBeta from './SetupBeta';
 import SetupDone from './SetupDone';
@@ -104,7 +104,7 @@ class Welcome extends Component {
   };
 
   render() {
-    const { isSetUp, history } = this.props;
+    const { isSetUp } = this.props;
 
     if (!isSetUp) {
       const { stepIndex, loadings1 } = this.state;
