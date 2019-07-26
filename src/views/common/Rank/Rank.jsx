@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 import { authSelectors } from '../../../state/auth';
 
@@ -13,9 +14,9 @@ class Rank extends Component {
         <Typography>
           {(() => {
             switch (rank) {
-              case 'TEAM': return 'Teammitglied';
-              case 'PARTNER': return 'Partnerstreamer';
-              case 'STREAMER': return 'Streamer';
+              case 'TEAM': return <FormattedMessage id="rank.team" />;
+              case 'PARTNER': return <FormattedMessage id="rank.partner" />;
+              case 'STREAMER': return <FormattedMessage id="rank.streamer" />;
               default: return 'Unknown';
             }
           })()}

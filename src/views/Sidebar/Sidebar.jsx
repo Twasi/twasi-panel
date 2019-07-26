@@ -61,7 +61,7 @@ class Sidebar extends Component {
         path: '/mods',
         icon: 'people',
         name: 'sidebar.mods',
-        shown: 'all'
+        shown: 'none'
       },
       {
         key: 'plugins',
@@ -89,7 +89,7 @@ class Sidebar extends Component {
         path: '/timers',
         icon: 'alarm',
         name: 'sidebar.timers',
-        shown: 'plugins/timed messages'
+        shown: 'plugins/timed_messages'
       },
       {
         key: 'songrequests',
@@ -117,14 +117,14 @@ class Sidebar extends Component {
         path: '/votings',
         icon: 'notes',
         name: 'sidebar.votings',
-        shown: 'all'
+        shown: 'none'
       },
       {
         key: 'urlshortener',
         path: '/urlshortener',
         icon: 'link',
         name: 'sidebar.urlshortener',
-        shown: 'all'
+        shown: 'none'
       },
       {
         key: 'support',

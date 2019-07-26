@@ -196,7 +196,7 @@ class Command extends React.Component {
                 placeholder="Beispiel: Mein Bot heißt Twasibot."
                 multiline
                 rows="3"
-                helperText="Das ist die Ausgabe deines Befehls. Du kannst Variablen nutzen, um die Ausgabe dynamisch zu gestallten."
+                helperText={<FormattedMessage id="commands.new_command.output.helpertext" />}
                 margin="normal"
                 variant="outlined"
               />
@@ -234,7 +234,7 @@ class Command extends React.Component {
           */}
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Cooldown: {this.getCooldown(this.state.commandCooldown)}</Typography>
+              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown" />: {this.getCooldown(this.state.commandCooldown)}</Typography>
               <Slider
                 style={{ padding: '22px 0px' }}
                 aria-labelledby="label"
@@ -244,7 +244,7 @@ class Command extends React.Component {
                 step={1}
                 onChange={this.handleCommandCooldown}
               />
-              <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Cooldown von bis zu einer Stunde einstellen.</Typography>
+              <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown.helpertext" /></Typography>
             </CardContent>
           </Card>
           <Button
