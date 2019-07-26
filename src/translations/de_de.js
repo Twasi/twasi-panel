@@ -16,6 +16,9 @@ export default {
   'setup.button.back': 'Zurück',
   'setup.button.next': 'Weiter',
   'setup.button.panel': 'Zum Panel',
+  'setup.step.closed_beta.key_invalid': 'Dieser Key ist ungültig.',
+  'setup.step.closed_beta.accept_tos': 'Du musst die Nutzungsbedingungen akzeptieren.',
+
 
   // Datatables
   'datatables.body.nomatch': 'Es wurden keine passenden Einträge gefunden.',
