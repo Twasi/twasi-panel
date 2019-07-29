@@ -48,6 +48,12 @@ class Overview extends Component {
     value: 0
   };
 
+  handleClickBreadCrumb = (event, value) => {
+      const { history } = this.props;
+      history.push(value);
+      this.setState({});
+  };
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -89,7 +95,7 @@ class Overview extends Component {
             <CircularProgress className="progressCircle" />
           </Paper>
         }
-        {!noStreamData &&
+        {!noStreamData && !isLoading &&
         <Container className="overviewHead">
           <Row>
             <Col sm={3}>
@@ -169,7 +175,7 @@ class Overview extends Component {
           </Row>
         </Container>
         }
-        {!noStreamData &&
+        {!noStreamData && !isLoading &&
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs
             value={value}
@@ -178,13 +184,13 @@ class Overview extends Component {
             textColor="primary"
           >
             <Tab label="Letzter Stream" />
-            <Tab label="Letzten 30 Tage" />
-            <Tab label="Gesamt" />
+            <Tab disabled label="Letzten 30 Tage" />
+            <Tab disabled label="Gesamt" />
           </Tabs>
         </Paper>
         }
         {value === 0 && <TabContainer>
-          {!noStreamData &&
+          {!noStreamData && !isLoading &&
           <Row>
             <Col sm={12}>
               <Paper className="pageContainer">
@@ -211,7 +217,7 @@ class Overview extends Component {
             </Col>
           </Row>
           }
-          {!noStreamData &&
+          {!noStreamData && !isLoading &&
           <div id="canvas_twasi_stats">
             <Row>
               <Col sm={9}>
@@ -275,7 +281,7 @@ class Overview extends Component {
               </Col>
               <Col sm={3}>
                 <div>
-                  {!noStreamData && <StatsList />}
+                  <StatsList />
                 </div>
               </Col>
             </Row>
@@ -299,38 +305,29 @@ class Overview extends Component {
             </Paper>
             <Paper className="pageContainer">
               <Row>
-                <Col sm={3}>
+                <Col sm={4}>
                   <Card style={{ textAlign: 'center' }} className="pluginCard">
                     <CardContent className="pluginCardContent">
-                      <Button variant="contained" color="primary">
+                      <Button onClick={event => this.handleClickBreadCrumb(event, '/plugins')} variant="contained" color="primary">
                         <FormattedMessage id="overview.no_streams_tracked_plugins" />
                       </Button>
                     </CardContent>
                   </Card>
                 </Col>
-                <Col sm={3}>
+                <Col sm={4}>
                   <Card style={{ textAlign: 'center' }} className="pluginCard">
                     <CardContent className="pluginCardContent">
-                      <Button variant="contained" color="primary">
+                      <Button onClick={() => window.open('https://docs.twasi.net', '_blank')} variant="contained" color="primary">
                         <FormattedMessage id="overview.no_streams_tracked_docs" />
                       </Button>
                     </CardContent>
                   </Card>
                 </Col>
-                <Col sm={3}>
+                <Col sm={4}>
                   <Card style={{ textAlign: 'center' }} className="pluginCard">
                     <CardContent className="pluginCardContent">
-                      <Button variant="contained" color="primary">
+                      <Button onClick={event => this.handleClickBreadCrumb(event, '/support')} variant="contained" color="primary">
                         <FormattedMessage id="overview.no_streams_tracked_support" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Col>
-                <Col sm={3}>
-                  <Card style={{ textAlign: 'center' }} className="pluginCard">
-                    <CardContent className="pluginCardContent">
-                      <Button variant="contained" color="primary">
-                        <FormattedMessage id="overview.no_streams_tracked_feedback" />
                       </Button>
                     </CardContent>
                   </Card>
