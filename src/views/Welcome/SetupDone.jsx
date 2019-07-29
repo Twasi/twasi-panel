@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 
+import twasi_mascot_party from '../common/resources/twasi_mascot_party.svg';
+
 class SetupDone extends Component {
   render() {
     return (
       <div>
+        <div style={{ width: '100%', textAlign: 'center' }}>
+          <img src={twasi_mascot_party} style={{ height: '200px' }} />
+        </div>
         <Typography>
           <h2 style={{ marginBottom: '5px' }} className="pageContainerTitle">Geschafft!</h2>
           <small>
