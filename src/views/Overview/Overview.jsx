@@ -77,7 +77,7 @@ class Overview extends Component {
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading } = this.props;
+    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading, noStreamData } = this.props;
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }
@@ -89,7 +89,7 @@ class Overview extends Component {
             <CircularProgress className="progressCircle" />
           </Paper>
         }
-        {streamtracker.streamId != null &&
+        {!noStreamData &&
         <Container className="overviewHead">
           <Row>
             <Col sm={3}>
@@ -169,7 +169,7 @@ class Overview extends Component {
           </Row>
         </Container>
         }
-        {streamtracker.streamId != null &&
+        {!noStreamData &&
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs
             value={value}
@@ -184,7 +184,7 @@ class Overview extends Component {
         </Paper>
         }
         {value === 0 && <TabContainer>
-          {streamtracker.streamId != null &&
+          {!noStreamData &&
           <Row>
             <Col sm={12}>
               <Paper className="pageContainer">
@@ -211,7 +211,7 @@ class Overview extends Component {
             </Col>
           </Row>
           }
-          {streamtracker.streamId != null &&
+          {!noStreamData &&
           <div id="canvas_twasi_stats">
             <Row>
               <Col sm={9}>
@@ -275,12 +275,12 @@ class Overview extends Component {
               </Col>
               <Col sm={3}>
                 <div>
-                  <StatsList />
+                  {!noStreamData && <StatsList />}
                 </div>
               </Col>
             </Row>
           </div>
-          } {streamtracker.streamId == null && !isLoading &&
+          } {noStreamData && !isLoading &&
           <div>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
               <div>
@@ -363,6 +363,7 @@ Overview.propTypes = {
     }))
   })),
   disabled: PropTypes.bool.isRequired,
+  noStreamData: PropTypes.bool.isRequired,
   globalstreamtracker: PropTypes.arrayOf(PropTypes.shape({
     totalTrackedViewers: PropTypes.string.isRequired,
     totalTrackedStreams: PropTypes.string.isRequired,
@@ -383,6 +384,7 @@ const mapStateToProps = state => ({
   utilities: utilitiesSelectors.getUtilities(state),
   disabled: commandsSelectors.isDisabled(state),
   isLoading: streamtrackerSelectors.isLoading(state),
+  noStreamData: streamtrackerSelectors.noStreamData(state),
   isGlobalLoading: streamtrackerSelectors.isGlobalLoading(state),
 });
 
