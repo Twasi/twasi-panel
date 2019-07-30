@@ -112,6 +112,9 @@ export default {
   'overview.chatterchart': 'Top 30 Chatter',
   'overview.chatterchart.subtitle': 'Hier siehst du die Top 30 Chatter deines letzten Streams.',
   'overview.saveasimage': 'Statistiken als Bild speichern',
+  'overview.tweet': 'Tweeten, dass du live bist',
+  'overview.no_viewers_tracked': 'Gibt es hier nur Lurker?',
+  'overview.no_viewers_tracked.subtitle': 'Bisher wurde noch kein Chatter von uns erfasst.',
 
   // Status
   'status.started': 'Läuft',

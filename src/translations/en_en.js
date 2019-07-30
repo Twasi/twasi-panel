@@ -110,6 +110,9 @@ export default {
   'overview.chatterchart': 'Chatter',
   'overview.chatterchart.subtitle': 'Here you can see all Chatters of your current / last Stream.',
   'overview.saveasimage': 'Save Statistics as Image',
+  'overview.tweet': 'Tweet, that you are live',
+  'overview.no_viewers_tracked': 'Are there only Lurkers?',
+  'overview.no_viewers_tracked.subtitle': 'There were no Chatters tracked yet.',
 
   // Status
   'status.started': 'Working',
