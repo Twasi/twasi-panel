@@ -76,14 +76,10 @@ class Overview extends Component {
   componentDidMount() {
     const { updateStreamtracker } = this.props;
     updateStreamtracker();
-    const { updateGlobalStreamtracker } = this.props;
-    updateGlobalStreamtracker();
-    const { updateCommands } = this.props;
-    updateCommands();
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading, noStreamData } = this.props;
+    const { globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading, noStreamData } = this.props;
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }

@@ -8,7 +8,7 @@ class SetupDone extends Component {
     return (
       <div>
         <div style={{ width: '100%', textAlign: 'center' }}>
-          <img src={twasi_mascot_party} style={{ height: '200px' }} />
+          <img alt="twasi_mascot_party" src={twasi_mascot_party} style={{ height: '200px' }} />
         </div>
         <Typography>
           <h2 style={{ marginBottom: '5px' }} className="pageContainerTitle">Geschafft!</h2>
