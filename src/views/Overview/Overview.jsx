@@ -76,6 +76,10 @@ class Overview extends Component {
   componentDidMount() {
     const { updateStreamtracker } = this.props;
     updateStreamtracker();
+    const { updateGlobalStreamtracker } = this.props;
+    updateGlobalStreamtracker();
+    const { updateCommands } = this.props;
+    updateCommands();
   }
 
   render() {
