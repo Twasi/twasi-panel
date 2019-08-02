@@ -10,13 +10,13 @@ const updateMyTickets = myTickets => ({
   myTickets
 });
 
-const updateAdminTickets = adminTickets => ({
-  type: types.UPDATE_ADMIN_TICKETS,
-  adminTickets
+const updateAdmin = isAdmin => ({
+  type: types.UPDATE_ADMIN,
+  isAdmin
 });
 
 export default {
   updateLoaded,
   updateMyTickets,
-  updateAdminTickets
+  updateAdmin
 };

@@ -3,14 +3,22 @@ import selectors from './selectors';
 
 import { getGraph } from '../../services/graphqlService';
 
-const { updateLoaded, updateMyTickets } = actions;
+import { authSelectors } from '../auth';
+
+const { updateLoaded, updateMyTickets, updateAdmin } = actions;
 
 const ticketQuery = 'id,owner{name,avatar},topic,state,createdAt,category,closedAt,messages{sender{name,avatar},message,createdAt,staff}}';
 
-const loadMyTickets = () => dispatch => {
-  dispatch(getGraph(`support{myTickets{${ticketQuery}}`)).then(
+const loadMyTickets = () => (dispatch, getState) => {
+  const state = getState();
+  const isAdmin = authSelectors.getUser(state).rank === 'TEAM';
+  const subObject = isAdmin ? 'adminTickets' : 'myTickets';
+
+  dispatch(updateAdmin(isAdmin));
+
+  dispatch(getGraph(`support{${subObject}{${ticketQuery}}`)).then(
     data => {
-      dispatch(updateMyTickets(data.support.myTickets));
+      dispatch(updateMyTickets(data.support[subObject]));
       dispatch(updateLoaded(true));
     }
   );

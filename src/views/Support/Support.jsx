@@ -44,7 +44,7 @@ class Support extends Component {
     const { history } = this.props;
     history.push(value);
     this.setState({});
-  }
+  };
 
   componentDidMount() {
     const { loadMyTickets } = this.props;
@@ -53,13 +53,13 @@ class Support extends Component {
 
   handleClose = () => {
     this.setState({ modalOpen: false });
-  }
+  };
 
   renderSupportTickets(open) {
     return this.props.myTickets.filter(t => open ? t.state !== 'CLOSED' : t.state === 'CLOSED').map(ticket => (
       <SupportTicket
         ticket={ticket}
-        isAdminContext={false}
+        isAdminContext={this.props.isAdmin}
         reply={this.props.reply}
         open={ticket.id === this.state.selectedTicket}
         setOpen={id => {
@@ -120,10 +120,12 @@ class Support extends Component {
           <Tab label="Geschlossene Tickets" />
         </Tabs>
         <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
-          {this.state.tabValue === 0 && <TabContainer>
+          {this.state.tabValue === 0 &&
+          <TabContainer>
             {this.renderSupportTickets(true)}
           </TabContainer>}
-          {this.state.tabValue === 1 && <TabContainer>
+          {this.state.tabValue === 1 &&
+          <TabContainer>
             {this.renderSupportTickets(false)}
           </TabContainer>}
         </Paper>
@@ -145,7 +147,8 @@ Support.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  myTickets: supportSelectors.getMyTickets(state)
+  myTickets: supportSelectors.getMyTickets(state),
+  isAdmin: supportSelectors.isAdmin(state)
 });
 
 const mapDispatchToProps = dispatch => ({

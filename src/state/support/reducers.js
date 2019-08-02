@@ -3,7 +3,7 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   myTickets: [],
-  adminTickets: []
+  isAdmin: false
 };
 
 const supportReducer = (state = initialState, action) => {
@@ -12,12 +12,12 @@ const supportReducer = (state = initialState, action) => {
       return { ...state, isLoaded: action.isLoaded };
     }
 
-    case types.UPDATE_MY_TICKETS: {
-      return { ...state, myTickets: action.myTickets.sort((a, b) => b.createdAt - a.createdAt) };
+    case types.UPDATE_ADMIN: {
+      return { ...state, isAdmin: action.isAdmin };
     }
 
-    case types.UPDATE_ADMIN_TICKETS: {
-      return { ...state, adminTickets: action.adminTickets };
+    case types.UPDATE_MY_TICKETS: {
+      return { ...state, myTickets: action.myTickets.sort((a, b) => b.createdAt - a.createdAt) };
     }
 
     default:
