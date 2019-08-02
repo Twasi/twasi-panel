@@ -6,6 +6,19 @@ export default {
   'common.delete': 'Delete',
   'common.edit': 'Edit',
 
+  'rank.team': 'Teammember',
+  'rank.partner': 'Partnerstreamer',
+  'rank.streamer': 'Streamer',
+
+  'setup.step.closed_beta': 'Closed Beta',
+  'setup.step.plugins': 'Plugins',
+  'setup.step.done': 'Done',
+  'setup.button.back': 'Back',
+  'setup.button.next': 'Next',
+  'setup.button.panel': 'Go to Panel',
+  'setup.step.closed_beta.key_invalid': 'This Key is Invalid.',
+  'setup.step.closed_beta.accept_tos': 'You have to accept the Terms of Service.',
+
   // Datatables
   'datatables.body.nomatch': 'Sorry, no matching Records found',
   'datatables.body.tooltip': 'Sort',
@@ -38,7 +51,7 @@ export default {
 
   // Sidebar
   'sidebar.overview': 'Overview',
-  'sidebar.status': 'Status',
+  'sidebar.status': 'Bot Status',
   'sidebar.settings': 'Settings',
   'sidebar.profile': 'Profile',
   'sidebar.mods': 'Moderators',
@@ -97,6 +110,9 @@ export default {
   'overview.chatterchart': 'Chatter',
   'overview.chatterchart.subtitle': 'Here you can see all Chatters of your current / last Stream.',
   'overview.saveasimage': 'Save Statistics as Image',
+  'overview.tweet': 'Tweet, that you are live',
+  'overview.no_viewers_tracked': 'Are there only Lurkers?',
+  'overview.no_viewers_tracked.subtitle': 'There were no Chatters tracked yet.',
 
   // Status
   'status.started': 'Working',
@@ -182,6 +198,12 @@ export default {
   'commands.new_command.mods': 'Moderators or higher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Save Command',
+  'commands.new_command.command.helpertext': 'This is your Command.',
+  'commands.new_command.output.helpertext': 'This is the Output of your Command.',
+  'commands.new_command.variables': 'Variables',
+  'commands.new_command.variables.helpertext': 'Extend to see Variables.',
+  'commands.new_command.cooldown': 'Cooldown',
+  'commands.new_command.cooldown.helpertext': 'Here you can set a Cooldown up to one Hour',
   'commands.edit_command.subheadline': 'Here you can edit your Command.',
   'commands.table.command': 'Command',
   'commands.table.output': 'Output',

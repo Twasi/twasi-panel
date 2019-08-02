@@ -19,12 +19,14 @@ import html2canvas from 'html2canvas';
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 import { utilitiesSelectors, utilitiesOperations } from '../../state/utilities';
 import { commandsSelectors, commandsOperations } from '../../state/commands';
+import { authSelectors } from '../../state/auth';
 
 import Kreygasm from '../common/resources/Kreygasm.png';
 import LUL from '../common/resources/LUL.png';
 import Kappa from '../common/resources/Kappa.png';
 import PogChamp from '../common/resources/PogChamp.png';
 import SeriousSloth from '../common/resources/SeriousSloth.png';
+import MonkaS from '../common/resources/MonkaS.png';
 
 import ViewerChart from './ViewerChart';
 import PlayedGamesChart from './PlayedGamesChart';
@@ -48,9 +50,19 @@ class Overview extends Component {
     value: 0
   };
 
+  handleClickBreadCrumb = (event, value) => {
+      const { history } = this.props;
+      history.push(value);
+      this.setState({});
+  };
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
+
+  handleRedirect = (uri, blank) => {
+    window.open(encodeURI(uri), blank);
+  }
 
   handleSaveAsImage = () => {
     var backgroundColorCanvas = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
@@ -77,12 +89,75 @@ class Overview extends Component {
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading } = this.props;
-    console.log(isGlobalLoading)
+    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading, noStreamData, user } = this.props;
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }
     const { value } = this.state;
+    let chatterschart;
+
+    if (streamtracker.topChatters !== undefined) {
+      console.log(streamtracker)
+      if (streamtracker.topChatters.length !== 0) {
+        chatterschart = <ChattersChart />;
+      } else {
+        chatterschart =
+          <div>
+            <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+              <img
+                style={{ position: 'relative', height: '100px' }}
+                src={MonkaS}
+                alt="MonkaS"
+              />
+              <h2 className="pageContainerTitle">
+                <FormattedMessage id="overview.no_viewers_tracked" />
+              </h2>
+              <FormattedMessage id="overview.no_viewers_tracked.subtitle" /><br/><br/>
+              <Button
+                onClick={() => { this.handleRedirect("https://twitter.com/intent/tweet?text=Ich bin jetzt Live mit "+ streamtracker.data.slice(-1)[0].game +"! schau doch gerne mal vorbei auf https://twitch.tv/" + user.displayName.toLowerCase(), "_blank") }}
+                variant="contained"
+                color="primary">
+                <FormattedMessage id="overview.tweet" />
+              </Button>
+            </Typography>
+          </div>;
+      }
+    }
+
+    const Helpbuttons = () => (
+      <Paper className="pageContainer">
+        <Row>
+          <Col sm={4}>
+            <Card style={{ textAlign: 'center' }} className="pluginCard">
+              <CardContent className="pluginCardContent">
+                <Button onClick={event => this.handleClickBreadCrumb(event, '/plugins')} variant="contained" color="primary">
+                  <FormattedMessage id="overview.no_streams_tracked_plugins" />
+                </Button>
+              </CardContent>
+            </Card>
+          </Col>
+          <Col sm={4}>
+            <Card style={{ textAlign: 'center' }} className="pluginCard">
+              <CardContent className="pluginCardContent">
+                <Button onClick={() => window.open('https://docs.twasi.net', '_blank')} variant="contained" color="primary">
+                  <FormattedMessage id="overview.no_streams_tracked_docs" />
+                </Button>
+              </CardContent>
+            </Card>
+          </Col>
+          <Col sm={4}>
+            <Card style={{ textAlign: 'center' }} className="pluginCard">
+              <CardContent className="pluginCardContent">
+                <Button onClick={event => this.handleClickBreadCrumb(event, '/support')} variant="contained" color="primary">
+                  <FormattedMessage id="overview.no_streams_tracked_support" />
+                </Button>
+              </CardContent>
+            </Card>
+          </Col>
+        </Row>
+      </Paper>
+    );
+
     return (
       <div className="pageContent">
         {isLoading &&
@@ -90,7 +165,7 @@ class Overview extends Component {
             <CircularProgress className="progressCircle" />
           </Paper>
         }
-        {streamtracker.streamId != null &&
+        {!noStreamData && !isLoading &&
         <Container className="overviewHead">
           <Row>
             <Col sm={3}>
@@ -170,7 +245,7 @@ class Overview extends Component {
           </Row>
         </Container>
         }
-        {streamtracker.streamId != null &&
+        {!noStreamData && !isLoading &&
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs
             value={value}
@@ -179,13 +254,13 @@ class Overview extends Component {
             textColor="primary"
           >
             <Tab label="Letzter Stream" />
-            <Tab label="Letzten 30 Tage" />
-            <Tab label="Gesamt" />
+            <Tab disabled label="Letzten 30 Tage" />
+            <Tab disabled label="Gesamt" />
           </Tabs>
         </Paper>
         }
         {value === 0 && <TabContainer>
-          {streamtracker.streamId != null &&
+          {!noStreamData && !isLoading &&
           <Row>
             <Col sm={12}>
               <Paper className="pageContainer">
@@ -212,7 +287,7 @@ class Overview extends Component {
             </Col>
           </Row>
           }
-          {streamtracker.streamId != null &&
+          {!noStreamData && !isLoading &&
           <div id="canvas_twasi_stats">
             <Row>
               <Col sm={9}>
@@ -271,8 +346,9 @@ class Overview extends Component {
                       <FormattedMessage id="overview.chatterchart.subtitle" />
                     </small>
                   </Typography>
-                  <ChattersChart />
+                  {chatterschart}
                 </Paper>
+                <Helpbuttons />
               </Col>
               <Col sm={3}>
                 <div>
@@ -281,64 +357,24 @@ class Overview extends Component {
               </Col>
             </Row>
           </div>
-          } {streamtracker.streamId == null && !isLoading &&
+          } {noStreamData && !isLoading &&
           <div>
             <Paper className="pageContainer" style={{ marginTop: '0px' }}>
-              <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
-                <h1 className="pageContainerTitle">
-                  <FormattedMessage id="overview.no_streams_tracked_title" />
+              <div>
+                <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img
-                    style={{ position: 'relative', top: '15px', left: '10px', height: '50px' }}
+                    style={{ position: 'relative', height: '100px' }}
                     src={SeriousSloth}
                     alt="SeriousSloth"
                   />
-                </h1>
-                <br />
-                <small>
+                  <h2 className="pageContainerTitle">
+                    <FormattedMessage id="overview.no_streams_tracked_title" />
+                  </h2>
                   <FormattedMessage id="overview.no_streams_tracked_subtitle" />
-                </small>
-              </Typography>
+                </Typography>
+              </div>
             </Paper>
-            <Paper className="pageContainer">
-              <Row>
-                <Col sm={3}>
-                  <Card style={{ textAlign: 'center' }} className="pluginCard">
-                    <CardContent className="pluginCardContent">
-                      <Button variant="contained" color="primary">
-                        <FormattedMessage id="overview.no_streams_tracked_plugins" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Col>
-                <Col sm={3}>
-                  <Card style={{ textAlign: 'center' }} className="pluginCard">
-                    <CardContent className="pluginCardContent">
-                      <Button variant="contained" color="primary">
-                        <FormattedMessage id="overview.no_streams_tracked_docs" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Col>
-                <Col sm={3}>
-                  <Card style={{ textAlign: 'center' }} className="pluginCard">
-                    <CardContent className="pluginCardContent">
-                      <Button variant="contained" color="primary">
-                        <FormattedMessage id="overview.no_streams_tracked_support" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Col>
-                <Col sm={3}>
-                  <Card style={{ textAlign: 'center' }} className="pluginCard">
-                    <CardContent className="pluginCardContent">
-                      <Button variant="contained" color="primary">
-                        <FormattedMessage id="overview.no_streams_tracked_feedback" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Col>
-              </Row>
-            </Paper>
+            <Helpbuttons />
           </div>
           }
         </TabContainer>}
@@ -365,6 +401,7 @@ Overview.propTypes = {
     }))
   })),
   disabled: PropTypes.bool.isRequired,
+  noStreamData: PropTypes.bool.isRequired,
   globalstreamtracker: PropTypes.arrayOf(PropTypes.shape({
     totalTrackedViewers: PropTypes.string.isRequired,
     totalTrackedStreams: PropTypes.string.isRequired,
@@ -385,7 +422,9 @@ const mapStateToProps = state => ({
   utilities: utilitiesSelectors.getUtilities(state),
   disabled: commandsSelectors.isDisabled(state),
   isLoading: streamtrackerSelectors.isLoading(state),
+  noStreamData: streamtrackerSelectors.noStreamData(state),
   isGlobalLoading: streamtrackerSelectors.isGlobalLoading(state),
+  user: authSelectors.getUser(state),
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -10,8 +10,9 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import StepConnector from '@material-ui/core/StepConnector';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { FormattedMessage } from 'react-intl';
 
-import DummyLoadingPage from '../DummyLoadingPage';
+//import DummyLoadingPage from '../DummyLoadingPage';
 import SetupPlugins from './SetupPlugins';
 import SetupBeta from './SetupBeta';
 import SetupDone from './SetupDone';
@@ -104,7 +105,7 @@ class Welcome extends Component {
   };
 
   render() {
-    const { isSetUp, history } = this.props;
+    const { isSetUp } = this.props;
 
     if (!isSetUp) {
       const { stepIndex, loadings1 } = this.state;
@@ -128,17 +129,17 @@ class Welcome extends Component {
                   */}
                   <Step>
                     <StepLabel>
-                      Closed Beta
+                      <FormattedMessage id="setup.step.closed_beta" />
                     </StepLabel>
                   </Step>
                   <Step>
                     <StepLabel>
-                      Plugins
+                      <FormattedMessage id="setup.step.plugins" />
                     </StepLabel>
                   </Step>
                   <Step>
                     <StepLabel>
-                      Fertig
+                      <FormattedMessage id="setup.step.done" />
                     </StepLabel>
                   </Step>
                 </Stepper>
@@ -154,7 +155,7 @@ class Welcome extends Component {
                         onClick={this.handlePrev}
                         style={{ marginRight: 12 }}
                       >
-                            Zurück
+                            <FormattedMessage id="setup.button.back" />
                       </Button>}
                       <Button
                         color="primary"
@@ -168,11 +169,11 @@ class Welcome extends Component {
                             // case 0:
                             // return "Los Geht's";
                             case 0:
-                              return 'Weiter';
+                              return <FormattedMessage id="setup.button.next" />;
                             case 1:
-                              return 'Weiter';
+                              return <FormattedMessage id="setup.button.next" />;
                             case 2:
-                              return 'Zum Panel';
+                              return <FormattedMessage id="setup.button.panel" />;
                             default:
                               return null;
                           }

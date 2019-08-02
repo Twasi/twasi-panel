@@ -4,6 +4,7 @@ export const initialState = {
   isLoaded: false,
   isLoading: true,
   isGlobalLoading: true,
+  noStreamData: true,
   streamtracker: [],
   globalstreamtracker: [],
   isDisabled: false
@@ -12,7 +13,7 @@ export const initialState = {
 const streamtrackerReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_STREAMTRACKER: {
-      return { ...state, isLoaded: true, isDisabled: false, streamtracker: action.streamtracker };
+      return { ...state, isLoaded: true, isDisabled: false, noStreamData: true, streamtracker: action.streamtracker };
     }
     case types.UPDATE_GLOBALSTREAMTRACKER: {
       return { ...state, isLoaded: true, isDisabled: false, globalstreamtracker: action.globalstreamtracker };
@@ -25,6 +26,9 @@ const streamtrackerReducer = (state = initialState, action) => {
     }
     case types.UPDATE_LOADING: {
       return { ...state, isLoading: action.isLoading };
+    }
+    case types.UPDATE_NOSTREAMDATA: {
+      return { ...state, noStreamData: action.noStreamData };
     }
     case types.UPDATE_GLOBALLOADING: {
       return { ...state, isGlobalLoading: action.isGlobalLoading };

@@ -25,6 +25,11 @@ const updateLoading = isLoading => ({
   isLoading
 });
 
+const updateNoStreamData = noStreamData => ({
+  type: types.UPDATE_NOSTREAMDATA,
+  noStreamData
+});
+
 const updateGlobalLoading = isGlobalLoading => ({
   type: types.UPDATE_GLOBALLOADING,
   isGlobalLoading
@@ -36,5 +41,6 @@ export default {
   updateDisabled,
   updateLoaded,
   updateLoading,
+  updateNoStreamData,
   updateGlobalLoading
 };

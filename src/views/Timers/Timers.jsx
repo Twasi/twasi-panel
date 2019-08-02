@@ -15,6 +15,8 @@ import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
+
 const timers = [{ name: '!hosts', output: 'Zeigt die Liste der Kanäle, die deinen Kanal derzeit hosten.', interval: '10' }];
 
 class Timers extends Component {
@@ -91,6 +93,7 @@ class Timers extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.timers" /></Typography>
         </Breadcrumbs>
+        <NotFunctionalAlert />
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography>
             <h3 className="pageContainerTitle">

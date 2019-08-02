@@ -8,6 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { FormattedMessage } from 'react-intl';
 
 class SetupBeta extends Component {
   render() {
@@ -36,7 +37,7 @@ class SetupBeta extends Component {
               value={betaKey}
               onChange={e => setBetaKey(e.target.value)}
               // Falls gültig color auf primary und Text abändern.
-              helperText={betaKeyError && <Typography color="secondary">Dieser Key ist ungültig.</Typography>}
+              helperText={betaKeyError && <Typography color="secondary"><FormattedMessage id="setup.step.closed_beta.key_invalid" /></Typography>}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -60,7 +61,7 @@ class SetupBeta extends Component {
                 akzeptiere diese.
               </Typography>}
             />
-            {tosError && <Typography color="secondary">Du musst die Nutzungsbedingungen akzeptieren.</Typography>}
+            {tosError && <Typography color="secondary"><FormattedMessage id="setup.step.closed_beta.accept_tos" /></Typography>}
           </CardContent>
         </Card>
       </div>

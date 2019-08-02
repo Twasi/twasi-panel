@@ -8,7 +8,7 @@ import { appInfoSelectors } from '../../../state/appInfo';
 import { AccountSwitchIcon } from '../../AccountSwitch';
 import { ThemeSwitchIcon } from '../../ThemeSwitch';
 import { LanguageSwitchIcon } from '../../LanguageSwitch';
-import { FeedbackIcon } from '../../Feedback';
+//import { FeedbackIcon } from '../../Feedback';
 import Rank from '../Rank';
 import Logo from './Logo';
 
@@ -42,7 +42,7 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp
         {isSetUp && <AccountSwitchIcon />}
         <ThemeSwitchIcon />
         <LanguageSwitchIcon />
-        {isSetUp && <FeedbackIcon />}
+        {/* isSetUp && <FeedbackIcon /> */}
       </span>
     </div>
   </header>

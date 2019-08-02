@@ -6,6 +6,20 @@ export default {
   'common.delete': 'Löschen',
   'common.edit': 'Bearbeiten',
 
+  'rank.team': 'Teammitglied',
+  'rank.partner': 'Partnerstreamer',
+  'rank.streamer': 'Streamer',
+
+  'setup.step.closed_beta': 'Closed Beta',
+  'setup.step.plugins': 'Plugins',
+  'setup.step.done': 'Fertig',
+  'setup.button.back': 'Zurück',
+  'setup.button.next': 'Weiter',
+  'setup.button.panel': 'Zum Panel',
+  'setup.step.closed_beta.key_invalid': 'Dieser Key ist ungültig.',
+  'setup.step.closed_beta.accept_tos': 'Du musst die Nutzungsbedingungen akzeptieren.',
+
+
   // Datatables
   'datatables.body.nomatch': 'Es wurden keine passenden Einträge gefunden.',
   'datatables.body.tooltip': 'Sortieren',
@@ -38,7 +52,7 @@ export default {
 
   // Sidebar
   'sidebar.overview': 'Übersicht',
-  'sidebar.status': 'Status',
+  'sidebar.status': 'Bot Status',
   'sidebar.settings': 'Einstellungen',
   'sidebar.profile': 'Profil',
   'sidebar.mods': 'Moderatoren',
@@ -98,6 +112,9 @@ export default {
   'overview.chatterchart': 'Top 30 Chatter',
   'overview.chatterchart.subtitle': 'Hier siehst du die Top 30 Chatter deines letzten Streams.',
   'overview.saveasimage': 'Statistiken als Bild speichern',
+  'overview.tweet': 'Tweeten, dass du live bist',
+  'overview.no_viewers_tracked': 'Gibt es hier nur Lurker?',
+  'overview.no_viewers_tracked.subtitle': 'Bisher wurde noch kein Chatter von uns erfasst.',
 
   // Status
   'status.started': 'Läuft',
@@ -183,6 +200,12 @@ export default {
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',
   'commands.new_command.savecommand': 'Befehl speichern',
+  'commands.new_command.command.helpertext': 'Das ist dein Befehl.',
+  'commands.new_command.output.helpertext': 'Das ist die Ausgabe deines Befehls.',
+  'commands.new_command.variables': 'Variablen',
+  'commands.new_command.variables.helpertext': 'Aufklappen, um Variablen zu sehen.',
+  'commands.new_command.cooldown': 'Cooldown',
+  'commands.new_command.cooldown.helpertext': 'Hier kannst du einen Cooldown von bis zu einer Stunde einstellen.',
   'commands.edit_command.subheadline': 'Hier kannst du deinen Befehl bearbeiten.',
   'commands.table.command': 'Befehl',
   'commands.table.output': 'Ausgabe',

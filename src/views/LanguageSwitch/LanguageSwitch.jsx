@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
-import Icon from '@material-ui/core/Icon';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -17,12 +16,19 @@ import storage from 'local-storage';
 
 import { i18nSelectors, i18nOperations } from '../../state/i18n';
 
+import './_style.css';
+
+import Flag_DE from '../common/resources/flag_de.png';
+import Flag_EN from '../common/resources/flag_en.png';
+
 const languages = [{
   name: <FormattedMessage id="languageswitch.german" />,
-  key: 'DE_DE'
+  key: 'DE_DE',
+  avatar: Flag_DE
 }, {
   name: <FormattedMessage id="languageswitch.english" />,
-  key: 'EN_EN'
+  key: 'EN_EN',
+  avatar: Flag_EN
 }];
 
 class LanguageSwitch extends React.Component {
@@ -64,8 +70,7 @@ class LanguageSwitch extends React.Component {
                     key={language}
                   >
                     <ListItemAvatar>
-                      <Avatar>
-                        <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === language.key ? 'check' : 'translate'}</Icon>
+                      <Avatar src={language.avatar} className={this.props.selectedValue === language.key && 'selectedLanguage'}>
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={language.name} />
@@ -74,10 +79,6 @@ class LanguageSwitch extends React.Component {
               </List>
             </CardContent>
           </Card>
-          <br />
-          <small>
-            <FormattedMessage id="languageswitch.earth" />
-          </small>
         </DialogContent>
       </Dialog>
     );
