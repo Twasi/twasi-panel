@@ -19,7 +19,7 @@ const SupportTicketMessage = props => {
     <Grid item xs={8} key="message">
       <Typography style={{ position: 'relative', paddingBottom: '25px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         <Typography className="chatName">{sender.name}</Typography>
-        {message.message}
+        {message.message.split('<br />').map((item, index) => [item, index !== message.message.split('<br />').length - 1 ? <br /> : null])}
         <Typography className="chatTime">{new Date(message.createdAt).toLocaleString()}</Typography>
       </Typography>
       {displayCloseMessage &&

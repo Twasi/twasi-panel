@@ -60,11 +60,11 @@ const SupportTicket = props => {
               color="primary"
               avatar={<Avatar alt="ticket owner avatar" src={ticket.owner.avatar} />}
               label={ticket.owner.name}
-              style={{ marginRight: "5px" }}
+              style={{ marginRight: '5px' }}
             />
             <Chip
               color="primary"
-              label={"#" + ticket.id}
+              label={`#${ticket.id}`}
             />
             <Tooltip title={`Copy: #${ticket.id}`} placement="top">
               <Button
