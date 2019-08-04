@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
@@ -55,21 +56,28 @@ const SupportTicket = props => {
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
-            <Typography>
-              <small>#{ticket.id}</small>
-              <Tooltip title={`Copy: #${ticket.id}`} placement="top">
-                <Button
-                  style={{ marginLeft: '5px' }}
-                  color="primary"
-                  size="small"
-                  onClick={e => {
-                    navigator.clipboard.writeText(`#${ticket.id}`);
-                    e.stopPropagation();
-                  }}>
-                  Ticket ID kopieren
-                </Button>
-              </Tooltip>
-            </Typography>
+            <Chip
+              color="primary"
+              avatar={<Avatar alt="ticket owner avatar" src={ticket.owner.avatar} />}
+              label={ticket.owner.name}
+              style={{ marginRight: "5px" }}
+            />
+            <Chip
+              color="primary"
+              label={"#" + ticket.id}
+            />
+            <Tooltip title={`Copy: #${ticket.id}`} placement="top">
+              <Button
+                style={{ marginLeft: '5px' }}
+                color="primary"
+                size="small"
+                onClick={e => {
+                  navigator.clipboard.writeText(`#${ticket.id}`);
+                  e.stopPropagation();
+                }}>
+                Ticket ID kopieren
+              </Button>
+            </Tooltip>
           </Grid>
           <Grid item xs={3}>
             <Typography><h4 className="pageContainerTitle">Betreff</h4><small>{ticket.topic}</small></Typography>
