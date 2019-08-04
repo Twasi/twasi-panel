@@ -88,10 +88,9 @@ class Support extends Component {
               alt="SoonerLater"
             />
             <h2 className="pageContainerTitle">
-              Wir konnten keine offenen Supporttickets finden.
+              <FormattedMessage id="support.open.no_tickets.title" />
             </h2>
-            Das kann daran liegen, dass du noch kein Ticket erstellt hast oder, dass unser Supportteam bereits all deine Fragen bearbeitet hat.<br/>
-            Deine bereits fertig bearbeiteten Tickets findest du unter dem Tab "Geschlossene Tickets".
+            <FormattedMessage id="support.open.no_tickets.subtitle" />
           </Typography>
         </div>
       );
@@ -105,9 +104,9 @@ class Support extends Component {
               alt="ResidentSleeper"
             />
             <h2 className="pageContainerTitle">
-              Wir konnten keine geschlossenen Supporttickets finden.
+              <FormattedMessage id="support.closed.no_tickets.title" />
             </h2>
-            Hier siehst du alle Tickets, die bereits bearbeitet wurden.
+            <FormattedMessage id="support.closed.no_tickets.subtitle" />
           </Typography>
         </div>
       );
@@ -156,8 +155,8 @@ class Support extends Component {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab label="Offene Tickets" />
-          <Tab label="Geschlossene Tickets" />
+          <Tab label={<FormattedMessage id="support.open.tab_title" />} />
+          <Tab label={<FormattedMessage id="support.closed.tab_title" />} />
         </Tabs>
         <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
           {this.state.tabValue === 0 &&

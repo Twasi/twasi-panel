@@ -1,6 +1,9 @@
 .statusBadgeSupport {
-  height: 18px !important;
-  border-radius: 4px !important;
+  height: 15px !important;
+  width: 15px !important;
+  margin-right: 5px;
+  margin-top: -3px;
+  border-radius: 50px !important;
 }
 .chatName {
   margin-bottom: 5px !important;

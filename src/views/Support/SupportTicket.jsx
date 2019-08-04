@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
@@ -42,6 +43,14 @@ const SupportTicket = props => {
     return { color: 'secondary' };
   };
 
+  const getTicketState = state => {
+    switch(state) {
+      case 'OPEN': return <FormattedMessage id="support.ticket.state.open" />;
+      case 'PROGRESS': return <FormattedMessage id="support.ticket.state.progress" />;
+      case 'CLOSED': return <FormattedMessage id="support.ticket.state.closed" />;
+    }
+  }
+
   return (
     <ExpansionPanel
       style={{ marginTop: '25px' }}
@@ -57,12 +66,20 @@ const SupportTicket = props => {
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <Chip
+              size="small"
               color="primary"
               avatar={<Avatar alt="ticket owner avatar" src={ticket.owner.avatar} />}
               label={ticket.owner.name}
               style={{ marginRight: '5px' }}
             />
             <Chip
+              size="small"
+              color="secondary"
+              label={ticket.category}
+              style={{ marginRight: '5px' }}
+            />
+            <Chip
+              size="small"
               color="primary"
               label={`#${ticket.id}`}
             />
@@ -75,23 +92,24 @@ const SupportTicket = props => {
                   navigator.clipboard.writeText(`#${ticket.id}`);
                   e.stopPropagation();
                 }}>
-                Ticket ID kopieren
+                <FormattedMessage id="support.ticket.copy_ticket_id" />
               </Button>
             </Tooltip>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h4 className="pageContainerTitle">Betreff</h4><small>{ticket.topic}</small></Typography>
+            <Typography><h4 className="pageContainerTitle"><FormattedMessage id="support.topic" /></h4><small>{ticket.topic}</small></Typography>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h4 className="pageContainerTitle">Erstellt am</h4><small>{new Date(ticket.createdAt).toLocaleString()}</small></Typography>
+            <Typography><h4 className="pageContainerTitle"><FormattedMessage id="support.ticket.created_at" /></h4><small>{new Date(ticket.createdAt).toLocaleString()}</small></Typography>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h4 className="pageContainerTitle">Erledigt am</h4><small>{ticket.closedAt ? new Date(ticket.closedAt).toLocaleString() : '-'}</small></Typography>
+            <Typography><h4 className="pageContainerTitle"><FormattedMessage id="support.ticket.closed_at" /></h4><small>{ticket.closedAt ? new Date(ticket.closedAt).toLocaleString() : '-'}</small></Typography>
           </Grid>
           <Grid item xs={3}>
             <Typography>
-              <h4 className="pageContainerTitle">Status</h4>
-              <Chip className="statusBadgeSupport" {...getColorByState(ticket.state)} label={ticket.state} />
+              <h4 className="pageContainerTitle"><FormattedMessage id="support.ticket.status" /></h4>
+              <Chip className="statusBadgeSupport" {...getColorByState(ticket.state)} />
+              <small>{getTicketState(ticket.state)}</small>
             </Typography>
           </Grid>
         </Grid>
@@ -103,7 +121,7 @@ const SupportTicket = props => {
           }
           {ticket.state !== 'CLOSED' &&
           <TextField
-            label="Eine Nachricht hinzufügen"
+            label={<FormattedMessage id="support.ticket.add_message" />}
             fullWidth
             multiline
             variant="outlined"
@@ -122,7 +140,7 @@ const SupportTicket = props => {
                         onChange={(e, checked) => setClose(checked)}
                       />
                     }
-                    label="Ticket schließen"
+                    label={<FormattedMessage id="support.ticket.close_ticket" />}
                   />
                   <IconButton
                     aria-label="send-support-message"
