@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 import actions from './actions';
 
 import { getGraph } from '../../services/graphqlService';
+import { appInfoOperations } from '../appInfo';
 
 const { updateUserData, updateIsUserUpdating } = actions;
 
@@ -20,13 +21,12 @@ const updateUser = () => dispatch => {
 const loadUser = () => dispatch => {
   dispatch(getGraph('user{id,twitchAccount{twitchid,name,avatar,email},banner}')).then(data => {
     dispatch(updateUserData(data.user));
+    dispatch(appInfoOperations.loadVersion());
   });
 };
 
 const checkSetup = () => dispatch => {
-  console.log("Checking setup...");
   dispatch(getGraph('isSetUp', 'setup')).then(data => {
-    console.log("Response: " + data);
     dispatch(actions.updateIsSetUp(data.isSetUp));
   });
 };
