@@ -13,6 +13,7 @@ body {
   margin-right: 0px;
   display: flex;
   line-height: 22px;
+  white-space: pre-wrap;
 }
 .pageContent {
   width: 100%;
