@@ -352,6 +352,8 @@ export default {
   'support.ticket.state.closed': 'Closed',
   'support.ticket.state.open': 'Open',
   'support.ticket.state.progres': 'In Progress',
+  'support.ticket.rating.could_we_help': 'Could we help you?',
+  'support.ticket.rating.what_was_wrong': 'What didnt made you happy?',
 
   // Songrequests
   'songrequest.requestby': 'Requested by',

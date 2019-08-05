@@ -1,8 +1,16 @@
 import React, { Fragment } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import Rating from '@material-ui/lab/Rating';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
 
 const SupportTicketMessage = props => {
   const { isStaff, displayCloseMessage, sender, message } = props;
@@ -15,6 +23,17 @@ const SupportTicketMessage = props => {
     </Grid>
   );
 
+  const [value, setValue] = React.useState(3);
+
+  const StyledRating = withStyles({
+    iconFilled: {
+      color: '#ff6d75',
+    },
+    iconHover: {
+      color: '#ff3d47',
+    },
+  })(Rating);
+
   const getMessage = () => (
     <Grid item xs={8} key="message">
       <Typography style={{ position: 'relative', paddingBottom: '25px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
@@ -25,6 +44,41 @@ const SupportTicketMessage = props => {
       {displayCloseMessage &&
       <Typography style={{ position: 'relative', marginTop: '5px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         {sender.name} hat das Ticket am {new Date(message.createdAt).toLocaleString()} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
+          <br /><br />
+          <Typography component="legend"><small><FormattedMessage id="support.ticket.rating.could_we_help" /></small></Typography>
+          <StyledRating
+            name="customized-color"
+            value={value}
+            onChange={(event, newValue) => {
+                        setValue(newValue);
+                      }}
+            precision={0.5}
+            icon={<FavoriteIcon fontSize="inherit" />}
+          />
+          {value < 3 &&
+            <TextField
+              style={{ marginTop: '10px' }}
+              label={<FormattedMessage id="support.ticket.rating.what_was_wrong" />}
+              fullWidth
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="send-support-message"
+                      onClick=""
+                    >
+                      <Icon>
+                        send
+                      </Icon>
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}>
+            </TextField>}
       </Typography>}
     </Grid>
   );
