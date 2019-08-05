@@ -87,9 +87,9 @@ class Support extends Component {
               src={SoonerLater}
               alt="SoonerLater"
             />
-            <h4 className="pageContainerTitle">
+            <h3 className="pageContainerTitle">
               <FormattedMessage id="support.open.no_tickets.title" />
-            </h4>
+            </h3>
             <small>
               <FormattedMessage id="support.open.no_tickets.subtitle" />
             </small>
@@ -105,9 +105,9 @@ class Support extends Component {
               src={ResidentSleeper}
               alt="ResidentSleeper"
             />
-            <h4 className="pageContainerTitle">
+            <h3 className="pageContainerTitle">
               <FormattedMessage id="support.closed.no_tickets.title" />
-            </h4>
+            </h3>
             <small>
               <FormattedMessage id="support.closed.no_tickets.subtitle" />
             </small>

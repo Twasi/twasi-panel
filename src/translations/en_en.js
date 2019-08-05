@@ -127,7 +127,7 @@ export default {
 
   // Plugins
   'plugins.headline': 'Plugin Store',
-  'plugins.explanation': 'Plugins are Extentions for Twasi. You decide which Plugins you want to install or uninstall for your own Bot.',
+  'plugins.explanation': 'Plugins are Extentions for Twasi.\nYou decide which Plugins you want to install or uninstall for your own Bot.',
   'plugins.card_headline': 'What are Plugins?',
   'plugins.version': 'Version',
   'plugins.commands': 'Commands',
@@ -174,10 +174,10 @@ export default {
   'profile.your_data_deletelink': 'Delete Account',
   'profile.your_data_delete': 'Delete your Account',
   'profile.badges': 'Badges',
-  'profile.badges_subline': 'Here you can change your Badges at the Leaderboard. You can use 3 Badges at the same Time.',
+  'profile.badges_subline': 'Here you can change your Badges at the Leaderboard.\nYou can use 3 Badges at the same Time.',
   'profile.badges_yourbadges': 'Your Badges',
   'profile.social': 'Social Media',
-  'profile.social_subline': 'Here you can link your Social Media. Plugins can use Information from connected Accounts if you want.',
+  'profile.social_subline': 'Here you can link your Social Media.\nPlugins can use Information from connected Accounts if you want.',
   'profile.social_connected_as': 'Connected as',
   'profile.social_disconnect': 'Disconnect',
   'profile.social_permissions': 'Permissions',
@@ -280,7 +280,7 @@ export default {
 
   // FeedbackSwitch
   'feedbackswitch.headline': 'Feedback, Ideas or Bugs',
-  'feedbackswitch.subheadline': 'You want to make Twasi a even better Place? Here you can give Feedback, tell us your Idea or report a Bug.',
+  'feedbackswitch.subheadline': 'You want to make Twasi a even better Place?\nHere you can give Feedback, tell us your Idea or report a Bug.',
   'feedbackswitch.issue': 'What is it about?',
   'feedbackswitch.issue_feedback': 'I want to give Feedback.',
   'feedbackswitch.issue_idea': 'I want to tell you my Idea.',
@@ -318,7 +318,7 @@ export default {
 
   // Support
   'support.new_ticket': 'New Support SupportTicket',
-  'support.new_ticket_subheadline': 'You are about to open a new Support SupportTicket. please give us the best Details about your Problem so we can give you the best possible Answers.',
+  'support.new_ticket_subheadline': 'You are about to open a new Support SupportTicket.\nplease give us the best Details about your Problem so we can give you the best possible Answers.',
   'support.sendbutton': 'Create SupportTicket',
   'support.issue_content_headline': 'Your SupportTicket',
   'support.issue': 'What is it about?',
@@ -339,7 +339,7 @@ export default {
   'support.subheadline': 'If you have Questions or want to give Feedback you can do it here.',
   'support.open.tab_title': 'Open Tickets',
   'support.open.no_tickets.title': 'We could not find any open tickets.',
-  'support.open.no_tickets.subtitle': 'Either you have not opened a ticket yet or we already finished all your tickets. In this case look under "Closed Tickets".',
+  'support.open.no_tickets.subtitle': 'Either you have not opened a ticket yet or we already finished all your tickets.\nIn this case look under "Closed Tickets".',
   'support.closed.tab_title': 'Closed Tickets',
   'support.closed.no_tickets.title': 'We could not find any closed tickets.',
   'support.closed.no_tickets.subtitle': 'Here you see all tickets that have been closed.',

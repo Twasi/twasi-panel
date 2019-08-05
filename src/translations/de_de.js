@@ -129,7 +129,7 @@ export default {
 
   // Plugins
   'plugins.headline': 'Plugin Store',
-  'plugins.explanation': 'Plugins sind Erweiterungen für Twasi. Du bestimmst, welche Plugins du für deinen persönlichen Bot installieren bzw. deinstallieren möchtest.',
+  'plugins.explanation': 'Plugins sind Erweiterungen für Twasi.\nDu bestimmst, welche Plugins du für deinen persönlichen Bot installieren bzw. deinstallieren möchtest.',
   'plugins.card_headline': 'Was sind Plugins?',
   'plugins.version': 'Version',
   'plugins.commands': 'Befehle',
@@ -176,10 +176,10 @@ export default {
   'profile.your_data_deletelink': 'Account löschen',
   'profile.your_data_delete': 'Deinen Account löschen',
   'profile.badges': 'Abzeichen',
-  'profile.badges_subline': 'Hier kannst du dein Aussehen in Leaderboards anpassen. Du kannst bis zu 3 Badges gleichzeitig auswählen.',
+  'profile.badges_subline': 'Hier kannst du dein Aussehen in Leaderboards anpassen.\nDu kannst bis zu 3 Badges gleichzeitig auswählen.',
   'profile.badges_yourbadges': 'Deine Abzeichen',
   'profile.social': 'Social Media',
-  'profile.social_subline': 'Hier kannst du deine Social Media Pages verlinken. Plugins können mit deiner Zustimmung auf bestimmte Daten der verbundenen Accounts zurückgreifen.',
+  'profile.social_subline': 'Hier kannst du deine Social Media Pages verlinken.\nPlugins können mit deiner Zustimmung auf bestimmte Daten der verbundenen Accounts zurückgreifen.',
   'profile.social_connected_as': 'Verbunden als',
   'profile.social_disconnect': 'Trennen',
   'profile.social_permissions': 'Berechtigungen',
@@ -265,7 +265,7 @@ export default {
   'giveaways.new_giveaway.keyword.description': 'Bestimme ein Keyword, welches in deinen Chat geschrieben werden muss, um teilzunehmen.',
   'giveaways.new_giveaway.open': 'Giveaway öffnen',
   'giveaways.new_giveaway.cancel': 'Giveaway abbrechen',
-  'giveaways.new_giveaway.random_number.description': 'Hier wird eine zufällige Zahl bestimmt, welche erraten werden muss. Derjenige, der die Zahl zuerst errät, gewinnt.',
+  'giveaways.new_giveaway.random_number.description': 'Hier wird eine zufällige Zahl bestimmt, welche erraten werden muss.\nDerjenige, der die Zahl zuerst errät, gewinnt.',
   'giveaways.new_giveaway.random_number.from': 'von',
   'giveaways.new_giveaway.random_number.to': 'bis',
   'giveaways.new_giveaway.roll': 'Auslosen',
@@ -283,7 +283,7 @@ export default {
 
   // FeedbackSwitch
   'feedbackswitch.headline': 'Feedback, Ideen oder Bugs',
-  'feedbackswitch.subheadline': 'Du möchtest dazu beitragen, dass Twasi ein besserer Ort wird? Hier hast du die Möglichkeit Feedback einzubringen, eigene Ideen zu vermitteln oder Bugs zu melden.',
+  'feedbackswitch.subheadline': 'Du möchtest dazu beitragen, dass Twasi ein besserer Ort wird?\nHier hast du die Möglichkeit Feedback einzubringen, eigene Ideen zu vermitteln oder Bugs zu melden.',
   'feedbackswitch.issue': 'Um was geht es?',
   'feedbackswitch.issue_feedback': 'Ich möchte Feedback geben.',
   'feedbackswitch.issue_idea': 'Ich möchte eine Idee einbringen.',
@@ -321,7 +321,7 @@ export default {
 
   // Support
   'support.new_ticket': 'Neues Support Ticket',
-  'support.new_ticket_subheadline': 'Hier kannst du ein neues Support Ticket eröffnen. Bitte achte darauf, dass du dein Problem möglichst genau schilderst, damit wir dir effektiv helfen können.',
+  'support.new_ticket_subheadline': 'Hier kannst du ein neues Support Ticket eröffnen.\nBitte achte darauf, dass du dein Problem möglichst genau schilderst, damit wir dir effektiv helfen können.',
   'support.sendbutton': 'Ticket erstellen',
   'support.issue_content_headline': 'Dein Ticket',
   'support.issue': 'Um was geht es?',
@@ -342,7 +342,7 @@ export default {
   'support.subheadline': 'Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.',
   'support.open.tab_title': 'Offene Tickets',
   'support.open.no_tickets.title': 'Wir konnten keine offenen Supporttickets finden.',
-  'support.open.no_tickets.subtitle': 'Das kann daran liegen, dass du noch kein Ticket erstellt hast oder, dass unser Supportteam bereits all deine Fragen bearbeitet hat. Deine bereits fertig bearbeiteten Tickets findest du unter dem Tab "Geschlossene Tickets".',
+  'support.open.no_tickets.subtitle': 'Das kann daran liegen, dass du noch kein Ticket erstellt hast oder, dass unser Supportteam bereits all deine Fragen bearbeitet hat.\nDeine bereits fertig bearbeiteten Tickets findest du unter dem Tab "Geschlossene Tickets".',
   'support.closed.tab_title': 'Geschlossene Tickets',
   'support.closed.no_tickets.title': 'Wir konnten keine geschlossenen Supporttickets finden.',
   'support.closed.no_tickets.subtitle': 'Hier siehst du alle Tickets, die bereits bearbeitet wurden.',

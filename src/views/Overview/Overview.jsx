@@ -109,9 +109,9 @@ class Overview extends Component {
                 src={MonkaS}
                 alt="MonkaS"
               />
-              <h4 className="pageContainerTitle">
+              <h3 className="pageContainerTitle">
                 <FormattedMessage id="overview.no_viewers_tracked" />
-              </h4>
+              </h3>
               <small>
                 <FormattedMessage id="overview.no_viewers_tracked.subtitle" />
               </small>
@@ -370,9 +370,9 @@ class Overview extends Component {
                     src={SeriousSloth}
                     alt="SeriousSloth"
                   />
-                  <h4 className="pageContainerTitle">
+                  <h3 className="pageContainerTitle">
                     <FormattedMessage id="overview.no_streams_tracked_title" />
-                  </h4>
+                  </h3>
                   <small>
                     <FormattedMessage id="overview.no_streams_tracked_subtitle" />
                   </small>
