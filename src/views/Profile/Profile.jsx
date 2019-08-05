@@ -227,8 +227,8 @@ class Profile extends Component {
                         style={{
                           position: 'absolute',
                           left: '0',
-                          width: '36px',
-                          height: '36px',
+                          width: '32px',
+                          height: '32px',
                           backgroundColor: '#1da1f2'
                         }}
                       >
@@ -262,8 +262,8 @@ class Profile extends Component {
                         style={{
                           position: 'absolute',
                           left: '0',
-                          width: '36px',
-                          height: '36px',
+                          width: '32px',
+                          height: '32px',
                           backgroundColor: '#0088cc'
                         }}
                       >
@@ -294,8 +294,8 @@ class Profile extends Component {
                         style={{
                           position: 'absolute',
                           left: '0',
-                          width: '36px',
-                          height: '36px',
+                          width: '32px',
+                          height: '32px',
                           backgroundColor: '#3b5998'
                         }}
                       >
@@ -326,8 +326,8 @@ class Profile extends Component {
                         style={{
                           position: 'absolute',
                           left: '0',
-                          width: '36px',
-                          height: '36px',
+                          width: '32px',
+                          height: '32px',
                           backgroundColor: '#db3236'
                         }}
                       >
@@ -358,8 +358,8 @@ class Profile extends Component {
                         style={{
                           position: 'absolute',
                           left: '0',
-                          width: '36px',
-                          height: '36px',
+                          width: '32px',
+                          height: '32px',
                           backgroundColor: '#ff8800'
                         }}
                       >
@@ -396,8 +396,8 @@ class Profile extends Component {
                         style={{
                           position: 'absolute',
                           left: '0',
-                          width: '36px',
-                          height: '36px',
+                          width: '32px',
+                          height: '32px',
                           textAlign: 'center',
                           backgroundColor: '#1db954'
                         }}

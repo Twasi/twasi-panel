@@ -76,7 +76,7 @@ class StatsList extends Component {
     return (
       <List dense style={{ padding: '0px' }}>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
-          <ListItem>
+          <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
                 <Typography>
@@ -98,7 +98,7 @@ class StatsList extends Component {
           </ListItem>
           <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
             <CardContent style={{ padding: '0px' }}>
-              <ListItem>
+              <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
                     <Typography>
@@ -120,7 +120,7 @@ class StatsList extends Component {
               </ListItem>
             </CardContent>
           </Card>
-          <ListItem>
+          <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
                 <Typography>
@@ -142,7 +142,7 @@ class StatsList extends Component {
           </ListItem>
           <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
             <CardContent style={{ padding: '0px' }}>
-              <ListItem>
+              <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
                     <Typography>
@@ -164,7 +164,7 @@ class StatsList extends Component {
               </ListItem>
             </CardContent>
           </Card>
-          <ListItem>
+          <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
                 <Typography>
@@ -185,7 +185,7 @@ class StatsList extends Component {
           </ListItem>
           <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
             <CardContent style={{ padding: '0px' }}>
-              <ListItem>
+              <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
                     <Typography>
@@ -206,7 +206,7 @@ class StatsList extends Component {
               </ListItem>
             </CardContent>
           </Card>
-          <ListItem>
+          <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
                 <Typography>
@@ -228,7 +228,7 @@ class StatsList extends Component {
           </ListItem>
           <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
             <CardContent style={{ padding: '0px' }}>
-              <ListItem>
+              <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
                     <Typography>
@@ -250,7 +250,7 @@ class StatsList extends Component {
               </ListItem>
             </CardContent>
           </Card>
-          <ListItem>
+          <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
                 <Typography>
