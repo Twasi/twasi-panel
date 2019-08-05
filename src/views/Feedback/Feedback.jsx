@@ -40,9 +40,9 @@ class Feedback extends React.Component {
       >
         <DialogContent>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="feedbackswitch.headline" />
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="feedbackswitch.subheadline" />
             </small>

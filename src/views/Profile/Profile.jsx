@@ -14,7 +14,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Tooltip from '@material-ui/core/Tooltip';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
@@ -74,7 +74,7 @@ class Profile extends Component {
           <Col sm={6}>
             <Paper className="pageContainer">
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="profile.your_data" />
                   <span style={{ float: 'right' }}>
                     <Button variant="contained" color="primary" onClick={user.updateUser} disabled={user.isUserUpdating}>
@@ -95,7 +95,7 @@ class Profile extends Component {
                       )}
                     </Button>
                   </span>
-                </h3>
+                </h4>
                 <small>
                   <FormattedMessage id="profile.your_data_subline" />
                 </small>
@@ -155,14 +155,14 @@ class Profile extends Component {
             </Paper>
             <Paper className="pageContainer">
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="profile.badges" />
                   <span style={{ float: 'right' }}>
                     <Button disabled variant="contained" color="primary">
                       <FormattedMessage id="common.save" />
                     </Button>
                   </span>
-                </h3>
+                </h4>
                 <small>
                   <FormattedMessage id="profile.badges_subline" />
                 </small>
@@ -212,9 +212,9 @@ class Profile extends Component {
           <Col sm={6}>
             <Paper className="pageContainer">
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="profile.social" />
-                </h3>
+                </h4>
                 <small>
                   <FormattedMessage id="profile.social_subline" />
                 </small>
@@ -436,9 +436,9 @@ class Profile extends Component {
             </Paper>
             <Paper className="pageContainer">
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   Eigener Bot-Account
-                </h3>
+                </h4>
                 <small>
                   Hier kannst du einen eigenen Bot-Account mit Twasi verbinden.
                 </small>

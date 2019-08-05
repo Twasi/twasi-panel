@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
@@ -50,7 +50,7 @@ class Votings extends Component {
         <NotFunctionalAlert/>
         <Paper className="pageContainer">
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="votings.headline" />
               <span style={{ float: 'right' }}>
                 <Button disabled variant="contained" color="primary" style={{ marginRight: 16 }}>
@@ -61,25 +61,25 @@ class Votings extends Component {
                   <FormattedMessage id="votings.new_voting" />
                 </Button>
               </span>
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="votings.subheadline" />
             </small>
           </Typography>
           <ExpansionPanel disabled style={{ marginTop: '25px' }}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Grid container spacing={24}>
+              <Grid container spacing={4}>
                 <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Umfrage</h4><small>Heißt es das, der oder die Nutella?</small></Typography>
+                  <Typography><h5 className="pageContainerTitle">Umfrage</h5><small>Heißt es das, der oder die Nutella?</small></Typography>
                 </Grid>
                 <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Erstellt am</h4><small>27.03.2019 - 17:49</small></Typography>
+                  <Typography><h5 className="pageContainerTitle">Erstellt am</h5><small>27.03.2019 - 17:49</small></Typography>
                 </Grid>
                 <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Teilnehmer</h4><small>1.337</small></Typography>
+                  <Typography><h5 className="pageContainerTitle">Teilnehmer</h5><small>1.337</small></Typography>
                 </Grid>
                 <Grid item xs={3}>
-                  <Typography><h4 className="pageContainerTitle">Status</h4><Chip className="statusBadgeSupport" color="secondary" label="beendet" /></Typography>
+                  <Typography><h5 className="pageContainerTitle">Status</h5><Chip className="statusBadgeSupport" color="secondary" /><small>beendet</small></Typography>
                 </Grid>
               </Grid>
             </ExpansionPanelSummary>

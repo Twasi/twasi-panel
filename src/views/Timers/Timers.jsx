@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,7 +12,7 @@ import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Chip from '@material-ui/core/Chip';
 import TimersDialog from './TimersDialog';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
@@ -58,26 +59,24 @@ class Timers extends Component {
         </TableCell>
         <TableCell>
           <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
-            <Button
-              variant="fab"
+            <Fab
               color="primary"
               className="noshadow"
-              mini
+              size="small"
               aria-label="editTimer"
             >
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
-            </Button>
+            </Fab>
           </Tooltip>{' '}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-            <Button
-              variant="fab"
+            <Fab
               color="secondary"
               className="noshadow"
-              mini
+              size="small"
               aria-label="deleteTimer"
             >
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
-            </Button>
+            </Fab>
           </Tooltip>
         </TableCell>
       </TableRow>
@@ -96,7 +95,7 @@ class Timers extends Component {
         <NotFunctionalAlert />
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="timers.title" />
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
@@ -111,7 +110,7 @@ class Timers extends Component {
                   onClose={this.handleClose}
                 />
               </span>
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="timers.subtitle" />
             </small>

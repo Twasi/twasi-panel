@@ -11,7 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Chip from '@material-ui/core/Chip';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -51,7 +51,7 @@ class Moderators extends Component {
         <NotFunctionalAlert/>
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="moderators.title" />
               <span style={{ float: 'right' }}>
                 <Button disabled variant="contained" color="primary" style={{ marginRight: '16px' }}>
@@ -62,7 +62,7 @@ class Moderators extends Component {
                   <FormattedMessage id="moderators.add_moderator" />
                 </Button>
               </span>
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="moderators.subtitle" />
             </small>

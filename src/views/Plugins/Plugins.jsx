@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Documentation from './Documentation';
@@ -48,7 +48,7 @@ class Plugins extends Component {
         <Grid item xs={12}>
           <Card className="pluginCard">
             <CardContent className="pluginCardContent" style={{ padding: '16px' }}>
-              <Grid container spacing={16} style={{ marginTop: '0px' }}>
+              <Grid container spacing={2} style={{ marginTop: '0px' }}>
                 <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
                     <h2 style={{ marginBottom: '5px' }} className="pageContainerTitle">{plugin.name}</h2>
@@ -58,24 +58,26 @@ class Plugins extends Component {
                     </small>
                   </Typography>
                 </Grid>
-                <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+                <Grid item xs={8} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle"><FormattedMessage id="plugins.short_description" /></h3>
+                    <h4 className="pageContainerTitle"><FormattedMessage id="plugins.short_description" /></h4>
                     <small>
                       {plugin.description}
                     </small>
                   </Typography>
                 </Grid>
+                {/*
                 <Grid item xs={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle"><FormattedMessage id="plugins.documentation" /></h3>
+                    <h4 className="pageContainerTitle"><FormattedMessage id="plugins.documentation" /></h4>
                     <Button disabled onClick={() => this.setState({ modalOpen: true })} style={{ marginTop: '5px' }} variant="contained" color="primary" size="small">
                       <FormattedMessage id="plugins.show" />
                     </Button>
                   </Typography>
                 </Grid>
+                */}
               </Grid>
-              <Grid style={{ marginTop: '16px' }} container spacing={16}>
+              <Grid style={{ marginTop: '16px' }} container spacing={2}>
                 <Grid item xs={4} style={{ paddingBottom: '0px' }}>
                   {plugin.isInstalled && (
                     <div>
@@ -128,22 +130,24 @@ class Plugins extends Component {
                     </div>
                   )}
                 </Grid>
-                <Grid item xs={4} style={{ paddingBottom: '0px' }}>
+                <Grid item xs={8} style={{ paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle"><FormattedMessage id="plugins.commands" /></h3>
+                    <h4 className="pageContainerTitle"><FormattedMessage id="plugins.commands" /></h4>
                     <small>
                       {plugin.commands.join(', ')}
                     </small>
                   </Typography>
                 </Grid>
+                {/*
                 <Grid item xs={4} style={{ paddingBottom: '0px' }}>
                   <Typography>
-                    <h3 className="pageContainerTitle"><FormattedMessage id="plugins.dependencies" /></h3>
+                    <h4 className="pageContainerTitle"><FormattedMessage id="plugins.dependencies" /></h4>
                     <small>
                       -
                     </small>
                   </Typography>
                 </Grid>
+                */}
               </Grid>
             </CardContent>
           </Card>
@@ -163,9 +167,9 @@ class Plugins extends Component {
           <Grid container spacing={0}>
             <Grid item xs={12}>
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="plugins.card_headline" />
-                </h3>
+                </h4>
                 <small>
                   <FormattedMessage id="plugins.explanation" />
                 </small>

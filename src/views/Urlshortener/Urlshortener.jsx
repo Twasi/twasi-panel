@@ -16,9 +16,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
@@ -53,7 +54,7 @@ class Urlshortener extends Component {
           <Col sm={6}>
             <Paper className="pageContainer">
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="urlshortener.headline" />
                   <span style={{ float: 'right' }}>
                     <Button
@@ -64,7 +65,7 @@ class Urlshortener extends Component {
                       <FormattedMessage id="common.save" />
                     </Button>
                   </span>
-                </h3>
+                </h4>
                 <small><FormattedMessage id="urlshortener.subheadline" /></small>
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
@@ -145,7 +146,7 @@ class Urlshortener extends Component {
           <Col sm={6}>
             <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
               <Typography>
-                <h3 className="pageContainerTitle"><FormattedMessage id="urlshortener.your_urls" /></h3>
+                <h4 className="pageContainerTitle"><FormattedMessage id="urlshortener.your_urls" /></h4>
                 <small>
                   <FormattedMessage id="urlshortener.headline_urls" />
                 </small>
@@ -178,28 +179,24 @@ class Urlshortener extends Component {
                     </TableCell>
                     <TableCell>
                       <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
-                        <Button
-                          disabled
-                          variant="fab"
+                        <Fab
                           className="noshadow"
                           color="primary"
-                          mini
+                          size="small"
                           aria-label="editCommand"
                         >
                           <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                        </Button>
+                        </Fab>
                       </Tooltip>{' '}
                       <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-                        <Button
-                          disabled
-                          variant="fab"
+                        <Fab
                           className="noshadow"
                           color="secondary"
-                          mini
+                          size="small"
                           aria-label="deleteCommand"
                         >
                           <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                        </Button>
+                        </Fab>
                       </Tooltip>
                     </TableCell>
                   </TableRow>
@@ -216,28 +213,24 @@ class Urlshortener extends Component {
                     </TableCell>
                     <TableCell>
                       <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
-                        <Button
-                          disabled
-                          variant="fab"
+                        <Fab
                           className="noshadow"
                           color="primary"
-                          mini
+                          size="small"
                           aria-label="editCommand"
                         >
                           <Icon style={{ color: '#ffffff' }}>edit</Icon>
-                        </Button>
+                        </Fab>
                       </Tooltip>{' '}
                       <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-                        <Button
-                          disabled
-                          variant="fab"
+                        <Fab
                           className="noshadow"
                           color="secondary"
-                          mini
+                          size="small"
                           aria-label="deleteCommand"
                         >
                           <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                        </Button>
+                        </Fab>
                       </Tooltip>
                     </TableCell>
                   </TableRow>

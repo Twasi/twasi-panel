@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
@@ -145,55 +145,13 @@ class Quotes extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.quotes" /></Typography>
         </Breadcrumbs>
-        <Paper className="pageContainer" style={{ borderRadius: '4px' }}>
-          <Grid container spacing={16}>
-            <Grid item xs={9}>
-              <Card className="pluginCard">
-                <CardContent className="pluginCardContent anim">
-                  <List style={{ margin: '0px', padding: '0px' }}>
-                    <ListItem style={{ margin: '0px', padding: '0px' }} alignItems="flex-start">
-                      <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src={avatar} />
-                      </ListItemAvatar>
-                      <ListItemText
-                        secondary={
-                          <React.Fragment>
-                            <Typography style={{ float: 'left' }} color="textPrimary">
-                              {userName}
-                            </Typography>
-                            <Typography style={{ float: 'left', marginLeft: '5px' }} color="textSecondary">
-                              (Grand Theft Auto V)
-                            </Typography>
-                            <Typography style={{ float: 'left', marginLeft: '5px' }} color="textPrimary">
-                              #420
-                            </Typography>
-                            <br />
-                            {'- "Ich bin einfach mal so frei und schleich mich in dein Panel :D"'}
-                          </React.Fragment>
-                        }
-                      />
-                    </ListItem>
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={3}>
-              <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" onClick={this.props.updateQuotes}>
-                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                  <FormattedMessage id="common.refresh" />
-                </Button>
-              </span>
-            </Grid>
-          </Grid>
-        </Paper>
         <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '4px' }}>
           <MUIDataTable
             title={
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="quotes.title" />
-                </h3>
+                </h4>
                 <small>
                   <FormattedMessage id="quotes.subtitle" />
                 </small>

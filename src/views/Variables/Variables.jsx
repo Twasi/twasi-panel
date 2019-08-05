@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,7 +12,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -88,25 +89,23 @@ class Variables extends Component {
         </TableCell>
         <TableCell>
           <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
-            <Button
-              variant="fab"
+            <Fab
               color="primary"
               className="noshadow"
-              mini
+              size="small"
               aria-label="editCommand"
               onClick={() => {
                   this.setState({ openEditVariableDialog: true, editDialogContent: variable })
               }}
             >
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
-            </Button>
+            </Fab>
           </Tooltip>{' '}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-            <Button
-              variant="fab"
+            <Fab
               color="secondary"
               className="noshadow"
-              mini
+              size="small"
               aria-label="deleteVariable"
               onClick={() => {
                   this.props.removeVariable(variable.id);
@@ -114,7 +113,7 @@ class Variables extends Component {
               }}
             >
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
-            </Button>
+            </Fab>
           </Tooltip>
         </TableCell>
       </TableRow>
@@ -134,7 +133,7 @@ class Variables extends Component {
         {!disabled &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="variables.title" />
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateVariables}>
@@ -145,7 +144,7 @@ class Variables extends Component {
                   <FormattedMessage id="variables.new_variable" />
                 </Button>
               </span>
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="variables.subtitle" />
             </small>

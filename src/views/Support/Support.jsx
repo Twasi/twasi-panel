@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
@@ -83,14 +83,16 @@ class Support extends Component {
         <div>
           <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
             <img
-              style={{ position: 'relative', height: '100px' }}
+              style={{ position: 'relative', height: '80px' }}
               src={SoonerLater}
               alt="SoonerLater"
             />
-            <h2 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="support.open.no_tickets.title" />
-            </h2>
-            <FormattedMessage id="support.open.no_tickets.subtitle" />
+            </h4>
+            <small>
+              <FormattedMessage id="support.open.no_tickets.subtitle" />
+            </small>
           </Typography>
         </div>
       );
@@ -103,10 +105,12 @@ class Support extends Component {
               src={ResidentSleeper}
               alt="ResidentSleeper"
             />
-            <h2 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="support.closed.no_tickets.title" />
-            </h2>
-            <FormattedMessage id="support.closed.no_tickets.subtitle" />
+            </h4>
+            <small>
+              <FormattedMessage id="support.closed.no_tickets.subtitle" />
+            </small>
           </Typography>
         </div>
       );
@@ -126,7 +130,7 @@ class Support extends Component {
         </Breadcrumbs>
         <Paper className="pageContainer">
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="support.headline" />
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={this.props.loadMyTickets}>
@@ -142,7 +146,7 @@ class Support extends Component {
                   {...this.props}
                 />
               </span>
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="support.subheadline" />
             </small>

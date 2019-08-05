@@ -80,7 +80,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">{streamtracker.streamId}</h3>
+                  <h4 className="pageContainerTitle">{streamtracker.streamId}</h4>
                   <small><FormattedMessage id="overview.table_id" /></small>
                 </Typography>
               </Col>
@@ -102,7 +102,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">{getStreamLength(streamtracker.data)}</h3>
+                      <h4 className="pageContainerTitle">{getStreamLength(streamtracker.data)}</h4>
                       <small><FormattedMessage id="overview.table_duration" /></small>
                     </Typography>
                   </Col>
@@ -124,7 +124,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">{getChatMessagesCount(streamtracker.data)}</h3>
+                  <h4 className="pageContainerTitle">{getChatMessagesCount(streamtracker.data)}</h4>
                   <small><FormattedMessage id="overview.table_chatmessages" /></small>
                 </Typography>
               </Col>
@@ -146,7 +146,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">{getChatCommandsCount(streamtracker.data)}</h3>
+                      <h4 className="pageContainerTitle">{getChatCommandsCount(streamtracker.data)}</h4>
                       <small><FormattedMessage id="overview.table_commands_used" /></small>
                     </Typography>
                   </Col>
@@ -168,7 +168,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">{streamtracker.newFollowers}</h3>
+                  <h4 className="pageContainerTitle">{streamtracker.newFollowers}</h4>
                   <small><FormattedMessage id="overview.table_follower" /></small>
                 </Typography>
               </Col>
@@ -189,7 +189,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">{streamtracker.newViews}</h3>
+                      <h4 className="pageContainerTitle">{streamtracker.newViews}</h4>
                       <small><FormattedMessage id="overview.table_views" /></small>
                     </Typography>
                   </Col>
@@ -210,7 +210,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">{getBiggestViewerCount(streamtracker.data)}</h3>
+                  <h4 className="pageContainerTitle">{getBiggestViewerCount(streamtracker.data)}</h4>
                   <small><FormattedMessage id="overview.table_viewermax" /></small>
                 </Typography>
               </Col>
@@ -232,7 +232,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography>
-                      <h3 className="pageContainerTitle">{getAverageViewerCount(streamtracker.data)}</h3>
+                      <h4 className="pageContainerTitle">{getAverageViewerCount(streamtracker.data)}</h4>
                       <small><FormattedMessage id="overview.table_average" /></small>
                     </Typography>
                   </Col>
@@ -254,7 +254,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography>
-                  <h3 className="pageContainerTitle">{getChattersCount(streamtracker.topChatters)}</h3>
+                  <h4 className="pageContainerTitle">{getChattersCount(streamtracker.topChatters)}</h4>
                   <small><FormattedMessage id="overview.table_individual" /></small>
                 </Typography>
               </Col>

@@ -76,9 +76,9 @@ class SupportTicketModal extends React.Component {
       >
         <DialogContent>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="support.new_ticket" />
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="support.new_ticket_subheadline" />
             </small>

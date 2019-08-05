@@ -105,14 +105,17 @@ class Overview extends Component {
           <div>
             <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
               <img
-                style={{ position: 'relative', height: '100px' }}
+                style={{ position: 'relative', height: '80px' }}
                 src={MonkaS}
                 alt="MonkaS"
               />
-              <h2 className="pageContainerTitle">
+              <h4 className="pageContainerTitle">
                 <FormattedMessage id="overview.no_viewers_tracked" />
-              </h2>
-              <FormattedMessage id="overview.no_viewers_tracked.subtitle" /><br/><br/>
+              </h4>
+              <small>
+                <FormattedMessage id="overview.no_viewers_tracked.subtitle" />
+              </small>
+              <br/><br/>
               <Button
                 onClick={() => { this.handleRedirect("https://twitter.com/intent/tweet?text=Ich bin jetzt Live mit "+ streamtracker.data.slice(-1)[0].game +"! schau doch gerne mal vorbei auf https://twitch.tv/" + user.displayName.toLowerCase(), "_blank") }}
                 variant="contained"
@@ -265,7 +268,7 @@ class Overview extends Component {
             <Col sm={12}>
               <Paper className="pageContainer">
                 <Typography>
-                  <h3 className="pageContainerTitle">
+                  <h4 className="pageContainerTitle">
                     <FormattedMessage id="overview.laststream" />
                     <span style={{ float: 'right' }}>
                       <Button style={{ marginRight: '16px' }} variant="contained" color="primary" onClick={this.handleSaveAsImage}>
@@ -277,7 +280,7 @@ class Overview extends Component {
                         <FormattedMessage id="common.refresh" />
                       </Button>
                     </span>
-                  </h3>
+                  </h4>
                   <small>
                     <FormattedMessage id="overview.laststream.subtitle" />
                   </small>
@@ -293,9 +296,9 @@ class Overview extends Component {
               <Col sm={9}>
                 <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
                   <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                    <h3 className="pageContainerTitle">
+                    <h4 className="pageContainerTitle">
                       <FormattedMessage id="overview.viewercourse" />
-                    </h3>
+                    </h4>
                     <small>
                       <FormattedMessage id="overview.viewercourse.subtitle" />
                     </small>
@@ -306,9 +309,9 @@ class Overview extends Component {
                   <Col sm={6}>
                     <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
                       <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                        <h3 className="pageContainerTitle">
+                        <h4 className="pageContainerTitle">
                           <FormattedMessage id="overview.used_commands" />
-                        </h3>
+                        </h4>
                         <small>
                           <FormattedMessage id="overview.used_commands.subtitle" />
                         </small>
@@ -326,9 +329,9 @@ class Overview extends Component {
                   <Col sm={6}>
                     <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
                       <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                        <h3 className="pageContainerTitle">
+                        <h4 className="pageContainerTitle">
                           <FormattedMessage id="overview.played_games" />
-                        </h3>
+                        </h4>
                         <small>
                           <FormattedMessage id="overview.played_games.subtitle" />
                         </small>
@@ -339,9 +342,9 @@ class Overview extends Component {
                 </Row>
                 <Paper className="pageContainer" style={{ height: '500px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
                   <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
-                    <h3 className="pageContainerTitle">
+                    <h4 className="pageContainerTitle">
                       <FormattedMessage id="overview.chatterchart" />
-                    </h3>
+                    </h4>
                     <small>
                       <FormattedMessage id="overview.chatterchart.subtitle" />
                     </small>
@@ -363,14 +366,16 @@ class Overview extends Component {
               <div>
                 <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img
-                    style={{ position: 'relative', height: '100px' }}
+                    style={{ position: 'relative', height: '80px' }}
                     src={SeriousSloth}
                     alt="SeriousSloth"
                   />
-                  <h2 className="pageContainerTitle">
+                  <h4 className="pageContainerTitle">
                     <FormattedMessage id="overview.no_streams_tracked_title" />
-                  </h2>
-                  <FormattedMessage id="overview.no_streams_tracked_subtitle" />
+                  </h4>
+                  <small>
+                    <FormattedMessage id="overview.no_streams_tracked_subtitle" />
+                  </small>
                 </Typography>
               </div>
             </Paper>

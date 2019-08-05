@@ -11,7 +11,7 @@ class SetupDone extends Component {
           <img alt="twasi_mascot_party" src={twasi_mascot_party} style={{ height: '200px' }} />
         </div>
         <Typography>
-          <h2 style={{ marginBottom: '5px' }} className="pageContainerTitle">Geschafft!</h2>
+          <h3 style={{ marginBottom: '5px' }} className="pageContainerTitle">Geschafft!</h3>
           <small>
             Vielen Dank für deine Anmeldung bei Twasi!<br />
             Falls du noch Fragen hast kannst du nach deiner Freischaltung ein Supportticket erstellen oder uns auf Twitter anschreiben.<br /><br />

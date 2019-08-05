@@ -179,9 +179,9 @@ class Command extends React.Component {
       >
         <DialogContent>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="commands.new_command" />
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="commands.new_command.subheadline" />
             </small>

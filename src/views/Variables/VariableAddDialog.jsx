@@ -82,9 +82,9 @@ class Variable extends React.Component {
       >
         <DialogContent>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="variables.new_variable" />
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="variables.new_variable.subheadline" />
             </small>

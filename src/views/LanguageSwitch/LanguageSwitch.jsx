@@ -52,9 +52,9 @@ class LanguageSwitch extends React.Component {
       >
         <DialogContent>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="languageswitch.title" />
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="languageswitch.subtitle" />
             </small>

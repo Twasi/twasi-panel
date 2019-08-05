@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
@@ -32,12 +32,12 @@ class Status extends Component {
           <Typography color="textPrimary"><FormattedMessage id="sidebar.status" /></Typography>
         </Breadcrumbs>
         <Paper className="pageContainer">
-          <Grid container spacing={24}>
+          <Grid container spacing={4}>
             <Grid item xs={12}>
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="status.card_headline" />
-                </h3>
+                </h4>
                 <small>
                   <FormattedMessage id="status.explanation" />
                 </small>

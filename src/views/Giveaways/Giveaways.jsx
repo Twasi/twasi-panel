@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Chip from '@material-ui/core/Chip';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 
 import './_style.css';
@@ -56,16 +56,16 @@ class Giveaways extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.giveaways" /></Typography>
         </Breadcrumbs>
-        <Grid container spacing={24}>
+        <Grid container spacing={4}>
           <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
               <Typography>
-                <h3 className="pageContainerTitle"><FormattedMessage id="giveaways.new_giveaway.title" /></h3>
+                <h4 className="pageContainerTitle"><FormattedMessage id="giveaways.new_giveaway.title" /></h4>
                 <small><FormattedMessage id="giveaways.new_giveaway.subtitle" /></small>
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
-                  <Grid container spacing={16}>
+                  <Grid container spacing={2}>
                     <Grid item lg={3} md={12}>
                       <Button
                         fullWidth
@@ -101,7 +101,7 @@ class Giveaways extends Component {
                     </Grid>
                   </Grid>
                   <br />
-                  <Grid container spacing={24}>
+                  <Grid container spacing={2}>
                     <Grid item lg={12}>
                       <AppBar style={{ boxShadow: 'none' }} position="static" color="default">
                         <Tabs
@@ -130,7 +130,7 @@ class Giveaways extends Component {
                         />
                         <br />
                         <br />
-                        <Grid container spacing={16}>
+                        <Grid container spacing={2}>
                           <Grid item lg={6}>
                             <Button
                               fullWidth
@@ -155,7 +155,7 @@ class Giveaways extends Component {
                         <p>
                           <FormattedMessage id="giveaways.new_giveaway.random_number.description" />
                         </p>
-                        <Grid container spacing={16}>
+                        <Grid container spacing={2}>
                           <Grid item lg={6}>
                             <TextField
                               label={<FormattedMessage id="giveaways.new_giveaway.random_number.from" />}
@@ -176,7 +176,7 @@ class Giveaways extends Component {
                           </Grid>
                         </Grid>
                         <br />
-                        <Grid container spacing={16}>
+                        <Grid container spacing={2}>
                           <Grid item lg={6}>
                             <Button
                               fullWidth
@@ -202,7 +202,7 @@ class Giveaways extends Component {
                 </CardContent>
               </Card>
               <br />
-              <Grid container spacing={16}>
+              <Grid container spacing={2}>
                 <Grid item lg={9} md={12}>
                   <Button
                     fullWidth
@@ -227,7 +227,7 @@ class Giveaways extends Component {
           <Grid item lg={6} md={12}>
             <Paper className="pageContainer">
               <Typography>
-                <h3 className="pageContainerTitle"><FormattedMessage id="giveaways.contestants.title" /></h3>
+                <h4 className="pageContainerTitle"><FormattedMessage id="giveaways.contestants.title" /></h4>
                 <small><FormattedMessage id="giveaways.contestants.subtitle" /></small>
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">

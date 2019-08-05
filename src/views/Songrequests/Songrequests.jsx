@@ -10,12 +10,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import VolumeIcon from '@material-ui/icons/VolumeUp';
 import Grid from '@material-ui/core/Grid';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
@@ -95,7 +96,7 @@ class Songrequests extends React.Component {
           <Grid container spacing={0} className="songrequestsPlayer">
             <Grid item xs={6}>
               <Typography>
-                <h3 style={{ padding: '0px', margin: '0px' }}>
+                <h4 style={{ padding: '0px', margin: '0px' }}>
                   Bohemian Rhapsody{' '}
                   <br />
                   <small>Queen</small>
@@ -103,7 +104,7 @@ class Songrequests extends React.Component {
                   <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
                     <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
                   </em>
-                </h3>
+                </h4>
               </Typography>
             </Grid>
             <Grid item xs={6}>
@@ -117,26 +118,27 @@ class Songrequests extends React.Component {
                   }
                   label={<div style={{
                     marginRight: '15px',
-                    marginTop: '11px',
+                    marginTop: '12px',
                     marginBottom: '11px',
+                    paddingTop: '5px',
                     width: '150px' }}>
-                    <Slider value={volume} onChange={this.handleVolumeChange} style={{ color: '#00aeae' }} />
+                    <Slider value={volume} onChange={this.handleVolumeChange} />
                          </div>}
                 />
-                <Button style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="previous">
+                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="previous">
                   <Icon style={{ color: '#ffffff' }}>skip_previous</Icon>
-                </Button>
-                <Button style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="play">
+                </Fab>
+                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="play">
                   <Icon style={{ color: '#ffffff' }}>play_arrow</Icon>
-                </Button>
-                <Button style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="skip">
+                </Fab>
+                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="skip">
                   <Icon style={{ color: '#ffffff' }}>skip_next</Icon>
-                </Button>
+                </Fab>
               </div>
             </Grid>
             <Grid item xs={12}>
-              <div style={{ marginBottom: '10px', marginTop: '0px' }}>
-                <Slider value={time} onChange={this.handleTimelineChange} style={{ color: '#00aeae' }} />
+              <div style={{ marginBottom: '-12px', marginTop: '0px' }}>
+                <Slider value={time} onChange={this.handleTimelineChange} />
               </div>
               <span className="leftTime">00:00</span>
               <span className="rightTime">13:37</span>
@@ -194,25 +196,24 @@ class Songrequests extends React.Component {
                 </TableCell>
                 <TableCell>
                   <Tooltip title="Favorisieren" placement="top">
-                    <Button
-                      variant="fab"
+                    <Fab
                       className="noshadow"
-                      mini
+                      color="primary"
+                      size="small"
                       aria-label="favSong"
                     >
                       <Icon style={{ color: '#ffffff' }}>star</Icon>
-                    </Button>
+                    </Fab>
                   </Tooltip>{' '}
                   <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-                    <Button
-                      variant="fab"
+                    <Fab
                       className="noshadow"
                       color="secondary"
-                      mini
+                      size="small"
                       aria-label="deleteSong"
                     >
                       <Icon style={{ color: '#ffffff' }}>delete</Icon>
-                    </Button>
+                    </Fab>
                   </Tooltip>
                 </TableCell>
               </TableRow>

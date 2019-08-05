@@ -197,12 +197,10 @@ export default createMuiTheme({
     },
     MuiTab: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        border: '0px'
-      },
-      label: {
+        border: '0px',
         color: '#b7b7b7',
         textTransform: 'none'
-      }
+      },
     },
     MuiChip: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
@@ -268,7 +266,12 @@ export default createMuiTheme({
         backgroundColor: '#272727',
         height: '20px'
       }
-    }
+    },
+    MuiDialogContent: {
+      root: {
+        padding: '24px'
+      }
+    },
   },
   typography: {
     useNextVariants: true

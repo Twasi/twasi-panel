@@ -37,7 +37,7 @@ const SupportTicketMessage = props => {
 
   return (
     <Fragment>
-      <Grid container spacing={24}>
+      <Grid container spacing={2}>
         {composedMessage}
       </Grid>
       <br />

@@ -90,7 +90,7 @@ class SetupPlugins extends Component {
     return (
       <div>
         <Typography>
-          <h2>Plugins</h2>
+          <h3>Plugins</h3>
             <small>
               Hier kannst du auswählen, welche Plugins du aktiviert bzw.
               deaktiviert haben möchtest.<br /> Plugins beinhalten den

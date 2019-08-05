@@ -64,7 +64,7 @@ class GameTitleCard extends Component {
     return (
       <Card className="pluginCard" style={{ marginTop: '15px' }}>
         <CardContent style={{ padding: '24px' }}>
-          <Grid container spacing={16}>
+          <Grid container spacing={2}>
             <Grid item lg={7} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
               <TextField
                 label={<FormattedMessage id="overview.title" />}
@@ -92,6 +92,7 @@ class GameTitleCard extends Component {
                 variant="contained"
                 color="primary"
                 size="large"
+                style={{ height: '56px', borderRadius: '50px' }}
                 onClick={() => {this.props.changeTitleGame(this.state.title, this.state.game); this.handleClick()}}
               >
                 <Icon>

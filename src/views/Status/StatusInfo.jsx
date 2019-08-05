@@ -35,9 +35,9 @@ class StatusInfo extends Component {
           <Grid container spacing={16}>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="status.start" /> / <FormattedMessage id="status.stop" />
-                </h3>
+                </h4>
               </Typography>
               <br />
               {status.isRunning && (
@@ -93,9 +93,9 @@ class StatusInfo extends Component {
             </Grid>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
               <Typography>
-                <h3 className="pageContainerTitle">
+                <h4 className="pageContainerTitle">
                   <FormattedMessage id="status.current_status" />
-                </h3>
+                </h4>
               </Typography>
               <br />
               {status.isRunning ? running : stopped}

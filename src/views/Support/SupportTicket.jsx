@@ -63,7 +63,7 @@ const SupportTicket = props => {
         }
       }}>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Grid container spacing={24}>
+        <Grid container spacing={4}>
           <Grid item xs={12}>
             <Chip
               size="small"
@@ -97,17 +97,17 @@ const SupportTicket = props => {
             </Tooltip>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h4 className="pageContainerTitle"><FormattedMessage id="support.topic" /></h4><small>{ticket.topic}</small></Typography>
+            <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.topic" /></h5><small>{ticket.topic}</small></Typography>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h4 className="pageContainerTitle"><FormattedMessage id="support.ticket.created_at" /></h4><small>{new Date(ticket.createdAt).toLocaleString()}</small></Typography>
+            <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.created_at" /></h5><small>{new Date(ticket.createdAt).toLocaleString()}</small></Typography>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h4 className="pageContainerTitle"><FormattedMessage id="support.ticket.closed_at" /></h4><small>{ticket.closedAt ? new Date(ticket.closedAt).toLocaleString() : '-'}</small></Typography>
+            <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.closed_at" /></h5><small>{ticket.closedAt ? new Date(ticket.closedAt).toLocaleString() : '-'}</small></Typography>
           </Grid>
           <Grid item xs={3}>
             <Typography>
-              <h4 className="pageContainerTitle"><FormattedMessage id="support.ticket.status" /></h4>
+              <h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.status" /></h5>
               <Chip className="statusBadgeSupport" {...getColorByState(ticket.state)} />
               <small>{getTicketState(ticket.state)}</small>
             </Typography>

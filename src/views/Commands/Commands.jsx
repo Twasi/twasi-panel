@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
+import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,7 +13,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Chip from '@material-ui/core/Chip';
-import Breadcrumbs from '@material-ui/lab/Breadcrumbs';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -124,31 +125,29 @@ class Commands extends Component {
         </TableCell>
         <TableCell>
           <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
-            <Button
-              variant="fab"
+            <Fab
               color="primary"
               className="noshadow"
-              mini
+              size="small"
               aria-label="editCommand"
               onClick={() => {
                   this.setState({ openEditCommandDialog: true, editDialogContent: command })
               }}>
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
-            </Button>
+            </Fab>
           </Tooltip>{' '}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-            <Button
-              variant="fab"
+            <Fab
               color="secondary"
               className="noshadow"
-              mini
+              size="small"
               aria-label="deleteCommand"
               onClick={() => {
                   this.props.delCommand(command.id);
                   this.handleOpenNotification(command.name)
               }}>
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
-            </Button>
+            </Fab>
           </Tooltip>
         </TableCell>
       </TableRow>
@@ -168,7 +167,7 @@ class Commands extends Component {
         {!disabled &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="commands.title" />
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
@@ -179,7 +178,7 @@ class Commands extends Component {
                   <FormattedMessage id="commands.new_command" />
                 </Button>
               </span>
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="commands.subtitle" />
             </small>

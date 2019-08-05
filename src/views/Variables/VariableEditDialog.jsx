@@ -68,9 +68,9 @@ class Variable extends React.Component {
       >
         <DialogContent>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               Variable {variableObject.name} bearbeiten
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="variables.new_variable.subheadline" />
             </small>

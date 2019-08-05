@@ -62,9 +62,9 @@ class AccountSwitch extends React.Component {
       >
         <DialogContent>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="accountswitch.switch_account" />
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="accountswitch.subheadline" />
             </small>

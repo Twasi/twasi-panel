@@ -10,9 +10,9 @@ const userGroups = [
   <ToggleButton className="welcomeToggleButton" key={1} value="viewer">
     <div className="media-body">
       <Typography style={{ color: '#ffffff' }}>
-        <h2 style={{ margin: '7px 0px 7px 0px' }}>
+        <h3 style={{ margin: '7px 0px 7px 0px' }}>
           <span>Ich bin Moderator oder Zuschauer</span>
-        </h2>
+        </h3>
         <small>
           Wähle diese Option, wenn du Moderator oder Zuschauer bei einem Streamer bist, der Twasi als Chatbot nutzt.
         </small>
@@ -22,9 +22,9 @@ const userGroups = [
   <ToggleButton className="welcomeToggleButton" key={2} value="streamer">
     <div className="media-body">
       <Typography style={{ color: '#ffffff' }}>
-        <h2 style={{ margin: '7px 0px 7px 0px' }}>
+        <h3 style={{ margin: '7px 0px 7px 0px' }}>
           <span>Ich bin Streamer</span>
-        </h2>
+        </h3>
         <small>
           Wähle diese Option, wenn du Streamer bist und Twasi als Chatbot auf deinem Kanal nutzen möchtest.
           Es folgt die Einrichtung des Bots.

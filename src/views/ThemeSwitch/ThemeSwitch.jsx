@@ -108,9 +108,9 @@ class ThemeSwitch extends React.Component {
       >
         <DialogContent>
           <Typography>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="themeswitch.switch_theme" />
-            </h3>
+            </h4>
             <small>
               Hier hast du die Möglichkeit, das Aussehen des Panels für deine Bedürfnisse zu verändern.
             </small>
