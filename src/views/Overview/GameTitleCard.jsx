@@ -65,7 +65,7 @@ class GameTitleCard extends Component {
       <Card className="pluginCard" style={{ marginTop: '15px' }}>
         <CardContent style={{ padding: '24px' }}>
           <Grid container spacing={2}>
-            <Grid item lg={7} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+            <Grid item sm={7} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
               <TextField
                 label={<FormattedMessage id="overview.title" />}
                 fullWidth
@@ -76,7 +76,7 @@ class GameTitleCard extends Component {
                 InputLabelProps={{ shrink: true }}
               />
             </Grid>
-            <Grid item lg={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+            <Grid item sm={4} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
               <TextField
                 label={<FormattedMessage id="overview.game" />}
                 fullWidth
@@ -87,7 +87,7 @@ class GameTitleCard extends Component {
                 InputLabelProps={{ shrink: true }}
               />
             </Grid>
-            <Grid item lg={1} style={{ paddingTop: '15px' }}>
+            <Grid item sm={1} style={{ paddingTop: '15px' }}>
               <Fab
                 variant="contained"
                 color="primary"

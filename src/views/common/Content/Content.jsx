@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getContentStyle } from './_style';
+import './_style.css';
 
-const Content = ({ children, className }) => <div style={getContentStyle()} className={className}>{children}</div>;
+const Content = ({ children, className }) => <div className={"siteContent " + className}>{children}</div>;
 
 Content.propTypes = {
   children: PropTypes.node,

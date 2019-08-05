@@ -1,0 +1,51 @@
+@media only screen and (max-width: 599px) {
+  .siteContent {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    font-family: Noto Sans, sans-serif;
+  }
+  .siteSidebar {
+    width: 87px;
+  }
+}
+
+@media only screen and (min-width: 600px ) {
+  .siteContent {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    font-family: Noto Sans, sans-serif;
+  }
+  .siteSidebar {
+    width: 87px;
+  }
+}
+
+@media only screen and (min-width: 980px ) {
+  .siteContent {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    font-family: Noto Sans, sans-serif;
+  }
+  .siteSidebar {
+    width: 87px;
+  }
+}
+
+@media only screen and (min-width: 1260px ) {
+  .siteContent {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    font-family: Noto Sans, sans-serif;
+  }
+  .siteSidebar {
+    width: initial;
+  }
+}
