@@ -48,6 +48,7 @@ const SupportTicket = props => {
       case 'OPEN': return <FormattedMessage id="support.ticket.state.open" />;
       case 'PROGRESS': return <FormattedMessage id="support.ticket.state.progress" />;
       case 'CLOSED': return <FormattedMessage id="support.ticket.state.closed" />;
+      default: return <FormattedMessage id="support.ticket.state.open" />;
     }
   }
 

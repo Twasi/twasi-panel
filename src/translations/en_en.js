@@ -339,7 +339,7 @@ export default {
   'support.subheadline': 'If you have Questions or want to give Feedback you can do it here.',
   'support.open.tab_title': 'Open Tickets',
   'support.open.no_tickets.title': 'We could not find any open tickets.',
-  'support.open.no_tickets.subtitle': 'Either you have not opened a ticket yet or we already finished all your tickets. In this case look under \"Closed Tickets\".',
+  'support.open.no_tickets.subtitle': 'Either you have not opened a ticket yet or we already finished all your tickets. In this case look under "Closed Tickets".',
   'support.closed.tab_title': 'Closed Tickets',
   'support.closed.no_tickets.title': 'We could not find any closed tickets.',
   'support.closed.no_tickets.subtitle': 'Here you see all tickets that have been closed.',

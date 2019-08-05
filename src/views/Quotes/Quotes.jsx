@@ -3,20 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
 import MUIDataTable from 'mui-datatables';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 
 import { authSelectors } from '../../state/auth';
 import { quotesSelectors, quotesOperations } from '../../state/quotes';
@@ -136,7 +126,6 @@ class Quotes extends Component {
   }
 
   render() {
-    const { userName, avatar } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">

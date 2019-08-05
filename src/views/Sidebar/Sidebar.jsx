@@ -8,7 +8,6 @@ import { throttle } from 'lodash';
 import Paper from '@material-ui/core/Paper';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
-import Hidden from '@material-ui/core/Hidden';
 import Icon from '@material-ui/core/Icon';
 import Fab from '@material-ui/core/Fab';
 import Badge from '@material-ui/core/Badge';
@@ -198,58 +197,56 @@ class Sidebar extends Component {
 
     return (
       <div style={checked ? {} : { width: 87 }}>
-        <Hidden mdDown>
-          <Paper style={getMenuStyle()} className="sidebar">
-            <div className="headerMenuItem">
-              {checked ? <FormattedMessage id="sidebar.navigation_headline" /> : ''}
-              <Fab onClick={this.handleChange} size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Collapse">
-                <Icon style={{ color: '#ffffff' }}>
-                  {checked ? 'arrow_back' : 'arrow_forward'}
-                </Icon>
-              </Fab>
-            </div>
-            <MenuList
-              className="Sidebar"
+        <Paper style={getMenuStyle()} className="sidebar">
+          <div className="headerMenuItem">
+            {checked ? <FormattedMessage id="sidebar.navigation_headline" /> : ''}
+            <Fab onClick={this.handleChange} size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Collapse">
+              <Icon style={{ color: '#ffffff' }}>
+                {checked ? 'arrow_back' : 'arrow_forward'}
+              </Icon>
+            </Fab>
+          </div>
+          <MenuList
+            className="Sidebar"
+          >
+            {renderItems()}
+          </MenuList>
+        </Paper>
+        <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
+          <MenuList
+            className="Sidebar"
+          >
+            <MenuItem
+              style={{ fontSize: 13 }}
+              onClick={() => window.open('https://docs.twasi.net', '_blank')}
             >
-              {renderItems()}
-            </MenuList>
-          </Paper>
-          <Paper style={getMenuStyle()} className="sidebar sidebarSecondary">
-            <MenuList
-              className="Sidebar"
+              <i className="material-icons" style={{ marginRight: '15px' }}>language</i>
+              {intl.formatMessage({ id: 'sidebar.docs' })}
+            </MenuItem>
+            <MenuItem
+              style={{ fontSize: 13 }}
+              value="support"
+              key="support"
+              selected={selectedKey === 'support'}
+              onClick={event => this.handleClick(event, 'support')}
             >
-              <MenuItem
-                style={{ fontSize: 13 }}
-                onClick={() => window.open('https://docs.twasi.net', '_blank')}
-              >
-                <i className="material-icons" style={{ marginRight: '15px' }}>language</i>
-                {intl.formatMessage({ id: 'sidebar.docs' })}
-              </MenuItem>
-              <MenuItem
-                style={{ fontSize: 13 }}
-                value="support"
-                key="support"
-                selected={selectedKey === 'support'}
-                onClick={event => this.handleClick(event, 'support')}
-              >
-                <Badge color="secondary" variant="dot">
-                  <i className="material-icons" style={{ marginRight: '15px' }}>headset_mic</i>
-                  {intl.formatMessage({ id: 'sidebar.support' })}
-                </Badge>
-              </MenuItem>
-              <MenuItem
-                style={{ fontSize: 13 }}
-                onClick={() => {
-                  localStorage.clear();
-                  window.location = 'https://twasi.net';
-                }}
-              >
-                <i className="material-icons" style={{ marginRight: '15px' }}>keyboard_return</i>
-                {intl.formatMessage({ id: 'sidebar.logout' })}
-              </MenuItem>
-            </MenuList>
-          </Paper>
-        </Hidden>
+              <Badge color="secondary" variant="dot">
+                <i className="material-icons" style={{ marginRight: '15px' }}>headset_mic</i>
+                {intl.formatMessage({ id: 'sidebar.support' })}
+              </Badge>
+            </MenuItem>
+            <MenuItem
+              style={{ fontSize: 13 }}
+              onClick={() => {
+                localStorage.clear();
+                window.location = 'https://twasi.net';
+              }}
+            >
+              <i className="material-icons" style={{ marginRight: '15px' }}>keyboard_return</i>
+              {intl.formatMessage({ id: 'sidebar.logout' })}
+            </MenuItem>
+          </MenuList>
+        </Paper>
       </div>
     );
   }

@@ -342,7 +342,7 @@ export default {
   'support.subheadline': 'Falls du Fragen hast oder Hilfe benötigst kannst du hier ganz einfach ein Support Ticket erstellen.',
   'support.open.tab_title': 'Offene Tickets',
   'support.open.no_tickets.title': 'Wir konnten keine offenen Supporttickets finden.',
-  'support.open.no_tickets.subtitle': 'Das kann daran liegen, dass du noch kein Ticket erstellt hast oder, dass unser Supportteam bereits all deine Fragen bearbeitet hat. Deine bereits fertig bearbeiteten Tickets findest du unter dem Tab \"Geschlossene Tickets\".',
+  'support.open.no_tickets.subtitle': 'Das kann daran liegen, dass du noch kein Ticket erstellt hast oder, dass unser Supportteam bereits all deine Fragen bearbeitet hat. Deine bereits fertig bearbeiteten Tickets findest du unter dem Tab "Geschlossene Tickets".',
   'support.closed.tab_title': 'Geschlossene Tickets',
   'support.closed.no_tickets.title': 'Wir konnten keine geschlossenen Supporttickets finden.',
   'support.closed.no_tickets.subtitle': 'Hier siehst du alle Tickets, die bereits bearbeitet wurden.',
