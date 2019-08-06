@@ -23,7 +23,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { FormattedMessage } from 'react-intl';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
-import { variablesSelectors, variablesOperations } from '../../state/variables';
+import { variablesSelectors } from '../../state/variables';
 
 import './_style.css';
 

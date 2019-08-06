@@ -16,7 +16,6 @@ const {
 
 const loadAccessLevels = () => dispatch => {
     dispatch(getGraph('accessLevels{name,value}', 'commands')).then(data => {
-        console.log(data)
         dispatch(updateAccessLevels(data.accessLevels));
     })
 };
