@@ -111,7 +111,7 @@ class Command extends React.Component {
     });
   }
 
-  getCooldown() {
+  getCooldownString() {
     let cd = this.state.cooldown;
 
     if (cd <= 59) {
@@ -338,7 +338,7 @@ class Command extends React.Component {
           */}
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown" />: {this.getCooldown()}</Typography>
+              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown" />: {this.getCooldownString()}</Typography>
               <Slider
                 style={{ padding: '22px 0px' }}
                 aria-labelledby="label"

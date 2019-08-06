@@ -32,7 +32,7 @@ class Command extends React.Component {
       commandCooldown: 0,
       issue: 10,
       labelWidth: 115,
-      cooldown: '',
+      cooldown: 0,
       openNotification: false,
       notification: ''
     };
@@ -43,7 +43,8 @@ class Command extends React.Component {
     this.setState({
       commandName: commandObject.name,
       commandContent: commandObject.content,
-      commandCooldown: commandObject.cooldown
+      commandCooldown: commandObject.cooldown,
+      cooldown: this.getSliderValueByMilliseconds(commandObject.cooldown)
     });
   }
 
@@ -67,8 +68,8 @@ class Command extends React.Component {
   };
 
   handleCommandCooldown = (event, cooldown) => {
-    this.setState({ [event.target.name]: event.target.value });
-    this.setState({ cooldown });
+    this.setState({ cooldown: cooldown });
+    console.log(this.state.cooldown)
   };
 
   handleCommandNameChange = (event) => {
@@ -83,34 +84,34 @@ class Command extends React.Component {
     });
   };
 
-  getSliderValueByMilliseconds() {
-    let ms = this.state.commandCooldown;
-    console.log(ms)
+  getSliderValueByMilliseconds(ms) {
+    let minutes = 0;
     if (ms <= 60) {
       return ms;
-    } else if (ms >= 61) {
-        // To-Do
+    } else if (ms > 60) {
+        minutes = 60 + (ms/60);
+        return minutes-1;
     }
   }
 
-  getCooldown(cd) {
+  getCooldownString(cd) {
     if (cd <= 59) {
-      if (cd === 1) {
-        return cd + ' Sekunde';
+      if (cd === 0) {
+        return <FormattedMessage id="commands.cooldown.no_cooldown" />;
       }
-      return cd + ' Sekunden';
+      if (cd > 1) {
+        return `${cd} Sekunden`;
+      }
+      return `${cd} Sekunde`;
     } else if (cd >= 60) {
+      cd -= 59;
       if (cd === 60) {
-        //return '1 Stunde';
-        return '1 Minute';
-      }
-      if (cd === 3600) {
         return '1 Stunde';
       }
       if (cd > 1) {
-        //return `${cd} Minuten`;
-        return Math.round(cd / 60) + ' Minuten';
+        return `${cd} Minuten`;
       }
+      return `${cd} Minute`;
     }
     return 'Fehler';
   }
@@ -234,11 +235,11 @@ class Command extends React.Component {
           */}
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown" />: {this.getCooldown(this.state.commandCooldown)}</Typography>
+              <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown" />: {this.getCooldownString(this.state.cooldown)}</Typography>
               <Slider
                 style={{ padding: '22px 0px' }}
                 aria-labelledby="label"
-                value={this.getSliderValueByMilliseconds()}
+                value={this.state.cooldown}
                 min={0}
                 max={119}
                 step={1}
@@ -253,7 +254,7 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.editCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.state.commandCooldown);
+                this.props.editCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown());
                 this.handleOpenNotification(this.state.commandName)
             }}>
             <FormattedMessage id="commands.new_command.savecommand" />
