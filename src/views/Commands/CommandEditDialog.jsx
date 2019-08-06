@@ -4,21 +4,26 @@ import { connect } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
-//import MenuItem from '@material-ui/core/MenuItem';
+import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
-//import FormControl from '@material-ui/core/FormControl';
-//import FormHelperText from '@material-ui/core/FormHelperText';
-//import Select from '@material-ui/core/Select';
-//import OutlinedInput from '@material-ui/core/OutlinedInput';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-//import InputLabel from '@material-ui/core/InputLabel';
+import InputLabel from '@material-ui/core/InputLabel';
 import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
+import Chip from '@material-ui/core/Chip';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { FormattedMessage } from 'react-intl';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
+import { variablesSelectors, variablesOperations } from '../../state/variables';
 
 import './_style.css';
 
@@ -30,7 +35,9 @@ class Command extends React.Component {
       commandName: "",
       commandContent: "",
       commandCooldown: 0,
-      issue: 10,
+      commandAccess: "",
+      accessLevel: 0,
+      accessLevelString: "",
       labelWidth: 115,
       cooldown: 0,
       openNotification: false,
@@ -39,11 +46,15 @@ class Command extends React.Component {
   }
 
   componentDidMount() {
-    const { commandObject } = this.props;
+    const { commandObject, updateAccessLevels } = this.props;
+    updateAccessLevels();
+    console.log(commandObject)
     this.setState({
       commandName: commandObject.name,
       commandContent: commandObject.content,
       commandCooldown: commandObject.cooldown,
+      commandAccessLevel: commandObject.accessLevel.value,
+      commandAccessLevelName: commandObject.accessLevel.name,
       cooldown: this.getSliderValueByMilliseconds(commandObject.cooldown)
     });
   }
@@ -67,9 +78,15 @@ class Command extends React.Component {
     this.props.onClose(value);
   };
 
+  handleChangeAccessLevel = (event, index) => {
+    this.setState({
+      commandAccessLevel: event.target.value,
+      commandAccessLevelName: index.props.children
+    });
+  }
+
   handleCommandCooldown = (event, cooldown) => {
     this.setState({ cooldown: cooldown });
-    console.log(this.state.cooldown)
   };
 
   handleCommandNameChange = (event) => {
@@ -137,6 +154,32 @@ class Command extends React.Component {
     return 'Fehler';
   }
 
+  chipFilter = (item) => {
+    this.setState({
+      commandContent: this.state.commandContent+item+" "
+    });
+  }
+
+  renderVariables() {
+    const { variables } = this.props;
+
+    return variables.map(variable => (
+      <Chip
+        className="commandOutputChip"
+        size="small"
+        color="secondary"
+        label={"$"+variable.name}
+        onClick={ () => this.chipFilter("$"+variable.name) }/>
+    ));
+  }
+
+  renderAccessLevels() {
+    const { accessLevels } = this.props;
+    return accessLevels.map(accessLevel => (
+      <MenuItem value={accessLevel.value}>{accessLevel.name}</MenuItem>
+    ));
+  }
+
   render() {
     const { commandObject, ...other } = this.props;
     return (
@@ -194,6 +237,7 @@ class Command extends React.Component {
                 fullWidth
                 value={this.state.commandContent}
                 onChange={this.handleCommandContentChange}
+                inputRef={this.textInput}
                 placeholder="Beispiel: Mein Bot heißt Twasibot."
                 multiline
                 rows="3"
@@ -203,7 +247,72 @@ class Command extends React.Component {
               />
             </CardContent>
           </Card>
-          {/*
+          <ExpansionPanel style={{ marginTop: '5px' }}>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>
+                <h4 className="pageContainerTitle">
+                  <FormattedMessage id="commands.new_command.variables" />
+                </h4>
+                <small>
+                  <FormattedMessage id="commands.new_command.variables.helpertext" />
+                </small>
+              </Typography>
+            </ExpansionPanelSummary>
+            <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
+              <CardContent style={{ padding: '24px' }}>
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$sender"
+                  onClick={ () => this.chipFilter("$sender") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$streamer"
+                  onClick={ () => this.chipFilter("$streamer") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$readapi()"
+                  onClick={ () => this.chipFilter("$readapi()") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$random()"
+                  onClick={ () => this.chipFilter("$random()") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$args()"
+                  onClick={ () => this.chipFilter("$args()") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$uses"
+                  onClick={ () => this.chipFilter("$uses") }
+                />
+                <Chip
+                  className="commandOutputChip"
+                  size="small"
+                  color="primary"
+                  label="$viewtime"
+                  onClick={ () => this.chipFilter("$viewtime") }
+                />
+                {this.renderVariables()}
+              </CardContent>
+            </Card>
+          </ExpansionPanel>
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
               <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
@@ -213,8 +322,8 @@ class Command extends React.Component {
                   <FormattedMessage id="commands.new_command.access" />
                 </InputLabel>
                 <Select
-                  value={this.state.issue}
-                  onChange={this.handleChange}
+                  value={this.state.commandAccessLevel}
+                  onChange={this.handleChangeAccessLevel}
                   input={
                     <OutlinedInput
                       labelWidth={this.state.labelWidth}
@@ -223,16 +332,12 @@ class Command extends React.Component {
                     />
                   }
                 >
-                  <MenuItem value={10}><FormattedMessage id="commands.new_command.everyone" /></MenuItem>
-                  <MenuItem value={20}><FormattedMessage id="commands.new_command.subs" /></MenuItem>
-                  <MenuItem value={30}><FormattedMessage id="commands.new_command.mods" /></MenuItem>
-                  <MenuItem value={40}><FormattedMessage id="commands.new_command.streamer" /></MenuItem>
+                  {this.renderAccessLevels()}
                 </Select>
                 <FormHelperText>Wer hat Zugriff auf den Befehl?</FormHelperText>
               </FormControl>
             </CardContent>
           </Card>
-          */}
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
               <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown" />: {this.getCooldownString(this.state.cooldown)}</Typography>
@@ -254,7 +359,7 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.editCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown());
+                this.props.editCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccessLevelName);
                 this.handleOpenNotification(this.state.commandName)
             }}>
             <FormattedMessage id="commands.new_command.savecommand" />
@@ -280,13 +385,16 @@ Command.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  accessLevels: commandsSelectors.getAccessLevels(state),
+  variables: variablesSelectors.getVariables(state),
   isLoaded: commandsSelectors.isLoaded(state),
   disabled: commandsSelectors.isDisabled(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
-  editCommand: (id, name, content, cooldown) => dispatch(commandsOperations.editCommand(id, name, content, cooldown)),
+  updateAccessLevels: () => dispatch(commandsOperations.loadAccessLevels()),
+  editCommand: (id, name, content, cooldown, accessLevel) => dispatch(commandsOperations.editCommand(id, name, content, cooldown, accessLevel)),
   verifyData: () => dispatch(commandsOperations.verifyData()),
 });
 

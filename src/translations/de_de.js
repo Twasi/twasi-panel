@@ -196,6 +196,8 @@ export default {
   'commands.new_command.output': 'Ausgabe',
   'commands.new_command.access': 'Wer hat Zugriff?',
   'commands.new_command.everyone': 'Jeder',
+  'commands.new_command.follower': 'Follower oder höher',
+  'commands.new_command.vip': 'VIP oder höher',
   'commands.new_command.subs': 'Subscriber oder höher',
   'commands.new_command.mods': 'Moderatoren oder höher',
   'commands.new_command.streamer': 'Streamer',

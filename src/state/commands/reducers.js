@@ -3,6 +3,7 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   commands: [],
+  accessLevels: [],
   name: '',
   content: '',
   id: '',
@@ -15,6 +16,9 @@ const commandsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_COMMANDS: {
       return { ...state, isLoaded: true, isDisabled: false, commands: action.commands };
+    }
+    case types.UPDATE_ACCESSLEVELS: {
+      return { ...state, isLoaded: true, isDisabled: false, accessLevels: action.accessLevels };
     }
     case types.UPDATE_SINGLECOMMAND: {
       return { ...state, isLoaded: true, isDisabled: false, id: action.id };

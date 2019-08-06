@@ -109,12 +109,13 @@ class Commands extends Component {
         </TableCell>
         <TableCell>
           <Chip
-            label="Jeder"
+            label={command.accessLevel.name}
             color="primary"
           />
         </TableCell>
         <TableCell style={{ textAlign: 'center' }}>{command.uses}</TableCell>
         <TableCell style={{ textAlign: 'center' }}>{this.getCooldown(command.cooldown)}</TableCell>
+        {/*
         <TableCell>
           <Checkbox
             checked=""
@@ -123,6 +124,7 @@ class Commands extends Component {
             color="primary"
           />
         </TableCell>
+        */}
         <TableCell>
           <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
             <Fab
@@ -194,7 +196,7 @@ class Commands extends Component {
                 <TableCell><FormattedMessage id="commands.table.access" /></TableCell>
                 <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.uses" /></TableCell>
                 <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.cooldown" /></TableCell>
-                <TableCell><FormattedMessage id="commands.table.active" /></TableCell>
+                {/*<TableCell><FormattedMessage id="commands.table.active" /></TableCell>*/}
                 <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>

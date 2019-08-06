@@ -5,6 +5,11 @@ const updateCommands = commands => ({
   commands
 });
 
+const updateAccessLevels = accessLevels => ({
+  type: types.UPDATE_ACCESSLEVELS,
+  accessLevels
+});
+
 const updateSingleCommand = (id) => ({
   type: types.UPDATE_SINGLECOMMAND,
   id
@@ -41,6 +46,7 @@ const updateIsLoading = isLoading => ({
 });
 
 export default {
+  updateAccessLevels,
   updateCommands,
   updateSingleCommand,
   updateAddCommand,

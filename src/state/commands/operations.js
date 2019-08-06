@@ -4,6 +4,7 @@ import selectors from './selectors';
 import {getGraph} from '../../services/graphqlService';
 
 const {
+    updateAccessLevels,
     updateCommands,
     updateSingleCommand,
     updateAddCommand,
@@ -13,10 +14,17 @@ const {
     updateDisabled
 } = actions;
 
+const loadAccessLevels = () => dispatch => {
+    dispatch(getGraph('accessLevels{name,value}', 'commands')).then(data => {
+        console.log(data)
+        dispatch(updateAccessLevels(data.accessLevels));
+    })
+};
+
 const loadCommands = () => dispatch => {
     dispatch(updateIsLoading(true));
 
-    dispatch(getGraph('commands{id,name,content,uses,cooldown}', 'commands')).then(data => {
+    dispatch(getGraph('commands{id,name,content,uses,cooldown,accessLevel{name,value}}', 'commands')).then(data => {
         if (data == null) {
             dispatch(updateDisabled(true));
             return;
@@ -27,16 +35,16 @@ const loadCommands = () => dispatch => {
     });
 };
 
-const addCommand = (name, content, cooldown) => dispatch => {
-    dispatch(getGraph(`create(name: "${name}", content: "${content}", cooldown: ${cooldown}){id}`, 'commands')).then(
+const addCommand = (name, content, cooldown, accessLevel) => dispatch => {
+    dispatch(getGraph(`create(name: "${name}", content: "${content}", cooldown: ${cooldown}, accessLevel: "${accessLevel}"){id}`, 'commands')).then(
         data => {
             dispatch(updateAddCommand(data.commands));
         }
     );
 };
 
-const editCommand = (id, name, content, cooldown) => dispatch => {
-    dispatch(getGraph(`update(id: "${id}", name: "${name}", content: "${content}", cooldown: ${cooldown}){id}`, 'commands')).then(
+const editCommand = (id, name, content, cooldown, accessLevel) => dispatch => {
+    dispatch(getGraph(`update(id: "${id}", name: "${name}", content: "${content}", cooldown: ${cooldown}, accessLevel: "${accessLevel}"){id}`, 'commands')).then(
         data => {
             dispatch(updateEditCommand(data.commands));
         }
@@ -71,6 +79,7 @@ const verifyData = () => (dispatch, getState) => {
 
 export default {
     loadCommands,
+    loadAccessLevels,
     loadSingleCommand,
     addCommand,
     editCommand,

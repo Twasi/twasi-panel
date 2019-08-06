@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
-//import MenuItem from '@material-ui/core/MenuItem';
+import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
-//import FormControl from '@material-ui/core/FormControl';
-//import FormHelperText from '@material-ui/core/FormHelperText';
-//import Select from '@material-ui/core/Select';
-//import OutlinedInput from '@material-ui/core/OutlinedInput';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-//import InputLabel from '@material-ui/core/InputLabel';
+import InputLabel from '@material-ui/core/InputLabel';
 import Slider from '@material-ui/lab/Slider';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -33,7 +33,8 @@ class Command extends React.Component {
     commandName: "",
     commandContent: "",
     commandCooldown: 0,
-    issue: 10,
+    commandAccess: "VIEWER",
+    accessLevel: 0,
     labelWidth: 115,
     cooldown: 0,
     openNotification: false,
@@ -41,9 +42,9 @@ class Command extends React.Component {
   };
 
   componentDidMount() {
-    const { updateCommands } = this.props;
+    const { updateCommands, updateAccessLevels, updateVariables } = this.props;
     updateCommands();
-    const { updateVariables } = this.props;
+    updateAccessLevels();
     updateVariables();
     this.textInput = React.createRef();
   }
@@ -66,6 +67,13 @@ class Command extends React.Component {
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
+
+  handleChangeAccessLevel = (event, index) => {
+    this.setState({
+      commandAccess: index.props.children,
+      accessLevel: event.target.value
+    });
+  }
 
   handleListItemClick = value => {
     this.props.onClose(value);
@@ -105,6 +113,8 @@ class Command extends React.Component {
     this.setState({
       commandName: "",
       commandContent: "",
+      commandAccess: "VIEWER",
+      accessLevel: 0,
       commandCooldown: 0,
       cooldown: 0,
       issue: 10
@@ -169,9 +179,15 @@ class Command extends React.Component {
     ));
   }
 
+  renderAccessLevels() {
+    const { accessLevels } = this.props;
+    return accessLevels.map(accessLevel => (
+      <MenuItem value={accessLevel.value}>{accessLevel.name}</MenuItem>
+    ));
+  }
+
   render() {
     const { classes, onClose, ...other } = this.props;
-
     return (
       <Dialog
         onClose={this.handleClose}
@@ -306,7 +322,6 @@ class Command extends React.Component {
               </CardContent>
             </Card>
           </ExpansionPanel>
-          {/*
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
               <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
@@ -316,8 +331,8 @@ class Command extends React.Component {
                   <FormattedMessage id="commands.new_command.access" />
                 </InputLabel>
                 <Select
-                  value={this.state.issue}
-                  onChange={this.handleChange}
+                  value={this.state.accessLevel}
+                  onChange={this.handleChangeAccessLevel}
                   input={
                     <OutlinedInput
                       labelWidth={this.state.labelWidth}
@@ -326,16 +341,12 @@ class Command extends React.Component {
                     />
                   }
                 >
-                  <MenuItem value={10}><FormattedMessage id="commands.new_command.everyone" /></MenuItem>
-                  <MenuItem value={20}><FormattedMessage id="commands.new_command.subs" /></MenuItem>
-                  <MenuItem value={30}><FormattedMessage id="commands.new_command.mods" /></MenuItem>
-                  <MenuItem value={40}><FormattedMessage id="commands.new_command.streamer" /></MenuItem>
+                  {this.renderAccessLevels()}
                 </Select>
                 <FormHelperText>Wer hat Zugriff auf den Befehl?</FormHelperText>
               </FormControl>
             </CardContent>
           </Card>
-          */}
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
               <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown" />: {this.getCooldownString()}</Typography>
@@ -357,7 +368,7 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown());
+                this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccess);
                 this.handleOpenNotification(this.state.commandName)
                 this.clearTextInput()
             }}>
@@ -384,6 +395,7 @@ Command.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  accessLevels: commandsSelectors.getAccessLevels(state),
   variables: variablesSelectors.getVariables(state),
   isLoaded: commandsSelectors.isLoaded(state),
   disabled: commandsSelectors.isDisabled(state)
@@ -391,7 +403,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
-  addCommand: (name, content, cooldown) => dispatch(commandsOperations.addCommand(name, content, cooldown)),
+  updateAccessLevels: () => dispatch(commandsOperations.loadAccessLevels()),
+  addCommand: (name, content, cooldown, accessLevel) => dispatch(commandsOperations.addCommand(name, content, cooldown, accessLevel)),
   verifyData: () => dispatch(commandsOperations.verifyData()),
   updateVariables: () => dispatch(variablesOperations.loadVariables())
 });
