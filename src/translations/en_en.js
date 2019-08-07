@@ -219,6 +219,8 @@ export default {
   'commands.cooldown.minute': 'Minute',
   'commands.cooldown.minutes': 'Minutes',
   'commands.cooldown.hour': 'Hour',
+  'commands.no_command.title': 'You dont have any Commands.',
+  'commands.no_command.subtitle': 'Use commands to get instant access to informations you need.',
 
   // Variables
   'variables.title': 'Your Variables',
@@ -228,6 +230,8 @@ export default {
   'variables.new_variable.variable': 'Your Variable',
   'variables.new_variable.output': 'Output',
   'variables.new_variable.savevariable': 'Save Variable',
+  'variables.no_variable.title': 'You dont have any Variables.',
+  'variables.no_variable.subtitle': 'You could use variables in your command output to make it dynamic.',
 
   // Quotes
   'quotes.title': 'Your Quotes',

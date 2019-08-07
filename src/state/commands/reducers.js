@@ -9,7 +9,7 @@ export const initialState = {
   id: '',
   cooldown: 0,
   isDisabled: false,
-  isLoading: false
+  isLoading: true
 };
 
 const commandsReducer = (state = initialState, action) => {
@@ -35,8 +35,11 @@ const commandsReducer = (state = initialState, action) => {
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };
     }
-    case types.UPDATE_IS_LOADING: {
+    case types.UPDATE_LOADING: {
       return { ...state, isLoading: action.isLoading };
+    }
+    case types.UPDATE_LOADED: {
+      return { ...state, isLoaded: action.isLoaded };
     }
     default:
       return state;

@@ -221,7 +221,8 @@ export default {
   'commands.cooldown.minute': 'Minute',
   'commands.cooldown.minutes': 'Minuten',
   'commands.cooldown.hour': 'Stunde',
-
+  'commands.no_command.title': 'Du hast noch keinen Befehl erstellt.',
+  'commands.no_command.subtitle': 'Nutze Befehle im Chat, um schnell an gewünschte Informationen zu gelangen.',
 
   // Variables
   'variables.title': 'Deine Variablen',
@@ -231,6 +232,8 @@ export default {
   'variables.new_variable.variable': 'Deine Variable',
   'variables.new_variable.output': 'Ausgabe',
   'variables.new_variable.savevariable': 'Variable speichern',
+  'variables.no_variable.title': 'Du hast noch keine Variable erstellt.',
+  'variables.no_variable.subtitle': 'Du kannst Variablen in die Ausgabe deiner Befehle einbauen, um diese Dynamisch zu gestallten.',
 
   // Quotes
   'quotes.title': 'Deine Zitate',

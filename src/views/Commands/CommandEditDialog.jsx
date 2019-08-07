@@ -48,7 +48,6 @@ class Command extends React.Component {
   componentDidMount() {
     const { commandObject, updateAccessLevels } = this.props;
     updateAccessLevels();
-    console.log(commandObject)
     this.setState({
       commandName: commandObject.name,
       commandContent: commandObject.content,

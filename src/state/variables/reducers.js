@@ -2,6 +2,7 @@ import types from './types';
 
 export const initialState = {
   isLoaded: false,
+  isLoading: true,
   variables: [],
   id: '',
   name: '',
@@ -25,6 +26,9 @@ const variablesReducer = (state = initialState, action) => {
     }
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };
+    }
+    case types.UPDATE_LOADING: {
+      return { ...state, isLoading: action.isLoading };
     }
     default:
       return state;

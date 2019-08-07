@@ -8,16 +8,19 @@ const {
   updateAddVariable,
   updateEditVariable,
   updateRemoveVariable,
-  updateDisabled
+  updateDisabled,
+  updateLoading
 } = actions;
 
 const loadVariables = () => dispatch => {
+  dispatch(updateLoading(true));
   dispatch(getGraph('allVariables{id,name,output}', 'customvariables')).then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
       return;
     }
     dispatch(updateVariables(data.allVariables));
+    dispatch(updateLoading(false));
   });
 };
 
@@ -60,5 +63,6 @@ export default {
   addVariable,
   editVariable,
   removeVariable,
-  verifyData
+  verifyData,
+  updateLoading,
 };

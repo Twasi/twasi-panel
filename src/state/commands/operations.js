@@ -10,8 +10,9 @@ const {
     updateAddCommand,
     updateEditCommand,
     updateDelCommand,
-    updateIsLoading,
-    updateDisabled
+    updateDisabled,
+    updateLoaded,
+    updateLoading
 } = actions;
 
 const loadAccessLevels = () => dispatch => {
@@ -21,8 +22,7 @@ const loadAccessLevels = () => dispatch => {
 };
 
 const loadCommands = () => dispatch => {
-    dispatch(updateIsLoading(true));
-
+    dispatch(updateLoading(true));
     dispatch(getGraph('commands{id,name,content,uses,cooldown,accessLevel{name,value}}', 'commands')).then(data => {
         if (data == null) {
             dispatch(updateDisabled(true));
@@ -30,7 +30,8 @@ const loadCommands = () => dispatch => {
         }
         dispatch(updateCommands(data.commands));
     }).finally(() => {
-        dispatch(updateIsLoading(false))
+        dispatch(updateLoading(false))
+        dispatch(updateLoaded(true))
     });
 };
 
@@ -83,5 +84,7 @@ export default {
     addCommand,
     editCommand,
     delCommand,
-    verifyData
+    verifyData,
+    updateLoaded,
+    updateLoading
 };

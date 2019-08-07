@@ -23,6 +23,8 @@ import CommandAddDialog from './CommandAddDialog';
 import CommandEditDialog from './CommandEditDialog';
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
 
+import SoonerLater from '../common/resources/SoonerLater.png';
+
 import { commandsSelectors, commandsOperations } from '../../state/commands';
 
 class Commands extends Component {
@@ -92,6 +94,30 @@ class Commands extends Component {
       }
     }
     return 'Fehler';
+  }
+
+  renderCommandsEmpty() {
+    return (
+      <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
+        <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+          <img
+            style={{ position: 'relative', height: '80px' }}
+            src={SoonerLater}
+            alt="SoonerLater"
+          />
+          <h3 className="pageContainerTitle">
+            <FormattedMessage id="commands.no_command.title" />
+          </h3>
+          <small>
+            <FormattedMessage id="commands.no_command.subtitle" />
+          </small>
+          <br /><br />
+          <Button onClick={() => this.setState({ openAddCommandDialog: true })} variant="contained" color="primary" disabled={this.props.disabled}>
+            <FormattedMessage id="commands.new_command" />
+          </Button>
+        </Typography>
+      </Paper>
+    );
   }
 
   renderCommands() {
@@ -229,6 +255,7 @@ class Commands extends Component {
           />
         </Paper>
         }{disabled && <NotInstalledAlert />}
+        {this.renderCommands().length === 0 && !this.props.isLoading && this.renderCommandsEmpty()}
       </div>
     );
   }
@@ -248,6 +275,7 @@ Commands.propTypes = {
 const mapStateToProps = state => ({
   commands: commandsSelectors.getCommands(state),
   isLoaded: commandsSelectors.isLoaded(state),
+  isLoading: commandsSelectors.isLoading(state),
   disabled: commandsSelectors.isDisabled(state)
 });
 

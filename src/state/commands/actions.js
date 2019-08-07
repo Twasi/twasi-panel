@@ -40,9 +40,14 @@ const updateDisabled = isDisabled => ({
   isDisabled
 });
 
-const updateIsLoading = isLoading => ({
-  type: types.UPDATE_IS_LOADING,
+const updateLoading = isLoading => ({
+  type: types.UPDATE_LOADING,
   isLoading
+});
+
+const updateLoaded = isLoaded => ({
+  type: types.UPDATE_LOADED,
+  isLoaded
 });
 
 export default {
@@ -53,5 +58,6 @@ export default {
   updateEditCommand,
   updateDelCommand,
   updateDisabled,
-  updateIsLoading
+  updateLoading,
+  updateLoaded
 };

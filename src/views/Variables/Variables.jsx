@@ -20,6 +20,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import VariableAddDialog from './VariableAddDialog';
 import VariableEditDialog from './VariableEditDialog';
 
+import SoonerLater from '../common/resources/SoonerLater.png';
+
 import { variablesSelectors, variablesOperations } from '../../state/variables';
 
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
@@ -73,6 +75,30 @@ class Variables extends Component {
   handleCloseNotification = () => {
     this.setState({ openNotification: false });
   };
+
+  renderVariablesEmpty() {
+    return (
+      <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
+        <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+          <img
+            style={{ position: 'relative', height: '80px' }}
+            src={SoonerLater}
+            alt="SoonerLater"
+          />
+          <h3 className="pageContainerTitle">
+            <FormattedMessage id="variables.no_variable.title" />
+          </h3>
+          <small>
+            <FormattedMessage id="variables.no_variable.subtitle" />
+          </small>
+          <br /><br />
+          <Button onClick={() => this.setState({ openAddVariableDialog: true })} variant="contained" color="primary" disabled={this.props.disabled}>
+            <FormattedMessage id="variables.new_variable" />
+          </Button>
+        </Typography>
+      </Paper>
+    );
+  }
 
   renderVariables() {
     const { variables } = this.props;
@@ -189,6 +215,7 @@ class Variables extends Component {
           />
         </Paper>
         }{disabled && <NotInstalledAlert />}
+        {this.renderVariables().length === 0 && !this.props.isLoading && this.renderVariablesEmpty()}
       </div>
     );
   }
@@ -208,6 +235,7 @@ Variables.propTypes = {
 const mapStateToProps = state => ({
   variables: variablesSelectors.getVariables(state),
   isLoaded: variablesSelectors.isLoaded(state),
+  isLoading: variablesSelectors.isLoading(state),
   disabled: variablesSelectors.isDisabled(state)
 });
 
