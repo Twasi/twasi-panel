@@ -67,9 +67,6 @@ class Variables extends Component {
       openNotification: true,
       notification: 'Die Variable "' + variableName + '" wurde erfolgreich gelöscht.'
     });
-    setTimeout(function() {
-        this.props.updateVariables()
-    }.bind(this), 100)
   };
 
   handleCloseNotification = () => {
@@ -148,6 +145,9 @@ class Variables extends Component {
 
   render() {
     const { disabled } = this.props;
+    if (this.props.isActionSuccess) {
+      this.props.updateVariables()
+    }
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -236,6 +236,7 @@ const mapStateToProps = state => ({
   variables: variablesSelectors.getVariables(state),
   isLoaded: variablesSelectors.isLoaded(state),
   isLoading: variablesSelectors.isLoading(state),
+  isActionSuccess: variablesSelectors.isActionSuccess(state),
   disabled: variablesSelectors.isDisabled(state)
 });
 

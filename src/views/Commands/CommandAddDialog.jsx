@@ -55,9 +55,6 @@ class Command extends React.Component {
       modalOpen: false,
       notification: 'Der Befehl "' + commandName + '" wurde erfolgreich erstellt.'
     });
-    setTimeout(function() {
-        this.props.updateCommands()
-    }.bind(this), 100)
   };
 
   handleCloseNotification = () => {
@@ -188,6 +185,9 @@ class Command extends React.Component {
 
   render() {
     const { classes, onClose, ...other } = this.props;
+    if (this.props.isActionSuccess) {
+      this.props.updateCommands()
+    }
     return (
       <Dialog
         onClose={this.handleClose}
@@ -398,7 +398,8 @@ const mapStateToProps = state => ({
   accessLevels: commandsSelectors.getAccessLevels(state),
   variables: variablesSelectors.getVariables(state),
   isLoaded: commandsSelectors.isLoaded(state),
-  disabled: commandsSelectors.isDisabled(state)
+  disabled: commandsSelectors.isDisabled(state),
+  isActionSuccess: commandsSelectors.isActionSuccess(state)
 });
 
 const mapDispatchToProps = dispatch => ({

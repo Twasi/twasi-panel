@@ -33,11 +33,17 @@ const updateLoading = isLoading => ({
   isLoading
 });
 
+const updateActionSuccess = isActionSuccess => ({
+  type: types.UPDATE_ACTIONSUCCESS,
+  isActionSuccess
+});
+
 export default {
   updateVariables,
   updateAddVariable,
   updateEditVariable,
   updateRemoveVariable,
   updateDisabled,
-  updateLoading
+  updateLoading,
+  updateActionSuccess
 };

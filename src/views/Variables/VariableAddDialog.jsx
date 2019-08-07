@@ -34,9 +34,6 @@ class Variable extends React.Component {
       modalOpen: false,
       notification: 'Die Variable "' + variableName + '" wurde erfolgreich erstellt.'
     });
-    setTimeout(function() {
-        this.props.updateVariables()
-    }.bind(this), 100)
   };
 
   handleCloseNotification = () => {
@@ -74,7 +71,9 @@ class Variable extends React.Component {
 
   render() {
     const { classes, onClose, ...other } = this.props;
-
+    if (this.props.isActionSuccess) {
+      this.props.updateVariables()
+    }
     return (
       <Dialog
         onClose={this.handleClose}
@@ -162,6 +161,7 @@ Variable.propTypes = {
 const mapStateToProps = state => ({
   variables: variablesSelectors.getVariables(state),
   isLoaded: variablesSelectors.isLoaded(state),
+  isActionSuccess: variablesSelectors.isActionSuccess(state),
   disabled: variablesSelectors.isDisabled(state)
 });
 

@@ -12,7 +12,8 @@ const {
     updateDelCommand,
     updateDisabled,
     updateLoaded,
-    updateLoading
+    updateLoading,
+    updateActionSuccess
 } = actions;
 
 const loadAccessLevels = () => dispatch => {
@@ -36,35 +37,47 @@ const loadCommands = () => dispatch => {
 };
 
 const addCommand = (name, content, cooldown, accessLevel) => dispatch => {
+    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`create(name: "${name}", content: "${content}", cooldown: ${cooldown}, accessLevel: "${accessLevel}"){id}`, 'commands')).then(
-        data => {
-            dispatch(updateAddCommand(data.commands));
-        }
-    );
+    data => {
+      dispatch(updateAddCommand(data.commands));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
 };
 
 const editCommand = (id, name, content, cooldown, accessLevel) => dispatch => {
+    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`update(id: "${id}", name: "${name}", content: "${content}", cooldown: ${cooldown}, accessLevel: "${accessLevel}"){id}`, 'commands')).then(
-        data => {
-            dispatch(updateEditCommand(data.commands));
-        }
-    );
+    data => {
+      dispatch(updateEditCommand(data.commands));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
 };
 
 const delCommand = id => dispatch => {
+    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`delete(id: "${id}"){id}`, 'commands')).then(
-        data => {
-            dispatch(updateDelCommand(data.commands));
-        }
-    );
+    data => {
+      dispatch(updateDelCommand(data.commands));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
 };
 
 const loadSingleCommand = id => dispatch => {
+    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`single(id: "${id}"){id}`, 'commands')).then(
-        data => {
-            dispatch(updateSingleCommand(data.commands));
-        }
-    );
+    data => {
+      dispatch(updateSingleCommand(data.commands));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
 };
 
 const verifyData = () => (dispatch, getState) => {
@@ -86,5 +99,6 @@ export default {
     delCommand,
     verifyData,
     updateLoaded,
-    updateLoading
+    updateLoading,
+    updateActionSuccess
 };

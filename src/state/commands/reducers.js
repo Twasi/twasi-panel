@@ -2,6 +2,7 @@ import types from './types';
 
 export const initialState = {
   isLoaded: false,
+  isActionSuccess: false,
   commands: [],
   accessLevels: [],
   name: '',
@@ -40,6 +41,9 @@ const commandsReducer = (state = initialState, action) => {
     }
     case types.UPDATE_LOADED: {
       return { ...state, isLoaded: action.isLoaded };
+    }
+    case types.UPDATE_ACTIONSUCCESS: {
+      return { ...state, isActionSuccess: action.isActionSuccess };
     }
     default:
       return state;

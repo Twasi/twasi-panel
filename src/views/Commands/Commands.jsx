@@ -57,9 +57,6 @@ class Commands extends Component {
       openNotification: true,
       notification: 'Der Befehl "' + commandName + '" wurde erfolgreich gelöscht.'
     });
-    setTimeout(function() {
-        this.props.updateCommands()
-    }.bind(this), 100)
   };
 
   handleCloseNotification = () => {
@@ -122,7 +119,9 @@ class Commands extends Component {
 
   renderCommands() {
     const { commands } = this.props;
-
+    if (this.props.isActionSuccess) {
+      this.props.updateCommands()
+    }
     return commands.map(command => (
       <TableRow>
         <TableCell>
@@ -276,6 +275,7 @@ const mapStateToProps = state => ({
   commands: commandsSelectors.getCommands(state),
   isLoaded: commandsSelectors.isLoaded(state),
   isLoading: commandsSelectors.isLoading(state),
+  isActionSuccess: commandsSelectors.isActionSuccess(state),
   disabled: commandsSelectors.isDisabled(state)
 });
 

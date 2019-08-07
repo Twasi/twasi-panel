@@ -62,6 +62,9 @@ class Variable extends React.Component {
 
   render() {
     const { variableObject, ...other } = this.props;
+    if (this.props.isActionSuccess) {
+      this.props.updateVariables()
+    }
     return (
       <Dialog
         {...other}
@@ -141,6 +144,7 @@ Variable.propTypes = {
 
 const mapStateToProps = state => ({
   isLoaded: variablesSelectors.isLoaded(state),
+  isActionSuccess: variablesSelectors.isActionSuccess(state),
   disabled: variablesSelectors.isDisabled(state)
 });
 

@@ -50,6 +50,11 @@ const updateLoaded = isLoaded => ({
   isLoaded
 });
 
+const updateActionSuccess = isActionSuccess => ({
+  type: types.UPDATE_ACTIONSUCCESS,
+  isActionSuccess
+});
+
 export default {
   updateAccessLevels,
   updateCommands,
@@ -59,5 +64,6 @@ export default {
   updateDelCommand,
   updateDisabled,
   updateLoading,
-  updateLoaded
+  updateLoaded,
+  updateActionSuccess
 };

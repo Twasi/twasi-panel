@@ -9,7 +9,8 @@ const {
   updateEditVariable,
   updateRemoveVariable,
   updateDisabled,
-  updateLoading
+  updateLoading,
+  updateActionSuccess
 } = actions;
 
 const loadVariables = () => dispatch => {
@@ -25,27 +26,36 @@ const loadVariables = () => dispatch => {
 };
 
 const addVariable = (name, output) => dispatch => {
+    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`addVariable(name: "${name}", output: "${output}")`, 'customvariables')).then(
-        data => {
-            dispatch(updateAddVariable(data.customvariables));
-        }
-    );
+    data => {
+      dispatch(updateAddVariable(data.customvariables));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
 };
 
 const editVariable = (id, name, output) => dispatch => {
+    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`editVariable(id: "${id}",name: "${name}", output: "${output}")`, 'customvariables')).then(
-        data => {
-            dispatch(updateEditVariable(data.customvariables));
-        }
-    );
+    data => {
+      dispatch(updateEditVariable(data.customvariables));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
 };
 
 const removeVariable = (id) => dispatch => {
+    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`removeVariable(id: "${id}")`, 'customvariables')).then(
-        data => {
-            dispatch(updateRemoveVariable(data.customvariables));
-        }
-    );
+    data => {
+      dispatch(updateRemoveVariable(data.customvariables));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
 };
 
 const verifyData = () => (dispatch, getState) => {
@@ -65,4 +75,5 @@ export default {
   removeVariable,
   verifyData,
   updateLoading,
+  updateActionSuccess
 };

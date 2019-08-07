@@ -3,6 +3,7 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   isLoading: true,
+  isActionSuccess: false,
   variables: [],
   id: '',
   name: '',
@@ -29,6 +30,9 @@ const variablesReducer = (state = initialState, action) => {
     }
     case types.UPDATE_LOADING: {
       return { ...state, isLoading: action.isLoading };
+    }
+    case types.UPDATE_ACTIONSUCCESS: {
+      return { ...state, isActionSuccess: action.isActionSuccess };
     }
     default:
       return state;
