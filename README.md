@@ -15,7 +15,7 @@ Paste this into the file:
 ```javascript
 window.env = {
   ...window.env,
-  AUTH_URL: 'https://api-beta.twasi.net/auth?environment=https://api-beta.twasi.net',
+  AUTH_URL: 'https://api-beta.twasi.net/auth?environment=http://localhost:3000',
   GRAPHQL_URL: 'https://api-beta.twasi.net/graphql'
 };
 ```
