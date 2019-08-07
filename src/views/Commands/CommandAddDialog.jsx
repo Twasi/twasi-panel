@@ -70,7 +70,7 @@ class Command extends React.Component {
 
   handleChangeAccessLevel = (event, index) => {
     this.setState({
-      commandAccess: index.props.children,
+      commandAccess: index.key,
       accessLevel: event.target.value
     });
   }
@@ -182,7 +182,7 @@ class Command extends React.Component {
   renderAccessLevels() {
     const { accessLevels } = this.props;
     return accessLevels.map(accessLevel => (
-      <MenuItem value={accessLevel.value}>{accessLevel.name}</MenuItem>
+      <MenuItem key={accessLevel.name} value={accessLevel.value}><FormattedMessage id={"commands.new_command." + accessLevel.name} /></MenuItem>
     ));
   }
 

@@ -109,7 +109,7 @@ class Commands extends Component {
         </TableCell>
         <TableCell>
           <Chip
-            label={command.accessLevel.name}
+            label={<FormattedMessage id={"commands.new_command." + command.accessLevel.name} />}
             color="primary"
           />
         </TableCell>
