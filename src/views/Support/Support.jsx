@@ -162,7 +162,7 @@ class Support extends Component {
           <Tab label={<FormattedMessage id="support.open.tab_title" />} />
           <Tab label={<FormattedMessage id="support.closed.tab_title" />} />
         </Tabs>
-        <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
+        <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px', borderRadius: "0px 0px 4px 4px" }}>
           {this.state.tabValue === 0 &&
           <TabContainer>
             {this.renderSupportTickets(true).length === 0 ? this.renderSupportTicketsEmpty(true) : this.renderSupportTickets(true)}
