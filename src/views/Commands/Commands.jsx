@@ -23,7 +23,7 @@ import CommandAddDialog from './CommandAddDialog';
 import CommandEditDialog from './CommandEditDialog';
 import NotInstalledAlert from '../NotInstalledAlert/NotInstalledAlert.jsx';
 
-import SoonerLater from '../common/resources/SoonerLater.png';
+import JohnTravolta from '../common/resources/johntravolta.gif';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
 
@@ -102,8 +102,8 @@ class Commands extends Component {
         <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
           <img
             style={{ position: 'relative', height: '80px' }}
-            src={SoonerLater}
-            alt="SoonerLater"
+            src={JohnTravolta}
+            alt="JohnTravolta"
           />
           <h3 className="pageContainerTitle">
             <FormattedMessage id="commands.no_command.title" />

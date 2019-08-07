@@ -20,7 +20,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import VariableAddDialog from './VariableAddDialog';
 import VariableEditDialog from './VariableEditDialog';
 
-import SoonerLater from '../common/resources/SoonerLater.png';
+import JohnTravolta from '../common/resources/johntravolta.gif';
 
 import { variablesSelectors, variablesOperations } from '../../state/variables';
 
@@ -82,8 +82,8 @@ class Variables extends Component {
         <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
           <img
             style={{ position: 'relative', height: '80px' }}
-            src={SoonerLater}
-            alt="SoonerLater"
+            src={JohnTravolta}
+            alt="JohnTravolta"
           />
           <h3 className="pageContainerTitle">
             <FormattedMessage id="variables.no_variable.title" />

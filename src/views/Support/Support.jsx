@@ -93,6 +93,10 @@ class Support extends Component {
             <small>
               <FormattedMessage id="support.open.no_tickets.subtitle" />
             </small>
+            <br /><br />
+            <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary">
+              <FormattedMessage id="support.create_new_ticket" />
+            </Button>
           </Typography>
         </div>
       );
