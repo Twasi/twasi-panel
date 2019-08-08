@@ -188,6 +188,7 @@ class Command extends React.Component {
     if (this.props.isActionSuccess) {
       this.props.updateCommands()
     }
+    console.log(this.textInput)
     return (
       <Dialog
         onClose={this.handleClose}
@@ -363,6 +364,7 @@ class Command extends React.Component {
             </CardContent>
           </Card>
           <Button
+            disabled={!this.state.commandName.trim() || !this.state.commandContent.trim()}
             fullWidth
             style={{ borderRadius: '4px', marginTop: '15px' }}
             variant="contained"

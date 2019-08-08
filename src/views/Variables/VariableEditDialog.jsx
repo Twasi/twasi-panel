@@ -112,6 +112,7 @@ class Variable extends React.Component {
             </CardContent>
           </Card>
           <Button
+            disabled={!this.state.variableName.trim() || !this.state.variableOutput.trim()}
             fullWidth
             style={{ borderRadius: '4px', marginTop: '15px' }}
             variant="contained"

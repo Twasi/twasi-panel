@@ -97,7 +97,6 @@ class Overview extends Component {
     let chatterschart;
 
     if (streamtracker.topChatters !== undefined) {
-      console.log(streamtracker)
       if (streamtracker.topChatters.length !== 0) {
         chatterschart = <ChattersChart />;
       } else {

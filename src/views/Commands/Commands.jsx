@@ -119,9 +119,6 @@ class Commands extends Component {
 
   renderCommands() {
     const { commands } = this.props;
-    if (this.props.isActionSuccess) {
-      this.props.updateCommands()
-    }
     return commands.map(command => (
       <TableRow>
         <TableCell>
@@ -183,6 +180,9 @@ class Commands extends Component {
 
   render() {
     const { disabled } = this.props;
+    if (this.props.isActionSuccess) {
+      this.props.updateCommands()
+    }
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">

@@ -100,7 +100,7 @@ class Variable extends React.Component {
                 inputRef={this.textInput}
                 value={this.state.variableName}
                 onChange={this.handleVariableNameChange}
-                placeholder="Beispiel: $teamspeak"
+                placeholder="Beispiel: teamspeak"
                 helperText="Das ist deine Variable. Du kannst Variablen in jeden deiner Befehle einbinden."
                 margin="normal"
                 variant="outlined"
@@ -127,6 +127,7 @@ class Variable extends React.Component {
             </CardContent>
           </Card>
           <Button
+            disabled={!this.state.variableName.trim() || !this.state.variableOutput.trim()}
             fullWidth
             style={{ borderRadius: '4px', marginTop: '15px' }}
             variant="contained"
