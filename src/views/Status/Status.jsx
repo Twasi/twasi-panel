@@ -12,7 +12,6 @@ import Link from '@material-ui/core/Link';
 import { statusSelectors, statusOperations } from '../../state/status';
 
 import StatusInfo from './StatusInfo';
-import EventLog from './EventLog';
 
 class Status extends Component {
 
@@ -45,8 +44,6 @@ class Status extends Component {
             </Grid>
           </Grid>
           <StatusInfo />
-          <br />
-          <EventLog />
         </Paper>
       </div>
     );

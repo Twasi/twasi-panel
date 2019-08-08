@@ -182,6 +182,10 @@ export default {
   'profile.social_disconnect': 'Disconnect',
   'profile.social_permissions': 'Permissions',
   'profile.social_notconnected': 'Not connected',
+  'profile.own_bot.title': 'Own Bot Account',
+  'profile.own_bot.subtitle': 'Here you can connect your own bot account with Twasi.',
+  'profile.own_bot.connect': 'Connect account',
+  'profile.own_bot.disconnect': 'Disconnect account',
 
   // Commands
   'commands.title': 'Your Commands',

@@ -256,8 +256,8 @@ class Overview extends Component {
             textColor="primary"
           >
             <Tab label="Letzter Stream" />
-            <Tab disabled label="Letzten 30 Tage" />
-            <Tab disabled label="Gesamt" />
+            <Tab disabled label="" />
+            <Tab disabled label="" />
           </Tabs>
         </Paper>
         }
@@ -361,7 +361,7 @@ class Overview extends Component {
           </div>
           } {noStreamData && !isLoading &&
           <div>
-            <Paper className="pageContainer" style={{ marginTop: '0px' }}>
+            <Paper className="pageContainer" style={{ marginTop: '-22px' }}>
               <div>
                 <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img

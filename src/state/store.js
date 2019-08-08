@@ -15,6 +15,7 @@ import impersonate from './impersonate';
 import utilities from './utilities';
 import support from './support';
 import spotify from './integrations/spotify';
+import twitch from './integrations/twitch';
 
 import {initialState as i18nInitialState} from './i18n/reducers';
 
@@ -39,7 +40,8 @@ const configureStore = (translations = {}) => {
         impersonate,
         utilities,
         support,
-        spotify
+        spotify,
+        twitch
     };
 
     const initialState = {

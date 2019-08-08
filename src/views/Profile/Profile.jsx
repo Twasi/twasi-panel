@@ -37,6 +37,7 @@ import gc18_badge from '../common/resources/gamescom_badge_blue18.svg';
 
 import { authSelectors, authOperations } from '../../state/auth';
 import { spotifySelectors, spotifyOperations } from '../../state/integrations/spotify';
+import { twitchSelectors, twitchOperations } from '../../state/integrations/twitch';
 import './_style.css';
 
 import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
@@ -45,8 +46,11 @@ class Profile extends Component {
 
   componentDidMount() {
     const { updateSpotifyAccount, updateSpotifyAuthUri } = this.props;
+    const { updateTwitchAccount, updateTwitchAuthUri } = this.props;
     updateSpotifyAccount();
     updateSpotifyAuthUri();
+    updateTwitchAccount();
+    updateTwitchAuthUri();
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -60,7 +64,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { spotify, updateSpotifyDisconnect, user, jwt } = this.props;
+    const { spotify, updateSpotifyDisconnect, updateSpotifyAccount, twitch, updateTwitchDisconnect, updateTwitchAccount, user, jwt } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -385,12 +389,11 @@ class Profile extends Component {
                     <Button
                       onClick={() => { this.handleAuthentication(spotify.spotifyUri + "?environment=" + window.location + "&jwt=" + jwt) }}
                       fullWidth
-                      disabled={spotify.spotify != null}
+                      disabled={spotify.spotify !== null}
                       variant="contained"
                       style={{ boxShadow: 'none' }}>
                       <small>
-                        {spotify.spotify == null && "Spotify"}
-                        {spotify.spotify != null && spotify.spotify.userName}
+                        {spotify.spotify === null ? "Spotify" : spotify.spotify.userName}
                       </small>
                       <span
                         style={{
@@ -411,19 +414,24 @@ class Profile extends Component {
                     </Button>
                   </Col>
                   <Col sm={6}>
-                    {spotify.spotify == null &&
-                      <div style={{ marginTop: '3px' }}>
+                    {spotify.spotify === null &&
+                      <div style={{ float: 'left', marginTop: '3px' }}>
                           <small>
                             <FormattedMessage id="profile.social_notconnected" />
                           </small>
                       </div>
-                    } {spotify.spotify != null &&
-                      <div>
+                    } {spotify.spotify !== null &&
+                      <div style={{ float: 'left' }}>
                         <Button color="primary" size="small">
                           <FormattedMessage id="profile.social_permissions" />
                         </Button>
                         <Button
-                          onClick={() => { updateSpotifyDisconnect(); window.location.reload(); }}
+                          onClick={() => {
+                            updateSpotifyDisconnect();
+                            setTimeout(function() {
+                                updateSpotifyAccount();
+                            }.bind(this), 500)
+                          }}
                           color="secondary"
                           size="small">
                           <FormattedMessage id="profile.social_disconnect" />
@@ -437,22 +445,40 @@ class Profile extends Component {
             <Paper className="pageContainer">
               <Typography>
                 <h4 className="pageContainerTitle">
-                  Eigener Bot-Account
+                  <FormattedMessage id="profile.own_bot.title" />
                 </h4>
                 <small>
-                  Hier kannst du einen eigenen Bot-Account mit Twasi verbinden.
+                  <FormattedMessage id="profile.own_bot.subtitle" />
                 </small>
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent">
                   <Grid container spacing={0}>
                     <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <Typography>Twasibot</Typography>
+                      <Typography>
+                        {twitch.twitch === null ? "Twasibot" : twitch.twitch.userName}
+                      </Typography>
                     </Grid>
                     <Grid item md={6} style={{ textAlign: 'center' }}>
-                      <Button disabled variant="contained" color="primary">
-                        Account verbinden
-                      </Button>
+                      {twitch.twitch === null &&
+                        <Button
+                          onClick={() => { this.handleAuthentication(twitch.twitchUri + "?environment=" + window.location + "&jwt=" + jwt) }}
+                          variant="contained"
+                          color="primary">
+                          <FormattedMessage id="profile.own_bot.connect" />
+                        </Button>}
+                      {twitch.twitch !== null &&
+                        <Button
+                          onClick={() => {
+                            updateTwitchDisconnect();
+                            setTimeout(function() {
+                                updateTwitchAccount();
+                            }.bind(this), 500)
+                          }}
+                          variant="contained"
+                          color="secondary">
+                          <FormattedMessage id="profile.own_bot.disconnect" />
+                        </Button>}
                     </Grid>
                   </Grid>
                 </CardContent>
@@ -478,7 +504,10 @@ const mapDispatchToProps = dispatch => ({
   updateUser: () => dispatch(authOperations.updateUser()),
   updateSpotifyAccount: () => dispatch(spotifyOperations.loadSpotifyAccount()),
   updateSpotifyAuthUri: () => dispatch(spotifyOperations.loadSpotifyAuthUri()),
-  updateSpotifyDisconnect: () => dispatch(spotifyOperations.loadSpotifyDisconnect())
+  updateSpotifyDisconnect: () => dispatch(spotifyOperations.loadSpotifyDisconnect()),
+  updateTwitchAccount: () => dispatch(twitchOperations.loadTwitchAccount()),
+  updateTwitchAuthUri: () => dispatch(twitchOperations.loadTwitchAuthUri()),
+  updateTwitchDisconnect: () => dispatch(twitchOperations.loadTwitchDisconnect())
 });
 
 const mapStateToProps = state => ({
@@ -487,6 +516,9 @@ const mapStateToProps = state => ({
   spotify: spotifySelectors.getSpotifyAccount(state),
   spotifyUri: spotifySelectors.getSpotifyAuthUri(state),
   spotifyDisconnect: spotifySelectors.getSpotifyDisconnect(state),
+  twitch: twitchSelectors.getTwitchAccount(state),
+  twitchUri: twitchSelectors.getTwitchAuthUri(state),
+  twitchDisconnect: twitchSelectors.getTwitchDisconnect(state),
   jwt: authSelectors.getJwt(state)
 });
 
