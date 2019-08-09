@@ -430,7 +430,7 @@ class Profile extends Component {
                             updateSpotifyDisconnect();
                             setTimeout(function() {
                                 updateSpotifyAccount();
-                            }.bind(this), 500)
+                            }, 500)
                           }}
                           color="secondary"
                           size="small">
@@ -473,7 +473,7 @@ class Profile extends Component {
                             updateTwitchDisconnect();
                             setTimeout(function() {
                                 updateTwitchAccount();
-                            }.bind(this), 500)
+                            }, 500)
                           }}
                           variant="contained"
                           color="secondary">

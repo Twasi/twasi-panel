@@ -144,6 +144,7 @@ export default {
   'plugins.uninstall': 'Deinstallieren',
   'plugins.show': 'Öffnen',
   'plugins.by': 'von',
+  'plugins.installations': 'Installationen',
   'plugins.documentation.headline': 'Dokumentation für das Plugin: ',
   'plugins.documentation.subheadline': 'Falls du einen Fehler in der Dokumentation finden solltest, kannst du diesen über den Feedback Knopf melden.',
 

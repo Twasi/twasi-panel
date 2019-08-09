@@ -142,6 +142,7 @@ export default {
   'plugins.uninstall': 'Uninstall',
   'plugins.show': 'Open',
   'plugins.by': 'by',
+  'plugins.installations': 'Installations',
   'plugins.documentation.headline': 'Documentation for the Plugin: ',
   'plugins.documentation.subheadline': 'If you should find a Mistake in the Documentation, please use the Feedback Function to submit the Mistake.',
 
