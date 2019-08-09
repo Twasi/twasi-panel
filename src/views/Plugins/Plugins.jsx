@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
+import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -47,25 +48,45 @@ class Plugins extends Component {
 
     const renderedPluginsNew = plugins.map(plugin => (
       <Grid item xs={4}>
-        <Card className="pluginCard">
+        <Card className="pluginCard" style={{ borderRadius: "15px" }}>
+          <CardMedia
+            component="img"
+            alt="Contemplative Reptile"
+            height="140"
+            image="https://pbs.twimg.com/profile_banners/748146740247801856/1564372910/1500x500"
+            title="Contemplative Reptile"
+          />
           <CardContent className="pluginCardContent" style={{ padding: '16px' }}>
-            <Grid container spacing={0}>
-              <Grid item style={{ textAlign: "center", marginBottom: "25px", height: "200px" }} xs={12}>
-                <Typography>
-                  <h1 style={{ marginBottom: "0px" }}>{plugin.name}</h1>
-                  <h4 style={{ marginTop: "0px", marginBottom: "15px" }}><small><FormattedMessage id="plugins.by" /></small> {plugin.author}</h4>
+            <div style={{ height: "200px" }}>
+              <Typography>
+                <h2 style={{ margin: "0px" }}>
+                  {plugin.name}
+                </h2>
+                <h5 style={{ marginTop: "0px", marginBottom: "15px" }}>
+                  <small>
+                    <FormattedMessage id="plugins.by" />
+                  </small> {plugin.author}
+                </h5>
+                <div style={{ position: "relative", bottom: "0" }}>
+                  <h4 style={{ margin: "0px" }}>
+                    <FormattedMessage id="plugins.short_description" />
+                  </h4>
                   <small>
                     {plugin.description}
                   </small>
-                </Typography>
-              </Grid>
-              <Grid item style={{ textAlign: "center", marginBottom: "25px" }} xs={12}>
-                <Typography>
-                  <h4 style={{ margin: "0px" }}><FormattedMessage id="plugins.commands" /></h4>
-                  <small>{plugin.commands.join(', ')}</small>
-                </Typography>
-              </Grid>
-            </Grid>
+                  <br />
+                </div>
+              </Typography>
+            </div>
+            <Typography>
+              <h4 style={{ margin: "0px" }}>
+                <FormattedMessage id="plugins.commands" />
+              </h4>
+              <small>
+                {plugin.commands.join(', ')}
+              </small>
+            </Typography>
+            <br />
             <Divider />
             <br />
             <Grid container spacing={0}>

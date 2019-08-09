@@ -28,7 +28,6 @@ body {
 .pageContainer {
   padding: 23px;
   margin-top: 23px;
-  box-shadow: none !important;
 }
 .pageContainerTitle {
   margin-top: 0px;
