@@ -47,7 +47,7 @@ class Plugins extends Component {
     const { plugins, installPlugin, uninstallPlugin } = this.props;
 
     const renderedPluginsNew = plugins.map(plugin => (
-      <Grid item xs={4}>
+      <Grid item sm={6} md={4}>
         <Card className="pluginCard" style={{ borderRadius: "15px" }}>
           <CardMedia
             component="img"
