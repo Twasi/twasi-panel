@@ -100,7 +100,7 @@ class Plugins extends Component {
               </Grid>
               <Grid style={{ textAlign: "center" }} item xs={6}>
                 <Typography>
-                  <h4 style={{ margin: "0px" }}>512</h4>
+                  <h4 style={{ margin: "0px" }}>{plugin.installations}</h4>
                   <small><FormattedMessage id="plugins.installations" /></small>
                 </Typography>
               </Grid>
