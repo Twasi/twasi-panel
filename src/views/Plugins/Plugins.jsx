@@ -67,6 +67,8 @@ class Plugins extends Component {
                     <FormattedMessage id="plugins.by" />
                   </small> {plugin.author}
                 </h5>
+                <Divider />
+                <br />
                 <div style={{ position: "relative", bottom: "0" }}>
                   <h4 style={{ margin: "0px" }}>
                     <FormattedMessage id="plugins.short_description" />
