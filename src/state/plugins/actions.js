@@ -32,11 +32,17 @@ const updateQuery = query => ({
   query
 });
 
+const updateActionSuccess = isActionSuccess => ({
+  type: types.UPDATE_ACTIONSUCCESS,
+  isActionSuccess
+});
+
 export default {
   updateLoaded,
   updateLoading,
   updatePlugins,
   setInstalled,
   updateQuery,
-  updateActionInProgress
+  updateActionInProgress,
+  updateActionSuccess
 };

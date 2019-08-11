@@ -3,6 +3,7 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   isLoading: true,
+  isActionSuccess: false,
   plugins: [],
   filter: {
     query: ''
@@ -68,6 +69,10 @@ const pluginsReducer = (state = initialState, action) => {
         ...state,
         plugins: newPlugins
       };
+    }
+
+    case types.UPDATE_ACTIONSUCCESS: {
+      return { ...state, isActionSuccess: action.isActionSuccess };
     }
 
     default:

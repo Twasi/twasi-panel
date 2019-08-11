@@ -44,8 +44,10 @@ class Plugins extends Component {
   }
 
   render() {
-    const { plugins, installPlugin, uninstallPlugin } = this.props;
-
+    const { plugins, installPlugin, uninstallPlugin, updatePlugins, isActionSuccess } = this.props;
+    if (isActionSuccess) {
+      updatePlugins()
+    }
     const renderedPluginsNew = plugins.map(plugin => (
       <Grid item sm={6} md={4}>
         <Card className="pluginCard" style={{ borderRadius: "15px" }}>
@@ -207,14 +209,16 @@ Plugins.propTypes = {
 
 const mapStateToProps = state => ({
   plugins: pluginsSelectors.getPlugins(state),
-  isLoading: pluginsSelectors.isLoading(state)
+  isLoading: pluginsSelectors.isLoading(state),
+  isActionSuccess: pluginsSelectors.isActionSuccess(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(pluginsOperations.verifyData()),
   installPlugin: name => dispatch(pluginsOperations.installPlugin(name)),
   uninstallPlugin: name => dispatch(pluginsOperations.uninstallPlugin(name)),
-  updateQuery: query => dispatch(pluginsOperations.updateQuery(query))
+  updateQuery: query => dispatch(pluginsOperations.updateQuery(query)),
+  updatePlugins: () => dispatch(pluginsOperations.loadData())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plugins);

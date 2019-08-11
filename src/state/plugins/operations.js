@@ -8,7 +8,8 @@ const {
   updatePlugins,
   setInstalled,
   updateLoading,
-  updateActionInProgress
+  updateActionInProgress,
+  updateActionSuccess
 } = actions;
 
 const loadData = () => dispatch => {
@@ -37,6 +38,7 @@ const verifyData = () => (dispatch, getState) => {
 
 const installPlugin = id => dispatch => {
   dispatch(updateActionInProgress(id, true));
+  dispatch(updateActionSuccess(false));
   sleep(getRndInteger(500, 1000)).then(() => {
 
     dispatch(getGraph(`user { installPlugin(name:"${id}") { isInstalled } }`)).then(data => {
@@ -44,12 +46,16 @@ const installPlugin = id => dispatch => {
         setInstalled(id, data.user.installPlugin.isInstalled)
       );
       dispatch(updateActionInProgress(id, false));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
     });
   });
 };
 
 const uninstallPlugin = id => dispatch => {
   dispatch(updateActionInProgress(id, true));
+  dispatch(updateActionSuccess(false));
   sleep(getRndInteger(500, 1000)).then(() => {
 
     dispatch(getGraph(`user { uninstallPlugin(name:"${id}") { isInstalled } }`)).then(data => {
@@ -57,6 +63,9 @@ const uninstallPlugin = id => dispatch => {
         setInstalled(id, data.user.uninstallPlugin.isInstalled)
       );
       dispatch(updateActionInProgress(id, false));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
     });
   });
 };
@@ -87,5 +96,6 @@ export default {
   updatePlugins,
   installPlugin,
   uninstallPlugin,
-  updateQuery
+  updateQuery,
+  updateActionSuccess
 };
