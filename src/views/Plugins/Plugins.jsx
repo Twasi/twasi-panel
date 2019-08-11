@@ -13,11 +13,15 @@ import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
 import Documentation from './Documentation';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
+
+import StickerDesign from '../common/resources/sticker_design.png';
+import GlitchBanner from '../common/resources/twasi_glitch_banner.png';
 
 class Plugins extends Component {
   componentDidMount() {
@@ -53,10 +57,10 @@ class Plugins extends Component {
         <Card className="pluginCard" style={{ borderRadius: "15px" }}>
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
-            height="140"
-            image="https://pbs.twimg.com/profile_banners/748146740247801856/1564372910/1500x500"
-            title="Contemplative Reptile"
+            alt="Twasi Sticker Design"
+            height="115"
+            image={plugin.author === "Twasi Team" ? StickerDesign : GlitchBanner}
+            title="Twasi Sticker Design"
           />
           <CardContent className="pluginCardContent" style={{ padding: '16px' }}>
             <div style={{ height: "200px" }}>
@@ -178,6 +182,12 @@ class Plugins extends Component {
               <Typography>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="plugins.card_headline" />
+                  <span style={{ float: 'right' }}>
+                    <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={() => {this.props.updatePlugins()}}>
+                      <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                      <FormattedMessage id="common.refresh" />
+                    </Button>
+                  </span>
                 </h4>
                 <small>
                   <FormattedMessage id="plugins.explanation" />

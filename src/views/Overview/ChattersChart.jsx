@@ -6,6 +6,7 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
+import { authSelectors } from '../../state/auth';
 
 import crown from '../common/resources/crown.svg';
 
@@ -44,7 +45,7 @@ class ChattersChart extends Component {
     chattersdata.forEach(entry => {
       count++;
       if(count<30) {
-        if (entry.displayName.toLowerCase() === 'blechkelle' || entry.displayName.toLowerCase() === 'diesermerlin' || entry.displayName.toLowerCase() === 'larcce' || entry.displayName.toLowerCase() === 'tom_meka') {
+        if (this.props.rank === "TEAM") {
           data.push({
             displayName: entry.displayName,
             messages: entry.messages,
@@ -122,7 +123,8 @@ ChattersChart.propTypes = {
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),
   isLoaded: streamtrackerSelectors.isLoaded(state),
-  disabled: streamtrackerSelectors.isDisabled(state)
+  disabled: streamtrackerSelectors.isDisabled(state),
+  rank: authSelectors.getUser(state).rank
 });
 
 const mapDispatchToProps = dispatch => ({
