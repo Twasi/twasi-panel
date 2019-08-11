@@ -15,7 +15,7 @@ export default {
   'setup.step.done': 'Done',
   'setup.button.back': 'Back',
   'setup.button.next': 'Next',
-  'setup.button.panel': 'Go to Panel',
+  'setup.button.panel': 'Go to panel',
   'setup.step.closed_beta.key_invalid': 'This Key is invalid.',
   'setup.step.closed_beta.accept_tos': 'You have to accept the Terms of Service.',
 
@@ -51,7 +51,7 @@ export default {
 
   // Sidebar
   'sidebar.overview': 'Overview',
-  'sidebar.status': 'Bot Status',
+  'sidebar.status': 'Bot status',
   'sidebar.settings': 'Settings',
   'sidebar.profile': 'Profile',
   'sidebar.mods': 'Moderators',
@@ -86,7 +86,7 @@ export default {
   'overview.laststream.subtitle': 'Here you can find statistics about your latest stream.',
   'overview.table_id': 'Stream ID',
   'overview.table_duration': 'Duration',
-  'overview.table_chatmessages': 'Chatmessages',
+  'overview.table_chatmessages': 'Chat messages',
   'overview.table_commands_used': 'Commands used',
   'overview.table_follower': 'Follower +',
   'overview.table_views': 'Views +',
@@ -95,7 +95,7 @@ export default {
   'overview.table_individual': 'Individual chatters',
   'overview.title': 'Title',
   'overview.game': 'Game / Category',
-  'overview.viewercourse': 'Streamcourse',
+  'overview.viewercourse': 'Stream course',
   'overview.viewercourse.subtitle': 'Here you can see the course of your current / last stream.',
   'overview.used_commands': 'Used commands',
   'overview.used_commands.subtitle': 'Amount of used commands',
@@ -224,7 +224,7 @@ export default {
   'commands.cooldown.minute': 'Minute',
   'commands.cooldown.minutes': 'Minutes',
   'commands.cooldown.hour': 'Hour',
-  'commands.no_command.title': 'You dont have any commands.',
+  'commands.no_command.title': "You don't have any commands.",
   'commands.no_command.subtitle': 'Use commands to get instant access to informations you need.',
 
   // Variables
@@ -349,7 +349,7 @@ export default {
   'support.headline': 'Your support tickets',
   'support.subheadline': 'If you have questions or want to give feedback, you can do it here.',
   'support.open.tab_title': 'Open tickets',
-  'support.open.no_tickets.title': 'We could not find any open tickets.',
+  'support.open.no_tickets.title': "We couldn't find any open tickets.",
   'support.open.no_tickets.subtitle': 'Either you have not opened a ticket yet, or we already answered all your tickets.\nIn this case look under "Closed tickets".',
   'support.closed.tab_title': 'Closed tickets',
   'support.closed.no_tickets.title': 'We could not find any closed tickets.',
