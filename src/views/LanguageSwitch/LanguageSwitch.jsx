@@ -43,7 +43,7 @@ class LanguageSwitch extends React.Component {
   };
 
   render() {
-    const { classes, onClose, selectedValue, ...other } = this.props;
+    const { classes, onClose, selectedValue, updateLanguage, ...other } = this.props;
 
     return (
       <Dialog
@@ -51,7 +51,7 @@ class LanguageSwitch extends React.Component {
         {...other}
       >
         <DialogContent>
-          <Typography>
+          <Typography component={'span'}>
             <h4 className="pageContainerTitle">
               <FormattedMessage id="languageswitch.title" />
             </h4>
@@ -67,10 +67,10 @@ class LanguageSwitch extends React.Component {
                   <ListItem
                     button
                     onClick={() => this.handleListItemClick(language)}
-                    key={language}
+                    key={language.key}
                   >
                     <ListItemAvatar>
-                      <Avatar src={language.avatar} className={this.props.selectedValue === language.key && 'selectedLanguage'}>
+                      <Avatar src={language.avatar} className={this.props.selectedValue === language.key ? 'selectedLanguage' : ''}>
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={language.name} />

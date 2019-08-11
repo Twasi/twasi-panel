@@ -47,7 +47,7 @@ class AccountSwitch extends React.Component {
   };
 
   render() {
-    const { classes, userName, avatar, rank, onClose, selectedValue, ...other } = this.props;
+    const { classes, userName, avatar, rank, onClose, selectedValue, resetImpersonation, impersonate, ...other } = this.props;
 
     let adminAccess = false;
 
@@ -61,7 +61,7 @@ class AccountSwitch extends React.Component {
         {...other}
       >
         <DialogContent>
-          <Typography>
+          <Typography component={'span'}>
             <h4 className="pageContainerTitle">
               <FormattedMessage id="accountswitch.switch_account" />
             </h4>

@@ -100,14 +100,14 @@ class ThemeSwitch extends React.Component {
   };
 
   render() {
-    const { classes, onClose, selectedValue, selectedBannerAsHeaderValue, ...other } = this.props;
+    const { classes, onClose, selectedValue, selectedBannerAsHeaderValue, updateTheme, updateBannerAsHeader, ...other } = this.props;
     return (
       <Dialog
         onClose={this.handleClose}
         {...other}
       >
         <DialogContent>
-          <Typography>
+          <Typography component={'span'}>
             <h4 className="pageContainerTitle">
               <FormattedMessage id="themeswitch.switch_theme" />
             </h4>
@@ -137,7 +137,7 @@ class ThemeSwitch extends React.Component {
                   <ListItem
                     button
                     onClick={() => this.handleListItemClick(theme)}
-                    key={theme}
+                    key={theme.key}
                     disabled={theme.disabled}
                   >
                     <ListItemAvatar>
@@ -147,19 +147,19 @@ class ThemeSwitch extends React.Component {
                     </ListItemAvatar>
                     <ListItemText primary={theme.name} />
                     <Tooltip title={<FormattedMessage id="themeswitch.background_color" />} placement="top">
-                      <Badge style={{ backgroundColor: theme.backgroundColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.backgroundColor }} />
                     </Tooltip>
                     <Tooltip title={<FormattedMessage id="themeswitch.content_color" />} placement="top">
-                      <Badge style={{ backgroundColor: theme.paperColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.paperColor }} />
                     </Tooltip>
                     <Tooltip title={<FormattedMessage id="themeswitch.special_color" />} placement="top">
-                      <Badge style={{ backgroundColor: theme.cardColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.cardColor }} />
                     </Tooltip>
                     <Tooltip title={<FormattedMessage id="themeswitch.primary_color" />} placement="top">
-                      <Badge style={{ backgroundColor: theme.primaryColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.primaryColor }} />
                     </Tooltip>
                     <Tooltip title={<FormattedMessage id="themeswitch.secondary_color" />} placement="top">
-                      <Badge style={{ backgroundColor: theme.secondaryColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.secondaryColor }} />
                     </Tooltip>
                   </ListItem>
                 ))}
@@ -175,8 +175,7 @@ class ThemeSwitch extends React.Component {
 ThemeSwitch.propTypes = {
   onClose: PropTypes.func,
   selectedValue: PropTypes.string,
-  classes: PropTypes.string,
-  updateTheme: PropTypes.func.isRequired
+  classes: PropTypes.string
 };
 
 const ThemeSwitchWrapped = (ThemeSwitch);

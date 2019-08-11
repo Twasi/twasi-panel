@@ -21,7 +21,7 @@ const impersonateUser = userName => (dispatch, getState) => {
       getRawGraph(`query{panel(token:"${data.admin.impersonate}"){user{id,banner,twitchAccount{twitchid,name,avatar,email}}}}`, data.admin.impersonate).then(newData => {
         dispatch(authOperations.updateUserData(newData.data.panel.user));
         getRawGraph(`query{setup(token:"${data.admin.impersonate}"){isSetUp}}`).then(setupData => {
-          console.log(setupData)
+          //console.log(setupData)
           if (setupData.data.setup !== null) {
             dispatch(authOperations.updateIsSetUp(setupData.data.setup.isSetUp));
           }

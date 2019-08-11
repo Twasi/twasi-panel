@@ -85,11 +85,6 @@ export default createMuiTheme({
       fab: {
         borderRadius: '0px'
       },
-      mini: {
-        minHeight: '32px',
-        height: '32px',
-        width: '32px'
-      },
       containedPrimary: {
         boxShadow: 'none',
         borderWidth: '2px',
@@ -147,9 +142,11 @@ export default createMuiTheme({
       }
     },
     MuiToggleButtonGroup: {
-      selected: {
-        backgroundColor: 'transparent',
-        boxShadow: 'none'
+      root: {
+        "&$selected": {
+          backgroundColor: "transparent",
+          boxShadow: "none"
+        }
       }
     },
     MuiToggleButton: {

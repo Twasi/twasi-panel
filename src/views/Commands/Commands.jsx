@@ -120,7 +120,7 @@ class Commands extends Component {
   renderCommands() {
     const { commands } = this.props;
     return commands.map(command => (
-      <TableRow>
+      <TableRow key={command.id}>
         <TableCell>
           <b>{command.name}</b>
         </TableCell>
@@ -193,7 +193,7 @@ class Commands extends Component {
         </Breadcrumbs>
         {!disabled &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-          <Typography>
+          <Typography component={'span'}>
             <h4 className="pageContainerTitle">
               <FormattedMessage id="commands.title" />
               <span style={{ float: 'right' }}>

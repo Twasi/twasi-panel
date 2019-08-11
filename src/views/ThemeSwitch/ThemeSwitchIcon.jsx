@@ -9,7 +9,7 @@ class ThemeSwitchIcon extends React.Component {
     super(props);
 
     this.state = {
-      open: false
+      modalOpen: false
     };
   }
 
