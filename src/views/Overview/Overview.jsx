@@ -363,7 +363,7 @@ class Overview extends Component {
           <div>
             <Paper className="pageContainer" style={{ marginTop: '-22px' }}>
               <div>
-                <Typography component={'span'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+                <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img
                     style={{ position: 'relative', height: '80px' }}
                     src={SeriousSloth}
