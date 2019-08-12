@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -28,9 +29,9 @@ function TabContainer(props) {
 }
 
 let id = 0;
-function createData(place, name, points, viewtime) {
+function createData(place, name, viewtime) {
   id += 1;
-  return { id, place, name, points, viewtime };
+  return { id, place, name, viewtime };
 }
 
 function generateStringColor(string) {
@@ -51,11 +52,11 @@ function hashCode(str) {
 }
 
 const rows = [
-  createData(1, 'Blechkelle', 512, '24h 31m'),
-  createData(2, 'mekalix', 128, '20h 15m'),
-  createData(3, 'DieserMerlin', 64, '19h 10m'),
-  createData(4, 'Larcce', 32, '15h 5m'),
-  createData(5, 'Spendendose', 16, '10h 1m')
+  createData(1, 'Blechkelle', '24h 31m'),
+  createData(2, 'mekalix', '20h 15m'),
+  createData(3, 'DieserMerlin', '19h 10m'),
+  createData(4, 'Larcce', '15h 5m'),
+  createData(5, 'Spendendose', '10h 1m')
 ];
 
 class Public extends React.Component {
@@ -89,26 +90,31 @@ class Public extends React.Component {
             <Table>
               <TableHead>
                 <TableRow className="TableRow">
-                  <TableCell>Befehl</TableCell>
-                  <TableCell>Ausgabe</TableCell>
-                  <TableCell>Zugriffslevel</TableCell>
+                  <TableCell><FormattedMessage id="commands.table.command" /></TableCell>
+                  <TableCell><FormattedMessage id="commands.table.output" /></TableCell>
+                  <TableCell><FormattedMessage id="commands.table.access" /></TableCell>
+                  <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.uses" /></TableCell>
+                  <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.cooldown" /></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 <TableRow>
                   <TableCell>
-                    <Typography>
-                      !twasi
-                    </Typography>
+                    <b>!twasi</b>
+                  </TableCell>
+                  <TableCell
+                    style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
+                  >
+                    Twasi ist cool.
                   </TableCell>
                   <TableCell>
-                    <Typography>
-                      Twasi ist ein für Streamer entwickelter, modularer Chatbot. Twasi ist der erste gehostete Chatbot für Twitch, der selbst geschriebene Plugins unterstützt.
-                    </Typography>
+                    <Chip
+                      label={<FormattedMessage id={"commands.new_command.VIEWER"} />}
+                      color="primary"
+                    />
                   </TableCell>
-                  <TableCell>
-                    <Chip label="Moderatoren" color="primary" />
-                  </TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>1337</TableCell>
+                  <TableCell style={{ textAlign: 'center' }}>5 Minuten</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -116,75 +122,54 @@ class Public extends React.Component {
         </TabContainer>}
         {value === 1 && <TabContainer></TabContainer>}
         {value === 2 && <TabContainer>
-          <Grid container spacing={24}>
-            <Grid item xs={12} sm={3}>
-              <Paper className="pageContainer">
-                <Chip
-                  color="primary"
-                  avatar={<Avatar>5</Avatar>}
-                  label="Punkte jede Minute"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={9}>
-              <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', marginBottom: '15px' }}>
-                <Table>
-                  <TableHead>
-                    <TableRow className="TableRow">
-                      <TableCell>Platzierung</TableCell>
-                      <TableCell>Name</TableCell>
-                      <TableCell>Punkte</TableCell>
-                      <TableCell>Zugeschaute Zeit</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.map(row => (
-                      <TableRow key={row.id}>
-                        <TableCell>
-                          {(() => {
-                            switch (row.place) {
-                              case 1: return ( <div className="rank_trophy">
-                                <img
-                                  style={{ height: '32px' }}
-                                  src={first_place}
-                                  alt="first_place"
-                                />
-                              </div>);
-                              case 2: return ( <img
-                                className="rank_trophy_two"
-                                style={{ height: '32px' }}
-                                src={second_place}
-                                alt="second_place"
-                              />);
-                              case 3: return ( <img
-                                className="rank_trophy_three"
-                                style={{ height: '32px' }}
-                                src={third_place}
-                                alt="third_place"
-                              />);
-                              default: return ( <Chip
-                                label={row.place}
-                                color="primary"
-                              />);
-                            }
-                          })()}
-                        </TableCell>
-                        <TableCell style={{ color: `#${generateStringColor(row.name)}` }}><b>{row.name}</b></TableCell>
-                        <TableCell>
-                          <Chip
-                            style={{ height: '21px' }}
-                            label={row.points}
+          <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', marginBottom: '15px' }}>
+            <Table>
+              <TableHead>
+                <TableRow className="TableRow">
+                  <TableCell>Platzierung</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell style={{ textAlign: 'right' }}>Zugeschaute Zeit</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map(row => (
+                  <TableRow key={row.id}>
+                    <TableCell>
+                      {(() => {
+                        switch (row.place) {
+                          case 1: return ( <div className="rank_trophy">
+                            <img
+                              style={{ height: '32px' }}
+                              src={first_place}
+                              alt="first_place"
+                            />
+                          </div>);
+                          case 2: return ( <img
+                            className="rank_trophy_two"
+                            style={{ height: '32px' }}
+                            src={second_place}
+                            alt="second_place"
+                          />);
+                          case 3: return ( <img
+                            className="rank_trophy_three"
+                            style={{ height: '32px' }}
+                            src={third_place}
+                            alt="third_place"
+                          />);
+                          default: return ( <Chip
+                            label={row.place}
                             color="primary"
-                          />
-                        </TableCell>
-                        <TableCell>{row.viewtime}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Paper>
-            </Grid>
-          </Grid>
+                          />);
+                        }
+                      })()}
+                    </TableCell>
+                    <TableCell><b>{row.name}</b></TableCell>
+                    <TableCell style={{ textAlign: 'right' }}><Chip color="primary" label={row.viewtime}></Chip></TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
         </TabContainer>}
       </RequireAuth>
     );
