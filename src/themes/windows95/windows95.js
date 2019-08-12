@@ -85,6 +85,11 @@ export default createMuiTheme({
       fab: {
         borderRadius: '0px'
       },
+      mini: {
+        minHeight: '32px',
+        height: '32px',
+        width: '32px'
+      },
       containedPrimary: {
         boxShadow: 'none',
         borderWidth: '2px',
@@ -142,11 +147,9 @@ export default createMuiTheme({
       }
     },
     MuiToggleButtonGroup: {
-      root: {
-        "&$selected": {
-          backgroundColor: "transparent",
-          boxShadow: "none"
-        }
+      selected: {
+        backgroundColor: 'transparent',
+        boxShadow: 'none'
       }
     },
     MuiToggleButton: {
@@ -250,6 +253,11 @@ export default createMuiTheme({
         color: '#000000',
         textTransform: 'none'
       },
+      textColorPrimary: {
+        '&$selected': {
+          color: '#000000'
+        },
+      }
     },
     MuiChip: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule

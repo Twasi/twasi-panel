@@ -96,8 +96,8 @@ class StatsList extends Component {
             </TooltipM>
             */}
           </ListItem>
-          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-            <CardContent style={{ padding: '0px' }}>
+          <Card className="statslistCard pluginCard noshadow">
+            <CardContent style={{ padding: '0px', borderRadius: '0px' }}>
               <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
@@ -140,8 +140,8 @@ class StatsList extends Component {
             </TooltipM>
             */}
           </ListItem>
-          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-            <CardContent style={{ padding: '0px' }}>
+          <Card className="statslistCard pluginCard noshadow">
+            <CardContent style={{ padding: '0px', borderRadius: '0px' }}>
               <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
@@ -183,8 +183,8 @@ class StatsList extends Component {
             </TooltipM>
             */}
           </ListItem>
-          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-            <CardContent style={{ padding: '0px' }}>
+          <Card className="statslistCard pluginCard noshadow">
+            <CardContent style={{ padding: '0px', borderRadius: '0px' }}>
               <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
@@ -226,8 +226,8 @@ class StatsList extends Component {
             </TooltipM>
             */}
           </ListItem>
-          <Card className="pluginCard noshadow" style={{ borderRadius: '0px' }}>
-            <CardContent style={{ padding: '0px' }}>
+          <Card className="statslistCard pluginCard noshadow">
+            <CardContent style={{ padding: '0px', borderRadius: '0px' }}>
               <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>

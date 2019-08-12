@@ -39,3 +39,7 @@
   width: 100%;
   margin: 0 auto;
 }
+
+.statslistCard {
+  border-radius: 0px !important;
+}

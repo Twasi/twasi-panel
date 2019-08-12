@@ -50,7 +50,8 @@ export default createMuiTheme({
     MuiCardContent: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
         color: '#b7b7b7', // Some CSS
-        backgroundColor: '#313131' // Some CSS
+        backgroundColor: '#313131', // Some CSS
+        borderRadius: '15px'
       }
     },
     MuiMenuItem: { // Name of the component ⚛️ / style sheet
@@ -76,6 +77,11 @@ export default createMuiTheme({
         textTransform: 'none', // Some CSS
         color: '#b7b7b7', // Some CSS
         borderRadius: '50px'
+      },
+      mini: {
+        minHeight: '32px',
+        height: '32px',
+        width: '32px'
       },
       containedPrimary: {
         boxShadow: 'none',
@@ -119,11 +125,9 @@ export default createMuiTheme({
       }
     },
     MuiToggleButtonGroup: {
-      root: {
-        "&$selected": {
-          backgroundColor: "transparent",
-          boxShadow: "none"
-        }
+      selected: {
+        backgroundColor: 'transparent',
+        boxShadow: 'none'
       }
     },
     MuiToggleButton: {
@@ -198,6 +202,11 @@ export default createMuiTheme({
         color: '#b7b7b7',
         textTransform: 'none'
       },
+      textColorPrimary: {
+        '&$selected': {
+          color: '#b7b7b7'
+        },
+      }
     },
     MuiChip: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
