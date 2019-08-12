@@ -102,7 +102,7 @@ class Overview extends Component {
       } else {
         chatterschart =
           <div>
-            <Typography component={'span'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+            <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
               <img
                 style={{ position: 'relative', height: '80px' }}
                 src={MonkaS}

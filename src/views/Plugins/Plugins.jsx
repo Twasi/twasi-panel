@@ -62,7 +62,7 @@ class Plugins extends Component {
             image={plugin.author === "Twasi Team" ? StickerDesign : GlitchBanner}
             title="Twasi Sticker Design"
           />
-          <CardContent className="pluginCardContent" style={{ padding: '16px' }}>
+          <CardContent className="pluginCardContent" style={{ padding: '16px', borderRadius: '0px' }}>
             <div style={{ height: "200px" }}>
               <Typography>
                 <h2 style={{ margin: "0px" }}>
