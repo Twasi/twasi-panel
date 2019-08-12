@@ -9,9 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Chip from '@material-ui/core/Chip';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
 
 import first_place from '../common/resources/first_place.svg';
 import second_place from '../common/resources/second_place.svg';
@@ -32,23 +29,6 @@ let id = 0;
 function createData(place, name, viewtime) {
   id += 1;
   return { id, place, name, viewtime };
-}
-
-function generateStringColor(string) {
-  const num = hashCode(string);
-  return intToRGB(num);
-}
-function intToRGB(i) {
-  const c = (i & 0x00ffffff).toString(16).toUpperCase();
-
-  return '00000'.substring(0, 6 - c.length) + c;
-}
-function hashCode(str) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  return hash;
 }
 
 const rows = [

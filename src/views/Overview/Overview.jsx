@@ -12,7 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import Grid from '@material-ui/core/Grid';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 import html2canvas from 'html2canvas';
 
@@ -160,6 +161,54 @@ class Overview extends Component {
       </Paper>
     );
 
+    const ViewerBox = () => (
+      <div>
+        <h2 style={{ margin: '7px 0px 0px' }}>
+          <span>{globalstreamtracker.totalTrackedViewers}</span>
+        </h2>
+        <small>
+          <FormattedMessage id="overview.viewer" />
+        </small>
+        <img
+          style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
+          src={LUL}
+          alt="LUL"
+        />
+      </div>
+    );
+
+    const MessagesBox = () => (
+      <div>
+        <h2 style={{ margin: '7px 0px 0px' }}>
+          <span>{globalstreamtracker.totalTrackedMessages}</span>
+        </h2>
+        <small>
+          <FormattedMessage id="overview.messages" />
+        </small>
+        <img
+          style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
+          src={Kappa}
+          alt="Kappa"
+        />
+      </div>
+    );
+
+    const StreamsBox = () => (
+      <div>
+        <h2 style={{ margin: '7px 0px 0px' }}>
+          <span>{globalstreamtracker.totalTrackedStreams}</span>
+        </h2>
+        <small>
+          <FormattedMessage id="overview.streams" />
+        </small>
+        <img
+          style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
+          src={PogChamp}
+          alt="PogChamp"
+        />
+      </div>
+    );
+
     return (
       <div className="pageContent">
         {isLoading &&
@@ -190,57 +239,51 @@ class Overview extends Component {
             <Col sm={3}>
               <div className="translucentBox">
                 <div className="media-body">
-                  <h2 style={{ margin: '7px 0px 0px' }}>
-                    {!isGlobalLoading ?
-                      <span>{globalstreamtracker.totalTrackedViewers}</span> : <LinearProgress style={{ marginRight: '45px', marginBottom: '2px' }} />
-                    }
-                  </h2>
-                  <small>
-                    <FormattedMessage id="overview.viewer" />
-                  </small>
-                  <img
-                    style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
-                    src={LUL}
-                    alt="LUL"
-                  />
+                  {!isGlobalLoading ? <ViewerBox /> :
+                  <Grid container spacing={2}>
+                    <Grid item xs={9}>
+                      <Skeleton variant="rect" height={23} width={50} style={{ marginTop: '8px', marginBottom: '7px' }} />
+                      <Skeleton variant="rect" height={13} width={150} />
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Skeleton variant="circle" height={45} width={45} style={{ marginTop: '6px' }} />
+                    </Grid>
+                  </Grid>
+                  }
                 </div>
               </div>
             </Col>
             <Col sm={3}>
               <div className="translucentBox">
                 <div className="media-body">
-                  <h2 style={{ margin: '7px 0px 0px' }}>
-                    {!isGlobalLoading ?
-                      <span>{globalstreamtracker.totalTrackedMessages}</span> : <LinearProgress style={{ marginRight: '45px', marginBottom: '2px' }} />
-                    }
-                  </h2>
-                  <small>
-                    <FormattedMessage id="overview.messages" />
-                  </small>
-                  <img
-                    style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
-                    src={Kappa}
-                    alt="Kappa"
-                  />
+                  {!isGlobalLoading ? <MessagesBox /> :
+                  <Grid container spacing={2}>
+                    <Grid item xs={9}>
+                      <Skeleton variant="rect" height={23} width={50} style={{ marginTop: '8px', marginBottom: '7px' }} />
+                      <Skeleton variant="rect" height={13} width={150} />
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Skeleton variant="circle" height={45} width={45} style={{ marginTop: '6px' }} />
+                    </Grid>
+                  </Grid>
+                  }
                 </div>
               </div>
             </Col>
             <Col sm={3}>
               <div className="translucentBox">
                 <div className="media-body">
-                  <h2 style={{ margin: '7px 0px 0px' }}>
-                    {!isGlobalLoading ?
-                      <span>{globalstreamtracker.totalTrackedStreams}</span> : <LinearProgress style={{ marginRight: '45px', marginBottom: '2px' }} />
-                    }
-                  </h2>
-                  <small>
-                    <FormattedMessage id="overview.streams" />
-                  </small>
-                  <img
-                    style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
-                    src={PogChamp}
-                    alt="PogChamp"
-                  />
+                  {!isGlobalLoading ? <StreamsBox /> :
+                  <Grid container spacing={2}>
+                    <Grid item xs={9}>
+                      <Skeleton variant="rect" height={23} width={50} style={{ marginTop: '8px', marginBottom: '7px' }} />
+                      <Skeleton variant="rect" height={13} width={150} />
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Skeleton variant="circle" height={45} width={45} style={{ marginTop: '6px' }} />
+                    </Grid>
+                  </Grid>
+                  }
                 </div>
               </div>
             </Col>
