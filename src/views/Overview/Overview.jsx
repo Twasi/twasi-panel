@@ -51,7 +51,6 @@ function getViewTime(data) {
   data.forEach((entry, index) => {
     time = time + entry.minutes;
   });
-  console.log(time)
   return Math.round(time/1440) + ' Tage';
 }
 
@@ -83,7 +82,6 @@ class Overview extends Component {
       backgroundColor: backgroundColorCanvas
     }).then(canvas => {
       //document.body.appendChild(canvas)
-      console.log(canvas)
       var a = document.createElement('a');
       // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
       a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
@@ -103,7 +101,6 @@ class Overview extends Component {
 
   render() {
     const { streamtracker, globalstreamtracker, disabled, isLoading, isGlobalLoading, noStreamData, user } = this.props;
-    console.log(globalstreamtracker)
     const { value } = this.state;
     let chatterschart;
 

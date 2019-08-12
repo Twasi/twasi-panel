@@ -70,7 +70,7 @@ class ChattersChart extends Component {
     series.dataFields.name = 'displayName';
 
     series.nodes.template.label.text = '{displayName}';
-    series.nodes.template.tooltipText = '{displayName}: [bold]{messages}[/]';
+    series.nodes.template.tooltipText = '[bold]{messages}[/] Nachrichten';
     series.tooltip.getStrokeFromObject = true;
     series.dataFields.color = 'lineColor';
     series.fillOpacity = 1;

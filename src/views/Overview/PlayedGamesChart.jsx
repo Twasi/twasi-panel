@@ -79,7 +79,7 @@ class PlayedGamesChart extends Component {
     series.columns.template.propertyFields.stroke = 'color';
     series.columns.template.column.cornerRadiusTopLeft = 3;
     series.columns.template.column.cornerRadiusTopRight = 3;
-    series.columns.template.tooltipText = 'Spiel: [bold]{game}[/b]\nMinuten: [bold]{count}[/b]';
+    series.columns.template.tooltipText = '[bold]{game}[/b]\n[bold]{count}[/b] Minuten';
     series.tooltip.getStrokeFromObject = true;
     series.fillOpacity = 1;
     series.strokeWidth = 0;
