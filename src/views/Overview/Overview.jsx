@@ -102,7 +102,7 @@ class Overview extends Component {
       } else {
         chatterschart =
           <div>
-            <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+            <Typography component={'span'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
               <img
                 style={{ position: 'relative', height: '80px' }}
                 src={MonkaS}
@@ -266,7 +266,7 @@ class Overview extends Component {
           <Row>
             <Col sm={12}>
               <Paper className="pageContainer">
-                <Typography>
+                <Typography component={'span'}>
                   <h4 className="pageContainerTitle">
                     <FormattedMessage id="overview.laststream" />
                     <span style={{ float: 'right' }}>
@@ -294,7 +294,7 @@ class Overview extends Component {
             <Row>
               <Col sm={9}>
                 <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
-                  <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                  <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
                     <h4 className="pageContainerTitle">
                       <FormattedMessage id="overview.viewercourse" />
                     </h4>
@@ -307,7 +307,7 @@ class Overview extends Component {
                 <Row>
                   <Col sm={6}>
                     <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
-                      <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                      <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
                         <h4 className="pageContainerTitle">
                           <FormattedMessage id="overview.used_commands" />
                         </h4>
@@ -327,7 +327,7 @@ class Overview extends Component {
                   </Col>
                   <Col sm={6}>
                     <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
-                      <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                      <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
                         <h4 className="pageContainerTitle">
                           <FormattedMessage id="overview.played_games" />
                         </h4>
@@ -340,7 +340,7 @@ class Overview extends Component {
                   </Col>
                 </Row>
                 <Paper className="pageContainer" style={{ height: '500px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
-                  <Typography style={{ paddingLeft: '23px', position: 'absolute' }}>
+                  <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
                     <h4 className="pageContainerTitle">
                       <FormattedMessage id="overview.chatterchart" />
                     </h4>
@@ -363,7 +363,7 @@ class Overview extends Component {
           <div>
             <Paper className="pageContainer" style={{ marginTop: '-22px' }}>
               <div>
-                <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+                <Typography component={'span'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img
                     style={{ position: 'relative', height: '80px' }}
                     src={SeriousSloth}

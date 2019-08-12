@@ -125,9 +125,11 @@ export default createMuiTheme({
       }
     },
     MuiToggleButtonGroup: {
-      selected: {
-        backgroundColor: 'transparent',
-        boxShadow: 'none'
+      root: {
+        "&$selected": {
+          backgroundColor: "transparent",
+          boxShadow: "none"
+        }
       }
     },
     MuiToggleButton: {

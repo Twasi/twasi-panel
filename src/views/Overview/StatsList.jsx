@@ -79,7 +79,7 @@ class StatsList extends Component {
           <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
-                <Typography>
+                <Typography component={'span'}>
                   <h4 className="pageContainerTitle">{streamtracker.streamId}</h4>
                   <small><FormattedMessage id="overview.table_id" /></small>
                 </Typography>
@@ -101,7 +101,7 @@ class StatsList extends Component {
               <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
-                    <Typography>
+                    <Typography component={'span'}>
                       <h4 className="pageContainerTitle">{getStreamLength(streamtracker.data)}</h4>
                       <small><FormattedMessage id="overview.table_duration" /></small>
                     </Typography>
@@ -123,7 +123,7 @@ class StatsList extends Component {
           <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
-                <Typography>
+                <Typography component={'span'}>
                   <h4 className="pageContainerTitle">{getChatMessagesCount(streamtracker.data)}</h4>
                   <small><FormattedMessage id="overview.table_chatmessages" /></small>
                 </Typography>
@@ -145,7 +145,7 @@ class StatsList extends Component {
               <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
-                    <Typography>
+                    <Typography component={'span'}>
                       <h4 className="pageContainerTitle">{getChatCommandsCount(streamtracker.data)}</h4>
                       <small><FormattedMessage id="overview.table_commands_used" /></small>
                     </Typography>
@@ -167,7 +167,7 @@ class StatsList extends Component {
           <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
-                <Typography>
+                <Typography component={'span'}>
                   <h4 className="pageContainerTitle">{streamtracker.newFollowers}</h4>
                   <small><FormattedMessage id="overview.table_follower" /></small>
                 </Typography>
@@ -188,7 +188,7 @@ class StatsList extends Component {
               <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
-                    <Typography>
+                    <Typography component={'span'}>
                       <h4 className="pageContainerTitle">{streamtracker.newViews}</h4>
                       <small><FormattedMessage id="overview.table_views" /></small>
                     </Typography>
@@ -209,7 +209,7 @@ class StatsList extends Component {
           <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
-                <Typography>
+                <Typography component={'span'}>
                   <h4 className="pageContainerTitle">{getBiggestViewerCount(streamtracker.data)}</h4>
                   <small><FormattedMessage id="overview.table_viewermax" /></small>
                 </Typography>
@@ -231,7 +231,7 @@ class StatsList extends Component {
               <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <Row>
                   <Col sm={12}>
-                    <Typography>
+                    <Typography component={'span'}>
                       <h4 className="pageContainerTitle">{getAverageViewerCount(streamtracker.data)}</h4>
                       <small><FormattedMessage id="overview.table_average" /></small>
                     </Typography>
@@ -253,7 +253,7 @@ class StatsList extends Component {
           <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>
               <Col sm={12}>
-                <Typography>
+                <Typography component={'span'}>
                   <h4 className="pageContainerTitle">{getChattersCount(streamtracker.topChatters)}</h4>
                   <small><FormattedMessage id="overview.table_individual" /></small>
                 </Typography>
