@@ -56,6 +56,7 @@ class CommandsChart extends Component {
 
     // Add and configure Series
     const pieSeries = chart.series.push(new am4charts.PieSeries());
+    pieSeries.showOnInit = false;
     pieSeries.dataFields.value = 'uses';
     pieSeries.dataFields.category = 'command';
     pieSeries.slices.template.propertyFields.stroke = 'lineColor';

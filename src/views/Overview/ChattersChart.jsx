@@ -68,7 +68,7 @@ class ChattersChart extends Component {
     const series = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
     series.dataFields.value = 'messages';
     series.dataFields.name = 'displayName';
-
+    series.showOnInit = false;
     series.nodes.template.label.text = '{displayName}';
     series.nodes.template.tooltipText = '[bold]{messages}[/] Nachrichten';
     series.tooltip.getStrokeFromObject = true;

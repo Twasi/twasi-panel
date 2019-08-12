@@ -87,6 +87,7 @@ class ViewerChart extends Component {
     valueAxis.renderer.disabled = true;
 
     const lineSeries = chart.series.push(new am4charts.LineSeries());
+    lineSeries.showOnInit = false;
     lineSeries.dataFields.categoryX = 'timestamp';
     lineSeries.dataFields.valueY = 'viewerCount';
     lineSeries.tooltipText = '[bold]{viewerCount}[/b] Zuschauer\n[bold]{game}[/b]\n[bold]{timestamp}[/b]';
@@ -112,6 +113,7 @@ class ViewerChart extends Component {
     valueAxisMessages.renderer.disabled = true;
 
     const messageslineSeries = chart.series.push(new am4charts.ColumnSeries());
+    messageslineSeries.showOnInit = false;
     messageslineSeries.name = 'Chatnachrichten';
     messageslineSeries.dataFields.valueY = 'chatMessages';
     messageslineSeries.dataFields.categoryX = 'timestamp';
@@ -133,6 +135,7 @@ class ViewerChart extends Component {
     valueAxisCommands.renderer.disabled = true;
 
     const commandslineSeries = chart.series.push(new am4charts.ColumnSeries());
+    commandslineSeries.showOnInit = false;
     commandslineSeries.name = 'Befehle';
     commandslineSeries.dataFields.valueY = 'chatCommands';
     commandslineSeries.dataFields.categoryX = 'timestamp';
