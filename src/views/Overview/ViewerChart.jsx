@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
-am4core.useTheme(am4themes_animated);
+am4core.options.queue = true;
+am4core.options.onlyShowOnViewport = true;
 
 function generateStringColor(string) {
   const num = hashCode(string);
@@ -89,7 +89,7 @@ class ViewerChart extends Component {
     const lineSeries = chart.series.push(new am4charts.LineSeries());
     lineSeries.dataFields.categoryX = 'timestamp';
     lineSeries.dataFields.valueY = 'viewerCount';
-    lineSeries.tooltipText = 'Zuschauer: [bold]{viewerCount}[/b]\nSpiel: [bold]{game}[/b]\nZeitpunkt: [bold]{timestamp}[/b]';
+    lineSeries.tooltipText = '[bold]{viewerCount}[/b] Zuschauer\n[bold]{game}[/b]\n[bold]{timestamp}[/b]';
     lineSeries.tooltip.getStrokeFromObject = true;
     lineSeries.fillOpacity = 1;
     lineSeries.strokeWidth = 0;
@@ -115,7 +115,7 @@ class ViewerChart extends Component {
     messageslineSeries.name = 'Chatnachrichten';
     messageslineSeries.dataFields.valueY = 'chatMessages';
     messageslineSeries.dataFields.categoryX = 'timestamp';
-    messageslineSeries.tooltipText = 'Nachrichten pro Minute: [bold]{chatMessages}[/b]';
+    messageslineSeries.tooltipText = '[bold]{chatMessages}[/b] Nachrichten';
     messageslineSeries.tooltip.getStrokeFromObject = true;
     messageslineSeries.stroke = '#fdd400';
     messageslineSeries.fill = '#fdd400';
@@ -136,7 +136,7 @@ class ViewerChart extends Component {
     commandslineSeries.name = 'Befehle';
     commandslineSeries.dataFields.valueY = 'chatCommands';
     commandslineSeries.dataFields.categoryX = 'timestamp';
-    commandslineSeries.tooltipText = 'Befehle pro Minute: [bold]{chatCommands}[/b]';
+    commandslineSeries.tooltipText = '[bold]{chatCommands}[/b] Befehle';
     commandslineSeries.tooltip.getStrokeFromObject = true;
     commandslineSeries.stroke = '#00aeae';
     commandslineSeries.fill = '#00aeae';
