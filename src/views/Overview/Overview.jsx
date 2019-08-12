@@ -46,8 +46,8 @@ function TabContainer(props) {
   );
 }
 
-let time = 0;
 function getViewTime(data) {
+  let time = 0;
   data.forEach((entry, index) => {
     time = time + entry.minutes;
   });
@@ -102,11 +102,8 @@ class Overview extends Component {
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading, noStreamData, user, ...other } = this.props;
+    const { streamtracker, globalstreamtracker, disabled, isLoading, isGlobalLoading, noStreamData, user } = this.props;
     console.log(globalstreamtracker)
-    if (utilities.retrieve != null) {
-      var totalTrackedFollowers = utilities.retrieve.followers;
-    }
     const { value } = this.state;
     let chatterschart;
 
