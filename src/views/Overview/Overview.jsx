@@ -46,10 +46,22 @@ function TabContainer(props) {
   );
 }
 
+let time = 0;
+function getViewTime(data) {
+  data.forEach((entry, index) => {
+    time = time + entry.minutes;
+  });
+  console.log(time)
+  return Math.round(time/1440) + ' Tage';
+}
+
 class Overview extends Component {
-  state = {
-    value: 0
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      value: 0
+    };
+  }
 
   handleClickBreadCrumb = (event, value) => {
       const { history } = this.props;
@@ -90,7 +102,8 @@ class Overview extends Component {
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading, noStreamData, user } = this.props;
+    const { streamtracker, globalstreamtracker, utilities, disabled, isLoading, isGlobalLoading, noStreamData, user, ...other } = this.props;
+    console.log(globalstreamtracker)
     if (utilities.retrieve != null) {
       var totalTrackedFollowers = utilities.retrieve.followers;
     }
@@ -161,6 +174,22 @@ class Overview extends Component {
       </Paper>
     );
 
+    const ViewTimeBox = () => (
+      <div>
+        <h2 style={{ margin: '7px 0px 0px' }}>
+          <span>{getViewTime(globalstreamtracker.viewTime)}</span>
+        </h2>
+        <small>
+          <FormattedMessage id="overview.viewtime" />
+        </small>
+        <img
+          style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
+          src={Kreygasm}
+          alt="Kreygasm"
+        />
+      </div>
+    );
+
     const ViewerBox = () => (
       <div>
         <h2 style={{ margin: '7px 0px 0px' }}>
@@ -222,17 +251,17 @@ class Overview extends Component {
             <Col sm={3}>
               <div className="translucentBox">
                 <div className="media-body">
-                  <h2 style={{ margin: '7px 0px 0px' }}>
-                    <span>{totalTrackedFollowers}</span>
-                  </h2>
-                  <small>
-                    <FormattedMessage id="overview.follower" />
-                  </small>
-                  <img
-                    style={{ position: 'absolute', top: '15px', right: '30px', height: '50px' }}
-                    src={Kreygasm}
-                    alt="Kreygasm"
-                  />
+                  {!isGlobalLoading ? <ViewTimeBox /> :
+                  <Grid container spacing={2}>
+                    <Grid item xs={9}>
+                      <Skeleton variant="rect" height={23} width={50} style={{ marginTop: '8px', marginBottom: '7px' }} />
+                      <Skeleton variant="rect" height={13} width={150} />
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Skeleton variant="circle" height={45} width={45} style={{ marginTop: '6px' }} />
+                    </Grid>
+                  </Grid>
+                  }
                 </div>
               </div>
             </Col>

@@ -80,7 +80,7 @@ export default {
     'Im Fakechat kannst du alle Funktionen des Bots unabhängig von deinem Chat testen.',
 
   // Overview
-  'overview.follower': 'Follower',
+  'overview.viewtime': 'Zugeschaute Zeit',
   'overview.viewer': 'Zuschauer getrackt',
   'overview.messages': 'Chatnachrichten getrackt',
   'overview.streams': 'Streams getrackt',

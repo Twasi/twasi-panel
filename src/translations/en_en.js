@@ -78,7 +78,7 @@ export default {
     'Through Fakechat you can test commands without using your own Twitch chat.',
 
   // Overview
-  'overview.follower': 'Follower',
+  'overview.viewtime': 'Watchtime',
   'overview.viewer': 'Viewer tracked',
   'overview.messages': 'Messages tracked',
   'overview.streams': 'Streams tracked',
