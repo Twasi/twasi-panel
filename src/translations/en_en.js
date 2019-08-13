@@ -79,7 +79,7 @@ export default {
 
   // Overview
   'overview.viewtime': 'Watchtime',
-  'overview.viewer': 'Viewer tracked',
+  'overview.viewer': 'Chatter tracked',
   'overview.messages': 'Messages tracked',
   'overview.streams': 'Streams tracked',
   'overview.laststream': 'Your last stream',
