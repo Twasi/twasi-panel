@@ -15,7 +15,7 @@ const {
 const loadData = () => dispatch => {
   dispatch(updateLoading(true));
 
-  dispatch(getGraph('plugins { isInstalled, name, author, version, description, commands, permissions, id, installations }')).then(data => {
+  dispatch(getGraph('plugins { isInstalled, name, author, version, description, commands, permissions, id, installations, banner }')).then(data => {
     dispatch(
       updatePlugins(
         data.plugins.map(p => ({ ...p, actionInProgress: false }))

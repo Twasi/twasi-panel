@@ -21,7 +21,6 @@ import './_style.css';
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
 import StickerDesign from '../common/resources/sticker_design.png';
-import GlitchBanner from '../common/resources/twasi_glitch_banner.png';
 
 class Plugins extends Component {
   componentDidMount() {
@@ -57,10 +56,10 @@ class Plugins extends Component {
         <Card className="pluginCard" style={{ borderRadius: "15px" }}>
           <CardMedia
             component="img"
-            alt="Twasi Sticker Design"
+            alt="Plugin Banner"
             height="115"
-            image={plugin.author === "Twasi Team" ? StickerDesign : GlitchBanner}
-            title="Twasi Sticker Design"
+            image={plugin.banner !== null ? plugin.banner : StickerDesign}
+            title="Plugin Banner"
           />
           <CardContent className="pluginCardContent" style={{ padding: '16px', borderRadius: '0px' }}>
             <div style={{ height: "200px" }}>
