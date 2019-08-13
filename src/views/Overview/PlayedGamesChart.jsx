@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
-import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
-am4core.useTheme(am4themes_animated);
-am4core.options.queue = true;
+am4core.options.queue = false;
 am4core.options.onlyShowOnViewport = true;
 
 function generateStringColor(string) {

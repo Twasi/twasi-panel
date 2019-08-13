@@ -6,7 +6,7 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
-am4core.options.queue = true;
+am4core.options.queue = false;
 am4core.options.onlyShowOnViewport = true;
 
 function generateStringColor(string) {

@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as am4core from '@amcharts/amcharts4/core';
-import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
 import crown from '../common/resources/crown.svg';
 
-am4core.useTheme(am4themes_animated);
-am4core.options.queue = true;
+am4core.options.queue = false;
 am4core.options.onlyShowOnViewport = true;
 
 function generateStringColor(string) {
