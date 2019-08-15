@@ -257,8 +257,8 @@ class Command extends React.Component {
               />
             </CardContent>
           </Card>
-          <ExpansionPanel style={{ marginTop: '5px' }}>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <ExpansionPanel style={{ marginTop: '15px' }}>
+            <ExpansionPanelSummary style={{ borderRadius: '15px 15px 0px 0px' }} expandIcon={<ExpandMoreIcon />}>
               <Typography>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="commands.new_command.variables" />
@@ -268,8 +268,8 @@ class Command extends React.Component {
                 </small>
               </Typography>
             </ExpansionPanelSummary>
-            <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
-              <CardContent style={{ padding: '24px' }}>
+            <Card style={{ borderRadius: '0px' }} className="pluginCard">
+              <CardContent style={{ padding: '24px', borderRadius: '0px 0px 15px 15px' }}>
                 <Chip
                   className="commandOutputChip"
                   size="small"

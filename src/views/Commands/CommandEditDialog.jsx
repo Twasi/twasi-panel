@@ -246,8 +246,8 @@ class Command extends React.Component {
               />
             </CardContent>
           </Card>
-          <ExpansionPanel style={{ marginTop: '5px' }}>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <ExpansionPanel style={{ marginTop: '15px' }}>
+            <ExpansionPanelSummary style={{ borderRadius: '15px 15px 0px 0px' }} expandIcon={<ExpandMoreIcon />}>
               <Typography>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="commands.new_command.variables" />
