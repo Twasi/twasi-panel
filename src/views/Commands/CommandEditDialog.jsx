@@ -355,7 +355,7 @@ class Command extends React.Component {
           <Button
             disabled={!this.state.commandName.trim() || !this.state.commandContent.trim()}
             fullWidth
-            style={{ borderRadius: '4px', marginTop: '15px' }}
+            style={{ marginTop: '15px' }}
             variant="contained"
             color="primary"
             onClick={() => {

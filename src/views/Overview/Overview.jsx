@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -58,8 +60,15 @@ class Overview extends Component {
   constructor(props){
     super(props);
     this.state = {
-      value: 0
+      value: 0,
+      betaPrompt: false,
     };
+  }
+
+  handleClose = () => {
+    this.setState({
+      betaPrompt: false
+    });
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -450,6 +459,55 @@ class Overview extends Component {
         </TabContainer>}
         {value === 1 && <TabContainer />}
         {value === 2 && <TabContainer />}
+        <Dialog
+          onClose={this.handleClose}
+          open={this.state.betaPrompt}
+        >
+          <DialogContent>
+            <Typography component={'span'}>
+              <h4 className="pageContainerTitle">
+                Willkommen in der Closed Beta von Twasi!
+              </h4>
+              <small>
+                Bitte lies dir diesen Hinweis genau durch.
+              </small>
+            </Typography>
+            <br /><br />
+            <Card className="pluginCard">
+              <CardContent className="pluginCardContent">
+                <h3 style={{ marginTop: '0px' }}>Vorwort</h3>
+                Wir freuen uns sehr, dass du es bis hier geschafft hast!<br /><br />
+                Wir haben sehr lange auf diesen Moment hingearbeitet und nun ist es soweit.<br />
+                Es gibt jedoch gerade in dieser Version einiges zu beachten.<br />
+                Da dies die <b>Closed Beta</b> ist kann es vorkommen,
+                dass einige Inhalte, auch wenn sie angezeigt werden nur teilweise bis gar nicht funktionieren.<br /><br />
+
+                <h3 style={{ marginTop: '0px' }}>Support / Hilfe</h3>
+                Als Mitglied bei Twasi hast du jederzeit die Möglichkeit Hilfe über deinen Chat oder in diesem Panel unter dem Punkt "<b>Support</b>"
+                links unten in der Navigation anzufordern.<br />
+                Für Support in deinem Twitch Chat schreibe mit gestartetem Bot<br />
+                <b>!help %deine Anfrage%</b>.<br /><br />
+
+                <h3 style={{ marginTop: '0px' }}>Bugs / Fehler</h3>
+                Hilf uns Twasi besser zu machen, indem du Bugs und Fehler jeglicher Art über unser Supportsystem meldest.<br /><br />
+
+                <h3 style={{ marginTop: '0px' }}>Schlusswort</h3>
+                Wir wünschen dir viel Spaß beim Entdecken unseres Bots.<br />
+                Sende uns gerne Feedback über das Supportsystem, damit wir Twasi gemeinsam besser machen können.
+              </CardContent>
+            </Card>
+            <Button
+              fullWidth
+              style={{ marginTop: '15px' }}
+              variant="contained"
+              color="primary"
+              onClick={() => {
+              this.handleClose()
+            }}>
+              Ok, lass mich endlich in das Panel!
+            </Button>
+          </DialogContent>
+        </Dialog>
       </div>
     );
   }
