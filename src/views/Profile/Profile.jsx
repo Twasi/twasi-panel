@@ -20,6 +20,11 @@ import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Switch from '@material-ui/core/Switch';
+import Divider from '@material-ui/core/Divider';
 
 import Rank from '../common/Rank';
 
@@ -160,60 +165,141 @@ class Profile extends Component {
             <Paper className="pageContainer">
               <Typography>
                 <h4 className="pageContainerTitle">
-                  <FormattedMessage id="profile.badges" />
-                  <span style={{ float: 'right' }}>
-                    <Button disabled variant="contained" color="primary">
-                      <FormattedMessage id="common.save" />
-                    </Button>
-                  </span>
+                  Öffentliches Profil
                 </h4>
                 <small>
-                  <FormattedMessage id="profile.badges_subline" />
+                  Hier kannst du dein Leaderboard, deine Befehlsliste und mehr einstellen.
                 </small>
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent anim">
-                  <Tooltip title="Twasi Team" placement="top">
-                    <Fab size="medium" className="badgeButton">
-                      <img
-                        src={team_badge}
-                        alt="Badge"
-                        className="profileBadge"
-                      />
-                    </Fab>
-                  </Tooltip>
-                  <Tooltip title="Twasi Beta" placement="top">
-                    <Fab size="medium" className="badgeButton">
-                      <img
-                        src={beta_badge}
-                        alt="Badge"
-                        className="profileBadge"
-                      />
-                    </Fab>
-                  </Tooltip>
-                  <Tooltip title="Gamescom 2017" placement="top">
-                    <Fab size="medium" className="badgeButton">
-                      <img
-                        src={gc17_badge}
-                        alt="Badge"
-                        className="profileBadge"
-                      />
-                    </Fab>
-                  </Tooltip>
-                  <Tooltip title="Gamescom 2018" placement="top">
-                    <Fab size="medium" className="badgeButton">
-                      <img
-                        src={gc18_badge}
-                        alt="Badge"
-                        className="profileBadge"
-                      />
-                    </Fab>
-                  </Tooltip>
+                  <Typography>
+                    <TextField
+                      label="Dein Profil"
+                      fullWidth
+                      variant="outlined"
+                      InputLabelProps={{
+                        shrink: true
+                      }}
+                      InputProps={{
+                        readOnly: true,
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="send-support-message"
+                              onClick={e => {
+                                navigator.clipboard.writeText(`${window.location.origin + "/profile/" + user.name}`);
+                                e.stopPropagation();
+                              }}
+                            >
+                              <Icon>
+                                link
+                              </Icon>
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <RouterLink to={"/profile/" + user.name}>
+                              {window.location.origin + "/profile/" + user.name}
+                            </RouterLink>
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                  </Typography>
+                </CardContent>
+              </Card>
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
+                <CardContent className="pluginCardContent anim">
+                  <Row>
+                    <Col style={{ textAlign: 'left' }} sm={6}>
+                      <Typography style={{ padding: '7px' }}>
+                        <b>Öffentliches Profil aktivieren</b>
+                      </Typography>
+                    </Col>
+                    <Col style={{ textAlign: 'right' }} sm={6}>
+                      <Switch color="primary" />
+                    </Col>
+                  </Row>
+                  <Divider />
+                  <Row>
+                    <Col style={{ textAlign: 'left' }} sm={6}>
+                      <Typography style={{ padding: '7px' }}>
+                        Dein Leaderboard anzeigen
+                      </Typography>
+                    </Col>
+                    <Col style={{ textAlign: 'right' }} sm={6}>
+                      <Switch color="primary" />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col style={{ textAlign: 'left' }} sm={6}>
+                      <Typography style={{ padding: '7px' }}>
+                        Liste deiner Befehle anzeigen
+                      </Typography>
+                    </Col>
+                    <Col style={{ textAlign: 'right' }} sm={6}>
+                      <Switch color="primary" />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col style={{ textAlign: 'left' }} sm={6}>
+                      <Typography style={{ padding: '7px' }}>
+                        Deine Streamzitate anzeigen
+                      </Typography>
+                    </Col>
+                    <Col style={{ textAlign: 'right' }} sm={6}>
+                      <Switch color="primary" />
+                    </Col>
+                  </Row>
                 </CardContent>
               </Card>
             </Paper>
           </Col>
           <Col sm={6}>
+            <Paper className="pageContainer">
+              <Typography>
+                <h4 className="pageContainerTitle">
+                  <FormattedMessage id="profile.own_bot.title" />
+                </h4>
+                <small>
+                  <FormattedMessage id="profile.own_bot.subtitle" />
+                </small>
+              </Typography>
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
+                <CardContent className="pluginCardContent">
+                  <Grid container spacing={0}>
+                    <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <Typography>
+                        {twitch.twitch === null ? "Twasibot" : twitch.twitch.userName}
+                      </Typography>
+                    </Grid>
+                    <Grid item md={6} style={{ textAlign: 'center' }}>
+                      {twitch.twitch === null &&
+                        <Button
+                          onClick={() => { this.handleAuthentication(twitch.twitchUri + "?environment=" + window.location + "&jwt=" + jwt) }}
+                          variant="contained"
+                          color="primary">
+                          <FormattedMessage id="profile.own_bot.connect" />
+                        </Button>}
+                      {twitch.twitch !== null &&
+                        <Button
+                          onClick={() => {
+                            updateTwitchDisconnect();
+                            setTimeout(function() {
+                                updateTwitchAccount();
+                            }, 500)
+                          }}
+                          variant="contained"
+                          color="secondary">
+                          <FormattedMessage id="profile.own_bot.disconnect" />
+                        </Button>}
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Paper>
             <Paper className="pageContainer">
               <Typography>
                 <h4 className="pageContainerTitle">
@@ -445,42 +531,55 @@ class Profile extends Component {
             <Paper className="pageContainer">
               <Typography>
                 <h4 className="pageContainerTitle">
-                  <FormattedMessage id="profile.own_bot.title" />
+                  <FormattedMessage id="profile.badges" />
+                  <span style={{ float: 'right' }}>
+                    <Button disabled variant="contained" color="primary">
+                      <FormattedMessage id="common.save" />
+                    </Button>
+                  </span>
                 </h4>
                 <small>
-                  <FormattedMessage id="profile.own_bot.subtitle" />
+                  <FormattedMessage id="profile.badges_subline" />
                 </small>
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
-                <CardContent className="pluginCardContent">
-                  <Grid container spacing={0}>
-                    <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <Typography>
-                        {twitch.twitch === null ? "Twasibot" : twitch.twitch.userName}
-                      </Typography>
-                    </Grid>
-                    <Grid item md={6} style={{ textAlign: 'center' }}>
-                      {twitch.twitch === null &&
-                        <Button
-                          onClick={() => { this.handleAuthentication(twitch.twitchUri + "?environment=" + window.location + "&jwt=" + jwt) }}
-                          variant="contained"
-                          color="primary">
-                          <FormattedMessage id="profile.own_bot.connect" />
-                        </Button>}
-                      {twitch.twitch !== null &&
-                        <Button
-                          onClick={() => {
-                            updateTwitchDisconnect();
-                            setTimeout(function() {
-                                updateTwitchAccount();
-                            }, 500)
-                          }}
-                          variant="contained"
-                          color="secondary">
-                          <FormattedMessage id="profile.own_bot.disconnect" />
-                        </Button>}
-                    </Grid>
-                  </Grid>
+                <CardContent className="pluginCardContent anim">
+                  <Tooltip title="Twasi Team" placement="top">
+                    <Fab size="medium" className="badgeButton">
+                      <img
+                        src={team_badge}
+                        alt="Badge"
+                        className="profileBadge"
+                      />
+                    </Fab>
+                  </Tooltip>
+                  <Tooltip title="Twasi Beta" placement="top">
+                    <Fab size="medium" className="badgeButton">
+                      <img
+                        src={beta_badge}
+                        alt="Badge"
+                        className="profileBadge"
+                      />
+                    </Fab>
+                  </Tooltip>
+                  <Tooltip title="Gamescom 2017" placement="top">
+                    <Fab size="medium" className="badgeButton">
+                      <img
+                        src={gc17_badge}
+                        alt="Badge"
+                        className="profileBadge"
+                      />
+                    </Fab>
+                  </Tooltip>
+                  <Tooltip title="Gamescom 2018" placement="top">
+                    <Fab size="medium" className="badgeButton">
+                      <img
+                        src={gc18_badge}
+                        alt="Badge"
+                        className="profileBadge"
+                      />
+                    </Fab>
+                  </Tooltip>
                 </CardContent>
               </Card>
             </Paper>
