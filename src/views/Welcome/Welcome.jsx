@@ -87,7 +87,7 @@ class Welcome extends Component {
     }
 
     if (stepIndex === 2) {
-      window.location.href = '/';
+      window.location.href = '/#first_start';
       return null;
     }
 
