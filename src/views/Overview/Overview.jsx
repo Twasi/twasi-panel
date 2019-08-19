@@ -61,14 +61,12 @@ class Overview extends Component {
     super(props);
     this.state = {
       value: 0,
-      betaPrompt: false,
     };
   }
 
   handleClose = () => {
-    this.setState({
-      betaPrompt: false
-    });
+    window.location.hash = ""
+    window.history.pushState('', '/', window.location.pathname);
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -461,7 +459,7 @@ class Overview extends Component {
         {value === 2 && <TabContainer />}
         <Dialog
           onClose={this.handleClose}
-          open={this.state.betaPrompt}
+          open={window.location.hash === "#first_start"}
         >
           <DialogContent>
             <Typography component={'span'}>
