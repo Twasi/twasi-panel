@@ -141,6 +141,11 @@ export default createMuiTheme({
         color: '#000000'
       }
     },
+    MuiIcon: {
+      root: {
+        color: '#ffffff'
+      }
+    },
     MuiFormHelperText: {
       root: {
         color: '#000000'
@@ -205,7 +210,8 @@ export default createMuiTheme({
         padding: '16px'
       },
       root: {
-        padding: '16px'
+        padding: '16px',
+        borderBottom: '0px'
       }
     },
     MuiTableRow: {
@@ -234,6 +240,11 @@ export default createMuiTheme({
       },
       legend: {
         color: '#000000'
+      }
+    },
+    MuiInputLabel: {
+      shrink: {
+        marginTop: "-10px"
       }
     },
     MuiFormLabel: {

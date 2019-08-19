@@ -176,7 +176,8 @@ export default createMuiTheme({
         padding: '16px'
       },
       root: {
-        padding: '16px'
+        padding: '16px',
+        borderBottom: '0px'
       }
     },
     MuiTableRow: {

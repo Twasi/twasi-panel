@@ -93,3 +93,6 @@
 .windows95 .tooltipAccountSwitch {
   background-color: #00aeae;
 }
+.windows95 .statslistCard {
+  border-width: 0px;
+}
