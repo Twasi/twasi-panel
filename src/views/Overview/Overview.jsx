@@ -394,7 +394,7 @@ class Overview extends Component {
                       {disabled &&
                       <Card style={{ margin: '60px 23px 23px 23px' }} className="pluginCard">
                         <CardContent className="pluginCardContent">
-                          <Typography>Das Plugin für die Befehle ist nicht installiert. Um dieses Diagramm anzuzeigen, installiere bitte das Plugin "<b>Befehle</b>".</Typography>
+                          <Typography><small>Das Plugin für die Befehle ist nicht installiert. Um dieses Diagramm anzuzeigen, installiere bitte das Plugin "<b>Befehle</b>".</small></Typography>
                         </CardContent>
                       </Card>
                       }

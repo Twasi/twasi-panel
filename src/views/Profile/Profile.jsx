@@ -49,6 +49,10 @@ import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 
 class Profile extends Component {
 
+  state = {
+    profileActive: false
+  };
+
   componentDidMount() {
     const { updateSpotifyAccount, updateSpotifyAuthUri } = this.props;
     const { updateTwitchAccount, updateTwitchAuthUri } = this.props;
@@ -66,6 +70,12 @@ class Profile extends Component {
 
   handleAuthentication = (uri) => {
     window.location = encodeURI(uri);
+  }
+
+  handleProfileActive = (event) => {
+    this.setState({
+      profileActive: event.target.checked
+    });
   }
 
   render() {
@@ -118,9 +128,7 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_twitchname" />
                         </TableCell>
                         <TableCell>
-                          <b title={user.name}>
-                            {user.displayName}
-                          </b>
+                          {user.displayName}
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -128,7 +136,7 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_twitchid" />
                         </TableCell>
                         <TableCell>
-                          <b>{user.twitchid}</b>
+                          {user.twitchid}
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -136,15 +144,7 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_rank" />
                         </TableCell>
                         <TableCell>
-                          <b><Rank /></b>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <FormattedMessage id="profile.your_data_registerdate" />
-                        </TableCell>
-                        <TableCell>
-                          <b>--.--.----</b>
+                          <Rank />
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -152,9 +152,9 @@ class Profile extends Component {
                           <FormattedMessage id="profile.your_data_delete" />
                         </TableCell>
                         <TableCell style={{ borderBottom: '0px' }}>
-                          <RouterLink to="/" className="red">
+                          <Button variant="contained" size="small" color="secondary">
                             <FormattedMessage id="profile.your_data_deletelink" />
-                          </RouterLink>
+                          </Button>
                         </TableCell>
                       </TableRow>
                     </TableBody>
@@ -219,38 +219,38 @@ class Profile extends Component {
                       </Typography>
                     </Col>
                     <Col style={{ textAlign: 'right' }} sm={6}>
-                      <Switch color="primary" />
+                      <Switch checked={this.state.profileActive} color="primary" onChange={this.handleProfileActive} />
                     </Col>
                   </Row>
                   <Divider />
                   <Row>
                     <Col style={{ textAlign: 'left' }} sm={6}>
                       <Typography style={{ padding: '7px' }}>
-                        Dein Leaderboard anzeigen
+                        <small>Dein Leaderboard anzeigen</small>
                       </Typography>
                     </Col>
                     <Col style={{ textAlign: 'right' }} sm={6}>
-                      <Switch color="primary" />
+                      <Switch disabled={!this.state.profileActive} color="primary" />
                     </Col>
                   </Row>
                   <Row>
                     <Col style={{ textAlign: 'left' }} sm={6}>
                       <Typography style={{ padding: '7px' }}>
-                        Liste deiner Befehle anzeigen
+                        <small>Liste deiner Befehle anzeigen</small>
                       </Typography>
                     </Col>
                     <Col style={{ textAlign: 'right' }} sm={6}>
-                      <Switch color="primary" />
+                      <Switch disabled={!this.state.profileActive} color="primary" />
                     </Col>
                   </Row>
                   <Row>
                     <Col style={{ textAlign: 'left' }} sm={6}>
                       <Typography style={{ padding: '7px' }}>
-                        Deine Streamzitate anzeigen
+                        <small>Deine Streamzitate anzeigen</small>
                       </Typography>
                     </Col>
                     <Col style={{ textAlign: 'right' }} sm={6}>
-                      <Switch color="primary" />
+                      <Switch disabled={!this.state.profileActive} color="primary" />
                     </Col>
                   </Row>
                 </CardContent>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
@@ -11,16 +10,14 @@ class Rank extends Component {
     const { rank } = this.props;
     return (
       <div>
-        <Typography>
-          {(() => {
-            switch (rank) {
-              case 'TEAM': return <FormattedMessage id="rank.team" />;
-              case 'PARTNER': return <FormattedMessage id="rank.partner" />;
-              case 'STREAMER': return <FormattedMessage id="rank.streamer" />;
-              default: return 'Unknown';
-            }
-          })()}
-        </Typography>
+        {(() => {
+          switch (rank) {
+            case 'TEAM': return <FormattedMessage id="rank.team" />;
+            case 'PARTNER': return <FormattedMessage id="rank.partner" />;
+            case 'STREAMER': return <FormattedMessage id="rank.streamer" />;
+            default: return 'Unknown';
+          }
+        })()}
       </div>
     );
   }
