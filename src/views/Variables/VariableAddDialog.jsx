@@ -24,8 +24,6 @@ class Variable extends React.Component {
   };
 
   componentDidMount() {
-    const { updateVariables } = this.props;
-    updateVariables();
     this.textInput = React.createRef();
   }
 
@@ -83,6 +81,7 @@ class Variable extends React.Component {
       <Dialog
         onClose={this.handleClose}
         {...other}
+        scroll="body"
       >
         <DialogContent>
           <Typography>

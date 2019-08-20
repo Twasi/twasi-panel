@@ -20,7 +20,7 @@ import Chip from '@material-ui/core/Chip';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
 import { variablesSelectors } from '../../state/variables';
@@ -110,23 +110,23 @@ class Command extends React.Component {
   getCooldownString(cd) {
     if (cd <= 59) {
       if (cd === 0) {
-        return <FormattedMessage id="commands.cooldown.no_cooldown" />;
+        return this.props.intl.formatMessage({ id: "commands.cooldown.no_cooldown" });
       }
       if (cd > 1) {
-        return `${cd} Sekunden`;
+        return cd + " " + this.props.intl.formatMessage({ id: "commands.cooldown.seconds" });
       }
-      return `${cd} Sekunde`;
+      return cd + " " + this.props.intl.formatMessage({ id: "commands.cooldown.second" });
     } else if (cd >= 60) {
       cd -= 59;
       if (cd === 60) {
-        return '1 Stunde';
+        return "1 " + this.props.intl.formatMessage({ id: "commands.cooldown.hour" });
       }
       if (cd > 1) {
-        return `${cd} Minuten`;
+        return cd + " " + this.props.intl.formatMessage({ id: "commands.cooldown.minutes" });
       }
-      return `${cd} Minute`;
+      return cd + " " + this.props.intl.formatMessage({ id: "commands.cooldown.minute" });
     }
-    return 'Fehler';
+    return 'Error';
   }
 
   getSecondsFromCooldown() {
@@ -147,7 +147,7 @@ class Command extends React.Component {
       //return `${cd} Minute`;
       return cd * 60;
     }
-    return 'Fehler';
+    return 'Error';
   }
 
   chipFilter = (item) => {
@@ -184,6 +184,7 @@ class Command extends React.Component {
     return (
       <Dialog
         {...other}
+        scroll="body"
       >
         <DialogContent>
           <Typography>
@@ -204,8 +205,7 @@ class Command extends React.Component {
                 fullWidth
                 value={this.state.commandName}
                 onChange={this.handleCommandNameChange}
-                placeholder="Beispiel: !bot"
-                helperText="Das ist dein Befehl. Der Befehl wird so ausgelöst, wie du ihn hier hinterlegst."
+                helperText={<FormattedMessage id="commands.new_command.command.helpertext" />}
                 margin="normal"
                 variant="outlined"
               />
@@ -237,7 +237,6 @@ class Command extends React.Component {
                 value={this.state.commandContent}
                 onChange={this.handleCommandContentChange}
                 inputRef={this.textInput}
-                placeholder="Beispiel: Mein Bot heißt Twasibot."
                 multiline
                 rows="3"
                 helperText={<FormattedMessage id="commands.new_command.output.helpertext" />}
@@ -258,7 +257,7 @@ class Command extends React.Component {
               </Typography>
             </ExpansionPanelSummary>
             <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
-              <CardContent style={{ padding: '24px' }}>
+              <CardContent style={{ padding: '24px', borderRadius: '0px 0px 15px 15px' }}>
                 <Chip
                   className="commandOutputChip"
                   size="small"
@@ -333,7 +332,7 @@ class Command extends React.Component {
                 >
                   {this.renderAccessLevels()}
                 </Select>
-                <FormHelperText>Wer hat Zugriff auf den Befehl?</FormHelperText>
+                <FormHelperText><FormattedMessage id="commands.new_command.access.subtitle" /></FormHelperText>
               </FormControl>
             </CardContent>
           </Card>
@@ -399,4 +398,4 @@ const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(commandsOperations.verifyData()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Command);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Command));

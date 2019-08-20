@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -10,89 +10,6 @@ import MUIDataTable from 'mui-datatables';
 
 import { authSelectors } from '../../state/auth';
 import { quotesSelectors, quotesOperations } from '../../state/quotes';
-
-const columns = [
-  {
-    name: 'id',
-    label: 'id',
-    options: {
-      filter: false,
-      sort: false
-    }
-  },
-  {
-    name: 'quote',
-    label: <FormattedMessage id="quotes.quote" />,
-    options: {
-      filter: false,
-      sort: false
-    }
-  },
-  {
-    name: 'game',
-    label: <FormattedMessage id="quotes.game" />,
-    options: {
-      filter: true,
-      sort: false
-    }
-  },
-  {
-    name: 'reporter',
-    label: <FormattedMessage id="quotes.reporter" />,
-    options: {
-      filter: true,
-      sort: false
-    }
-  },
-  {
-    name: 'time',
-    label: <FormattedMessage id="quotes.time" />,
-    options: {
-      filter: false,
-      sort: false
-    }
-  }
-];
-
-const options = {
-  filterType: 'textfield',
-  selectableRows: false,
-  elevation: 0,
-  rowHover: false,
-  textLabels: {
-    body: {
-      noMatch: <FormattedMessage id="datatables.body.nomatch" />,
-      toolTip: <FormattedMessage id="datatables.body.tooltip" />
-    },
-    pagination: {
-      next: <FormattedMessage id="datatables.pagination.next" />,
-      previous: <FormattedMessage id="datatables.pagination.previous" />,
-      rowsPerPage: <FormattedMessage id="datatables.pagination.rowsperpage" />,
-      displayRows: 'von'
-    },
-    toolbar: {
-      search: <FormattedMessage id="datatables.toolbar.search" />,
-      downloadCsv: <FormattedMessage id="datatables.toolbar.downloadcsv" />,
-      print: <FormattedMessage id="datatables.toolbar.print" />,
-      viewColumns: <FormattedMessage id="datatables.toolbar.viewcolumns" />,
-      filterTable: <FormattedMessage id="datatables.toolbar.filtertable" />
-    },
-    filter: {
-      all: <FormattedMessage id="datatables.filter.all" />,
-      title: <FormattedMessage id="datatables.filter.title" />,
-      reset: <FormattedMessage id="datatables.filter.reset" />
-    },
-    viewColumns: {
-      title: <FormattedMessage id="datatables.viewcolumns.title" />,
-      titleAria: <FormattedMessage id="datatables.viewcolumns.titlearia" />
-    },
-    selectedRows: {
-      text: <FormattedMessage id="datatables.selectedrows.text" />,
-      delete: <FormattedMessage id="datatables.selectedrows.delete" />,
-      deleteAria: <FormattedMessage id="datatables.selectedrows.deletearia" />
-    }
-  }
-};
 
 class Quotes extends Component {
   constructor(props) {
@@ -106,6 +23,95 @@ class Quotes extends Component {
   componentDidMount() {
     const { updateQuotes } = this.props;
     updateQuotes();
+  }
+
+  renderOptions() {
+    const options = {
+      filterType: 'textfield',
+      selectableRows: false,
+      elevation: 0,
+      rowHover: false,
+      textLabels: {
+        body: {
+          noMatch: <FormattedMessage id="datatables.body.nomatch" />,
+          toolTip: <FormattedMessage id="datatables.body.tooltip" />
+        },
+        pagination: {
+          next: <FormattedMessage id="datatables.pagination.next" />,
+          previous: <FormattedMessage id="datatables.pagination.previous" />,
+          rowsPerPage: <FormattedMessage id="datatables.pagination.rowsperpage" />,
+          displayRows: this.props.intl.formatMessage({ id: "datatables.pagination.displayrows" })
+        },
+        toolbar: {
+          search: <FormattedMessage id="datatables.toolbar.search" />,
+          downloadCsv: <FormattedMessage id="datatables.toolbar.downloadcsv" />,
+          print: <FormattedMessage id="datatables.toolbar.print" />,
+          viewColumns: <FormattedMessage id="datatables.toolbar.viewcolumns" />,
+          filterTable: <FormattedMessage id="datatables.toolbar.filtertable" />
+        },
+        filter: {
+          all: <FormattedMessage id="datatables.filter.all" />,
+          title: <FormattedMessage id="datatables.filter.title" />,
+          reset: <FormattedMessage id="datatables.filter.reset" />
+        },
+        viewColumns: {
+          title: <FormattedMessage id="datatables.viewcolumns.title" />,
+          titleAria: <FormattedMessage id="datatables.viewcolumns.titlearia" />
+        },
+        selectedRows: {
+          text: <FormattedMessage id="datatables.selectedrows.text" />,
+          delete: <FormattedMessage id="datatables.selectedrows.delete" />,
+          deleteAria: <FormattedMessage id="datatables.selectedrows.deletearia" />
+        }
+      }
+    };
+    return options;
+  }
+
+  renderColumns() {
+    const columns = [
+      {
+        name: 'id',
+        label: 'id',
+        options: {
+          filter: false,
+          sort: false
+        }
+      },
+      {
+        name: 'quote',
+        label: <FormattedMessage id="quotes.quote" />,
+        options: {
+          filter: false,
+          sort: false
+        }
+      },
+      {
+        name: 'game',
+        label: <FormattedMessage id="quotes.game" />,
+        options: {
+          filter: true,
+          sort: false
+        }
+      },
+      {
+        name: 'reporter',
+        label: <FormattedMessage id="quotes.reporter" />,
+        options: {
+          filter: true,
+          sort: false
+        }
+      },
+      {
+        name: 'time',
+        label: <FormattedMessage id="quotes.time" />,
+        options: {
+          filter: false,
+          sort: false
+        }
+      }
+    ];
+    return columns;
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -147,8 +153,8 @@ class Quotes extends Component {
               </Typography>
             }
             data={this.renderQuotes()}
-            columns={columns}
-            options={options}
+            columns={this.renderColumns()}
+            options={this.renderOptions()}
           />
         </Paper>
       </div>
@@ -185,4 +191,4 @@ const mapDispatchToProps = dispatch => ({
   updateQuotes: () => dispatch(quotesOperations.loadQuotes())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Quotes);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Quotes));

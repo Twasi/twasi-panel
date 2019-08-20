@@ -20,7 +20,7 @@ import Chip from '@material-ui/core/Chip';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
 import { variablesSelectors, variablesOperations } from '../../state/variables';
@@ -42,8 +42,7 @@ class Command extends React.Component {
   };
 
   componentDidMount() {
-    const { updateCommands, updateAccessLevels, updateVariables } = this.props;
-    updateCommands();
+    const { updateAccessLevels, updateVariables } = this.props;
     updateAccessLevels();
     updateVariables();
     this.textInput = React.createRef();
@@ -123,23 +122,23 @@ class Command extends React.Component {
 
     if (cd <= 59) {
       if (cd === 0) {
-        return <FormattedMessage id="commands.cooldown.no_cooldown" />;
+        return this.props.intl.formatMessage({ id: "commands.cooldown.no_cooldown" });
       }
       if (cd > 1) {
-        return `${cd} Sekunden`;
+        return cd + " " + this.props.intl.formatMessage({ id: "commands.cooldown.seconds" });
       }
-      return `${cd} Sekunde`;
+      return cd + " " +  this.props.intl.formatMessage({ id: "commands.cooldown.second" });
     } else if (cd >= 60) {
       cd -= 59;
       if (cd === 60) {
-        return '1 Stunde';
+        return "1 " +  this.props.intl.formatMessage({ id: "commands.cooldown.hour" });
       }
       if (cd > 1) {
-        return `${cd} Minuten`;
+        return cd + " " +  this.props.intl.formatMessage({ id: "commands.cooldown.minutes" });
       }
-      return `${cd} Minute`;
+      return cd + " " +  this.props.intl.formatMessage({ id: "commands.cooldown.minute" });
     }
-    return 'Fehler';
+    return 'Error';
   }
 
   getSecondsFromCooldown() {
@@ -193,6 +192,7 @@ class Command extends React.Component {
       <Dialog
         onClose={this.handleClose}
         {...other}
+        scroll="body"
       >
         <DialogContent>
           <Typography>
@@ -215,7 +215,6 @@ class Command extends React.Component {
                 inputRef={this.textInput}
                 value={this.state.commandName}
                 onChange={this.handleCommandNameChange}
-                placeholder="Beispiel: !bot"
                 helperText={<FormattedMessage id="commands.new_command.command.helpertext" />}
                 margin="normal"
                 variant="outlined"
@@ -248,7 +247,6 @@ class Command extends React.Component {
                 inputRef={this.textInput}
                 value={this.state.commandContent}
                 onChange={this.handleCommandContentChange}
-                placeholder="Beispiel: Mein Bot heißt Twasibot."
                 multiline
                 rows="3"
                 helperText={<FormattedMessage id="commands.new_command.output.helpertext" />}
@@ -344,7 +342,7 @@ class Command extends React.Component {
                 >
                   {this.renderAccessLevels()}
                 </Select>
-                <FormHelperText>Wer hat Zugriff auf den Befehl?</FormHelperText>
+                <FormHelperText><FormattedMessage id="commands.new_command.access.subtitle" /></FormHelperText>
               </FormControl>
             </CardContent>
           </Card>
@@ -412,4 +410,4 @@ const mapDispatchToProps = dispatch => ({
   updateVariables: () => dispatch(variablesOperations.loadVariables())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Command);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Command));

@@ -460,6 +460,7 @@ class Overview extends Component {
         <Dialog
           onClose={this.handleClose}
           open={window.location.hash === "#first_start"}
+          scroll="body"
         >
           <DialogContent>
             <Typography component={'span'}>

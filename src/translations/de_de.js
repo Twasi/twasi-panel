@@ -200,6 +200,7 @@ export default {
   'commands.new_command.aliases': 'Aliase',
   'commands.new_command.output': 'Ausgabe',
   'commands.new_command.access': 'Wer hat Zugriff?',
+  'commands.new_command.access.subtitle': 'Welche Benutzergruppe soll diesen Befehl ausführen können?',
   'commands.new_command.VIEWER': 'Jeder',
   'commands.new_command.FOLLOWER': 'Follower oder höher',
   'commands.new_command.VIP': 'VIP oder höher',

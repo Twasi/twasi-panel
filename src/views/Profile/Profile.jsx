@@ -79,7 +79,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { spotify, updateSpotifyDisconnect, updateSpotifyAccount, twitch, updateTwitchDisconnect, updateTwitchAccount, user, jwt } = this.props;
+    const { spotify, updateUser, updateSpotifyDisconnect, updateSpotifyAccount, twitch, updateTwitchDisconnect, updateTwitchAccount, user, jwt } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -96,7 +96,7 @@ class Profile extends Component {
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="profile.your_data" />
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary" onClick={user.updateUser} disabled={user.isUserUpdating}>
+                    <Button variant="contained" color="primary" onClick={updateUser} disabled={user.isUserUpdating}>
                       <Icon style={{ marginRight: '5px' }}>cached</Icon>
                       <FormattedMessage id="common.refresh" />
                       {user.isUserUpdating && (

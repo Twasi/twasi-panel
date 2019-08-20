@@ -73,6 +73,7 @@ class Variable extends React.Component {
     return (
       <Dialog
         {...other}
+        scroll="body"
       >
         <DialogContent>
           <Typography>
