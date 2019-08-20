@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { FormattedMessage } from 'react-intl';
 
 import { variablesSelectors, variablesOperations } from '../../state/variables';
@@ -49,8 +50,12 @@ class Variable extends React.Component {
   };
 
   handleVariableNameChange = (event) => {
+    var name = event.target.value
+    if (event.target.value.slice(0,1) === "$") {
+      name = event.target.value.substr(1)
+    }
     this.setState({
-      variableName: event.target.value
+      variableName: name
     });
   };
 
@@ -91,6 +96,13 @@ class Variable extends React.Component {
                 helperText="Das ist deine Variable. Du kannst Variablen in jeden deiner Befehle einbinden."
                 margin="normal"
                 variant="outlined"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      $
+                    </InputAdornment>
+                  )
+                }}
               />
             </CardContent>
           </Card>
