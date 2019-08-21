@@ -27,7 +27,7 @@ import { impersonateOperations } from '../../state/impersonate';
 
 import './_style.css';
 
-const accounts = ['ProjektPing', 'ZanderLP', 'Pandorsaurus', 'JustvarietyTV', 'Fosuak', 'Sklipie', 'ItsDailyTV'];
+const accounts = ['ProjektPing', 'ZanderLP', 'Pandorsaurus', 'JustvarietyTV', 'RealReamer', 'Sklipie', 'ItsDailyTV', 'Larcce', 'DeezerMerlin'];
 
 class AccountSwitch extends React.Component {
   constructor(props) {
@@ -59,6 +59,7 @@ class AccountSwitch extends React.Component {
       <Dialog
         onClose={this.handleClose}
         {...other}
+        scroll="body"
       >
         <DialogContent>
           <Typography component={'span'}>
@@ -118,15 +119,7 @@ class AccountSwitch extends React.Component {
             </Card>
           }
           {window.originalJwt &&
-          <Card className="pluginCard">
-            <CardContent style={{ marginBottom: 15, paddingTop: 0, paddingBottom: 0 }}>
-              <List style={{ padding: '0px' }}>
-                <ListItem>
-                  <Button variant="outlined" color="secondary" fullWidth onClick={() => this.props.resetImpersonation()}>Go back</Button>
-                </ListItem>
-              </List>
-            </CardContent>
-          </Card>
+            <Button variant="outlined" color="secondary" fullWidth onClick={() => this.props.resetImpersonation()}>Go back</Button>
           }
           {!window.originalJwt && adminAccess &&
           <Card className="pluginCard">
