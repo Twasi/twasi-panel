@@ -51,9 +51,7 @@ class Variable extends React.Component {
 
   handleVariableNameChange = (event) => {
     var name = event.target.value
-    if (event.target.value.slice(0,1) === "$") {
-      name = event.target.value.substr(1)
-    }
+    name = event.target.value.replace(/[^a-z0-9]/gi,'');
     this.setState({
       variableName: name
     });

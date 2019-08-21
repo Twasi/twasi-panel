@@ -159,7 +159,7 @@ class Command extends React.Component {
       //return `${cd} Minute`;
       return cd * 60;
     }
-    return 'Fehler';
+    return 'Error';
   }
 
   renderVariables() {
