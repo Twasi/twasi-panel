@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+//import { withStyles } from '@material-ui/core/styles';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import Rating from '@material-ui/lab/Rating';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+//import Rating from '@material-ui/lab/Rating';
+//import FavoriteIcon from '@material-ui/icons/Favorite';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
@@ -23,8 +23,9 @@ const SupportTicketMessage = props => {
     </Grid>
   );
 
-  const [value, setValue] = React.useState(3);
+  const [value] = React.useState(3);
 
+  /*
   const StyledRating = withStyles({
     iconFilled: {
       color: '#ff6d75',
@@ -33,6 +34,7 @@ const SupportTicketMessage = props => {
       color: '#ff3d47',
     },
   })(Rating);
+  */
 
   const getMessage = () => (
     <Grid item xs={8} key="message">
@@ -46,7 +48,7 @@ const SupportTicketMessage = props => {
         {sender.name} hat das Ticket am {new Date(message.createdAt).toLocaleString()} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
           <br /><br />
           <Typography component="legend"><small><FormattedMessage id="support.ticket.rating.could_we_help" /></small></Typography>
-          <StyledRating
+          {/*<StyledRating
             name="customized-color"
             value={value}
             onChange={(event, newValue) => {
@@ -54,7 +56,7 @@ const SupportTicketMessage = props => {
                       }}
             precision={0.5}
             icon={<FavoriteIcon fontSize="inherit" />}
-          />
+          />*/}
           {value < 3 &&
             <TextField
               style={{ marginTop: '10px' }}
