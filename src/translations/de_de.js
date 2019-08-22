@@ -19,7 +19,6 @@ export default {
   'setup.step.closed_beta.key_invalid': 'Dieser Key ist ungültig.',
   'setup.step.closed_beta.accept_tos': 'Du musst die Nutzungsbedingungen akzeptieren.',
 
-
   // Datatables
   'datatables.body.nomatch': 'Es wurden keine passenden Einträge gefunden.',
   'datatables.body.tooltip': 'Sortieren',
@@ -368,6 +367,11 @@ export default {
   'support.ticket.state.progres': 'In Bearbeitung',
   'support.ticket.rating.could_we_help': 'Konnten wir dir helfen?',
   'support.ticket.rating.what_was_wrong': 'Was hat dir nicht gefallen?',
+
+  // Footer
+  'footer.tos': 'Nutzungsbedingungen',
+  'footer.imprint': 'Impressum',
+  'footer.privacy': 'Datenschutz',
 
   // Songrequests
   'songrequest.requestby': 'Requestet von',

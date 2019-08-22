@@ -19,8 +19,7 @@ class SetupBeta extends Component {
         <Typography>
           <h3 style={{ marginBottom: '5px' }} className="pageContainerTitle">Freischaltung für die Closed Beta</h3>
           <small>
-            Hier kannst du deinen persönlichen Beta Key einlösen, um an der geschlossenen Beta von Twasi 2 teilzunehmen.<br />
-            Wie du an einen Beta Code kommst erfährst du <Link color="primary" href="/">hier</Link>.
+            Hier kannst du deinen persönlichen Beta Key einlösen, um an der Closed Beta von Twasi 2 teilzunehmen.<br />
           </small>
         </Typography>
         <Card className="pluginCard" style={{ marginTop: '25px' }}>

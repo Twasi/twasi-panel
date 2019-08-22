@@ -14,7 +14,7 @@ import { i18nSelectors, i18nOperations } from './state/i18n';
 import Header from './views/common/Header';
 import Content from './views/common/Content';
 import Public from './views/Public/Public';
-import Footer from './views/Footer/Footer';
+import Footer from './views/common/Footer/Footer';
 import Welcome from './views/Welcome/Welcome';
 
 import PanelContent from './views/Panel/PanelContent';
