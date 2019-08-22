@@ -76,6 +76,16 @@ class TOS extends Component {
               Anwendung öffentlich einsehbar (https://github.com/twasi).
               Wir verpflichten uns dazu, dass bei Bekanntwerden größerer Schwachstellen die betroffenen
               Funktionen aus dem Funktionsumfang des Bots entfernt werden, bis ein Update diese behoben hat.
+              Der Funktionsumfang von Twasi kann mithilfe von Drittanbieterplugins (Funktionen für den Bot, welche nicht vom eigenen Entwicklungsteam programmiert wurden) erweitert werden. Bevor ein
+              solches Plugin für Nutzer zugänglich gemacht wird, wird es von uns auf Programmfehler und
+              verdächtige Aktivitäten überprüft. Letzteres beschreibt z. B. das übermitteln von persönlichen Daten
+              der Nutzer an den Entwickler des Plugins. Außerdem verpflichtet sich der Entwickler des Plugins, das
+              Plugin mit der TOPL (Twasi Official Plugin License) zu versehen. Hierbei handelt es sich um eine eigene
+              Lizenz, die den Entwickler des Plugins dazu verpflichtet, sich an Vorschriften wie z. B. Datenschutz zu
+              halten. Trotz dieser Vorsichtsmaßnamen können wir nicht für durch andere Entwickler entstandene
+              Probleme haften. In einem solchen Falle werden wir uns mit dem verantwortlichen Entwickler in
+              Verbindung setzen und nach einer Lösung suchen. Ggf. werden hierbei Plugins entfernt, bis das
+              Problem behoben wurde.
             </small>
           </Typography>
         </Paper>
