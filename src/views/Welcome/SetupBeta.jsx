@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Link from '@material-ui/core/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -56,7 +56,7 @@ class SetupBeta extends Component {
                   checked={acceptsTos}
                   onChange={(e, isChecked) => setAcceptsTos(isChecked)} />
               }
-              label={<Typography>Ich habe die <Link color="primary" href="/">Nutzungsbedingungen</Link> gelesen und
+              label={<Typography>Ich habe die <RouterLink color="primary" to="/tos">Nutzungsbedingungen</RouterLink> gelesen und
                 akzeptiere diese.
               </Typography>}
             />
