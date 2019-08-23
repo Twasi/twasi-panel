@@ -368,10 +368,15 @@ export default {
   'support.ticket.rating.could_we_help': 'Konnten wir dir helfen?',
   'support.ticket.rating.what_was_wrong': 'Was hat dir nicht gefallen?',
 
+  // Branding
+  'branding.download.svg': '.SVG',
+  'branding.download.png': '.PNG',
+
   // Footer
   'footer.tos': 'Nutzungsbedingungen',
   'footer.imprint': 'Impressum',
   'footer.privacy': 'Datenschutz',
+  'footer.branding': 'Branding',
 
   // Songrequests
   'songrequest.requestby': 'Requestet von',

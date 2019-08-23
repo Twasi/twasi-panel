@@ -20,9 +20,10 @@ import Quotes from '../Quotes';
 import Votings from '../Votings';
 import Support from '../Support';
 import DevTools from '../DevTools';
-import TOS from '../common/TOS/TOS';
-import Imprint from '../common/Imprint/Imprint';
-import Privacy from '../common/Privacy/Privacy';
+import Branding from '../Branding';
+import TOS from '../common/TOS';
+import Imprint from '../common/Imprint';
+import Privacy from '../common/Privacy';
 
 const PanelContent = () => (
   <RequireAuth>
@@ -46,6 +47,7 @@ const PanelContent = () => (
         <Route path="/quotes" exact component={Quotes} />
         <Route path="/votings" exact component={Votings} />
         <Route path="/support" exact component={Support} />
+        <Route path="/branding" exact component={Branding} />
         <Route path="/tos" exact component={TOS} />
         <Route path="/imprint" exact component={Imprint} />
         <Route path="/privacy" exact component={Privacy} />

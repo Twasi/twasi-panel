@@ -10,7 +10,7 @@ import { ThemeSwitchIcon } from '../../ThemeSwitch';
 import { LanguageSwitchIcon } from '../../LanguageSwitch';
 //import { FeedbackIcon } from '../../Feedback';
 import Rank from '../Rank';
-import Logo from './Logo';
+import Logo from '../Logo/Logo';
 
 import {
   getAvatarStyle,

@@ -367,10 +367,15 @@ export default {
   'support.ticket.rating.could_we_help': 'Could we help you?',
   'support.ticket.rating.what_was_wrong': "What didn't made you happy?",
 
+  // Branding
+  'branding.download.svg': '.SVG',
+  'branding.download.png': '.PNG',
+
   // Footer
   'footer.tos': 'Terms of Service',
   'footer.imprint': 'Impress',
   'footer.privacy': 'Privacy',
+  'footer.branding': 'Branding',
 
   // Songrequests
   'songrequest.requestby': 'Requested by',
