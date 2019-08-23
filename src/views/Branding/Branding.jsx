@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import Typography from '@material-ui/core/Typography';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -22,12 +20,6 @@ class Branding extends Component {
   render() {
     return (
       <div className="pageContent">
-        <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
-            <FormattedMessage id="sidebar.overview" />
-          </Link>
-          <Typography color="textPrimary"><FormattedMessage id="footer.branding" /></Typography>
-        </Breadcrumbs>
         <Paper className="pageContainer">
           <Typography>
             <h4 className="pageContainerTitle">
