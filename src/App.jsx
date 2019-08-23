@@ -16,6 +16,10 @@ import Content from './views/common/Content';
 import Public from './views/Public/Public';
 import Footer from './views/common/Footer/Footer';
 import Welcome from './views/Welcome/Welcome';
+import Branding from './views/Branding';
+import TOS from './views/common/TOS';
+import Imprint from './views/common/Imprint';
+import Privacy from './views/common/Privacy';
 
 import PanelContent from './views/Panel/PanelContent';
 
@@ -92,6 +96,10 @@ const App = () => {
               <Switch>
                 <Route path="/profile/:name" component={Public} />
                 <Route path="/setup" component={Welcome} />
+                <Route path="/branding" component={Branding} />
+                <Route path="/tos" component={TOS} />
+                <Route path="/imprint" component={Imprint} />
+                <Route path="/privacy" component={Privacy} />
                 <Route path="/" component={PanelContent} />
               </Switch>
               <Footer />
