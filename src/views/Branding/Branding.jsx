@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -7,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
+
+import { authSelectors } from '../../state/auth';
 
 import Logo from '../common/resources/text_logo_twasi.svg';
 import LogoPNG from '../common/resources/text_logo_twasi.png';
@@ -17,13 +20,27 @@ class Branding extends Component {
     history.push(value);
     this.setState({});
   }
+  handleClick = (event, value) => {
+    const { history } = this.props;
+
+    history.push(value);
+    this.setState({});
+  }
   render() {
+    const { isSetUp } = this.props;
     return (
       <div className="pageContent">
         <Paper className="pageContainer">
           <Typography>
             <h4 className="pageContainerTitle">
               Unser Logo
+              {isSetUp &&
+              <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" onClick={event => this.handleClick(event, '/')}>
+                  <Icon style={{ marginRight: '5px' }}>arrow_back</Icon>
+                  <FormattedMessage id="common.back_to_panel" />
+                </Button>
+              </span>}
             </h4>
             <small>
               Das Twasi Logo besteht aus dem Chamäleon und dem Schriftzug "Twasi" mit quer gestelltem "NET".<br />
@@ -70,4 +87,8 @@ class Branding extends Component {
   }
 }
 
-export default Branding;
+const mapStateToProps = state => ({
+  isSetUp: authSelectors.isSetUp(state),
+});
+
+export default connect(mapStateToProps)(Branding);

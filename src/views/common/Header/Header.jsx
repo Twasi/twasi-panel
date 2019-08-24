@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
 
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
@@ -22,29 +23,41 @@ import {
 const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp }) => (
   <header>
     <div className="bannerHeaderTopBar" />
-    <div className="bannerHeader" style={{ opacity: banner && selectedBannerAsHeaderValue ? '0.4' : '1', backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />
-    <div style={getLogoStyle()}>
-      <span>
-        {avatar && <img src={avatar} alt="Avatar" style={getAvatarStyle()} />}
-        <div style={getLogoDescriptionStyle()}>
+    {isSetUp && <div className="bannerHeader" style={{ opacity: banner && selectedBannerAsHeaderValue ? '0.4' : '1', backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />}
+    <Grid container spacing={4}>
+      <Grid item xs={4}>
+        {isSetUp &&
+        <div style={getLogoStyle()}>
           <span>
-            {userName}
-            <small style={getRankStyle()}><Rank /></small>
+            {avatar && <img src={avatar} alt="Avatar" style={getAvatarStyle()} />}
+            <div style={getLogoDescriptionStyle()}>
+              <span>
+                {userName}
+                <small style={getRankStyle()}><Rank /></small>
+              </span>
+            </div>
           </span>
         </div>
-      </span>
-      <span className="text_logo_wrapper" style={{ marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
-        <div className="text_logo">
-          <Logo />
+        }
+      </Grid>
+      <Grid style={{ paddingTop: '10px' }} item xs={4}>
+        <div style={getLogoStyle()}>
+          <span className="text_logo_wrapper" style={{ marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
+            <div className="text_logo">
+              <Logo />
+            </div>
+          </span>
         </div>
-      </span>
-      <span style={{ width: '200px' }}>
-        {isSetUp && <AccountSwitchIcon />}
-        <ThemeSwitchIcon />
-        <LanguageSwitchIcon />
-        {/* isSetUp && <FeedbackIcon /> */}
-      </span>
-    </div>
+      </Grid>
+      <Grid item xs={4}>
+        <div style={{ paddingTop: '5px' }}>
+          {isSetUp && <AccountSwitchIcon />}
+          <ThemeSwitchIcon />
+          <LanguageSwitchIcon />
+          {/* isSetUp && <FeedbackIcon /> */}
+        </div>
+      </Grid>
+    </Grid>
   </header>
 );
 

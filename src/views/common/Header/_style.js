@@ -19,7 +19,6 @@ export const getLogoStyle = () => ({
   fontWeight: 700,
   fontSize: 23,
   display: 'flex',
-  justifyContent: 'space-between'
 });
 
 export const getLogoDescriptionStyle = () => ({

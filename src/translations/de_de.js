@@ -5,6 +5,7 @@ export default {
   'common.actions': 'Aktionen',
   'common.delete': 'Löschen',
   'common.edit': 'Bearbeiten',
+  'common.back_to_panel': 'Zurück zum Panel',
 
   'rank.team': 'Teammitglied',
   'rank.partner': 'Partnerstreamer',

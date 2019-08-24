@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import { FormattedMessage } from 'react-intl';
+
+import { authSelectors } from '../../../state/auth';
 
 class Imprint extends Component {
   handleClickBreadCrumb = (event, value) => {
@@ -9,13 +15,27 @@ class Imprint extends Component {
     history.push(value);
     this.setState({});
   }
+  handleClick = (event, value) => {
+    const { history } = this.props;
+
+    history.push(value);
+    this.setState({});
+  }
   render() {
+    const { isSetUp } = this.props;
     return (
       <div className="pageContent">
         <Paper className="pageContainer">
           <Typography>
             <h4 className="pageContainerTitle">
               Verantwortlich für die Inhalte dieser Seite
+              {isSetUp &&
+              <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" onClick={event => this.handleClick(event, '/')}>
+                  <Icon style={{ marginRight: '5px' }}>arrow_back</Icon>
+                  <FormattedMessage id="common.back_to_panel" />
+                </Button>
+              </span>}
             </h4>
             <small>
               (gem. § 55 Abs. 2 RStV)
@@ -70,4 +90,8 @@ class Imprint extends Component {
   }
 }
 
-export default Imprint;
+const mapStateToProps = state => ({
+  isSetUp: authSelectors.isSetUp(state),
+});
+
+export default connect(mapStateToProps)(Imprint);
