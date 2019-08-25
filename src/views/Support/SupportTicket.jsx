@@ -115,8 +115,8 @@ const SupportTicket = props => {
           </Grid>
         </Grid>
       </ExpansionPanelSummary>
-      <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
-        <CardContent style={{ padding: '24px' }}>
+      <Card className="pluginCard">
+        <CardContent style={{ padding: '24px', borderRadius: '0px 0px 15px 15px' }}>
           {ticket.messages.map((messageObj, index) =>
             <SupportTicketMessage isStaff={messageObj.staff} sender={messageObj.sender} message={messageObj} displayCloseMessage={index === ticket.messages.length - 1 && ticket.state === 'CLOSED'} />)
           }
