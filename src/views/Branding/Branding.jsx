@@ -100,36 +100,44 @@ class Branding extends Component {
                 <Grid item xs={3}>
                   <Card className="pluginCard">
                     <CardContent className="pluginCardContent twasi-blue">
-                      <h1 className="pageContainerTitle">
-                        #3f51b5
-                      </h1>
+                      <Typography style={{ color: '#ffffff' }}>
+                        <h2 className="pageContainerTitle">
+                          #3f51b5
+                        </h2>
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
                 <Grid item xs={3}>
                   <Card className="pluginCard">
                     <CardContent className="pluginCardContent twasi-text">
-                      <h1 className="pageContainerTitle">
-                        #afb6c5
-                      </h1>
+                      <Typography style={{ color: '#1a2035' }}>
+                        <h2 className="pageContainerTitle">
+                          #afb6c5
+                        </h2>
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
                 <Grid item xs={3}>
                   <Card className="pluginCard">
                     <CardContent className="pluginCardContent twasi-background">
-                      <h1 className="pageContainerTitle">
-                        #1a2035
-                      </h1>
+                      <Typography style={{ color: '#ffffff' }}>
+                        <h2 className="pageContainerTitle">
+                          #1a2035
+                        </h2>
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
                 <Grid item xs={3}>
                   <Card className="pluginCard">
                     <CardContent className="pluginCardContent twasi-paper">
-                      <h1 className="pageContainerTitle">
-                        #202940
-                      </h1>
+                      <Typography style={{ color: '#ffffff' }}>
+                        <h2 className="pageContainerTitle">
+                          #202940
+                        </h2>
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
