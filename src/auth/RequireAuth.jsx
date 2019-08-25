@@ -17,7 +17,7 @@ class RequireAuth extends React.Component {
     const { isAuthenticated, isLoading, authenticate, updateIsLoading, history, location, optional, updateSetup } = this.props;
 
     if (window.location.hash) {
-      storage('betaKey', window.location.hash).substr(1);
+      storage('betaKey', window.location.hash.substr(1));
     }
 
     const checkToken = jwt => new Promise((resolve, reject) => {
