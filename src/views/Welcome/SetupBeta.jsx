@@ -9,9 +9,14 @@ import TextField from '@material-ui/core/TextField';
 import Icon from '@material-ui/core/Icon';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { FormattedMessage } from 'react-intl';
+import storage from 'local-storage';
 
 class SetupBeta extends Component {
-  render() {
+    componentDidMount() {
+        this.props.setBetaKey(storage('betaKey'));
+    }
+
+    render() {
     const { tosError, acceptsTos, setAcceptsTos, betaKey, setBetaKey, betaKeyError } = this.props;
 
     return (

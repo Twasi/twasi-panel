@@ -16,6 +16,10 @@ class RequireAuth extends React.Component {
   componentWillMount() {
     const { isAuthenticated, isLoading, authenticate, updateIsLoading, history, location, optional, updateSetup } = this.props;
 
+    if (window.location.hash) {
+      storage('betaKey', window.location.hash);
+    }
+
     const checkToken = jwt => new Promise((resolve, reject) => {
       getRawGraph(`query{setup(token:"${jwt}"){${setupCheckString}}}`).then(data => {
         if (data.data.setup == null) {
