@@ -14,6 +14,8 @@ import { authSelectors } from '../../state/auth';
 import Logo from '../common/resources/text_logo_twasi.svg';
 import LogoPNG from '../common/resources/text_logo_twasi.png';
 
+import './_style.css';
+
 class Branding extends Component {
   handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
@@ -32,7 +34,7 @@ class Branding extends Component {
       <div className="pageContent">
         <Paper className="pageContainer">
           <Typography>
-            <h4 className="pageContainerTitle">
+            <h1 className="pageContainerTitle">
               Unser Logo
               {isSetUp &&
               <span style={{ float: 'right' }}>
@@ -41,7 +43,7 @@ class Branding extends Component {
                   <FormattedMessage id="common.back_to_panel" />
                 </Button>
               </span>}
-            </h4>
+            </h1>
             <small>
               Das Twasi Logo besteht aus dem Chamäleon und dem Schriftzug "Twasi" mit quer gestelltem "NET".<br />
               Das Logo ist in Zusammenarbeit mit unserem Designer Toni entstanden und gilt seit 2019 als Symbol vom Twasi.<br />
@@ -60,14 +62,14 @@ class Branding extends Component {
             </Grid>
             <Grid item xs={6}>
               <Typography>
-                <h4 className="pageContainerTitle">
+                <h1 className="pageContainerTitle">
                   Logo Richtlinien
-                </h4>
+                </h1>
                 <small>
-                  Das Chamäleon darf <b>nicht</b> von dem Logo getrennt dargestellt werden.<br />
-                  Die Proportionen <b>müssen</b> eingehalten werden (<b>kein Verzerren/Strecken/Stauchen</b>).<br />
-                  Die Farbe des Chamäleons <b>muss</b> die dargestellte Farbe sein, <b>kein Schwarz/Weiß</b>.<br />
-                  Das Logo darf <b>nicht gedreht</b> werden, da sonst das Chamäleon abstürzen könnte.<br />
+                  - Das Chamäleon darf <b>nicht</b> von dem Text "TwasiNET" getrennt dargestellt werden.<br />
+                  - Die Proportionen <b>müssen</b> eingehalten werden (<b>kein Verzerren/Strecken/Stauchen</b>).<br />
+                  - Die Farbe des Chamäleons <b>muss</b> die dargestellte Farbe sein, <b>kein Schwarz/Weiß</b>.<br />
+                  - Das Logo darf <b>nicht gedreht</b> werden, da sonst das Chamäleon abstürzen könnte.<br />
                 </small>
               </Typography>
               <br />
@@ -81,6 +83,59 @@ class Branding extends Component {
               </Button>
             </Grid>
           </Grid>
+        </Paper>
+        <Paper className="pageContainer">
+          <Typography>
+            <h1 className="pageContainerTitle">
+              Farben
+            </h1>
+            <small>
+              Das sind die Farben, die wir am häufigsten nutzen.
+            </small>
+          </Typography>
+          <br />
+          <Card className="pluginCard">
+            <CardContent className="pluginCardContent">
+              <Grid container spacing={4}>
+                <Grid item xs={3}>
+                  <Card className="pluginCard">
+                    <CardContent className="pluginCardContent twasi-blue">
+                      <h1 className="pageContainerTitle">
+                        #3f51b5
+                      </h1>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={3}>
+                  <Card className="pluginCard">
+                    <CardContent className="pluginCardContent twasi-text">
+                      <h1 className="pageContainerTitle">
+                        #afb6c5
+                      </h1>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={3}>
+                  <Card className="pluginCard">
+                    <CardContent className="pluginCardContent twasi-background">
+                      <h1 className="pageContainerTitle">
+                        #1a2035
+                      </h1>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={3}>
+                  <Card className="pluginCard">
+                    <CardContent className="pluginCardContent twasi-paper">
+                      <h1 className="pageContainerTitle">
+                        #202940
+                      </h1>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
         </Paper>
       </div>
     );
