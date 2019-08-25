@@ -364,7 +364,7 @@ export default {
   'support.ticket.close_ticket': 'Close ticket',
   'support.ticket.state.closed': 'Closed',
   'support.ticket.state.open': 'Open',
-  'support.ticket.state.progres': 'In progress',
+  'support.ticket.state.progress': 'In progress',
   'support.ticket.rating.could_we_help': 'Could we help you?',
   'support.ticket.rating.what_was_wrong': "What didn't made you happy?",
 
