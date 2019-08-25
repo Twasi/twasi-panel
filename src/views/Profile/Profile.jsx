@@ -280,7 +280,8 @@ class Profile extends Component {
                         <Button
                           onClick={() => { this.handleAuthentication(twitch.twitchUri + "?environment=" + window.location + "&jwt=" + jwt) }}
                           variant="contained"
-                          color="primary">
+                          color="primary"
+                          disabled>
                           <FormattedMessage id="profile.own_bot.connect" />
                         </Button>}
                       {twitch.twitch !== null &&
