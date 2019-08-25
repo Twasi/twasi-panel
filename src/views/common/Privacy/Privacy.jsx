@@ -27,7 +27,7 @@ class Privacy extends Component {
       <div className="pageContent">
         <Paper className="pageContainer">
           <Typography>
-            <h4 style={{ marginTop: '0px' }}>
+            <h1 style={{ marginTop: '0px' }}>
               Informationen zur Datenerhebung
               {isSetUp &&
               <span style={{ float: 'right' }}>
@@ -36,7 +36,7 @@ class Privacy extends Component {
                   <FormattedMessage id="common.back_to_panel" />
                 </Button>
               </span>}
-            </h4>
+            </h1>
             <small>
               Twasi erhebt Ihre Daten zum Zweck der Vertragsdurchführung, zur Erfüllung ihrer vertraglichen und vorvertraglichen Pflichten.
               Die Datenerhebung und Datenverarbeitung ist für die Durchführung des Vertrags erforderlich und beruht auf Artikel 6 Abs. 1 b) DSGVO.

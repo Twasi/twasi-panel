@@ -27,7 +27,7 @@ class Imprint extends Component {
       <div className="pageContent">
         <Paper className="pageContainer">
           <Typography>
-            <h4 className="pageContainerTitle">
+            <h1 className="pageContainerTitle">
               Verantwortlich für die Inhalte dieser Seite
               {isSetUp &&
               <span style={{ float: 'right' }}>
@@ -36,7 +36,7 @@ class Imprint extends Component {
                   <FormattedMessage id="common.back_to_panel" />
                 </Button>
               </span>}
-            </h4>
+            </h1>
             <small>
               (gem. § 55 Abs. 2 RStV)
             </small>

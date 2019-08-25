@@ -27,7 +27,7 @@ class TOS extends Component {
       <div className="pageContent">
         <Paper className="pageContainer">
           <Typography>
-            <h4 className="pageContainerTitle">
+            <h1 className="pageContainerTitle">
               Nutzungsbedingungen
               {isSetUp &&
               <span style={{ float: 'right' }}>
@@ -36,7 +36,7 @@ class TOS extends Component {
                   <FormattedMessage id="common.back_to_panel" />
                 </Button>
               </span>}
-            </h4>
+            </h1>
             <small>
             Twasi2-„Closed Beta“
             </small>
