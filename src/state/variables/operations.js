@@ -27,7 +27,7 @@ const loadVariables = () => dispatch => {
 
 const addVariable = (name, output) => dispatch => {
     dispatch(updateActionSuccess(false));
-    dispatch(getGraph(`addVariable(name: "${name}", output: "${output}")`, 'customvariables')).then(
+    dispatch(getGraph(`addVariable(name: ${JSON.stringify(name)}, output: ${JSON.stringify(output)})`, 'customvariables')).then(
     data => {
       dispatch(updateAddVariable(data.customvariables));
       dispatch(updateActionSuccess(true));
@@ -38,7 +38,7 @@ const addVariable = (name, output) => dispatch => {
 
 const editVariable = (id, name, output) => dispatch => {
     dispatch(updateActionSuccess(false));
-    dispatch(getGraph(`editVariable(id: "${id}",name: "${name}", output: "${output}")`, 'customvariables')).then(
+    dispatch(getGraph(`editVariable(id: "${id}", name: ${JSON.stringify(name)}, output: ${JSON.stringify(output)})`, 'customvariables')).then(
     data => {
       dispatch(updateEditVariable(data.customvariables));
       dispatch(updateActionSuccess(true));

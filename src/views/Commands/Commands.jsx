@@ -122,12 +122,12 @@ class Commands extends Component {
     return commands.map(command => (
       <TableRow key={command.id}>
         <TableCell>
-          <b>{decodeURIComponent(command.name)}</b>
+          <b>{command.name}</b>
         </TableCell>
         <TableCell
           style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
         >
-          {decodeURIComponent(command.content)}
+          {command.content}
         </TableCell>
         <TableCell>
           <Chip

@@ -24,11 +24,11 @@ const loadMyTickets = () => (dispatch, getState) => {
   );
 };
 
-const createTicket = (category, topic, message) => (dispatch, getState) => dispatch(getGraph(`support{create(topic:"${encodeURIComponent(topic)}",message:"${encodeURIComponent(message.replace(/(\r\n|\n|\r)/gm, '<br />'))}",category:"${category}"){${ticketQuery}}`)).then(data => {
+const createTicket = (category, topic, message) => (dispatch, getState) => dispatch(getGraph(`support{create(topic:${JSON.stringify(topic)},message:${JSON.stringify(message.replace(/(\r\n|\n|\r)/gm, '<br />'))},category:"${category}"){${ticketQuery}}`)).then(data => {
   dispatch(updateMyTickets([...selectors.getMyTickets(getState()), data.support.create]));
 });
 
-const replyToTicket = (id, close, isAdminContext, message) => (dispatch, getState) => dispatch(getGraph(`support{reply(id:"${id}",close:${close},isAdminContext:${isAdminContext},message:"${encodeURIComponent(message.replace(/(\r\n|\n|\r)/gm, '<br />'))}"){${ticketQuery}}`)).then(data => {
+const replyToTicket = (id, close, isAdminContext, message) => (dispatch, getState) => dispatch(getGraph(`support{reply(id:"${id}",close:${close},isAdminContext:${isAdminContext},message:${JSON.stringify(message.replace(/(\r\n|\n|\r)/gm, '<br />'))}){${ticketQuery}}`)).then(data => {
   dispatch(updateMyTickets([...selectors.getMyTickets(getState()).filter(t => t.id !== id), data.support.reply]));
 });
 

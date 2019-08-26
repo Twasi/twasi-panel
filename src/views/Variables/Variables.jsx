@@ -65,7 +65,7 @@ class Variables extends Component {
   handleOpenNotification = variableName => {
     this.setState({
       openNotification: true,
-      notification: 'Die Variable "' + decodeURIComponent(variableName) + '" wurde erfolgreich gelöscht.'
+      notification: 'Die Variable "' + variableName + '" wurde erfolgreich gelöscht.'
     });
   };
 
@@ -103,12 +103,12 @@ class Variables extends Component {
     return variables.map(variable => (
       <TableRow>
         <TableCell>
-          <b>{decodeURIComponent(variable.name)}</b>
+          <b>{variable.name}</b>
         </TableCell>
         <TableCell
           style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
         >
-          {decodeURIComponent(variable.output)}
+          {variable.output}
         </TableCell>
         <TableCell>
           <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">

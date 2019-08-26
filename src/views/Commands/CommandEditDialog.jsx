@@ -49,8 +49,8 @@ class Command extends React.Component {
     const { commandObject, updateAccessLevels } = this.props;
     updateAccessLevels();
     this.setState({
-      commandName: decodeURIComponent(commandObject.name),
-      commandContent: decodeURIComponent(commandObject.content),
+      commandName: commandObject.name,
+      commandContent: commandObject.content,
       commandCooldown: commandObject.cooldown,
       commandAccessLevel: commandObject.accessLevel.value,
       commandAccessLevelName: commandObject.accessLevel.name,
@@ -360,7 +360,7 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.editCommand(commandObject.id, encodeURIComponent(this.state.commandName), encodeURIComponent(this.state.commandContent), this.getSecondsFromCooldown(), this.state.commandAccessLevelName);
+                this.props.editCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccessLevelName);
                 this.handleOpenNotification(this.state.commandName)
             }}>
             <FormattedMessage id="commands.new_command.savecommand" />

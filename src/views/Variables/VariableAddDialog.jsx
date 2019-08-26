@@ -142,7 +142,7 @@ class Variable extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.addVariable(encodeURIComponent(this.state.variableName), encodeURIComponent(this.state.variableOutput));
+                this.props.addVariable(this.state.variableName, this.state.variableOutput);
                 this.handleOpenNotification(this.state.variableName)
                 this.clearTextInput()
             }}>

@@ -370,7 +370,7 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.addCommand(encodeURIComponent(this.state.commandName), encodeURIComponent(this.state.commandContent), this.getSecondsFromCooldown(), this.state.commandAccess);
+                this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccess);
                 this.handleOpenNotification(this.state.commandName)
                 this.clearTextInput()
             }}>

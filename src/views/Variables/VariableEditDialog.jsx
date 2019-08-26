@@ -29,8 +29,8 @@ class Variable extends React.Component {
   componentDidMount() {
     const { variableObject } = this.props;
     this.setState({
-      variableName: decodeURIComponent(variableObject.name),
-      variableOutput: decodeURIComponent(variableObject.output)
+      variableName: variableObject.name,
+      variableOutput: variableObject.output
     });
   }
 
@@ -131,7 +131,7 @@ class Variable extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.editVariable(variableObject.id, encodeURIComponent(this.state.variableName), encodeURIComponent(this.state.variableOutput));
+                this.props.editVariable(variableObject.id, this.state.variableName, this.state.variableOutput);
                 this.handleOpenNotification(this.state.variableName)
             }}>
             <FormattedMessage id="variables.new_variable.savevariable" />
