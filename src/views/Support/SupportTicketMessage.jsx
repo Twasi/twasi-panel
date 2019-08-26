@@ -14,7 +14,6 @@ import Icon from '@material-ui/core/Icon';
 
 const SupportTicketMessage = props => {
   const { isStaff, displayCloseMessage, sender, message } = props;
-
   const getAvatar = () => (
     <Grid item key="avatar">
       <Avatar>
@@ -40,15 +39,15 @@ const SupportTicketMessage = props => {
     <Grid item xs={8} key="message">
       <Typography style={{ position: 'relative', paddingBottom: '25px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         <Typography className="chatName">{sender.name}</Typography>
-        {message.message.split('<br />').map((item, index) => [item, index !== message.message.split('<br />').length - 1 ? <br /> : null])}
+        {decodeURIComponent(message.message.split('<br />').map((item, index) => [item, index !== message.message.split('<br />').length - 1 ? <br /> : null]))}
         <Typography className="chatTime">{new Date(message.createdAt).toLocaleString()}</Typography>
       </Typography>
       {displayCloseMessage &&
       <Typography style={{ position: 'relative', marginTop: '5px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         {sender.name} hat das Ticket am {new Date(message.createdAt).toLocaleString()} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
-          {/*<br /><br />
+          <br /><br />
           <Typography component="legend"><small><FormattedMessage id="support.ticket.rating.could_we_help" /></small></Typography>
-          <StyledRating
+          {/*<StyledRating
             name="customized-color"
             value={value}
             onChange={(event, newValue) => {
@@ -56,7 +55,7 @@ const SupportTicketMessage = props => {
                       }}
             precision={0.5}
             icon={<FavoriteIcon fontSize="inherit" />}
-          />
+          />*/}
           {value < 3 &&
             <TextField
               style={{ marginTop: '10px' }}
@@ -80,7 +79,7 @@ const SupportTicketMessage = props => {
                   </InputAdornment>
                 )
               }}>
-            </TextField>}*/}
+            </TextField>}
       </Typography>}
     </Grid>
   );

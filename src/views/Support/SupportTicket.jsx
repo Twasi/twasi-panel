@@ -98,7 +98,7 @@ const SupportTicket = props => {
             </Tooltip>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.topic" /></h5><small>{ticket.topic}</small></Typography>
+            <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.topic" /></h5><small>{decodeURIComponent(ticket.topic)}</small></Typography>
           </Grid>
           <Grid item xs={3}>
             <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.created_at" /></h5><small>{new Date(ticket.createdAt).toLocaleString()}</small></Typography>
@@ -115,8 +115,8 @@ const SupportTicket = props => {
           </Grid>
         </Grid>
       </ExpansionPanelSummary>
-      <Card className="pluginCard">
-        <CardContent style={{ padding: '24px', borderRadius: '0px 0px 15px 15px' }}>
+      <Card style={{ borderRadius: '0px 0px 4px 4px' }} className="pluginCard">
+        <CardContent style={{ padding: '24px' }}>
           {ticket.messages.map((messageObj, index) =>
             <SupportTicketMessage isStaff={messageObj.staff} sender={messageObj.sender} message={messageObj} displayCloseMessage={index === ticket.messages.length - 1 && ticket.state === 'CLOSED'} />)
           }
