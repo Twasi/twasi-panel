@@ -2,7 +2,7 @@ import fetch from './fetch';
 import { authSelectors } from '../state/auth';
 import { appInfoOperations } from '../state/appInfo';
 
-const getRawGraph = query => fetch(window.env.GRAPHQL_URL, 'post', `query=${encodeURI(query)}`);
+const getRawGraph = query => fetch(window.env.GRAPHQL_URL, 'post', `query=${encodeURIComponent(query)}`);
 
 const getGraph = (query, target, jwt) => (dispatch, getState) => {
   if (!jwt && getState) {
