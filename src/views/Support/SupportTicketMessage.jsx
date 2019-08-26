@@ -1,16 +1,16 @@
 import React, { Fragment } from 'react';
 //import { withStyles } from '@material-ui/core/styles';
-import { FormattedMessage } from 'react-intl';
+//import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 //import Rating from '@material-ui/lab/Rating';
 //import FavoriteIcon from '@material-ui/icons/Favorite';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
-import Icon from '@material-ui/core/Icon';
+//import TextField from '@material-ui/core/TextField';
+//import InputAdornment from '@material-ui/core/InputAdornment';
+//import IconButton from '@material-ui/core/IconButton';
+//import Icon from '@material-ui/core/Icon';
 
 const SupportTicketMessage = props => {
   const { isStaff, displayCloseMessage, sender, message } = props;
@@ -22,7 +22,7 @@ const SupportTicketMessage = props => {
     </Grid>
   );
 
-  const [value] = React.useState(3);
+  //const [value] = React.useState(3);
 
   /*
   const StyledRating = withStyles({
@@ -45,9 +45,9 @@ const SupportTicketMessage = props => {
       {displayCloseMessage &&
       <Typography style={{ position: 'relative', marginTop: '5px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         {sender.name} hat das Ticket am {new Date(message.createdAt).toLocaleString()} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
-          <br /><br />
+          {/*<br /><br />
           <Typography component="legend"><small><FormattedMessage id="support.ticket.rating.could_we_help" /></small></Typography>
-          {/*<StyledRating
+          <StyledRating
             name="customized-color"
             value={value}
             onChange={(event, newValue) => {
@@ -55,7 +55,7 @@ const SupportTicketMessage = props => {
                       }}
             precision={0.5}
             icon={<FavoriteIcon fontSize="inherit" />}
-          />*/}
+          />
           {value < 3 &&
             <TextField
               style={{ marginTop: '10px' }}
@@ -79,7 +79,7 @@ const SupportTicketMessage = props => {
                   </InputAdornment>
                 )
               }}>
-            </TextField>}
+            </TextField>}*/}
       </Typography>}
     </Grid>
   );
