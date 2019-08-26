@@ -115,6 +115,7 @@ class SupportTicketModal extends React.Component {
                 fullWidth
                 margin="normal"
                 variant="outlined"
+                inputProps={{ maxLength: 20 }}
               />
               <TextField
                 InputLabelProps={{ shrink: true }}
@@ -127,6 +128,7 @@ class SupportTicketModal extends React.Component {
                 rows="6"
                 margin="normal"
                 variant="outlined"
+                inputProps={{ maxLength: 1000 }}
               />
             </CardContent>
           </Card>

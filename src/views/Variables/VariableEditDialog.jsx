@@ -102,6 +102,7 @@ class Variable extends React.Component {
                     </InputAdornment>
                   )
                 }}
+                inputProps={{ maxLength: 50 }}
               />
             </CardContent>
           </Card>
@@ -119,6 +120,7 @@ class Variable extends React.Component {
                 helperText="Das ist die Ausgabe deiner Variable."
                 margin="normal"
                 variant="outlined"
+                inputProps={{ maxLength: 1000 }}
               />
             </CardContent>
           </Card>

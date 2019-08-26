@@ -218,6 +218,7 @@ class Command extends React.Component {
                 helperText={<FormattedMessage id="commands.new_command.command.helpertext" />}
                 margin="normal"
                 variant="outlined"
+                inputProps={{ maxLength: 50 }}
               />
             </CardContent>
           </Card>
@@ -252,6 +253,7 @@ class Command extends React.Component {
                 helperText={<FormattedMessage id="commands.new_command.output.helpertext" />}
                 margin="normal"
                 variant="outlined"
+                inputProps={{ maxLength: 1000 }}
               />
             </CardContent>
           </Card>
