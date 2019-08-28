@@ -17,10 +17,12 @@ import { variablesSelectors, variablesOperations } from '../../state/variables';
 class Variable extends React.Component {
 
   state = {
+    variableID: "",
     variableName: "",
     variableOutput: "",
     openNotification: false,
-    notification: ""
+    notification: "",
+    doubleEntry: false
   };
 
   componentDidMount() {
@@ -54,6 +56,31 @@ class Variable extends React.Component {
   };
 
   handleClose = () => {
+    this.props.onClose(this.props.selectedValue);
+  };
+
+  handleAddVariable = (name, content) => {
+    const { variables } = this.props;
+    var containsKey = false;
+    var variableID = "";
+    variables.forEach(function(variable) {
+      if(name === variable.name) {
+        containsKey = true;
+        variableID = variable.id
+      }
+    })
+    if (containsKey) {
+      this.setState({ doubleEntry: true, variableID: variableID });
+    } else {
+      this.props.addVariable(name, content);
+      this.clearTextInput();
+      this.props.onClose(this.props.selectedValue);
+      this.handleOpenNotification(this.state.variableName)
+    }
+  };
+
+  handleEditVariable = (id, name, content) => {
+    this.props.editVariable(id, name, content);
     this.props.onClose(this.props.selectedValue);
   };
 
@@ -142,12 +169,50 @@ class Variable extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.addVariable(this.state.variableName, this.state.variableOutput);
-                this.handleOpenNotification(this.state.variableName)
-                this.clearTextInput()
+                this.handleAddVariable(this.state.variableName, this.state.variableOutput);
             }}>
             <FormattedMessage id="variables.new_variable.savevariable" />
           </Button>
+          <Dialog open={this.state.doubleEntry}>
+            <DialogContent>
+              <Typography>
+                <h4 className="pageContainerTitle">
+                  Die Variable "<b>{this.state.variableName}</b>" existiert bereits.
+                </h4>
+                <small>
+                  Möchtest du die Variable "<b>{this.state.variableName}</b>" überschreiben?
+                </small>
+              </Typography>
+              <Typography>
+                <Card className="pluginCard" style={{ marginTop: '15px' }}>
+                  <CardContent>
+                    <h3 className="pageContainerTitle">Achtung!</h3>
+                    <small>
+                      durch das Überschreiben wird die ehemalige Ausgabe überschrieben.
+                    </small>
+                  </CardContent>
+                </Card>
+              </Typography>
+              <Button
+                style={{ marginTop: '15px', marginRight: '16px' }}
+                variant="contained"
+                color="secondary"
+                onClick={() => {
+                    this.handleEditVariable(this.state.variableID, this.state.variableName, this.state.variableOutput)
+                }}>
+                Variable überschreiben
+              </Button>
+              <Button
+                style={{ marginTop: '15px' }}
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                    this.handleClose()
+                }}>
+                Abbrechen
+              </Button>
+            </DialogContent>
+          </Dialog>
         </DialogContent>
         <Snackbar
           anchorOrigin={{
@@ -178,6 +243,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updateVariables: () => dispatch(variablesOperations.loadVariables()),
   addVariable: (name, output) => dispatch(variablesOperations.addVariable(name, output)),
+  editVariable: (id, name, output) => dispatch(variablesOperations.editVariable(id, name, output)),
   verifyData: () => dispatch(variablesOperations.verifyData()),
 });
 

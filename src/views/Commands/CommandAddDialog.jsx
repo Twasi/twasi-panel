@@ -13,7 +13,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
-import Slider from '@material-ui/lab/Slider';
+import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import Chip from '@material-ui/core/Chip';
@@ -30,6 +30,7 @@ import './_style.css';
 class Command extends React.Component {
 
   state = {
+    commandID: "",
     commandName: "",
     commandContent: "",
     commandCooldown: 0,
@@ -38,7 +39,8 @@ class Command extends React.Component {
     labelWidth: 115,
     cooldown: 0,
     openNotification: false,
-    notification: ''
+    notification: '',
+    doubleEntry: false,
   };
 
   componentDidMount() {
@@ -105,6 +107,31 @@ class Command extends React.Component {
     this.textInput.current.focus();
   }
 
+  handleAddCommand = (name, content, cooldown, access) => {
+    const { commands } = this.props;
+    var containsKey = false;
+    var commandID = "";
+    commands.forEach(function(command) {
+      if(name === command.name) {
+        containsKey = true;
+        commandID = command.id
+      }
+    })
+    if (containsKey) {
+      this.setState({ doubleEntry: true, commandID: commandID });
+    } else {
+      this.props.addCommand(name, content, cooldown, access);
+      this.clearTextInput()
+      this.props.onClose(this.props.selectedValue);
+      this.handleOpenNotification(this.state.commandName)
+    }
+  };
+
+  handleEditCommand = (id, name, content, cooldown, access) => {
+    this.props.editCommand(id, name, content, cooldown, access);
+    this.props.onClose(this.props.selectedValue);
+  };
+
   clearTextInput() {
     this.setState({
       commandName: "",
@@ -113,7 +140,7 @@ class Command extends React.Component {
       accessLevel: 0,
       commandCooldown: 0,
       cooldown: 0,
-      issue: 10
+      issue: 10,
     });
   }
 
@@ -187,7 +214,6 @@ class Command extends React.Component {
     if (this.props.isActionSuccess) {
       this.props.updateCommands()
     }
-    console.log(this.textInput)
     return (
       <Dialog
         onClose={this.handleClose}
@@ -370,12 +396,50 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.addCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccess);
-                this.handleOpenNotification(this.state.commandName)
-                this.clearTextInput()
+                this.handleAddCommand(this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccess)
             }}>
             <FormattedMessage id="commands.new_command.savecommand" />
           </Button>
+          <Dialog open={this.state.doubleEntry}>
+            <DialogContent>
+              <Typography>
+                <h4 className="pageContainerTitle">
+                  Der Befehl "<b>{this.state.commandName}</b>" existiert bereits.
+                </h4>
+                <small>
+                  Möchtest du den Befehl "<b>{this.state.commandName}</b>" überschreiben?
+                </small>
+              </Typography>
+              <Typography>
+                <Card className="pluginCard" style={{ marginTop: '15px' }}>
+                  <CardContent>
+                    <h3 className="pageContainerTitle">Achtung!</h3>
+                    <small>
+                      durch das Überschreiben wird die ehemalige Ausgabe, sowie der Cooldown und das Zugriffslevel überschrieben.
+                    </small>
+                  </CardContent>
+                </Card>
+              </Typography>
+              <Button
+                style={{ marginTop: '15px', marginRight: '16px' }}
+                variant="contained"
+                color="secondary"
+                onClick={() => {
+                    this.handleEditCommand(this.state.commandID, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccess)
+                }}>
+                Befehl überschreiben
+              </Button>
+              <Button
+                style={{ marginTop: '15px' }}
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                    this.handleClose()
+                }}>
+                Abbrechen
+              </Button>
+            </DialogContent>
+          </Dialog>
         </DialogContent>
         <Snackbar
           anchorOrigin={{
@@ -397,6 +461,7 @@ Command.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  commands: commandsSelectors.getCommands(state),
   accessLevels: commandsSelectors.getAccessLevels(state),
   variables: variablesSelectors.getVariables(state),
   isLoaded: commandsSelectors.isLoaded(state),
@@ -408,6 +473,7 @@ const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
   updateAccessLevels: () => dispatch(commandsOperations.loadAccessLevels()),
   addCommand: (name, content, cooldown, accessLevel) => dispatch(commandsOperations.addCommand(name, content, cooldown, accessLevel)),
+  editCommand: (id, name, content, cooldown, accessLevel) => dispatch(commandsOperations.editCommand(id, name, content, cooldown, accessLevel)),
   verifyData: () => dispatch(commandsOperations.verifyData()),
   updateVariables: () => dispatch(variablesOperations.loadVariables())
 });

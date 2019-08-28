@@ -13,7 +13,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
-import Slider from '@material-ui/lab/Slider';
+import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import Chip from '@material-ui/core/Chip';
@@ -95,6 +95,11 @@ class Command extends React.Component {
     this.setState({
       commandContent: event.target.value
     });
+  };
+
+  handleEditCommand = (id, name, content, cooldown, access) => {
+    this.props.editCommand(id, name, content, cooldown, access);
+    this.props.onClose(this.props.selectedValue);
   };
 
   getSliderValueByMilliseconds(ms) {
@@ -360,7 +365,7 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.editCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccessLevelName);
+                this.handleEditCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccessLevelName)
                 this.handleOpenNotification(this.state.commandName)
             }}>
             <FormattedMessage id="commands.new_command.savecommand" />

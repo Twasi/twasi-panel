@@ -63,6 +63,11 @@ class Variable extends React.Component {
     });
   };
 
+  handleEditVariable = (id, name, content) => {
+    this.props.editVariable(id, name, content);
+    this.props.onClose(this.props.selectedValue);
+  };
+
   render() {
     const { variableObject, ...other } = this.props;
     if (this.props.isActionSuccess) {
@@ -131,7 +136,7 @@ class Variable extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.props.editVariable(variableObject.id, this.state.variableName, this.state.variableOutput);
+                this.handleEditVariable(variableObject.id, this.state.variableName, this.state.variableOutput);
                 this.handleOpenNotification(this.state.variableName)
             }}>
             <FormattedMessage id="variables.new_variable.savevariable" />
