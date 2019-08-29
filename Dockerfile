@@ -2,6 +2,9 @@
 # are running the same version of Node.
 FROM node:10.15.3
 
+ARG VERSION
+ENV VERSION=$VERSION
+
 # The base node image sets a very verbose log level.
 ENV NPM_CONFIG_LOGLEVEL all
 

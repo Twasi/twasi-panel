@@ -10,8 +10,7 @@ if [ ! -f "/build/build.js" ]; then
   echo "First boot after build detected. Writing build data file..."
 fi
 
-today=$(date +%d%m%Y)
-sed -i "s/%currentDate%/${today}/g" /build/build.js
+sed -i "s/%version%/${VERSION}/g" /build/build.js
 
 cd /
 serve -s build

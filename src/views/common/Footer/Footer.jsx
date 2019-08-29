@@ -16,10 +16,7 @@ class Footer extends Component {
     return (
       <div style={{ textAlign: 'center', marginBottom: '20px', marginTop: '20px' }}>
         <Typography>
-          Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-Panel v.{
-            pkgJson.version
-          }{' '}
-          - #{window.env.BUILD_DESC} | Twasi-Core v.{serverVersion}
+          Twasi ©2016 - {new Date().getFullYear()}, MPL-2.0 | Twasi-Panel #{window.env.BUILD_DESC} | Twasi-Core #{serverVersion}
         </Typography>
         <br />
         <Typography>
