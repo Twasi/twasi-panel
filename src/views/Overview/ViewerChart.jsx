@@ -46,7 +46,7 @@ class ViewerChart extends Component {
           game: entry.game,
           chatMessages: entry.chatMessages,
           chatCommands: entry.chatCommands,
-          timestamp: entry.timestamp,
+          timestamp: new Date(entry.timestamp).toLocaleString(),
           lineColor: chart.colors.next()
         });
       } else {
@@ -55,7 +55,7 @@ class ViewerChart extends Component {
           game: entry.game,
           chatMessages: entry.chatMessages,
           chatCommands: entry.chatCommands,
-          timestamp: entry.timestamp
+          timestamp: new Date(entry.timestamp).toLocaleString()
         });
       }
       if (index === 0 || data[index - 1].game !== entry.game) {
