@@ -13,12 +13,12 @@ import { connect } from 'react-redux';
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
 function getStreamLength(data) {
-  const time = parseInt(data.length);
-  const hour = time / 60;
-  const rhour = Math.floor(hour);
-  const min = (hour - rhour) * 60;
-  const rmin = Math.floor(min);
-  return `${rhour}h ${rmin}min`;
+  var startDate = new Date(data[0].timestamp)
+  var endDate = new Date(data.slice(-1)[0].timestamp)
+  var difference = endDate.getTime() - startDate.getTime()
+  const hours = parseInt(Math.abs(difference) / (1000 * 60 * 60) % 24);
+  const minutes = parseInt(Math.abs(difference) / (1000 * 60) % 60);
+  return hours + "h " + minutes + "m";
 }
 
 function getBiggestViewerCount(data) {
