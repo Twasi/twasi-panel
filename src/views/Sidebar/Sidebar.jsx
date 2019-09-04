@@ -250,7 +250,7 @@ class Sidebar extends Component {
               style={{ fontSize: 13 }}
               value="user_manager"
               key="user_manager"
-              selected={selectedKey === 'user_manager'}
+              selected={selectedKey === 'manager'}
               onClick={event => this.handleClick(event, 'manager')}
             >
               <i className="material-icons" style={{ marginRight: '15px' }}>group</i>
