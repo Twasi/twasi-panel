@@ -70,6 +70,16 @@ export default {
   'sidebar.votings': 'Votings',
   'sidebar.support': 'Support',
   'sidebar.navigation_headline': 'Navigation',
+  'sidebar.user_manager': 'Nutzer Manager',
+
+  // User Manager
+  'manager.title': 'User Manager',
+  'manager.subtitle': 'Here you can edit Twasi users.',
+  'manager.table.name': 'Name',
+  'manager.table.game': 'Game',
+  'manager.table.viewers': 'Viewers',
+  'manager.table.followers': 'Follower',
+  'manager.table.url': 'Channel',
 
   // Sidebar
   'header.give_feedback': 'Feedback',

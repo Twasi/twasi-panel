@@ -32,10 +32,10 @@ class Footer extends Component {
           <RouterLink style={{ marginRight: '10px', paddingRight: '10px', borderRight: '1px solid rgba(175, 182, 197, 0.25)' }} to="/branding">
             <FormattedMessage id="footer.branding" />
           </RouterLink>
-          <Link style={{ marginRight: '10px', paddingRight: '10px', borderRight: '1px solid rgba(175, 182, 197, 0.25)' }} href="https://twitter.com/twasinet">
+          <Link style={{ marginRight: '10px', paddingRight: '10px', borderRight: '1px solid rgba(175, 182, 197, 0.25)' }} href="https://twitter.com/twasinet" target="_blank">
             Twitter
           </Link>
-          <Link href="https://github.com/twasi">
+          <Link href="https://github.com/twasi" target="_blank">
             GitHub
           </Link>
         </Typography>

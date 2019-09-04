@@ -71,6 +71,16 @@ export default {
   'sidebar.support': 'Support',
   'sidebar.userfeedback': 'User Feedback',
   'sidebar.navigation_headline': 'Navigation',
+  'sidebar.user_manager': 'Nutzer Manager',
+
+  // User Manager
+  'manager.title': 'Nutzer Manager',
+  'manager.subtitle': 'Hier kannst du die Nutzer bearbeiten.',
+  'manager.table.name': 'Name',
+  'manager.table.game': 'Spiel',
+  'manager.table.viewers': 'Zuschauer',
+  'manager.table.followers': 'Follower',
+  'manager.table.url': 'Kanal',
 
   // Sidebar
   'header.give_feedback': 'Feedback geben',

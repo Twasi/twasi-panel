@@ -10,6 +10,11 @@ const updateGlobalStreamtracker = globalstreamtracker => ({
   globalstreamtracker
 });
 
+const updateUsers = users => ({
+  type: types.UPDATE_USERS,
+  users
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -38,6 +43,7 @@ const updateGlobalLoading = isGlobalLoading => ({
 export default {
   updateStreamtracker,
   updateGlobalStreamtracker,
+  updateUsers,
   updateDisabled,
   updateLoaded,
   updateLoading,

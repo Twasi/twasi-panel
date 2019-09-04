@@ -6,6 +6,7 @@ import { getGraph } from '../../services/graphqlService';
 const {
   updateStreamtracker,
   updateGlobalStreamtracker,
+  updateUsers,
   updateDisabled,
   updateLoading,
   updateLoaded,
@@ -41,6 +42,16 @@ const loadGlobalStreamtracker = () => dispatch => {
   });
 };
 
+const loadUsers = () => dispatch => {
+  dispatch(getGraph('liveBotUsers{viewerCount,channelData{BroadcasterLanguage,BroadcasterSoftware,BroadcasterType,Description,DisplayName,Followers,Game,Id,Language,Logo,Mature,Name,Partner,ProfileBanner,ProfileBannerBackground,ProfileBannerBackgroundColor,Status,Url,VideoBanner,Views}}', 'streamtracker')).then(data => {
+    if (data == null) {
+      dispatch(updateDisabled(true));
+      return;
+    }
+    dispatch(updateUsers(data.liveBotUsers));
+  });
+};
+
 const verifyData = () => (dispatch, getState) => {
   const state = getState();
 
@@ -55,6 +66,7 @@ const verifyData = () => (dispatch, getState) => {
 export default {
   loadStreamtracker,
   loadGlobalStreamtracker,
+  loadUsers,
   verifyData,
   updateLoaded,
   updateLoading,

@@ -7,6 +7,7 @@ export const initialState = {
   noStreamData: true,
   streamtracker: [],
   globalstreamtracker: [],
+  users: [],
   isDisabled: false
 };
 
@@ -17,6 +18,9 @@ const streamtrackerReducer = (state = initialState, action) => {
     }
     case types.UPDATE_GLOBALSTREAMTRACKER: {
       return { ...state, isLoaded: true, isDisabled: false, globalstreamtracker: action.globalstreamtracker };
+    }
+    case types.UPDATE_USERS: {
+      return { ...state, isLoaded: true, isDisabled: false, users: action.users };
     }
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };

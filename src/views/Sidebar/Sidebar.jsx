@@ -132,6 +132,13 @@ class Sidebar extends Component {
         icon: 'headset_mic',
         name: 'sidebar.support',
         shown: 'none'
+      },
+      {
+        key: 'manager',
+        path: '/manager',
+        icon: 'group',
+        name: 'sidebar.user_manager',
+        shown: 'admin'
       }
     ];
 
@@ -195,7 +202,7 @@ class Sidebar extends Component {
             {intl.formatMessage({ id: item.name })}
           </MenuItem>
         ));
-
+    const { rank } = this.props;
     return (
       <div className="siteSidebar" style={checked ? {} : { width: 87 }}>
         <Paper style={getMenuStyle()} className="sidebar">
@@ -238,6 +245,17 @@ class Sidebar extends Component {
                 {intl.formatMessage({ id: 'sidebar.support' })}
               </Badge>
             </MenuItem>
+            {rank === "TEAM" &&
+            <MenuItem
+              style={{ fontSize: 13 }}
+              value="user_manager"
+              key="user_manager"
+              selected={selectedKey === 'user_manager'}
+              onClick={event => this.handleClick(event, 'manager')}
+            >
+              <i className="material-icons" style={{ marginRight: '15px' }}>group</i>
+              {intl.formatMessage({ id: 'sidebar.user_manager' })}
+            </MenuItem>}
             <MenuItem
               style={{ fontSize: 13 }}
               onClick={() => {
@@ -269,7 +287,8 @@ Sidebar.propTypes = {
 
 const mapStateToProps = state => ({
   userName: authSelectors.getUser(state).name,
-  plugins: pluginsSelectors.getPlugins(state)
+  plugins: pluginsSelectors.getPlugins(state),
+  rank: authSelectors.getUser(state).rank
 });
 
 const mapDispatchToProps = dispatch => ({
