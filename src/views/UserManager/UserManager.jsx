@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
-import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
@@ -18,6 +18,7 @@ import Link from '@material-ui/core/Link';
 import twitchVerifiedBadge from '../common/resources/twitch_verified_badge.png';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
+import { impersonateOperations } from '../../state/impersonate';
 
 class UserManager extends Component {
   componentDidMount() {
@@ -40,7 +41,8 @@ class UserManager extends Component {
           <Avatar alt="ticket owner avatar" src={user.channelData.Logo} />
         </TableCell>
         <TableCell>
-          {user.channelData.Partner && <img style={{ verticalAlign: "middle", marginRight: '5px', marginTop: '-3px' }} height="22px" src={twitchVerifiedBadge} />}{user.channelData.DisplayName}
+          {user.channelData.Partner && <img alt="twitch_verified_badge" style={{ verticalAlign: "middle", marginRight: '5px', marginTop: '-3px' }} height="22px" src={twitchVerifiedBadge} />}
+          {user.channelData.DisplayName}
         </TableCell>
         <TableCell>
           {user.channelData.Game}
@@ -56,6 +58,20 @@ class UserManager extends Component {
           <Link href={user.channelData.Url} target="_blank">
             <FormattedMessage id="manager.table.tochannel" />
           </Link>
+        </TableCell>
+        <TableCell>
+          <Fab
+            aria-label="send-support-message"
+            color="primary"
+            variant="contained"
+            className="noshadow"
+            size="small"
+            onClick={() => this.props.impersonate(user.channelData.Name)}
+          >
+            <Icon>
+              exit_to_app
+            </Icon>
+          </Fab>
         </TableCell>
       </TableRow>
     ));
@@ -96,6 +112,7 @@ class UserManager extends Component {
                 <TableCell><FormattedMessage id="manager.table.viewers" /></TableCell>
                 <TableCell><FormattedMessage id="manager.table.followers" /></TableCell>
                 <TableCell><FormattedMessage id="manager.table.url" /></TableCell>
+                <TableCell><FormattedMessage id="manager.table.impersonate" /></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -115,7 +132,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateUsers: () => dispatch(streamtrackerOperations.loadUsers())
+  updateUsers: () => dispatch(streamtrackerOperations.loadUsers()),
+  impersonate: userName => dispatch(impersonateOperations.impersonateUser(userName)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserManager);

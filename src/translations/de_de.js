@@ -82,6 +82,7 @@ export default {
   'manager.table.followers': 'Follower',
   'manager.table.url': 'Kanal',
   'manager.table.tochannel': 'Kanal besuchen',
+  'manager.table.impersonate': 'Zum Panel',
 
   // Sidebar
   'header.give_feedback': 'Feedback geben',
