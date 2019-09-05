@@ -15,6 +15,8 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+import twitchVerifiedBadge from '../common/resources/twitch_verified_badge.png';
+
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 
 class UserManager extends Component {
@@ -31,15 +33,14 @@ class UserManager extends Component {
 
   renderUsers() {
     const { users } = this.props;
+    console.log(users)
     return users.map(user => (
       <TableRow key={user.channelData.Id}>
         <TableCell>
-          <Chip
-            size="normal"
-            color="primary"
-            avatar={<Avatar alt="ticket owner avatar" src={user.channelData.Logo} />}
-            label={user.channelData.DisplayName}
-          />
+          <Avatar alt="ticket owner avatar" src={user.channelData.Logo} />
+        </TableCell>
+        <TableCell>
+          {user.channelData.Partner && <img style={{ verticalAlign: "middle", marginRight: '5px', marginTop: '-3px' }} height="22px" src={twitchVerifiedBadge} />}{user.channelData.DisplayName}
         </TableCell>
         <TableCell>
           {user.channelData.Game}
@@ -89,6 +90,7 @@ class UserManager extends Component {
           <Table>
             <TableHead>
               <TableRow className="TableRow">
+                <TableCell></TableCell>
                 <TableCell><FormattedMessage id="manager.table.name" /></TableCell>
                 <TableCell><FormattedMessage id="manager.table.game" /></TableCell>
                 <TableCell><FormattedMessage id="manager.table.viewers" /></TableCell>
