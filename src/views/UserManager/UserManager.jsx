@@ -31,7 +31,6 @@ class UserManager extends Component {
 
   renderUsers() {
     const { users } = this.props;
-    console.log(users)
     return users.map(user => (
       <TableRow key={user.channelData.Id}>
         <TableCell>
