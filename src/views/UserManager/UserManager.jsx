@@ -33,7 +33,7 @@ class UserManager extends Component {
 
   renderUsers() {
     const { users } = this.props;
-    console.log(users)
+    //console.log(users)
     return users.map(user => (
       <TableRow key={user.channelData.Id}>
         <TableCell>
@@ -54,7 +54,7 @@ class UserManager extends Component {
         </TableCell>
         <TableCell>
           <Link href={user.channelData.Url} target="_blank">
-            Kanal von {user.channelData.DisplayName}
+            <FormattedMessage id="manager.table.tochannel" />
           </Link>
         </TableCell>
       </TableRow>

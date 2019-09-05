@@ -74,12 +74,13 @@ export default {
 
   // User Manager
   'manager.title': 'User Manager',
-  'manager.subtitle': 'Here you can edit Twasi users.',
+  'manager.subtitle': 'Here you can see Live Twasi users.',
   'manager.table.name': 'Name',
   'manager.table.game': 'Game',
   'manager.table.viewers': 'Viewers',
   'manager.table.followers': 'Follower',
   'manager.table.url': 'Channel',
+  'manager.table.tochannel': 'visit channel',
 
   // Sidebar
   'header.give_feedback': 'Feedback',

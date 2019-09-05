@@ -75,12 +75,13 @@ export default {
 
   // User Manager
   'manager.title': 'Nutzer Manager',
-  'manager.subtitle': 'Hier kannst du die Nutzer bearbeiten.',
+  'manager.subtitle': 'Hier siehst du, wer aktuell Live mit Twasi ist.',
   'manager.table.name': 'Name',
   'manager.table.game': 'Spiel',
   'manager.table.viewers': 'Zuschauer',
   'manager.table.followers': 'Follower',
   'manager.table.url': 'Kanal',
+  'manager.table.tochannel': 'Kanal besuchen',
 
   // Sidebar
   'header.give_feedback': 'Feedback geben',
