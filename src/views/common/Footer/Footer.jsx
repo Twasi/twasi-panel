@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 
 import { appInfoSelectors, appInfoOperations } from '../../../state/appInfo';
 
-const pkgJson = require('../../../../package.json');
-
 class Footer extends Component {
   render() {
     const { serverVersion } = this.props;
