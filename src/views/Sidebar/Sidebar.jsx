@@ -89,7 +89,7 @@ class Sidebar extends Component {
         path: '/timers',
         icon: 'alarm',
         name: 'sidebar.timers',
-        shown: 'plugins/timed_messages'
+        shown: 'plugins/timedmessages'
       },
       {
         key: 'songrequests',
