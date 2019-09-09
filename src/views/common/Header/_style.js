@@ -15,9 +15,6 @@ export const getSwapStyle = () => ({
 });
 
 export const getLogoStyle = () => ({
-  color: '#fff',
-  fontWeight: 700,
-  fontSize: 23,
   display: 'flex',
 });
 

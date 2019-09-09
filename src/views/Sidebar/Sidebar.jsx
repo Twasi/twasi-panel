@@ -12,6 +12,7 @@ import Icon from '@material-ui/core/Icon';
 import Fab from '@material-ui/core/Fab';
 import Badge from '@material-ui/core/Badge';
 import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
 
 import { authSelectors } from '../../state/auth';
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -208,7 +209,7 @@ class Sidebar extends Component {
         <Paper style={getMenuStyle()} className="sidebar">
           <Hidden mdDown>
             <div className="headerMenuItem">
-              {checked ? <FormattedMessage id="sidebar.navigation_headline" /> : ''}
+              {checked ? <Typography component="span" color="inherit" className="headerMenuTitle"><FormattedMessage id="sidebar.navigation_headline" /></Typography> : ''}
               <Fab onClick={this.handleChange} size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Collapse">
                 <Icon style={{ color: '#ffffff' }}>
                   {checked ? 'arrow_back' : 'arrow_forward'}

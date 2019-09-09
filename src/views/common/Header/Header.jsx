@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
@@ -32,8 +33,8 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp
             {avatar && <img src={avatar} alt="Avatar" style={getAvatarStyle()} />}
             <div style={getLogoDescriptionStyle()}>
               <span>
-                {userName}
-                <small style={getRankStyle()}><Rank /></small>
+                <Typography color="inherit" className="userNameStyle">{userName}</Typography>
+                <Typography color="inherit"><small style={getRankStyle()}><Rank /></small></Typography>
               </span>
             </div>
           </span>

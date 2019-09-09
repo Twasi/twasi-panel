@@ -70,6 +70,13 @@
   transform: scale(1.2);
 }
 
+.userNameStyle {
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 23px !important;
+  line-height: 25px !important;
+}
+
 @keyframes heartbeat {
   0% {
     transform: scale(1);

@@ -13,14 +13,17 @@
 
 .headerMenuItem {
   background: linear-gradient(135deg,#00aeae,#02d4d4);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 48px;
-  color: #fff;
   margin-left: 0px;
   padding: 0px 5px 0px 16px;
   min-height: 48px;
   position: relative;
   text-align: center;
   border-radius: 4px 4px 0px 0px;
+}
+
+.headerMenuTitle {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 48px !important;
+  color: #fff !important;
 }
