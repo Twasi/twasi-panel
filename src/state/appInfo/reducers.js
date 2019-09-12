@@ -7,6 +7,7 @@ export const initialState = {
   userStatus: 'LOADING',
   theme: 'twasi-darkblue',
   bannerAsHeader: false,
+  comicsans: false,
   notifications: [],
   lastNotificationId: 0
 };
@@ -35,6 +36,10 @@ const appInfoReducer = (state = initialState, action) => {
 
     case types.UPDATE_BANNERASHEADER: {
       return { ...state, bannerAsHeader: action.bannerAsHeader };
+    }
+
+    case types.UPDATE_COMICSANS: {
+      return { ...state, comicsans: action.comicsans };
     }
 
     case types.ADD_NOTIFICATION: {

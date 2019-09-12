@@ -30,6 +30,11 @@ const updateBannerAsHeader = bannerAsHeader => ({
   bannerAsHeader
 });
 
+const updateComicSans = comicsans => ({
+  type: types.UPDATE_COMICSANS,
+  comicsans
+});
+
 const addNotification = notification => ({
   type: types.ADD_NOTIFICATION,
   notification
@@ -42,5 +47,6 @@ export default {
   updateUserStatus,
   updateTheme,
   updateBannerAsHeader,
+  updateComicSans,
   addNotification
 };

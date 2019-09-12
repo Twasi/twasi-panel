@@ -317,6 +317,7 @@ export default {
   // ThemeSwitch
   'themeswitch.switch_theme': 'Change theme',
   'themeswitch.banner_as_header': 'Use Twitch banner as header',
+  'themeswitch.comicsans': 'Take me back to the 90s',
   'themeswitch.background_color': 'Background color',
   'themeswitch.content_color': 'Content',
   'themeswitch.special_color': 'Special content',

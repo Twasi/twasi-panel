@@ -99,8 +99,13 @@ class ThemeSwitch extends React.Component {
     this.props.updateBannerAsHeader(value.target.checked);
   };
 
+  handleComicSans = value => {
+    storage('comicsans', value.target.checked);
+    this.props.updateComicSans(value.target.checked);
+  };
+
   render() {
-    const { classes, onClose, selectedValue, selectedBannerAsHeaderValue, updateTheme, updateBannerAsHeader, ...other } = this.props;
+    const { classes, onClose, selectedValue, selectedBannerAsHeaderValue, selectedComicSansValue, updateTheme, updateBannerAsHeader, updateComicSans, ...other } = this.props;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -129,6 +134,18 @@ class ThemeSwitch extends React.Component {
                       />
                     }
                     label={<FormattedMessage id="themeswitch.banner_as_header" />}
+                  />
+                </ListItem>
+                <ListItem style={{ paddingTop: '0px' }}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={this.handleComicSans}
+                        color="primary"
+                        checked={selectedComicSansValue}
+                      />
+                    }
+                    label={<FormattedMessage id="themeswitch.comicsans" />}
                   />
                 </ListItem>
                 <Divider />
@@ -183,11 +200,13 @@ const ThemeSwitchWrapped = (ThemeSwitch);
 const mapStateToProps = state => ({
   selectedValue: appInfoSelectors.getTheme(state),
   selectedBannerAsHeaderValue: appInfoSelectors.getBannerAsHeader(state),
+  selectedComicSansValue: appInfoSelectors.getComicSans(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   updateTheme: name => dispatch(appInfoOperations.updateTheme(name)),
   updateBannerAsHeader: bannerAsHeader => dispatch(appInfoOperations.updateBannerAsHeader(bannerAsHeader)),
+  updateComicSans: comicsans => dispatch(appInfoOperations.updateComicSans(comicsans)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThemeSwitchWrapped);

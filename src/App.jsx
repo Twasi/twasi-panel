@@ -48,12 +48,14 @@ const App = () => {
   const mapStateToProps = state => ({
     theme: appInfoSelectors.getTheme(state),
     bannerAsHeader: appInfoSelectors.getBannerAsHeader(state),
+    comicsans: appInfoSelectors.getComicSans(state),
     language: i18nSelectors.getLocale(state)
   });
 
   const mapDispatchToProps = dispatch => ({
     loadTheme: () => dispatch(appInfoOperations.loadTheme()),
     loadBannerAsHeader: () => dispatch(appInfoOperations.loadBannerAsHeader()),
+    loadComicSans: () => dispatch(appInfoOperations.loadComicSans()),
     loadLanguage: () => dispatch(i18nOperations.loadLanguage())
   });
 
@@ -61,6 +63,7 @@ const App = () => {
     props.loadTheme();
     props.loadLanguage();
     props.loadBannerAsHeader();
+    props.loadComicSans();
 
     let selectedTheme = twasiDarkBlue;
 
@@ -91,7 +94,7 @@ const App = () => {
         <MuiThemeProvider theme={selectedTheme}>
           <CssBaseline />
           <AuthLoader>
-            <Content className={props.theme.toLowerCase()}>
+            <Content className={props.comicsans ? props.theme.toLowerCase() + " comicsans" : props.theme.toLowerCase()}>
               <Header />
               <Switch>
                 <Route path="/profile/:name" component={Public} />

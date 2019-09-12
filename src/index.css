@@ -8,6 +8,13 @@ a {
     text-decoration: none;
 }
 
+.comicsans *  {
+  font-family: "Comic Sans MS", cursive, sans-serif !important;
+}
+.comicsans .material-icons {
+  font-family: "Material Icons" !important;
+}
+
 @keyframes anim-in-1 {
     from, 15% {
         opacity: 0;

@@ -5,7 +5,7 @@ import actions from './actions';
 import { authSelectors } from '../auth';
 import { getGraph } from '../../services/graphqlService';
 
-const { updateLoaded, updateConnected, updateVersion, updateUserStatus, updateTheme, updateBannerAsHeader, addNotification } = actions;
+const { updateLoaded, updateConnected, updateVersion, updateUserStatus, updateTheme, updateBannerAsHeader, updateComicSans, addNotification } = actions;
 
 const loadTheme = () => dispatch => {
   const themeInStorage = storage('twasi-theme');
@@ -20,6 +20,14 @@ const loadBannerAsHeader = () => dispatch => {
 
   if (bannerAsHeaderInStorage !== null) {
     dispatch(updateBannerAsHeader(bannerAsHeaderInStorage));
+  }
+};
+
+const loadComicSans = () => dispatch => {
+  const comicsansInStorage = storage('comicsans');
+
+  if (comicsansInStorage !== null) {
+    dispatch(updateComicSans(comicsansInStorage));
   }
 };
 
@@ -50,7 +58,9 @@ export default {
   loadVersion,
   loadTheme,
   loadBannerAsHeader,
-  updateTheme,
   updateBannerAsHeader,
+  loadComicSans,
+  updateComicSans,
+  updateTheme,
   addNotification
 };
