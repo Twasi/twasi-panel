@@ -61,11 +61,10 @@ class UserManager extends Component {
         </TableCell>
         <TableCell>
           <Fab
-            aria-label="send-support-message"
             color="primary"
             variant="contained"
-            className="noshadow"
             size="small"
+            style={{ height: "40px", width: "40px", borderRadius: "50px" }}
             onClick={() => this.props.impersonate(user.channelData.Name)}
           >
             <Icon>
