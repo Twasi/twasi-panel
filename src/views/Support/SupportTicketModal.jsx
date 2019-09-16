@@ -103,7 +103,7 @@ class SupportTicketModal extends React.Component {
                     />
                   }
                 >
-                  {this.categories.map(category => <MenuItem value={category}><FormattedMessage id={`support.type.${category.toLowerCase()}`} /></MenuItem>)}
+                  {this.categories.map(category => <MenuItem key={this.state.type} value={category}><FormattedMessage id={`support.type.${category.toLowerCase()}`} /></MenuItem>)}
                 </Select>
               </FormControl>
               <TextField

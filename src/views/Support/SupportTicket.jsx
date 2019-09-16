@@ -98,16 +98,16 @@ const SupportTicket = props => {
             </Tooltip>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.topic" /></h5><small>{ticket.topic}</small></Typography>
+            <Typography component={'div'}><h5 className="pageContainerTitle"><FormattedMessage id="support.topic" /></h5><small>{ticket.topic}</small></Typography>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.created_at" /></h5><small>{new Date(ticket.createdAt).toLocaleString()}</small></Typography>
+            <Typography component={'div'}><h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.created_at" /></h5><small>{new Date(ticket.createdAt).toLocaleString()}</small></Typography>
           </Grid>
           <Grid item xs={3}>
-            <Typography><h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.closed_at" /></h5><small>{ticket.closedAt ? new Date(ticket.closedAt).toLocaleString() : '-'}</small></Typography>
+            <Typography component={'div'}><h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.closed_at" /></h5><small>{ticket.closedAt ? new Date(ticket.closedAt).toLocaleString() : '-'}</small></Typography>
           </Grid>
           <Grid item xs={3}>
-            <Typography>
+            <Typography component={'div'}>
               <h5 className="pageContainerTitle"><FormattedMessage id="support.ticket.status" /></h5>
               <Chip className="statusBadgeSupport" {...getColorByState(ticket.state)} />
               <small>{getTicketState(ticket.state)}</small>
@@ -118,7 +118,7 @@ const SupportTicket = props => {
       <Card className="pluginCard">
         <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
           {ticket.messages.map((messageObj, index) =>
-            <SupportTicketMessage isStaff={messageObj.staff} sender={messageObj.sender} message={messageObj} displayCloseMessage={index === ticket.messages.length - 1 && ticket.state === 'CLOSED'} />)
+            <SupportTicketMessage key={messageObj.createdAt} isStaff={messageObj.staff} sender={messageObj.sender} message={messageObj} displayCloseMessage={index === ticket.messages.length - 1 && ticket.state === 'CLOSED'} />)
           }
           {ticket.state !== 'CLOSED' &&
           <TextField

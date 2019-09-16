@@ -29,6 +29,12 @@ class Quotes extends Component {
     const options = {
       filterType: 'textfield',
       selectableRows: false,
+      search: true,
+      filter: true,
+      sort: true,
+      print: false,
+      download: true,
+      viewColumns: false,
       elevation: 0,
       rowHover: false,
       textLabels: {
@@ -143,7 +149,7 @@ class Quotes extends Component {
         <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '4px' }}>
           <MUIDataTable
             title={
-              <Typography>
+              <Typography component={'div'}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="quotes.title" />
                 </h4>

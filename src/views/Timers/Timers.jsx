@@ -25,7 +25,7 @@ class Timers extends Component {
     super(props);
 
     this.state = {
-      open: false
+      modalOpen: false
     };
   }
 

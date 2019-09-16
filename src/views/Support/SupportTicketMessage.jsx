@@ -36,15 +36,15 @@ const SupportTicketMessage = props => {
   */
 
   const getMessage = () => (
-    <Grid item xs={8} key="message">
-      <Typography style={{ position: 'relative', paddingBottom: '25px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
+    <Grid item xs={8} key={message.message}>
+      <Typography component={'div'} style={{ position: 'relative', paddingBottom: '25px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
         <Typography className="chatName">{sender.name}</Typography>
-        {message.message.split('<br />').map((item, index) => [item, index !== message.message.split('<br />').length - 1 ? <br /> : null])}
+        <small>{message.message.split('<br />').map((item, index) => [item, index !== message.message.split('<br />').length - 1 ? <br /> : null])}</small>
         <Typography className="chatTime">{new Date(message.createdAt).toLocaleString()}</Typography>
       </Typography>
       {displayCloseMessage &&
       <Typography style={{ position: 'relative', marginTop: '5px' }} className={isStaff ? 'chatBubbleSupport' : 'chatBubbleSelf'}>
-        {sender.name} hat das Ticket am {new Date(message.createdAt).toLocaleString()} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.
+        <small>{sender.name} hat das Ticket am {new Date(message.createdAt).toLocaleString()} geschlossen. Du kannst jederzeit ein neues Ticket eröffnen.</small>
           {/*<br /><br />
           <Typography component="legend"><small><FormattedMessage id="support.ticket.rating.could_we_help" /></small></Typography>
           <StyledRating
@@ -109,7 +109,6 @@ SupportTicketMessage.propTypes = {
   }).isRequired,
   message: PropTypes.shape({
     message: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired
   })
 };
 

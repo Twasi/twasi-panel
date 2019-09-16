@@ -61,6 +61,7 @@ class Support extends Component {
   renderSupportTickets(open) {
     return this.props.myTickets.filter(t => open ? t.state !== 'CLOSED' : t.state === 'CLOSED').map(ticket => (
       <SupportTicket
+        key={ticket.id}
         ticket={ticket}
         isAdminContext={this.props.isAdmin}
         reply={this.props.reply}
@@ -81,7 +82,7 @@ class Support extends Component {
     if (open) {
       return (
         <div>
-          <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+          <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
             <img
               style={{ position: 'relative', height: '80px' }}
               src={SoonerLater}
@@ -133,7 +134,7 @@ class Support extends Component {
           {this.state.selectedTicket !== '' && <Typography color="textPrimary">Ticket #{this.state.selectedTicket}</Typography>}
         </Breadcrumbs>
         <Paper className="pageContainer">
-          <Typography>
+          <Typography component={'div'}>
             <h4 className="pageContainerTitle">
               <FormattedMessage id="support.headline" />
               <span style={{ float: 'right' }}>
@@ -184,8 +185,8 @@ class Support extends Component {
 Support.propTypes = {
   userName: PropTypes.string,
   avatar: PropTypes.string,
-  myTicket: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  reply: PropTypes.func.isRequired
+  myTicket: PropTypes.arrayOf(PropTypes.shape({})),
+  reply: PropTypes.func
 };
 
 Support.defaultProps = {
