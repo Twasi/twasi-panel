@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Slider from '@material-ui/lab/Slider';
+import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 
@@ -49,7 +49,7 @@ class Timer extends React.Component {
   }
 
   render() {
-    const { classes, onClose, ...other } = this.props;
+    const { onClose, ...other } = this.props;
     const { interval } = this.state;
 
     return (
@@ -58,7 +58,7 @@ class Timer extends React.Component {
         {...other}
       >
         <DialogContent>
-          <Typography>
+          <Typography component={'div'}>
             <h3 className="pageContainerTitle">
               <FormattedMessage id="timers.new_timer" />
             </h3>
@@ -123,7 +123,6 @@ class Timer extends React.Component {
 
 Timer.propTypes = {
   onClose: PropTypes.func,
-  classes: PropTypes.isRequired
 };
 
 export default (Timer);

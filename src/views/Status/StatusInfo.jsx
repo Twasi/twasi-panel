@@ -32,9 +32,9 @@ class StatusInfo extends Component {
     return (
       <Card style={{ marginTop: '25px' }} className="pluginCard">
         <CardContent className="pluginCardContent">
-          <Grid container spacing={16}>
+          <Grid container spacing={2}>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
-              <Typography>
+              <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="status.start" /> / <FormattedMessage id="status.stop" />
                 </h4>
@@ -92,7 +92,7 @@ class StatusInfo extends Component {
               )}
             </Grid>
             <Grid item md={6} sm={12} style={{ textAlign: 'center' }}>
-              <Typography>
+              <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="status.current_status" />
                 </h4>

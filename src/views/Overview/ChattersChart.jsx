@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected';
@@ -104,20 +103,6 @@ class ChattersChart extends Component {
     );
   }
 }
-
-
-ChattersChart.propTypes = {
-  updateStreamtracker: PropTypes.func.isRequired,
-  streamtracker: PropTypes.arrayOf(PropTypes.shape({
-    topChatters: PropTypes.arrayOf(PropTypes.shape({
-      twitchId: PropTypes.string.isRequired,
-      displayName: PropTypes.string.isRequired,
-      messages: PropTypes.string.isRequired,
-      commands: PropTypes.string.isRequired
-    }))
-  })),
-  disabled: PropTypes.bool.isRequired
-};
 
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),

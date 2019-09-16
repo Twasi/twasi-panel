@@ -9,7 +9,7 @@ class Rank extends Component {
   render() {
     const { rank } = this.props;
     return (
-      <div>
+      <span>
         {(() => {
           switch (rank) {
             case 'TEAM': return <FormattedMessage id="rank.team" />;
@@ -18,7 +18,7 @@ class Rank extends Component {
             default: return 'Unknown';
           }
         })()}
-      </div>
+      </span>
     );
   }
 }

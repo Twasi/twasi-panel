@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
@@ -115,24 +114,6 @@ class PlayedGamesChart extends Component {
     );
   }
 }
-
-PlayedGamesChart.propTypes = {
-  updateStreamtracker: PropTypes.func.isRequired,
-  streamtracker: PropTypes.arrayOf(PropTypes.shape({
-    streamId: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired,
-    startedAt: PropTypes.string.isRequired,
-    streamType: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(PropTypes.shape({
-      gameId: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      game: PropTypes.string.isRequired,
-      viewerCount: PropTypes.string.isRequired,
-      timestamp: PropTypes.string.isRequired
-    }))
-  })),
-  disabled: PropTypes.bool.isRequired
-};
 
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import CardContent from '@material-ui/core/CardContent';
@@ -89,7 +88,6 @@ class GameTitleCard extends Component {
             </Grid>
             <Grid item sm={1} style={{ paddingTop: '15px' }}>
               <Fab
-                variant="contained"
                 color="primary"
                 size="large"
                 style={{ height: '56px', borderRadius: '50px' }}
@@ -116,17 +114,6 @@ class GameTitleCard extends Component {
     );
   }
 }
-
-GameTitleCard.propTypes = {
-  updateUtilities: PropTypes.func.isRequired,
-  utilities: PropTypes.arrayOf(PropTypes.shape({
-    retrieve: PropTypes.arrayOf(PropTypes.shape({
-      game: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired
-    }))
-  })),
-  disabled: PropTypes.bool.isRequired
-};
 
 const mapStateToProps = state => ({
   utilities: utilitiesSelectors.getUtilities(state),

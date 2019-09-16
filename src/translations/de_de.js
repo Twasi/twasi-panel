@@ -249,6 +249,7 @@ export default {
   'variables.new_variable.subheadline': 'Eine neue Variable hinzufügen',
   'variables.new_variable.variable': 'Deine Variable',
   'variables.new_variable.output': 'Ausgabe',
+  'variables.new_variable.output.helpertext': 'Das ist die Ausgabe deiner Variable.',
   'variables.new_variable.savevariable': 'Variable speichern',
   'variables.no_variable.title': 'Du hast noch keine Variable erstellt.',
   'variables.no_variable.subtitle': 'Du kannst Variablen in die Ausgabe deiner Befehle einbauen, um diese Dynamisch zu gestallten.',

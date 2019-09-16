@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { Container, Row, Col } from 'react-grid-system';
@@ -436,7 +435,7 @@ class Overview extends Component {
           <div>
             <Paper className="pageContainer" style={{ marginTop: '-22px' }}>
               <div>
-                <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+                <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img
                     style={{ position: 'relative', height: '80px' }}
                     src={SeriousSloth}
@@ -511,37 +510,6 @@ class Overview extends Component {
     );
   }
 }
-
-Overview.propTypes = {
-  updateStreamtracker: PropTypes.func.isRequired,
-  streamtracker: PropTypes.arrayOf(PropTypes.shape({
-    streamId: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired,
-    startedAt: PropTypes.string.isRequired,
-    streamType: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(PropTypes.shape({
-      gameId: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      game: PropTypes.string.isRequired,
-      viewerCount: PropTypes.string.isRequired,
-      timestamp: PropTypes.string.isRequired
-    }))
-  })),
-  disabled: PropTypes.bool.isRequired,
-  noStreamData: PropTypes.bool.isRequired,
-  globalstreamtracker: PropTypes.arrayOf(PropTypes.shape({
-    totalTrackedViewers: PropTypes.string.isRequired,
-    totalTrackedStreams: PropTypes.string.isRequired,
-    totalTrackedMessages: PropTypes.string.isRequired
-  })),
-  updateUtilities: PropTypes.func.isRequired,
-  utilities: PropTypes.arrayOf(PropTypes.shape({
-    retrieve: PropTypes.arrayOf(PropTypes.shape({
-      game: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired
-    }))
-  }))
-};
 
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),

@@ -78,11 +78,6 @@ export default createMuiTheme({
         color: '#ffffff', // Some CSS
         borderRadius: '4px'
       },
-      mini: {
-        minHeight: '32px',
-        height: '32px',
-        width: '32px'
-      },
       containedPrimary: {
         boxShadow: 'none',
         background: '#14b866',

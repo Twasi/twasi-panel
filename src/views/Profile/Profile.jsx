@@ -92,7 +92,7 @@ class Profile extends Component {
         <Row>
           <Col sm={6}>
             <Paper className="pageContainer">
-              <Typography>
+              <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="profile.your_data" />
                   <span style={{ float: 'right' }}>
@@ -163,7 +163,7 @@ class Profile extends Component {
               </Card>
             </Paper>
             <Paper className="pageContainer">
-              <Typography>
+              <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
                   Öffentliches Profil
                 </h4>
@@ -173,7 +173,7 @@ class Profile extends Component {
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent anim">
-                  <Typography>
+                  <Typography component={"div"}>
                     <TextField
                       label="Dein Profil"
                       fullWidth
@@ -259,7 +259,7 @@ class Profile extends Component {
           </Col>
           <Col sm={6}>
             <Paper className="pageContainer">
-              <Typography>
+              <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="profile.own_bot.title" />
                 </h4>
@@ -302,7 +302,7 @@ class Profile extends Component {
               </Card>
             </Paper>
             <Paper className="pageContainer">
-              <Typography>
+              <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="profile.social" />
                 </h4>
@@ -530,7 +530,7 @@ class Profile extends Component {
               </div>
             </Paper>
             <Paper className="pageContainer">
-              <Typography>
+              <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="profile.badges" />
                   <span style={{ float: 'right' }}>

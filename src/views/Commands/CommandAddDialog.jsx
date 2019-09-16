@@ -83,15 +83,19 @@ class Command extends React.Component {
   };
 
   handleCommandNameChange = (event) => {
-    this.setState({
-      commandName: event.target.value
-    });
+    if(event.target.value.length <= 50) {
+      this.setState({
+        commandName: event.target.value
+      });
+    }
   };
 
   handleCommandContentChange = (event) => {
-    this.setState({
-      commandContent: event.target.value
-    });
+    if(event.target.value.length <= 1000) {
+      this.setState({
+        commandContent: event.target.value
+      });
+    }
   };
 
   chipFilter = (item) => {
@@ -244,7 +248,6 @@ class Command extends React.Component {
                 helperText={<FormattedMessage id="commands.new_command.command.helpertext" />}
                 margin="normal"
                 variant="outlined"
-                inputProps={{ maxLength: 50 }}
               />
             </CardContent>
           </Card>
@@ -276,10 +279,9 @@ class Command extends React.Component {
                 onChange={this.handleCommandContentChange}
                 multiline
                 rows="3"
-                helperText={<FormattedMessage id="commands.new_command.output.helpertext" />}
+                helperText={this.props.intl.formatMessage({ id: "commands.new_command.output.helpertext" }) + " " + this.state.commandContent.length + "/1000"}
                 margin="normal"
                 variant="outlined"
-                inputProps={{ maxLength: 1000 }}
               />
             </CardContent>
           </Card>
@@ -402,7 +404,7 @@ class Command extends React.Component {
           </Button>
           <Dialog open={this.state.doubleEntry}>
             <DialogContent>
-              <Typography>
+              <Typography component={'div'}>
                 <h4 className="pageContainerTitle">
                   Der Befehl "<b>{this.state.commandName}</b>" existiert bereits.
                 </h4>
@@ -410,7 +412,7 @@ class Command extends React.Component {
                   Möchtest du den Befehl "<b>{this.state.commandName}</b>" überschreiben?
                 </small>
               </Typography>
-              <Typography>
+              <Typography component={'div'}>
                 <Card className="pluginCard" style={{ marginTop: '15px' }}>
                   <CardContent>
                     <h3 className="pageContainerTitle">Achtung!</h3>

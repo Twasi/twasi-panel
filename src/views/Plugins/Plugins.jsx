@@ -15,7 +15,6 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
-import Documentation from './Documentation';
 import './_style.css';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
@@ -52,7 +51,7 @@ class Plugins extends Component {
       updatePlugins()
     }
     const renderedPluginsNew = plugins.map(plugin => (
-      <Grid item sm={6} md={4}>
+      <Grid item key={plugin.name} sm={6} md={4}>
         <Card className="pluginCard" style={{ borderRadius: "15px" }}>
           <CardMedia
             component="img"
@@ -63,7 +62,7 @@ class Plugins extends Component {
           />
           <CardContent className="pluginCardContent" style={{ padding: '16px', borderRadius: '0px' }}>
             <div style={{ height: "200px" }}>
-              <Typography>
+              <Typography component={'div'}>
                 <h2 style={{ margin: "0px" }}>
                   {plugin.name}
                 </h2>
@@ -85,7 +84,7 @@ class Plugins extends Component {
                 </div>
               </Typography>
             </div>
-            <Typography>
+            <Typography component={'div'}>
               <h4 style={{ margin: "0px" }}>
                 <FormattedMessage id="plugins.commands" />
               </h4>
@@ -98,13 +97,13 @@ class Plugins extends Component {
             <br />
             <Grid container spacing={0}>
               <Grid item style={{ textAlign: "center" }} xs={6}>
-                <Typography>
+                <Typography component={'div'}>
                   <h4 style={{ margin: "0px" }}>{plugin.version}</h4>
                   <small><FormattedMessage id="plugins.version" /></small>
                 </Typography>
               </Grid>
               <Grid style={{ textAlign: "center" }} item xs={6}>
-                <Typography>
+                <Typography component={'div'}>
                   <h4 style={{ margin: "0px" }}>{plugin.installations}</h4>
                   <small><FormattedMessage id="plugins.installations" /></small>
                 </Typography>
@@ -178,7 +177,7 @@ class Plugins extends Component {
         <Paper className="pageContainer">
           <Grid container spacing={0}>
             <Grid item xs={12}>
-              <Typography>
+              <Typography component={'div'}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="plugins.card_headline" />
                   <span style={{ float: 'right' }}>
@@ -198,12 +197,6 @@ class Plugins extends Component {
             {renderedPluginsNew}
           </Grid>
         </Paper>
-        <Documentation
-          scroll="body"
-          maxWidth="md"
-          open={this.state.modalOpen}
-          onClose={this.handleClose}
-        />
       </div>
     );
   }

@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { variablesSelectors, variablesOperations } from '../../state/variables';
 
@@ -51,16 +51,20 @@ class Variable extends React.Component {
 
   handleVariableNameChange = (event) => {
     var name = event.target.value
-    name = event.target.value.replace(/[^a-z0-9]/gi,'');
-    this.setState({
-      variableName: name
-    });
+    if(event.target.value.length <= 50) {
+      name = event.target.value.replace(/[^a-z0-9]/gi,'');
+      this.setState({
+        variableName: name
+      });
+    }
   };
 
   handleVariableOutputChange = (event) => {
-    this.setState({
-      variableOutput: event.target.value
-    });
+    if(event.target.value.length <= 1000) {
+      this.setState({
+        variableOutput: event.target.value
+      });
+    }
   };
 
   handleEditVariable = (id, name, content) => {
@@ -79,7 +83,7 @@ class Variable extends React.Component {
         scroll="body"
       >
         <DialogContent>
-          <Typography>
+          <Typography component={'div'}>
             <h4 className="pageContainerTitle">
               Variable {variableObject.name} bearbeiten
             </h4>
@@ -107,7 +111,6 @@ class Variable extends React.Component {
                     </InputAdornment>
                   )
                 }}
-                inputProps={{ maxLength: 50 }}
               />
             </CardContent>
           </Card>
@@ -122,10 +125,9 @@ class Variable extends React.Component {
                 onChange={this.handleVariableOutputChange}
                 multiline
                 rows="3"
-                helperText="Das ist die Ausgabe deiner Variable."
+                helperText={this.props.intl.formatMessage({ id: "variables.new_variable.output.helpertext" }) + " " + this.state.variableOutput.length + "/1000"}
                 margin="normal"
                 variant="outlined"
-                inputProps={{ maxLength: 1000 }}
               />
             </CardContent>
           </Card>
@@ -173,4 +175,4 @@ const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(variablesOperations.verifyData()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Variable);
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Variable));

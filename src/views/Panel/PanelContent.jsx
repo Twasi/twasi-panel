@@ -17,7 +17,6 @@ import Timers from '../Timers';
 import Songrequests from '../Songrequests';
 import Giveaways from '../Giveaways';
 import Quotes from '../Quotes';
-import Votings from '../Votings';
 import Support from '../Support';
 import DevTools from '../DevTools';
 import UserManager from '../UserManager';
@@ -42,7 +41,6 @@ const PanelContent = () => (
         <Route path="/songrequests" exact component={Songrequests} />
         <Route path="/giveaways" exact component={Giveaways} />
         <Route path="/quotes" exact component={Quotes} />
-        <Route path="/votings" exact component={Votings} />
         <Route path="/support" exact component={Support} />
         <Route path="/manager" exact component={UserManager} />
       </Switch>

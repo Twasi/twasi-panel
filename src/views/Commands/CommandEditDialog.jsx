@@ -86,15 +86,19 @@ class Command extends React.Component {
   };
 
   handleCommandNameChange = (event) => {
-    this.setState({
-      commandName: event.target.value
-    });
+    if(event.target.value.length <= 50) {
+      this.setState({
+        commandName: event.target.value
+      });
+    }
   };
 
   handleCommandContentChange = (event) => {
-    this.setState({
-      commandContent: event.target.value
-    });
+    if(event.target.value.length <= 1000) {
+      this.setState({
+        commandContent: event.target.value
+      });
+    }
   };
 
   handleEditCommand = (id, name, content, cooldown, access) => {
@@ -192,7 +196,7 @@ class Command extends React.Component {
         scroll="body"
       >
         <DialogContent>
-          <Typography>
+          <Typography component={'div'}>
             <h4 className="pageContainerTitle">
               Befehl {commandObject.name} bearbeiten
             </h4>
@@ -213,7 +217,6 @@ class Command extends React.Component {
                 helperText={<FormattedMessage id="commands.new_command.command.helpertext" />}
                 margin="normal"
                 variant="outlined"
-                inputProps={{ maxLength: 50 }}
               />
             </CardContent>
           </Card>
@@ -245,16 +248,15 @@ class Command extends React.Component {
                 inputRef={this.textInput}
                 multiline
                 rows="3"
-                helperText={<FormattedMessage id="commands.new_command.output.helpertext" />}
+                helperText={this.props.intl.formatMessage({ id: "commands.new_command.output.helpertext" }) + " " + this.state.commandContent.length + "/1000"}
                 margin="normal"
                 variant="outlined"
-                inputProps={{ maxLength: 1000 }}
               />
             </CardContent>
           </Card>
           <ExpansionPanel style={{ marginTop: '15px' }}>
             <ExpansionPanelSummary style={{ borderRadius: '15px 15px 0px 0px' }} expandIcon={<ExpandMoreIcon />}>
-              <Typography>
+              <Typography component={'div'}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="commands.new_command.variables" />
                 </h4>

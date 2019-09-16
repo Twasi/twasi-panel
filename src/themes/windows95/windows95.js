@@ -85,11 +85,6 @@ export default createMuiTheme({
       fab: {
         borderRadius: '0px'
       },
-      mini: {
-        minHeight: '32px',
-        height: '32px',
-        width: '32px'
-      },
       containedPrimary: {
         boxShadow: 'none',
         borderWidth: '2px',

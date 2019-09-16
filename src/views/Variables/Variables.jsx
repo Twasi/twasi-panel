@@ -13,9 +13,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Snackbar from '@material-ui/core/Snackbar';
+import Typography from '@material-ui/core/Typography';
 
 import VariableAddDialog from './VariableAddDialog';
 import VariableEditDialog from './VariableEditDialog';
@@ -76,7 +76,7 @@ class Variables extends Component {
   renderVariablesEmpty() {
     return (
       <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
-        <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+        <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
           <img
             style={{ position: 'relative', height: '80px' }}
             src={JohnTravolta}
@@ -158,7 +158,7 @@ class Variables extends Component {
         </Breadcrumbs>
         {!disabled &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-          <Typography>
+          <Typography component={'span'}>
             <h4 className="pageContainerTitle">
               <FormattedMessage id="variables.title" />
               <span style={{ float: 'right' }}>

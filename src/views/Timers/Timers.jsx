@@ -41,7 +41,7 @@ class Timers extends Component {
 
   renderTimers() {
     return timers.map(timer => (
-      <TableRow>
+      <TableRow key={timer.name}>
         <TableCell>
           <b>{timer.name}</b>
         </TableCell>
@@ -94,7 +94,7 @@ class Timers extends Component {
         </Breadcrumbs>
         <NotFunctionalAlert />
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-          <Typography>
+          <Typography component={'div'}>
             <h4 className="pageContainerTitle">
               <FormattedMessage id="timers.title" />
               <span style={{ float: 'right' }}>
@@ -136,6 +136,5 @@ class Timers extends Component {
     );
   }
 }
-
 
 export default Timers;

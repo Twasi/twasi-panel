@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Paper from '@material-ui/core/Paper';
@@ -275,24 +274,6 @@ class StatsList extends Component {
     );
   }
 }
-
-StatsList.propTypes = {
-  updateStreamtracker: PropTypes.func.isRequired,
-  streamtracker: PropTypes.arrayOf(PropTypes.shape({
-    streamId: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired,
-    startedAt: PropTypes.string.isRequired,
-    streamType: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(PropTypes.shape({
-      gameId: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      game: PropTypes.string.isRequired,
-      viewerCount: PropTypes.string.isRequired,
-      timestamp: PropTypes.string.isRequired
-    }))
-  })),
-  disabled: PropTypes.bool.isRequired
-};
 
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),

@@ -248,6 +248,7 @@ export default {
   'variables.new_variable.subheadline': 'Add a new variable',
   'variables.new_variable.variable': 'Your variable',
   'variables.new_variable.output': 'Output',
+  'variables.new_variable.output.helpertext': 'This is the output of your variable.',
   'variables.new_variable.savevariable': 'Save variable',
   'variables.no_variable.title': "You don't have any variables.",
   'variables.no_variable.subtitle': 'You could use variables in your command output to make it dynamic.',

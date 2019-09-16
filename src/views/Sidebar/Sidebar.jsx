@@ -114,13 +114,6 @@ class Sidebar extends Component {
         shown: 'plugins/quotes'
       },
       {
-        key: 'votings',
-        path: '/votings',
-        icon: 'notes',
-        name: 'sidebar.votings',
-        shown: 'none'
-      },
-      {
         key: 'urlshortener',
         path: '/urlshortener',
         icon: 'link',

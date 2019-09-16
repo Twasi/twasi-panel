@@ -96,7 +96,7 @@ class Commands extends Component {
   renderCommandsEmpty() {
     return (
       <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
-        <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+        <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
           <img
             style={{ position: 'relative', height: '80px' }}
             src={JohnTravolta}

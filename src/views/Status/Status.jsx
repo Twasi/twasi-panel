@@ -33,7 +33,7 @@ class Status extends Component {
         <Paper className="pageContainer">
           <Grid container spacing={4}>
             <Grid item xs={12}>
-              <Typography>
+              <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="status.card_headline" />
                 </h4>
