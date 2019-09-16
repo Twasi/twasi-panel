@@ -21,11 +21,13 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import './_style.css';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
+import { timerSelectors, timerOperations } from '../../state/timedmessages';
 
 class Timer extends React.Component {
 
   state = {
-    command: 0,
+    command: "",
+    commandName: "",
     labelWidth: 45,
     interval: 0,
   };
@@ -50,15 +52,26 @@ class Timer extends React.Component {
 
   handleChangeCommand = (event, index) => {
     this.setState({
-      command: event.target.value
+      command: event.target.value,
+      commandName: index.key
     });
   }
+
+  handleAddTimer = (command, interval) => {
+    this.props.addTimer(command, interval);
+  };
 
   renderCommands() {
     const { commands } = this.props;
     return commands.map(command => (
       <MenuItem key={command.name} value={command.id}>{command.name}</MenuItem>
     ));
+  }
+
+  getIntervalInSeconds() {
+    let iv = this.state.interval;
+    iv = iv*60;
+    return iv;
   }
 
   getCooldown() {
@@ -81,8 +94,6 @@ class Timer extends React.Component {
 
   render() {
     const { onClose, ...other } = this.props;
-    const { interval } = this.state;
-
     return (
       <Dialog
         onClose={this.handleClose}
@@ -129,8 +140,8 @@ class Timer extends React.Component {
               <Slider
                 style={{ padding: '22px 0px' }}
                 aria-labelledby="label"
-                value={interval}
-                min={0}
+                value={this.state.interval}
+                min={1}
                 max={60}
                 step={1}
                 onChange={this.handleChange}
@@ -152,7 +163,14 @@ class Timer extends React.Component {
               </Row>
             </CardContent>
           </Card>
-          <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
+          <Button
+            fullWidth
+            style={{ marginTop: '15px' }}
+            variant="contained"
+            color="primary"
+            onClick={() => {
+                this.handleAddTimer(this.state.commandName, this.getIntervalInSeconds())
+            }}>
             <FormattedMessage id="timers.new_timer.savetimer" />
           </Button>
         </DialogContent>
@@ -167,10 +185,12 @@ Timer.propTypes = {
 
 const mapStateToProps = state => ({
   commands: commandsSelectors.getCommands(state),
+  isActionSuccess: timerSelectors.isActionSuccess(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
+  addTimer: (command,interval) => dispatch(timerOperations.addTimer(command,interval))
 });
 
 export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Timer));

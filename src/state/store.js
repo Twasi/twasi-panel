@@ -16,6 +16,7 @@ import utilities from './utilities';
 import support from './support';
 import spotify from './integrations/spotify';
 import twitch from './integrations/twitch';
+import timedmessages from './timedmessages';
 
 import {initialState as i18nInitialState} from './i18n/reducers';
 
@@ -41,7 +42,8 @@ const configureStore = (translations = {}) => {
         utilities,
         support,
         spotify,
-        twitch
+        twitch,
+        timedmessages
     };
 
     const initialState = {

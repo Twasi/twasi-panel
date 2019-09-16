@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
+import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
@@ -16,9 +17,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
-import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
-
-const timers = [{ name: '!hosts', output: 'Zeigt die Liste der Kanäle, die deinen Kanal derzeit hosten.', interval: '10' }];
+import { timerSelectors, timerOperations } from '../../state/timedmessages';
 
 class Timers extends Component {
   constructor(props) {
@@ -27,6 +26,11 @@ class Timers extends Component {
     this.state = {
       modalOpen: false
     };
+  }
+
+  componentDidMount() {
+    const { updateTimer } = this.props;
+    updateTimer();
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -39,23 +43,36 @@ class Timers extends Component {
     this.setState({ modalOpen: false });
   }
 
+  getIntervalInMinutes(iv) {
+    iv = iv/60
+    if(iv===1){
+      return "1 Minute";
+    }
+    if(iv===60){
+      return "1 Stunde";
+    }
+    return iv + " Minuten";
+  }
+
   renderTimers() {
+    const { timers } = this.props;
     return timers.map(timer => (
       <TableRow key={timer.name}>
         <TableCell>
-          <b>{timer.name}</b>
+          <b>{timer.command}</b>
         </TableCell>
-        <TableCell
-          style={{ wordWrap: 'break-word', whiteSpace: 'normal', maxWidth: '200px' }}
-        >
-          {timer.output}
-        </TableCell>
-        <TableCell>{timer.interval} Minuten</TableCell>
+        <TableCell>{this.getIntervalInMinutes(timer.interval)}</TableCell>
         <TableCell>
+          {timer.enabled ?
           <Chip
             label="Aktiviert"
             color="primary"
+          /> :
+          <Chip
+            label="Deaktiviert"
+            color="secondary"
           />
+          }
         </TableCell>
         <TableCell>
           <Tooltip title={<FormattedMessage id="common.edit" />} placement="top">
@@ -64,6 +81,7 @@ class Timers extends Component {
               className="noshadow"
               size="small"
               aria-label="editTimer"
+              disabled
             >
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
             </Fab>
@@ -74,6 +92,9 @@ class Timers extends Component {
               className="noshadow"
               size="small"
               aria-label="deleteTimer"
+              onClick={() => {
+                  this.props.delTimer(timer.command);
+              }}
             >
               <Icon style={{ color: '#ffffff' }}>delete</Icon>
             </Fab>
@@ -84,6 +105,9 @@ class Timers extends Component {
   }
 
   render() {
+    if (this.props.isActionSuccess) {
+      this.props.updateTimer()
+    }
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -92,13 +116,12 @@ class Timers extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.timers" /></Typography>
         </Breadcrumbs>
-        <NotFunctionalAlert />
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography component={'div'}>
             <h4 className="pageContainerTitle">
               <FormattedMessage id="timers.title" />
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
+                <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateTimer}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
@@ -121,7 +144,6 @@ class Timers extends Component {
             <TableHead>
               <TableRow className="TableRow">
                 <TableCell><FormattedMessage id="timers.timer" /></TableCell>
-                <TableCell><FormattedMessage id="timers.output" /></TableCell>
                 <TableCell><FormattedMessage id="timers.interval" /></TableCell>
                 <TableCell><FormattedMessage id="timers.status" /></TableCell>
                 <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
@@ -137,4 +159,17 @@ class Timers extends Component {
   }
 }
 
-export default Timers;
+const mapStateToProps = state => ({
+  timers: timerSelectors.getTimer(state),
+  isLoaded: timerSelectors.isLoaded(state),
+  isLoading: timerSelectors.isLoading(state),
+  disabled: timerSelectors.isDisabled(state),
+  isActionSuccess: timerSelectors.isActionSuccess(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateTimer: () => dispatch(timerOperations.loadTimer()),
+  delTimer: (command) => dispatch(timerOperations.delTimer(command))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timers);
