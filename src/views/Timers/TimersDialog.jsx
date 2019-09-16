@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,13 +9,33 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/core/Slider';
 import Switch from '@material-ui/core/Switch';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 import { Row, Col } from 'react-grid-system';
 import Typography from '@material-ui/core/Typography';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import './_style.css';
 
+import { commandsSelectors, commandsOperations } from '../../state/commands';
+
 class Timer extends React.Component {
+
+  state = {
+    command: 0,
+    labelWidth: 45,
+    interval: 0,
+  };
+
+  componentDidMount() {
+    const { updateCommands } = this.props;
+    updateCommands();
+  }
+
   handleClose = () => {
     this.props.onClose(this.props.selectedValue);
   };
@@ -28,9 +49,18 @@ class Timer extends React.Component {
     this.setState({ interval });
   };
 
-  state = {
-    interval: 0
-  };
+  handleChangeCommand = (event, index) => {
+    this.setState({
+      command: event.target.value
+    });
+  }
+
+  renderCommands() {
+    const { commands } = this.props;
+    return commands.map(command => (
+      <MenuItem key={command.name} value={command.id}>{command.name}</MenuItem>
+    ));
+  }
 
   getCooldown() {
     let iv = this.state.interval;
@@ -61,42 +91,37 @@ class Timer extends React.Component {
       >
         <DialogContent>
           <Typography component={'div'}>
-            <h3 className="pageContainerTitle">
+            <h4 className="pageContainerTitle">
               <FormattedMessage id="timers.new_timer" />
-            </h3>
+            </h4>
             <small>
               <FormattedMessage id="timers.new_timer.subheadline" />
             </small>
           </Typography>
           <br /><br />
           <Card className="pluginCard">
-            <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-              <TextField
-                InputLabelProps={{ shrink: true }}
-                id="outlined-textarea"
-                label={<FormattedMessage id="timers.new_timer.timer" />}
-                fullWidth
-                placeholder="Beispiel: !hosts"
-                helperText="Das ist dein Timer. Der Timer wird automatisch in dem eingestellten Interval ausgelöst."
-                margin="normal"
-                variant="outlined"
-              />
-            </CardContent>
-          </Card>
-          <Card className="pluginCard" style={{ marginTop: '15px' }}>
-            <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-              <TextField
-                InputLabelProps={{ shrink: true }}
-                id="outlined-textarea"
-                label={<FormattedMessage id="timers.new_timer.output" />}
-                fullWidth
-                placeholder="Beispiel: Mein Bot heißt Twasibot."
-                multiline
-                rows="3"
-                helperText="Das ist die Ausgabe deines Timers."
-                margin="normal"
-                variant="outlined"
-              />
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
+              <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
+                <InputLabel
+                  htmlFor="access-select"
+                >
+                  <FormattedMessage id="timers.new_timer.command" />
+                </InputLabel>
+                <Select
+                  value={this.state.command}
+                  onChange={this.handleChangeCommand}
+                  input={
+                    <OutlinedInput
+                      labelWidth={this.state.labelWidth}
+                      name="access"
+                      id="access-select"
+                    />
+                  }
+                >
+                  {this.renderCommands()}
+                </Select>
+                <FormHelperText><FormattedMessage id="timers.new_timer.command.subtitle" /></FormHelperText>
+              </FormControl>
             </CardContent>
           </Card>
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
@@ -141,4 +166,12 @@ Timer.propTypes = {
   onClose: PropTypes.func,
 };
 
-export default (Timer);
+const mapStateToProps = state => ({
+  commands: commandsSelectors.getCommands(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateCommands: () => dispatch(commandsOperations.loadCommands()),
+});
+
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Timer));

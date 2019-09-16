@@ -270,6 +270,8 @@ export default {
   'timers.new_timer': 'Einen neuen Timer erstellen',
   'timers.new_timer.subheadline': 'Hier kannst du einen neuen Timer hinzufügen.',
   'timers.new_timer.timer': 'Dein Timer',
+  'timers.new_timer.command': 'Befehl',
+  'timers.new_timer.command.subtitle': 'Hier kannst du den Befehl auswählen, der als Timer gestartet werden soll.',
   'timers.new_timer.output': 'Ausgabe',
   'timers.new_timer.savetimer': 'Timer speichern',
   'timers.timer': 'Timer',

@@ -269,6 +269,8 @@ export default {
   'timers.new_timer': 'Add a new timer',
   'timers.new_timer.subheadline': 'Here you can add new timers.',
   'timers.new_timer.timer': 'Your timer',
+  'timers.new_timer.command': 'Command',
+  'timers.new_timer.command.subtitle': 'Here you can select the command wich should be set as a timer.',
   'timers.new_timer.output': 'Output',
   'timers.new_timer.savetimer': 'Save timer',
   'timers.timer': 'Timer',
