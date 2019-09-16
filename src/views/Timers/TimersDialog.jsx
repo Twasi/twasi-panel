@@ -7,6 +7,8 @@ import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/core/Slider';
+import Switch from '@material-ui/core/Switch';
+import { Row, Col } from 'react-grid-system';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
 
@@ -110,6 +112,20 @@ class Timer extends React.Component {
                 onChange={this.handleChange}
               />
               <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Interval von bis zu einer Stunde einstellen.</Typography>
+            </CardContent>
+          </Card>
+          <Card className="pluginCard" style={{ marginTop: '15px' }}>
+            <CardContent style={{ paddingTop: '8px', paddingBottom: '8px' }}>
+              <Row>
+                <Col style={{ textAlign: 'left' }} sm={6}>
+                  <Typography style={{ padding: '7px' }}>
+                    <small>Timer aktivieren</small>
+                  </Typography>
+                </Col>
+                <Col style={{ textAlign: 'right' }} sm={6}>
+                  <Switch color="primary" />
+                </Col>
+              </Row>
             </CardContent>
           </Card>
           <Button fullWidth style={{ borderRadius: '4px', marginTop: '15px' }} variant="contained" color="primary">
