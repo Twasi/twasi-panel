@@ -437,7 +437,7 @@ class Overview extends Component {
               <div>
                 <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img
-                    style={{ position: 'relative', height: '80px' }}
+                    style={{ position: 'relative', height: '100px' }}
                     src={SeriousSloth}
                     alt="SeriousSloth"
                   />

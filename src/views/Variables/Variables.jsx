@@ -78,7 +78,7 @@ class Variables extends Component {
       <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
         <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
           <img
-            style={{ position: 'relative', height: '80px' }}
+            style={{ position: 'relative', height: '150px' }}
             src={JohnTravolta}
             alt="JohnTravolta"
           />

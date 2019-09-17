@@ -17,7 +17,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
-import JohnTravolta from '../common/resources/johntravolta.gif';
+import Tom from '../common/resources/tom.gif';
 
 import { timerSelectors, timerOperations } from '../../state/timedmessages';
 
@@ -61,9 +61,9 @@ class Timers extends Component {
       <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
         <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
           <img
-            style={{ position: 'relative', height: '80px' }}
-            src={JohnTravolta}
-            alt="JohnTravolta"
+            style={{ position: 'relative', height: '150px' }}
+            src={Tom}
+            alt="Tom"
           />
           <h3 className="pageContainerTitle">
             <FormattedMessage id="timers.no_timer.title" />
