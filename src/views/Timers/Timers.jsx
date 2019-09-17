@@ -11,12 +11,14 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
-import TimersDialog from './TimersDialog';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
 import Tom from '../common/resources/tom.gif';
+
+import AddTimerDialog from './AddTimerDialog';
+import EditTimerDialog from './EditTimerDialog';
 
 import { timerSelectors, timerOperations } from '../../state/timedmessages';
 
@@ -25,7 +27,9 @@ class Timers extends Component {
     super(props);
 
     this.state = {
-      modalOpen: false
+      openAddTimerDialog: false,
+      openEditTimerDialog: false,
+      editTimerDialogContent: ''
     };
   }
 
@@ -40,9 +44,13 @@ class Timers extends Component {
     this.setState({});
   }
 
-  handleClose = () => {
-    this.setState({ modalOpen: false });
-  }
+  handleCloseAddTimerDialog = () => {
+    this.setState({ openAddTimerDialog: false });
+  };
+
+  handleCloseEditTimerDialog = () => {
+    this.setState({ openEditTimerDialog: false });
+  };
 
   getIntervalInMinutes(iv) {
     iv = iv/60
@@ -71,7 +79,7 @@ class Timers extends Component {
             <FormattedMessage id="timers.no_timer.subtitle" />
           </small>
           <br /><br />
-          <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary" disabled={this.props.disabled}>
+          <Button onClick={() => this.setState({ openAddTimerDialog: true })} variant="contained" color="primary" disabled={this.props.disabled}>
             <FormattedMessage id="timers.new_timer" />
           </Button>
         </Typography>
@@ -108,7 +116,7 @@ class Timers extends Component {
               className="noshadow"
               size="small"
               aria-label="editTimer"
-              disabled
+               onClick={() => this.setState({ openEditTimerDialog: true, editTimerDialogContent: timer })}
             >
               <Icon style={{ color: '#ffffff' }}>edit</Icon>
             </Fab>
@@ -152,13 +160,22 @@ class Timers extends Component {
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
-                <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary">
+                <Button onClick={() => this.setState({ openAddTimerDialog: true })} variant="contained" color="primary">
                   <FormattedMessage id="timers.new_timer" />
                 </Button>
-                <TimersDialog
-                  open={this.state.modalOpen}
-                  onClose={this.handleClose}
-                />
+                {this.state.openAddTimerDialog &&
+                  <AddTimerDialog
+                    open={this.state.openAddTimerDialog}
+                    onClose={this.handleCloseAddTimerDialog}
+                  />
+                }
+                {this.state.openEditTimerDialog &&
+                  <EditTimerDialog
+                    open={this.state.openEditTimerDialog}
+                    onClose={this.handleCloseEditTimerDialog}
+                    timerObject={this.state.editTimerDialogContent}
+                  />
+                }
               </span>
             </h4>
             <small>

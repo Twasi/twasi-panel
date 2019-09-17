@@ -277,6 +277,8 @@ export default {
   'timers.new_timer.savetimer': 'Save timer',
   'timers.new_timer.activate': 'Activate timer when created',
   'timers.new_timer.interval.subtitle': 'Here you can set a cooldown up to one hour',
+  'timers.edit_timer.subheadline': 'Here you can edit your timer.',
+  'timers.edit_timer.activate': 'Enable timer',
   'timers.no_timer.title': 'You have not created a timer yet.',
   'timers.no_timer.subtitle': 'With the help of timers you can output commands in a specified interval.',
   'timers.timer': 'Timer',

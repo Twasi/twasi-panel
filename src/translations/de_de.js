@@ -278,6 +278,8 @@ export default {
   'timers.new_timer.savetimer': 'Timer speichern',
   'timers.new_timer.activate': 'Timer nach erstellen aktivieren',
   'timers.new_timer.interval.subtitle': 'Hier kannst du einen Interval von bis zu einer Stunde einstellen.',
+  'timers.edit_timer.subheadline': 'Hier kannst du deinen Timer bearbeiten.',
+  'timers.edit_timer.activate': 'Timer aktivieren',
   'timers.no_timer.title': 'Du hast noch keinen Timer erstellt.',
   'timers.no_timer.subtitle': 'Mit Hilfe eines Timers kannst du Befehle zeitgesteuert im Chat ausführen lassen.',
   'timers.timer': 'Timer',

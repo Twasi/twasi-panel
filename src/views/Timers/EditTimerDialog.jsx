@@ -20,23 +20,23 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import './_style.css';
 
-import { commandsSelectors, commandsOperations } from '../../state/commands';
 import { timerSelectors, timerOperations } from '../../state/timedmessages';
 
 class Timer extends React.Component {
 
   state = {
-    command: "",
-    commandName: "",
     timerEnabled: true,
     labelWidth: 45,
     interval: 1,
   };
 
   componentDidMount() {
-    const { updateCommands, updateTimer } = this.props;
-    updateCommands();
+    const { updateTimer, timerObject } = this.props;
     updateTimer();
+    this.setState({
+      timerEnabled: timerObject.enabled,
+      interval: timerObject.interval/60,
+    });
   }
 
   handleClose = () => {
@@ -52,43 +52,13 @@ class Timer extends React.Component {
     this.setState({ interval });
   };
 
-  handleChangeCommand = (event, index) => {
-    console.log(event.target.value)
-    this.setState({
-      command: event.target.value,
-      commandName: index.key
-    });
-  }
-
-  handleAddTimer = (command, interval, enabled) => {
-    this.props.addTimer(command, interval, enabled);
-    this.clearStates();
+  handleEditTimer = (command,enabled,newCommand,newInterval) => {
+    this.props.editTimer(command,enabled,newCommand,newInterval);
   };
 
   handleSetTimerActive = name => event => {
     this.setState({ ...this.state, [name]: event.target.checked });
   };
-
-  clearStates() {
-    this.setState({
-      command: "",
-      commandName: "",
-      interval: 1,
-      timerEnabled: true
-    });
-  }
-
-  renderCommands() {
-    const { commands, timers } = this.props;
-    var usedCommands = [];
-    timers.forEach(function(timer) {
-      usedCommands.push(timer.command)
-    })
-    return commands.map(command => (
-        !usedCommands.includes(command.name) &&
-        <MenuItem key={command.name} value={command.id}>{command.name}</MenuItem>
-    ));
-  }
 
   getIntervalInSeconds() {
     let iv = this.state.interval;
@@ -115,7 +85,7 @@ class Timer extends React.Component {
   }
 
   render() {
-    const { onClose, ...other } = this.props;
+    const { onClose, timerObject, ...other } = this.props;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -124,39 +94,14 @@ class Timer extends React.Component {
         <DialogContent>
           <Typography component={'div'}>
             <h4 className="pageContainerTitle">
-              <FormattedMessage id="timers.new_timer" />
+              Timer {timerObject.command} bearbeiten
             </h4>
             <small>
-              <FormattedMessage id="timers.new_timer.subheadline" />
+              <FormattedMessage id="timers.edit_timer.subheadline" />
             </small>
           </Typography>
           <br /><br />
           <Card className="pluginCard">
-            <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-              <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
-                <InputLabel
-                  htmlFor="access-select"
-                >
-                  <FormattedMessage id="timers.new_timer.command" />
-                </InputLabel>
-                <Select
-                  value={this.state.command}
-                  onChange={this.handleChangeCommand}
-                  input={
-                    <OutlinedInput
-                      labelWidth={this.state.labelWidth}
-                      name="access"
-                      id="access-select"
-                    />
-                  }
-                >
-                  {this.renderCommands()}
-                </Select>
-                <FormHelperText><FormattedMessage id="timers.new_timer.command.subtitle" /></FormHelperText>
-              </FormControl>
-            </CardContent>
-          </Card>
-          <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
               <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Interval: {this.getCooldown()}</Typography>
               <Slider
@@ -178,7 +123,7 @@ class Timer extends React.Component {
               <Row>
                 <Col style={{ textAlign: 'left' }} sm={6}>
                   <Typography style={{ padding: '7px' }}>
-                    <small><FormattedMessage id="timers.new_timer.activate" /></small>
+                    <small><FormattedMessage id="timers.edit_timer.activate" /></small>
                   </Typography>
                 </Col>
                 <Col style={{ textAlign: 'right' }} sm={6}>
@@ -192,9 +137,8 @@ class Timer extends React.Component {
             style={{ marginTop: '15px' }}
             variant="contained"
             color="primary"
-            disabled={this.state.commandName === ""}
             onClick={() => {
-                this.handleAddTimer(this.state.commandName, this.getIntervalInSeconds(), this.state.timerEnabled)
+                this.handleEditTimer(timerObject.command, this.state.timerEnabled, timerObject.command, this.getIntervalInSeconds())
             }}>
             <FormattedMessage id="timers.new_timer.savetimer" />
           </Button>
@@ -209,15 +153,13 @@ Timer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  commands: commandsSelectors.getCommands(state),
   timers: timerSelectors.getTimer(state),
   isActionSuccess: timerSelectors.isActionSuccess(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateCommands: () => dispatch(commandsOperations.loadCommands()),
   updateTimer: () => dispatch(timerOperations.loadTimer()),
-  addTimer: (command,interval,enabled) => dispatch(timerOperations.addTimer(command,interval,enabled))
+  editTimer: (command,enabled,newCommand,newInterval) => dispatch(timerOperations.editTimer(command,enabled,newCommand,newInterval))
 });
 
 export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Timer));
