@@ -5,10 +5,11 @@ const updateTimer = timer => ({
   timer
 });
 
-const updateAddTimer = (command, interval) => ({
+const updateAddTimer = (command, interval, enabled) => ({
   type: types.UPDATE_ADDTIMER,
   command,
-  interval
+  interval,
+  enabled
 });
 
 const updateDelTimer = (command) => ({

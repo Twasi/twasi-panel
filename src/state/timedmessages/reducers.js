@@ -17,7 +17,7 @@ const timerReducer = (state = initialState, action) => {
       return { ...state, isLoaded: true, isDisabled: false, timer: action.timer };
     }
     case types.UPDATE_ADDTIMER: {
-      return { ...state, isLoaded: true, command: action.command, interval: action.interval };
+      return { ...state, isLoaded: true, command: action.command, interval: action.interval, enabled: action.enabled };
     }
     case types.UPDATE_DELTIMER: {
       return { ...state, isLoaded: true, command: action.command };

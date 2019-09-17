@@ -28,6 +28,7 @@ class Timer extends React.Component {
   state = {
     command: "",
     commandName: "",
+    timerEnabled: true,
     labelWidth: 45,
     interval: 1,
   };
@@ -59,9 +60,13 @@ class Timer extends React.Component {
     });
   }
 
-  handleAddTimer = (command, interval) => {
-    this.props.addTimer(command, interval);
+  handleAddTimer = (command, interval, enabled) => {
+    this.props.addTimer(command, interval, enabled);
     this.clearStates();
+  };
+
+  handleSetTimerActive = name => event => {
+    this.setState({ ...this.state, [name]: event.target.checked });
   };
 
   clearStates() {
@@ -69,6 +74,7 @@ class Timer extends React.Component {
       command: "",
       commandName: "",
       interval: 1,
+      timerEnabled: true
     });
   }
 
@@ -176,7 +182,7 @@ class Timer extends React.Component {
                   </Typography>
                 </Col>
                 <Col style={{ textAlign: 'right' }} sm={6}>
-                  <Switch color="primary" />
+                  <Switch checked={this.state.timerEnabled} onChange={this.handleSetTimerActive('timerEnabled')} color="primary" />
                 </Col>
               </Row>
             </CardContent>
@@ -188,7 +194,7 @@ class Timer extends React.Component {
             color="primary"
             disabled={this.state.commandName === ""}
             onClick={() => {
-                this.handleAddTimer(this.state.commandName, this.getIntervalInSeconds())
+                this.handleAddTimer(this.state.commandName, this.getIntervalInSeconds(), this.state.timerEnabled)
             }}>
             <FormattedMessage id="timers.new_timer.savetimer" />
           </Button>
@@ -211,7 +217,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
   updateTimer: () => dispatch(timerOperations.loadTimer()),
-  addTimer: (command,interval) => dispatch(timerOperations.addTimer(command,interval))
+  addTimer: (command,interval,enabled) => dispatch(timerOperations.addTimer(command,interval,enabled))
 });
 
 export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Timer));

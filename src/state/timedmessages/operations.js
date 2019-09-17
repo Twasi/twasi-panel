@@ -28,9 +28,9 @@ const loadTimer = () => dispatch => {
     });
 };
 
-const addTimer = (command,interval) => dispatch => {
+const addTimer = (command,interval,enabled) => dispatch => {
     dispatch(updateActionSuccess(false));
-    dispatch(getGraph(`registerTimer(command: ${JSON.stringify(command)}, interval: ${interval}){command}`, 'timedmessages')).then(
+    dispatch(getGraph(`registerTimer(command: ${JSON.stringify(command)}, interval: ${interval}, enabled: ${enabled}){command}`, 'timedmessages')).then(
     data => {
       dispatch(updateAddTimer(data.registerTimer));
       dispatch(updateActionSuccess(true));
