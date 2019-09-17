@@ -4,6 +4,7 @@ export const initialState = {
   timer: [],
   command: "",
   interval: 0,
+  enabled: false,
   isLoaded: false,
   isDisabled: false,
   isLoading: true,
@@ -20,6 +21,9 @@ const timerReducer = (state = initialState, action) => {
     }
     case types.UPDATE_DELTIMER: {
       return { ...state, isLoaded: true, command: action.command };
+    }
+    case types.UPDATE_ENABLETIMER: {
+      return { ...state, isLoaded: true, command: action.command, enabled: action.enabled };
     }
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };

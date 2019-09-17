@@ -90,14 +90,16 @@ class Timers extends Component {
         <TableCell>{this.getIntervalInMinutes(timer.interval)}</TableCell>
         <TableCell>
           {timer.enabled ?
-          <Chip
-            label="Aktiviert"
+          <Button
+            variant="contained"
             color="primary"
-          /> :
-          <Chip
-            label="Deaktiviert"
+            onClick={() => this.props.enableTimer(timer.command, false)}
+          > Aktiviert </Button> :
+          <Button
+            variant="contained"
             color="secondary"
-          />
+            onClick={() => this.props.enableTimer(timer.command, true)}
+          > Deaktiviert </Button>
           }
         </TableCell>
         <TableCell>
@@ -196,7 +198,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateTimer: () => dispatch(timerOperations.loadTimer()),
-  delTimer: (command) => dispatch(timerOperations.delTimer(command))
+  delTimer: (command) => dispatch(timerOperations.delTimer(command)),
+  enableTimer: (command, enabled) => dispatch(timerOperations.enableTimer(command, enabled))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timers);

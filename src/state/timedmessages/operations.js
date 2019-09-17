@@ -7,6 +7,7 @@ const {
     updateTimer,
     updateAddTimer,
     updateDelTimer,
+    updateEnableTimer,
     updateDisabled,
     updateLoaded,
     updateLoading,
@@ -49,6 +50,17 @@ const delTimer = command => dispatch => {
     });
 };
 
+const enableTimer = (command,enabled) => dispatch => {
+    dispatch(updateActionSuccess(false));
+    dispatch(getGraph(`enableTimer(command: ${JSON.stringify(command)}, enabled: ${enabled}){command}`, 'timedmessages')).then(
+    data => {
+      dispatch(updateDelTimer(data.enableTimer));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
+};
+
 const verifyData = () => (dispatch, getState) => {
     const state = getState();
 
@@ -63,6 +75,7 @@ export default {
     loadTimer,
     addTimer,
     delTimer,
+    enableTimer,
     verifyData,
     updateLoaded,
     updateLoading,

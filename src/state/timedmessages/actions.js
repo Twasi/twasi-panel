@@ -8,12 +8,18 @@ const updateTimer = timer => ({
 const updateAddTimer = (command, interval) => ({
   type: types.UPDATE_ADDTIMER,
   command,
-  interval,
+  interval
 });
 
 const updateDelTimer = (command) => ({
   type: types.UPDATE_DELTIMER,
   command
+});
+
+const updateEnableTimer = (command, enabled) => ({
+  type: types.UPDATE_ENABLETIMER,
+  command,
+  enabled
 });
 
 const updateDisabled = isDisabled => ({
@@ -40,6 +46,7 @@ export default {
   updateTimer,
   updateAddTimer,
   updateDelTimer,
+  updateEnableTimer,
   updateDisabled,
   updateLoading,
   updateLoaded,
