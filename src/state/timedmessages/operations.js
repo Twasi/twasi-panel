@@ -54,7 +54,7 @@ const enableTimer = (command,enabled) => dispatch => {
     dispatch(updateActionSuccess(false));
     dispatch(getGraph(`enableTimer(command: ${JSON.stringify(command)}, enabled: ${enabled}){command}`, 'timedmessages')).then(
     data => {
-      dispatch(updateDelTimer(data.enableTimer));
+      dispatch(updateEnableTimer(data.enableTimer));
       dispatch(updateActionSuccess(true));
     }).finally(() => {
       dispatch(updateActionSuccess(false));
