@@ -83,6 +83,8 @@ export default {
   'manager.table.url': 'Kanal',
   'manager.table.tochannel': 'Kanal besuchen',
   'manager.table.impersonate': 'Zum Panel',
+  'manager.no_users.title': 'Keine Streamer Live zum stalken.',
+  'manager.no_users.subtitle': 'Du bist im Twasi Team... mach irgendwas sinnvolles, statt zu hoffen, dass Twasi erfolgreich wird.',
 
   // Sidebar
   'header.give_feedback': 'Feedback geben',

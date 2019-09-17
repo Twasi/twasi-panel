@@ -16,7 +16,9 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
 import twitchVerifiedBadge from '../common/resources/twitch_verified_badge.png';
+import Jebaited from '../common/resources/jebaited.png';
 
+import { authSelectors } from '../../state/auth';
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
 import { impersonateOperations } from '../../state/impersonate';
 
@@ -31,6 +33,26 @@ class UserManager extends Component {
     history.push(value);
     this.setState({});
   };
+
+  renderUsersEmpty() {
+    return (
+      <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
+        <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+          <img
+            style={{ position: 'relative', height: '100px' }}
+            src={Jebaited}
+            alt="Jebaited"
+          />
+          <h3 className="pageContainerTitle">
+            <FormattedMessage id="manager.no_users.title" />
+          </h3>
+          <small>
+            <FormattedMessage id="manager.no_users.subtitle" />
+          </small>
+        </Typography>
+      </Paper>
+    );
+  }
 
   renderUsers() {
     const { users } = this.props;
@@ -77,14 +99,17 @@ class UserManager extends Component {
   }
 
   render() {
+    const { rank } = this.props;
     return (
       <div className="pageContent">
+        {rank === "TEAM" &&
         <Breadcrumbs arial-label="Breadcrumb">
           <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.user_manager" /></Typography>
-        </Breadcrumbs>
+        </Breadcrumbs>}
+        {rank === "TEAM" &&
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography component={'span'}>
             <h4 className="pageContainerTitle">
@@ -100,7 +125,8 @@ class UserManager extends Component {
               <FormattedMessage id="manager.subtitle" />
             </small>
           </Typography>
-        </Paper>
+        </Paper>}
+        {rank === "TEAM" &&
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Table>
             <TableHead>
@@ -118,7 +144,8 @@ class UserManager extends Component {
               {this.renderUsers()}
             </TableBody>
           </Table>
-        </Paper>
+        </Paper>}
+        {this.renderUsers().length === 0 && !this.props.isLoading && this.renderUsersEmpty()}
       </div>
     );
   }
@@ -127,7 +154,8 @@ class UserManager extends Component {
 const mapStateToProps = state => ({
   users: streamtrackerSelectors.getUsers(state),
   isLoaded: streamtrackerSelectors.isLoaded(state),
-  disabled: streamtrackerSelectors.isDisabled(state)
+  disabled: streamtrackerSelectors.isDisabled(state),
+  rank: authSelectors.getUser(state).rank
 });
 
 const mapDispatchToProps = dispatch => ({
