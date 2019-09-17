@@ -3,6 +3,8 @@ import types from './types';
 export const initialState = {
   timer: [],
   command: "",
+  newCommand: "",
+  newInterval: 0,
   interval: 0,
   enabled: false,
   isLoaded: false,
@@ -21,6 +23,9 @@ const timerReducer = (state = initialState, action) => {
     }
     case types.UPDATE_DELTIMER: {
       return { ...state, isLoaded: true, command: action.command };
+    }
+    case types.UPDATE_EDITTIMER: {
+      return { ...state, isLoaded: true, command: action.command, enabled: action.enabled, newCommand: action.newCommand, newInterval: action.newInterval };
     }
     case types.UPDATE_ENABLETIMER: {
       return { ...state, isLoaded: true, command: action.command, enabled: action.enabled };

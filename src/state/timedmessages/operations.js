@@ -7,6 +7,7 @@ const {
     updateTimer,
     updateAddTimer,
     updateDelTimer,
+    updateEditTimer,
     updateEnableTimer,
     updateDisabled,
     updateLoaded,
@@ -33,6 +34,17 @@ const addTimer = (command,interval,enabled) => dispatch => {
     dispatch(getGraph(`registerTimer(command: ${JSON.stringify(command)}, interval: ${interval}, enabled: ${enabled}){command}`, 'timedmessages')).then(
     data => {
       dispatch(updateAddTimer(data.registerTimer));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
+};
+
+const editTimer = (command,enabled,newCommand,newInterval) => dispatch => {
+    dispatch(updateActionSuccess(false));
+    dispatch(getGraph(`updateTimer(command: ${JSON.stringify(command)}, enabled: ${enabled}, newCommand: ${JSON.stringify(newCommand)}, newInterval: ${newInterval}){command}`, 'timedmessages')).then(
+    data => {
+      dispatch(updateEditTimer(data.updateTimer));
       dispatch(updateActionSuccess(true));
     }).finally(() => {
       dispatch(updateActionSuccess(false));
@@ -75,6 +87,7 @@ export default {
     loadTimer,
     addTimer,
     delTimer,
+    editTimer,
     enableTimer,
     verifyData,
     updateLoaded,
