@@ -17,6 +17,8 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+import JohnTravolta from '../common/resources/johntravolta.gif';
+
 import { timerSelectors, timerOperations } from '../../state/timedmessages';
 
 class Timers extends Component {
@@ -52,6 +54,30 @@ class Timers extends Component {
       return "1 Stunde";
     }
     return iv + " Minuten";
+  }
+
+  renderTimersEmpty() {
+    return (
+      <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
+        <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+          <img
+            style={{ position: 'relative', height: '80px' }}
+            src={JohnTravolta}
+            alt="JohnTravolta"
+          />
+          <h3 className="pageContainerTitle">
+            <FormattedMessage id="timers.no_timer.title" />
+          </h3>
+          <small>
+            <FormattedMessage id="timers.no_timer.subtitle" />
+          </small>
+          <br /><br />
+          <Button onClick={() => this.setState({ modalOpen: true })} variant="contained" color="primary" disabled={this.props.disabled}>
+            <FormattedMessage id="timers.new_timer" />
+          </Button>
+        </Typography>
+      </Paper>
+    );
   }
 
   renderTimers() {
@@ -154,6 +180,7 @@ class Timers extends Component {
             </TableBody>
           </Table>
         </Paper>
+        {this.renderTimers().length === 0 && !this.props.isLoading && this.renderTimersEmpty()}
       </div>
     );
   }

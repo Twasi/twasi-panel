@@ -29,12 +29,13 @@ class Timer extends React.Component {
     command: "",
     commandName: "",
     labelWidth: 45,
-    interval: 0,
+    interval: 1,
   };
 
   componentDidMount() {
-    const { updateCommands } = this.props;
+    const { updateCommands, updateTimer } = this.props;
     updateCommands();
+    updateTimer();
   }
 
   handleClose = () => {
@@ -51,6 +52,7 @@ class Timer extends React.Component {
   };
 
   handleChangeCommand = (event, index) => {
+    console.log(event.target.value)
     this.setState({
       command: event.target.value,
       commandName: index.key
@@ -59,12 +61,26 @@ class Timer extends React.Component {
 
   handleAddTimer = (command, interval) => {
     this.props.addTimer(command, interval);
+    this.clearStates();
   };
 
+  clearStates() {
+    this.setState({
+      command: "",
+      commandName: "",
+      interval: 1,
+    });
+  }
+
   renderCommands() {
-    const { commands } = this.props;
+    const { commands, timers } = this.props;
+    var usedCommands = [];
+    timers.forEach(function(timer) {
+      usedCommands.push(timer.command)
+    })
     return commands.map(command => (
-      <MenuItem key={command.name} value={command.id}>{command.name}</MenuItem>
+        !usedCommands.includes(command.name) &&
+        <MenuItem key={command.name} value={command.id}>{command.name}</MenuItem>
     ));
   }
 
@@ -146,7 +162,9 @@ class Timer extends React.Component {
                 step={1}
                 onChange={this.handleChange}
               />
-              <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Hier kannst du einen Interval von bis zu einer Stunde einstellen.</Typography>
+              <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>
+                <FormattedMessage id="timers.new_timer.interval.subtitle" />
+              </Typography>
             </CardContent>
           </Card>
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
@@ -154,7 +172,7 @@ class Timer extends React.Component {
               <Row>
                 <Col style={{ textAlign: 'left' }} sm={6}>
                   <Typography style={{ padding: '7px' }}>
-                    <small>Timer aktivieren</small>
+                    <small><FormattedMessage id="timers.new_timer.activate" /></small>
                   </Typography>
                 </Col>
                 <Col style={{ textAlign: 'right' }} sm={6}>
@@ -168,6 +186,7 @@ class Timer extends React.Component {
             style={{ marginTop: '15px' }}
             variant="contained"
             color="primary"
+            disabled={this.state.commandName === ""}
             onClick={() => {
                 this.handleAddTimer(this.state.commandName, this.getIntervalInSeconds())
             }}>
@@ -185,11 +204,13 @@ Timer.propTypes = {
 
 const mapStateToProps = state => ({
   commands: commandsSelectors.getCommands(state),
+  timers: timerSelectors.getTimer(state),
   isActionSuccess: timerSelectors.isActionSuccess(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
+  updateTimer: () => dispatch(timerOperations.loadTimer()),
   addTimer: (command,interval) => dispatch(timerOperations.addTimer(command,interval))
 });
 
