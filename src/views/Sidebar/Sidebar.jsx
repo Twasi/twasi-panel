@@ -114,6 +114,13 @@ class Sidebar extends Component {
         shown: 'plugins/quotes'
       },
       {
+        key: 'chatfilter',
+        path: '/chatfilter',
+        icon: 'policy',
+        name: 'sidebar.chatfilter',
+        shown: 'none'
+      },
+      {
         key: 'urlshortener',
         path: '/urlshortener',
         icon: 'link',

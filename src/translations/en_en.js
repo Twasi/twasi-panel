@@ -68,6 +68,7 @@ export default {
   'sidebar.giveaways': 'Giveaways',
   'sidebar.quotes': 'Quotes',
   'sidebar.votings': 'Votings',
+  'sidebar.chatfilter': 'Chatfilter',
   'sidebar.support': 'Support',
   'sidebar.navigation_headline': 'Navigation',
   'sidebar.user_manager': 'Nutzer Manager',

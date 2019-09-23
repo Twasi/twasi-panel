@@ -68,6 +68,7 @@ export default {
   'sidebar.giveaways': 'Giveaways',
   'sidebar.quotes': 'Zitate',
   'sidebar.votings': 'Umfragen',
+  'sidebar.chatfilter': 'Chatfilter',
   'sidebar.support': 'Support',
   'sidebar.userfeedback': 'User Feedback',
   'sidebar.navigation_headline': 'Navigation',

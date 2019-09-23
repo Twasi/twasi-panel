@@ -360,7 +360,15 @@ export default createMuiTheme({
       root: {
         padding: '24px'
       }
-    }
+    },
+    MuiSlider: {
+      markLabel: {
+        filter: 'grayscale(100%)'
+      },
+      markLabelActive: {
+        filter: 'grayscale(0%)'
+      }
+    },
   },
   typography: {
     useNextVariants: true
