@@ -394,6 +394,9 @@ export default {
   'support.ticket.rating.could_we_help': 'Konnten wir dir helfen?',
   'support.ticket.rating.what_was_wrong': 'Was hat dir nicht gefallen?',
 
+  'chatfilter.title': 'Chatfilter',
+  'chatfilter.subtitle': 'Hier kannst du deine Chatfilter verwalten.',
+
   // Branding
   'branding.download.svg': '.SVG',
   'branding.download.png': '.PNG',

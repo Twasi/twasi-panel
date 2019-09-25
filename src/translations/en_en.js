@@ -68,7 +68,7 @@ export default {
   'sidebar.giveaways': 'Giveaways',
   'sidebar.quotes': 'Quotes',
   'sidebar.votings': 'Votings',
-  'sidebar.chatfilter': 'Chatfilter',
+  'sidebar.chatfilter': 'Chatfilters',
   'sidebar.support': 'Support',
   'sidebar.navigation_headline': 'Navigation',
   'sidebar.user_manager': 'Nutzer Manager',
@@ -392,6 +392,9 @@ export default {
   'support.ticket.state.progress': 'In progress',
   'support.ticket.rating.could_we_help': 'Could we help you?',
   'support.ticket.rating.what_was_wrong': "What didn't made you happy?",
+
+  'chatfilter.title': 'Chatfilters',
+  'chatfilter.subtitle': 'Here you can manage your chatfilters',
 
   // Branding
   'branding.download.svg': '.SVG',
