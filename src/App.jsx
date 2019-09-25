@@ -27,12 +27,12 @@ import './styles/main.css';
 
 // Themes
 import twasiDark from './themes/twasi-dark/twasi-dark';
-import twasiLight from './themes/twasi-light/twasi-light';
 import twasiDarkBlue from './themes/twasi-darkblue/twasi-darkblue';
 import darkGrey from './themes/dark-grey/dark-grey';
 import bttvDark from './themes/bttv-dark/bttv-dark';
 import tipeeeDark from './themes/tipeee-dark/tipeee-dark';
 import windows95 from './themes/windows95/windows95';
+import halloween from './themes/halloween/halloween';
 
 import germanData from 'react-intl/locale-data/de';
 import german from './translations/de_de';
@@ -67,9 +67,7 @@ const App = () => {
 
     let selectedTheme = twasiDarkBlue;
 
-    if (props.theme.toLowerCase() === 'twasi-light') {
-      selectedTheme = twasiLight;
-    } else if (props.theme.toLowerCase() === 'twasi-dark') {
+    if (props.theme.toLowerCase() === 'twasi-dark') {
       selectedTheme = twasiDark;
     } else if (props.theme.toLowerCase() === 'dark-grey') {
       selectedTheme = darkGrey;
@@ -79,6 +77,8 @@ const App = () => {
       selectedTheme = tipeeeDark;
     } else if (props.theme.toLowerCase() === 'windows95') {
       selectedTheme = windows95;
+    } else if (props.theme.toLowerCase() === 'halloween') {
+      selectedTheme = halloween;
     }
 
     let selectedLanguage = german;

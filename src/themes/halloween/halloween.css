@@ -1,0 +1,56 @@
+.halloween {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.halloween .outline-textlogo { fill:#a55300 !important; }
+.halloween .shadow-primary-textlogo { fill:#d46b00 !important; }
+.halloween .shadow-secondary-textlogo { fill:#ad5700 !important; }
+.halloween .main-textlogo { fill:#fe8000 !important; }
+.halloween img {
+  pointer-events: none;
+}
+.halloween .translucentBox {
+  background: #ff9d39;
+  background-image: url('../../views/common/resources/pumpkinface.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.halloween .translucentBoxWelcome {
+  background: #fe8000;
+}
+.halloween .headerMenuItem {
+  background: #fe8000;
+}
+.halloween .TableRow {
+  border-bottom: 3px solid #fe8000 !important;
+}
+.halloween .bannerHeader {
+  background-color: #000000;
+  background-image: url('../../views/common/resources/halloween_header.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.halloween .bannerHeaderTopBar {
+  background-color: #fe8000;
+}
+.halloween .themeIcon:hover{
+  background: -webkit-linear-gradient(135deg, #fe8000, #fe8000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.halloween a {
+  color: #fe8000;
+}
+.halloween .urlshortener_arrow {
+  color: #fe8000;
+}
+.halloween .chatBubbleSelf {
+  background-color: #071d29;
+  padding: 10px;
+  border-radius: 4px;
+}
+.halloween .chatBubbleSupport {
+  background-color: #102f40;
+  padding: 10px;
+  border-radius: 4px;
+}
