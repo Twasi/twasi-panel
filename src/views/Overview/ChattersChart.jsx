@@ -4,8 +4,10 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
+import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
 
 import crown from '../common/resources/crown.svg';
+import pumpkin from '../common/resources/pumpkin_chatter.png';
 
 am4core.options.queue = false;
 am4core.options.onlyShowOnViewport = true;
@@ -63,6 +65,17 @@ class ChattersChart extends Component {
 
     // Add and configure Series
     const series = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
+
+    if(this.props.theme === "halloween") {
+      let icon = series.nodes.template.createChild(am4core.Image);
+      icon.href = pumpkin;
+      icon.horizontalCenter = "middle";
+      icon.verticalCenter = "middle";
+      series.nodes.template.circle.disabled = true;
+      series.nodes.template.outerCircle.disabled = true;
+      series.nodes.template.label.valign = "bottom";
+    }
+
     series.dataFields.value = 'messages';
     series.dataFields.name = 'displayName';
     series.showOnInit = false;
@@ -107,7 +120,8 @@ class ChattersChart extends Component {
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),
   isLoaded: streamtrackerSelectors.isLoaded(state),
-  disabled: streamtrackerSelectors.isDisabled(state)
+  disabled: streamtrackerSelectors.isDisabled(state),
+  theme: appInfoSelectors.getTheme(state),
 });
 
 const mapDispatchToProps = dispatch => ({
