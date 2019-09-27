@@ -76,10 +76,15 @@ class ChattersChart extends Component {
       series.nodes.template.label.valign = "bottom";
     }
 
+    if(this.props.theme === "twasi-light") {
+      series.nodes.template.label.text = '[#636363]{displayName}[/]';
+    } else {
+      series.nodes.template.label.text = '{displayName}';
+    }
+
     series.dataFields.value = 'messages';
     series.dataFields.name = 'displayName';
     series.showOnInit = false;
-    series.nodes.template.label.text = '{displayName}';
     series.nodes.template.tooltipText = '[bold]{messages}[/] Nachrichten';
     series.tooltip.getStrokeFromObject = true;
     series.dataFields.color = 'lineColor';
