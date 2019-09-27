@@ -73,6 +73,14 @@ const themes = [{
   primaryColor: '#000080',
   secondaryColor: '#bdbebd'
 }, {
+  name: 'Twasi Light',
+  key: 'twasi-light',
+  backgroundColor: '#e6e6e6',
+  paperColor: '#fff',
+  cardColor: '#f9f9f9',
+  primaryColor: '#00aeae',
+  secondaryColor: '#e53935',
+  }, {
   name: 'Halloween (Release 31.10.2019)',
   key: 'halloween',
   backgroundColor: '#051016',

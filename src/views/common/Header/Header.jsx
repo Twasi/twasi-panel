@@ -30,11 +30,11 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp
         {isSetUp &&
         <div style={getLogoStyle()}>
           <span>
-            {avatar && <img src={avatar} alt="Avatar" style={getAvatarStyle()} />}
+            {avatar && <img src={avatar} alt="Avatar" className="avatarStyle" style={getAvatarStyle()} />}
             <div style={getLogoDescriptionStyle()}>
               <span>
                 <Typography color="inherit" className="userNameStyle">{userName}</Typography>
-                <Typography color="inherit"><small style={getRankStyle()}><Rank /></small></Typography>
+                <Typography color="inherit"><small className="rankNameStyle" style={getRankStyle()}><Rank /></small></Typography>
               </span>
             </div>
           </span>

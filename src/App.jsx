@@ -31,6 +31,7 @@ import twasiDarkBlue from './themes/twasi-darkblue/twasi-darkblue';
 import darkGrey from './themes/dark-grey/dark-grey';
 import bttvDark from './themes/bttv-dark/bttv-dark';
 import tipeeeDark from './themes/tipeee-dark/tipeee-dark';
+import twasiLight from './themes/twasi-light/twasi-light';
 import windows95 from './themes/windows95/windows95';
 import halloween from './themes/halloween/halloween';
 
@@ -66,8 +67,9 @@ const App = () => {
     props.loadComicSans();
 
     let selectedTheme = twasiDarkBlue;
-
-    if (props.theme.toLowerCase() === 'twasi-dark') {
+    if (props.theme.toLowerCase() === 'twasi-light') {
+      selectedTheme = twasiLight;
+    } else if (props.theme.toLowerCase() === 'twasi-dark') {
       selectedTheme = twasiDark;
     } else if (props.theme.toLowerCase() === 'dark-grey') {
       selectedTheme = darkGrey;

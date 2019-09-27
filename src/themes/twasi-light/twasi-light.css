@@ -1,6 +1,7 @@
 .twasi-light {
   -webkit-user-select: none;
   user-select: none;
+  color: #636363;
 }
 .twasi-light .outline-textlogo { fill:#1b292d !important; }
 .twasi-light .shadow-primary-textlogo { fill:#004a4a !important; }
@@ -10,7 +11,16 @@
   pointer-events: none;
 }
 .twasi-light .bannerHeader {
- background-color: #213335;
+ background-color: #dcdcdc;
+}
+.twasi-light .userNameStyle {
+  color: #636363 !important;
+}
+.twasi-light .rankNameStyle {
+  color: #636363 !important;
+}
+.twasi-light .avatarStyle {
+  border-color: #636363 !important;
 }
 .twasi-light .bannerHeaderTopBar {
   background-color: #00aeae;
@@ -27,4 +37,7 @@
   background-color: #d6d6d6;
   padding: 10px;
   border-radius: 4px;
+}
+.twasi-light a {
+  color: #00aeae;
 }
