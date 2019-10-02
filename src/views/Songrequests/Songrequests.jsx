@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
-import Slider from '@material-ui/lab/Slider';
+import Slider from '@material-ui/core/Slider';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';

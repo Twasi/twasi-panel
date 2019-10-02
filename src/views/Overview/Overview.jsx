@@ -127,7 +127,7 @@ class Overview extends Component {
   formatTime = (timestamp) => {
     var date = new Date(timestamp);
     var day = this.addZero(date.getDate());
-    var month = this.addZero(date.getMonth());
+    var month = this.addZero(date.getMonth()+1);
     var year = date.getFullYear();
     var hours = this.addZero(date.getHours());
     var minutes = this.addZero(date.getMinutes());
