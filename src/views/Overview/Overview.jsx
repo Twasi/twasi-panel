@@ -15,6 +15,7 @@ import Tab from '@material-ui/core/Tab';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Skeleton from '@material-ui/lab/Skeleton';
+import Box from '@material-ui/core/Box';
 
 import html2canvas from 'html2canvas';
 
@@ -39,11 +40,20 @@ import GameTitleCard from './GameTitleCard';
 
 import './_style.css';
 
-function TabContainer(props) {
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
   return (
-    <div>
-      {props.children}
-    </div>
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
+      {...other}
+    >
+      <Box p={0}>{children}</Box>
+    </Typography>
   );
 }
 
@@ -357,13 +367,15 @@ class Overview extends Component {
             value={value}
             onChange={this.handleChange}
             indicatorColor="primary"
+            variant="scrollable"
+            scrollButtons="auto"
             textColor="primary"
           >
             {this.renderStreams()}
           </Tabs>
         </Paper>
         }
-        {value === 0 && <TabContainer>
+        <TabPanel value={value} index={0}>
           {!noStreamData && !isLoading &&
           <Row>
             <Col sm={12}>
@@ -483,9 +495,7 @@ class Overview extends Component {
             <Helpbuttons />
           </div>
           }
-        </TabContainer>}
-        {value === 1 && <TabContainer />}
-        {value === 2 && <TabContainer />}
+        </TabPanel>
         <Dialog
           onClose={this.handleClose}
           open={window.location.hash === "#first_start"}
