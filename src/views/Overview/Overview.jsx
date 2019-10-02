@@ -101,8 +101,40 @@ class Overview extends Component {
     updateStreamtracker();
     const { updateGlobalStreamtracker } = this.props;
     updateGlobalStreamtracker();
+    const { updateAllStreams } = this.props;
+    updateAllStreams();
     const { updateCommands } = this.props;
     updateCommands();
+  }
+
+  addZero= (i) => {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
+
+  formatTime = (timestamp) => {
+    var date = new Date(timestamp);
+    var day = this.addZero(date.getDate());
+    var month = this.addZero(date.getMonth());
+    var year = date.getFullYear();
+    var hours = this.addZero(date.getHours());
+    var minutes = this.addZero(date.getMinutes());
+    return day+"."+month+"."+year+" - "+hours+":"+minutes;
+  }
+
+  renderStreams() {
+    const { allstreams } = this.props;
+    return allstreams.map(stream => (
+      <Tab label={(
+        <span>
+          {allstreams[0].startedAt === stream.startedAt ? "Letzter Stream" : "Stream vom"}
+          <br/>
+          <b>{this.formatTime(stream.startedAt).toLocaleString()}</b>
+        </span>
+      )} />
+    ));
   }
 
   render() {
@@ -327,9 +359,7 @@ class Overview extends Component {
             indicatorColor="primary"
             textColor="primary"
           >
-            <Tab label="Letzter Stream" />
-            <Tab disabled label="" />
-            <Tab disabled label="" />
+            {this.renderStreams()}
           </Tabs>
         </Paper>
         }
@@ -520,11 +550,13 @@ const mapStateToProps = state => ({
   noStreamData: streamtrackerSelectors.noStreamData(state),
   isGlobalLoading: streamtrackerSelectors.isGlobalLoading(state),
   user: authSelectors.getUser(state),
+  allstreams: streamtrackerSelectors.getAllStreams(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
   updateGlobalStreamtracker: () => dispatch(streamtrackerOperations.loadGlobalStreamtracker()),
+  updateAllStreams: () => dispatch(streamtrackerOperations.loadAllStreams()),
   updateUtilities: () => dispatch(utilitiesOperations.loadUtilities()),
   updateCommands: () => dispatch(commandsOperations.loadCommands())
 });

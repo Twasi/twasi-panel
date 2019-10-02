@@ -15,6 +15,11 @@ const updateUsers = users => ({
   users
 });
 
+const updateAllStreams = allstreams => ({
+  type: types.UPDATE_ALLSTREAMS,
+  allstreams
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -44,6 +49,7 @@ export default {
   updateStreamtracker,
   updateGlobalStreamtracker,
   updateUsers,
+  updateAllStreams,
   updateDisabled,
   updateLoaded,
   updateLoading,

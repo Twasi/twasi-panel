@@ -7,6 +7,7 @@ const {
   updateStreamtracker,
   updateGlobalStreamtracker,
   updateUsers,
+  updateAllStreams,
   updateDisabled,
   updateLoading,
   updateLoaded,
@@ -52,6 +53,16 @@ const loadUsers = () => dispatch => {
   });
 };
 
+const loadAllStreams = () => dispatch => {
+  dispatch(getGraph('getAllStreams{streamId,startedAt}', 'streamtracker')).then(data => {
+    if (data == null) {
+      dispatch(updateDisabled(true));
+      return;
+    }
+    dispatch(updateAllStreams(data.getAllStreams));
+  });
+};
+
 const verifyData = () => (dispatch, getState) => {
   const state = getState();
 
@@ -67,6 +78,7 @@ export default {
   loadStreamtracker,
   loadGlobalStreamtracker,
   loadUsers,
+  loadAllStreams,
   verifyData,
   updateLoaded,
   updateLoading,

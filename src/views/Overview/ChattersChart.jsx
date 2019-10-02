@@ -4,7 +4,7 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected';
 
 import { streamtrackerSelectors, streamtrackerOperations } from '../../state/streamtracker';
-import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
+import { appInfoSelectors } from '../../state/appInfo';
 
 import crown from '../common/resources/crown.svg';
 import pumpkin from '../common/resources/pumpkin_chatter.png';
