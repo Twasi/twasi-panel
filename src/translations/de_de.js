@@ -229,6 +229,8 @@ export default {
   'commands.new_command.variables.helpertext': 'Aufklappen, um Variablen zu sehen.',
   'commands.new_command.cooldown': 'Cooldown',
   'commands.new_command.cooldown.helpertext': 'Hier kannst du einen Cooldown von bis zu einer Stunde einstellen.',
+  'commands.new_command.uses': 'Genutzt',
+  'commands.new_command.uses.helpertext': 'Hier kannst du einstellen, wie oft der Befehl genutzt wurde. Dies ist hilfreich, wenn man einen Befehl als Counter nutzt.',
   'commands.edit_command.subheadline': 'Hier kannst du deinen Befehl bearbeiten.',
   'commands.table.command': 'Befehl',
   'commands.table.output': 'Ausgabe',

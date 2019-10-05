@@ -228,6 +228,8 @@ export default {
   'commands.new_command.variables.helpertext': 'Extend to see variables.',
   'commands.new_command.cooldown': 'Cooldown',
   'commands.new_command.cooldown.helpertext': 'Here you can set a cooldown up to one hour',
+  'commands.new_command.uses': 'Uses',
+  'commands.new_command.uses.helpertext': 'Here you can set the uses of the command wich can be helpfull if you use the command as a counter.',
   'commands.edit_command.subheadline': 'Here you can edit your command.',
   'commands.table.command': 'Command',
   'commands.table.output': 'Output',

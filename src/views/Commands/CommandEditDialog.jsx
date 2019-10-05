@@ -361,11 +361,11 @@ class Command extends React.Component {
                 <TextField
                   InputLabelProps={{ shrink: true }}
                   id="outlined-textarea"
-                  label="Uses"
+                  label={<FormattedMessage id="commands.new_command.uses" />}
                   fullWidth
                   value={this.state.commandUses}
                   onChange={this.handleCommandUsesChange}
-                  helperText="Wie oft wurde der Befehl bereits genutzt"
+                  helperText={<FormattedMessage id="commands.new_command.uses.helpertext" />}
                   margin="normal"
                   variant="outlined"
                 />
