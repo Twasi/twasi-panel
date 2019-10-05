@@ -35,6 +35,7 @@ class Command extends React.Component {
       commandName: "",
       commandContent: "",
       commandCooldown: 0,
+      commandUses: 0,
       commandAccess: "",
       accessLevel: 0,
       accessLevelString: "",
@@ -52,6 +53,7 @@ class Command extends React.Component {
       commandName: commandObject.name,
       commandContent: commandObject.content,
       commandCooldown: commandObject.cooldown,
+      commandUses: commandObject.uses,
       commandAccessLevel: commandObject.accessLevel.value,
       commandAccessLevelName: commandObject.accessLevel.name,
       cooldown: this.getSliderValueByMilliseconds(commandObject.cooldown)
@@ -93,6 +95,14 @@ class Command extends React.Component {
     }
   };
 
+  handleCommandUsesChange = (event) => {
+    if(!isNaN((event.target.value))) {
+      this.setState({
+        commandUses: event.target.value
+      });
+    }
+  };
+
   handleCommandContentChange = (event) => {
     if(event.target.value.length <= 1000) {
       this.setState({
@@ -101,8 +111,8 @@ class Command extends React.Component {
     }
   };
 
-  handleEditCommand = (id, name, content, cooldown, access) => {
-    this.props.editCommand(id, name, content, cooldown, access);
+  handleEditCommand = (id, name, content, cooldown, access, uses) => {
+    this.props.editCommand(id, name, content, cooldown, access, uses);
     this.props.onClose(this.props.selectedValue);
   };
 
@@ -347,6 +357,23 @@ class Command extends React.Component {
           </Card>
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
             <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
+              <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
+                <TextField
+                  InputLabelProps={{ shrink: true }}
+                  id="outlined-textarea"
+                  label="Uses"
+                  fullWidth
+                  value={this.state.commandUses}
+                  onChange={this.handleCommandUsesChange}
+                  helperText="Wie oft wurde der Befehl bereits genutzt"
+                  margin="normal"
+                  variant="outlined"
+                />
+              </FormControl>
+            </CardContent>
+          </Card>
+          <Card className="pluginCard" style={{ marginTop: '15px' }}>
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
               <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}><FormattedMessage id="commands.new_command.cooldown" />: {this.getCooldownString(this.state.cooldown)}</Typography>
               <Slider
                 style={{ padding: '22px 0px' }}
@@ -367,7 +394,7 @@ class Command extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => {
-                this.handleEditCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccessLevelName)
+                this.handleEditCommand(commandObject.id, this.state.commandName, this.state.commandContent, this.getSecondsFromCooldown(), this.state.commandAccessLevelName, this.state.commandUses)
                 this.handleOpenNotification(this.state.commandName)
             }}>
             <FormattedMessage id="commands.new_command.savecommand" />
@@ -403,7 +430,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
   updateAccessLevels: () => dispatch(commandsOperations.loadAccessLevels()),
-  editCommand: (id, name, content, cooldown, accessLevel) => dispatch(commandsOperations.editCommand(id, name, content, cooldown, accessLevel)),
+  editCommand: (id, name, content, cooldown, accessLevel, uses) => dispatch(commandsOperations.editCommand(id, name, content, cooldown, accessLevel, uses)),
   verifyData: () => dispatch(commandsOperations.verifyData()),
 });
 

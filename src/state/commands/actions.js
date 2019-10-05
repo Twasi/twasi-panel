@@ -22,12 +22,13 @@ const updateAddCommand = (name, content, cooldown) => ({
   cooldown
 });
 
-const updateEditCommand = (id, name, content, cooldown) => ({
+const updateEditCommand = (id, name, content, cooldown, uses) => ({
   type: types.UPDATE_EDITCOMMAND,
   id,
   name,
   content,
-  cooldown
+  cooldown,
+  uses
 });
 
 const updateDelCommand = (id) => ({

@@ -47,9 +47,9 @@ const addCommand = (name, content, cooldown, accessLevel) => dispatch => {
     });
 };
 
-const editCommand = (id, name, content, cooldown, accessLevel) => dispatch => {
+const editCommand = (id, name, content, cooldown, accessLevel, uses) => dispatch => {
     dispatch(updateActionSuccess(false));
-    dispatch(getGraph(`update(id: "${id}", name: ${JSON.stringify(name)}, content: ${JSON.stringify(content)}, cooldown: ${cooldown}, accessLevel: "${accessLevel}"){id}`, 'commands')).then(
+    dispatch(getGraph(`update(id: "${id}", name: ${JSON.stringify(name)}, content: ${JSON.stringify(content)}, cooldown: ${cooldown}, accessLevel: "${accessLevel}", uses: ${uses}){id}`, 'commands')).then(
     data => {
       dispatch(updateEditCommand(data.commands));
       dispatch(updateActionSuccess(true));
