@@ -137,13 +137,24 @@ class Overview extends Component {
   renderStreams() {
     const { allstreams } = this.props;
     return allstreams.map(stream => (
-      <Tab label={(
+      <Tab
+       value={allstreams[0].startedAt === stream.startedAt ? 0 : parseInt(stream.streamId)}
+       label={(
         <span>
           {allstreams[0].startedAt === stream.startedAt ? "Letzter Stream" : "Stream vom"}
           <br/>
           <b>{this.formatTime(stream.startedAt).toLocaleString()}</b>
         </span>
       )} />
+    ));
+  }
+
+  renderTabContainers() {
+    const { allstreams } = this.props;
+    return allstreams.map(stream => (
+      <TabPanel value={this.state.value} index={parseInt(stream.streamId)}>
+        {stream.streamId}
+      </TabPanel>
     ));
   }
 
@@ -496,6 +507,7 @@ class Overview extends Component {
           </div>
           }
         </TabPanel>
+        {this.renderTabContainers()}
         <Dialog
           onClose={this.handleClose}
           open={window.location.hash === "#first_start"}
@@ -567,6 +579,7 @@ const mapDispatchToProps = dispatch => ({
   updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
   updateGlobalStreamtracker: () => dispatch(streamtrackerOperations.loadGlobalStreamtracker()),
   updateAllStreams: () => dispatch(streamtrackerOperations.loadAllStreams()),
+  updateStreamById: (streamId) => dispatch(streamtrackerOperations.loadStreamById(streamId)),
   updateUtilities: () => dispatch(utilitiesOperations.loadUtilities()),
   updateCommands: () => dispatch(commandsOperations.loadCommands())
 });

@@ -20,6 +20,11 @@ const updateAllStreams = allstreams => ({
   allstreams
 });
 
+const updateStreamById = streamId => ({
+  type: types.UPDATE_STREAMBYID,
+  streamId
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -50,6 +55,7 @@ export default {
   updateGlobalStreamtracker,
   updateUsers,
   updateAllStreams,
+  updateStreamById,
   updateDisabled,
   updateLoaded,
   updateLoading,
