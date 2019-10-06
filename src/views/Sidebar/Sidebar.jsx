@@ -193,7 +193,7 @@ class Sidebar extends Component {
         })
         .map(item => (
           <MenuItem
-            style={{ fontSize: 13 }}
+            style={{ fontSize: 13, padding: 10 }}
             value={item.key}
             key={item.key}
             selected={selectedKey === item.key}
@@ -228,14 +228,14 @@ class Sidebar extends Component {
             className="Sidebar"
           >
             <MenuItem
-              style={{ fontSize: 13 }}
+              style={{ fontSize: 13, padding: 10 }}
               onClick={() => window.open('https://docs.twasi.net', '_blank')}
             >
               <i className="material-icons" style={{ marginRight: '15px' }}>language</i>
               {intl.formatMessage({ id: 'sidebar.docs' })}
             </MenuItem>
             <MenuItem
-              style={{ fontSize: 13 }}
+              style={{ fontSize: 13, padding: 10 }}
               value="support"
               key="support"
               selected={selectedKey === 'support'}
@@ -248,7 +248,7 @@ class Sidebar extends Component {
             </MenuItem>
             {rank === "TEAM" &&
             <MenuItem
-              style={{ fontSize: 13 }}
+              style={{ fontSize: 13, padding: 10 }}
               value="user_manager"
               key="user_manager"
               selected={selectedKey === 'manager'}
@@ -258,7 +258,7 @@ class Sidebar extends Component {
               {intl.formatMessage({ id: 'sidebar.user_manager' })}
             </MenuItem>}
             <MenuItem
-              style={{ fontSize: 13 }}
+              style={{ fontSize: 13, padding: 10 }}
               onClick={() => {
                 localStorage.clear();
                 window.location = 'https://twasi.net';
