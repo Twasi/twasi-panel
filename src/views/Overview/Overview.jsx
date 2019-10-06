@@ -37,6 +37,7 @@ import CommandsChart from './CommandsChart';
 import ChattersChart from './ChattersChart';
 import StatsList from './StatsList';
 import GameTitleCard from './GameTitleCard';
+import StreamByID from './StreamByID';
 
 import './_style.css';
 
@@ -153,7 +154,9 @@ class Overview extends Component {
     const { allstreams } = this.props;
     return allstreams.map(stream => (
       <TabPanel value={this.state.value} index={parseInt(stream.streamId)}>
-        {stream.streamId}
+        <StreamByID
+          streamId={stream.streamId}
+        />
       </TabPanel>
     ));
   }
@@ -579,7 +582,6 @@ const mapDispatchToProps = dispatch => ({
   updateStreamtracker: () => dispatch(streamtrackerOperations.loadStreamtracker()),
   updateGlobalStreamtracker: () => dispatch(streamtrackerOperations.loadGlobalStreamtracker()),
   updateAllStreams: () => dispatch(streamtrackerOperations.loadAllStreams()),
-  updateStreamById: (streamId) => dispatch(streamtrackerOperations.loadStreamById(streamId)),
   updateUtilities: () => dispatch(utilitiesOperations.loadUtilities()),
   updateCommands: () => dispatch(commandsOperations.loadCommands())
 });
