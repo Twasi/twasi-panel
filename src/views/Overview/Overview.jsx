@@ -71,6 +71,7 @@ class Overview extends Component {
     super(props);
     this.state = {
       value: 0,
+      tabContainer: ""
     };
   }
 
@@ -86,7 +87,22 @@ class Overview extends Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({ value });
+    this.setState({
+      value,
+    });
+    if(value !== 0) {
+      const { updateStreamById } = this.props;
+      this.setState({
+        tabContainer: (
+          <TabPanel value={value} index={parseInt(value)}>
+            <StreamByID
+              streamId={value}
+            />
+          </TabPanel>
+        )
+      })
+      updateStreamById(value);
+    }
   };
 
   handleRedirect = (uri, blank) => {
@@ -147,17 +163,6 @@ class Overview extends Component {
           <b>{this.formatTime(stream.startedAt).toLocaleString()}</b>
         </span>
       )} />
-    ));
-  }
-
-  renderTabContainers() {
-    const { allstreams } = this.props;
-    return allstreams.map(stream => (
-      <TabPanel value={this.state.value} index={parseInt(stream.streamId)}>
-        <StreamByID
-          streamId={stream.streamId}
-        />
-      </TabPanel>
     ));
   }
 
@@ -430,7 +435,7 @@ class Overview extends Component {
                       <FormattedMessage id="overview.viewercourse.subtitle" />
                     </small>
                   </Typography>
-                  <ViewerChart />
+                  <ViewerChart/>
                 </Paper>
                 <Row>
                   <Col sm={6}>
@@ -510,7 +515,7 @@ class Overview extends Component {
           </div>
           }
         </TabPanel>
-        {this.renderTabContainers()}
+        {this.state.tabContainer}
         <Dialog
           onClose={this.handleClose}
           open={window.location.hash === "#first_start"}
@@ -583,7 +588,8 @@ const mapDispatchToProps = dispatch => ({
   updateGlobalStreamtracker: () => dispatch(streamtrackerOperations.loadGlobalStreamtracker()),
   updateAllStreams: () => dispatch(streamtrackerOperations.loadAllStreams()),
   updateUtilities: () => dispatch(utilitiesOperations.loadUtilities()),
-  updateCommands: () => dispatch(commandsOperations.loadCommands())
+  updateCommands: () => dispatch(commandsOperations.loadCommands()),
+  updateStreamById: (streamId) => dispatch(streamtrackerOperations.loadStreamById(streamId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Overview);
