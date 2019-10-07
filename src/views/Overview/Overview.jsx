@@ -102,6 +102,10 @@ class Overview extends Component {
         )
       })
       updateStreamById(value);
+    } else {
+      this.setState({
+        tabContainer: ""
+      })
     }
   };
 
