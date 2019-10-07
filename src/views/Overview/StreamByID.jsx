@@ -51,7 +51,7 @@ class StreamByID extends Component {
               </small>
             </Typography>
           </Paper>
-          <Paper className="pageContainer" style={{ paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+          <Paper className="pageContainer" style={{ padding: '0px' }}>
             <Table>
               <TableHead>
                 <TableRow className="TableRow">
