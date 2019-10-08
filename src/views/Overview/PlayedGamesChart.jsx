@@ -27,22 +27,22 @@ function hashCode(str) {
 
 class PlayedGamesChart extends Component {
   componentDidMount() {
-    const { streamtracker } = this.props;
-    const chart = am4core.create('chartdiv_playedgames', am4charts.XYChart);
+    const { streamdata } = this.props;
+    const chart = am4core.create('chartdiv_playedgames'+streamdata.streamId, am4charts.XYChart);
 
     chart.paddingTop = 65;
     chart.paddingBottom = -1;
 
     function getLength(game) {
       let count = 0;
-      streamtracker.data.forEach((entry, index) => {
+      streamdata.data.forEach((entry, index) => {
         if (game === entry.game) {
           count++;
         }
       });
       return count;
     }
-    const result = Array.from(new Set(streamtracker.data.map(s => s.game)))
+    const result = Array.from(new Set(streamdata.data.map(s => s.game)))
       .map(game => ({
         game,
         count: getLength(game),
@@ -110,7 +110,7 @@ class PlayedGamesChart extends Component {
 
   render() {
     return (
-      <div id="chartdiv_playedgames" style={{ width: '100%', height: '100%' }} />
+      <div id={"chartdiv_playedgames"+this.props.streamdata.streamId} style={{ width: '100%', height: '100%' }} />
     );
   }
 }

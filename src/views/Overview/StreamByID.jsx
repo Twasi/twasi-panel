@@ -6,9 +6,16 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { FormattedMessage } from 'react-intl';
+import { Container, Row, Col } from 'react-grid-system';
 import { connect } from 'react-redux';
 
 import { streamtrackerSelectors } from '../../state/streamtracker';
+
+import ViewerChart from './ViewerChart';
+import StatsList from './StatsList';
+import PlayedGamesChart from './PlayedGamesChart';
+import ChattersChart from './ChattersChart';
 
 class StreamByID extends Component {
 
@@ -36,9 +43,8 @@ class StreamByID extends Component {
   }
 
   render() {
-    const { streamById } = this.props;
-    if(streamById !== undefined || streamById !== null) {
-      console.log(streamById)
+    const { streamById, isStreamByIDLoading } = this.props;
+    if(!isStreamByIDLoading) {
       return (
         <div>
           <Paper className="pageContainer">
@@ -51,19 +57,61 @@ class StreamByID extends Component {
               </small>
             </Typography>
           </Paper>
-          <Paper className="pageContainer" style={{ padding: '0px' }}>
-            <Table>
-              <TableHead>
-                <TableRow className="TableRow">
-                  <TableCell>Follower +</TableCell>
-                  <TableCell>Views +</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableCell>{streamById.newFollowers}</TableCell>
-                <TableCell>{streamById.newViews}</TableCell>
-              </TableBody>
-            </Table>
+          <Row>
+            <Col sm={9}>
+              <Paper className="pageContainer" style={{ height: '300px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+                <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
+                  <h4 className="pageContainerTitle">
+                    <FormattedMessage id="overview.viewercourse" />
+                  </h4>
+                  <small>
+                    <FormattedMessage id="overview.viewercourse.past.subtitle" />
+                  </small>
+                </Typography>
+                <ViewerChart streamdata={streamById}/>
+              </Paper>
+              <Row>
+                <Col sm={12}>
+                  <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
+                    <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
+                      <h4 className="pageContainerTitle">
+                        <FormattedMessage id="overview.played_games" />
+                      </h4>
+                      <small>
+                        <FormattedMessage id="overview.played_games.past.subtitle" />
+                      </small>
+                    </Typography>
+                    <PlayedGamesChart streamdata={streamById}/>
+                  </Paper>
+                </Col>
+              </Row>
+              <Paper className="pageContainer" style={{ height: '500px', paddingRight: '0px', paddingLeft: '0px', paddingBottom: '0px' }}>
+                <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
+                  <h4 className="pageContainerTitle">
+                    <FormattedMessage id="overview.chatterchart" />
+                  </h4>
+                  <small>
+                    <FormattedMessage id="overview.chatterchart.past.subtitle" />
+                  </small>
+                </Typography>
+                <ChattersChart streamdata={streamById}/>
+              </Paper>
+            </Col>
+            <Col sm={3}>
+              <StatsList streamdata={streamById}/>
+            </Col>
+          </Row>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Paper className="pageContainer">
+            <Typography component={'span'}>
+              <h4 className="pageContainerTitle">
+                Loading...
+              </h4>
+            </Typography>
           </Paper>
         </div>
       );
@@ -73,6 +121,7 @@ class StreamByID extends Component {
 
 const mapStateToProps = state => ({
   streamById: streamtrackerSelectors.getStreamById(state),
+  isStreamByIDLoading: streamtrackerSelectors.isStreamByIDLoading(state),
 });
 
 

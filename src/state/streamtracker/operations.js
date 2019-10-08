@@ -13,7 +13,8 @@ const {
   updateLoading,
   updateLoaded,
   updateNoStreamData,
-  updateGlobalLoading
+  updateGlobalLoading,
+  updateStreamByIDLoading
 } = actions;
 
 const loadStreamtracker = () => dispatch => {
@@ -65,12 +66,15 @@ const loadAllStreams = () => dispatch => {
 };
 
 const loadStreamById = streamId => dispatch => {
+  dispatch(updateStreamByIDLoading(true));
   dispatch(getGraph(`streamById(streamId: "${streamId}"){streamId,language,startedAt,streamType,communityIds,tagIds,newFollowers,newViews,data{gameId,game,title,viewerCount,timestamp,chatMessages,chatCommands},topChatters{twitchId,displayName,messages,commands}}`, 'streamtracker')).then(data => {
     if (data == null) {
       dispatch(updateDisabled(true));
+      dispatch(updateStreamByIDLoading(false));
       return;
     }
     dispatch(updateStreamById(data.streamById));
+    dispatch(updateStreamByIDLoading(false));
   });
 };
 
@@ -95,5 +99,6 @@ export default {
   updateLoaded,
   updateLoading,
   updateNoStreamData,
-  updateGlobalLoading
+  updateGlobalLoading,
+  updateStreamByIDLoading
 };

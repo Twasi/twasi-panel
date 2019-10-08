@@ -27,9 +27,8 @@ function hashCode(str) {
 
 class ViewerChart extends Component {
   componentDidMount() {
-    const { streamtracker } = this.props;
-    const chart = am4core.create('chartdiv', am4charts.XYChart);
-
+    const { streamdata } = this.props;
+    const chart = am4core.create('chartdiv'+streamdata.streamId, am4charts.XYChart);
     chart.paddingTop = 65;
     chart.paddingRight = 0;
     chart.paddingLeft = 0;
@@ -37,7 +36,7 @@ class ViewerChart extends Component {
 
     const data = [];
     let game = '';
-    streamtracker.data.forEach((entry, index) => {
+    streamdata.data.forEach((entry, index) => {
       game = entry.game;
       if (game !== entry.game) {
         data.push({
@@ -166,7 +165,7 @@ class ViewerChart extends Component {
 
   render() {
     return (
-      <div id="chartdiv" style={{ width: '100%', height: '100%' }} />
+      <div id={"chartdiv"+this.props.streamdata.streamId} style={{ width: '100%', height: '100%' }} />
     );
   }
 }
@@ -174,7 +173,8 @@ class ViewerChart extends Component {
 const mapStateToProps = state => ({
   streamtracker: streamtrackerSelectors.getStreamtracker(state),
   isLoaded: streamtrackerSelectors.isLoaded(state),
-  disabled: streamtrackerSelectors.isDisabled(state)
+  disabled: streamtrackerSelectors.isDisabled(state),
+  isStreamByIDLoading: streamtrackerSelectors.isStreamByIDLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({

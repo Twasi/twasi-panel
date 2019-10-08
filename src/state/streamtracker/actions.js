@@ -50,6 +50,11 @@ const updateGlobalLoading = isGlobalLoading => ({
   isGlobalLoading
 });
 
+const updateStreamByIDLoading = isStreamByIDLoading => ({
+  type: types.UPDATE_STREAMBYIDLOADING,
+  isStreamByIDLoading
+});
+
 export default {
   updateStreamtracker,
   updateGlobalStreamtracker,
@@ -60,5 +65,6 @@ export default {
   updateLoaded,
   updateLoading,
   updateNoStreamData,
-  updateGlobalLoading
+  updateGlobalLoading,
+  updateStreamByIDLoading
 };

@@ -31,15 +31,15 @@ function hashCode(str) {
 
 class ChattersChart extends Component {
   componentDidMount() {
-    const { streamtracker } = this.props;
-    const chart = am4core.create('chatterschartdiv', am4plugins_forceDirected.ForceDirectedTree);
+    const { streamdata } = this.props;
+    const chart = am4core.create('chatterschartdiv'+streamdata.streamId, am4plugins_forceDirected.ForceDirectedTree);
 
     chart.paddingTop = 65;
     chart.paddingRight = 0;
     chart.paddingLeft = 0;
     chart.paddingBottom = -1;
 
-    const chattersdata = streamtracker.topChatters;
+    const chattersdata = streamdata.topChatters;
     const data = [];
     var count = 0
     chattersdata.forEach(entry => {
@@ -117,7 +117,7 @@ class ChattersChart extends Component {
 
   render() {
     return (
-      <div id="chatterschartdiv" style={{ width: '100%', height: '100%' }} />
+      <div id={"chatterschartdiv"+this.props.streamdata.streamId} style={{ width: '100%', height: '100%' }} />
     );
   }
 }

@@ -7,6 +7,7 @@ const isLoaded = state => state.streamtracker.isLoaded;
 const isLoading = state => state.streamtracker.isLoading;
 const noStreamData = state => state.streamtracker.noStreamData;
 const isGlobalLoading = state => state.streamtracker.isGlobalLoading;
+const isStreamByIDLoading = state => state.streamtracker.isStreamByIDLoading;
 const isDisabled = state => state.streamtracker.isDisabled;
 
 export default {
@@ -19,5 +20,6 @@ export default {
   isLoading,
   noStreamData,
   isGlobalLoading,
+  isStreamByIDLoading,
   isDisabled
 };

@@ -71,7 +71,7 @@ function getChattersCount(data) {
 
 class StatsList extends Component {
   render() {
-    const { streamtracker } = this.props;
+    const { streamdata } = this.props;
     return (
       <List dense style={{ padding: '0px' }}>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
@@ -79,7 +79,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">{streamtracker.streamId}</h4>
+                  <h4 className="pageContainerTitle">{streamdata.streamId}</h4>
                   <small><FormattedMessage id="overview.table_id" /></small>
                 </Typography>
               </Col>
@@ -101,7 +101,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography component={'span'}>
-                      <h4 className="pageContainerTitle">{getStreamLength(streamtracker.data)}</h4>
+                      <h4 className="pageContainerTitle">{getStreamLength(streamdata.data)}</h4>
                       <small><FormattedMessage id="overview.table_duration" /></small>
                     </Typography>
                   </Col>
@@ -123,7 +123,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">{getChatMessagesCount(streamtracker.data)}</h4>
+                  <h4 className="pageContainerTitle">{getChatMessagesCount(streamdata.data)}</h4>
                   <small><FormattedMessage id="overview.table_chatmessages" /></small>
                 </Typography>
               </Col>
@@ -145,7 +145,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography component={'span'}>
-                      <h4 className="pageContainerTitle">{getChatCommandsCount(streamtracker.data)}</h4>
+                      <h4 className="pageContainerTitle">{getChatCommandsCount(streamdata.data)}</h4>
                       <small><FormattedMessage id="overview.table_commands_used" /></small>
                     </Typography>
                   </Col>
@@ -167,7 +167,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">{streamtracker.newFollowers}</h4>
+                  <h4 className="pageContainerTitle">{streamdata.newFollowers}</h4>
                   <small><FormattedMessage id="overview.table_follower" /></small>
                 </Typography>
               </Col>
@@ -188,7 +188,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography component={'span'}>
-                      <h4 className="pageContainerTitle">{streamtracker.newViews}</h4>
+                      <h4 className="pageContainerTitle">{streamdata.newViews}</h4>
                       <small><FormattedMessage id="overview.table_views" /></small>
                     </Typography>
                   </Col>
@@ -209,7 +209,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">{getBiggestViewerCount(streamtracker.data)}</h4>
+                  <h4 className="pageContainerTitle">{getBiggestViewerCount(streamdata.data)}</h4>
                   <small><FormattedMessage id="overview.table_viewermax" /></small>
                 </Typography>
               </Col>
@@ -231,7 +231,7 @@ class StatsList extends Component {
                 <Row>
                   <Col sm={12}>
                     <Typography component={'span'}>
-                      <h4 className="pageContainerTitle">{getAverageViewerCount(streamtracker.data)}</h4>
+                      <h4 className="pageContainerTitle">{getAverageViewerCount(streamdata.data)}</h4>
                       <small><FormattedMessage id="overview.table_average" /></small>
                     </Typography>
                   </Col>
@@ -253,7 +253,7 @@ class StatsList extends Component {
             <Row>
               <Col sm={12}>
                 <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">{getChattersCount(streamtracker.topChatters)}</h4>
+                  <h4 className="pageContainerTitle">{getChattersCount(streamdata.topChatters)}</h4>
                   <small><FormattedMessage id="overview.table_individual" /></small>
                 </Typography>
               </Col>

@@ -103,6 +103,7 @@ class Overview extends Component {
       })
       updateStreamById(value);
     } else {
+      this.props.updateStreamtracker()
       this.setState({
         tabContainer: ""
       })
@@ -177,7 +178,7 @@ class Overview extends Component {
 
     if (streamtracker.topChatters !== undefined) {
       if (streamtracker.topChatters.length !== 0) {
-        chatterschart = <ChattersChart />;
+        chatterschart = <ChattersChart streamdata={streamtracker} />;
       } else {
         chatterschart =
           <div>
@@ -439,7 +440,7 @@ class Overview extends Component {
                       <FormattedMessage id="overview.viewercourse.subtitle" />
                     </small>
                   </Typography>
-                  <ViewerChart/>
+                  <ViewerChart streamdata={streamtracker}/>
                 </Paper>
                 <Row>
                   <Col sm={6}>
@@ -472,7 +473,7 @@ class Overview extends Component {
                           <FormattedMessage id="overview.played_games.subtitle" />
                         </small>
                       </Typography>
-                      <PlayedGamesChart />
+                      <PlayedGamesChart streamdata={streamtracker}/>
                     </Paper>
                   </Col>
                 </Row>
@@ -491,7 +492,7 @@ class Overview extends Component {
               </Col>
               <Col sm={3}>
                 <div>
-                  <StatsList />
+                  <StatsList streamdata={streamtracker}/>
                 </div>
               </Col>
             </Row>

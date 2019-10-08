@@ -4,6 +4,7 @@ export const initialState = {
   isLoaded: false,
   isLoading: true,
   isGlobalLoading: true,
+  isStreamByIDLoading: true,
   noStreamData: true,
   streamtracker: [],
   globalstreamtracker: [],
@@ -44,6 +45,9 @@ const streamtrackerReducer = (state = initialState, action) => {
     }
     case types.UPDATE_GLOBALLOADING: {
       return { ...state, isGlobalLoading: action.isGlobalLoading };
+    }
+    case types.UPDATE_STREAMBYIDLOADING: {
+      return { ...state, isStreamByIDLoading: action.isStreamByIDLoading };
     }
     default:
       return state;
