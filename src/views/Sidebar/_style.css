@@ -27,3 +27,11 @@
   line-height: 48px !important;
   color: #fff !important;
 }
+
+.navigationFab {
+  float: right !important;
+  margin: 5px 0px 0px 5px !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0px !important;
+}

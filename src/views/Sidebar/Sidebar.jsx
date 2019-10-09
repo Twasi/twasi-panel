@@ -193,7 +193,7 @@ class Sidebar extends Component {
         })
         .map(item => (
           <MenuItem
-            style={{ fontSize: 13, padding: 10 }}
+            style={{ fontSize: 13, padding: '10px 15px 10px 15px' }}
             value={item.key}
             key={item.key}
             selected={selectedKey === item.key}
@@ -210,7 +210,7 @@ class Sidebar extends Component {
           <Hidden mdDown>
             <div className="headerMenuItem">
               {checked ? <Typography component="span" color="inherit" className="headerMenuTitle"><FormattedMessage id="sidebar.navigation_headline" /></Typography> : ''}
-              <Fab onClick={this.handleChange} size="small" style={{ float: 'right', margin: '5px 0px 0px 5px', boxShadow: 'none', backgroundColor: 'transparent', borderRadius: '0px' }} aria-label="Collapse">
+              <Fab onClick={this.handleChange} className="navigationFab" size="small" aria-label="Collapse">
                 <Icon style={{ color: '#ffffff' }}>
                   {checked ? 'arrow_back' : 'arrow_forward'}
                 </Icon>
@@ -228,14 +228,14 @@ class Sidebar extends Component {
             className="Sidebar"
           >
             <MenuItem
-              style={{ fontSize: 13, padding: 10 }}
+              style={{ fontSize: 13, padding: '10px 15px 10px 15px' }}
               onClick={() => window.open('https://docs.twasi.net', '_blank')}
             >
               <i className="material-icons" style={{ marginRight: '15px' }}>language</i>
               {intl.formatMessage({ id: 'sidebar.docs' })}
             </MenuItem>
             <MenuItem
-              style={{ fontSize: 13, padding: 10 }}
+              style={{ fontSize: 13, padding: '10px 15px 10px 15px' }}
               value="support"
               key="support"
               selected={selectedKey === 'support'}
@@ -248,7 +248,7 @@ class Sidebar extends Component {
             </MenuItem>
             {rank === "TEAM" &&
             <MenuItem
-              style={{ fontSize: 13, padding: 10 }}
+              style={{ fontSize: 13, padding: '10px 15px 10px 15px' }}
               value="user_manager"
               key="user_manager"
               selected={selectedKey === 'manager'}
@@ -258,7 +258,7 @@ class Sidebar extends Component {
               {intl.formatMessage({ id: 'sidebar.user_manager' })}
             </MenuItem>}
             <MenuItem
-              style={{ fontSize: 13, padding: 10 }}
+              style={{ fontSize: 13, padding: '10px 15px 10px 15px' }}
               onClick={() => {
                 localStorage.clear();
                 window.location = 'https://twasi.net';

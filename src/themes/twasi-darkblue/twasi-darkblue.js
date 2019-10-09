@@ -63,7 +63,7 @@ export default createMuiTheme({
         },
         '&$selected': { // Name of the rule
           color: '#ffffff',
-          background: 'linear-gradient(135deg,#3f51b5,#3f51b5)'
+          background: 'linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255))'
         }
       }
     },
@@ -80,7 +80,7 @@ export default createMuiTheme({
       },
       containedPrimary: {
         boxShadow: 'none',
-        background: 'linear-gradient(135deg,#3f51b5,#3f51b5)',
+        background: 'linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255))',
         '&$disabled': {
           background: '#232f4a',
           color: '#afb6c5'
@@ -88,7 +88,7 @@ export default createMuiTheme({
       },
       containedSecondary: {
         boxShadow: 'none',
-        background: 'linear-gradient(135deg,#de6464,#de6464)',
+        background: 'linear-gradient(135deg,#de6464,#ff7b7b)',
         '&$disabled': {
           background: '#232f4a',
           color: '#afb6c5'
@@ -133,14 +133,14 @@ export default createMuiTheme({
       },
       root: {
         '&$selected': {
-          background: 'linear-gradient(135deg,#3f51b5,#3f51b5)'
+          background: 'linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255))'
         }
       }
     },
     MuiFab: {
       root: {
         boxShadow: 'none',
-        backgroundColor: '#232f4a',
+        background: 'linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255))',
         '&:hover': {
           boxShadow: 'none',
           backgroundColor: '#1a2035'
@@ -211,10 +211,10 @@ export default createMuiTheme({
         backgroundColor: '#232f4a' // Some CSS
       },
       colorPrimary: {
-        background: 'linear-gradient(135deg,#3f51b5,#3f51b5)'
+        background: 'linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255))'
       },
       colorSecondary: {
-        background: 'linear-gradient(135deg,#de6464,#de6464)'
+        background: 'linear-gradient(135deg,#de6464,#ff7b7b)'
       }
     },
     MuiAvatar: { // Name of the component ⚛️ / style sheet
