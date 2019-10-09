@@ -243,7 +243,7 @@ class Overview extends Component {
     const ViewTimeBox = () => (
       <div>
         <h2 style={{ margin: '7px 0px 0px' }}>
-          <span>{getViewTime(globalstreamtracker.viewTime)}</span>
+          <Typography color="inherit" className="userNameStyle">{getViewTime(globalstreamtracker.viewTime)}</Typography>
         </h2>
         <small>
           <FormattedMessage id="overview.viewtime" />
@@ -259,7 +259,7 @@ class Overview extends Component {
     const ViewerBox = () => (
       <div>
         <h2 style={{ margin: '7px 0px 0px' }}>
-          <span>{globalstreamtracker.totalTrackedViewers}</span>
+          <Typography color="inherit" className="userNameStyle">{globalstreamtracker.totalTrackedViewers}</Typography>
         </h2>
         <small>
           <FormattedMessage id="overview.viewer" />
@@ -275,7 +275,7 @@ class Overview extends Component {
     const MessagesBox = () => (
       <div>
         <h2 style={{ margin: '7px 0px 0px' }}>
-          <span>{globalstreamtracker.totalTrackedMessages}</span>
+          <Typography color="inherit" className="userNameStyle">{globalstreamtracker.totalTrackedMessages}</Typography>
         </h2>
         <small>
           <FormattedMessage id="overview.messages" />
@@ -291,7 +291,7 @@ class Overview extends Component {
     const StreamsBox = () => (
       <div>
         <h2 style={{ margin: '7px 0px 0px' }}>
-          <span>{globalstreamtracker.totalTrackedStreams}</span>
+          <Typography color="inherit" className="userNameStyle">{globalstreamtracker.totalTrackedStreams}</Typography>
         </h2>
         <small>
           <FormattedMessage id="overview.streams" />
