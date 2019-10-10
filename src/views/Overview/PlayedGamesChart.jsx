@@ -29,7 +29,7 @@ class PlayedGamesChart extends Component {
   componentDidMount() {
     const { streamdata } = this.props;
     const chart = am4core.create('chartdiv_playedgames'+streamdata.streamId, am4charts.XYChart);
-
+    console.log(streamdata)
     chart.paddingTop = 65;
     chart.paddingBottom = -1;
 
@@ -86,18 +86,6 @@ class PlayedGamesChart extends Component {
     fillModifier.offsets = [0, 1];
     fillModifier.gradient.rotation = 90;
     series.columns.template.fillModifier = fillModifier;
-
-    // Add bullets
-    const bullet = series.bullets.push(new am4charts.Bullet());
-    const image = bullet.createChild(am4core.Image);
-    image.horizontalCenter = 'middle';
-    image.verticalCenter = 'bottom';
-    image.dy = 20;
-    image.y = am4core.percent(100);
-    image.propertyFields.href = 'bullet';
-    image.tooltipText = series.columns.template.tooltipText;
-    image.propertyFields.fill = 'color';
-    image.filters.push(new am4core.DropShadowFilter());
 
     this.chart = chart;
   }

@@ -32,17 +32,29 @@ class CommandsChart extends Component {
     chart.paddingBottom = -1;
 
     const commandsdata = [{
-      command: 'lol',
-      uses: 296
+      command: '!hosts',
+      uses: 10
     }, {
-      command: '!twasi',
-      uses: 112
+      command: '!commands',
+      uses: 15
     }, {
-      command: '!ping',
-      uses: 112
+      command: '!check',
+      uses: 35
     }, {
-      command: '!quasi',
-      uses: 296
+      command: '!uptime',
+      uses: 24
+    }, {
+      command: '!title',
+      uses: 2
+    }, {
+      command: '!tw',
+      uses: 5
+    }, {
+      command: '!insta',
+      uses: 4
+    }, {
+      command: '!messages',
+      uses: 30
     }];
     const data = [];
     commandsdata.forEach((entry, index) => {
