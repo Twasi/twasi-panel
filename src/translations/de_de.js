@@ -218,6 +218,8 @@ export default {
   // Commands
   'commands.title': 'Deine Befehle',
   'commands.subtitle': 'Hier hast du die Möglichkeit deine Chatbefehle zu verwalten.',
+  'commands.plugincommands.title': 'Plugin Befehle',
+  'commands.plugincommands.subtitle': 'Hier findest du alle Befehle, die durch deine installierten Plugins aktiv sind.',
   'commands.addcommand': 'Befehl hinzufügen',
   'commands.new_command': 'Einen neuen Befehl erstellen',
   'commands.new_command.subheadline': 'Hier kannst du einen neuen Befehl hinzufügen.',
@@ -248,6 +250,7 @@ export default {
   'commands.table.uses': 'Genutzt',
   'commands.table.cooldown': 'Cooldown',
   'commands.table.active': 'Aktiviert',
+  'commands.table.plugin': 'Plugin',
   'commands.cooldown.no_cooldown': 'Kein Cooldown',
   'commands.cooldown.second': 'Sekunde',
   'commands.cooldown.seconds': 'Sekunden',

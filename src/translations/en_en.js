@@ -217,6 +217,8 @@ export default {
   // Commands
   'commands.title': 'Your Commands',
   'commands.subtitle': 'Here you can manage your custom chat commands.',
+  'commands.plugincommands.title': 'Plugin commands',
+  'commands.plugincommands.subtitle': 'Here you can find all commands who are active depending on wich plugins you have installed.',
   'commands.addcommand': 'Add command',
   'commands.new_command': 'Create a new command',
   'commands.new_command_subheadline': 'Here you can add a new command.',
@@ -247,6 +249,7 @@ export default {
   'commands.table.uses': 'Uses',
   'commands.table.cooldown': 'Cooldown',
   'commands.table.active': 'Active',
+  'commands.table.plugin': 'Plugin',
   'commands.cooldown.no_cooldown': 'No cooldown',
   'commands.cooldown.second': 'Second',
   'commands.cooldown.seconds': 'Seconds',

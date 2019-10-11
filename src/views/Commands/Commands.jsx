@@ -314,14 +314,31 @@ class Commands extends Component {
             />
           </Paper>
           }{disabled && <NotInstalledAlert />}
+          {this.renderCommands().length === 0 && !this.props.isLoading && this.renderCommandsEmpty()}
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '0px 0px 4px 4px' }}>
+          <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
+            <Typography component={'span'}>
+              <h4 className="pageContainerTitle">
+                <FormattedMessage id="commands.plugincommands.title" />
+                <span style={{ float: 'right' }}>
+                  <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updatePluginCommands}>
+                    <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                    <FormattedMessage id="common.refresh" />
+                  </Button>
+                </span>
+              </h4>
+              <small>
+                <FormattedMessage id="commands.plugincommands.subtitle" />
+              </small>
+            </Typography>
+          </Paper>
+          <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
             <Table>
               <TableHead>
                 <TableRow className="TableRow">
-                  <TableCell>Befehl</TableCell>
-                  <TableCell>Plugin</TableCell>
+                  <TableCell><FormattedMessage id="commands.table.command" /></TableCell>
+                  <TableCell><FormattedMessage id="commands.table.plugin" /></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -330,7 +347,6 @@ class Commands extends Component {
             </Table>
           </Paper>
         </TabPanel>
-        {this.renderCommands().length === 0 && !this.props.isLoading && this.renderCommandsEmpty()}
       </div>
     );
   }
