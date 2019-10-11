@@ -213,10 +213,16 @@ class Commands extends Component {
         <TableCell>
           <b>!{pluginCommand.commandName}</b>
         </TableCell>
-        <TableCell>
+        <TableCell style={{ textAlign: 'center' }}>
           <Chip
             label={pluginCommand.providingPlugin}
             color="primary"
+          />
+        </TableCell>
+        <TableCell style={{ textAlign: 'center' }}>
+          <Chip
+            label={pluginCommand.timer ? <FormattedMessage id="common.yes" /> : <FormattedMessage id="common.no" />}
+            color={pluginCommand.timer ? "primary" : "secondary"}
           />
         </TableCell>
       </TableRow>
@@ -338,7 +344,8 @@ class Commands extends Component {
               <TableHead>
                 <TableRow className="TableRow">
                   <TableCell><FormattedMessage id="commands.table.command" /></TableCell>
-                  <TableCell><FormattedMessage id="commands.table.plugin" /></TableCell>
+                  <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.plugin" /></TableCell>
+                  <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.usable_as_timer" /></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

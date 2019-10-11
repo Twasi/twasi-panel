@@ -6,6 +6,8 @@ export default {
   'common.delete': 'Löschen',
   'common.edit': 'Bearbeiten',
   'common.back_to_panel': 'Zurück zum Panel',
+  'common.yes': 'Ja',
+  'common.no': 'Nein',
 
   'rank.team': 'Teammitglied',
   'rank.partner': 'Partnerstreamer',
@@ -251,6 +253,7 @@ export default {
   'commands.table.cooldown': 'Cooldown',
   'commands.table.active': 'Aktiviert',
   'commands.table.plugin': 'Plugin',
+  'commands.table.usable_as_timer': 'Als Timer nutzbar',
   'commands.cooldown.no_cooldown': 'Kein Cooldown',
   'commands.cooldown.second': 'Sekunde',
   'commands.cooldown.seconds': 'Sekunden',
