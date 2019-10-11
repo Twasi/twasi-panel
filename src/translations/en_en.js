@@ -215,7 +215,7 @@ export default {
   'profile.public_profile.activate_quotes': 'Show quotes',
 
   // Commands
-  'commands.title': 'Your Commands',
+  'commands.title': 'Your commands',
   'commands.subtitle': 'Here you can manage your custom chat commands.',
   'commands.plugincommands.title': 'Plugin commands',
   'commands.plugincommands.subtitle': 'Here you can find all commands who are active depending on wich plugins you have installed.',

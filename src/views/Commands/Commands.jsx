@@ -247,7 +247,7 @@ class Commands extends Component {
             textColor="primary"
           >
             <Tab label={<FormattedMessage id="commands.title" />}/>
-            <Tab label="Plugin Befehle"/>
+            <Tab label={<FormattedMessage id="commands.plugincommands.title" />}/>
           </Tabs>
         </Paper>
         <TabPanel value={value} index={0}>
