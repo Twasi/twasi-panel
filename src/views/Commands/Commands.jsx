@@ -16,6 +16,9 @@ import Chip from '@material-ui/core/Chip';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box';
 //import Checkbox from '@material-ui/core/Checkbox';
 import Snackbar from '@material-ui/core/Snackbar';
 
@@ -27,6 +30,23 @@ import JohnTravolta from '../common/resources/johntravolta.gif';
 
 import { commandsSelectors, commandsOperations } from '../../state/commands';
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      <Box p={0}>{children}</Box>
+    </Typography>
+  );
+}
+
 class Commands extends Component {
   constructor(props) {
     super(props);
@@ -35,14 +55,22 @@ class Commands extends Component {
       openEditCommandDialog: false,
       openNotification: false,
       notification: '',
-      editDialogContent: ''
+      editDialogContent: '',
+      value: 0
     };
   }
 
   componentDidMount() {
-    const { updateCommands } = this.props;
+    const { updateCommands, updatePluginCommands } = this.props;
     updateCommands();
+    updatePluginCommands();
   }
+
+  handleChange = (event, value) => {
+    this.setState({
+      value,
+    });
+  };
 
   handleCloseAddCommandDialog = () => {
     this.setState({ openAddCommandDialog: false });
@@ -178,8 +206,26 @@ class Commands extends Component {
     ));
   }
 
+  renderPluginCommands() {
+    const { pluginCommands } = this.props;
+    return pluginCommands.map(pluginCommand => (
+      <TableRow key={pluginCommand.commandName}>
+        <TableCell>
+          <b>!{pluginCommand.commandName}</b>
+        </TableCell>
+        <TableCell>
+          <Chip
+            label={pluginCommand.providingPlugin}
+            color="primary"
+          />
+        </TableCell>
+      </TableRow>
+    ));
+  }
+
   render() {
     const { disabled } = this.props;
+    const { value } = this.state;
     if (this.props.isActionSuccess) {
       this.props.updateCommands()
     }
@@ -191,69 +237,99 @@ class Commands extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.commands" /></Typography>
         </Breadcrumbs>
-        {!disabled &&
-        <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
-          <Typography component={'span'}>
-            <h4 className="pageContainerTitle">
-              <FormattedMessage id="commands.title" />
-              <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
-                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
-                  <FormattedMessage id="common.refresh" />
-                </Button>
-                <Button onClick={() => this.setState({ openAddCommandDialog: true })} variant="contained" color="primary" disabled={disabled}>
-                  <FormattedMessage id="commands.new_command" />
-                </Button>
-              </span>
-            </h4>
-            <small>
-              <FormattedMessage id="commands.subtitle" />
-            </small>
-          </Typography>
+        <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
+          <Tabs
+            value={value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            variant="scrollable"
+            scrollButtons="auto"
+            textColor="primary"
+          >
+            <Tab label={<FormattedMessage id="commands.title" />}/>
+            <Tab label="Plugin Befehle"/>
+          </Tabs>
         </Paper>
-        }{!disabled &&
-        <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
-          <Table>
-            <TableHead>
-              <TableRow className="TableRow">
-                <TableCell><FormattedMessage id="commands.table.command" /></TableCell>
-                <TableCell><FormattedMessage id="commands.table.output" /></TableCell>
-                <TableCell><FormattedMessage id="commands.table.access" /></TableCell>
-                <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.uses" /></TableCell>
-                <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.cooldown" /></TableCell>
-                {/*<TableCell><FormattedMessage id="commands.table.active" /></TableCell>*/}
-                <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.renderCommands()}
-            </TableBody>
-          </Table>
-          {this.state.openAddCommandDialog &&
-            <CommandAddDialog
-              open
-              onClose={this.handleCloseAddCommandDialog}
+        <TabPanel value={value} index={0}>
+          {!disabled &&
+          <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
+            <Typography component={'span'}>
+              <h4 className="pageContainerTitle">
+                <FormattedMessage id="commands.title" />
+                <span style={{ float: 'right' }}>
+                  <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
+                    <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                    <FormattedMessage id="common.refresh" />
+                  </Button>
+                  <Button onClick={() => this.setState({ openAddCommandDialog: true })} variant="contained" color="primary" disabled={disabled}>
+                    <FormattedMessage id="commands.new_command" />
+                  </Button>
+                </span>
+              </h4>
+              <small>
+                <FormattedMessage id="commands.subtitle" />
+              </small>
+            </Typography>
+          </Paper>
+          }{!disabled &&
+          <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
+            <Table>
+              <TableHead>
+                <TableRow className="TableRow">
+                  <TableCell><FormattedMessage id="commands.table.command" /></TableCell>
+                  <TableCell><FormattedMessage id="commands.table.output" /></TableCell>
+                  <TableCell><FormattedMessage id="commands.table.access" /></TableCell>
+                  <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.uses" /></TableCell>
+                  <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.cooldown" /></TableCell>
+                  {/*<TableCell><FormattedMessage id="commands.table.active" /></TableCell>*/}
+                  <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.renderCommands()}
+              </TableBody>
+            </Table>
+            {this.state.openAddCommandDialog &&
+              <CommandAddDialog
+                open
+                onClose={this.handleCloseAddCommandDialog}
+              />
+            }
+            {this.state.openEditCommandDialog &&
+              <CommandEditDialog
+                open
+                onClose={this.handleCloseEditCommandDialog}
+                commandObject={this.state.editDialogContent}
+              />
+            }
+            <Snackbar
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              open={this.state.openNotification}
+              autoHideDuration={5000}
+              onClose={this.handleCloseNotification}
+              message={this.state.notification}
             />
-          }
-          {this.state.openEditCommandDialog &&
-            <CommandEditDialog
-              open
-              onClose={this.handleCloseEditCommandDialog}
-              commandObject={this.state.editDialogContent}
-            />
-          }
-          <Snackbar
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            open={this.state.openNotification}
-            autoHideDuration={5000}
-            onClose={this.handleCloseNotification}
-            message={this.state.notification}
-          />
-        </Paper>
-        }{disabled && <NotInstalledAlert />}
+          </Paper>
+          }{disabled && <NotInstalledAlert />}
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Paper className="pageContainer" style={{ padding: '0px', borderRadius: '0px 0px 4px 4px' }}>
+            <Table>
+              <TableHead>
+                <TableRow className="TableRow">
+                  <TableCell>Befehl</TableCell>
+                  <TableCell>Plugin</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.renderPluginCommands()}
+              </TableBody>
+            </Table>
+          </Paper>
+        </TabPanel>
         {this.renderCommands().length === 0 && !this.props.isLoading && this.renderCommandsEmpty()}
       </div>
     );
@@ -273,6 +349,7 @@ Commands.propTypes = {
 
 const mapStateToProps = state => ({
   commands: commandsSelectors.getCommands(state),
+  pluginCommands: commandsSelectors.getPluginCommands(state),
   isLoaded: commandsSelectors.isLoaded(state),
   isLoading: commandsSelectors.isLoading(state),
   isActionSuccess: commandsSelectors.isActionSuccess(state),
@@ -281,6 +358,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
+  updatePluginCommands: () => dispatch(commandsOperations.loadPluginCommands()),
   delCommand: (id) => dispatch(commandsOperations.delCommand(id))
 });
 

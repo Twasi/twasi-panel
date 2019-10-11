@@ -145,7 +145,14 @@ export default createMuiTheme({
           boxShadow: 'none',
           backgroundColor: '#1a2035'
         }
-      }
+      },
+      secondary: {
+        background: 'linear-gradient(135deg,#de6464,#ff7b7b)',
+        '&:hover': {
+          boxShadow: 'none',
+          backgroundColor: '#1a2035'
+        }
+      },
     },
     MUIDataTableToolbar: {
       root: {

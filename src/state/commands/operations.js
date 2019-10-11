@@ -44,7 +44,7 @@ const loadPluginCommands = () => dispatch => {
             dispatch(updateDisabled(true));
             return;
         }
-        dispatch(updatePluginCommands(data.panel));
+        dispatch(updatePluginCommands(data.user.pluginCommands));
     }).finally(() => {
         dispatch(updateLoading(false))
         dispatch(updateLoaded(true))
