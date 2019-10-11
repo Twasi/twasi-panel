@@ -207,6 +207,13 @@ export default {
   'profile.own_bot.subtitle': 'Hier kannst du einen eigenen Bot Account mit Twasi verbinden.',
   'profile.own_bot.connect': 'Account verbinden',
   'profile.own_bot.disconnect': 'Account trennen',
+  'profile.public_profile': 'Öffentliches Profil',
+  'profile.public_profile.subtitle': 'Hier kannst du dein Leaderboard, deine Befehlsliste und mehr einstellen.',
+  'profile.public_profile.your_profile': 'Dein Profil',
+  'profile.public_profile.activate_public': 'Öffentliches Profil aktivieren',
+  'profile.public_profile.activate_leaderboard': 'Leaderboard anzeigen',
+  'profile.public_profile.activate_commands': 'Befehle anzeigen',
+  'profile.public_profile.activate_quotes': 'Zitate anzeigen',
 
   // Commands
   'commands.title': 'Deine Befehle',

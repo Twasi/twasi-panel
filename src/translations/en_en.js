@@ -206,6 +206,13 @@ export default {
   'profile.own_bot.subtitle': 'Here you can connect your own bot account with Twasi.',
   'profile.own_bot.connect': 'Connect account',
   'profile.own_bot.disconnect': 'Disconnect account',
+  'profile.public_profile': 'Public profile',
+  'profile.public_profile.subtitle': 'Here you can setup your public profile.',
+  'profile.public_profile.your_profile': 'Your profile',
+  'profile.public_profile.activate_public': 'Activate public profile',
+  'profile.public_profile.activate_leaderboard': 'Show leaderboard',
+  'profile.public_profile.activate_commands': 'Show commands',
+  'profile.public_profile.activate_quotes': 'Show quotes',
 
   // Commands
   'commands.title': 'Your Commands',

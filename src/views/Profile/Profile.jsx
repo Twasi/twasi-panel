@@ -165,17 +165,17 @@ class Profile extends Component {
             <Paper className="pageContainer">
               <Typography component={"div"}>
                 <h4 className="pageContainerTitle">
-                  Öffentliches Profil
+                  <FormattedMessage id="profile.public_profile" />
                 </h4>
                 <small>
-                  Hier kannst du dein Leaderboard, deine Befehlsliste und mehr einstellen.
+                  <FormattedMessage id="profile.public_profile.subtitle" />
                 </small>
               </Typography>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent anim">
                   <Typography component={"div"}>
                     <TextField
-                      label="Dein Profil"
+                      label={<FormattedMessage id="profile.public_profile.your_profile" />}
                       fullWidth
                       variant="outlined"
                       InputLabelProps={{
@@ -215,7 +215,7 @@ class Profile extends Component {
                   <Row>
                     <Col style={{ textAlign: 'left' }} sm={6}>
                       <Typography style={{ padding: '7px' }}>
-                        <b>Öffentliches Profil aktivieren</b>
+                        <b><FormattedMessage id="profile.public_profile.activate_public" /></b>
                       </Typography>
                     </Col>
                     <Col style={{ textAlign: 'right' }} sm={6}>
@@ -226,7 +226,7 @@ class Profile extends Component {
                   <Row>
                     <Col style={{ textAlign: 'left' }} sm={6}>
                       <Typography style={{ padding: '7px' }}>
-                        <small>Dein Leaderboard anzeigen</small>
+                        <small><FormattedMessage id="profile.public_profile.activate_leaderboard" /></small>
                       </Typography>
                     </Col>
                     <Col style={{ textAlign: 'right' }} sm={6}>
@@ -236,7 +236,7 @@ class Profile extends Component {
                   <Row>
                     <Col style={{ textAlign: 'left' }} sm={6}>
                       <Typography style={{ padding: '7px' }}>
-                        <small>Liste deiner Befehle anzeigen</small>
+                        <small><FormattedMessage id="profile.public_profile.activate_commands" /></small>
                       </Typography>
                     </Col>
                     <Col style={{ textAlign: 'right' }} sm={6}>
@@ -246,7 +246,7 @@ class Profile extends Component {
                   <Row>
                     <Col style={{ textAlign: 'left' }} sm={6}>
                       <Typography style={{ padding: '7px' }}>
-                        <small>Deine Streamzitate anzeigen</small>
+                        <small><FormattedMessage id="profile.public_profile.activate_quotes" /></small>
                       </Typography>
                     </Col>
                     <Col style={{ textAlign: 'right' }} sm={6}>
