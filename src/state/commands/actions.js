@@ -5,6 +5,11 @@ const updateCommands = commands => ({
   commands
 });
 
+const updatePluginCommands = pluginCommands => ({
+  type: types.UPDATE_PLUGINCOMMANDS,
+  pluginCommands
+});
+
 const updateAccessLevels = accessLevels => ({
   type: types.UPDATE_ACCESSLEVELS,
   accessLevels
@@ -59,6 +64,7 @@ const updateActionSuccess = isActionSuccess => ({
 export default {
   updateAccessLevels,
   updateCommands,
+  updatePluginCommands,
   updateSingleCommand,
   updateAddCommand,
   updateEditCommand,

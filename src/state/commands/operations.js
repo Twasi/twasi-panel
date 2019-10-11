@@ -6,6 +6,7 @@ import {getGraph} from '../../services/graphqlService';
 const {
     updateAccessLevels,
     updateCommands,
+    updatePluginCommands,
     updateSingleCommand,
     updateAddCommand,
     updateEditCommand,
@@ -30,6 +31,20 @@ const loadCommands = () => dispatch => {
             return;
         }
         dispatch(updateCommands(data.commands));
+    }).finally(() => {
+        dispatch(updateLoading(false))
+        dispatch(updateLoaded(true))
+    });
+};
+
+const loadPluginCommands = () => dispatch => {
+    dispatch(updateLoading(true));
+    dispatch(getGraph('user{pluginCommands{commandName,listed,providingPlugin,timer}}', 'panel')).then(data => {
+        if (data == null) {
+            dispatch(updateDisabled(true));
+            return;
+        }
+        dispatch(updatePluginCommands(data.panel));
     }).finally(() => {
         dispatch(updateLoading(false))
         dispatch(updateLoaded(true))
@@ -92,6 +107,7 @@ const verifyData = () => (dispatch, getState) => {
 
 export default {
     loadCommands,
+    loadPluginCommands,
     loadAccessLevels,
     loadSingleCommand,
     addCommand,

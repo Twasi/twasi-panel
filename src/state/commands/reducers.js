@@ -4,6 +4,7 @@ export const initialState = {
   isLoaded: false,
   isActionSuccess: false,
   commands: [],
+  pluginCommands: [],
   accessLevels: [],
   name: '',
   content: '',
@@ -18,6 +19,9 @@ const commandsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_COMMANDS: {
       return { ...state, isLoaded: true, isDisabled: false, commands: action.commands };
+    }
+    case types.UPDATE_PLUGINCOMMANDS: {
+      return { ...state, isLoaded: true, isDisabled: false, pluginCommands: action.pluginCommands };
     }
     case types.UPDATE_ACCESSLEVELS: {
       return { ...state, isLoaded: true, isDisabled: false, accessLevels: action.accessLevels };
