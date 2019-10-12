@@ -276,7 +276,8 @@ export default createMuiTheme({
     },
     MuiDialogContent: {
       root: {
-        padding: '24px'
+        padding: '24px',
+        whiteSpace: 'pre-wrap'
       }
     },
     MuiSlider: {
