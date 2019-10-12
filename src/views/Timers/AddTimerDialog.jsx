@@ -14,8 +14,10 @@ import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import Chip from '@material-ui/core/Chip';
 import { Row, Col } from 'react-grid-system';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import './_style.css';
@@ -33,9 +35,10 @@ class Timer extends React.Component {
   };
 
   componentDidMount() {
-    const { updateCommands, updateTimer } = this.props;
+    const { updateCommands, updateTimer, updatePluginCommands } = this.props;
     updateCommands();
     updateTimer();
+    updatePluginCommands();
   }
 
   handleClose = () => {
@@ -52,6 +55,7 @@ class Timer extends React.Component {
   };
 
   handleChangeCommand = (event, index) => {
+    console.log(index.key)
     this.setState({
       commandName: index.key
     });
@@ -82,7 +86,37 @@ class Timer extends React.Component {
     })
     return commands.map(command => (
         !usedCommands.includes(command.name) &&
-        <MenuItem key={command.name} value={command.name}>{command.name}</MenuItem>
+        <MenuItem key={command.name} value={command.name}>
+          <Grid container>
+            <Grid item xs={6}>
+              {command.name}
+            </Grid>
+            <Grid item xs={6}>
+              <Chip size="small" style={{ float: 'right' }} label="Eigener Befehl"/>
+            </Grid>
+          </Grid>
+        </MenuItem>
+    ));
+  }
+
+  renderPluginCommands() {
+    const { pluginCommands, timers } = this.props;
+    var usedCommands = [];
+    timers.forEach(function(timer) {
+      usedCommands.push(timer.command)
+    })
+    return pluginCommands.map(pluginCommand => (
+        !usedCommands.includes("!"+pluginCommand.commandName) && pluginCommand.timer &&
+        <MenuItem key={"!"+pluginCommand.commandName} value={pluginCommand.commandName}>
+          <Grid container>
+            <Grid item xs={6}>
+              {"!"+pluginCommand.commandName}
+            </Grid>
+            <Grid item xs={6}>
+              <Chip color="primary" size="small" style={{ float: 'right' }} label={pluginCommand.providingPlugin}/>
+            </Grid>
+          </Grid>
+        </MenuItem>
     ));
   }
 
@@ -147,6 +181,7 @@ class Timer extends React.Component {
                   }
                 >
                   {this.renderCommands()}
+                  {this.renderPluginCommands()}
                 </Select>
                 <FormHelperText><FormattedMessage id="timers.new_timer.command.subtitle" /></FormHelperText>
               </FormControl>
@@ -206,12 +241,14 @@ Timer.propTypes = {
 
 const mapStateToProps = state => ({
   commands: commandsSelectors.getCommands(state),
+  pluginCommands: commandsSelectors.getPluginCommands(state),
   timers: timerSelectors.getTimer(state),
   isActionSuccess: timerSelectors.isActionSuccess(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   updateCommands: () => dispatch(commandsOperations.loadCommands()),
+  updatePluginCommands: () => dispatch(commandsOperations.loadPluginCommands()),
   updateTimer: () => dispatch(timerOperations.loadTimer()),
   addTimer: (command,interval,enabled) => dispatch(timerOperations.addTimer(command,interval,enabled))
 });
