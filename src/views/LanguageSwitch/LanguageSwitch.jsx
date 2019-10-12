@@ -95,34 +95,31 @@ class LanguageSwitch extends React.Component {
           <DialogContent>
             <Typography component={'div'}>
               <h4 className="pageContainerTitle">
-                Bot jetzt Neu starten?
+                <FormattedMessage id="languageswitch.confirmation.title" />
               </h4>
               <small>
-                Um die Änderungen wirksam zu machen muss der Bot Neu gestartet werden.<br />
-                Achtung, bei einem Neustart gehen temporär gespeicherte Daten verloren.<br /><br />
-                Möchtest du jetzt den Bot Neu starten?<br />
-                Du kannst den Bot alternativ auch zu einem späteren Zeitpunkt unter "Status" Neu starten.
+                <FormattedMessage id="languageswitch.confirmation.text" />
               </small>
             </Typography>
             <Button
               style={{ marginTop: '15px', marginRight: '16px' }}
               variant="contained"
-              color="secondary"
+              color="primary"
               onClick={() => {
                 this.props.stopBot();
                 this.props.startBot();
                 this.setState({ restartBotDialog: false })
               }}>
-              Bot jetzt Neu starten
+              <FormattedMessage id="languageswitch.confirmation.restart" />
             </Button>
             <Button
               style={{ marginTop: '15px' }}
               variant="contained"
-              color="primary"
+              color="secondary"
               onClick={() => {
                   this.setState({ restartBotDialog: false })
               }}>
-              Abbrechen
+              <FormattedMessage id="languageswitch.confirmation.cancel" />
             </Button>
           </DialogContent>
         </Dialog>

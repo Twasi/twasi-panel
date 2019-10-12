@@ -48,6 +48,10 @@ export default {
   'languageswitch.title': 'Sprache ändern',
   'languageswitch.subtitle': 'Hier kannst du die Sprache des Panels und des Bots ändern.',
   'languageswitch.earth': 'Die Erde ist flach.',
+  'languageswitch.confirmation.title': 'Bot jetzt Neu starten?',
+  'languageswitch.confirmation.text': 'Um die Änderungen wirksam zu machen muss der Bot Neu gestartet werden.\nAchtung, bei einem Neustart gehen temporär gespeicherte Daten verloren.\n\nMöchtest du jetzt den Bot Neu starten?\nDu kannst den Bot alternativ auch zu einem späteren Zeitpunkt unter "Status" Neu starten.',
+  'languageswitch.confirmation.restart': 'Bot jetzt Neu starten',
+  'languageswitch.confirmation.cancel': 'Später Neu starten',
 
   // Welcome
   'welcome.headline': 'Willkommen bei Twasi',

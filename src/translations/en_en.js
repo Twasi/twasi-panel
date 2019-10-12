@@ -48,6 +48,10 @@ export default {
   'languageswitch.title': 'Change language',
   'languageswitch.subtitle': 'Here you can change the language of the panel and the bot.',
   'languageswitch.earth': 'The Earth is flat.',
+  'languageswitch.confirmation.title': 'Restart Bot?',
+  'languageswitch.confirmation.text': 'To set the changes you have to restart the bot.\nAttention, temporarily stored data will get lost after a restart.\n\nDo you want to restart the bot now?\nAs an alternative you can restart the bot later under "Status" to set the changes.',
+  'languageswitch.confirmation.restart': 'Restart bot now',
+  'languageswitch.confirmation.cancel': 'Restart later',
 
   // Welcome
   'welcome.headline': 'Welcome to Twasi',
