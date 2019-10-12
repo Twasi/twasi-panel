@@ -29,7 +29,6 @@ class PlayedGamesChart extends Component {
   componentDidMount() {
     const { streamdata } = this.props;
     const chart = am4core.create('chartdiv_playedgames'+streamdata.streamId, am4charts.XYChart);
-    console.log(streamdata)
     chart.paddingTop = 65;
     chart.paddingBottom = -1;
 

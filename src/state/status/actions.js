@@ -15,6 +15,11 @@ const updateEvents = events => ({
   events
 });
 
+const updateBotLanguage = languageCode => ({
+  type: types.UPDATE_BOTLANGUAGE,
+  languageCode
+});
+
 const updateStarting = starting => ({
   type: types.UPDATE_STARTING,
   starting
@@ -29,6 +34,7 @@ export default {
   updateLoaded,
   updateStatus,
   updateEvents,
+  updateBotLanguage,
   updateStarting,
   updateStopping
 };

@@ -4,6 +4,7 @@ export const initialState = {
   isLoaded: false,
   status: {},
   events: [],
+  languageCode: "",
   isStarting: false,
   isStopping: false
 };
@@ -20,6 +21,10 @@ const statusReducer = (state = initialState, action) => {
 
     case types.UPDATE_EVENTS: {
       return { ...state, events: action.events };
+    }
+
+    case types.UPDATE_BOTLANGUAGE: {
+      return { ...state, events: action.languageCode };
     }
 
     case types.UPDATE_STARTING: {

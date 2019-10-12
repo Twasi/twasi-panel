@@ -87,7 +87,7 @@ const App = () => {
 
     if (props.language.toLowerCase() === 'de_de') {
       selectedLanguage = german;
-    } else if (props.language.toLowerCase() === 'en_en') {
+    } else if (props.language.toLowerCase() === 'en_gb') {
       selectedLanguage = english;
     }
 

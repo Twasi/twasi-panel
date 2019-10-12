@@ -46,7 +46,7 @@ export default {
   'languageswitch.german': 'Deutsch',
   'languageswitch.english': 'Englisch',
   'languageswitch.title': 'Sprache ändern',
-  'languageswitch.subtitle': 'Hier kannst du die Sprache ändern.',
+  'languageswitch.subtitle': 'Hier kannst du die Sprache des Panels und des Bots ändern.',
   'languageswitch.earth': 'Die Erde ist flach.',
 
   // Welcome

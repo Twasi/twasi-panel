@@ -6,6 +6,7 @@ import { getGraph } from '../../services/graphqlService';
 const {
   updateStatus,
   updateEvents,
+  updateBotLanguage,
   updateStarting,
   updateStopping
 } = actions;
@@ -17,6 +18,14 @@ const loadData = () => dispatch => {
 const loadEvents = () => dispatch => {
   dispatch(getGraph('user{events{message,messageType,createdAt}}')).then(data => dispatch(updateEvents(data.user.events)));
 };
+
+const loadBotLanguage = languageCode => dispatch => {
+    dispatch(getGraph(`status{setLanguage(languageCode: ${JSON.stringify(languageCode)})}`, 'panel')).then(
+    data => {
+      dispatch(updateBotLanguage(data.status));
+    });
+};
+
 
 const verifyData = () => (dispatch, getState) => {
   const state = getState();
@@ -58,6 +67,7 @@ export default {
   updateStatus,
   loadData,
   loadEvents,
+  loadBotLanguage,
   verifyData,
   stopBot,
   startBot

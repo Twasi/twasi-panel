@@ -409,18 +409,9 @@ class Command extends React.Component {
                   Der Befehl "<b>{this.state.commandName}</b>" existiert bereits.
                 </h4>
                 <small>
-                  Möchtest du den Befehl "<b>{this.state.commandName}</b>" überschreiben?
+                  Möchtest du den Befehl "<b>{this.state.commandName}</b>" überschreiben?<br />
+                  durch das Überschreiben wird die ehemalige Ausgabe, sowie der Cooldown und das Zugriffslevel überschrieben.
                 </small>
-              </Typography>
-              <Typography component={'div'}>
-                <Card className="pluginCard" style={{ marginTop: '15px' }}>
-                  <CardContent>
-                    <h3 className="pageContainerTitle">Achtung!</h3>
-                    <small>
-                      durch das Überschreiben wird die ehemalige Ausgabe, sowie der Cooldown und das Zugriffslevel überschrieben.
-                    </small>
-                  </CardContent>
-                </Card>
               </Typography>
               <Button
                 style={{ marginTop: '15px', marginRight: '16px' }}
