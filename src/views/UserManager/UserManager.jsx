@@ -98,6 +98,31 @@ class UserManager extends Component {
     ));
   }
 
+  renderSummary() {
+    const { users } = this.props;
+    var viewercount = 0;
+    var followercount = 0;
+    users.forEach((entry, index) => {
+      viewercount += entry.viewerCount
+      followercount += entry.channelData.Followers
+    });
+    return (
+      <TableRow key="summary">
+        <TableCell colSpan={3}>
+          <b>Zusammenfassung:</b>
+        </TableCell>
+        <TableCell style={{ color: "#de6464" }}>
+          <Icon style={{ verticalAlign: "middle", marginRight: '5px', marginTop: '-3px' }} fontSize="small">person</Icon>
+          {viewercount}
+        </TableCell>
+        <TableCell>
+          {followercount}
+        </TableCell>
+        <TableCell colSpan={2}/>
+      </TableRow>
+    );
+  }
+
   render() {
     const { rank } = this.props;
     return (
@@ -142,6 +167,7 @@ class UserManager extends Component {
             </TableHead>
             <TableBody>
               {this.renderUsers()}
+              {this.renderSummary()}
             </TableBody>
           </Table>
         </Paper>}
