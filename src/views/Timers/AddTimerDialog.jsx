@@ -55,7 +55,6 @@ class Timer extends React.Component {
   };
 
   handleChangeCommand = (event, index) => {
-    console.log(index.key)
     this.setState({
       commandName: index.key
     });
@@ -107,7 +106,7 @@ class Timer extends React.Component {
     })
     return pluginCommands.map(pluginCommand => (
         !usedCommands.includes("!"+pluginCommand.commandName) && pluginCommand.timer &&
-        <MenuItem key={"!"+pluginCommand.commandName} value={pluginCommand.commandName}>
+        <MenuItem key={"!"+pluginCommand.commandName} value={"!"+pluginCommand.commandName}>
           <Grid container>
             <Grid item xs={6}>
               {"!"+pluginCommand.commandName}
