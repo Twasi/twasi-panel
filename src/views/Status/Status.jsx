@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 
 import { statusSelectors, statusOperations } from '../../state/status';
 
@@ -15,37 +13,32 @@ import StatusInfo from './StatusInfo';
 
 class Status extends Component {
 
-  handleClickBreadCrumb = (event, value) => {
-      const { history } = this.props;
-      history.push(value);
-      this.setState({});
+  handleClose = () => {
+    this.props.onClose();
   };
 
   render () {
+    const { classes, onClose, ...other } = this.props;
     return (
-      <div className="pageContent">
-        <Breadcrumbs arial-label="Breadcrumb">
-          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
-            <FormattedMessage id="sidebar.overview" />
-          </Link>
-          <Typography color="textPrimary"><FormattedMessage id="sidebar.status" /></Typography>
-        </Breadcrumbs>
-        <Paper className="pageContainer">
-          <Grid container spacing={4}>
-            <Grid item xs={12}>
-              <Typography component={"div"}>
-                <h4 className="pageContainerTitle">
-                  <FormattedMessage id="status.card_headline" />
-                </h4>
-                <small>
-                  <FormattedMessage id="status.explanation" />
-                </small>
-              </Typography>
-            </Grid>
-          </Grid>
-          <StatusInfo />
-        </Paper>
-      </div>
+      <Dialog
+        onClose={this.handleClose}
+        {...other}
+        scroll="body"
+      >
+        <DialogContent>
+          <div className="pageContent">
+            <Typography component={"div"}>
+              <h4 className="pageContainerTitle">
+                <FormattedMessage id="status.card_headline" />
+              </h4>
+              <small>
+                <FormattedMessage id="status.explanation" />
+              </small>
+            </Typography>
+            <StatusInfo />
+          </div>
+        </DialogContent>
+      </Dialog>
     );
   }
 }

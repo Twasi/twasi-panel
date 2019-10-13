@@ -16,7 +16,7 @@ import { FormattedMessage } from 'react-intl';
 import storage from 'local-storage';
 
 import { i18nSelectors, i18nOperations } from '../../state/i18n';
-import { statusOperations, statusSelectors } from '../../state/status';
+import { statusOperations } from '../../state/status';
 
 import './_style.css';
 

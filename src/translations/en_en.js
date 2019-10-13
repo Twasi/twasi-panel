@@ -140,15 +140,15 @@ export default {
   'overview.no_viewers_tracked.subtitle': 'There were no chatters tracked yet.',
 
   // Status
-  'status.started': 'Working',
+  'status.started': 'Started',
   'status.stopped': 'Stopped',
-  'status.manage': 'Manage',
+  'status.manage': 'Manage status',
   'status.eventlog': 'Eventlog',
   'status.card_headline': 'Bot status',
   'status.explanation': 'Here you have the ability to start or stop the bot.',
   'status.start': 'Start',
   'status.stop': 'Stop',
-  'status.current_status': 'Current bot status',
+  'status.current_status': 'Bot status',
 
   // Plugins
   'plugins.headline': 'Plugin store',

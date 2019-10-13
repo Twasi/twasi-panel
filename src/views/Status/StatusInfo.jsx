@@ -43,6 +43,7 @@ class StatusInfo extends Component {
               {status.isRunning && (
                 <div>
                   <Button
+                    style={{ height: '32px', paddingTop: '4px' }}
                     variant="contained"
                     color="secondary"
                     disabled={isStopping}
@@ -68,6 +69,7 @@ class StatusInfo extends Component {
               {!status.isRunning && (
                 <div>
                   <Button
+                    style={{ height: '32px', paddingTop: '4px' }}
                     variant="contained"
                     color="primary"
                     disabled={isStarting}

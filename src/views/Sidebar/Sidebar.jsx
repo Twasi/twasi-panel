@@ -44,13 +44,6 @@ class Sidebar extends Component {
         shown: 'all'
       },
       {
-        key: 'status',
-        path: '/status',
-        icon: 'power',
-        name: 'sidebar.status',
-        shown: 'all'
-      },
-      {
         key: 'profile',
         path: '/profile',
         icon: 'account_box',

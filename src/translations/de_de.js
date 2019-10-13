@@ -141,15 +141,15 @@ export default {
   'overview.no_viewers_tracked.subtitle': 'Bisher wurde noch kein Chatter von uns erfasst.',
 
   // Status
-  'status.started': 'Läuft',
+  'status.started': 'Gestartet',
   'status.stopped': 'Gestoppt',
-  'status.manage': 'Verwalten',
+  'status.manage': 'Status verwalten',
   'status.eventlog': 'Ereignislog',
   'status.card_headline': 'Bot Status',
   'status.explanation': 'Hier kannst du den Bot jederzeit starten bzw. stoppen.',
   'status.start': 'Starten',
   'status.stop': 'Stoppen',
-  'status.current_status': 'Aktueller Bot Status',
+  'status.current_status': 'Bot Status',
 
   // Plugins
   'plugins.headline': 'Plugin Store',

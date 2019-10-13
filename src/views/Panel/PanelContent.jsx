@@ -6,7 +6,6 @@ import Sidebar from '../Sidebar/Sidebar';
 import RequireAuth from '../../auth/RequireAuth';
 
 import Overview from '../Overview';
-import Status from '../Status';
 import Plugins from '../Plugins';
 import Profile from '../Profile';
 import Moderators from '../Moderators';
@@ -30,7 +29,6 @@ const PanelContent = () => (
     <div className="content">
       <Switch>
         <Route path="/" exact component={Overview} />
-        <Route path="/status" exact component={Status} />
         <Route path="/plugins" exact component={Plugins} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/mods" exact component={Moderators} />

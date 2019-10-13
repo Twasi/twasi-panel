@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
 import { appInfoSelectors } from '../../../state/appInfo';
+import { StatusIcon } from '../../Status';
 import { AccountSwitchIcon } from '../../AccountSwitch';
 import { ThemeSwitchIcon } from '../../ThemeSwitch';
 import { LanguageSwitchIcon } from '../../LanguageSwitch';
@@ -52,9 +53,10 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp
       </Grid>
       <Grid item xs={4}>
         <div style={{ paddingTop: '5px' }}>
-          {isSetUp && <AccountSwitchIcon />}
+          {isSetUp &&<AccountSwitchIcon />}
           <ThemeSwitchIcon />
           <LanguageSwitchIcon />
+          {isSetUp &&<StatusIcon />}
           {/* isSetUp && <FeedbackIcon /> */}
         </div>
       </Grid>
