@@ -106,8 +106,7 @@ class LanguageSwitch extends React.Component {
               variant="contained"
               color="primary"
               onClick={() => {
-                this.props.stopBot();
-                this.props.startBot();
+                this.props.restartBot();
                 this.setState({ restartBotDialog: false })
               }}>
               <FormattedMessage id="languageswitch.confirmation.restart" />
@@ -144,7 +143,8 @@ const mapDispatchToProps = dispatch => ({
   updateLanguage: language => dispatch(i18nOperations.updateLanguage(language)),
   updateBotLanguage: languageCode => dispatch(statusOperations.loadBotLanguage(languageCode)),
   stopBot: () => dispatch(statusOperations.stopBot()),
-  startBot: () => dispatch(statusOperations.startBot())
+  startBot: () => dispatch(statusOperations.startBot()),
+  restartBot: () => dispatch(statusOperations.restartBot())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LanguageSwitchWrapped);

@@ -59,6 +59,23 @@ const startBot = () => dispatch => {
   });
 };
 
+const restartBot = () => dispatch => {
+  dispatch(updateStarting(true));
+  dispatch(updateStopping(true));
+  sleep(500).then(() => {
+    dispatch(getGraph('status{changeStatus(isRunning:false){isRunning}}')).then(data => {
+      dispatch(updateStatus(data.status.changeStatus));
+      dispatch(updateStopping(false));
+    });
+    sleep(2000).then(() => {
+      dispatch(getGraph('status{changeStatus(isRunning:true){isRunning}}')).then(data => {
+        dispatch(updateStatus(data.status.changeStatus));
+        dispatch(updateStarting(false));
+      });
+    });
+  });
+};
+
 function sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
@@ -70,5 +87,6 @@ export default {
   loadBotLanguage,
   verifyData,
   stopBot,
-  startBot
+  startBot,
+  restartBot
 };
