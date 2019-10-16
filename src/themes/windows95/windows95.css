@@ -21,6 +21,13 @@
   border-style:solid;
   border-radius: 0px;
 }
+.windows95 .translucentBoxLeaderboard {
+  background: #000080;
+  border-width:2px;
+  border-color:#dbdbdb #535353 #535353 #dbdbdb;
+  border-style:solid;
+  border-radius: 0px;
+}
 .windows95 .translucentBoxWelcome {
   background: #000080;
   border-width:2px;

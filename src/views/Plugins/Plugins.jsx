@@ -193,7 +193,7 @@ class Plugins extends Component {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container spacing={3} style={{ marginTop: '23px' }}>
+          <Grid container spacing={3} style={{ marginTop: '23px' }} className="anim">
             {renderedPluginsNew}
           </Grid>
         </Paper>

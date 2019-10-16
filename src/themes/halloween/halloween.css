@@ -15,6 +15,12 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+.halloween .translucentBoxLeaderboard {
+  background: #ff9d39;
+  background-image: url('../../views/common/resources/pumpkinface.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .halloween .translucentBoxWelcome {
   background: #fe8000;
 }

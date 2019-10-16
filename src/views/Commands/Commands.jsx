@@ -291,7 +291,7 @@ class Commands extends Component {
                   <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
+              <TableBody className="anim">
                 {this.renderCommands()}
               </TableBody>
             </Table>
@@ -348,7 +348,7 @@ class Commands extends Component {
                   <TableCell style={{ textAlign: 'center' }}><FormattedMessage id="commands.table.usable_as_timer" /></TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
+              <TableBody className="anim">
                 {this.renderPluginCommands()}
               </TableBody>
             </Table>

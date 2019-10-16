@@ -24,6 +24,13 @@
 	transform: translatey(0px);
 	animation: float 6s ease-in-out infinite;
 }
+
+.translucentBoxLeaderboard {
+  background: linear-gradient(135deg, rgb(0, 174, 174), rgb(2, 212, 212));
+  color: #ffffff !important;
+  width: 100% !important;
+}
+
 @keyframes float {
 	0% {
 		transform: translatey(0px);

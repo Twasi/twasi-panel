@@ -8,6 +8,9 @@
 .twasi-darkblue .translucentBox {
   background: linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255));
 }
+.twasi-darkblue .translucentBoxLeaderboard {
+  background: linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255));
+}
 .twasi-darkblue .translucentBoxWelcome {
   background: linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255));
 }

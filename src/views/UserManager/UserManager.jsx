@@ -165,7 +165,7 @@ class UserManager extends Component {
                 <TableCell><FormattedMessage id="manager.table.impersonate" /></TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody className="anim">
               {this.renderUsers()}
               {this.renderSummary()}
             </TableBody>

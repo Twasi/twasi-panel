@@ -144,11 +144,11 @@ class Public extends React.Component {
                 Hier siehst du deine Statistiken, für den Kanal von %username%.
               </small>
             </Typography>
-            <Grid style={{ alignItems: 'center' }} container spacing={3}>
+            <Grid className="anim" style={{ alignItems: 'center' }} container spacing={3}>
               <Grid item xs={3}>
                 <Card style={{ marginTop: '25px' }} className="pluginCard">
-                  <CardContent className="pluginCardContent anim">
-                    <Typography component={"div"}>
+                  <CardContent className="pluginCardContent translucentBoxLeaderboard">
+                    <Typography component={"div"} style={{ color: '#ffffff' }}>
                       <h1 className="pageContainerTitle">
                         #1
                       </h1>
@@ -161,8 +161,8 @@ class Public extends React.Component {
               </Grid>
               <Grid item xs={3}>
                 <Card style={{ marginTop: '25px' }} className="pluginCard">
-                  <CardContent className="pluginCardContent anim">
-                    <Typography component={"div"}>
+                  <CardContent className="pluginCardContent translucentBoxLeaderboard">
+                    <Typography component={"div"} style={{ color: '#ffffff' }}>
                       <h1 className="pageContainerTitle">
                         24h 31m
                       </h1>
@@ -175,8 +175,8 @@ class Public extends React.Component {
               </Grid>
               <Grid item xs={3}>
                 <Card style={{ marginTop: '25px' }} className="pluginCard">
-                  <CardContent className="pluginCardContent anim">
-                    <Typography component={"div"}>
+                  <CardContent className="pluginCardContent translucentBoxLeaderboard">
+                    <Typography component={"div"} style={{ color: '#ffffff' }}>
                       <h1 className="pageContainerTitle">
                         immer lol
                       </h1>
@@ -189,8 +189,8 @@ class Public extends React.Component {
               </Grid>
               <Grid item xs={3}>
                 <Card style={{ marginTop: '25px' }} className="pluginCard">
-                  <CardContent className="pluginCardContent anim">
-                    <Typography component={"div"}>
+                  <CardContent className="pluginCardContent translucentBoxLeaderboard">
+                    <Typography component={"div"} style={{ color: '#ffffff' }}>
                       <h1 className="pageContainerTitle">
                         Blechlöffel
                       </h1>
@@ -212,7 +212,7 @@ class Public extends React.Component {
                   <TableCell style={{ textAlign: 'right' }}>Zugeschaute Zeit</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
+              <TableBody className="anim">
                 {rows.map(row => (
                   <TableRow key={row.id}>
                     <TableCell>

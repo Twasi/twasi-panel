@@ -186,7 +186,7 @@ class Variables extends Component {
                 <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody className="anim">
               {this.renderVariables()}
             </TableBody>
           </Table>
