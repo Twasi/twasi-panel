@@ -64,23 +64,22 @@ const SupportTicket = props => {
         }
       }}>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Grid container spacing={4}>
-          <Grid item xs={12}>
+        <Grid style={{ marginTop: '0px' }} container spacing={4}>
+          <Grid item xs={6}>
             <Chip
-              size="small"
               color="primary"
               avatar={<Avatar alt="ticket owner avatar" src={ticket.owner.avatar} />}
               label={ticket.owner.name}
               style={{ marginRight: '5px' }}
             />
             <Chip
-              size="small"
               color="secondary"
               label={ticket.category}
               style={{ marginRight: '5px' }}
             />
+          </Grid>
+          <Grid item xs={6}>
             <Chip
-              size="small"
               color="primary"
               label={`#${ticket.id}`}
             />
