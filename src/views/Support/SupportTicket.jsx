@@ -68,7 +68,7 @@ const SupportTicket = props => {
           <Grid item xs={6}>
             <Chip
               color="primary"
-              avatar={<Avatar alt="ticket owner avatar" src={ticket.owner.avatar} />}
+              avatar={<Avatar style={{ width: '24px', height: '24px' }} alt="ticket_owner_avatar" src={ticket.owner.avatar} />}
               label={ticket.owner.name}
               style={{ marginRight: '5px' }}
             />
