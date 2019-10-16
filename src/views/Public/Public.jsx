@@ -9,6 +9,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Chip from '@material-ui/core/Chip';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Icon from '@material-ui/core/Icon';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 import first_place from '../common/resources/first_place.svg';
 import second_place from '../common/resources/second_place.svg';
@@ -54,16 +60,43 @@ class Public extends React.Component {
     return (
       <RequireAuth optional>
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
-          <Tabs
-            value={value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-          >
-            <Tab label="Befehle" />
-            <Tab label="Streamzitate" />
-            <Tab label="Bestenliste" />
-          </Tabs>
+          <Grid style={{ alignItems: 'center' }} container spacing={0}>
+            <Grid item xs={6}>
+              <Tabs
+                value={value}
+                onChange={this.handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+              >
+                <Tab label={(
+                  <span>
+                    <Icon>code</Icon><br/>
+                    Befehle
+                  </span>
+                )} />
+                <Tab label={(
+                  <span>
+                    <Icon>format_quote</Icon><br/>
+                    Zitate
+                  </span>
+                )} />
+                <Tab label={(
+                  <span>
+                    <Icon>emoji_events</Icon><br/>
+                    Bestenliste
+                  </span>
+                )} />
+              </Tabs>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                style={{ float: 'right', marginRight: '15px' }}
+                color="primary"
+                variant="contained">
+                Mit Twitch verbinden
+              </Button>
+            </Grid>
+          </Grid>
         </Paper>
         {value === 0 && <TabContainer>
           <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', marginBottom: '15px', borderRadius: '0px 0px 4px 4px' }}>
@@ -102,6 +135,74 @@ class Public extends React.Component {
         </TabContainer>}
         {value === 1 && <TabContainer></TabContainer>}
         {value === 2 && <TabContainer>
+          <Paper className="pageContainer" style={{ marginBottom: '15px' }}>
+            <Typography component={"div"}>
+              <h4 className="pageContainerTitle">
+                Deine Statistiken
+              </h4>
+              <small>
+                Hier siehst du deine Statistiken, für den Kanal von %username%.
+              </small>
+            </Typography>
+            <Grid style={{ alignItems: 'center' }} container spacing={3}>
+              <Grid item xs={3}>
+                <Card style={{ marginTop: '25px' }} className="pluginCard">
+                  <CardContent className="pluginCardContent anim">
+                    <Typography component={"div"}>
+                      <h1 className="pageContainerTitle">
+                        #1
+                      </h1>
+                      <h4 className="pageContainerTitle">
+                        Platz auf der Bestenliste
+                      </h4>
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={3}>
+                <Card style={{ marginTop: '25px' }} className="pluginCard">
+                  <CardContent className="pluginCardContent anim">
+                    <Typography component={"div"}>
+                      <h1 className="pageContainerTitle">
+                        24h 31m
+                      </h1>
+                      <h4 className="pageContainerTitle">
+                        Zugeschaute Zeit
+                      </h4>
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={3}>
+                <Card style={{ marginTop: '25px' }} className="pluginCard">
+                  <CardContent className="pluginCardContent anim">
+                    <Typography component={"div"}>
+                      <h1 className="pageContainerTitle">
+                        immer lol
+                      </h1>
+                      <h4 className="pageContainerTitle">
+                        Follower seit
+                      </h4>
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={3}>
+                <Card style={{ marginTop: '25px' }} className="pluginCard">
+                  <CardContent className="pluginCardContent anim">
+                    <Typography component={"div"}>
+                      <h1 className="pageContainerTitle">
+                        Blechlöffel
+                      </h1>
+                      <h4 className="pageContainerTitle">
+                        Rang
+                      </h4>
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+          </Paper>
           <Paper className="pageContainer" style={{ padding: '10px 0px 0px 0px', marginBottom: '15px' }}>
             <Table>
               <TableHead>
