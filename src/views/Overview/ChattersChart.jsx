@@ -8,6 +8,8 @@ import { appInfoSelectors } from '../../state/appInfo';
 
 import crown from '../common/resources/crown.svg';
 import pumpkin from '../common/resources/pumpkin_chatter.png';
+import ghost from '../common/resources/ghost.png';
+import skull from '../common/resources/skull.png';
 
 am4core.options.queue = false;
 am4core.options.onlyShowOnViewport = true;
@@ -28,6 +30,14 @@ function hashCode(str) {
   }
   return hash;
 }
+function getImage(string) {
+  const num = hashCode(string);
+  if(num%2 == 0) {
+    return pumpkin;
+  } else {
+    return ghost;
+  }
+}
 
 class ChattersChart extends Component {
   componentDidMount() {
@@ -43,6 +53,7 @@ class ChattersChart extends Component {
     const data = [];
     var count = 0
     chattersdata.forEach(entry => {
+      console.log(getImage(entry.displayName))
       count++;
       if(count<30) {
         if (entry.displayName.toLowerCase() === "blechkelle" || entry.displayName.toLowerCase() === "tom_meka" || entry.displayName.toLowerCase() === "larcce" || entry.displayName.toLowerCase() === "deezermerlin" ) {
@@ -50,13 +61,15 @@ class ChattersChart extends Component {
             displayName: entry.displayName,
             messages: entry.messages,
             lineColor: `#${generateStringColor(entry.displayName)}`,
-            image: crown
+            image: crown,
+            specialImage: skull
           });
         } else {
           data.push({
             displayName: entry.displayName,
             messages: entry.messages,
-            lineColor: `#${generateStringColor(entry.displayName)}`
+            lineColor: `#${generateStringColor(entry.displayName)}`,
+            specialImage: `${getImage(entry.displayName)}`
           });
         }
       }
@@ -66,9 +79,20 @@ class ChattersChart extends Component {
     // Add and configure Series
     const series = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
 
+    series.dataFields.value = 'messages';
+    series.dataFields.name = 'displayName';
+    series.showOnInit = false;
+    series.nodes.template.tooltipText = '[bold]{messages}[/] Nachrichten';
+    series.tooltip.getStrokeFromObject = true;
+    series.dataFields.color = 'lineColor';
+    series.fillOpacity = 1;
+    series.strokeWidth = 0;
+    series.fontSize = 10;
+    series.minRadius = 20;
+
     if(this.props.theme === "halloween") {
       let icon = series.nodes.template.createChild(am4core.Image);
-      icon.href = pumpkin;
+      icon.propertyFields.href = 'specialImage';
       icon.horizontalCenter = "middle";
       icon.verticalCenter = "middle";
       series.nodes.template.circle.disabled = true;
@@ -81,17 +105,6 @@ class ChattersChart extends Component {
     } else {
       series.nodes.template.label.text = '{displayName}';
     }
-
-    series.dataFields.value = 'messages';
-    series.dataFields.name = 'displayName';
-    series.showOnInit = false;
-    series.nodes.template.tooltipText = '[bold]{messages}[/] Nachrichten';
-    series.tooltip.getStrokeFromObject = true;
-    series.dataFields.color = 'lineColor';
-    series.fillOpacity = 1;
-    series.strokeWidth = 0;
-    series.fontSize = 10;
-    series.minRadius = 20;
 
     let fillModifier = new am4core.LinearGradientModifier();
     fillModifier.opacities = [1, 0.5];
