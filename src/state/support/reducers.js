@@ -3,6 +3,7 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   myTickets: [],
+  pagination: [],
   isAdmin: false
 };
 
@@ -17,7 +18,11 @@ const supportReducer = (state = initialState, action) => {
     }
 
     case types.UPDATE_MY_TICKETS: {
-      return { ...state, myTickets: action.myTickets.sort((a, b) => b.createdAt - a.createdAt) };
+      return { ...state, myTickets: action.myTickets };
+    }
+
+    case types.UPDATE_PAGINATION: {
+      return { ...state, pagination: action.pagination };
     }
 
     default:

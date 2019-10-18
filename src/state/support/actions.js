@@ -10,6 +10,11 @@ const updateMyTickets = myTickets => ({
   myTickets
 });
 
+const updatePagination = pagination => ({
+  type: types.UPDATE_PAGINATION,
+  pagination
+});
+
 const updateAdmin = isAdmin => ({
   type: types.UPDATE_ADMIN,
   isAdmin
@@ -18,5 +23,6 @@ const updateAdmin = isAdmin => ({
 export default {
   updateLoaded,
   updateMyTickets,
+  updatePagination,
   updateAdmin
 };

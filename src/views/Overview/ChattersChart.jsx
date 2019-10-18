@@ -32,7 +32,7 @@ function hashCode(str) {
 }
 function getImage(string) {
   const num = hashCode(string);
-  if(num%2 == 0) {
+  if(num%2 === 0) {
     return pumpkin;
   } else {
     return ghost;

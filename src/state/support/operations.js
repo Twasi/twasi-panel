@@ -5,20 +5,21 @@ import { getGraph } from '../../services/graphqlService';
 
 import { authSelectors } from '../auth';
 
-const { updateLoaded, updateMyTickets, updateAdmin } = actions;
+const { updateLoaded, updateMyTickets, updatePagination, updateAdmin } = actions;
 
 const ticketQuery = 'id,owner{name,avatar},topic,state,createdAt,category,closedAt,messages{sender{name,avatar},message,createdAt,staff}}';
 
-const loadMyTickets = () => (dispatch, getState) => {
+const loadMyTickets = (page) => (dispatch, getState) => {
   const state = getState();
   const isAdmin = authSelectors.getUser(state).rank === 'TEAM';
   const subObject = isAdmin ? 'adminTickets' : 'myTickets';
 
   dispatch(updateAdmin(isAdmin));
 
-  dispatch(getGraph(`support{${subObject}{${ticketQuery}}`)).then(
+  dispatch(getGraph(`support{${subObject}(page: ${JSON.stringify(page)}){content{... on SupportTicket{${ticketQuery}},itemsPerPage,total,page,pages}}`)).then(
     data => {
-      dispatch(updateMyTickets(data.support[subObject]));
+      dispatch(updateMyTickets(data.support[subObject].content));
+      dispatch(updatePagination(data.support[subObject]));
       dispatch(updateLoaded(true));
     }
   );

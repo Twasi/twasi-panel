@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import Paper from '@material-ui/core/Paper';
@@ -10,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Fab from '@material-ui/core/Fab';
 
 import './_style.css';
 
@@ -51,7 +53,7 @@ class Support extends Component {
 
   componentDidMount() {
     const { loadMyTickets } = this.props;
-    loadMyTickets();
+    loadMyTickets(1);
   }
 
   handleClose = () => {
@@ -76,6 +78,25 @@ class Support extends Component {
         }}
       />
     ));
+  }
+
+  renderPagination() {
+    const { pagination, loadMyTickets } = this.props;
+    return (
+      <Paper style={{ textAlign: 'center' }} className="pageContainer">
+      {_.times(pagination.pages, i =>
+        <Fab
+          onClick={() => {loadMyTickets(i+1)}}
+          style={{ marginLeft: '5px', marginRight: '5px' }}
+          size="small"
+          disabled={i+1 === pagination.page}
+          color={i+1 === pagination.page ? "default" : "primary"}
+        >
+        {i+1}
+        </Fab>
+      )}
+      </Paper>
+    );
   }
 
   renderSupportTicketsEmpty(open) {
@@ -138,7 +159,7 @@ class Support extends Component {
             <h4 className="pageContainerTitle">
               <FormattedMessage id="support.headline" />
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={this.props.loadMyTickets}>
+                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={() => {this.props.loadMyTickets(this.props.pagination.page)}}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
@@ -171,10 +192,12 @@ class Support extends Component {
           {this.state.tabValue === 0 &&
           <TabContainer>
             {this.renderSupportTickets(true).length === 0 ? this.renderSupportTicketsEmpty(true) : this.renderSupportTickets(true)}
+            {this.renderPagination()}
           </TabContainer>}
           {this.state.tabValue === 1 &&
           <TabContainer>
             {this.renderSupportTickets(false).length === 0 ? this.renderSupportTicketsEmpty(false) : this.renderSupportTickets(false)}
+            {this.renderPagination()}
           </TabContainer>}
         </Paper>
       </div>
@@ -196,11 +219,12 @@ Support.defaultProps = {
 
 const mapStateToProps = state => ({
   myTickets: supportSelectors.getMyTickets(state),
+  pagination: supportSelectors.getPagination(state),
   isAdmin: supportSelectors.isAdmin(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadMyTickets: () => dispatch(supportOperations.loadMyTickets()),
+  loadMyTickets: (page) => dispatch(supportOperations.loadMyTickets(page)),
   createTicket: (category, topic, message) => dispatch(supportOperations.createTicket(category, topic, message)),
   reply: (id, close, isAdminContext, message) => dispatch(supportOperations.replyToTicket(id, close, isAdminContext, message))
 });

@@ -139,7 +139,14 @@ export default createMuiTheme({
     },
     MuiFab: {
       root: {
+        backgroundColor: 'transparent',
         boxShadow: 'none',
+        '&:hover': {
+          boxShadow: 'none',
+          backgroundColor: '#1a2035'
+        }
+      },
+      primary: {
         background: 'linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255))',
         '&:hover': {
           boxShadow: 'none',
