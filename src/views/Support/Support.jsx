@@ -53,7 +53,7 @@ class Support extends Component {
 
   componentDidMount() {
     const { loadMyTickets } = this.props;
-    loadMyTickets(1);
+    loadMyTickets(1, true);
   }
 
   handleClose = () => {
@@ -80,13 +80,13 @@ class Support extends Component {
     ));
   }
 
-  renderPagination() {
+  renderPagination(open) {
     const { pagination, loadMyTickets } = this.props;
     return (
       <Paper style={{ textAlign: 'center' }} className="pageContainer">
       {_.times(pagination.pages, i =>
         <Fab
-          onClick={() => {loadMyTickets(i+1)}}
+          onClick={() => {loadMyTickets(i+1, open)}}
           style={{ marginLeft: '5px', marginRight: '5px' }}
           size="small"
           disabled={i+1 === pagination.page}
@@ -159,7 +159,7 @@ class Support extends Component {
             <h4 className="pageContainerTitle">
               <FormattedMessage id="support.headline" />
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={() => {this.props.loadMyTickets(this.props.pagination.page)}}>
+                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={() => {this.props.loadMyTickets(this.props.pagination.page, true)}}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
@@ -185,19 +185,19 @@ class Support extends Component {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab label={<FormattedMessage id="support.open.tab_title" />} />
-          <Tab label={<FormattedMessage id="support.closed.tab_title" />} />
+          <Tab onClick={() => {this.props.loadMyTickets(this.props.pagination.page, true)}} label={<FormattedMessage id="support.open.tab_title" />} />
+          <Tab onClick={() => {this.props.loadMyTickets(this.props.pagination.page, false)}} label={<FormattedMessage id="support.closed.tab_title" />} />
         </Tabs>
         <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px', borderRadius: "0px 0px 4px 4px" }}>
           {this.state.tabValue === 0 &&
           <TabContainer>
             {this.renderSupportTickets(true).length === 0 ? this.renderSupportTicketsEmpty(true) : this.renderSupportTickets(true)}
-            {this.renderPagination()}
+            {this.renderPagination(true)}
           </TabContainer>}
           {this.state.tabValue === 1 &&
           <TabContainer>
             {this.renderSupportTickets(false).length === 0 ? this.renderSupportTicketsEmpty(false) : this.renderSupportTickets(false)}
-            {this.renderPagination()}
+            {this.renderPagination(false)}
           </TabContainer>}
         </Paper>
       </div>
@@ -224,7 +224,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadMyTickets: (page) => dispatch(supportOperations.loadMyTickets(page)),
+  loadMyTickets: (page, open) => dispatch(supportOperations.loadMyTickets(page, open)),
   createTicket: (category, topic, message) => dispatch(supportOperations.createTicket(category, topic, message)),
   reply: (id, close, isAdminContext, message) => dispatch(supportOperations.replyToTicket(id, close, isAdminContext, message))
 });

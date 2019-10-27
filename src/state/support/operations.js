@@ -9,10 +9,19 @@ const { updateLoaded, updateMyTickets, updatePagination, updateAdmin } = actions
 
 const ticketQuery = 'id,owner{name,avatar},topic,state,createdAt,category,closedAt,messages{sender{name,avatar},message,createdAt,staff}}';
 
-const loadMyTickets = (page) => (dispatch, getState) => {
+const loadMyTickets = (page, open) => (dispatch, getState) => {
   const state = getState();
   const isAdmin = authSelectors.getUser(state).rank === 'TEAM';
-  const subObject = isAdmin ? 'adminTickets' : 'myTickets';
+  var subObject = '';
+  if(isAdmin && open) {
+    subObject = 'openAdminTickets';
+  } else if(isAdmin && !open) {
+    subObject = 'closedAdminTickets';
+  } else if(!isAdmin && open) {
+    subObject = 'myOpenTickets';
+  } else if(!isAdmin && !open) {
+    subObject = 'myClosedTickets';
+  }
 
   dispatch(updateAdmin(isAdmin));
 
