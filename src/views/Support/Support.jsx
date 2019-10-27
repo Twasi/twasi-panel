@@ -160,7 +160,7 @@ class Support extends Component {
             <h4 className="pageContainerTitle">
               <FormattedMessage id="support.headline" />
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={() => {this.props.loadMyTickets(this.props.pagination.page, true)}}>
+                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={() => {this.state.tabValue === 0 ? this.props.loadMyTickets(1, true) : this.props.loadMyTickets(1, false)}}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
@@ -186,8 +186,8 @@ class Support extends Component {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab onClick={() => {this.props.loadMyTickets(this.props.pagination.page, true)}} label={<FormattedMessage id="support.open.tab_title" />} />
-          <Tab onClick={() => {this.props.loadMyTickets(this.props.pagination.page, false)}} label={<FormattedMessage id="support.closed.tab_title" />} />
+          <Tab onClick={() => {this.props.loadMyTickets(1, true)}} label={<FormattedMessage id="support.open.tab_title" />} />
+          <Tab onClick={() => {this.props.loadMyTickets(1, false)}} label={<FormattedMessage id="support.closed.tab_title" />} />
         </Tabs>
         <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px', borderRadius: "0px 0px 4px 4px" }}>
           {this.state.tabValue === 0 &&
@@ -195,7 +195,7 @@ class Support extends Component {
             {!this.props.isLoading ?
               <div>
                 {this.renderSupportTickets(true).length === 0 ? this.renderSupportTicketsEmpty(true) : this.renderSupportTickets(true)}
-                {this.renderPagination(true)}
+                {this.props.pagination.pages !== 1 && this.renderPagination(true)}
               </div>
             :
               <div>
@@ -210,7 +210,7 @@ class Support extends Component {
             {!this.props.isLoading ?
               <div>
                 {this.renderSupportTickets(false).length === 0 ? this.renderSupportTicketsEmpty(false) : this.renderSupportTickets(false)}
-                {this.renderPagination(false)}
+                {this.props.pagination.pages !== 1 && this.renderPagination(false)}
               </div>
               :
               <div>
