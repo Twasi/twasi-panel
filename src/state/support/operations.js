@@ -5,11 +5,12 @@ import { getGraph } from '../../services/graphqlService';
 
 import { authSelectors } from '../auth';
 
-const { updateLoaded, updateMyTickets, updatePagination, updateAdmin } = actions;
+const { updateLoaded, updateLoading, updateMyTickets, updatePagination, updateAdmin } = actions;
 
 const ticketQuery = 'id,owner{name,avatar},topic,state,createdAt,category,closedAt,messages{sender{name,avatar},message,createdAt,staff}}';
 
 const loadMyTickets = (page, open) => (dispatch, getState) => {
+  dispatch(updateLoading(true));
   const state = getState();
   const isAdmin = authSelectors.getUser(state).rank === 'TEAM';
   var subObject = '';
@@ -30,6 +31,7 @@ const loadMyTickets = (page, open) => (dispatch, getState) => {
       dispatch(updateMyTickets(data.support[subObject].content));
       dispatch(updatePagination(data.support[subObject]));
       dispatch(updateLoaded(true));
+      dispatch(updateLoading(false));
     }
   );
 };

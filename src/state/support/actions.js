@@ -5,6 +5,11 @@ const updateLoaded = isLoaded => ({
   isLoaded
 });
 
+const updateLoading = isLoading => ({
+  type: types.UPDATE_LOADING,
+  isLoading
+});
+
 const updateMyTickets = myTickets => ({
   type: types.UPDATE_MY_TICKETS,
   myTickets
@@ -22,6 +27,7 @@ const updateAdmin = isAdmin => ({
 
 export default {
   updateLoaded,
+  updateLoading,
   updateMyTickets,
   updatePagination,
   updateAdmin

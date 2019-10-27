@@ -12,6 +12,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Fab from '@material-ui/core/Fab';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './_style.css';
 
@@ -191,13 +192,33 @@ class Support extends Component {
         <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px', borderRadius: "0px 0px 4px 4px" }}>
           {this.state.tabValue === 0 &&
           <TabContainer>
-            {this.renderSupportTickets(true).length === 0 ? this.renderSupportTicketsEmpty(true) : this.renderSupportTickets(true)}
-            {this.renderPagination(true)}
+            {!this.props.isLoading ?
+              <div>
+                {this.renderSupportTickets(true).length === 0 ? this.renderSupportTicketsEmpty(true) : this.renderSupportTickets(true)}
+                {this.renderPagination(true)}
+              </div>
+            :
+              <div>
+                <Paper className="pageContainer progressWrapper" style={{ marginTop: '0px', height: '300px' }}>
+                  <CircularProgress className="progressCircle" />
+                </Paper>
+              </div>
+            }
           </TabContainer>}
           {this.state.tabValue === 1 &&
           <TabContainer>
-            {this.renderSupportTickets(false).length === 0 ? this.renderSupportTicketsEmpty(false) : this.renderSupportTickets(false)}
-            {this.renderPagination(false)}
+            {!this.props.isLoading ?
+              <div>
+                {this.renderSupportTickets(false).length === 0 ? this.renderSupportTicketsEmpty(false) : this.renderSupportTickets(false)}
+                {this.renderPagination(false)}
+              </div>
+              :
+              <div>
+                <Paper className="pageContainer progressWrapper" style={{ marginTop: '0px', height: '300px' }}>
+                  <CircularProgress className="progressCircle" />
+                </Paper>
+              </div>
+            }
           </TabContainer>}
         </Paper>
       </div>
@@ -220,7 +241,9 @@ Support.defaultProps = {
 const mapStateToProps = state => ({
   myTickets: supportSelectors.getMyTickets(state),
   pagination: supportSelectors.getPagination(state),
-  isAdmin: supportSelectors.isAdmin(state)
+  isAdmin: supportSelectors.isAdmin(state),
+  isLoaded: supportSelectors.isLoaded(state),
+  isLoading: supportSelectors.isLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({

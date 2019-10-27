@@ -2,6 +2,7 @@ import types from './types';
 
 export const initialState = {
   isLoaded: false,
+  isLoading: false,
   myTickets: [],
   pagination: [],
   isAdmin: false
@@ -11,6 +12,10 @@ const supportReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_LOADED: {
       return { ...state, isLoaded: action.isLoaded };
+    }
+
+    case types.UPDATE_LOADING: {
+      return { ...state, isLoading: action.isLoading };
     }
 
     case types.UPDATE_ADMIN: {
