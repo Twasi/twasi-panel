@@ -8,6 +8,7 @@ import RequireAuth from '../../auth/RequireAuth';
 import Overview from '../Overview';
 import Plugins from '../Plugins';
 import Profile from '../Profile';
+import ThemeCreator from '../ThemeCreator';
 import Moderators from '../Moderators';
 import Urlshortener from '../Urlshortener';
 import Commands from '../Commands';
@@ -31,6 +32,7 @@ const PanelContent = () => (
         <Route path="/" exact component={Overview} />
         <Route path="/plugins" exact component={Plugins} />
         <Route path="/profile" exact component={Profile} />
+        <Route path="/themecreator" exact component={ThemeCreator} />
         <Route path="/mods" exact component={Moderators} />
         <Route path="/commands" exact component={Commands} />
         <Route path="/variables" exact component={Variables} />

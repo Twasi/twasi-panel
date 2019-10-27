@@ -1,0 +1,11 @@
+.hue-horizontal {
+  border-radius: 50px !important;
+}
+.hue-horizontal > div > div {
+  position:absolute;
+  top: -4px;
+  left: -5px;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50px !important;
+}

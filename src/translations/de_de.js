@@ -79,6 +79,7 @@ export default {
   'sidebar.userfeedback': 'User Feedback',
   'sidebar.navigation_headline': 'Navigation',
   'sidebar.user_manager': 'Nutzer Manager',
+  'sidebar.themecreator': 'Theme Creator',
 
   // User Manager
   'manager.title': 'Nutzer Manager',
