@@ -19,8 +19,8 @@ export const MyPicker = ({ hex, hsl, hsv, onChange }) => {
       float: 'left',
     },
     saturation: {
-      width: 168,
-      height: 168,
+      width: 130,
+      height: 130,
       position: "relative",
       float: 'left',
     },
@@ -38,7 +38,7 @@ export const MyPicker = ({ hex, hsl, hsv, onChange }) => {
   };
 
   return (
-    <div style={{ width: '168px', marginTop: '23px' }}>
+    <div style={{ width: '130px' }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <div style={styles.saturation}>

@@ -67,71 +67,63 @@ class ThemeCreator extends Component {
           </Typography>
         </Paper>
         <Grid container spacing={4}>
-          <Grid item xs={5}>
-            <ExpansionPanel style={{ marginTop: '23px' }}>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">
-                    Content Background
-                  </h4>
-                </Typography>
-                <br />
-              </ExpansionPanelSummary>
+          <Grid item xs={4}>
+            <Paper className="pageContainer">
+              <Typography component={'span'}>
+                <h4 className="pageContainerTitle">
+                  Content Background
+                </h4>
+              </Typography>
+              <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
                   <ColorPicker color={this.state.backgroundColor} onChange={this.handleChangeBackgroundColor}/>
                 </CardContent>
               </Card>
-            </ExpansionPanel>
-            <ExpansionPanel style={{ marginTop: '23px' }}>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">
-                    Panel Background
-                  </h4>
-                </Typography>
-                <br />
-              </ExpansionPanelSummary>
+            </Paper>
+            <Paper className="pageContainer">
+              <Typography component={'span'}>
+                <h4 className="pageContainerTitle">
+                  Panel Background
+                </h4>
+              </Typography>
+              <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
                   <ColorPicker color={this.state.contentColor} onChange={this.handleChangeContentColor}/>
                 </CardContent>
               </Card>
-            </ExpansionPanel>
-            <ExpansionPanel style={{ marginTop: '23px' }}>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">
-                    Special Content Background
-                  </h4>
-                </Typography>
-                <br />
-              </ExpansionPanelSummary>
+            </Paper>
+            <Paper className="pageContainer">
+              <Typography component={'span'}>
+                <h4 className="pageContainerTitle">
+                  Special Content Background
+                </h4>
+              </Typography>
+              <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
                   <ColorPicker color={this.state.specialContentColor} onChange={this.handleChangeSpecialContentColor}/>
                 </CardContent>
               </Card>
-            </ExpansionPanel>
-            <ExpansionPanel style={{ marginTop: '23px' }}>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography component={'span'}>
-                  <h4 className="pageContainerTitle">
-                    Primary and Secondary colors
-                  </h4>
-                </Typography>
-                <br />
-              </ExpansionPanelSummary>
+            </Paper>
+            <Paper className="pageContainer">
+              <Typography component={'span'}>
+                <h4 className="pageContainerTitle">
+                  Primary and Secondary colors
+                </h4>
+              </Typography>
+              <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
                   <ColorPicker color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
                   <ColorPicker style={{ float: 'left' }} color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
                 </CardContent>
               </Card>
-            </ExpansionPanel>
+            </Paper>
           </Grid>
-          <Grid item xs={7}>
-            <Paper className="pageContainer">
+          <Grid item xs={8}>
+            <Paper className="pageContainer" style={{ position: 'sticky', top: '23px' }}>
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
                   Preview

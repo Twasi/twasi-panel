@@ -73,7 +73,7 @@ class StatsList extends Component {
   render() {
     const { streamdata } = this.props;
     return (
-      <List dense style={{ padding: '0px' }}>
+      <List style={{ position: 'sticky', top: '23px', padding: '0px' }} dense>
         <Paper className="pageContainer" style={{ padding: '0px', margin: '23px 0px 0px 0px' }}>
           <ListItem style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <Row>

@@ -490,10 +490,8 @@ class Overview extends Component {
                 </Paper>
                 <Helpbuttons />
               </Col>
-              <Col sm={3}>
-                <div>
-                  <StatsList streamdata={streamtracker}/>
-                </div>
+              <Col style={{ overflow: 'unset' }} sm={3}>
+                <StatsList streamdata={streamtracker}/>
               </Col>
             </Row>
           </div>
