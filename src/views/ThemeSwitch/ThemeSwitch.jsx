@@ -15,6 +15,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
@@ -132,7 +133,11 @@ class ThemeSwitch extends React.Component {
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">
               <List>
-                <ListItem style={{ paddingTop: '0px' }}>
+                <ListItem style={{ paddingTop: '0px', paddingBottom: '23px' }}>
+                  <Button fullWidth color="primary" variant="contained">Eigenes Theme erstellen</Button>
+                </ListItem>
+                <Divider />
+                <ListItem style={{ paddingTop: '23px' }}>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -144,7 +149,7 @@ class ThemeSwitch extends React.Component {
                     label={<FormattedMessage id="themeswitch.banner_as_header" />}
                   />
                 </ListItem>
-                <ListItem style={{ paddingTop: '0px' }}>
+                <ListItem style={{ paddingTop: '0px', paddingBottom: '23px' }}>
                   <FormControlLabel
                     control={
                       <Checkbox
