@@ -132,7 +132,7 @@ class ThemeCreator extends Component {
                   This is how the theme will look like.
                 </small>
               </Typography>
-              <div style={{ position: 'relative', height: 'auto', width: '100%', padding: '25px', marginTop: '25px' }}>
+              <div style={{ position: 'relative', height: 'auto', width: '100%', padding: '50px', marginTop: '25px' }}>
                 <Checkboard size={ 8 } white="#fff" grey="#cccccc" />
                 <div style={{ position: 'inherit' }}>
                   <div style={{ backgroundColor: this.state.backgroundColor, padding: '25px' }}>
