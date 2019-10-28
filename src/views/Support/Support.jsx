@@ -38,6 +38,7 @@ class Support extends Component {
     this.state = {
       modalOpen: false,
       tabValue: 0,
+      page: 1,
       selectedTicket: window.location.hash.substr(1)
     };
   }
@@ -87,11 +88,14 @@ class Support extends Component {
       <Paper style={{ textAlign: 'center' }} className="pageContainer">
       {_.times(pagination.pages, i =>
         <Fab
-          onClick={() => {loadMyTickets(i+1, open)}}
+          onClick={() => {
+            loadMyTickets(i+1, open)
+            this.setState({ page: i+1});
+          }}
           style={{ marginLeft: '5px', marginRight: '5px' }}
           size="small"
-          disabled={i+1 === pagination.page}
-          color={i+1 === pagination.page ? "default" : "primary"}
+          disabled={i+1 === this.state.page}
+          color={i+1 === this.state.page ? "default" : "primary"}
         >
         {i+1}
         </Fab>
@@ -182,6 +186,7 @@ class Support extends Component {
         <Tabs
           style={{ marginTop: '23px', borderRadius: '3px 3px 0px 0px' }}
           value={this.state.tabValue}
+
           onChange={this.handleTabChange}
           indicatorColor="primary"
           textColor="primary"

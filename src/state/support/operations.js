@@ -26,7 +26,7 @@ const loadMyTickets = (page, open) => (dispatch, getState) => {
 
   dispatch(updateAdmin(isAdmin));
 
-  dispatch(getGraph(`support{${subObject}(page: ${JSON.stringify(page)}){content{... on SupportTicket{${ticketQuery}},itemsPerPage,total,page,pages}}`)).then(
+  dispatch(getGraph(`support{${subObject}{content(page: ${page}){${ticketQuery},itemsPerPage,total,pages}}`)).then(
     data => {
       dispatch(updateMyTickets(data.support[subObject].content));
       dispatch(updatePagination(data.support[subObject]));
