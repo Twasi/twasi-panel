@@ -17,14 +17,8 @@ import LogoPNG from '../common/resources/text_logo_twasi.png';
 import './_style.css';
 
 class Branding extends Component {
-  handleClickBreadCrumb = (event, value) => {
-    const { history } = this.props;
-    history.push(value);
-    this.setState({});
-  }
   handleClick = (event, value) => {
     const { history } = this.props;
-
     history.push(value);
     this.setState({});
   }

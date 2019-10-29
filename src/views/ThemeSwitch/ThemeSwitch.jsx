@@ -117,6 +117,7 @@ class ThemeSwitch extends React.Component {
     const { classes, onClose, selectedValue, selectedBannerAsHeaderValue, selectedComicSansValue, updateTheme, updateBannerAsHeader, updateComicSans, ...other } = this.props;
     return (
       <Dialog
+        scroll='body'
         onClose={this.handleClose}
         {...other}
       >
@@ -146,7 +147,7 @@ class ThemeSwitch extends React.Component {
                         checked={selectedBannerAsHeaderValue}
                       />
                     }
-                    label={<FormattedMessage id="themeswitch.banner_as_header" />}
+                    label={<small><FormattedMessage id="themeswitch.banner_as_header" /></small>}
                   />
                 </ListItem>
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '23px' }}>
@@ -158,7 +159,7 @@ class ThemeSwitch extends React.Component {
                         checked={selectedComicSansValue}
                       />
                     }
-                    label={<FormattedMessage id="themeswitch.comicsans" />}
+                    label={<small><FormattedMessage id="themeswitch.comicsans" /></small>}
                   />
                 </ListItem>
                 <Divider />
@@ -193,6 +194,10 @@ class ThemeSwitch extends React.Component {
                     </Tooltip>
                   </ListItem>
                 ))}
+                <br />
+                <ListItem style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+                  <Button fullWidth color="primary" variant="contained">Alle Themes ansehen</Button>
+                </ListItem>
               </List>
             </CardContent>
           </Card>

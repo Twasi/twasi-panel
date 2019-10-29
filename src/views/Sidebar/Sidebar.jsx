@@ -51,13 +51,6 @@ class Sidebar extends Component {
         shown: 'all'
       },
       {
-        key: 'themecreator',
-        path: '/themecreator',
-        icon: 'color_lens',
-        name: 'sidebar.themecreator',
-        shown: 'all'
-      },
-      {
         key: 'mods',
         path: '/mods',
         icon: 'people',

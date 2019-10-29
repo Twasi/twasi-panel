@@ -152,11 +152,11 @@ class Support extends Component {
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
-          <Link style={{ color: '#d0d0d0' }} to="/" onClick={event => this.handleClickBreadCrumb(event, '/')}>
+          <Link to="/" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           {this.state.selectedTicket === '' && <Typography color="textPrimary"><FormattedMessage id="sidebar.support" /></Typography>}
-          {this.state.selectedTicket !== '' && <Typography color="textPrimary"><Link style={{ color: '#d0d0d0' }} to="/support" onClick={() => this.setState({ selectedTicket: '' })}><FormattedMessage id="sidebar.support" /></Link></Typography>}
+          {this.state.selectedTicket !== '' && <Typography color="textPrimary"><Link to="/support" onClick={() => this.setState({ selectedTicket: '' })}><FormattedMessage id="sidebar.support" /></Link></Typography>}
           {this.state.selectedTicket !== '' && <Typography color="textPrimary">Ticket #{this.state.selectedTicket}</Typography>}
         </Breadcrumbs>
         <Paper className="pageContainer">
@@ -164,7 +164,7 @@ class Support extends Component {
             <h4 className="pageContainerTitle">
               <FormattedMessage id="support.headline" />
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={() => {this.state.tabValue === 0 ? this.props.loadMyTickets(1, true) : this.props.loadMyTickets(1, false)}}>
+                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={() => {this.state.tabValue === 0 ? this.props.loadMyTickets(this.state.page, true) : this.props.loadMyTickets(1, false)}}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>

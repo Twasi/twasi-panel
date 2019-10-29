@@ -207,7 +207,7 @@ class Plugins extends Component {
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="plugins.card_headline" />
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={() => {this.props.updatePlugins(1)}}>
+                    <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={() => {this.props.updatePlugins(this.state.page)}}>
                       <Icon style={{ marginRight: '5px' }}>cached</Icon>
                       <FormattedMessage id="common.refresh" />
                     </Button>

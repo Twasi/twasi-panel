@@ -10,14 +10,8 @@ import { FormattedMessage } from 'react-intl';
 import { authSelectors } from '../../../state/auth';
 
 class TOS extends Component {
-  handleClickBreadCrumb = (event, value) => {
-    const { history } = this.props;
-    history.push(value);
-    this.setState({});
-  }
   handleClick = (event, value) => {
     const { history } = this.props;
-
     history.push(value);
     this.setState({});
   }
