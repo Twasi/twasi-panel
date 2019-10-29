@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -14,6 +15,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Icon from '@material-ui/core/Icon';
+import Fab from '@material-ui/core/Fab';
 import Divider from '@material-ui/core/Divider';
 import './_style.css';
 
@@ -23,15 +25,17 @@ import StickerDesign from '../common/resources/sticker_design.png';
 
 class Plugins extends Component {
   componentDidMount() {
-    const { verifyData } = this.props;
+    const { verifyData, updatePlugins } = this.props;
     verifyData();
+    updatePlugins(1);
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      open: false
+      open: false,
+      page: 1
     };
   }
 
@@ -45,10 +49,32 @@ class Plugins extends Component {
     this.setState({ modalOpen: false });
   }
 
+  renderPagination() {
+    const { pagination, updatePlugins } = this.props;
+    return (
+      <Paper style={{ textAlign: 'center' }} className="pageContainer">
+      {_.times(pagination.pages, i =>
+        <Fab
+          onClick={() => {
+            updatePlugins(i+1)
+            this.setState({ page: i+1});
+          }}
+          style={{ marginLeft: '5px', marginRight: '5px' }}
+          size="small"
+          disabled={i+1 === this.state.page}
+          color={i+1 === this.state.page ? "default" : "primary"}
+        >
+        {i+1}
+        </Fab>
+      )}
+      </Paper>
+    );
+  }
+
   render() {
     const { plugins, installPlugin, uninstallPlugin, updatePlugins, isActionSuccess } = this.props;
     if (isActionSuccess) {
-      updatePlugins()
+      updatePlugins(1)
     }
     const renderedPluginsNew = plugins.map(plugin => (
       <Grid item key={plugin.name} sm={6} md={4}>
@@ -181,7 +207,7 @@ class Plugins extends Component {
                 <h4 className="pageContainerTitle">
                   <FormattedMessage id="plugins.card_headline" />
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={() => {this.props.updatePlugins()}}>
+                    <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={() => {this.props.updatePlugins(1)}}>
                       <Icon style={{ marginRight: '5px' }}>cached</Icon>
                       <FormattedMessage id="common.refresh" />
                     </Button>
@@ -196,21 +222,16 @@ class Plugins extends Component {
           <Grid container spacing={3} style={{ marginTop: '23px' }} className="anim">
             {renderedPluginsNew}
           </Grid>
+          {this.props.pagination.pages !== 1 && this.renderPagination()}
         </Paper>
       </div>
     );
   }
 }
 
-Plugins.propTypes = {
-  plugins: PropTypes.arrayOf(PropTypes.shape({})),
-  verifyData: PropTypes.func.isRequired,
-  installPlugin: PropTypes.func.isRequired,
-  uninstallPlugin: PropTypes.func.isRequired
-};
-
 const mapStateToProps = state => ({
   plugins: pluginsSelectors.getPlugins(state),
+  pagination: pluginsSelectors.getPagination(state),
   isLoading: pluginsSelectors.isLoading(state),
   isActionSuccess: pluginsSelectors.isActionSuccess(state)
 });
@@ -220,7 +241,7 @@ const mapDispatchToProps = dispatch => ({
   installPlugin: name => dispatch(pluginsOperations.installPlugin(name)),
   uninstallPlugin: name => dispatch(pluginsOperations.uninstallPlugin(name)),
   updateQuery: query => dispatch(pluginsOperations.updateQuery(query)),
-  updatePlugins: () => dispatch(pluginsOperations.loadData())
+  updatePlugins: page => dispatch(pluginsOperations.loadData(page))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plugins);
