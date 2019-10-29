@@ -5,6 +5,11 @@ const updateCommands = commands => ({
   commands
 });
 
+const updatePagination = pagination => ({
+  type: types.UPDATE_PAGINATION,
+  pagination
+});
+
 const updatePluginCommands = pluginCommands => ({
   type: types.UPDATE_PLUGINCOMMANDS,
   pluginCommands
@@ -64,6 +69,7 @@ const updateActionSuccess = isActionSuccess => ({
 export default {
   updateAccessLevels,
   updateCommands,
+  updatePagination,
   updatePluginCommands,
   updateSingleCommand,
   updateAddCommand,

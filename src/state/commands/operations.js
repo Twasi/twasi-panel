@@ -6,6 +6,7 @@ import {getGraph} from '../../services/graphqlService';
 const {
     updateAccessLevels,
     updateCommands,
+    updatePagination,
     updatePluginCommands,
     updateSingleCommand,
     updateAddCommand,
@@ -23,14 +24,15 @@ const loadAccessLevels = () => dispatch => {
     })
 };
 
-const loadCommands = () => dispatch => {
+const loadCommands = page => dispatch => {
     dispatch(updateLoading(true));
-    dispatch(getGraph('commands{id,name,content,uses,cooldown,accessLevel{name,value}}', 'commands')).then(data => {
+    dispatch(getGraph(`commands{content(page: ${page}){id,name,content,uses,cooldown,accessLevel{name,value}},itemsPerPage,total,pages}`, 'commands')).then(data => {
         if (data == null) {
             dispatch(updateDisabled(true));
             return;
         }
-        dispatch(updateCommands(data.commands));
+        dispatch(updateCommands(data.commands.content));
+        dispatch(updatePagination(data.commands));
     }).finally(() => {
         dispatch(updateLoading(false))
         dispatch(updateLoaded(true))
@@ -116,5 +118,6 @@ export default {
     verifyData,
     updateLoaded,
     updateLoading,
+    updatePagination,
     updateActionSuccess
 };

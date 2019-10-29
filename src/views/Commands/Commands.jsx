@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import Paper from '@material-ui/core/Paper';
 import { FormattedMessage } from 'react-intl';
 import Fab from '@material-ui/core/Fab';
@@ -56,13 +57,14 @@ class Commands extends Component {
       openNotification: false,
       notification: '',
       editDialogContent: '',
-      value: 0
+      value: 0,
+      page: 1
     };
   }
 
   componentDidMount() {
     const { updateCommands, updatePluginCommands } = this.props;
-    updateCommands();
+    updateCommands(this.state.page);
     updatePluginCommands();
   }
 
@@ -141,6 +143,28 @@ class Commands extends Component {
             <FormattedMessage id="commands.new_command" />
           </Button>
         </Typography>
+      </Paper>
+    );
+  }
+
+  renderPagination() {
+    const { pagination, updateCommands } = this.props;
+    return (
+      <Paper style={{ textAlign: 'center' }} className="pageContainer">
+      {_.times(pagination.pages, i =>
+        <Fab
+          onClick={() => {
+            updateCommands(i+1)
+            this.setState({ page: i+1});
+          }}
+          style={{ marginLeft: '5px', marginRight: '5px' }}
+          size="small"
+          disabled={i+1 === this.state.page}
+          color={i+1 === this.state.page ? "default" : "primary"}
+        >
+        {i+1}
+        </Fab>
+      )}
       </Paper>
     );
   }
@@ -233,7 +257,7 @@ class Commands extends Component {
     const { disabled } = this.props;
     const { value } = this.state;
     if (this.props.isActionSuccess) {
-      this.props.updateCommands()
+      this.props.updateCommands(this.state.page)
     }
     return (
       <div className="pageContent">
@@ -292,7 +316,7 @@ class Commands extends Component {
                 </TableRow>
               </TableHead>
               <TableBody className="anim">
-                {this.renderCommands()}
+                {this.renderCommands(this.state.page)}
               </TableBody>
             </Table>
             {this.state.openAddCommandDialog &&
@@ -318,9 +342,10 @@ class Commands extends Component {
               onClose={this.handleCloseNotification}
               message={this.state.notification}
             />
+            {this.props.pagination.pages !== 1 && this.renderPagination()}
           </Paper>
           }{disabled && <NotInstalledAlert />}
-          {this.renderCommands().length === 0 && !this.props.isLoading && this.renderCommandsEmpty()}
+          {this.renderCommands(this.state.page).length === 0 && !this.props.isLoading && this.renderCommandsEmpty()}
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
@@ -372,6 +397,7 @@ Commands.propTypes = {
 
 const mapStateToProps = state => ({
   commands: commandsSelectors.getCommands(state),
+  pagination: commandsSelectors.getPagination(state),
   pluginCommands: commandsSelectors.getPluginCommands(state),
   isLoaded: commandsSelectors.isLoaded(state),
   isLoading: commandsSelectors.isLoading(state),
@@ -380,7 +406,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateCommands: () => dispatch(commandsOperations.loadCommands()),
+  updateCommands: page => dispatch(commandsOperations.loadCommands(page)),
   updatePluginCommands: () => dispatch(commandsOperations.loadPluginCommands()),
   delCommand: (id) => dispatch(commandsOperations.delCommand(id))
 });

@@ -11,6 +11,7 @@ export const initialState = {
   id: '',
   cooldown: 0,
   uses: 0,
+  pagination: [],
   isDisabled: false,
   isLoading: true
 };
@@ -19,6 +20,9 @@ const commandsReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_COMMANDS: {
       return { ...state, isLoaded: true, isDisabled: false, commands: action.commands };
+    }
+    case types.UPDATE_PAGINATION: {
+      return { ...state, pagination: action.pagination };
     }
     case types.UPDATE_PLUGINCOMMANDS: {
       return { ...state, isLoaded: true, isDisabled: false, pluginCommands: action.pluginCommands };
