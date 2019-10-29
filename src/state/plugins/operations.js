@@ -6,6 +6,7 @@ import { getGraph } from '../../services/graphqlService';
 const {
   updateLoaded,
   updatePlugins,
+  updateAllPlugins,
   updatePagination,
   setInstalled,
   updateLoading,
@@ -25,6 +26,16 @@ const loadData = (page) => dispatch => {
     dispatch(updatePagination(data.availablePlugins));
     dispatch(updateLoading(false));
     dispatch(updateLoaded(true));
+  });
+};
+
+const loadAllData = () => dispatch => {
+  dispatch(getGraph(`installedPlugins{isInstalled,name,author,version,description,commands,permissions,id,installations,banner}`)).then(data => {
+    dispatch(
+      updateAllPlugins(
+        data.installedPlugins.map(p => ({ ...p, actionInProgress: false }))
+      )
+    );
   });
 };
 
@@ -94,8 +105,10 @@ const updateQuery = () => {};
 export default {
   verifyData,
   loadData,
+  loadAllData,
   updateLoaded,
   updatePlugins,
+  updateAllPlugins,
   updatePagination,
   installPlugin,
   uninstallPlugin,

@@ -287,7 +287,7 @@ class Commands extends Component {
               <h4 className="pageContainerTitle">
                 <FormattedMessage id="commands.title" />
                 <span style={{ float: 'right' }}>
-                  <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={this.props.updateCommands}>
+                  <Button variant="contained" color="primary" style={{ marginRight: 16 }} onClick={() => {this.props.updateCommands(this.state.page)}}>
                     <Icon style={{ marginRight: '5px' }}>cached</Icon>
                     <FormattedMessage id="common.refresh" />
                   </Button>

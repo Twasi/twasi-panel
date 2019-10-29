@@ -5,6 +5,7 @@ export const initialState = {
   isLoading: true,
   isActionSuccess: false,
   plugins: [],
+  allplugins: [],
   pagination: [],
   filter: {
     query: ''
@@ -25,6 +26,13 @@ const pluginsReducer = (state = initialState, action) => {
       return {
         ...state,
         plugins: action.plugins
+      };
+    }
+
+    case types.UPDATE_ALLPLUGINS: {
+      return {
+        ...state,
+        allplugins: action.allplugins
       };
     }
 

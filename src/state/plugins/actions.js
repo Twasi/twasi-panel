@@ -10,6 +10,11 @@ const updatePlugins = plugins => ({
   plugins
 });
 
+const updateAllPlugins = allplugins => ({
+  type: types.UPDATE_ALLPLUGINS,
+  allplugins
+});
+
 const updatePagination = pagination => ({
   type: types.UPDATE_PAGINATION,
   pagination
@@ -46,6 +51,7 @@ export default {
   updateLoaded,
   updateLoading,
   updatePlugins,
+  updateAllPlugins,
   updatePagination,
   setInstalled,
   updateQuery,

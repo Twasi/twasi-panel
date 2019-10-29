@@ -24,8 +24,9 @@ import './_style.css';
 class Sidebar extends Component {
 
   componentDidMount() {
-    const { verifyData } = this.props;
+    const { verifyData, updateAllPlugins } = this.props;
     verifyData();
+    updateAllPlugins();
   }
 
   constructor(props) {
@@ -166,7 +167,7 @@ class Sidebar extends Component {
   render() {
     const { checked } = this.state;
     const { location, intl, plugins } = this.props;
-
+    console.log(plugins)
     let selectedKey = find(item => item.path === location.pathname, this.items);
     if (typeof selectedKey === 'undefined') {
       selectedKey = this.items[0].key;
@@ -281,12 +282,13 @@ Sidebar.propTypes = {
 
 const mapStateToProps = state => ({
   userName: authSelectors.getUser(state).name,
-  plugins: pluginsSelectors.getPlugins(state),
+  plugins: pluginsSelectors.getAllPlugins(state),
   rank: authSelectors.getUser(state).rank
 });
 
 const mapDispatchToProps = dispatch => ({
   verifyData: () => dispatch(pluginsOperations.verifyData()),
+  updateAllPlugins: () => dispatch(pluginsOperations.loadAllData())
 });
 
 export default injectIntl(withRouter(connect(mapStateToProps, mapDispatchToProps)(Sidebar)));
