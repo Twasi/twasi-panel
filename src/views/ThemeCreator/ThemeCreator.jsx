@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -10,9 +12,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { Checkboard } from "react-color/lib/components/common";
 
 import ColorPicker from './ColorPicker'
@@ -53,9 +53,21 @@ class ThemeCreator extends Component {
     this.setState({ secondaryColor: color.hex });
   }
 
+  handleClickBreadCrumb = (event, value) => {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
+  }
+
   render() {
     return (
       <div className="pageContent">
+        <Breadcrumbs arial-label="Breadcrumb">
+          <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
+            <FormattedMessage id="sidebar.overview" />
+          </Link>
+          <Typography color="textPrimary"><FormattedMessage id="sidebar.themecreator" /></Typography>
+        </Breadcrumbs>
         <Paper className="pageContainer">
           <Typography component={'span'}>
             <h4 className="pageContainerTitle">
