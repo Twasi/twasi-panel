@@ -82,14 +82,13 @@ const themes = [{
   primaryColor: '#00aeae',
   secondaryColor: '#e53935',
   }, {
-  name: 'Halloween (Release 31.10.2019)',
+  name: 'Halloween',
   key: 'halloween',
   backgroundColor: '#051016',
   paperColor: '#071d29',
   cardColor: '#0d2431',
   primaryColor: '#fe8000',
   secondaryColor: '#c34444',
-  disabled: true
 }];
 
 class ThemeSwitch extends React.Component {
@@ -134,11 +133,14 @@ class ThemeSwitch extends React.Component {
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">
               <List>
+                {/*
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '23px' }}>
-                  <Button fullWidth color="primary" variant="contained">Eigenes Theme erstellen</Button>
+                  <Button fullWidth color="primary" variant="contained" disabled>Eigenes Theme erstellen</Button>
                 </ListItem>
                 <Divider />
                 <ListItem style={{ paddingTop: '23px' }}>
+                */}
+                <ListItem>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -194,10 +196,12 @@ class ThemeSwitch extends React.Component {
                     </Tooltip>
                   </ListItem>
                 ))}
+                {/*
                 <br />
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                  <Button fullWidth color="primary" variant="contained">Alle Themes ansehen</Button>
+                  <Button fullWidth color="primary" variant="contained" disabled>Alle Themes ansehen</Button>
                 </ListItem>
+                */}
               </List>
             </CardContent>
           </Card>
