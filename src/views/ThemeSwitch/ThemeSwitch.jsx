@@ -133,14 +133,11 @@ class ThemeSwitch extends React.Component {
           <Card className="pluginCard">
             <CardContent className="pluginCardContent">
               <List>
-                {/*
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '23px' }}>
                   <Button fullWidth color="primary" variant="contained" disabled>Eigenes Theme erstellen</Button>
                 </ListItem>
                 <Divider />
                 <ListItem style={{ paddingTop: '23px' }}>
-                */}
-                <ListItem>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -196,12 +193,10 @@ class ThemeSwitch extends React.Component {
                     </Tooltip>
                   </ListItem>
                 ))}
-                {/*
                 <br />
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '0px' }}>
                   <Button fullWidth color="primary" variant="contained" disabled>Alle Themes ansehen</Button>
                 </ListItem>
-                */}
               </List>
             </CardContent>
           </Card>

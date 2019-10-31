@@ -13,6 +13,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Divider from '@material-ui/core/Divider';
 import { Checkboard } from "react-color/lib/components/common";
 
 import ColorPicker from './ColorPicker'
@@ -38,19 +39,20 @@ class ThemeCreator extends Component {
   }
 
   handleChangeBackgroundColor = (color) => {
-    this.setState({ backgroundColor: color.hex });
+    console.log(color)
+    this.setState({ backgroundColor: color });
   }
   handleChangeContentColor = (color) => {
-    this.setState({ contentColor: color.hex });
+    this.setState({ contentColor: color });
   }
   handleChangeSpecialContentColor = (color) => {
-    this.setState({ specialContentColor: color.hex });
+    this.setState({ specialContentColor: color });
   }
   handleChangePrimaryColor = (color) => {
-    this.setState({ primaryColor: color.hex });
+    this.setState({ primaryColor: color });
   }
   handleChangeSecondaryColor = (color) => {
-    this.setState({ secondaryColor: color.hex });
+    this.setState({ secondaryColor: color });
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -60,6 +62,7 @@ class ThemeCreator extends Component {
   }
 
   render() {
+    console.log(this.state.backgroundColor)
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -88,8 +91,8 @@ class ThemeCreator extends Component {
               </Typography>
               <br />
               <Card className="pluginCard">
-                <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
-                  <ColorPicker color={this.state.backgroundColor} onChange={this.handleChangeBackgroundColor}/>
+                <CardContent style={{ padding: '24px' }}>
+                  <ColorPicker label="Background color" color={this.state.backgroundColor} onChange={this.handleChangeBackgroundColor}/>
                 </CardContent>
               </Card>
             </Paper>
@@ -101,8 +104,8 @@ class ThemeCreator extends Component {
               </Typography>
               <br />
               <Card className="pluginCard">
-                <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
-                  <ColorPicker color={this.state.contentColor} onChange={this.handleChangeContentColor}/>
+                <CardContent style={{ padding: '24px' }}>
+                  <ColorPicker label="Background color" color={this.state.contentColor} onChange={this.handleChangeContentColor}/>
                 </CardContent>
               </Card>
             </Paper>
@@ -114,8 +117,8 @@ class ThemeCreator extends Component {
               </Typography>
               <br />
               <Card className="pluginCard">
-                <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
-                  <ColorPicker color={this.state.specialContentColor} onChange={this.handleChangeSpecialContentColor}/>
+                <CardContent style={{ padding: '24px' }}>
+                  <ColorPicker label="Background color" color={this.state.specialContentColor} onChange={this.handleChangeSpecialContentColor}/>
                 </CardContent>
               </Card>
             </Paper>
@@ -127,9 +130,10 @@ class ThemeCreator extends Component {
               </Typography>
               <br />
               <Card className="pluginCard">
-                <CardContent style={{ padding: '24px', borderRadius: '0px 0px 16px 16px' }}>
-                  <ColorPicker color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
-                  <ColorPicker style={{ float: 'left' }} color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
+                <CardContent style={{ padding: '24px' }}>
+                  <ColorPicker label="Primary color" color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
+                  <Divider className="marginDivider" />
+                  <ColorPicker label="Secondary color" color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
                 </CardContent>
               </Card>
             </Paper>
@@ -147,7 +151,7 @@ class ThemeCreator extends Component {
               <div style={{ position: 'relative', height: 'auto', width: '100%', padding: '50px', marginTop: '25px' }}>
                 <Checkboard size={ 8 } white="#fff" grey="#cccccc" />
                 <div style={{ position: 'inherit' }}>
-                  <div style={{ backgroundColor: this.state.backgroundColor, padding: '25px' }}>
+                  <div style={{ background: this.state.backgroundColor, padding: '25px' }}>
                     <Typography component={'span'}>
                       <h4 className="pageContainerTitle">
                         Content background
@@ -165,7 +169,7 @@ class ThemeCreator extends Component {
                           Panels look like this.
                         </small>
                       </Typography>
-                      <Card style={{ marginTop: '25px', backgroundColor: this.state.specialContentColor }} className="pluginCard">
+                      <Card style={{ marginTop: '25px', background: this.state.specialContentColor }} className="pluginCard">
                         <CardContent style={{ backgroundColor: this.state.specialContentColor }} className="pluginCardContent">
                           <Typography component={'span'}>
                             <h4 className="pageContainerTitle">

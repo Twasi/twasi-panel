@@ -1,68 +1,81 @@
-import React from "react";
-import Grid from '@material-ui/core/Grid';
+import React from 'react'
+import reactCSS from 'reactcss'
+import { SketchPicker } from 'react-color'
 import { CustomPicker } from "react-color";
-import {
-  EditableInput,
-  Hue,
-  Saturation
-} from "react-color/lib/components/common";
+import Typography from '@material-ui/core/Typography';
 
-import './_style.css';
+class SketchExample extends React.Component {
 
-export const MyPicker = ({ hex, hsl, hsv, onChange }) => {
+  componentDidMount() {
+    const { color, label } = this.props;
+    this.setState({ color: color, label: label })
+  }
 
-  const styles = {
-    hue: {
-      height: 10,
-      width: '100%',
-      position: "relative",
-      float: 'left',
-    },
-    saturation: {
-      width: 130,
-      height: 130,
-      position: "relative",
-      float: 'left',
-    },
-    input: {
-      height: 30,
-      width: '100px',
-      border: `3px solid ${hex}`,
-      paddingLeft: 10
-    },
-    swatch: {
-      width: '68px',
-      height: 30,
-      background: hex
-    }
+  state = {
+    displayColorPicker: false,
+    color: '',
+    label: '',
   };
 
-  return (
-    <div style={{ width: '130px' }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <div style={styles.saturation}>
-            <Saturation hsl={hsl} hsv={hsv} onChange={onChange} />
-          </div>
-        </Grid>
-        <Grid item xs={12}>
-          <div style={styles.hue}>
-            <Hue hsl={hsl} onChange={onChange} direction={'horizontal'} />
-          </div>
-        </Grid>
-        <Grid item xs={12}>
-          <div style={{ display: "flex" }}>
-            <EditableInput
-              style={{ input: styles.input }}
-              value={hex}
-              onChange={onChange}
-            />
-            <div style={styles.swatch} />
-          </div>
-        </Grid>
-      </Grid>
-    </div>
-  );
-};
+  handleClick = () => {
+    this.setState({ displayColorPicker: !this.state.displayColorPicker })
+  };
 
-export default CustomPicker(MyPicker);
+  handleClose = () => {
+    this.setState({ displayColorPicker: false })
+  };
+
+  handleChange = (color) => {
+    this.setState({ color: color.hex })
+  };
+
+  render() {
+    const styles = reactCSS({
+      'default': {
+        color: {
+          width: '100px',
+          height: '23px',
+          borderRadius: '2px',
+          float: 'left',
+          background: this.state.color,
+        },
+        swatch: {
+          padding: '3px',
+          background: '#fff',
+          borderRadius: '1px',
+          boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
+          display: 'inline-block',
+          cursor: 'pointer',
+        },
+        popover: {
+          position: 'absolute',
+          zIndex: '2',
+        },
+        cover: {
+          position: 'fixed',
+          top: '0px',
+          right: '0px',
+          bottom: '0px',
+          left: '0px',
+        },
+      },
+    });
+
+    return (
+      <div>
+        <Typography style={{ marginBottom: '10px' }}>
+          {this.state.label}
+        </Typography>
+        <div style={ styles.swatch } onClick={ this.handleClick }>
+          <div style={ styles.color } />
+        </div>
+        { this.state.displayColorPicker ? <div style={ styles.popover }>
+          <div style={ styles.cover } onClick={ this.handleClose }/>
+          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+        </div> : null }
+      </div>
+    )
+  }
+}
+
+export default CustomPicker(SketchExample)

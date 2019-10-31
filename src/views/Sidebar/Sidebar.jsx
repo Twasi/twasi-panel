@@ -157,9 +157,7 @@ class Sidebar extends Component {
 
   handleClick = (event, value) => {
     const { history } = this.props;
-
     const { path } = find(newItem => newItem.key === value, this.items);
-
     history.push(path);
     this.setState({});
   }
@@ -167,7 +165,6 @@ class Sidebar extends Component {
   render() {
     const { checked } = this.state;
     const { location, intl, plugins } = this.props;
-    console.log(plugins)
     let selectedKey = find(item => item.path === location.pathname, this.items);
     if (typeof selectedKey === 'undefined') {
       selectedKey = this.items[0].key;
