@@ -27,6 +27,7 @@ class ThemeCreator extends Component {
     this.state = {
       backgroundColor: '#1a2035',
       borderRadius: 0,
+      buttonRadius: 100,
       contentColor: '#202940',
       customHeader: null,
       font: null,
@@ -38,6 +39,11 @@ class ThemeCreator extends Component {
       specialContentColor: '#232f4a'
     };
   }
+
+  handleButtonRadius = (event, buttonRadius) => {
+    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ buttonRadius });
+  };
 
   handleChangeBackgroundColor = (color) => {
     console.log(color)
@@ -63,7 +69,6 @@ class ThemeCreator extends Component {
   }
 
   render() {
-    console.log(this.state.backgroundColor)
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -123,7 +128,7 @@ class ThemeCreator extends Component {
                     valueLabelDisplay="auto"
                     step={1}
                     min={0}
-                    max={100}
+                    max={50}
                   />
                 </CardContent>
               </Card>
@@ -148,7 +153,7 @@ class ThemeCreator extends Component {
                     valueLabelDisplay="auto"
                     step={1}
                     min={0}
-                    max={100}
+                    max={50}
                   />
                 </CardContent>
               </Card>
@@ -171,9 +176,11 @@ class ThemeCreator extends Component {
                     defaultValue={0}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
+                    value={this.state.buttonRadius}
+                    onChange={this.handleButtonRadius}
                     step={1}
                     min={0}
-                    max={100}
+                    max={50}
                   />
                 </CardContent>
               </Card>
@@ -244,12 +251,12 @@ class ThemeCreator extends Component {
                       <br />
                       <Grid container spacing={4}>
                         <Grid item xs={6} style={{ textAlign: 'center' }}>
-                          <Button variant="contained" color="primary" style={{ background: this.state.primaryColor }}>
+                          <Button variant="contained" color="primary" style={{ background: this.state.primaryColor, borderRadius: this.state.buttonRadius+"px" }}>
                             Primary color button
                           </Button>
                         </Grid>
                         <Grid item xs={6} style={{ textAlign: 'center' }}>
-                          <Button variant="contained" color="secondary" style={{ background: this.state.secondaryColor }}>
+                          <Button variant="contained" color="secondary" style={{ background: this.state.secondaryColor, borderRadius: this.state.buttonRadius+"px" }}>
                             Secondary color button
                           </Button>
                         </Grid>
