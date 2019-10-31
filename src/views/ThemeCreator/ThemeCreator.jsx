@@ -14,6 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Divider from '@material-ui/core/Divider';
+import Slider from '@material-ui/core/Slider';
 import { Checkboard } from "react-color/lib/components/common";
 
 import ColorPicker from './ColorPicker'
@@ -86,54 +87,94 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Content Background
+                  Content
                 </h4>
               </Typography>
               <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Background color" color={this.state.backgroundColor} onChange={this.handleChangeBackgroundColor}/>
+                  <Divider className="marginDivider" />
+                  <ColorPicker label="Font color" color={this.state.fontColor}/>
+                  <Divider className="marginDivider" />
+                  <ColorPicker label="Primary color" color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
+                  <Divider className="marginDivider" />
+                  <ColorPicker label="Secondary color" color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
                 </CardContent>
               </Card>
             </Paper>
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Panel Background
+                  Panels
                 </h4>
               </Typography>
               <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Background color" color={this.state.contentColor} onChange={this.handleChangeContentColor}/>
+                  <Divider className="marginDivider" />
+                  <Typography>
+                    <small>Border Radius</small>
+                  </Typography>
+                  <Slider
+                    defaultValue={0}
+                    aria-labelledby="discrete-slider"
+                    valueLabelDisplay="auto"
+                    step={1}
+                    min={0}
+                    max={100}
+                  />
                 </CardContent>
               </Card>
             </Paper>
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Special Content Background
+                  Special Contents
                 </h4>
               </Typography>
               <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Background color" color={this.state.specialContentColor} onChange={this.handleChangeSpecialContentColor}/>
+                  <Divider className="marginDivider" />
+                  <Typography>
+                    <small>Border Radius</small>
+                  </Typography>
+                  <Slider
+                    defaultValue={0}
+                    aria-labelledby="discrete-slider"
+                    valueLabelDisplay="auto"
+                    step={1}
+                    min={0}
+                    max={100}
+                  />
                 </CardContent>
               </Card>
             </Paper>
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Primary and Secondary colors
+                  Buttons
                 </h4>
               </Typography>
               <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <ColorPicker label="Primary color" color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
+                  <ColorPicker label="Font color" color={this.state.fontColor} onChange={this.handleChangeSpecialContentColor}/>
                   <Divider className="marginDivider" />
-                  <ColorPicker label="Secondary color" color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
+                  <Typography>
+                    <small>Border Radius</small>
+                  </Typography>
+                  <Slider
+                    defaultValue={0}
+                    aria-labelledby="discrete-slider"
+                    valueLabelDisplay="auto"
+                    step={1}
+                    min={0}
+                    max={100}
+                  />
                 </CardContent>
               </Card>
             </Paper>

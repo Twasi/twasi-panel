@@ -63,8 +63,8 @@ class SketchExample extends React.Component {
 
     return (
       <div>
-        <Typography style={{ marginBottom: '10px' }}>
-          {this.state.label}
+        <Typography style={{ marginBottom: '5px' }}>
+          <small>{this.state.label}</small>
         </Typography>
         <div style={ styles.swatch } onClick={ this.handleClick }>
           <div style={ styles.color } />
