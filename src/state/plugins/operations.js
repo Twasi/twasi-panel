@@ -33,7 +33,7 @@ const loadAllData = () => dispatch => {
   dispatch(getGraph(`installedPlugins{isInstalled,name,author,version,description,commands,permissions,id,installations,banner}`)).then(data => {
     dispatch(
       updateAllPlugins(
-        data.installedPlugins.map(p => ({ ...p, actionInProgress: false }))
+        data.installedPlugins
       )
     );
   });

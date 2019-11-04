@@ -24,8 +24,7 @@ import './_style.css';
 class Sidebar extends Component {
 
   componentDidMount() {
-    const { verifyData, updateAllPlugins } = this.props;
-    verifyData();
+    const { updateAllPlugins } = this.props;
     updateAllPlugins();
   }
 
@@ -284,7 +283,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(pluginsOperations.verifyData()),
   updateAllPlugins: () => dispatch(pluginsOperations.loadAllData())
 });
 

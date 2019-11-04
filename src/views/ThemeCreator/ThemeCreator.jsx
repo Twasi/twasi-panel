@@ -23,7 +23,6 @@ class ThemeCreator extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       backgroundColor: '#1a2035',
       borderRadius: 0,

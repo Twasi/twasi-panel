@@ -153,6 +153,7 @@ class Commands extends Component {
       <Paper style={{ textAlign: 'center' }} className="pageContainer">
       {_.times(pagination.pages, i =>
         <Fab
+          key={i+1}
           onClick={() => {
             updateCommands(i+1)
             this.setState({ page: i+1});
