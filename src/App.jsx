@@ -28,7 +28,6 @@ import './styles/main.css';
 // Themes
 import twasiDark from './themes/twasi-dark/twasi-dark';
 import twasiDarkBlue from './themes/twasi-darkblue/twasi-darkblue';
-import darkGrey from './themes/dark-grey/dark-grey';
 import bttvDark from './themes/bttv-dark/bttv-dark';
 import tipeeeDark from './themes/tipeee-dark/tipeee-dark';
 import twasiLight from './themes/twasi-light/twasi-light';
@@ -71,8 +70,6 @@ const App = () => {
       selectedTheme = twasiLight;
     } else if (props.theme.toLowerCase() === 'twasi-dark') {
       selectedTheme = twasiDark;
-    } else if (props.theme.toLowerCase() === 'dark-grey') {
-      selectedTheme = darkGrey;
     } else if (props.theme.toLowerCase() === 'bttv-dark') {
       selectedTheme = bttvDark;
     } else if (props.theme.toLowerCase() === 'tipeee-dark') {

@@ -42,14 +42,6 @@ const themes = [{
   primaryColor: '#00aeae',
   secondaryColor: '#e53935'
 }, {
-  name: 'Dark Grey',
-  key: 'dark-grey',
-  backgroundColor: '#191919',
-  paperColor: '#272727',
-  cardColor: '#313131',
-  primaryColor: '#00aeae',
-  secondaryColor: '#e53935'
-}, {
   name: 'BTTV Dark',
   key: 'bttv-dark',
   backgroundColor: '#0f0e11',
