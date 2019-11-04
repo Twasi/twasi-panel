@@ -1,7 +1,11 @@
 import React from 'react'
 import reactCSS from 'reactcss'
-import { SketchPicker } from 'react-color'
-import { CustomPicker } from "react-color";
+import { SketchPicker, CustomPicker } from 'react-color'
+import {
+  EditableInput,
+  Hue,
+  Saturation
+} from "react-color/lib/components/common";
 import Typography from '@material-ui/core/Typography';
 
 class SketchExample extends React.Component {
@@ -27,6 +31,7 @@ class SketchExample extends React.Component {
 
   handleChange = (color) => {
     this.setState({ color: color.hex })
+    this.props.onChange(color.hex)
   };
 
   render() {

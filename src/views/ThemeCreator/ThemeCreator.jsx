@@ -24,18 +24,16 @@ class ThemeCreator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backgroundColor: '#1a2035',
-      borderRadius: 0,
-      buttonRadius: 100,
-      contentColor: '#202940',
-      customHeader: null,
-      font: null,
-      fontColor: '#afb6c5',
-      pillButtons: true,
-      primaryColor: 'linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255))',
-      secondaryColor: 'linear-gradient(135deg,#de6464,#ff7b7b)',
-      shadows: false,
-      specialContentColor: '#232f4a'
+      backgroundColor: '#1a2035', // Background color of the whole Page
+      buttonRadius: 100, // Radius of Buttons
+      panelRadius: 4, // Radius of Panel Elements
+      specialContentRadius: 15, // Radius of Cards (Special Content)
+      panelBackgroundColor: '#202940', // Backgroundcolor of Panel Elements
+      fontColor: '#afb6c5', // Fontcolor
+      buttonFontColor: '#ffffff', // Button Font color
+      primaryColor: '#3f51b5', // Primary color
+      secondaryColor: '#de6464', // Secondary color
+      specialContentColor: '#232f4a' // Background color of Cards and Special Contents
     };
   }
 
@@ -43,22 +41,35 @@ class ThemeCreator extends Component {
     this.setState({ [event.target.name]: event.target.value });
     this.setState({ buttonRadius });
   };
+  handlePanelRadius = (event, panelRadius) => {
+    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ panelRadius });
+  };
+  handleSpecialContentRadius = (event, specialContentRadius) => {
+    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ specialContentRadius });
+  };
 
   handleChangeBackgroundColor = (color) => {
-    console.log(color)
-    this.setState({ backgroundColor: color });
+    this.setState({ backgroundColor: color.hex });
   }
-  handleChangeContentColor = (color) => {
-    this.setState({ contentColor: color });
+  handleChangePanelBackgroundColor = (color) => {
+    this.setState({ panelBackgroundColor: color.hex });
   }
   handleChangeSpecialContentColor = (color) => {
-    this.setState({ specialContentColor: color });
+    this.setState({ specialContentColor: color.hex });
   }
   handleChangePrimaryColor = (color) => {
-    this.setState({ primaryColor: color });
+    this.setState({ primaryColor: color.hex });
   }
   handleChangeSecondaryColor = (color) => {
-    this.setState({ secondaryColor: color });
+    this.setState({ secondaryColor: color.hex });
+  }
+  handleChangeFontColor = (color) => {
+    this.setState({ fontColor: color.hex });
+  }
+  handleChangeButtonFontColor = (color) => {
+    this.setState({ buttonFontColor: color.hex });
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -99,7 +110,7 @@ class ThemeCreator extends Component {
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Background color" color={this.state.backgroundColor} onChange={this.handleChangeBackgroundColor}/>
                   <Divider className="marginDivider" />
-                  <ColorPicker label="Font color" color={this.state.fontColor}/>
+                  <ColorPicker label="Font color" color={this.state.fontColor} onChange={this.handleChangeFontColor}/>
                   <Divider className="marginDivider" />
                   <ColorPicker label="Primary color" color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
                   <Divider className="marginDivider" />
@@ -116,7 +127,7 @@ class ThemeCreator extends Component {
               <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <ColorPicker label="Background color" color={this.state.contentColor} onChange={this.handleChangeContentColor}/>
+                  <ColorPicker label="Background color" color={this.state.panelBackgroundColor} onChange={this.handleChangePanelBackgroundColor}/>
                   <Divider className="marginDivider" />
                   <Typography>
                     <small>Border Radius</small>
@@ -125,6 +136,8 @@ class ThemeCreator extends Component {
                     defaultValue={0}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
+                    value={this.state.panelRadius}
+                    onChange={this.handlePanelRadius}
                     step={1}
                     min={0}
                     max={50}
@@ -150,6 +163,8 @@ class ThemeCreator extends Component {
                     defaultValue={0}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
+                    value={this.state.specialContentRadius}
+                    onChange={this.handleSpecialContentRadius}
                     step={1}
                     min={0}
                     max={50}
@@ -166,7 +181,7 @@ class ThemeCreator extends Component {
               <br />
               <Card className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <ColorPicker label="Font color" color={this.state.fontColor} onChange={this.handleChangeSpecialContentColor}/>
+                  <ColorPicker label="Font color" color={this.state.buttonFontColor} onChange={this.handleChangeButtonFontColor}/>
                   <Divider className="marginDivider" />
                   <Typography>
                     <small>Border Radius</small>
@@ -199,7 +214,7 @@ class ThemeCreator extends Component {
                 <Checkboard size={ 8 } white="#fff" grey="#cccccc" />
                 <div style={{ position: 'inherit' }}>
                   <div style={{ background: this.state.backgroundColor, padding: '25px' }}>
-                    <Typography component={'span'}>
+                    <Typography component={'span'} style={{ color: this.state.fontColor }}>
                       <h4 className="pageContainerTitle">
                         Content background
                       </h4>
@@ -207,8 +222,8 @@ class ThemeCreator extends Component {
                         This will be the overall background color of the site.
                       </small>
                     </Typography>
-                    <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: this.state.contentColor }}>
-                      <Typography component={'span'}>
+                    <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: this.state.panelBackgroundColor, borderRadius: this.state.panelRadius+"px" }}>
+                      <Typography component={'span'} style={{ color: this.state.fontColor }}>
                         <h4 className="pageContainerTitle">
                           Example panel
                         </h4>
@@ -216,9 +231,9 @@ class ThemeCreator extends Component {
                           Panels look like this.
                         </small>
                       </Typography>
-                      <Card style={{ marginTop: '25px', background: this.state.specialContentColor }} className="pluginCard">
+                      <Card style={{ marginTop: '25px', background: this.state.specialContentColor, borderRadius: this.state.specialContentRadius+"px" }} className="pluginCard">
                         <CardContent style={{ backgroundColor: this.state.specialContentColor }} className="pluginCardContent">
-                          <Typography component={'span'}>
+                          <Typography component={'span'} style={{ color: this.state.fontColor }}>
                             <h4 className="pageContainerTitle">
                               Special contents
                             </h4>
@@ -231,31 +246,31 @@ class ThemeCreator extends Component {
                       <br />
                       <Table>
                         <TableHead>
-                          <TableRow className="TableRow">
+                          <TableRow style={{ borderBottom: '3px solid '+this.state.primaryColor }}>
                             <TableCell>ID</TableCell>
                             <TableCell>Name</TableCell>
                           </TableRow>
                         </TableHead>
                         <TableBody className="anim">
                           <TableRow>
-                            <TableCell>1</TableCell>
-                            <TableCell>Foobar</TableCell>
+                            <TableCell style={{ color: this.state.fontColor }}>1</TableCell>
+                            <TableCell style={{ color: this.state.fontColor }}>Foobar</TableCell>
                           </TableRow>
-                          <TableRow>
-                            <TableCell>2</TableCell>
-                            <TableCell>Lorem Ipsum</TableCell>
+                          <TableRow style={{ backgroundColor: this.state.specialContentColor }}>
+                            <TableCell style={{ color: this.state.fontColor }}>2</TableCell>
+                            <TableCell style={{ color: this.state.fontColor }}>Lorem Ipsum</TableCell>
                           </TableRow>
                         </TableBody>
                       </Table>
                       <br />
                       <Grid container spacing={4}>
                         <Grid item xs={6} style={{ textAlign: 'center' }}>
-                          <Button variant="contained" color="primary" style={{ background: this.state.primaryColor, borderRadius: this.state.buttonRadius+"px" }}>
+                          <Button variant="contained" color="primary" style={{ background: this.state.primaryColor, borderRadius: this.state.buttonRadius+"px", color: this.state.buttonFontColor }}>
                             Primary color button
                           </Button>
                         </Grid>
                         <Grid item xs={6} style={{ textAlign: 'center' }}>
-                          <Button variant="contained" color="secondary" style={{ background: this.state.secondaryColor, borderRadius: this.state.buttonRadius+"px" }}>
+                          <Button variant="contained" color="secondary" style={{ background: this.state.secondaryColor, borderRadius: this.state.buttonRadius+"px", color: this.state.buttonFontColor }}>
                             Secondary color button
                           </Button>
                         </Grid>

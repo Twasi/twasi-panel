@@ -145,7 +145,7 @@ class Sidebar extends Component {
     );
   }
 
-  componentWillMount() {
+  componentDidUpdate() {
     this.Logo = new Image();
     this.Logo.src = twasiLogo;
   }
