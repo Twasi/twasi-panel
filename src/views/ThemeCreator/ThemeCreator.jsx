@@ -15,6 +15,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Divider from '@material-ui/core/Divider';
 import Slider from '@material-ui/core/Slider';
+import Icon from '@material-ui/core/Icon';
+import Logo from '../common/Logo/Logo';
 import { Checkboard } from "react-color/lib/components/common";
 
 import ColorPicker from './ColorPicker'
@@ -33,7 +35,12 @@ class ThemeCreator extends Component {
       buttonFontColor: '#ffffff', // Button Font color
       primaryColor: '#3f51b5', // Primary color
       secondaryColor: '#de6464', // Secondary color
-      specialContentColor: '#232f4a' // Background color of Cards and Special Contents
+      specialContentColor: '#232f4a', // Background color of Cards and Special Contents
+
+      outlineTextlogo: '#1A2036',
+      shadowPrimaryTextlogo: '#303F8B',
+      shadowSecondaryTextlogo: '#3C4EAD',
+      mainTextlogo: '#4352AF'
     };
   }
 
@@ -70,6 +77,19 @@ class ThemeCreator extends Component {
   }
   handleChangeButtonFontColor = (color) => {
     this.setState({ buttonFontColor: color.hex });
+  }
+
+  handleChangeOutlineTextlogo = (color) => {
+    this.setState({ outlineTextlogo: color.hex });
+  }
+  handleChangeShadowPrimaryTextlogo = (color) => {
+    this.setState({ shadowPrimaryTextlogo: color.hex });
+  }
+  handleChangeShadowSecondaryTextlogo = (color) => {
+    this.setState({ shadowSecondaryTextlogo: color.hex });
+  }
+  handleChangeMainTextlogo = (color) => {
+    this.setState({ mainTextlogo: color.hex });
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -115,6 +135,25 @@ class ThemeCreator extends Component {
                   <ColorPicker label="Primary color" color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
                   <Divider className="marginDivider" />
                   <ColorPicker label="Secondary color" color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
+                </CardContent>
+              </Card>
+            </Paper>
+            <Paper className="pageContainer">
+              <Typography component={'span'}>
+                <h4 className="pageContainerTitle">
+                  Logo
+                </h4>
+              </Typography>
+              <br />
+              <Card className="pluginCard">
+                <CardContent style={{ padding: '24px' }}>
+                  <ColorPicker label="Main Logo Color" color={this.state.mainTextlogo} onChange={this.handleChangeMainTextlogo}/>
+                  <Divider className="marginDivider" />
+                  <ColorPicker label="Logo Border" color={this.state.outlineTextlogo} onChange={this.handleChangeOutlineTextlogo}/>
+                  <Divider className="marginDivider" />
+                  <ColorPicker label="Primary Logo Shadow" color={this.state.shadowPrimaryTextlogo} onChange={this.handleChangeShadowPrimaryTextlogo}/>
+                  <Divider className="marginDivider" />
+                  <ColorPicker label="Secondary Logo Shadow" color={this.state.shadowSecondaryTextlogo} onChange={this.handleChangeShadowSecondaryTextlogo}/>
                 </CardContent>
               </Card>
             </Paper>
@@ -205,6 +244,12 @@ class ThemeCreator extends Component {
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
                   Preview
+                  <span style={{ float: 'right' }}>
+                    <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
+                      <Icon style={{ marginRight: '5px' }}>save</Icon>
+                      Theme Speichern
+                    </Button>
+                  </span>
                 </h4>
                 <small>
                   This is how the theme will look like.
@@ -222,6 +267,26 @@ class ThemeCreator extends Component {
                         This will be the overall background color of the site.
                       </small>
                     </Typography>
+                    <div style={{ marginTop: '23px', marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
+                      <Logo/>
+                      <style type="text/css">
+                        {
+                        `.st0 { display:none; }
+                        .st1{display:inline;fill:#1A2036;}
+                        .st2{fill:#FFFFFF;}
+                        .outline-textlogo{fill:${this.state.outlineTextlogo};}
+                        .shadow-primary-textlogo{fill:${this.state.shadowPrimaryTextlogo};}
+                        .shadow-secondary-textlogo{fill:${this.state.shadowSecondaryTextlogo};}
+                        .main-textlogo{fill:${this.state.mainTextlogo};}
+                        .st7{fill:#4C5BC2;}
+                        .st8{fill:#C4CABC;}
+                        .st9{fill:#FCFCFD;}
+                        .st10{fill:#D27489;}
+                        .st11{fill:#B96678;}
+                        .st12{fill:#00AEAE;}`
+                      }
+                      </style>
+                    </div>
                     <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: this.state.panelBackgroundColor, borderRadius: this.state.panelRadius+"px" }}>
                       <Typography component={'span'} style={{ color: this.state.fontColor }}>
                         <h4 className="pageContainerTitle">
