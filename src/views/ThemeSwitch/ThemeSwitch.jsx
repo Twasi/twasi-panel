@@ -19,6 +19,7 @@ import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
+import { Link as RouterLink } from 'react-router-dom';
 import storage from 'local-storage';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
@@ -32,7 +33,8 @@ const themes = [{
   paperColor: '#202940',
   cardColor: '#232f4a',
   primaryColor: '#3f51b5',
-  secondaryColor: '#de6464'
+  secondaryColor: '#de6464',
+  verified: true
 }, {
   name: 'Twasi Dark',
   key: 'twasi-dark',
@@ -40,7 +42,8 @@ const themes = [{
   paperColor: '#1b292d',
   cardColor: '#162226',
   primaryColor: '#00aeae',
-  secondaryColor: '#e53935'
+  secondaryColor: '#e53935',
+  verified: true
 }, {
   name: 'BTTV Dark',
   key: 'bttv-dark',
@@ -48,7 +51,8 @@ const themes = [{
   paperColor: '#19171c',
   cardColor: '#232127',
   primaryColor: '#5f459a',
-  secondaryColor: '#ec1313'
+  secondaryColor: '#ec1313',
+  verified: true
 }, {
   name: 'Tipeee Dark',
   key: 'tipeee-dark',
@@ -56,7 +60,8 @@ const themes = [{
   paperColor: '#3b4254',
   cardColor: '#474e62',
   primaryColor: '#7885a5',
-  secondaryColor: '#e53935'
+  secondaryColor: '#e53935',
+  verified: true
 }, {
   name: 'Windows 95',
   key: 'windows95',
@@ -64,7 +69,8 @@ const themes = [{
   paperColor: '#bdbebd',
   cardColor: '#dbdbdb',
   primaryColor: '#000080',
-  secondaryColor: '#bdbebd'
+  secondaryColor: '#bdbebd',
+  verified: true
 }, {
   name: 'Twasi Light',
   key: 'twasi-light',
@@ -73,6 +79,7 @@ const themes = [{
   cardColor: '#f9f9f9',
   primaryColor: '#00aeae',
   secondaryColor: '#e53935',
+  verified: true
   }, {
   name: 'Halloween',
   key: 'halloween',
@@ -81,6 +88,7 @@ const themes = [{
   cardColor: '#0d2431',
   primaryColor: '#fe8000',
   secondaryColor: '#c34444',
+  verified: true
 }];
 
 class ThemeSwitch extends React.Component {
@@ -126,7 +134,9 @@ class ThemeSwitch extends React.Component {
             <CardContent className="pluginCardContent">
               <List>
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '23px' }}>
-                  <Button fullWidth color="primary" variant="contained" disabled>Eigenes Theme erstellen</Button>
+                  <RouterLink style={{ width: '100%' }} to='/themecreator'>
+                    <Button disabled fullWidth color="primary" variant="contained">Eigenes Theme erstellen</Button>
+                  </RouterLink>
                 </ListItem>
                 <Divider />
                 <ListItem style={{ paddingTop: '23px' }}>
@@ -167,27 +177,29 @@ class ThemeSwitch extends React.Component {
                         <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === theme.key ? 'check' : 'color_lens'}</Icon>
                       </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={theme.name} />
+                    <ListItemText primary={theme.name} secondary='verified'/>
                     <Tooltip title={<FormattedMessage id="themeswitch.background_color" />} placement="top">
-                      <Badge children={''} style={{ backgroundColor: theme.backgroundColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.backgroundColor, width: '30px', height: '30px' }} />
                     </Tooltip>
                     <Tooltip title={<FormattedMessage id="themeswitch.content_color" />} placement="top">
-                      <Badge children={''} style={{ backgroundColor: theme.paperColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.paperColor, width: '30px', height: '30px' }} />
                     </Tooltip>
                     <Tooltip title={<FormattedMessage id="themeswitch.special_color" />} placement="top">
-                      <Badge children={''} style={{ backgroundColor: theme.cardColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.cardColor, width: '30px', height: '30px' }} />
                     </Tooltip>
                     <Tooltip title={<FormattedMessage id="themeswitch.primary_color" />} placement="top">
-                      <Badge children={''} style={{ backgroundColor: theme.primaryColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.primaryColor, width: '30px', height: '30px' }} />
                     </Tooltip>
                     <Tooltip title={<FormattedMessage id="themeswitch.secondary_color" />} placement="top">
-                      <Badge children={''} style={{ backgroundColor: theme.secondaryColor }} />
+                      <Badge children={''} style={{ backgroundColor: theme.secondaryColor, width: '30px', height: '30px' }} />
                     </Tooltip>
                   </ListItem>
                 ))}
                 <br />
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                  <Button fullWidth color="primary" variant="contained" disabled>Alle Themes ansehen</Button>
+                  <RouterLink style={{ width: '100%' }} to='/themecreator'>
+                    <Button disabled fullWidth color="default" variant="contained">Alle Themes ansehen</Button>
+                  </RouterLink>
                 </ListItem>
               </List>
             </CardContent>

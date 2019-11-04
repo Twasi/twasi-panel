@@ -1,11 +1,6 @@
 import React from 'react'
 import reactCSS from 'reactcss'
 import { SketchPicker, CustomPicker } from 'react-color'
-import {
-  EditableInput,
-  Hue,
-  Saturation
-} from "react-color/lib/components/common";
 import Typography from '@material-ui/core/Typography';
 
 class SketchExample extends React.Component {
@@ -49,7 +44,12 @@ class SketchExample extends React.Component {
           background: '#fff',
           borderRadius: '1px',
           boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
-          display: 'inline-block',
+          float: 'left',
+          cursor: 'pointer',
+          marginRight: '10px'
+        },
+        swatch_secondary: {
+          padding: '3px',
           cursor: 'pointer',
         },
         popover: {
@@ -72,7 +72,10 @@ class SketchExample extends React.Component {
           <small>{this.state.label}</small>
         </Typography>
         <div style={ styles.swatch } onClick={ this.handleClick }>
-          <div style={ styles.color } />
+          <div style={ styles.color }/>
+        </div>
+        <div style={ styles.swatch_secondary } onClick={ this.handleClick }>
+          <small>{this.state.color}</small>
         </div>
         { this.state.displayColorPicker ? <div style={ styles.popover }>
           <div style={ styles.cover } onClick={ this.handleClose }/>
