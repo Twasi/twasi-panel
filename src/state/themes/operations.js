@@ -28,13 +28,13 @@ const addTheme = (name, themedata) => dispatch => {
     for (var key in themedata) {
       if (themedata.hasOwnProperty(key)) {
         if (isNaN(themedata[key])) {
-          theme += key+':\"'+themedata[key]+'\",';
+          theme += key+':"'+themedata[key]+'",';
         } else {
           theme += key+':'+themedata[key]+',';
         }
       }
     }
-    var theme = theme.substring(0, theme.length - 1);
+    theme = theme.substring(0, theme.length - 1);
     dispatch(updateActionSuccess(false));
     dispatch(getGraph(`themes{create(name: ${JSON.stringify(name)}, theme: {${theme}}){status,translationKey}}`, 'panel')).then(
     data => {
