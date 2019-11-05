@@ -171,7 +171,7 @@ class ThemeCreator extends Component {
                 </CardContent>
               </Card>
             </Paper>
-            {this.state.themeName.length !== 0 &&
+            {this.state.themeName.length > 4 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
@@ -194,7 +194,7 @@ class ThemeCreator extends Component {
                 </CardContent>
               </Card>
             </Paper>}
-            {this.state.themeName.length !== 0 &&
+            {this.state.themeName.length > 4 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
@@ -217,7 +217,7 @@ class ThemeCreator extends Component {
                 </CardContent>
               </Card>
             </Paper>}
-            {this.state.themeName.length !== 0 &&
+            {this.state.themeName.length > 4 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
@@ -248,7 +248,7 @@ class ThemeCreator extends Component {
                 </CardContent>
               </Card>
             </Paper>}
-            {this.state.themeName.length !== 0 &&
+            {this.state.themeName.length > 4 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
@@ -279,7 +279,7 @@ class ThemeCreator extends Component {
                 </CardContent>
               </Card>
             </Paper>}
-            {this.state.themeName.length !== 0 &&
+            {this.state.themeName.length > 4 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
@@ -322,7 +322,7 @@ class ThemeCreator extends Component {
                       color="primary"
                       style={{ marginRight: '16px' }}
                       onClick={() => {this.props.addTheme(this.state.themeName, themedata)}}
-                      disabled={this.state.themeName.length === 0}
+                      disabled={this.state.themeName.length < 5}
                     >
                       <Icon style={{ marginRight: '5px' }}>save</Icon>
                       Theme Speichern

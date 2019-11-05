@@ -143,7 +143,7 @@ class ThemeStore extends Component {
                         }
                         </style>
                       </div>
-                      <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: theme.theme.panelBackgroundColor, borderRadius: this.state.panelRadius+"px" }}>
+                      <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: theme.theme.panelBackgroundColor, borderRadius: theme.theme.panelRadius+"px" }}>
                         <Typography component={'span'} style={{ color: theme.theme.fontColor }}>
                           <h4 className="pageContainerTitle">
                             Example panel
