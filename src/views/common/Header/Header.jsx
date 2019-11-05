@@ -57,7 +57,6 @@ const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp
           <ThemeSwitchIcon />
           <LanguageSwitchIcon />
           {isSetUp &&<StatusIcon />}
-          {/* isSetUp && <FeedbackIcon /> */}
         </div>
       </Grid>
     </Grid>

@@ -9,6 +9,7 @@ import Overview from '../Overview';
 import Plugins from '../Plugins';
 import Profile from '../Profile';
 import ThemeCreator from '../ThemeCreator';
+import ThemeStore from '../ThemeStore';
 import Moderators from '../Moderators';
 import Urlshortener from '../Urlshortener';
 import Commands from '../Commands';
@@ -33,6 +34,7 @@ const PanelContent = () => (
         <Route path="/plugins" exact component={Plugins} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/themecreator" exact component={ThemeCreator} />
+        <Route path="/themes" exact component={ThemeStore} />
         <Route path="/mods" exact component={Moderators} />
         <Route path="/commands" exact component={Commands} />
         <Route path="/variables" exact component={Variables} />

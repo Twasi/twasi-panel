@@ -15,6 +15,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';
 import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -134,9 +135,18 @@ class ThemeSwitch extends React.Component {
             <CardContent className="pluginCardContent">
               <List>
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '23px' }}>
-                  <RouterLink style={{ width: '100%' }} to='/themecreator'>
-                    <Button disabled fullWidth color="primary" variant="contained">Eigenes Theme erstellen</Button>
-                  </RouterLink>
+                  <Grid container spacing={4}>
+                    <Grid item xs={6}>
+                      <RouterLink style={{ width: '100%' }} to='/themecreator'>
+                        <Button fullWidth color="primary" variant="contained">Theme erstellen</Button>
+                      </RouterLink>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <RouterLink style={{ width: '100%' }} to='/themes'>
+                        <Button fullWidth color="primary" variant="contained">Themes ansehen</Button>
+                      </RouterLink>
+                    </Grid>
+                  </Grid>
                 </ListItem>
                 <Divider />
                 <ListItem style={{ paddingTop: '23px' }}>
@@ -195,12 +205,6 @@ class ThemeSwitch extends React.Component {
                     </Tooltip>
                   </ListItem>
                 ))}
-                <br />
-                <ListItem style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                  <RouterLink style={{ width: '100%' }} to='/themecreator'>
-                    <Button disabled fullWidth color="default" variant="contained">Alle Themes ansehen</Button>
-                  </RouterLink>
-                </ListItem>
               </List>
             </CardContent>
           </Card>

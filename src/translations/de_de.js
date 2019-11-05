@@ -80,6 +80,7 @@ export default {
   'sidebar.navigation_headline': 'Navigation',
   'sidebar.user_manager': 'Nutzer Manager',
   'sidebar.themecreator': 'Theme Creator',
+  'sidebar.themes': 'Theme Store',
 
   // User Manager
   'manager.title': 'Nutzer Manager',
