@@ -24,6 +24,8 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { FormattedMessage } from 'react-intl';
+import './_style.css';
+import theme_verified from '../common/resources/theme_verified.svg';
 
 import { themesSelectors, themesOperations } from '../../state/themes';
 
@@ -84,6 +86,12 @@ class ThemeStore extends Component {
                 <Typography component={'div'}>
                   <h2 style={{ margin: "0px" }}>
                     {theme.name}
+                    {theme.approved &&
+                    <img
+                      className="verifiedBadge"
+                      src={theme_verified}
+                      alt="theme_verified"
+                    />}
                     <span style={{ float: 'right' }}>
                       <Button variant="contained" color="primary">
                         Installieren
