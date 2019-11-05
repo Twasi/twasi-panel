@@ -26,21 +26,21 @@ class ThemeCreator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backgroundColor: '#1a2035', // Background color of the whole Page
-      buttonRadius: 100, // Radius of Buttons
-      panelRadius: 4, // Radius of Panel Elements
-      specialContentRadius: 15, // Radius of Cards (Special Content)
-      panelBackgroundColor: '#202940', // Backgroundcolor of Panel Elements
+      backgroundColor: '#1a2035', // Background color of the whole page
+      buttonRadius: 100, // Radius of buttons
+      panelRadius: 4, // Radius of panel elements
+      specialContentRadius: 15, // Radius of cards (special content)
+      panelBackgroundColor: '#202940', // Backgroundcolor of panel elements
       fontColor: '#afb6c5', // Fontcolor
-      buttonFontColor: '#ffffff', // Button Font color
+      buttonFontColor: '#ffffff', // Button font color
       primaryColor: '#3f51b5', // Primary color
       secondaryColor: '#de6464', // Secondary color
-      specialContentColor: '#232f4a', // Background color of Cards and Special Contents
+      specialContentColor: '#232f4a', // Background color of cards and special contents
 
-      outlineTextlogo: '#1A2036',
-      shadowPrimaryTextlogo: '#303F8B',
-      shadowSecondaryTextlogo: '#3C4EAD',
-      mainTextlogo: '#4352AF'
+      outlineTextlogo: '#1A2036', // Outline color of logo
+      shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo
+      shadowSecondaryTextlogo: '#3C4EAD', // Secondary (smaller) shadow color of logo (should be darker than primary shadow)
+      mainTextlogo: '#4352AF' // Main color of logo
     };
   }
 
