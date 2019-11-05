@@ -5,6 +5,12 @@ const updateThemes = themes => ({
   themes
 });
 
+const updateAddTheme = (name, themedata) => ({
+  type: types.UPDATE_ADDTHEME,
+  name,
+  themedata
+});
+
 const updatePagination = pagination => ({
   type: types.UPDATE_PAGINATION,
   pagination
@@ -27,6 +33,7 @@ const updateActionSuccess = isActionSuccess => ({
 
 export default {
   updateThemes,
+  updateAddTheme,
   updatePagination,
   updateLoading,
   updateLoaded,

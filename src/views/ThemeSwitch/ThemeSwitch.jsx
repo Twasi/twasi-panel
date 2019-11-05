@@ -137,12 +137,12 @@ class ThemeSwitch extends React.Component {
                 <ListItem style={{ paddingTop: '0px', paddingBottom: '23px' }}>
                   <Grid container spacing={4}>
                     <Grid item xs={6}>
-                      <RouterLink style={{ width: '100%' }} to='/themecreator'>
+                      <RouterLink style={{ width: '100%' }} to='/themecreator' onClick={this.handleClose}>
                         <Button fullWidth color="primary" variant="contained">Theme erstellen</Button>
                       </RouterLink>
                     </Grid>
                     <Grid item xs={6}>
-                      <RouterLink style={{ width: '100%' }} to='/themes'>
+                      <RouterLink style={{ width: '100%' }} to='/themes' onClick={this.handleClose}>
                         <Button fullWidth color="primary" variant="contained">Themes ansehen</Button>
                       </RouterLink>
                     </Grid>

@@ -6,13 +6,18 @@ export const initialState = {
   isDisabled: false,
   isLoading: true,
   isLoaded: false,
-  isActionSuccess: false
+  isActionSuccess: false,
+  name: '',
+  themedata: {}
 };
 
 const themesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_THEMES: {
       return { ...state, isLoaded: true, isDisabled: false, themes: action.themes };
+    }
+    case types.UPDATE_ADDTHEME: {
+      return { ...state, isLoaded: true, name: action.name, themedata: action.themedata };
     }
     case types.UPDATE_PAGINATION: {
       return { ...state, pagination: action.pagination };

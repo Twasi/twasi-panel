@@ -5,6 +5,7 @@ import {getGraph} from '../../services/graphqlService';
 
 const {
     updateThemes,
+    updateAddTheme,
     updatePagination,
     updateLoaded,
     updateLoading,
@@ -22,8 +23,31 @@ const loadThemes = page => dispatch => {
     });
 };
 
+const addTheme = (name, themedata) => dispatch => {
+    var theme = "";
+    for (var key in themedata) {
+      if (themedata.hasOwnProperty(key)) {
+        if (isNaN(themedata[key])) {
+          theme += key+':\"'+themedata[key]+'\",';
+        } else {
+          theme += key+':'+themedata[key]+',';
+        }
+      }
+    }
+    var theme = theme.substring(0, theme.length - 1);
+    dispatch(updateActionSuccess(false));
+    dispatch(getGraph(`themes{create(name: ${JSON.stringify(name)}, theme: {${theme}}){status,translationKey}}`, 'panel')).then(
+    data => {
+      dispatch(updateAddTheme(data.themes));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
+};
+
 export default {
     loadThemes,
+    addTheme,
     updateLoaded,
     updateLoading,
     updatePagination,

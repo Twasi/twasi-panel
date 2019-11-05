@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -17,9 +18,12 @@ import Divider from '@material-ui/core/Divider';
 import Slider from '@material-ui/core/Slider';
 import Icon from '@material-ui/core/Icon';
 import Logo from '../common/Logo/Logo';
+import TextField from '@material-ui/core/TextField';
 import { Checkboard } from "react-color/lib/components/common";
 
 import ColorPicker from './ColorPicker'
+
+import { themesSelectors, themesOperations } from '../../state/themes';
 
 class ThemeCreator extends Component {
 
@@ -40,7 +44,8 @@ class ThemeCreator extends Component {
       outlineTextlogo: '#1A2036', // Outline color of logo
       shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo
       shadowSecondaryTextlogo: '#3C4EAD', // Secondary (smaller) shadow color of logo (should be darker than primary shadow)
-      mainTextlogo: '#4352AF' // Main color of logo
+      mainTextlogo: '#4352AF', // Main color of logo
+      themeName: ''
     };
   }
 
@@ -92,6 +97,12 @@ class ThemeCreator extends Component {
     this.setState({ mainTextlogo: color.hex });
   }
 
+  handleThemeNameChange = (event) => {
+    this.setState({
+      themeName: event.target.value
+    });
+  };
+
   handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);
@@ -99,6 +110,23 @@ class ThemeCreator extends Component {
   }
 
   render() {
+    var themedata = {
+      backgroundColor: this.state.backgroundColor,
+      buttonRadius: this.state.buttonRadius,
+      panelRadius: this.state.panelRadius,
+      specialContentRadius: this.state.specialContentRadius,
+      panelBackgroundColor: this.state.panelBackgroundColor,
+      fontColor: this.state.fontColor,
+      buttonFontColor: this.state.buttonFontColor,
+      primaryColor: this.state.primaryColor,
+      secondaryColor: this.state.secondaryColor,
+      specialContentColor: this.state.specialContentColor,
+
+      outlineTextLogo: this.state.outlineTextlogo,
+      shadowPrimaryTextLogo: this.state.shadowPrimaryTextlogo,
+      shadowSecondaryTextLogo: this.state.shadowSecondaryTextlogo,
+      mainTextLogo: this.state.mainTextlogo
+    }
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -122,11 +150,39 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Content
+                  Neues Theme
                 </h4>
+                <small>
+                  Bevor es los geht musst du einen Namen für dein neues Theme finden.
+                </small>
               </Typography>
               <br />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '15px' }} className="pluginCard">
+                <CardContent style={{ padding: '24px' }}>
+                  <TextField
+                    label="Name deines Themes"
+                    fullWidth
+                    value={this.state.themeName}
+                    onChange={this.handleThemeNameChange}
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{ shrink: true }}
+                  />
+                </CardContent>
+              </Card>
+            </Paper>
+            {this.state.themeName.length !== 0 &&
+            <Paper className="pageContainer">
+              <Typography component={'span'}>
+                <h4 className="pageContainerTitle">
+                  Content
+                </h4>
+                <small>
+                  Die Content Area bietet die größte Fläche, außerdem sorgt sie für einen Guten Kontrast zu den einzelnen Elementen.
+                </small>
+              </Typography>
+              <br />
+              <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Background color" color={this.state.backgroundColor} onChange={this.handleChangeBackgroundColor}/>
                   <Divider className="marginDivider" />
@@ -137,15 +193,19 @@ class ThemeCreator extends Component {
                   <ColorPicker label="Secondary color" color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
                 </CardContent>
               </Card>
-            </Paper>
+            </Paper>}
+            {this.state.themeName.length !== 0 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
                   Logo
                 </h4>
+                <small>
+                  Das Logo sollte dem Theme angepasst werden, es ändert die Farben, wenn du das Theme wechselst.
+                </small>
               </Typography>
               <br />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Main Logo Color" color={this.state.mainTextlogo} onChange={this.handleChangeMainTextlogo}/>
                   <Divider className="marginDivider" />
@@ -156,15 +216,19 @@ class ThemeCreator extends Component {
                   <ColorPicker label="Secondary Logo Shadow" color={this.state.shadowSecondaryTextlogo} onChange={this.handleChangeShadowSecondaryTextlogo}/>
                 </CardContent>
               </Card>
-            </Paper>
+            </Paper>}
+            {this.state.themeName.length !== 0 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
                   Panels
                 </h4>
+                <small>
+                  Die Panels sind das am häufigsten verwendete Element auf Twasi.
+                </small>
               </Typography>
               <br />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Background color" color={this.state.panelBackgroundColor} onChange={this.handleChangePanelBackgroundColor}/>
                   <Divider className="marginDivider" />
@@ -183,15 +247,19 @@ class ThemeCreator extends Component {
                   />
                 </CardContent>
               </Card>
-            </Paper>
+            </Paper>}
+            {this.state.themeName.length !== 0 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
                   Special Contents
                 </h4>
+                <small>
+                  Spezielle Inhalte sind besonders hervorgehoben.
+                </small>
               </Typography>
               <br />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Background color" color={this.state.specialContentColor} onChange={this.handleChangeSpecialContentColor}/>
                   <Divider className="marginDivider" />
@@ -210,15 +278,19 @@ class ThemeCreator extends Component {
                   />
                 </CardContent>
               </Card>
-            </Paper>
+            </Paper>}
+            {this.state.themeName.length !== 0 &&
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
                   Buttons
                 </h4>
+                <small>
+                  Buttons werden dzu genutzt Inhalte zu aktualisieren.
+                </small>
               </Typography>
               <br />
-              <Card className="pluginCard">
+              <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label="Font color" color={this.state.buttonFontColor} onChange={this.handleChangeButtonFontColor}/>
                   <Divider className="marginDivider" />
@@ -237,7 +309,7 @@ class ThemeCreator extends Component {
                   />
                 </CardContent>
               </Card>
-            </Paper>
+            </Paper>}
           </Grid>
           <Grid item xs={8}>
             <Paper className="pageContainer" style={{ position: 'sticky', top: '23px' }}>
@@ -245,7 +317,13 @@ class ThemeCreator extends Component {
                 <h4 className="pageContainerTitle">
                   Preview
                   <span style={{ float: 'right' }}>
-                    <Button variant="contained" color="primary" style={{ marginRight: '16px' }}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={{ marginRight: '16px' }}
+                      onClick={() => {this.props.addTheme(this.state.themeName, themedata)}}
+                      disabled={this.state.themeName.length === 0}
+                    >
                       <Icon style={{ marginRight: '5px' }}>save</Icon>
                       Theme Speichern
                     </Button>
@@ -352,4 +430,14 @@ class ThemeCreator extends Component {
   }
 }
 
-export default ThemeCreator;
+const mapStateToProps = state => ({
+  isLoaded: themesSelectors.isLoaded(state),
+  isLoading: themesSelectors.isLoading(state),
+  isActionSuccess: themesSelectors.isActionSuccess(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  addTheme: (name, themedata) => dispatch(themesOperations.addTheme(name, themedata)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThemeCreator);
