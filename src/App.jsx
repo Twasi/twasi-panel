@@ -5,12 +5,14 @@ import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { addLocaleData, IntlProvider } from 'react-intl';
+import { createMuiTheme } from '@material-ui/core/styles';
 import { SnackbarProvider } from 'notistack';
 
 import AuthLoader from './auth/AuthLoader';
 import configureStore from './state/store';
 import { appInfoSelectors, appInfoOperations } from './state/appInfo';
 import { i18nSelectors, i18nOperations } from './state/i18n';
+import { themesSelectors, themesOperations } from './state/themes';
 
 import Header from './views/common/Header';
 import Content from './views/common/Content';
@@ -34,6 +36,7 @@ import tipeeeDark from './themes/tipeee-dark/tipeee-dark';
 import twasiLight from './themes/twasi-light/twasi-light';
 import windows95 from './themes/windows95/windows95';
 import halloween from './themes/halloween/halloween';
+import customtheme from './themes/custom-theme/custom-theme';
 
 import germanData from 'react-intl/locale-data/de';
 import german from './translations/de_de';
@@ -50,14 +53,16 @@ const App = () => {
     theme: appInfoSelectors.getTheme(state),
     bannerAsHeader: appInfoSelectors.getBannerAsHeader(state),
     comicsans: appInfoSelectors.getComicSans(state),
-    language: i18nSelectors.getLocale(state)
+    language: i18nSelectors.getLocale(state),
+    installedthemes: themesSelectors.getInstalledThemes(state),
   });
 
   const mapDispatchToProps = dispatch => ({
     loadTheme: () => dispatch(appInfoOperations.loadTheme()),
     loadBannerAsHeader: () => dispatch(appInfoOperations.loadBannerAsHeader()),
     loadComicSans: () => dispatch(appInfoOperations.loadComicSans()),
-    loadLanguage: () => dispatch(i18nOperations.loadLanguage())
+    loadLanguage: () => dispatch(i18nOperations.loadLanguage()),
+    loadInstalledThemes: () => dispatch(themesOperations.loadInstalledThemes())
   });
 
   const Themed = withRouter(connect(mapStateToProps, mapDispatchToProps)(props => {
@@ -80,6 +85,314 @@ const App = () => {
     } else if (props.theme.toLowerCase() === 'halloween') {
       selectedTheme = halloween;
     }
+
+
+    let customtheme = '';
+    props.installedthemes.map(installedtheme => {
+      if(installedtheme.id === props.theme.toLowerCase()) {
+        console.log(installedtheme)
+        customtheme = createMuiTheme({
+          palette: {
+            type: 'dark',
+            background: {
+              default: installedtheme.theme.backgroundColor
+            },
+            primary: {
+              main: installedtheme.theme.primaryColor,
+              contrastText: '#ffffff'
+            },
+            secondary: {
+              main: installedtheme.theme.secondaryColor,
+              contrastText: '#ffffff'
+            }
+          },
+          overrides: {
+            MuiPaper: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                color: installedtheme.theme.fontColor, // Some CSS
+                backgroundColor: installedtheme.theme.panelBackgroundColor,
+                borderRadius: installedtheme.theme.panelRadius+'px',
+                border: '0px solid #25373e'
+              },
+              elevation1: {
+                boxShadow: 'none'
+              },
+              elevation2: {
+                boxShadow: 'none'
+              },
+              elevation3: {
+                boxShadow: 'none'
+              },
+              elevation4: {
+                boxShadow: 'none'
+              }
+            },
+            MuiBadge: {
+              badge: {
+                position: 'relative',
+                marginLeft: '5px'
+              }
+            },
+            MuiCardContent: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                color: installedtheme.theme.fontColor, // Some CSS
+                backgroundColor: installedtheme.theme.specialContentColor, // Some CSS
+                borderRadius: installedtheme.theme.specialContentRadius+'px'
+              }
+            },
+            MuiMenuItem: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                color: installedtheme.theme.fontColor, // Some CSS
+                padding: '10px',
+                '&:hover': {
+                  backgroundColor: installedtheme.theme.backgroundColor
+                },
+                '&$selected': { // Name of the rule
+                  color: '#ffffff',
+                  background: installedtheme.theme.primaryColor
+                }
+              }
+            },
+            MuiListItemText: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                color: installedtheme.theme.fontColor
+              }
+            },
+            MuiButton: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                textTransform: 'none', // Some CSS
+                color: installedtheme.theme.buttonColor, // Some CSS
+                borderRadius: installedtheme.theme.buttonRadius+'px'
+              },
+              containedPrimary: {
+                boxShadow: 'none',
+                background: installedtheme.theme.primaryColor,
+                '&$disabled': {
+                  background: installedtheme.theme.backgroundColor,
+                  color: installedtheme.theme.buttonColor
+                }
+              },
+              containedSecondary: {
+                boxShadow: 'none',
+                background: installedtheme.theme.secondaryColor,
+                '&$disabled': {
+                  background: installedtheme.theme.backgroundColor,
+                  color: installedtheme.theme.buttonColor
+                }
+              },
+              outlinedPrimary: {
+                borderWidth: '1px',
+                '&:hover': {
+                  borderWidth: '1px'
+                }
+              },
+              outlinedSecondary: {
+                borderWidth: '1px',
+                '&:hover': {
+                  borderWidth: '1px'
+                }
+              },
+              contained: {
+                boxShadow: 'none',
+                backgroundColor: installedtheme.theme.panelBackgroundColor,
+                color: installedtheme.theme.fontColor,
+                '&$disabled': {
+                  backgroundColor: installedtheme.theme.backgroundColor,
+                  color: installedtheme.theme.fontColor
+                },
+                '&:hover': {
+                  backgroundColor: installedtheme.theme.panelBackgroundColor
+                }
+              }
+            },
+            MuiToggleButtonGroup: {
+              root: {
+                "&$selected": {
+                  backgroundColor: "transparent",
+                  boxShadow: "none"
+                }
+              }
+            },
+            MuiToggleButton: {
+              label: {
+                textTransform: 'none'
+              },
+              root: {
+                '&$selected': {
+                  background: installedtheme.theme.primaryColor
+                }
+              }
+            },
+            MuiFab: {
+              root: {
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+                '&:hover': {
+                  boxShadow: 'none',
+                  backgroundColor: installedtheme.theme.panelBackgroundColor
+                }
+              },
+              primary: {
+                background: installedtheme.theme.primaryColor,
+                '&:hover': {
+                  boxShadow: 'none',
+                  backgroundColor: installedtheme.theme.panelBackgroundColor
+                }
+              },
+              secondary: {
+                background: installedtheme.theme.secondaryColor,
+                '&:hover': {
+                  boxShadow: 'none',
+                  backgroundColor: installedtheme.theme.panelBackgroundColor
+                }
+              },
+            },
+            MUIDataTableToolbar: {
+              root: {
+                padding: '23px'
+              },
+              titleText: {
+                color: installedtheme.theme.fontColor
+              },
+              icon: {
+                color: installedtheme.theme.fontColor
+              }
+            },
+            MUIDataTableHeadCell: {
+              fixedHeader: {
+                backgroundColor: '#202940',
+                borderBottom: '3px solid #3f51b5'
+              }
+            },
+            MuiTableCell: { // Name of the component ⚛️ / style sheet
+              body: { // Name of the rule
+                color: installedtheme.theme.fontColor, // Some CSS
+                borderColor: 'transparent',
+                padding: '16px'
+              },
+              root: {
+                padding: '16px',
+                borderBottom: '0px'
+              }
+            },
+            MuiTableRow: {
+              root: {
+                '&:nth-of-type(even)': {
+                  backgroundColor: installedtheme.theme.specialContentColor
+                }
+              }
+            },
+            MuiInputAdornment: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                backgroundColor: installedtheme.theme.backgroundColor // Some CSS
+              }
+            },
+            MuiTabs: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                backgroundColor: installedtheme.theme.panelBackgroundColor, // Some CSS
+                border: '0px !important',
+                borderRadius: installedtheme.theme.panelRadius+'px',
+              }
+            },
+            MuiTab: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                border: '0px',
+                textTransform: 'none',
+                color: installedtheme.theme.fontColor
+              },
+              textColorPrimary: {
+                '&$selected': {
+                  color: installedtheme.theme.fontColor
+                },
+              }
+            },
+            MuiChip: { // Name of the component ⚛️ / style sheet
+              root: { // Name of the rule
+                backgroundColor: installedtheme.theme.panelBackgroundColor // Some CSS
+              },
+              colorPrimary: {
+                background: installedtheme.theme.primaryColor
+              },
+              colorSecondary: {
+                background: installedtheme.theme.secondaryColor
+              }
+            },
+            MuiAvatar: { // Name of the component ⚛️ / style sheet
+              colorDefault: { // Name of the rule
+                backgroundColor: installedtheme.theme.panelBackgroundColor, // Some CSS
+                color: installedtheme.theme.fontColor
+              }
+            },
+            MuiTypography: { // Name of the component ⚛️ / style sheet
+              body1: { // Name of the rule
+                color: installedtheme.theme.fontColor // Some CSS
+              },
+              body2: { // Name of the rule
+                color: installedtheme.theme.fontColor // Some CSS
+              }
+            },
+            MuiTooltip: { // Name of the component ⚛️ / style sheet
+              tooltip: { // Name of the rule
+                color: installedtheme.theme.fontColor, // Some CSS
+                backgroundColor: 'rgba(0,0,0,0.0)',
+                opacity: '1'
+              },
+              popper: {
+                opacity: '1'
+              }
+            },
+            MuiSelect: {
+              root: {
+                color: 'rgba(255, 255, 255, 0.7)',
+                fontSize: '0.875em',
+                borderBottom: '0px'
+              },
+              icon: {
+                color: 'rgba(255, 255, 255, 0.7)'
+              }
+            },
+            MuiExpansionPanelSummary: {
+              root: {
+                borderRadius: '4px 4px 0px 0px',
+                backgroundColor: installedtheme.theme.panelBackgroundColor,
+                borderBottom: '3px solid '+installedtheme.theme.primaryColor
+              }
+            },
+            MuiExpansionPanel: {
+              root: {
+                '&:before': {
+                  display: 'none'
+                }
+              }
+            },
+            MuiLinearProgress: {
+              colorPrimary: {
+                backgroundColor: installedtheme.theme.primaryColor,
+                height: '20px'
+              }
+            },
+            MuiDialogContent: {
+              root: {
+                padding: '24px',
+                whiteSpace: 'pre-wrap'
+              }
+            },
+            MuiSlider: {
+              markLabel: {
+                filter: 'grayscale(100%)'
+              },
+              markLabelActive: {
+                filter: 'grayscale(0%)'
+              }
+            },
+          },
+          typography: {
+            useNextVariants: true
+          }
+        })
+        selectedTheme = customtheme;
+      }
+    })
 
     let selectedLanguage = german;
 
