@@ -61,8 +61,7 @@ const App = () => {
     loadTheme: () => dispatch(appInfoOperations.loadTheme()),
     loadBannerAsHeader: () => dispatch(appInfoOperations.loadBannerAsHeader()),
     loadComicSans: () => dispatch(appInfoOperations.loadComicSans()),
-    loadLanguage: () => dispatch(i18nOperations.loadLanguage()),
-    loadInstalledThemes: () => dispatch(themesOperations.loadInstalledThemes())
+    loadLanguage: () => dispatch(i18nOperations.loadLanguage())
   });
 
   const Themed = withRouter(connect(mapStateToProps, mapDispatchToProps)(props => {
@@ -90,7 +89,6 @@ const App = () => {
     let customtheme = '';
     props.installedthemes.map(installedtheme => {
       if(installedtheme.id === props.theme.toLowerCase()) {
-        console.log(installedtheme)
         customtheme = createMuiTheme({
           palette: {
             type: 'dark',
@@ -354,7 +352,7 @@ const App = () => {
             MuiExpansionPanelSummary: {
               root: {
                 borderRadius: '4px 4px 0px 0px',
-                backgroundColor: installedtheme.theme.panelBackgroundColor,
+                backgroundColor: installedtheme.theme.specialContentColor,
                 borderBottom: '3px solid '+installedtheme.theme.primaryColor
               }
             },
