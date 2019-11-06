@@ -54,6 +54,7 @@ class ThemeStore extends Component {
 
   handleApprovedOnly = value => {
     this.setState({ approvedOnly: value.target.checked });
+    this.props.updateThemes(this.state.page, !this.state.approvedOnly)
   };
 
   renderPagination() {
@@ -268,9 +269,10 @@ class ThemeStore extends Component {
   }
 
   render() {
-    const { isActionSuccess, updateThemes } = this.props;
+    const { isActionSuccess } = this.props;
     if (isActionSuccess) {
-      updateThemes(this.state.page, this.state.approvedOnly)
+      console.log(isActionSuccess)
+      this.props.updateThemes(this.state.page, this.state.approvedOnly);
     }
     return (
       <div className="pageContent">

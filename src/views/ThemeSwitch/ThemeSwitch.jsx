@@ -100,8 +100,8 @@ class ThemeSwitch extends React.Component {
   };
 
   handleListItemClick = value => {
-    storage('twasi-theme', value.key);
-    this.props.updateTheme(value.key);
+    storage('twasi-theme', value);
+    this.props.updateTheme(value);
     this.props.onClose(value);
   };
 
@@ -180,7 +180,7 @@ class ThemeSwitch extends React.Component {
                 {themes.map(theme => (
                   <ListItem
                     button
-                    onClick={() => this.handleListItemClick(theme)}
+                    onClick={() => this.handleListItemClick(theme.key)}
                     key={theme.key}
                     disabled={theme.disabled}
                   >
@@ -212,7 +212,7 @@ class ThemeSwitch extends React.Component {
                 {installedthemes.map(installedtheme => (
                   <ListItem
                     button
-                    //onClick={() => this.handleListItemClick(theme)}
+                    onClick={() => this.handleListItemClick(installedtheme.id)}
                     key={installedtheme.id}
                     disabled={!installedtheme.installed}
                   >

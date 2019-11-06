@@ -18,13 +18,10 @@ const {
 
 const loadThemes = (page, approvedOnly) => dispatch => {
     dispatch(updateLoading(true));
-    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`themes{availableThemes(approvedOnly: ${approvedOnly}){content(page: 1){approved,created,creator,id,installed,name,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
         dispatch(updateThemes(data.themes.availableThemes.content.map(p => ({ ...p, actionInProgress: false }))));
         dispatch(updatePagination(data.themes.availableThemes));
-        dispatch(updateActionSuccess(true));
     }).finally(() => {
-        dispatch(updateActionSuccess(false));
         dispatch(updateLoading(false))
         dispatch(updateLoaded(true))
     });

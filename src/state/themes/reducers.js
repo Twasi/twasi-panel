@@ -45,7 +45,6 @@ const themesReducer = (state = initialState, action) => {
     case types.SET_INSTALLED: {
       const newThemes = state.themes.map(theme => {
         if (theme.id === action.id) {
-          console.log(action)
           return {
             ...theme,
             installed: action.installed
