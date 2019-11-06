@@ -285,6 +285,9 @@ class ThemeStore extends Component {
             <h4 className="pageContainerTitle">
               Theme Store
               <span style={{ float: 'right' }}>
+                <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={event => this.handleClickBreadCrumb(event, '/themecreator')}>
+                  Neues Theme erstellen
+                </Button>
                 <Button variant="contained" color="primary" onClick={() => {this.props.updateThemes(this.state.page, this.state.approvedOnly)}}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />

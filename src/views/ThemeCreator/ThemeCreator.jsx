@@ -157,9 +157,18 @@ class ThemeCreator extends Component {
           <Typography component={'span'}>
             <h4 className="pageContainerTitle">
               Theme Creator
+              <span style={{ float: 'right' }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={event => this.handleClickBreadCrumb(event, '/themes')}
+                >
+                  Zum Theme Store
+                </Button>
+              </span>
             </h4>
             <small>
-              Erstelle, verwalte und veröffentliche deine eigenen Themes für Twasi.
+              Erstelle und veröffentliche deine eigenen Themes für Twasi und für die Nutzer von Twasi.
             </small>
           </Typography>
         </Paper>
