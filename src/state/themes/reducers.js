@@ -9,7 +9,9 @@ export const initialState = {
   isActionSuccess: false,
   name: '',
   themedata: {},
-  themeresponse: []
+  themeresponse: [],
+  installTheme: '',
+  uninstallTheme: ''
 };
 
 const themesReducer = (state = initialState, action) => {
@@ -35,6 +37,41 @@ const themesReducer = (state = initialState, action) => {
     case types.UPDATE_ACTIONSUCCESS: {
       return { ...state, isActionSuccess: action.isActionSuccess };
     }
+
+    case types.SET_INSTALLED: {
+      const newThemes = state.themes.map(theme => {
+        if (theme.id === action.id) {
+          return {
+            ...theme,
+            isInstalled: action.isInstalled
+          };
+        }
+        return theme;
+      });
+
+      return {
+        ...state,
+        themes: newThemes
+      };
+    }
+
+    case types.UPDATE_ACTION_IN_PROGRESS: {
+      const newThemes = state.themes.map(theme => {
+        if (theme.id === action.id) {
+          return {
+            ...theme,
+            actionInProgress: action.isLoading
+          };
+        }
+        return theme;
+      });
+
+      return {
+        ...state,
+        themes: newThemes
+      };
+    }
+
     default:
       return state;
   }

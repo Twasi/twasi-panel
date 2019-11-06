@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { addLocaleData, IntlProvider } from 'react-intl';
+import { SnackbarProvider } from 'notistack';
 
 import AuthLoader from './auth/AuthLoader';
 import configureStore from './state/store';
@@ -92,21 +93,23 @@ const App = () => {
       <IntlProvider locale="de" messages={selectedLanguage}>
         <MuiThemeProvider theme={selectedTheme}>
           <CssBaseline />
-          <AuthLoader>
-            <Content className={props.comicsans ? props.theme.toLowerCase() + " comicsans" : props.theme.toLowerCase()}>
-              <Header />
-              <Switch>
-                <Route path="/profile/:name" component={Public} />
-                <Route path="/setup" component={Welcome} />
-                <Route path="/branding" component={Branding} />
-                <Route path="/tos" component={TOS} />
-                <Route path="/imprint" component={Imprint} />
-                <Route path="/privacy" component={Privacy} />
-                <Route path="/" component={PanelContent} />
-              </Switch>
-              <Footer />
-            </Content>
-          </AuthLoader>
+          <SnackbarProvider maxSnack={3}>
+            <AuthLoader>
+              <Content className={props.comicsans ? props.theme.toLowerCase() + " comicsans" : props.theme.toLowerCase()}>
+                <Header />
+                <Switch>
+                  <Route path="/profile/:name" component={Public} />
+                  <Route path="/setup" component={Welcome} />
+                  <Route path="/branding" component={Branding} />
+                  <Route path="/tos" component={TOS} />
+                  <Route path="/imprint" component={Imprint} />
+                  <Route path="/privacy" component={Privacy} />
+                  <Route path="/" component={PanelContent} />
+                </Switch>
+                <Footer />
+              </Content>
+            </AuthLoader>
+          </SnackbarProvider>
         </MuiThemeProvider>
       </IntlProvider>
     );

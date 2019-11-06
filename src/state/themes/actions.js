@@ -16,6 +16,18 @@ const updateAddTheme = (name, themedata) => ({
   themedata
 });
 
+const updateActionInProgress = (id, isLoading) => ({
+  type: types.UPDATE_ACTION_IN_PROGRESS,
+  id,
+  isLoading
+});
+
+const setInstalled = (id, isInstalled) => ({
+  type: types.SET_INSTALLED,
+  id,
+  isInstalled
+});
+
 const updatePagination = pagination => ({
   type: types.UPDATE_PAGINATION,
   pagination
@@ -38,10 +50,12 @@ const updateActionSuccess = isActionSuccess => ({
 
 export default {
   updateThemes,
+  setInstalled,
   updateThemeResponse,
   updateAddTheme,
   updatePagination,
   updateLoading,
   updateLoaded,
-  updateActionSuccess
+  updateActionSuccess,
+  updateActionInProgress
 };

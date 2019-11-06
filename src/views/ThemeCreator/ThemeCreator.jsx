@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { withSnackbar } from 'notistack';
 import { connect } from 'react-redux';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
@@ -45,7 +46,7 @@ class ThemeCreator extends Component {
       shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo
       shadowSecondaryTextlogo: '#3C4EAD', // Secondary (smaller) shadow color of logo (should be darker than primary shadow)
       mainTextlogo: '#4352AF', // Main color of logo
-      themeName: ''
+      themeName: '',
     };
   }
 
@@ -110,6 +111,20 @@ class ThemeCreator extends Component {
   }
 
   render() {
+    const action = key => (
+      <div>
+        <Button variant='contained' onClick={() => { this.props.closeSnackbar(key) }}>
+          X
+        </Button>
+      </div>
+    );
+    if(this.props.isActionSuccess) {
+      this.props.enqueueSnackbar(this.props.getThemeResponse.status === 'OK' ? <FormattedMessage id="notification.success" /> : this.props.getThemeResponse.key, {
+        variant: this.props.getThemeResponse.status === 'OK' ? 'success' : 'error',
+        autoHideDuration: 3000,
+        action
+      });
+    }
     var themedata = {
       backgroundColor: this.state.backgroundColor,
       buttonRadius: this.state.buttonRadius,
@@ -127,7 +142,6 @@ class ThemeCreator extends Component {
       shadowSecondaryTextLogo: this.state.shadowSecondaryTextlogo,
       mainTextLogo: this.state.mainTextlogo
     }
-    //console.log(this.props.getThemeResponse)
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -322,7 +336,27 @@ class ThemeCreator extends Component {
                       variant="contained"
                       color="primary"
                       style={{ marginRight: '16px' }}
-                      onClick={() => {this.props.addTheme(this.state.themeName, themedata)}}
+                      onClick={() => {
+                          this.props.addTheme(this.state.themeName, themedata);
+                          this.setState({
+                            backgroundColor: '#1a2035', // Background color of the whole page
+                            buttonRadius: 100, // Radius of buttons
+                            panelRadius: 4, // Radius of panel elements
+                            specialContentRadius: 15, // Radius of cards (special content)
+                            panelBackgroundColor: '#202940', // Backgroundcolor of panel elements
+                            fontColor: '#afb6c5', // Fontcolor
+                            buttonFontColor: '#ffffff', // Button font color
+                            primaryColor: '#3f51b5', // Primary color
+                            secondaryColor: '#de6464', // Secondary color
+                            specialContentColor: '#232f4a', // Background color of cards and special contents
+
+                            outlineTextlogo: '#1A2036', // Outline color of logo
+                            shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo
+                            shadowSecondaryTextlogo: '#3C4EAD', // Secondary (smaller) shadow color of logo (should be darker than primary shadow)
+                            mainTextlogo: '#4352AF', // Main color of logo
+                            themeName: '',
+                          });
+                      }}
                       disabled={this.state.themeName.length < 5}
                     >
                       <Icon style={{ marginRight: '5px' }}>save</Icon>
@@ -442,4 +476,4 @@ const mapDispatchToProps = dispatch => ({
   addTheme: (name, themedata) => dispatch(themesOperations.addTheme(name, themedata)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThemeCreator);
+export default withSnackbar(connect(mapStateToProps, mapDispatchToProps)(ThemeCreator));

@@ -23,6 +23,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { FormattedMessage } from 'react-intl';
 import './_style.css';
 import theme_verified from '../common/resources/theme_verified.svg';
@@ -73,7 +74,10 @@ class ThemeStore extends Component {
   }
 
   renderThemes() {
-    const { themes } = this.props;
+    const { themes, installTheme, uninstallTheme, isActionSuccess, updateThemes } = this.props;
+    if(isActionSuccess) {
+      updateThemes(this.state.page);
+    }
     return themes.map(theme => (
       <Grid item xs={6}>
         <ExpansionPanel>
@@ -93,9 +97,60 @@ class ThemeStore extends Component {
                       alt="theme_verified"
                     />}
                     <span style={{ float: 'right' }}>
-                      <Button variant="contained" color="primary">
-                        Installieren
-                      </Button>
+                      {theme.installed && (
+                        <Button
+                          fullWidth
+                          variant="contained"
+                          color="secondary"
+                          style={{ borderRadius: "0px" }}
+                          disabled={theme.actionInProgress}
+                          onClick={() => {
+                            uninstallTheme(theme.id);
+                          }}
+                        >
+                          <FormattedMessage id="plugins.uninstall" />
+                          {theme.actionInProgress && (
+                            <CircularProgress
+                              color="primary"
+                              style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                marginTop: -12,
+                                marginLeft: -12
+                              }}
+                              size={24}
+                            />
+                          )}
+                        </Button>
+                      )}
+                      {!theme.installed && (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          style={{ borderRadius: "0px" }}
+                          fullWidth
+                          disabled={theme.actionInProgress}
+                          onClick={() => {
+                            installTheme(theme.id);
+                          }}
+                        >
+                          <FormattedMessage id="plugins.install" />
+                          {theme.actionInProgress && (
+                            <CircularProgress
+                              color="primary"
+                              style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                marginTop: -12,
+                                marginLeft: -12
+                              }}
+                              size={24}
+                            />
+                          )}
+                        </Button>
+                      )}
                     </span>
                   </h2>
                   <h5 style={{ marginTop: "0px", marginBottom: "15px" }}>
@@ -260,6 +315,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateThemes: page => dispatch(themesOperations.loadThemes(page)),
+  installTheme: id => dispatch(themesOperations.installTheme(id)),
+  uninstallTheme: id => dispatch(themesOperations.uninstallTheme(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThemeStore);

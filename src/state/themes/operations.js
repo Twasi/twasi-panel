@@ -10,7 +10,9 @@ const {
     updatePagination,
     updateLoaded,
     updateLoading,
-    updateActionSuccess
+    updateActionSuccess,
+    setInstalled,
+    updateActionInProgress
 } = actions;
 
 const loadThemes = page => dispatch => {
@@ -39,13 +41,50 @@ const addTheme = (name, themedata) => dispatch => {
     dispatch(updateActionSuccess(false));
     dispatch(getGraph(`themes{create(name: ${JSON.stringify(name)}, theme: {${theme}}){status,translationKey}}`, 'panel')).then(
     data => {
-      dispatch(updateThemeResponse(data.themes));
+      dispatch(updateThemeResponse(data.themes.create));
       dispatch(updateAddTheme(data.themes));
       dispatch(updateActionSuccess(true));
     }).finally(() => {
       dispatch(updateActionSuccess(false));
     });
 };
+
+const installTheme = id => dispatch => {
+  dispatch(updateActionInProgress(id, true));
+  dispatch(updateActionSuccess(false));
+  sleep(getRndInteger(500, 1000)).then(() => {
+
+    dispatch(getGraph(`themes{install(themeId: ${JSON.stringify(id)}){status,translationKey}}`, 'panel')).then(data => {
+      dispatch(setInstalled(id, data.themes.install));
+      dispatch(updateActionInProgress(id, false));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
+  });
+};
+
+const uninstallTheme = id => dispatch => {
+  dispatch(updateActionInProgress(id, true));
+  dispatch(updateActionSuccess(false));
+  sleep(getRndInteger(500, 1000)).then(() => {
+
+    dispatch(getGraph(`themes{uninstall(themeId: ${JSON.stringify(id)}){status,translationKey}}`, 'panel')).then(data => {
+      dispatch(setInstalled(id, data.themes.install));
+      dispatch(updateActionInProgress(id, false));
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+      dispatch(updateActionSuccess(false));
+    });
+  });
+};
+
+function sleep(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 export default {
     loadThemes,
@@ -54,5 +93,7 @@ export default {
     updateLoaded,
     updateLoading,
     updatePagination,
-    updateActionSuccess
+    updateActionSuccess,
+    installTheme,
+    uninstallTheme
 };

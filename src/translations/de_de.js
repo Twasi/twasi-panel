@@ -9,6 +9,9 @@ export default {
   'common.yes': 'Ja',
   'common.no': 'Nein',
 
+  // Notifications
+  'notification.success': 'Die Aktion wurde erfolgreich ausgeführt.',
+
   'rank.team': 'Teammitglied',
   'rank.partner': 'Partnerstreamer',
   'rank.streamer': 'Streamer',

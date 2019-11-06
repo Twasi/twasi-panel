@@ -55,6 +55,7 @@ const installPlugin = id => dispatch => {
   sleep(getRndInteger(500, 1000)).then(() => {
 
     dispatch(getGraph(`user { installPlugin(name:"${id}") { isInstalled } }`)).then(data => {
+      console.log(data)
       dispatch(
         setInstalled(id, data.user.installPlugin.isInstalled)
       );

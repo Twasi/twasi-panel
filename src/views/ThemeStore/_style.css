@@ -1,6 +1,6 @@
 .verifiedBadge {
   height: 30px;
-  position:absolute;
-  top: 14px;
+  position:relative;
+  top: 5px;
   margin-left: 10px;
 }
