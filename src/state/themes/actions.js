@@ -5,6 +5,11 @@ const updateThemes = themes => ({
   themes
 });
 
+const updateInstalledThemes = installedthemes => ({
+  type: types.UPDATE_INSTALLEDTHEMES,
+  installedthemes
+});
+
 const updateThemeResponse = themeresponse => ({
   type: types.UPDATE_THEMERESPONSE,
   themeresponse
@@ -50,6 +55,7 @@ const updateActionSuccess = isActionSuccess => ({
 
 export default {
   updateThemes,
+  updateInstalledThemes,
   setInstalled,
   updateThemeResponse,
   updateAddTheme,

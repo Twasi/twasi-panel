@@ -3,6 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import Icon from '@material-ui/core/Icon';
 import Tooltip from '@material-ui/core/Tooltip';
 import ThemeSwitch from './ThemeSwitch';
+import { connect } from 'react-redux';
+
+import { themesOperations } from '../../state/themes';
 
 class ThemeSwitchIcon extends React.Component {
   constructor(props) {
@@ -27,7 +30,10 @@ class ThemeSwitchIcon extends React.Component {
           <Icon
             className="themeIcon"
             style={{ fontSize: 36, float: 'right', marginRight: '15px' }}
-            onClick={() => this.setState({ modalOpen: true })}
+            onClick={() => {
+              this.setState({ modalOpen: true });
+              this.props.updateInstalledThemes();
+            }}
           >
             color_lens
           </Icon>
@@ -41,4 +47,12 @@ class ThemeSwitchIcon extends React.Component {
   }
 }
 
-export default ThemeSwitchIcon;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateInstalledThemes: () => dispatch(themesOperations.loadInstalledThemes()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ThemeSwitchIcon);

@@ -99,9 +99,12 @@ class ThemeCreator extends Component {
   }
 
   handleThemeNameChange = (event) => {
-    this.setState({
-      themeName: event.target.value
-    });
+    if(event.target.value.length < 20) {
+      console.log(event.target.value)
+      this.setState({
+        themeName: event.target.value
+      });
+    }
   };
 
   handleClickBreadCrumb = (event, value) => {

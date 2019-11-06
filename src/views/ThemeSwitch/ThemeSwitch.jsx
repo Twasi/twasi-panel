@@ -24,6 +24,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import storage from 'local-storage';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
+import { themesOperations, themesSelectors } from '../../state/themes';
 
 import './_style.css';
 
@@ -93,6 +94,7 @@ const themes = [{
 }];
 
 class ThemeSwitch extends React.Component {
+
   handleClose = () => {
     this.props.onClose();
   };
@@ -114,7 +116,7 @@ class ThemeSwitch extends React.Component {
   };
 
   render() {
-    const { classes, onClose, selectedValue, selectedBannerAsHeaderValue, selectedComicSansValue, updateTheme, updateBannerAsHeader, updateComicSans, ...other } = this.props;
+    const { classes, onClose, selectedValue, installedthemes, selectedBannerAsHeaderValue, selectedComicSansValue, updateTheme, updateBannerAsHeader, updateComicSans, ...other } = this.props;
     return (
       <Dialog
         scroll='body'
@@ -205,6 +207,43 @@ class ThemeSwitch extends React.Component {
                     </Tooltip>
                   </ListItem>
                 ))}
+                {installedthemes.length !== 0 &&
+                <Divider className="marginDivider" />}
+                {installedthemes.map(installedtheme => (
+                  <ListItem
+                    button
+                    //onClick={() => this.handleListItemClick(theme)}
+                    key={installedtheme.id}
+                    disabled={!installedtheme.installed}
+                  >
+                    <ListItemAvatar>
+                      <Avatar>
+                        <Icon style={{ fontSize: 36 }}>color_lens</Icon>
+                      </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={(
+                      <span>
+                        {installedtheme.name}
+                        <small> by {installedtheme.creator}</small>
+                      </span>
+                      )} secondary={installedtheme.approved ? 'verified' : ''}/>
+                    <Tooltip title={<FormattedMessage id="themeswitch.background_color" />} placement="top">
+                      <Badge children={''} style={{ backgroundColor: installedtheme.theme.backgroundColor, width: '30px', height: '30px' }} />
+                    </Tooltip>
+                    <Tooltip title={<FormattedMessage id="themeswitch.content_color" />} placement="top">
+                      <Badge children={''} style={{ backgroundColor: installedtheme.theme.panelBackgroundColor, width: '30px', height: '30px' }} />
+                    </Tooltip>
+                    <Tooltip title={<FormattedMessage id="themeswitch.special_color" />} placement="top">
+                      <Badge children={''} style={{ backgroundColor: installedtheme.theme.specialContentColor, width: '30px', height: '30px' }} />
+                    </Tooltip>
+                    <Tooltip title={<FormattedMessage id="themeswitch.primary_color" />} placement="top">
+                      <Badge children={''} style={{ backgroundColor: installedtheme.theme.primaryColor, width: '30px', height: '30px' }} />
+                    </Tooltip>
+                    <Tooltip title={<FormattedMessage id="themeswitch.secondary_color" />} placement="top">
+                      <Badge children={''} style={{ backgroundColor: installedtheme.theme.secondaryColor, width: '30px', height: '30px' }} />
+                    </Tooltip>
+                  </ListItem>
+                ))}
               </List>
             </CardContent>
           </Card>
@@ -223,12 +262,14 @@ ThemeSwitch.propTypes = {
 const ThemeSwitchWrapped = (ThemeSwitch);
 
 const mapStateToProps = state => ({
+  installedthemes: themesSelectors.getInstalledThemes(state),
   selectedValue: appInfoSelectors.getTheme(state),
   selectedBannerAsHeaderValue: appInfoSelectors.getBannerAsHeader(state),
   selectedComicSansValue: appInfoSelectors.getComicSans(state),
 });
 
 const mapDispatchToProps = dispatch => ({
+  updateInstalledThemes: () => dispatch(themesOperations.loadInstalledThemes()),
   updateTheme: name => dispatch(appInfoOperations.updateTheme(name)),
   updateBannerAsHeader: bannerAsHeader => dispatch(appInfoOperations.updateBannerAsHeader(bannerAsHeader)),
   updateComicSans: comicsans => dispatch(appInfoOperations.updateComicSans(comicsans)),

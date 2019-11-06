@@ -1,4 +1,5 @@
 const getThemes = state => state.themes.themes;
+const getInstalledThemes = state => state.themes.installedthemes;
 const getThemeResponse = state => state.themes.themeresponse;
 const addTheme = state => state.themes.addTheme;
 const getPagination = state => state.themes.pagination;
@@ -8,6 +9,7 @@ const isActionSuccess = state => state.themes.isActionSuccess;
 
 export default {
   getThemes,
+  getInstalledThemes,
   addTheme,
   getThemeResponse,
   getPagination,

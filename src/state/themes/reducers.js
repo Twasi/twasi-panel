@@ -2,6 +2,7 @@ import types from './types';
 
 export const initialState = {
   themes: [],
+  installedthemes: [],
   pagination: [],
   isDisabled: false,
   isLoading: true,
@@ -18,6 +19,9 @@ const themesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_THEMES: {
       return { ...state, themes: action.themes };
+    }
+    case types.UPDATE_INSTALLEDTHEMES: {
+      return { ...state, installedthemes: action.installedthemes };
     }
     case types.UPDATE_THEMERESPONSE: {
       return { ...state, themeresponse: action.themeresponse };
@@ -41,9 +45,10 @@ const themesReducer = (state = initialState, action) => {
     case types.SET_INSTALLED: {
       const newThemes = state.themes.map(theme => {
         if (theme.id === action.id) {
+          console.log(action)
           return {
             ...theme,
-            isInstalled: action.isInstalled
+            installed: action.installed
           };
         }
         return theme;
