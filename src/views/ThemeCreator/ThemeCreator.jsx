@@ -127,6 +127,7 @@ class ThemeCreator extends Component {
       shadowSecondaryTextLogo: this.state.shadowSecondaryTextlogo,
       mainTextLogo: this.state.mainTextlogo
     }
+    //console.log(this.props.getThemeResponse)
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -431,6 +432,7 @@ class ThemeCreator extends Component {
 }
 
 const mapStateToProps = state => ({
+  getThemeResponse: themesSelectors.getThemeResponse(state),
   isLoaded: themesSelectors.isLoaded(state),
   isLoading: themesSelectors.isLoading(state),
   isActionSuccess: themesSelectors.isActionSuccess(state),

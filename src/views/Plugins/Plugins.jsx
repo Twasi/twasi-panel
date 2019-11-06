@@ -24,9 +24,10 @@ import StickerDesign from '../common/resources/sticker_design.png';
 
 class Plugins extends Component {
   componentDidMount() {
-    const { verifyData, updatePlugins } = this.props;
+    const { verifyData, updatePlugins, updateAllPlugins } = this.props;
     verifyData();
     updatePlugins(1);
+    updateAllPlugins();
   }
 
   constructor(props) {
@@ -71,9 +72,10 @@ class Plugins extends Component {
   }
 
   render() {
-    const { plugins, installPlugin, uninstallPlugin, updatePlugins, isActionSuccess } = this.props;
+    const { plugins, installPlugin, uninstallPlugin, updatePlugins, isActionSuccess, updateAllPlugins } = this.props;
     if (isActionSuccess) {
-      updatePlugins(1)
+      updatePlugins(1);
+      updateAllPlugins();
     }
     const renderedPluginsNew = plugins.map(plugin => (
       <Grid item key={plugin.name} sm={6} md={4}>
@@ -143,7 +145,9 @@ class Plugins extends Component {
               color="secondary"
               style={{ borderRadius: "0px" }}
               disabled={plugin.actionInProgress}
-              onClick={() => uninstallPlugin(plugin.id)}
+              onClick={() => {
+                uninstallPlugin(plugin.id);
+              }}
             >
               <FormattedMessage id="plugins.uninstall" />
               {plugin.actionInProgress && (
@@ -168,7 +172,9 @@ class Plugins extends Component {
               style={{ borderRadius: "0px" }}
               fullWidth
               disabled={plugin.actionInProgress}
-              onClick={() => installPlugin(plugin.id)}
+              onClick={() => {
+                installPlugin(plugin.id);
+              }}
             >
               <FormattedMessage id="plugins.install" />
               {plugin.actionInProgress && (
@@ -240,7 +246,8 @@ const mapDispatchToProps = dispatch => ({
   installPlugin: name => dispatch(pluginsOperations.installPlugin(name)),
   uninstallPlugin: name => dispatch(pluginsOperations.uninstallPlugin(name)),
   updateQuery: query => dispatch(pluginsOperations.updateQuery(query)),
-  updatePlugins: page => dispatch(pluginsOperations.loadData(page))
+  updatePlugins: page => dispatch(pluginsOperations.loadData(page)),
+  updateAllPlugins: () => dispatch(pluginsOperations.loadAllData())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plugins);

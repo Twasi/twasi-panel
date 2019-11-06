@@ -8,13 +8,17 @@ export const initialState = {
   isLoaded: false,
   isActionSuccess: false,
   name: '',
-  themedata: {}
+  themedata: {},
+  themeresponse: []
 };
 
 const themesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_THEMES: {
       return { ...state, isLoaded: true, isDisabled: false, themes: action.themes };
+    }
+    case types.UPDATE_THEMERESPONSE: {
+      return { ...state, themeresponse: action.themeresponse };
     }
     case types.UPDATE_ADDTHEME: {
       return { ...state, isLoaded: true, name: action.name, themedata: action.themedata };

@@ -5,6 +5,7 @@ import {getGraph} from '../../services/graphqlService';
 
 const {
     updateThemes,
+    updateThemeResponse,
     updateAddTheme,
     updatePagination,
     updateLoaded,
@@ -38,6 +39,7 @@ const addTheme = (name, themedata) => dispatch => {
     dispatch(updateActionSuccess(false));
     dispatch(getGraph(`themes{create(name: ${JSON.stringify(name)}, theme: {${theme}}){status,translationKey}}`, 'panel')).then(
     data => {
+      dispatch(updateThemeResponse(data.themes));
       dispatch(updateAddTheme(data.themes));
       dispatch(updateActionSuccess(true));
     }).finally(() => {
@@ -48,6 +50,7 @@ const addTheme = (name, themedata) => dispatch => {
 export default {
     loadThemes,
     addTheme,
+    updateThemeResponse,
     updateLoaded,
     updateLoading,
     updatePagination,
