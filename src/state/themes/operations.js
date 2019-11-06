@@ -18,7 +18,7 @@ const {
 const loadThemes = page => dispatch => {
     dispatch(updateLoading(true));
     dispatch(getGraph(`themes{availableThemes(approvedOnly: false){content(page: 1){approved,created,creator,id,installed,name,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
-        dispatch(updateThemes(data.themes.availableThemes.content));
+        dispatch(updateThemes(data.themes.availableThemes.content.map(p => ({ ...p, actionInProgress: false }))));
         dispatch(updatePagination(data.themes.availableThemes));
     }).finally(() => {
         dispatch(updateLoading(false))
@@ -55,7 +55,7 @@ const installTheme = id => dispatch => {
   sleep(getRndInteger(500, 1000)).then(() => {
 
     dispatch(getGraph(`themes{install(themeId: ${JSON.stringify(id)}){status,translationKey}}`, 'panel')).then(data => {
-      dispatch(setInstalled(id, data.themes.install));
+      dispatch(setInstalled(id, data.themes.install.status === 'OK' ? true : false));
       dispatch(updateActionInProgress(id, false));
       dispatch(updateActionSuccess(true));
     }).finally(() => {
@@ -70,7 +70,7 @@ const uninstallTheme = id => dispatch => {
   sleep(getRndInteger(500, 1000)).then(() => {
 
     dispatch(getGraph(`themes{uninstall(themeId: ${JSON.stringify(id)}){status,translationKey}}`, 'panel')).then(data => {
-      dispatch(setInstalled(id, data.themes.install));
+      dispatch(setInstalled(id, data.themes.uninstall.status === 'OK' ? false : true));
       dispatch(updateActionInProgress(id, false));
       dispatch(updateActionSuccess(true));
     }).finally(() => {

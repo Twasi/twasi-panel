@@ -22,7 +22,6 @@ import Logo from '../common/Logo/Logo';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FormattedMessage } from 'react-intl';
 import './_style.css';
@@ -74,15 +73,11 @@ class ThemeStore extends Component {
   }
 
   renderThemes() {
-    const { themes, installTheme, uninstallTheme, isActionSuccess, updateThemes } = this.props;
-    if(isActionSuccess) {
-      updateThemes(this.state.page);
-    }
+    const { themes, installTheme, uninstallTheme } = this.props;
     return themes.map(theme => (
       <Grid item xs={6}>
         <ExpansionPanel>
           <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
             id={theme.id}
           >
             <Grid container spacing={0}>
@@ -102,7 +97,6 @@ class ThemeStore extends Component {
                           fullWidth
                           variant="contained"
                           color="secondary"
-                          style={{ borderRadius: "0px" }}
                           disabled={theme.actionInProgress}
                           onClick={() => {
                             uninstallTheme(theme.id);
@@ -128,7 +122,6 @@ class ThemeStore extends Component {
                         <Button
                           variant="contained"
                           color="primary"
-                          style={{ borderRadius: "0px" }}
                           fullWidth
                           disabled={theme.actionInProgress}
                           onClick={() => {
@@ -268,6 +261,10 @@ class ThemeStore extends Component {
   }
 
   render() {
+    const { isActionSuccess, updateThemes } = this.props;
+    if (isActionSuccess) {
+      updateThemes(this.state.page)
+    }
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">

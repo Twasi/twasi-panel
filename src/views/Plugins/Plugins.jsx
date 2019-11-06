@@ -74,7 +74,7 @@ class Plugins extends Component {
   render() {
     const { plugins, installPlugin, uninstallPlugin, updatePlugins, isActionSuccess, updateAllPlugins } = this.props;
     if (isActionSuccess) {
-      updatePlugins(1);
+      updatePlugins(this.state.page);
       updateAllPlugins();
     }
     const renderedPluginsNew = plugins.map(plugin => (

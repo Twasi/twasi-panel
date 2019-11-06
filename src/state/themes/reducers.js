@@ -17,7 +17,7 @@ export const initialState = {
 const themesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_THEMES: {
-      return { ...state, isLoaded: true, isDisabled: false, themes: action.themes };
+      return { ...state, themes: action.themes };
     }
     case types.UPDATE_THEMERESPONSE: {
       return { ...state, themeresponse: action.themeresponse };
@@ -65,7 +65,6 @@ const themesReducer = (state = initialState, action) => {
         }
         return theme;
       });
-
       return {
         ...state,
         themes: newThemes
