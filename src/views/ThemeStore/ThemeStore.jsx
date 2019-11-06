@@ -14,6 +14,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { Checkboard } from "react-color/lib/components/common";
 import Table from '@material-ui/core/Table';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
@@ -35,18 +37,23 @@ class ThemeStore extends Component {
     super(props);
     this.state = {
       page: 1,
+      approvedOnly: true
     };
   }
 
   componentDidMount() {
     const { updateThemes } = this.props;
-    updateThemes(this.state.page);
+    updateThemes(this.state.page, this.state.approvedOnly);
   }
 
   handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);
     this.setState({});
+  };
+
+  handleApprovedOnly = value => {
+    this.setState({ approvedOnly: value.target.checked });
   };
 
   renderPagination() {
@@ -263,7 +270,7 @@ class ThemeStore extends Component {
   render() {
     const { isActionSuccess, updateThemes } = this.props;
     if (isActionSuccess) {
-      updateThemes(this.state.page)
+      updateThemes(this.state.page, this.state.approvedOnly)
     }
     return (
       <div className="pageContent">
@@ -278,7 +285,7 @@ class ThemeStore extends Component {
             <h4 className="pageContainerTitle">
               Theme Store
               <span style={{ float: 'right' }}>
-                <Button variant="contained" color="primary" onClick={() => {this.props.updateThemes(this.state.page)}}>
+                <Button variant="contained" color="primary" onClick={() => {this.props.updateThemes(this.state.page, this.state.approvedOnly)}}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
                 </Button>
@@ -293,6 +300,18 @@ class ThemeStore extends Component {
         </Paper>
         <Paper className="pageContainer" style={{ margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={this.handleApprovedOnly}
+                    color="secondary"
+                    checked={this.state.approvedOnly}
+                  />
+                }
+                label={<small>Nur verifizierte Themes anzeigen</small>}
+              />
+            </Grid>
             {this.renderThemes(this.state.page)}
           </Grid>
         </Paper>
@@ -311,7 +330,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateThemes: page => dispatch(themesOperations.loadThemes(page)),
+  updateThemes: (page, approved) => dispatch(themesOperations.loadThemes(page, approved)),
   installTheme: id => dispatch(themesOperations.installTheme(id)),
   uninstallTheme: id => dispatch(themesOperations.uninstallTheme(id)),
 });
