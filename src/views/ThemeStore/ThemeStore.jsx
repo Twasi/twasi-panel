@@ -265,10 +265,10 @@ class ThemeStore extends Component {
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography component={'div'}>
             <h4 className="pageContainerTitle">
-              <FormattedMessage id="themecreator.title" />
+              <FormattedMessage id="themestore.title" />
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={event => this.handleClickBreadCrumb(event, '/themecreator')}>
-                  <FormattedMessage id="themecreator.new_theme" />
+                  <FormattedMessage id="themestore.new_theme" />
                 </Button>
                 <Button variant="contained" color="primary" onClick={() => {this.props.updateThemes(this.state.page, this.state.approvedOnly)}}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
@@ -277,7 +277,7 @@ class ThemeStore extends Component {
               </span>
             </h4>
             <small>
-              <FormattedMessage id="themecreator.subtitle" />
+              <FormattedMessage id="themestore.subtitle" />
             </small>
           </Typography>
         </Paper>
@@ -292,7 +292,7 @@ class ThemeStore extends Component {
                     checked={this.state.approvedOnly}
                   />
                 }
-                label={<small><FormattedMessage id="themecreator.showonlyverified" /></small>}
+                label={<small><FormattedMessage id="themestore.showonlyverified" /></small>}
               />
             </Grid>
             {this.renderThemes(this.state.page)}
