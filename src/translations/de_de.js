@@ -401,6 +401,11 @@ export default {
   'themecreator.preview.buttons.primary': 'Primärfarbe',
   'themecreator.preview.buttons.secondary': 'Sekundärfarbe',
 
+  'themecreator.title': 'Theme Store',
+  'themecreator.subtitle': 'Themes sind Skins für dein Twasi Panel, die das Aussehen deines Panel individuell anpassen. \nJeder kann Themes erstellen und veröffentlichen. Themes, die von uns als besonders gelungen gewertet wurden erhalten den "verified" Status.',
+  'themecreator.new_theme': 'Neues Theme erstellen',
+  'themecreator.showonlyverified': 'Nur verifizierte Themes anzeigen',
+
   // Public
   'public.headline': 'Public',
 

@@ -177,29 +177,29 @@ class ThemeStore extends Component {
                     <div style={{ background: theme.theme.backgroundColor, padding: '25px' }}>
                       <Typography component={'span'} style={{ color: theme.theme.fontColor }}>
                         <h4 className="pageContainerTitle">
-                          Content background
+                          <FormattedMessage id="themecreator.preview.content.title" />
                         </h4>
                         <small>
-                          This will be the overall background color of the site.
+                          <FormattedMessage id="themecreator.preview.content.subtitle" />
                         </small>
                       </Typography>
                       <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: theme.theme.panelBackgroundColor, borderRadius: theme.theme.panelRadius+"px" }}>
                         <Typography component={'span'} style={{ color: theme.theme.fontColor }}>
                           <h4 className="pageContainerTitle">
-                            Example panel
+                            <FormattedMessage id="themecreator.preview.panels.title" />
                           </h4>
                           <small>
-                            Panels look like this.
+                            <FormattedMessage id="themecreator.preview.panels.subtitle" />
                           </small>
                         </Typography>
                         <Card style={{ marginTop: '25px', background: theme.theme.specialContentColor, borderRadius: theme.theme.specialContentRadius+"px" }} className="pluginCard">
                           <CardContent style={{ backgroundColor: theme.theme.specialContentColor }} className="pluginCardContent">
                             <Typography component={'span'} style={{ color: theme.theme.fontColor }}>
                               <h4 className="pageContainerTitle">
-                                Special contents
+                                <FormattedMessage id="themecreator.preview.cards.title" />
                               </h4>
                               <small>
-                                Special contents will be displayed with this background color.
+                                <FormattedMessage id="themecreator.preview.cards.subtitle" />
                               </small>
                             </Typography>
                           </CardContent>
@@ -227,12 +227,12 @@ class ThemeStore extends Component {
                         <Grid container spacing={4}>
                           <Grid item xs={6} style={{ textAlign: 'center' }}>
                             <Button variant="contained" color="primary" style={{ background: theme.theme.primaryColor, borderRadius: theme.theme.buttonRadius+"px", color: theme.theme.buttonFontColor }}>
-                              Primary color button
+                              <FormattedMessage id="themecreator.preview.buttons.primary" />
                             </Button>
                           </Grid>
                           <Grid item xs={6} style={{ textAlign: 'center' }}>
                             <Button variant="contained" color="secondary" style={{ background: theme.theme.secondaryColor, borderRadius: theme.theme.buttonRadius+"px", color: theme.theme.buttonFontColor }}>
-                              Secondary color button
+                              <FormattedMessage id="themecreator.preview.buttons.secondary" />
                             </Button>
                           </Grid>
                         </Grid>
@@ -265,10 +265,10 @@ class ThemeStore extends Component {
         <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography component={'div'}>
             <h4 className="pageContainerTitle">
-              Theme Store
+              <FormattedMessage id="themecreator.title" />
               <span style={{ float: 'right' }}>
                 <Button variant="contained" color="primary" style={{ marginRight: '16px' }} onClick={event => this.handleClickBreadCrumb(event, '/themecreator')}>
-                  Neues Theme erstellen
+                  <FormattedMessage id="themecreator.new_theme" />
                 </Button>
                 <Button variant="contained" color="primary" onClick={() => {this.props.updateThemes(this.state.page, this.state.approvedOnly)}}>
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
@@ -277,9 +277,7 @@ class ThemeStore extends Component {
               </span>
             </h4>
             <small>
-              Themes sind Skins für dein Twasi Panel, die das Aussehen deines Panel individuell anpassen. <br />
-              Jeder kann Themes erstellen und veröffentlichen.
-              Themes, die von uns als besonders gelungen gewertet wurden erhalten den "verified" Status.
+              <FormattedMessage id="themecreator.subtitle" />
             </small>
           </Typography>
         </Paper>
@@ -294,7 +292,7 @@ class ThemeStore extends Component {
                     checked={this.state.approvedOnly}
                   />
                 }
-                label={<small>Nur verifizierte Themes anzeigen</small>}
+                label={<small><FormattedMessage id="themecreator.showonlyverified" /></small>}
               />
             </Grid>
             {this.renderThemes(this.state.page)}
