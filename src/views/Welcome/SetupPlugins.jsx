@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,15 +12,47 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
+import Fab from '@material-ui/core/Fab';
 import CardContent from '@material-ui/core/CardContent';
 
 import { pluginsSelectors, pluginsOperations } from '../../state/plugins';
 
 class SetupPlugins extends Component {
   componentDidMount() {
-    const { verifyData } = this.props;
-    verifyData();
+    const { updatePlugins } = this.props;
+    updatePlugins(this.state.page);
   }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 1
+    };
+  }
+
+  renderPagination() {
+    const { pagination, updatePlugins } = this.props;
+    return (
+      <Paper style={{ textAlign: 'center' }} className="pageContainer">
+      {_.times(pagination.pages, i =>
+        <Fab
+          onClick={() => {
+            updatePlugins(i+1)
+            this.setState({ page: i+1});
+          }}
+          style={{ marginLeft: '5px', marginRight: '5px' }}
+          size="small"
+          disabled={i+1 === this.state.page}
+          color={i+1 === this.state.page ? "default" : "primary"}
+        >
+        {i+1}
+        </Fab>
+      )}
+      </Paper>
+    );
+  }
+
   render() {
     const { plugins, installPlugin, uninstallPlugin } = this.props;
 
@@ -120,6 +153,7 @@ class SetupPlugins extends Component {
               </TableHead>
               {renderedPlugins}
             </Table>
+            {this.props.pagination.pages !== 1 && this.renderPagination()}
           </CardContent>
         </Card>
       </div>
@@ -136,13 +170,14 @@ SetupPlugins.propTypes = {
 
 const mapStateToProps = state => ({
   plugins: pluginsSelectors.getPlugins(state),
-  isLoading: pluginsSelectors.isLoading(state)
+  isLoading: pluginsSelectors.isLoading(state),
+  pagination: pluginsSelectors.getPagination(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  verifyData: () => dispatch(pluginsOperations.verifyData()),
   installPlugin: name => dispatch(pluginsOperations.installPlugin(name)),
   uninstallPlugin: name => dispatch(pluginsOperations.uninstallPlugin(name)),
+  updatePlugins: page => dispatch(pluginsOperations.loadData(page)),
   updateQuery: query => dispatch(pluginsOperations.updateQuery(query))
 });
 
