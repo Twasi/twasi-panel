@@ -12,13 +12,17 @@ export const initialState = {
   themedata: {},
   themeresponse: [],
   installTheme: '',
-  uninstallTheme: ''
+  uninstallTheme: '',
+  id: ''
 };
 
 const themesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_THEMES: {
       return { ...state, themes: action.themes };
+    }
+    case types.UPDATE_APPROVE: {
+      return { ...state, id: action.id };
     }
     case types.UPDATE_INSTALLEDTHEMES: {
       return { ...state, installedthemes: action.installedthemes };

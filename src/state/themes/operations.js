@@ -5,6 +5,7 @@ import {getGraph} from '../../services/graphqlService';
 
 const {
     updateThemes,
+    updateApprove,
     updateInstalledThemes,
     updateThemeResponse,
     updateAddTheme,
@@ -15,6 +16,20 @@ const {
     setInstalled,
     updateActionInProgress
 } = actions;
+
+const approve = id => dispatch => {
+    dispatch(updateLoading(true));
+    dispatch(updateActionSuccess(false));
+    dispatch(getGraph(`themes{approve(themeId: ${JSON.stringify(id)}){status,translationKey}}`, 'panel')).then(data => {
+        dispatch(updateApprove(data.themes.approve));
+        dispatch(updateActionSuccess(true));
+    }).finally(() => {
+        dispatch(updateLoading(false))
+        dispatch(updateActionSuccess(false));
+        dispatch(updateLoaded(true))
+    });
+};
+
 
 const loadThemes = (page, approvedOnly) => dispatch => {
     dispatch(updateLoading(true));
@@ -99,6 +114,7 @@ function getRndInteger(min, max) {
 
 export default {
     loadThemes,
+    approve,
     loadInstalledThemes,
     addTheme,
     updateThemeResponse,

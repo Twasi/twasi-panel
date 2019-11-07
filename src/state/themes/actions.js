@@ -33,6 +33,11 @@ const setInstalled = (id, isInstalled) => ({
   isInstalled
 });
 
+const updateApprove = id => ({
+  type: types.UPDATE_APPROVE,
+  id
+});
+
 const updatePagination = pagination => ({
   type: types.UPDATE_PAGINATION,
   pagination
@@ -55,6 +60,7 @@ const updateActionSuccess = isActionSuccess => ({
 
 export default {
   updateThemes,
+  updateApprove,
   updateInstalledThemes,
   setInstalled,
   updateThemeResponse,

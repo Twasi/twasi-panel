@@ -31,6 +31,7 @@ import './_style.css';
 import theme_verified from '../common/resources/theme_verified.svg';
 
 import { themesSelectors, themesOperations } from '../../state/themes';
+import { authSelectors } from '../../state/auth';
 
 class ThemeStore extends Component {
 
@@ -84,7 +85,7 @@ class ThemeStore extends Component {
 
   renderThemes() {
     const handleStateChange = panel => () => this.setState({ panel });
-    const { themes, installTheme, uninstallTheme } = this.props;
+    const { themes, installTheme, uninstallTheme, rank } = this.props;
     return themes.map(theme => (
       <Grid item xs={6}>
         <ExpansionPanel expanded={this.state.panel === theme.id}>
@@ -104,9 +105,20 @@ class ThemeStore extends Component {
                       alt="theme_verified"
                     />}
                     <span style={{ float: 'right' }}>
+                      {rank === "TEAM" && !theme.approved &&
+                        <Fab
+                          size="small"
+                          style={{ marginRight: '5px', height: '36px', width: '36px' }}
+                          color="primary"
+                          onClick={() => this.props.approve(theme.id)}
+                        >
+                          <Icon>
+                            check
+                          </Icon>
+                        </Fab>
+                      }
                       {theme.installed && (
                         <Button
-                          fullWidth
                           variant="contained"
                           color="secondary"
                           disabled={theme.actionInProgress}
@@ -134,7 +146,6 @@ class ThemeStore extends Component {
                         <Button
                           variant="contained"
                           color="primary"
-                          fullWidth
                           disabled={theme.actionInProgress}
                           onClick={() => {
                             installTheme(theme.id);
@@ -314,12 +325,14 @@ const mapStateToProps = state => ({
   isLoaded: themesSelectors.isLoaded(state),
   isLoading: themesSelectors.isLoading(state),
   isActionSuccess: themesSelectors.isActionSuccess(state),
+  rank: authSelectors.getUser(state).rank
 });
 
 const mapDispatchToProps = dispatch => ({
   updateThemes: (page, approved) => dispatch(themesOperations.loadThemes(page, approved)),
   installTheme: id => dispatch(themesOperations.installTheme(id)),
   uninstallTheme: id => dispatch(themesOperations.uninstallTheme(id)),
+  approve: id => dispatch(themesOperations.approve(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThemeStore);
