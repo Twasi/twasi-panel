@@ -12,7 +12,7 @@ import AuthLoader from './auth/AuthLoader';
 import configureStore from './state/store';
 import { appInfoSelectors, appInfoOperations } from './state/appInfo';
 import { i18nSelectors, i18nOperations } from './state/i18n';
-import { themesSelectors, themesOperations } from './state/themes';
+import { themesSelectors } from './state/themes';
 
 import Header from './views/common/Header';
 import Content from './views/common/Content';
@@ -36,7 +36,6 @@ import tipeeeDark from './themes/tipeee-dark/tipeee-dark';
 import twasiLight from './themes/twasi-light/twasi-light';
 import windows95 from './themes/windows95/windows95';
 import halloween from './themes/halloween/halloween';
-import customtheme from './themes/custom-theme/custom-theme';
 
 import germanData from 'react-intl/locale-data/de';
 import german from './translations/de_de';
@@ -56,9 +55,9 @@ function shadeColor(color, percent) {
   R = (R<255)?R:255;
   G = (G<255)?G:255;
   B = (B<255)?B:255;
-  var RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
-  var GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
-  var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
+  var RR = ((R.toString(16).length===1)?"0"+R.toString(16):R.toString(16));
+  var GG = ((G.toString(16).length===1)?"0"+G.toString(16):G.toString(16));
+  var BB = ((B.toString(16).length===1)?"0"+B.toString(16):B.toString(16));
   return "#"+RR+GG+BB;
 }
 
@@ -472,6 +471,7 @@ const App = () => {
         });
         selectedTheme = customtheme;
       }
+      return selectedTheme;
     })
 
     let selectedLanguage = german;
