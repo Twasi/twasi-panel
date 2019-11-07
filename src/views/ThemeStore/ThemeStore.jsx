@@ -183,26 +183,6 @@ class ThemeStore extends Component {
                           This will be the overall background color of the site.
                         </small>
                       </Typography>
-                      <div style={{ marginTop: '23px', marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
-                        <Logo/>
-                        <style type="text/css">
-                          {
-                          `.st0 { display:none; }
-                          .st1{display:inline;fill:#1A2036;}
-                          .st2{fill:#FFFFFF;}
-                          .outline-textlogo{fill:${theme.theme.outlineTextLogo};}
-                          .shadow-primary-textlogo{fill:${theme.theme.shadowPrimaryTextLogo};}
-                          .shadow-secondary-textlogo{fill:${theme.theme.shadowSecondaryTextLogo};}
-                          .main-textlogo{fill:${theme.theme.mainTextLogo};}
-                          .st7{fill:#4C5BC2;}
-                          .st8{fill:#C4CABC;}
-                          .st9{fill:#FCFCFD;}
-                          .st10{fill:#D27489;}
-                          .st11{fill:#B96678;}
-                          .st12{fill:#00AEAE;}`
-                        }
-                        </style>
-                      </div>
                       <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: theme.theme.panelBackgroundColor, borderRadius: theme.theme.panelRadius+"px" }}>
                         <Typography component={'span'} style={{ color: theme.theme.fontColor }}>
                           <h4 className="pageContainerTitle">
