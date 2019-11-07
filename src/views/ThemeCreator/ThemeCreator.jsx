@@ -100,7 +100,6 @@ class ThemeCreator extends Component {
 
   handleThemeNameChange = (event) => {
     if(event.target.value.length < 20) {
-      console.log(event.target.value)
       this.setState({
         themeName: event.target.value
       });
@@ -122,7 +121,7 @@ class ThemeCreator extends Component {
       </div>
     );
     if(this.props.isActionSuccess) {
-      this.props.enqueueSnackbar(this.props.getThemeResponse.status === 'OK' ? <FormattedMessage id="notification.success" /> : this.props.getThemeResponse.key, {
+      this.props.enqueueSnackbar(this.props.getThemeResponse.status === 'OK' ? <FormattedMessage id="notification.success" /> : <FormattedMessage id={this.props.getThemeResponse.translationKey} />, {
         variant: this.props.getThemeResponse.status === 'OK' ? 'success' : 'error',
         autoHideDuration: 3000,
         action
