@@ -24,6 +24,7 @@ import Logo from '../common/Logo/Logo';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FormattedMessage } from 'react-intl';
 import './_style.css';
@@ -37,7 +38,8 @@ class ThemeStore extends Component {
     super(props);
     this.state = {
       page: 1,
-      approvedOnly: true
+      approvedOnly: true,
+      panel: ''
     };
   }
 
@@ -81,12 +83,14 @@ class ThemeStore extends Component {
   }
 
   renderThemes() {
+    const handleStateChange = panel => () => this.setState({ panel });
     const { themes, installTheme, uninstallTheme } = this.props;
     return themes.map(theme => (
       <Grid item xs={6}>
-        <ExpansionPanel>
+        <ExpansionPanel expanded={this.state.panel === theme.id}>
           <ExpansionPanelSummary
             id={theme.id}
+            expandIcon={<ExpandMoreIcon onClick={this.state.panel !== theme.id ? handleStateChange(theme.id) : handleStateChange('')} />}
           >
             <Grid container spacing={0}>
               <Grid item xs={12}>
