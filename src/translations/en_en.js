@@ -11,6 +11,9 @@ export default {
 
   // Notifications
   'notification.success': 'The action was successfull.',
+  'CUSTOM-THEMES.TOO-MANY-THEMES': 'You have reached your limit of creating themes.',
+  'CUSTOM-THEMES.ALREADY-INSTALLED': 'This theme is already installed.',
+  'CUSTOM-THEMES.NOT-EXISTING': 'This theme does not exist.',
 
   'rank.team': 'Teammember',
   'rank.partner': 'Partnerstreamer',
@@ -363,6 +366,7 @@ export default {
   'themeswitch.primary_color': 'Primary color',
   'themeswitch.secondary_color': 'Secondary color',
 
+  // Theme Creator
   'themecreator.title': 'Theme Creator',
   'themecreator.subtitle': 'Create and publish your own themes for Twasi and for the users of Twasi.',
   'themecreator.common.backgroundcolor': 'Background Color',
@@ -400,7 +404,7 @@ export default {
   'themecreator.preview.buttons.primary': 'Primary color',
   'themecreator.preview.buttons.secondary': 'Secondary color',
 
-
+  // Theme Store
   'themestore.title': 'Theme Store',
   'themestore.subtitle': 'Themes are skins for your panel to make it individual to your likings.\nEverybody can publish own themes. Themes wich are especially good looking will be granted the "verified" badge.',
   'themestore.new_theme': 'Create new theme',

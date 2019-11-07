@@ -11,6 +11,9 @@ export default {
 
   // Notifications
   'notification.success': 'Die Aktion wurde erfolgreich ausgeführt.',
+  'CUSTOM-THEMES.TOO-MANY-THEMES': 'Du hast dein Limit an Themes erreicht.',
+  'CUSTOM-THEMES.ALREADY-INSTALLED': 'Dieses Theme is bereits installiert.',
+  'CUSTOM-THEMES.NOT-EXISTING': 'Dieses Theme existiert nicht.',
 
   'rank.team': 'Teammitglied',
   'rank.partner': 'Partnerstreamer',
@@ -364,6 +367,7 @@ export default {
   'themeswitch.primary_color': 'Primärfarbe',
   'themeswitch.secondary_color': 'Sekundärfarbe',
 
+  // Theme Creator
   'themecreator.title': 'Theme Creator',
   'themecreator.subtitle': 'Erstelle und veröffentliche deine eigenen Themes für Twasi und für die Nutzer von Twasi.',
   'themecreator.common.backgroundcolor': 'Hintergrundfarbe',
@@ -401,6 +405,7 @@ export default {
   'themecreator.preview.buttons.primary': 'Primärfarbe',
   'themecreator.preview.buttons.secondary': 'Sekundärfarbe',
 
+  // Theme Store
   'themestore.title': 'Theme Store',
   'themestore.subtitle': 'Themes sind Skins für dein Twasi Panel, die das Aussehen deines Panel individuell anpassen. \nJeder kann Themes erstellen und veröffentlichen. Themes, die von uns als besonders gelungen gewertet wurden erhalten den "verified" Status.',
   'themestore.new_theme': 'Neues Theme erstellen',
