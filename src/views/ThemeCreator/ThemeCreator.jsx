@@ -156,19 +156,19 @@ class ThemeCreator extends Component {
         <Paper className="pageContainer">
           <Typography component={'span'}>
             <h4 className="pageContainerTitle">
-              Theme Creator
+              <FormattedMessage id="themecreator.title" />
               <span style={{ float: 'right' }}>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={event => this.handleClickBreadCrumb(event, '/themes')}
                 >
-                  Zum Theme Store
+                  <FormattedMessage id="themecreator.themestore_button" />
                 </Button>
               </span>
             </h4>
             <small>
-              Erstelle und veröffentliche deine eigenen Themes für Twasi und für die Nutzer von Twasi.
+              <FormattedMessage id="themecreator.subtitle" />
             </small>
           </Typography>
         </Paper>
@@ -177,17 +177,17 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Neues Theme
+                  <FormattedMessage id="themecreator.new.title" />
                 </h4>
                 <small>
-                  Bevor es los geht musst du einen Namen für dein neues Theme finden.
+                  <FormattedMessage id="themecreator.new.subtitle" />
                 </small>
               </Typography>
               <br />
               <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <TextField
-                    label="Name deines Themes"
+                    label={<FormattedMessage id="themecreator.new.name" />}
                     fullWidth
                     value={this.state.themeName}
                     onChange={this.handleThemeNameChange}
@@ -202,22 +202,22 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Content
+                  <FormattedMessage id="themecreator.new.content.title" />
                 </h4>
                 <small>
-                  Die Content Area bietet die größte Fläche, außerdem sorgt sie für einen Guten Kontrast zu den einzelnen Elementen.
+                  <FormattedMessage id="themecreator.new.content.subtitle" />
                 </small>
               </Typography>
               <br />
               <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <ColorPicker label="Background color" color={this.state.backgroundColor} onChange={this.handleChangeBackgroundColor}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.common.backgroundcolor" />} color={this.state.backgroundColor} onChange={this.handleChangeBackgroundColor}/>
                   <Divider className="marginDivider" />
-                  <ColorPicker label="Font color" color={this.state.fontColor} onChange={this.handleChangeFontColor}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.common.fontcolor" />} color={this.state.fontColor} onChange={this.handleChangeFontColor}/>
                   <Divider className="marginDivider" />
-                  <ColorPicker label="Primary color" color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.common.primarycolor" />} color={this.state.primaryColor} onChange={this.handleChangePrimaryColor}/>
                   <Divider className="marginDivider" />
-                  <ColorPicker label="Secondary color" color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.common.secondarycolor" />} color={this.state.secondaryColor} onChange={this.handleChangeSecondaryColor}/>
                 </CardContent>
               </Card>
             </Paper>}
@@ -225,22 +225,22 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Logo
+                  <FormattedMessage id="themecreator.new.logo.title" />
                 </h4>
                 <small>
-                  Das Logo sollte dem Theme angepasst werden, es ändert die Farben, wenn du das Theme wechselst.
+                  <FormattedMessage id="themecreator.new.logo.subtitle" />
                 </small>
               </Typography>
               <br />
               <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <ColorPicker label="Main Logo Color" color={this.state.mainTextlogo} onChange={this.handleChangeMainTextlogo}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.new.logo.maincolor" />} color={this.state.mainTextlogo} onChange={this.handleChangeMainTextlogo}/>
                   <Divider className="marginDivider" />
-                  <ColorPicker label="Logo Border" color={this.state.outlineTextlogo} onChange={this.handleChangeOutlineTextlogo}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.new.logo.logoborder" />} color={this.state.outlineTextlogo} onChange={this.handleChangeOutlineTextlogo}/>
                   <Divider className="marginDivider" />
-                  <ColorPicker label="Primary Logo Shadow" color={this.state.shadowPrimaryTextlogo} onChange={this.handleChangeShadowPrimaryTextlogo}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.new.logo.primaryshadow" />} color={this.state.shadowPrimaryTextlogo} onChange={this.handleChangeShadowPrimaryTextlogo}/>
                   <Divider className="marginDivider" />
-                  <ColorPicker label="Secondary Logo Shadow" color={this.state.shadowSecondaryTextlogo} onChange={this.handleChangeShadowSecondaryTextlogo}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.new.logo.secondaryshadow" />} color={this.state.shadowSecondaryTextlogo} onChange={this.handleChangeShadowSecondaryTextlogo}/>
                 </CardContent>
               </Card>
             </Paper>}
@@ -248,19 +248,19 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Panels
+                  <FormattedMessage id="themecreator.new.panels.title" />
                 </h4>
                 <small>
-                  Die Panels sind das am häufigsten verwendete Element auf Twasi.
+                  <FormattedMessage id="themecreator.new.panels.subtitle" />
                 </small>
               </Typography>
               <br />
               <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <ColorPicker label="Background color" color={this.state.panelBackgroundColor} onChange={this.handleChangePanelBackgroundColor}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.common.backgroundcolor" />} color={this.state.panelBackgroundColor} onChange={this.handleChangePanelBackgroundColor}/>
                   <Divider className="marginDivider" />
                   <Typography>
-                    <small>Border Radius</small>
+                    <small><FormattedMessage id="themecreator.common.borderradius" /></small>
                   </Typography>
                   <Slider
                     defaultValue={0}
@@ -279,19 +279,19 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Special Contents
+                  <FormattedMessage id="themecreator.new.cards.title" />
                 </h4>
                 <small>
-                  Spezielle Inhalte sind besonders hervorgehoben.
+                  <FormattedMessage id="themecreator.new.cards.title" />
                 </small>
               </Typography>
               <br />
               <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <ColorPicker label="Background color" color={this.state.specialContentColor} onChange={this.handleChangeSpecialContentColor}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.common.backgroundcolor" />} color={this.state.specialContentColor} onChange={this.handleChangeSpecialContentColor}/>
                   <Divider className="marginDivider" />
                   <Typography>
-                    <small>Border Radius</small>
+                    <small><FormattedMessage id="themecreator.common.borderradius" /></small>
                   </Typography>
                   <Slider
                     defaultValue={0}
@@ -310,19 +310,19 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer">
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Buttons
+                  <FormattedMessage id="themecreator.new.buttons.title" />
                 </h4>
                 <small>
-                  Buttons werden dzu genutzt Inhalte zu aktualisieren.
+                  <FormattedMessage id="themecreator.new.buttons.subtitle" />
                 </small>
               </Typography>
               <br />
               <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
-                  <ColorPicker label="Font color" color={this.state.buttonFontColor} onChange={this.handleChangeButtonFontColor}/>
+                  <ColorPicker label={<FormattedMessage id="themecreator.common.fontcolor" />} color={this.state.buttonFontColor} onChange={this.handleChangeButtonFontColor}/>
                   <Divider className="marginDivider" />
                   <Typography>
-                    <small>Border Radius</small>
+                    <small><FormattedMessage id="themecreator.common.borderradius" /></small>
                   </Typography>
                   <Slider
                     defaultValue={0}
@@ -342,7 +342,7 @@ class ThemeCreator extends Component {
             <Paper className="pageContainer" style={{ position: 'sticky', top: '23px' }}>
               <Typography component={'span'}>
                 <h4 className="pageContainerTitle">
-                  Preview
+                  <FormattedMessage id="themecreator.preview.title" />
                   <span style={{ float: 'right' }}>
                     <Button
                       variant="contained"
@@ -372,12 +372,12 @@ class ThemeCreator extends Component {
                       disabled={this.state.themeName.length < 5}
                     >
                       <Icon style={{ marginRight: '5px' }}>save</Icon>
-                      Theme Speichern
+                      <FormattedMessage id="themecreator.preview.savetheme" />
                     </Button>
                   </span>
                 </h4>
                 <small>
-                  This is how the theme will look like.
+                  <FormattedMessage id="themecreator.preview.subtitle" />
                 </small>
               </Typography>
               <div style={{ position: 'relative', height: 'auto', width: '100%', padding: '50px', marginTop: '25px' }}>
@@ -386,10 +386,10 @@ class ThemeCreator extends Component {
                   <div style={{ background: this.state.backgroundColor, padding: '25px' }}>
                     <Typography component={'span'} style={{ color: this.state.fontColor }}>
                       <h4 className="pageContainerTitle">
-                        Content background
+                        <FormattedMessage id="themecreator.preview.content.title" />
                       </h4>
                       <small>
-                        This will be the overall background color of the site.
+                        <FormattedMessage id="themecreator.preview.content.subtitle" />
                       </small>
                     </Typography>
                     <div style={{ marginTop: '23px', marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
@@ -415,20 +415,20 @@ class ThemeCreator extends Component {
                     <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: this.state.panelBackgroundColor, borderRadius: this.state.panelRadius+"px" }}>
                       <Typography component={'span'} style={{ color: this.state.fontColor }}>
                         <h4 className="pageContainerTitle">
-                          Example panel
+                          <FormattedMessage id="themecreator.preview.panels.title" />
                         </h4>
                         <small>
-                          Panels look like this.
+                          <FormattedMessage id="themecreator.preview.panels.subtitle" />
                         </small>
                       </Typography>
                       <Card style={{ marginTop: '25px', background: this.state.specialContentColor, borderRadius: this.state.specialContentRadius+"px" }} className="pluginCard">
                         <CardContent style={{ backgroundColor: this.state.specialContentColor }} className="pluginCardContent">
                           <Typography component={'span'} style={{ color: this.state.fontColor }}>
                             <h4 className="pageContainerTitle">
-                              Special contents
+                              <FormattedMessage id="themecreator.preview.cards.title" />
                             </h4>
                             <small>
-                              Special contents will be displayed with this background color.
+                              <FormattedMessage id="themecreator.preview.cards.subtitle" />
                             </small>
                           </Typography>
                         </CardContent>
@@ -456,12 +456,12 @@ class ThemeCreator extends Component {
                       <Grid container spacing={4}>
                         <Grid item xs={6} style={{ textAlign: 'center' }}>
                           <Button variant="contained" color="primary" style={{ background: this.state.primaryColor, borderRadius: this.state.buttonRadius+"px", color: this.state.buttonFontColor }}>
-                            Primary color button
+                            <FormattedMessage id="themecreator.preview.buttons.primary" />
                           </Button>
                         </Grid>
                         <Grid item xs={6} style={{ textAlign: 'center' }}>
                           <Button variant="contained" color="secondary" style={{ background: this.state.secondaryColor, borderRadius: this.state.buttonRadius+"px", color: this.state.buttonFontColor }}>
-                            Secondary color button
+                            <FormattedMessage id="themecreator.preview.buttons.secondary" />
                           </Button>
                         </Grid>
                       </Grid>
