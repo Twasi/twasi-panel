@@ -64,7 +64,6 @@ function shadeColor(color, percent) {
 
 function loadCss(theme){
   if(theme !== '') {
-    console.log(theme.theme.mainTextLogo)
     return(
       <style type="text/css">
         {`
@@ -72,7 +71,7 @@ function loadCss(theme){
             pointer-events: none;
           }
           .outline-textlogo { fill:${theme.theme.outlineTextLogo} !important; }
-          .shadow-primary-textlogo { fill:${theme.theme.shadowPrimaryTextlogo} !important; }
+          .shadow-primary-textlogo { fill:${theme.theme.shadowPrimaryTextLogo} !important; }
           .shadow-secondary-textlogo { fill:${theme.theme.shadowSecondaryTextLogo} !important; }
           .main-textlogo { fill:${theme.theme.mainTextLogo} !important; }
           .translucentBox {
