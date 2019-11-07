@@ -2,10 +2,10 @@
   -webkit-user-select: none;
   user-select: none;
 }
-.twasi-dark .outline-textlogo { fill:#1b292d !important; }
-.twasi-dark .shadow-primary-textlogo { fill:#004a4a !important; }
-.twasi-dark .shadow-secondary-textlogo { fill:#008e8e !important; }
-.twasi-dark .main-textlogo { fill:#00aeae !important; }
+.twasi-dark .outline-textlogo { fill:#1b292d; }
+.twasi-dark .shadow-primary-textlogo { fill:#004a4a; }
+.twasi-dark .shadow-secondary-textlogo { fill:#008e8e; }
+.twasi-dark .main-textlogo { fill:#00aeae; }
 .twasi-dark img {
   pointer-events: none;
 }

@@ -2,10 +2,10 @@
   -webkit-user-select: none;
   user-select: none;
 }
-.halloween .outline-textlogo { fill:#a55300 !important; }
-.halloween .shadow-primary-textlogo { fill:#d46b00 !important; }
-.halloween .shadow-secondary-textlogo { fill:#ad5700 !important; }
-.halloween .main-textlogo { fill:#fe8000 !important; }
+.halloween .outline-textlogo { fill:#a55300; }
+.halloween .shadow-primary-textlogo { fill:#d46b00; }
+.halloween .shadow-secondary-textlogo { fill:#ad5700; }
+.halloween .main-textlogo { fill:#fe8000; }
 .halloween img {
   pointer-events: none;
 }

@@ -64,12 +64,17 @@ function shadeColor(color, percent) {
 
 function loadCss(theme){
   if(theme !== '') {
+    console.log(theme.theme.mainTextLogo)
     return(
       <style type="text/css">
         {`
           .img {
             pointer-events: none;
           }
+          .outline-textlogo { fill:${theme.theme.outlineTextLogo} !important; }
+          .shadow-primary-textlogo { fill:${theme.theme.shadowPrimaryTextlogo} !important; }
+          .shadow-secondary-textlogo { fill:${theme.theme.shadowSecondaryTextLogo} !important; }
+          .main-textlogo { fill:${theme.theme.mainTextLogo} !important; }
           .translucentBox {
             background: ${theme.theme.primaryColor};
           }
@@ -97,7 +102,7 @@ function loadCss(theme){
             -webkit-text-fill-color: transparent;
           }
           a {
-            color: ${theme.theme.primaryColor};
+            color: ${theme.theme.primaryColor} !important;
           }
           .urlshortener_arrow {
             color: ${theme.theme.primaryColor};

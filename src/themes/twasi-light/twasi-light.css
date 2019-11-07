@@ -3,10 +3,10 @@
   user-select: none;
   color: #636363;
 }
-.twasi-light .outline-textlogo { fill:#1b292d !important; }
-.twasi-light .shadow-primary-textlogo { fill:#004a4a !important; }
-.twasi-light .shadow-secondary-textlogo { fill:#008e8e !important; }
-.twasi-light .main-textlogo { fill:#00aeae !important; }
+.twasi-light .outline-textlogo { fill:#1b292d; }
+.twasi-light .shadow-primary-textlogo { fill:#004a4a; }
+.twasi-light .shadow-secondary-textlogo { fill:#008e8e; }
+.twasi-light .main-textlogo { fill:#00aeae; }
 .twasi-light img {
   pointer-events: none;
 }

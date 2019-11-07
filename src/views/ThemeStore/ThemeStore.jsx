@@ -175,7 +175,7 @@ class ThemeStore extends Component {
                   <Checkboard size={ 8 } white="#fff" grey="#cccccc" />
                   <div style={{ position: 'inherit' }}>
                     <div style={{ background: theme.theme.backgroundColor, padding: '25px' }}>
-                      <Typography component={'span'} style={{ color: this.state.fontColor }}>
+                      <Typography component={'span'} style={{ color: theme.theme.fontColor }}>
                         <h4 className="pageContainerTitle">
                           Content background
                         </h4>
@@ -190,10 +190,10 @@ class ThemeStore extends Component {
                           `.st0 { display:none; }
                           .st1{display:inline;fill:#1A2036;}
                           .st2{fill:#FFFFFF;}
-                          .outline-textlogo{fill:${theme.theme.outlineTextlogo};}
-                          .shadow-primary-textlogo{fill:${theme.theme.shadowPrimaryTextlogo};}
-                          .shadow-secondary-textlogo{fill:${theme.theme.shadowSecondaryTextlogo};}
-                          .main-textlogo{fill:${theme.theme.mainTextlogo};}
+                          .outline-textlogo{fill:${theme.theme.outlineTextLogo};}
+                          .shadow-primary-textlogo{fill:${theme.theme.shadowPrimaryTextLogo};}
+                          .shadow-secondary-textlogo{fill:${theme.theme.shadowSecondaryTextLogo};}
+                          .main-textlogo{fill:${theme.theme.mainTextLogo};}
                           .st7{fill:#4C5BC2;}
                           .st8{fill:#C4CABC;}
                           .st9{fill:#FCFCFD;}

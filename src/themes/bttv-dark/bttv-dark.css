@@ -2,10 +2,10 @@
   -webkit-user-select: none;
   user-select: none;
 }
-.bttv-dark .outline-textlogo { fill:#19171c !important; }
-.bttv-dark .shadow-primary-textlogo { fill:#2f224c !important; }
-.bttv-dark .shadow-secondary-textlogo { fill:#453271 !important; }
-.bttv-dark .main-textlogo { fill:#5f459a !important; }
+.bttv-dark .outline-textlogo { fill:#19171c; }
+.bttv-dark .shadow-primary-textlogo { fill:#2f224c; }
+.bttv-dark .shadow-secondary-textlogo { fill:#453271; }
+.bttv-dark .main-textlogo { fill:#5f459a; }
 .bttc-dark img {
   pointer-events: none;
 }

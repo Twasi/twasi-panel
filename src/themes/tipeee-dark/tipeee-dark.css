@@ -2,10 +2,10 @@
   -webkit-user-select: none;
   user-select: none;
 }
-.tipeee-dark .outline-textlogo { fill:#3b4254 !important; }
-.tipeee-dark .shadow-primary-textlogo { fill:#822b36 !important; }
-.tipeee-dark .shadow-secondary-textlogo { fill:#ad3746 !important; }
-.tipeee-dark .main-textlogo { fill:#d84759 !important; }
+.tipeee-dark .outline-textlogo { fill:#3b4254; }
+.tipeee-dark .shadow-primary-textlogo { fill:#822b36; }
+.tipeee-dark .shadow-secondary-textlogo { fill:#ad3746; }
+.tipeee-dark .main-textlogo { fill:#d84759; }
 .tipeee-dark .tipeee-dark img {
   pointer-events: none;
 }
