@@ -282,7 +282,7 @@ class ThemeStore extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.themes" /></Typography>
         </Breadcrumbs>
-        <Paper className="pageContainer">
+        <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px' }}>
           <Typography component={'div'}>
             <h4 className="pageContainerTitle">
               Theme Store
