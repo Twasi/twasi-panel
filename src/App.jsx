@@ -46,6 +46,83 @@ import english from './translations/en_en';
 addLocaleData(germanData);
 addLocaleData(englishData);
 
+function shadeColor(color, percent) {
+  var R = parseInt(color.substring(1,3),16);
+  var G = parseInt(color.substring(3,5),16);
+  var B = parseInt(color.substring(5,7),16);
+  R = parseInt(R * (100 + percent) / 100);
+  G = parseInt(G * (100 + percent) / 100);
+  B = parseInt(B * (100 + percent) / 100);
+  R = (R<255)?R:255;
+  G = (G<255)?G:255;
+  B = (B<255)?B:255;
+  var RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
+  var GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
+  var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
+  return "#"+RR+GG+BB;
+}
+
+function loadCss(theme){
+  if(theme !== '') {
+    return(
+      <style type="text/css">
+        {`
+          .img {
+            pointer-events: none;
+          }
+          .translucentBox {
+            background: ${theme.theme.primaryColor};
+          }
+          .translucentBoxLeaderboard {
+            background: ${theme.theme.primaryColor};
+          }
+          .translucentBoxWelcome {
+            background: ${theme.theme.primaryColor};
+          }
+          .headerMenuItem {
+            background: ${theme.theme.primaryColor};
+          }
+          .TableRow {
+            border-bottom: 3px solid ${theme.theme.primaryColor} !important;
+          }
+          .bannerHeader {
+            background-color: ${shadeColor(theme.theme.backgroundColor, -40)};
+          }
+          .bannerHeaderTopBar {
+            background: ${theme.theme.primaryColor};
+          }
+          .themeIcon:hover{
+            background: ${theme.theme.primaryColor};
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          a {
+            color: ${theme.theme.primaryColor};
+          }
+          .urlshortener_arrow {
+            color: ${theme.theme.primaryColor};
+          }
+          .chatBubbleSelf {
+            background-color: ${shadeColor(theme.theme.specialContentColor, 20)};
+            padding: 10px;
+            border-radius: 4px;
+          }
+          .chatBubbleSupport {
+            background-color: ${shadeColor(theme.theme.specialContentColor, -20)};
+            padding: 10px;
+            border-radius: 4px;
+          }
+          .tooltipAccountSwitch {
+            background-color: ${theme.theme.primaryColor};
+          }
+        `}
+      </style>
+    )
+  } else {
+    return;
+  }
+}
+
 const App = () => {
   const store = configureStore();
 
@@ -85,10 +162,11 @@ const App = () => {
       selectedTheme = halloween;
     }
 
-
     let customtheme = '';
+    let customInstalledTheme = '';
     props.installedthemes.map(installedtheme => {
       if(installedtheme.id === props.theme.toLowerCase()) {
+        customInstalledTheme = installedtheme;
         customtheme = createMuiTheme({
           palette: {
             type: 'dark',
@@ -192,14 +270,14 @@ const App = () => {
               },
               contained: {
                 boxShadow: 'none',
-                backgroundColor: installedtheme.theme.panelBackgroundColor,
+                backgroundColor: shadeColor(installedtheme.theme.panelBackgroundColor, -30),
                 color: installedtheme.theme.fontColor,
                 '&$disabled': {
                   backgroundColor: installedtheme.theme.backgroundColor,
                   color: installedtheme.theme.fontColor
                 },
                 '&:hover': {
-                  backgroundColor: installedtheme.theme.panelBackgroundColor
+                  backgroundColor: shadeColor(installedtheme.theme.panelBackgroundColor, -40)
                 }
               }
             },
@@ -387,7 +465,7 @@ const App = () => {
           typography: {
             useNextVariants: true
           }
-        })
+        });
         selectedTheme = customtheme;
       }
     })
@@ -403,6 +481,7 @@ const App = () => {
     return (
       <IntlProvider locale="de" messages={selectedLanguage}>
         <MuiThemeProvider theme={selectedTheme}>
+          {loadCss(customInstalledTheme)}
           <CssBaseline />
           <SnackbarProvider maxSnack={3}>
             <AuthLoader>

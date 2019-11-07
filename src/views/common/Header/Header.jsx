@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
 import { appInfoSelectors } from '../../../state/appInfo';
+import { themesSelectors, themesOperations } from '../../../state/themes';
 import { StatusIcon } from '../../Status';
 import { AccountSwitchIcon } from '../../AccountSwitch';
 import { ThemeSwitchIcon } from '../../ThemeSwitch';
@@ -22,9 +23,10 @@ import {
   getLogoDescriptionStyle
 } from './_style';
 
-const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp }) => (
+const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp, updateInstalledThemes }) => (
   <header>
     <div className="bannerHeaderTopBar" />
+    {isSetUp && updateInstalledThemes()}
     {isSetUp && <div className="bannerHeader" style={{ opacity: banner && selectedBannerAsHeaderValue ? '0.4' : '1', backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />}
     <Grid container spacing={4}>
       <Grid item xs={4}>
@@ -82,6 +84,11 @@ const mapStateToProps = state => ({
   avatar: authSelectors.getUserAvatar(state),
   banner: authSelectors.getUserBanner(state),
   selectedBannerAsHeaderValue: appInfoSelectors.getBannerAsHeader(state),
+  themes: themesSelectors.getThemes(state)
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  updateInstalledThemes: () => dispatch(themesOperations.loadInstalledThemes())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

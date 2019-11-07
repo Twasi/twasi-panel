@@ -5,7 +5,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ThemeSwitch from './ThemeSwitch';
 import { connect } from 'react-redux';
 
-import { themesOperations } from '../../state/themes';
+import { authSelectors } from '../../state/auth';
 
 class ThemeSwitchIcon extends React.Component {
   constructor(props) {
@@ -32,7 +32,6 @@ class ThemeSwitchIcon extends React.Component {
             style={{ fontSize: 36, float: 'right', marginRight: '15px' }}
             onClick={() => {
               this.setState({ modalOpen: true });
-              this.props.updateInstalledThemes();
             }}
           >
             color_lens
@@ -48,11 +47,7 @@ class ThemeSwitchIcon extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+  isSetUp: authSelectors.isSetUp(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  updateInstalledThemes: () => dispatch(themesOperations.loadInstalledThemes()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ThemeSwitchIcon);
+export default connect(mapStateToProps)(ThemeSwitchIcon);
