@@ -291,7 +291,7 @@ class ThemeCreator extends Component {
                   <FormattedMessage id="themecreator.new.cards.title" />
                 </h4>
                 <small>
-                  <FormattedMessage id="themecreator.new.cards.title" />
+                  <FormattedMessage id="themecreator.new.cards.subtitle" />
                 </small>
               </Typography>
               <br />
