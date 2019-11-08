@@ -190,31 +190,32 @@ class Variables extends Component {
               {this.renderVariables()}
             </TableBody>
           </Table>
-          {this.state.openAddVariableDialog &&
-            <VariableAddDialog
-              open
-              onClose={this.handleCloseAddVariableDialog}
-            />
-          }
-          {this.state.openEditVariableDialog &&
-            <VariableEditDialog
-              open
-              onClose={this.handleCloseEditVariableDialog}
-              variableObject={this.state.editDialogContent}
-            />
-          }
-          <Snackbar
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            open={this.state.openNotification}
-            autoHideDuration={5000}
-            onClose={this.handleCloseNotification}
-            message={this.state.notification}
-          />
         </Paper>
-        }{disabled && <NotInstalledAlert />}
+        }
+        {this.state.openAddVariableDialog &&
+          <VariableAddDialog
+            open
+            onClose={this.handleCloseAddVariableDialog}
+          />
+        }
+        {this.state.openEditVariableDialog &&
+          <VariableEditDialog
+            open
+            onClose={this.handleCloseEditVariableDialog}
+            variableObject={this.state.editDialogContent}
+          />
+        }
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.openNotification}
+          autoHideDuration={5000}
+          onClose={this.handleCloseNotification}
+          message={this.state.notification}
+        />
+        {disabled && <NotInstalledAlert />}
         {this.renderVariables().length === 0 && !this.props.isLoading && this.renderVariablesEmpty()}
       </div>
     );

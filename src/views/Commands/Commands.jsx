@@ -320,32 +320,33 @@ class Commands extends Component {
                 {this.renderCommands(this.state.page)}
               </TableBody>
             </Table>
-            {this.state.openAddCommandDialog &&
-              <CommandAddDialog
-                open
-                onClose={this.handleCloseAddCommandDialog}
-              />
-            }
-            {this.state.openEditCommandDialog &&
-              <CommandEditDialog
-                open
-                onClose={this.handleCloseEditCommandDialog}
-                commandObject={this.state.editDialogContent}
-              />
-            }
-            <Snackbar
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              open={this.state.openNotification}
-              autoHideDuration={5000}
-              onClose={this.handleCloseNotification}
-              message={this.state.notification}
-            />
             {this.props.pagination.pages !== 1 && this.renderPagination()}
           </Paper>
-          }{disabled && <NotInstalledAlert />}
+          }
+          {this.state.openAddCommandDialog &&
+            <CommandAddDialog
+              open
+              onClose={this.handleCloseAddCommandDialog}
+            />
+          }
+          {this.state.openEditCommandDialog &&
+            <CommandEditDialog
+              open
+              onClose={this.handleCloseEditCommandDialog}
+              commandObject={this.state.editDialogContent}
+            />
+          }
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={this.state.openNotification}
+            autoHideDuration={5000}
+            onClose={this.handleCloseNotification}
+            message={this.state.notification}
+          />
+          {disabled && <NotInstalledAlert />}
           {this.renderCommands(this.state.page).length === 0 && !this.props.isLoading && this.renderCommandsEmpty()}
         </TabPanel>
         <TabPanel value={value} index={1}>
