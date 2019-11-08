@@ -446,6 +446,7 @@ export default {
   'support.type.question': 'I have a question',
   'support.type.problem': 'I have a problem',
   'support.type.bug': 'I want to report a bug',
+  'support.type.theme': 'Theme deletion / Question to themes',
   'support.type.other': 'I have another issue',
   'support.create_new_ticket': 'Create new ticket',
   'support.headline': 'Your support tickets',

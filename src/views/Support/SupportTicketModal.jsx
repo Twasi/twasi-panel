@@ -36,6 +36,7 @@ class SupportTicketModal extends React.Component {
     'BUG',
     'QUESTION',
     'PROBLEM',
+    'THEME',
     'OTHER'
   ];
 
