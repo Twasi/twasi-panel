@@ -26,6 +26,22 @@ import ColorPicker from './ColorPicker'
 
 import { themesSelectors, themesOperations } from '../../state/themes';
 
+function shadeColor(color, percent) {
+  var R = parseInt(color.substring(1,3),16);
+  var G = parseInt(color.substring(3,5),16);
+  var B = parseInt(color.substring(5,7),16);
+  R = parseInt(R * (100 + percent) / 100);
+  G = parseInt(G * (100 + percent) / 100);
+  B = parseInt(B * (100 + percent) / 100);
+  R = (R<255)?R:255;
+  G = (G<255)?G:255;
+  B = (B<255)?B:255;
+  var RR = ((R.toString(16).length===1)?"0"+R.toString(16):R.toString(16));
+  var GG = ((G.toString(16).length===1)?"0"+G.toString(16):G.toString(16));
+  var BB = ((B.toString(16).length===1)?"0"+B.toString(16):B.toString(16));
+  return "#"+RR+GG+BB;
+}
+
 class ThemeCreator extends Component {
 
   constructor(props) {
@@ -85,17 +101,13 @@ class ThemeCreator extends Component {
     this.setState({ buttonFontColor: color.hex });
   }
 
-  handleChangeOutlineTextlogo = (color) => {
-    this.setState({ outlineTextlogo: color.hex });
-  }
-  handleChangeShadowPrimaryTextlogo = (color) => {
-    this.setState({ shadowPrimaryTextlogo: color.hex });
-  }
-  handleChangeShadowSecondaryTextlogo = (color) => {
-    this.setState({ shadowSecondaryTextlogo: color.hex });
-  }
   handleChangeMainTextlogo = (color) => {
-    this.setState({ mainTextlogo: color.hex });
+    this.setState({
+      mainTextlogo: color.hex,
+      shadowPrimaryTextlogo: shadeColor(color.hex, -30),
+      shadowSecondaryTextlogo: shadeColor(color.hex, -60),
+      outlineTextlogo: shadeColor(color.hex, -90)
+    });
   }
 
   handleThemeNameChange = (event) => {
@@ -234,12 +246,6 @@ class ThemeCreator extends Component {
               <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label={<FormattedMessage id="themecreator.new.logo.maincolor" />} color={this.state.mainTextlogo} onChange={this.handleChangeMainTextlogo}/>
-                  <Divider className="marginDivider" />
-                  <ColorPicker label={<FormattedMessage id="themecreator.new.logo.logoborder" />} color={this.state.outlineTextlogo} onChange={this.handleChangeOutlineTextlogo}/>
-                  <Divider className="marginDivider" />
-                  <ColorPicker label={<FormattedMessage id="themecreator.new.logo.primaryshadow" />} color={this.state.shadowPrimaryTextlogo} onChange={this.handleChangeShadowPrimaryTextlogo}/>
-                  <Divider className="marginDivider" />
-                  <ColorPicker label={<FormattedMessage id="themecreator.new.logo.secondaryshadow" />} color={this.state.shadowSecondaryTextlogo} onChange={this.handleChangeShadowSecondaryTextlogo}/>
                 </CardContent>
               </Card>
             </Paper>}
@@ -398,9 +404,9 @@ class ThemeCreator extends Component {
                         `.st0 { display:none; }
                         .st1{display:inline;fill:#1A2036;}
                         .st2{fill:#FFFFFF;}
-                        .outline-textlogo{fill:${this.state.outlineTextlogo};}
-                        .shadow-primary-textlogo{fill:${this.state.shadowPrimaryTextlogo};}
-                        .shadow-secondary-textlogo{fill:${this.state.shadowSecondaryTextlogo};}
+                        .outline-textlogo{fill:${shadeColor(this.state.mainTextlogo, -90)};}
+                        .shadow-primary-textlogo{fill:${shadeColor(this.state.mainTextlogo, -30)};}
+                        .shadow-secondary-textlogo{fill:${shadeColor(this.state.mainTextlogo, -60)};}
                         .main-textlogo{fill:${this.state.mainTextlogo};}
                         .st7{fill:#4C5BC2;}
                         .st8{fill:#C4CABC;}
@@ -436,8 +442,8 @@ class ThemeCreator extends Component {
                       <Table>
                         <TableHead>
                           <TableRow style={{ borderBottom: '3px solid '+this.state.primaryColor }}>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Name</TableCell>
+                            <TableCell style={{ color: this.state.fontColor }}>ID</TableCell>
+                            <TableCell style={{ color: this.state.fontColor }}>Name</TableCell>
                           </TableRow>
                         </TableHead>
                         <TableBody className="anim">

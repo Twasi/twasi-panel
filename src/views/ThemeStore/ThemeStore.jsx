@@ -222,8 +222,8 @@ class ThemeStore extends Component {
                         <Table>
                           <TableHead>
                             <TableRow style={{ borderBottom: '3px solid '+theme.theme.primaryColor }}>
-                              <TableCell>ID</TableCell>
-                              <TableCell>Name</TableCell>
+                              <TableCell style={{ color: theme.theme.fontColor }}>ID</TableCell>
+                              <TableCell style={{ color: theme.theme.fontColor }}>Name</TableCell>
                             </TableRow>
                           </TableHead>
                           <TableBody className="anim">

@@ -69,9 +69,9 @@ function loadCss(theme){
           .img {
             pointer-events: none;
           }
-          .outline-textlogo { fill:${theme.theme.outlineTextLogo} !important; }
-          .shadow-primary-textlogo { fill:${theme.theme.shadowPrimaryTextLogo} !important; }
-          .shadow-secondary-textlogo { fill:${theme.theme.shadowSecondaryTextLogo} !important; }
+          .outline-textlogo { fill:${shadeColor(theme.theme.mainTextLogo, -90)} !important; }
+          .shadow-primary-textlogo { fill:${shadeColor(theme.theme.mainTextLogo, -30)} !important; }
+          .shadow-secondary-textlogo { fill:${shadeColor(theme.theme.mainTextLogo, -60)} !important; }
           .main-textlogo { fill:${theme.theme.mainTextLogo} !important; }
           .translucentBox {
             background: ${theme.theme.primaryColor};
@@ -191,7 +191,7 @@ const App = () => {
                 color: installedtheme.theme.fontColor, // Some CSS
                 backgroundColor: installedtheme.theme.panelBackgroundColor,
                 borderRadius: installedtheme.theme.panelRadius+'px',
-                border: '0px solid #25373e'
+                border: '0px solid '+installedtheme.theme.backgroundColor
               },
               elevation1: {
                 boxShadow: 'none'
@@ -224,10 +224,10 @@ const App = () => {
                 color: installedtheme.theme.fontColor, // Some CSS
                 padding: '10px',
                 '&:hover': {
-                  backgroundColor: installedtheme.theme.backgroundColor
+                  backgroundColor: shadeColor(installedtheme.theme.panelBackgroundColor, -20)
                 },
                 '&$selected': { // Name of the rule
-                  color: '#ffffff',
+                  color: installedtheme.theme.buttonFontColor,
                   background: installedtheme.theme.primaryColor
                 }
               }
@@ -339,8 +339,8 @@ const App = () => {
             },
             MUIDataTableHeadCell: {
               fixedHeader: {
-                backgroundColor: '#202940',
-                borderBottom: '3px solid #3f51b5'
+                backgroundColor: installedtheme.theme.panelBackgroundColor,
+                borderBottom: '3px solid '+installedtheme.theme.primaryColor
               }
             },
             MuiTableCell: { // Name of the component ⚛️ / style sheet
@@ -422,12 +422,12 @@ const App = () => {
             },
             MuiSelect: {
               root: {
-                color: 'rgba(255, 255, 255, 0.7)',
+                color: installedtheme.theme.fontColor,
                 fontSize: '0.875em',
                 borderBottom: '0px'
               },
               icon: {
-                color: 'rgba(255, 255, 255, 0.7)'
+                color: installedtheme.theme.fontColor
               }
             },
             MuiExpansionPanelSummary: {
