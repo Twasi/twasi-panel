@@ -265,7 +265,6 @@ class ThemeStore extends Component {
   render() {
     const { isActionSuccess } = this.props;
     if (isActionSuccess) {
-      console.log(isActionSuccess)
       this.props.updateThemes(this.state.page, this.state.approvedOnly);
     }
     return (

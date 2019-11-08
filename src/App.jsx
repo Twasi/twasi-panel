@@ -33,7 +33,6 @@ import twasiDark from './themes/twasi-dark/twasi-dark';
 import twasiDarkBlue from './themes/twasi-darkblue/twasi-darkblue';
 import bttvDark from './themes/bttv-dark/bttv-dark';
 import tipeeeDark from './themes/tipeee-dark/tipeee-dark';
-import twasiLight from './themes/twasi-light/twasi-light';
 import windows95 from './themes/windows95/windows95';
 import halloween from './themes/halloween/halloween';
 
@@ -141,7 +140,7 @@ const App = () => {
     loadTheme: () => dispatch(appInfoOperations.loadTheme()),
     loadBannerAsHeader: () => dispatch(appInfoOperations.loadBannerAsHeader()),
     loadComicSans: () => dispatch(appInfoOperations.loadComicSans()),
-    loadLanguage: () => dispatch(i18nOperations.loadLanguage())
+    loadLanguage: () => dispatch(i18nOperations.loadLanguage()),
   });
 
   const Themed = withRouter(connect(mapStateToProps, mapDispatchToProps)(props => {
@@ -151,9 +150,7 @@ const App = () => {
     props.loadComicSans();
 
     let selectedTheme = twasiDarkBlue;
-    if (props.theme.toLowerCase() === 'twasi-light') {
-      selectedTheme = twasiLight;
-    } else if (props.theme.toLowerCase() === 'twasi-dark') {
+    if (props.theme.toLowerCase() === 'twasi-dark') {
       selectedTheme = twasiDark;
     } else if (props.theme.toLowerCase() === 'bttv-dark') {
       selectedTheme = bttvDark;
@@ -344,6 +341,9 @@ const App = () => {
               }
             },
             MuiTableCell: { // Name of the component ⚛️ / style sheet
+              head: {
+                color: installedtheme.theme.fontColor
+              },
               body: { // Name of the rule
                 color: installedtheme.theme.fontColor, // Some CSS
                 borderColor: 'transparent',

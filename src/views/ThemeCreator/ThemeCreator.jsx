@@ -19,6 +19,8 @@ import Divider from '@material-ui/core/Divider';
 import Slider from '@material-ui/core/Slider';
 import Icon from '@material-ui/core/Icon';
 import Logo from '../common/Logo/Logo';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import { Checkboard } from "react-color/lib/components/common";
 
@@ -57,6 +59,7 @@ class ThemeCreator extends Component {
       primaryColor: '#3f51b5', // Primary color
       secondaryColor: '#de6464', // Secondary color
       specialContentColor: '#232f4a', // Background color of cards and special contents
+      darkmode: true,
 
       outlineTextlogo: '#1A2036', // Outline color of logo
       shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo
@@ -118,6 +121,10 @@ class ThemeCreator extends Component {
     }
   };
 
+  handleDarkMode = value => {
+    this.setState({ darkmode: value.target.checked });
+  };
+
   handleClickBreadCrumb = (event, value) => {
     const { history } = this.props;
     history.push(value);
@@ -150,6 +157,7 @@ class ThemeCreator extends Component {
       primaryColor: this.state.primaryColor,
       secondaryColor: this.state.secondaryColor,
       specialContentColor: this.state.specialContentColor,
+      darkmode: this.state.darkmode,
 
       outlineTextLogo: this.state.outlineTextlogo,
       shadowPrimaryTextLogo: this.state.shadowPrimaryTextlogo,
@@ -205,6 +213,16 @@ class ThemeCreator extends Component {
                     margin="normal"
                     variant="outlined"
                     InputLabelProps={{ shrink: true }}
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={this.handleDarkMode}
+                        color="primary"
+                        checked={this.state.darkmode}
+                      />
+                    }
+                    label={<small><FormattedMessage id="themecreator.darkmode_toggle" /></small>}
                   />
                 </CardContent>
               </Card>
@@ -263,20 +281,6 @@ class ThemeCreator extends Component {
               <Card style={{ marginTop: '15px' }} className="pluginCard">
                 <CardContent style={{ padding: '24px' }}>
                   <ColorPicker label={<FormattedMessage id="themecreator.common.backgroundcolor" />} color={this.state.panelBackgroundColor} onChange={this.handleChangePanelBackgroundColor}/>
-                  <Divider className="marginDivider" />
-                  <Typography>
-                    <small><FormattedMessage id="themecreator.common.borderradius" /></small>
-                  </Typography>
-                  <Slider
-                    defaultValue={0}
-                    aria-labelledby="discrete-slider"
-                    valueLabelDisplay="auto"
-                    value={this.state.panelRadius}
-                    onChange={this.handlePanelRadius}
-                    step={1}
-                    min={0}
-                    max={50}
-                  />
                 </CardContent>
               </Card>
             </Paper>}
@@ -366,6 +370,7 @@ class ThemeCreator extends Component {
                             primaryColor: '#3f51b5', // Primary color
                             secondaryColor: '#de6464', // Secondary color
                             specialContentColor: '#232f4a', // Background color of cards and special contents
+                            darkmode: true,
 
                             outlineTextlogo: '#1A2036', // Outline color of logo
                             shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo

@@ -75,7 +75,7 @@ class Variables extends Component {
 
   renderVariablesEmpty() {
     return (
-      <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
+      <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px', borderRadius: '0px 0px 4px 4px' }}>
         <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
           <img
             style={{ position: 'relative', height: '150px' }}
@@ -176,7 +176,7 @@ class Variables extends Component {
             </small>
           </Typography>
         </Paper>
-        }{!disabled &&
+        }{!disabled && this.renderVariables().length !== 0 &&
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Table>
             <TableHead>

@@ -179,6 +179,9 @@ export default createMuiTheme({
       }
     },
     MuiTableCell: { // Name of the component ⚛️ / style sheet
+      head: {
+        color: '#afb6c5'
+      },
       body: { // Name of the rule
         color: '#afb6c5', // Some CSS
         borderColor: 'transparent',

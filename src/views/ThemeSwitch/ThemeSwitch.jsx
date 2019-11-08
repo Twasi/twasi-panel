@@ -74,15 +74,6 @@ const themes = [{
   secondaryColor: '#bdbebd',
   verified: true
 }, {
-  name: 'Twasi Light',
-  key: 'twasi-light',
-  backgroundColor: '#e6e6e6',
-  paperColor: '#fff',
-  cardColor: '#f9f9f9',
-  primaryColor: '#00aeae',
-  secondaryColor: '#e53935',
-  verified: true
-  }, {
   name: 'Halloween',
   key: 'halloween',
   backgroundColor: '#051016',
@@ -217,8 +208,8 @@ class ThemeSwitch extends React.Component {
                     disabled={!installedtheme.installed}
                   >
                     <ListItemAvatar>
-                      <Avatar>
-                        <Icon style={{ fontSize: 36 }}>color_lens</Icon>
+                      <Avatar style={{ backgroundColor: this.props.selectedValue === installedtheme.id ? installedtheme.theme.primaryColor : '' }}>
+                        <Icon style={{ fontSize: 36 }}>{this.props.selectedValue === installedtheme.id ? 'check' : 'color_lens'}</Icon>
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={(

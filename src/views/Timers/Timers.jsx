@@ -65,7 +65,7 @@ class Timers extends Component {
 
   renderTimersEmpty() {
     return (
-      <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px' }}>
+      <Paper className="pageContainer" style={{ marginTop: '0px', paddingTop: '1px', borderRadius: '0px 0px 4px 4px' }}>
         <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
           <img
             style={{ position: 'relative', height: '150px' }}
@@ -183,6 +183,7 @@ class Timers extends Component {
             </small>
           </Typography>
         </Paper>
+        {this.renderTimers().length !== 0 &&
         <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
           <Table>
             <TableHead>
@@ -197,7 +198,7 @@ class Timers extends Component {
               {this.renderTimers()}
             </TableBody>
           </Table>
-        </Paper>
+        </Paper>}
         {this.renderTimers().length === 0 && !this.props.isLoading && this.renderTimersEmpty()}
       </div>
     );
