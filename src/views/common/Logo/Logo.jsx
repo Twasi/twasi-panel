@@ -1,6 +1,28 @@
 import React from 'react';
 
-const Logo = () => (
+function shadeColor(color, percent) {
+  if(color !== undefined)
+  var R = parseInt(color.substring(1,3),16);
+  var G = parseInt(color.substring(3,5),16);
+  var B = parseInt(color.substring(5,7),16);
+  R = parseInt(R * (100 + percent) / 100);
+  G = parseInt(G * (100 + percent) / 100);
+  B = parseInt(B * (100 + percent) / 100);
+  R = (R<255)?R:255;
+  G = (G<255)?G:255;
+  B = (B<255)?B:255;
+  var RR = ((R.toString(16).length===1)?"0"+R.toString(16):R.toString(16));
+  var GG = ((G.toString(16).length===1)?"0"+G.toString(16):G.toString(16));
+  var BB = ((B.toString(16).length===1)?"0"+B.toString(16):B.toString(16));
+  return "#"+RR+GG+BB;
+}
+
+//.outline-textlogo{fill:#1A2036;}
+//.shadow-primary-textlogo{fill:#303F8B;}
+//.shadow-secondary-textlogo{fill:#3C4EAD;}
+//.main-textlogo{fill:#4352AF;}
+
+const Logo = (color) => (
   <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -10,10 +32,10 @@ const Logo = () => (
     `.st0 { display:none; }
     .st1{display:inline;fill:#1A2036;}
     .st2{fill:#FFFFFF;}
-    .outline-textlogo{fill:#1A2036;}
-    .shadow-primary-textlogo{fill:#303F8B;}
-    .shadow-secondary-textlogo{fill:#3C4EAD;}
-    .main-textlogo{fill:#4352AF;}
+    .outline-textlogo{fill:${color.color === undefined ? shadeColor('#4352AF', -90) : shadeColor(color.color, -90)};}
+    .shadow-primary-textlogo{fill:${color.color === undefined ? shadeColor('#4352AF', -30) : shadeColor(color.color, -30)};}
+    .shadow-secondary-textlogo{fill:${color.color === undefined ? shadeColor('#4352AF', -60) : shadeColor(color.color, -60)};}
+    .main-textlogo{fill:${color.color === undefined ? '#4352AF' : color.color};}
     .st7{fill:#4C5BC2;}
     .st8{fill:#C4CABC;}
     .st9{fill:#FCFCFD;}

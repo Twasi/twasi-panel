@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { withTheme } from '@material-ui/styles';
 
 import './_style.css';
 import { authSelectors } from '../../../state/auth';
@@ -23,47 +24,61 @@ import {
   getLogoDescriptionStyle
 } from './_style';
 
-const Header = ({ userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp, updateInstalledThemes }) => (
-  <header>
-    <div className="bannerHeaderTopBar" />
-    {isSetUp && updateInstalledThemes()}
-    {isSetUp && <div className="bannerHeader" style={{ opacity: banner && selectedBannerAsHeaderValue ? '0.4' : '1', backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />}
-    <Grid container spacing={4}>
-      <Grid item xs={4}>
-        {isSetUp &&
-        <div style={getLogoStyle()}>
-          <span>
-            {avatar && <img src={avatar} alt="Avatar" className="avatarStyle" style={getAvatarStyle()} />}
-            <div style={getLogoDescriptionStyle()}>
-              <span>
-                <Typography color="inherit" className="userNameStyle">{userName}</Typography>
-                <Typography color="inherit"><small className="rankNameStyle" style={getRankStyle()}><Rank /></small></Typography>
-              </span>
-            </div>
-          </span>
-        </div>
-        }
+class Header extends Component {
+
+  componentDidMount() {
+    const { updateInstalledThemes, isSetUp } = this.props;
+    if(isSetUp){
+      updateInstalledThemes();
+    }
+  }
+  render() {
+    const { userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp, theme, isActionSuccess, updateInstalledThemes, logocolor } = this.props;
+    if(isActionSuccess) {
+      updateInstalledThemes();
+    }
+    return (
+    <header>
+      <div className="bannerHeaderTopBar" />
+      {isSetUp && <div className="bannerHeader" style={{ opacity: banner && selectedBannerAsHeaderValue ? '0.4' : '1', backgroundImage: banner && selectedBannerAsHeaderValue ? `url(${banner})` : null }} />}
+      <Grid container spacing={4}>
+        <Grid item xs={4}>
+          {isSetUp &&
+          <div style={getLogoStyle()}>
+            <span>
+              {avatar && <img src={avatar} alt="Avatar" className="avatarStyle" style={getAvatarStyle()} />}
+              <div style={getLogoDescriptionStyle()}>
+                <span>
+                  <Typography color="inherit" className="userNameStyle">{userName}</Typography>
+                  <Typography color="inherit"><small className="rankNameStyle" style={getRankStyle()}><Rank /></small></Typography>
+                </span>
+              </div>
+            </span>
+          </div>
+          }
+        </Grid>
+        <Grid style={{ paddingTop: '10px' }} item xs={4}>
+          <div style={getLogoStyle()}>
+            <span className="text_logo_wrapper" style={{ marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
+              <div className="text_logo">
+                <Logo color={logocolor === "" ? theme.palette.primary.main : logocolor} />
+              </div>
+            </span>
+          </div>
+        </Grid>
+        <Grid item xs={4}>
+          <div style={{ paddingTop: '5px' }}>
+            {isSetUp &&<AccountSwitchIcon />}
+            <ThemeSwitchIcon />
+            <LanguageSwitchIcon />
+            {isSetUp &&<StatusIcon />}
+          </div>
+        </Grid>
       </Grid>
-      <Grid style={{ paddingTop: '10px' }} item xs={4}>
-        <div style={getLogoStyle()}>
-          <span className="text_logo_wrapper" style={{ marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
-            <div className="text_logo">
-              <Logo />
-            </div>
-          </span>
-        </div>
-      </Grid>
-      <Grid item xs={4}>
-        <div style={{ paddingTop: '5px' }}>
-          {isSetUp &&<AccountSwitchIcon />}
-          <ThemeSwitchIcon />
-          <LanguageSwitchIcon />
-          {isSetUp &&<StatusIcon />}
-        </div>
-      </Grid>
-    </Grid>
-  </header>
-);
+    </header>
+    );
+  }
+}
 
 Header.propTypes = {
   userName: PropTypes.string,
@@ -84,11 +99,12 @@ const mapStateToProps = state => ({
   avatar: authSelectors.getUserAvatar(state),
   banner: authSelectors.getUserBanner(state),
   selectedBannerAsHeaderValue: appInfoSelectors.getBannerAsHeader(state),
-  themes: themesSelectors.getThemes(state)
+  themes: themesSelectors.getThemes(state),
+  isActionSuccess: themesSelectors.isActionSuccess(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   updateInstalledThemes: () => dispatch(themesOperations.loadInstalledThemes())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withTheme(connect(mapStateToProps, mapDispatchToProps)(Header));

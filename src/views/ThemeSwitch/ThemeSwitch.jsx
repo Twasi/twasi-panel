@@ -260,7 +260,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateInstalledThemes: () => dispatch(themesOperations.loadInstalledThemes()),
   updateTheme: name => dispatch(appInfoOperations.updateTheme(name)),
   updateBannerAsHeader: bannerAsHeader => dispatch(appInfoOperations.updateBannerAsHeader(bannerAsHeader)),
   updateComicSans: comicsans => dispatch(appInfoOperations.updateComicSans(comicsans)),

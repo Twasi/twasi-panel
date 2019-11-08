@@ -68,10 +68,6 @@ function loadCss(theme){
           .img {
             pointer-events: none;
           }
-          .outline-textlogo { fill:${shadeColor(theme.theme.mainTextLogo, -90)} !important; }
-          .shadow-primary-textlogo { fill:${shadeColor(theme.theme.mainTextLogo, -30)} !important; }
-          .shadow-secondary-textlogo { fill:${shadeColor(theme.theme.mainTextLogo, -60)} !important; }
-          .main-textlogo { fill:${theme.theme.mainTextLogo} !important; }
           .translucentBox {
             background: ${theme.theme.primaryColor};
           }
@@ -490,7 +486,7 @@ const App = () => {
           <SnackbarProvider maxSnack={3}>
             <AuthLoader>
               <Content className={props.comicsans ? props.theme.toLowerCase() + " comicsans" : props.theme.toLowerCase()}>
-                <Header />
+                <Header logocolor={customInstalledTheme && customInstalledTheme.theme.mainTextLogo} />
                 <Switch>
                   <Route path="/profile/:name" component={Public} />
                   <Route path="/setup" component={Welcome} />

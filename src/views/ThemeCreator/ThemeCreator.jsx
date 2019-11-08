@@ -157,7 +157,7 @@ class ThemeCreator extends Component {
       primaryColor: this.state.primaryColor,
       secondaryColor: this.state.secondaryColor,
       specialContentColor: this.state.specialContentColor,
-      darkmode: this.state.darkmode,
+      //darkmode: this.state.darkmode,
 
       outlineTextLogo: this.state.outlineTextlogo,
       shadowPrimaryTextLogo: this.state.shadowPrimaryTextlogo,
@@ -403,24 +403,7 @@ class ThemeCreator extends Component {
                       </small>
                     </Typography>
                     <div style={{ marginTop: '23px', marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
-                      <Logo/>
-                      <style type="text/css">
-                        {
-                        `.st0 { display:none; }
-                        .st1{display:inline;fill:#1A2036;}
-                        .st2{fill:#FFFFFF;}
-                        .outline-textlogo{fill:${shadeColor(this.state.mainTextlogo, -90)};}
-                        .shadow-primary-textlogo{fill:${shadeColor(this.state.mainTextlogo, -30)};}
-                        .shadow-secondary-textlogo{fill:${shadeColor(this.state.mainTextlogo, -60)};}
-                        .main-textlogo{fill:${this.state.mainTextlogo};}
-                        .st7{fill:#4C5BC2;}
-                        .st8{fill:#C4CABC;}
-                        .st9{fill:#FCFCFD;}
-                        .st10{fill:#D27489;}
-                        .st11{fill:#B96678;}
-                        .st12{fill:#00AEAE;}`
-                      }
-                      </style>
+                      <Logo color={this.state.mainTextlogo}/>
                     </div>
                     <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: this.state.panelBackgroundColor, borderRadius: this.state.panelRadius+"px" }}>
                       <Typography component={'span'} style={{ color: this.state.fontColor }}>
