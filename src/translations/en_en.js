@@ -14,6 +14,7 @@ export default {
   'CUSTOM-THEMES.TOO-MANY-THEMES': 'You have reached your limit of creating themes.',
   'CUSTOM-THEMES.ALREADY-INSTALLED': 'This theme is already installed.',
   'CUSTOM-THEMES.NOT-EXISTING': 'This theme does not exist.',
+  'CUSTOM-THEMES.NO-USED-THEME-DELETION': 'You cannot delete this theme.',
 
   'rank.team': 'Teammember',
   'rank.partner': 'Partnerstreamer',
@@ -410,6 +411,7 @@ export default {
   'themestore.subtitle': 'Themes are skins for your panel to make it individual to your likings.\nEverybody can publish own themes. Themes wich are especially good looking will be granted the "verified" badge.',
   'themestore.new_theme': 'Create new theme',
   'themestore.showonlyverified': 'Show only verified themes',
+  'themestore.installed': 'installations',
 
   // Public
   'public.headline': 'Public',

@@ -14,6 +14,7 @@ export default {
   'CUSTOM-THEMES.TOO-MANY-THEMES': 'Du hast dein Limit an Themes erreicht.',
   'CUSTOM-THEMES.ALREADY-INSTALLED': 'Dieses Theme is bereits installiert.',
   'CUSTOM-THEMES.NOT-EXISTING': 'Dieses Theme existiert nicht.',
+  'CUSTOM-THEMES.NO-USED-THEME-DELETION': 'Du kannst dieses Theme nicht löschen, da es bereits von einem anderen Nutzer installiert wurde.',
 
   'rank.team': 'Teammitglied',
   'rank.partner': 'Partnerstreamer',
@@ -411,6 +412,7 @@ export default {
   'themestore.subtitle': 'Themes sind Skins für dein Twasi Panel, die das Aussehen deines Panel individuell anpassen. \nJeder kann Themes erstellen und veröffentlichen. Themes, die von uns als besonders gelungen gewertet wurden erhalten den "verified" Status.',
   'themestore.new_theme': 'Neues Theme erstellen',
   'themestore.showonlyverified': 'Nur verifizierte Themes anzeigen',
+  'themestore.installed': 'mal installiert',
 
   // Public
   'public.headline': 'Public',

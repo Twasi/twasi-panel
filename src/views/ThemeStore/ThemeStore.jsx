@@ -171,7 +171,7 @@ class ThemeStore extends Component {
                   <h5 style={{ marginTop: "0px", marginBottom: "15px" }}>
                     <small>
                       <FormattedMessage id="plugins.by" />
-                    </small> {theme.creator}
+                    </small> {theme.creator} | {theme.installations} <small><FormattedMessage id="themestore.installed" /></small>
                   </h5>
                 </Typography>
                 <Badge children={''} style={{ backgroundColor: theme.theme.backgroundColor, width: '20%', height: '30px' }} />
