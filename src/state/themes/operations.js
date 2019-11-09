@@ -33,7 +33,7 @@ const approve = id => dispatch => {
 
 const loadThemes = (page, approvedOnly) => dispatch => {
     dispatch(updateLoading(true));
-    dispatch(getGraph(`themes{availableThemes(approvedOnly: ${approvedOnly}){content(page: 1){approved,created,creator,id,installed,name,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
+    dispatch(getGraph(`themes{availableThemes(approvedOnly: ${approvedOnly}){content(page: 1){approved,created,creator,id,installed,name,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
         dispatch(updateThemes(data.themes.availableThemes.content.map(p => ({ ...p, actionInProgress: false }))));
         dispatch(updatePagination(data.themes.availableThemes));
     }).finally(() => {
@@ -44,7 +44,7 @@ const loadThemes = (page, approvedOnly) => dispatch => {
 
 const loadInstalledThemes = () => dispatch => {
     dispatch(updateLoading(true));
-    dispatch(getGraph(`themes{installedThemes{approved,created,creator,id,installed,name,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius}}}`, 'panel')).then(data => {
+    dispatch(getGraph(`themes{installedThemes{approved,created,creator,id,installed,name,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode}}}`, 'panel')).then(data => {
         dispatch(updateInstalledThemes(data.themes.installedThemes));
     }).finally(() => {
         dispatch(updateLoading(false))

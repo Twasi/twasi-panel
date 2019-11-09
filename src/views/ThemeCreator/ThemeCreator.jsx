@@ -59,7 +59,7 @@ class ThemeCreator extends Component {
       primaryColor: '#3f51b5', // Primary color
       secondaryColor: '#de6464', // Secondary color
       specialContentColor: '#232f4a', // Background color of cards and special contents
-      darkmode: true,
+      darkMode: true,
 
       outlineTextlogo: '#1A2036', // Outline color of logo
       shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo
@@ -122,7 +122,7 @@ class ThemeCreator extends Component {
   };
 
   handleDarkMode = value => {
-    this.setState({ darkmode: value.target.checked });
+    this.setState({ darkMode: value.target.checked });
   };
 
   handleClickBreadCrumb = (event, value) => {
@@ -157,7 +157,7 @@ class ThemeCreator extends Component {
       primaryColor: this.state.primaryColor,
       secondaryColor: this.state.secondaryColor,
       specialContentColor: this.state.specialContentColor,
-      //darkmode: this.state.darkmode,
+      darkMode: this.state.darkMode,
 
       outlineTextLogo: this.state.outlineTextlogo,
       shadowPrimaryTextLogo: this.state.shadowPrimaryTextlogo,
@@ -219,7 +219,7 @@ class ThemeCreator extends Component {
                       <Checkbox
                         onChange={this.handleDarkMode}
                         color="primary"
-                        checked={this.state.darkmode}
+                        checked={this.state.darkMode}
                       />
                     }
                     label={<small><FormattedMessage id="themecreator.darkmode_toggle" /></small>}
@@ -370,7 +370,7 @@ class ThemeCreator extends Component {
                             primaryColor: '#3f51b5', // Primary color
                             secondaryColor: '#de6464', // Secondary color
                             specialContentColor: '#232f4a', // Background color of cards and special contents
-                            darkmode: true,
+                            darkMode: true,
 
                             outlineTextlogo: '#1A2036', // Outline color of logo
                             shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo

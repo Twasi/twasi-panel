@@ -163,9 +163,10 @@ const App = () => {
     props.installedthemes.map(installedtheme => {
       if(installedtheme.id === props.theme.toLowerCase()) {
         customInstalledTheme = installedtheme;
+        console.log(installedtheme.theme.darkMode)
         customtheme = createMuiTheme({
           palette: {
-            type: 'dark',
+            type: installedtheme.theme.darkMode ? 'dark' : 'light',
             background: {
               default: installedtheme.theme.backgroundColor
             },
