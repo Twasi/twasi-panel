@@ -356,8 +356,8 @@ class Command extends React.Component {
             </CardContent>
           </Card>
           <Card className="pluginCard" style={{ marginTop: '15px' }}>
-            <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-              <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
+            <CardContent style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+              <FormControl variant="outlined" fullWidth>
                 <TextField
                   InputLabelProps={{ shrink: true }}
                   id="outlined-textarea"
