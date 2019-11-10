@@ -67,7 +67,7 @@ class ThemeStore extends Component {
         <Fab
           key={i+1}
           onClick={() => {
-            updateThemes(i+1)
+            updateThemes(i+1, this.state.approvedOnly)
             this.setState({ page: i+1});
           }}
           style={{ marginLeft: '5px', marginRight: '5px' }}
