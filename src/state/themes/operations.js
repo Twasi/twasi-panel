@@ -33,7 +33,7 @@ const approve = id => dispatch => {
 
 const loadThemes = (page, approvedOnly) => dispatch => {
     dispatch(updateLoading(true));
-    dispatch(getGraph(`themes{availableThemes(approvedOnly: ${approvedOnly}){content(page: ${page}){approved,created,creator,id,installed,name,installations,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
+    dispatch(getGraph(`themes{availableThemes(approvedOnly: ${approvedOnly}){content(page: ${page}){approved,created,creator,id,installed,name,installations,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode,specialProperties{snow}}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
         dispatch(updateThemes(data.themes.availableThemes.content.map(p => ({ ...p, actionInProgress: false }))));
         dispatch(updatePagination(data.themes.availableThemes));
     }).finally(() => {
@@ -44,7 +44,7 @@ const loadThemes = (page, approvedOnly) => dispatch => {
 
 const loadInstalledThemes = () => dispatch => {
     dispatch(updateLoading(true));
-    dispatch(getGraph(`themes{installedThemes{approved,created,creator,id,installed,name,installations,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode}}}`, 'panel')).then(data => {
+    dispatch(getGraph(`themes{installedThemes{approved,created,creator,id,installed,name,installations,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode,specialProperties{snow}}}}`, 'panel')).then(data => {
         dispatch(updateInstalledThemes(data.themes.installedThemes));
     }).finally(() => {
         dispatch(updateLoading(false))
@@ -52,20 +52,23 @@ const loadInstalledThemes = () => dispatch => {
     });
 };
 
-const addTheme = (name, themedata) => dispatch => {
-    var theme = "";
-    for (var key in themedata) {
-      if (themedata.hasOwnProperty(key)) {
-        if (isNaN(themedata[key])) {
-          theme += key+':"'+themedata[key]+'",';
-        } else {
-          theme += key+':'+themedata[key]+',';
-        }
-      }
+function stringify(obj_from_json){
+    if(typeof obj_from_json !== "object" || Array.isArray(obj_from_json)){
+        // not an object, stringify using native function
+        return JSON.stringify(obj_from_json);
     }
-    theme = theme.substring(0, theme.length - 1);
+    // Implements recursive object serialization according to JSON spec
+    // but without quotes around the keys.
+    let props = Object
+        .keys(obj_from_json)
+        .map(key => `${key}:${stringify(obj_from_json[key])}`)
+        .join(",");
+    return `{${props}}`;
+}
+
+const addTheme = (name, themedata) => dispatch => {
     dispatch(updateActionSuccess(false));
-    dispatch(getGraph(`themes{create(name: ${JSON.stringify(name)}, theme: {${theme}}){status,translationKey}}`, 'panel')).then(
+    dispatch(getGraph(`themes{create(name: ${JSON.stringify(name)}, theme: ${stringify(themedata)}){status,translationKey}}`, 'panel')).then(
     data => {
       dispatch(updateThemeResponse(data.themes.create));
       dispatch(updateAddTheme(data.themes));

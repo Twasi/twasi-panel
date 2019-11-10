@@ -9198,7 +9198,7 @@ react-dev-utils@^9.1.0:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@^16.8.6:
+react-dom@^16.7.0, react-dom@^16.8.6:
   version "16.11.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.11.0.tgz#7e7c4a5a85a569d565c2462f5d345da2dd849af5"
   integrity sha512-nrRyIUE1e7j8PaXSPtyRKtz+2y9ubW/ghNgqKFHHAHaeP0fpF5uXR+sq8IMRHC+ZUxw7W9NyCDTBtwWxvkb0iA==
@@ -9350,6 +9350,15 @@ react-scripts@^3.0.1:
   optionalDependencies:
     fsevents "2.0.7"
 
+react-snowstorm@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-snowstorm/-/react-snowstorm-0.0.3.tgz#ac459842dbe36babedc5b5f29c7e7b1dff6c8d49"
+  integrity sha512-czzsvaNdfVuDSrzoFfp4S8/cDvqGwoJhXIR+bwhoGV//nOq9PoezihvKzfm2fSPltvLSQydZ/dQbx6vvW231iw==
+  dependencies:
+    prop-types "^15.6.2"
+    react "^16.7.0"
+    react-dom "^16.7.0"
+
 react-to-print@^2.0.0-alpha.7:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-to-print/-/react-to-print-2.5.0.tgz#1aabdf18fd9b10b85311e16e8a7a81a441ee2a09"
@@ -9367,7 +9376,7 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^16.8.6:
+react@^16.7.0, react@^16.8.6:
   version "16.11.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.11.0.tgz#d294545fe62299ccee83363599bf904e4a07fdbb"
   integrity sha512-M5Y8yITaLmU0ynd0r1Yvfq98Rmll6q8AxaEe88c8e7LxO8fZ2cNgmFt0aGAS9wzf1Ao32NKXtCl+/tVVtkxq6g==

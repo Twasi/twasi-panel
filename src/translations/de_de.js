@@ -378,6 +378,7 @@ export default {
   'themecreator.common.secondarycolor': 'Sekundäre Farbe',
   'themecreator.themestore_button': 'Zum Theme Store',
   'themecreator.darkmode_toggle': 'Das Theme wird ein Dunkles Theme',
+  'themecreator.enableSnow': 'Schnee für dieses Theme aktivieren',
   'themecreator.new.title': 'Neues Theme',
   'themecreator.new.subtitle': 'Bevor es los geht musst du einen Namen für dein neues Theme finden.',
   'themecreator.new.name': 'Name deines Themes',
