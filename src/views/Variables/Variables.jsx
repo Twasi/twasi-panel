@@ -121,7 +121,7 @@ class Variables extends Component {
                   this.setState({ openEditVariableDialog: true, editDialogContent: variable })
               }}
             >
-              <Icon style={{ color: '#ffffff' }}>edit</Icon>
+              <Icon className="actionButtons">edit</Icon>
             </Fab>
           </Tooltip>{' '}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
@@ -135,7 +135,7 @@ class Variables extends Component {
                   this.handleOpenNotification(variable.name)
               }}
             >
-              <Icon style={{ color: '#ffffff' }}>delete</Icon>
+              <Icon className="actionButtons">delete</Icon>
             </Fab>
           </Tooltip>
         </TableCell>

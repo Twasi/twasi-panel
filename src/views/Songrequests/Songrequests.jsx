@@ -125,13 +125,13 @@ class Songrequests extends React.Component {
                          </div>}
                 />
                 <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="previous">
-                  <Icon style={{ color: '#ffffff' }}>skip_previous</Icon>
+                  <Icon className="actionButtons">skip_previous</Icon>
                 </Fab>
                 <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="play">
-                  <Icon style={{ color: '#ffffff' }}>play_arrow</Icon>
+                  <Icon className="actionButtons">play_arrow</Icon>
                 </Fab>
                 <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="skip">
-                  <Icon style={{ color: '#ffffff' }}>skip_next</Icon>
+                  <Icon className="actionButtons">skip_next</Icon>
                 </Fab>
               </div>
             </Grid>
@@ -201,7 +201,7 @@ class Songrequests extends React.Component {
                       size="small"
                       aria-label="favSong"
                     >
-                      <Icon style={{ color: '#ffffff' }}>star</Icon>
+                      <Icon className="actionButtons">star</Icon>
                     </Fab>
                   </Tooltip>{' '}
                   <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
@@ -211,7 +211,7 @@ class Songrequests extends React.Component {
                       size="small"
                       aria-label="deleteSong"
                     >
-                      <Icon style={{ color: '#ffffff' }}>delete</Icon>
+                      <Icon className="actionButtons">delete</Icon>
                     </Fab>
                   </Tooltip>
                 </TableCell>

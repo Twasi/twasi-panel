@@ -33,7 +33,7 @@ const approve = id => dispatch => {
 
 const loadThemes = (page, approvedOnly) => dispatch => {
     dispatch(updateLoading(true));
-    dispatch(getGraph(`themes{availableThemes(approvedOnly: ${approvedOnly}){content(page: 1){approved,created,creator,id,installed,name,installations,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
+    dispatch(getGraph(`themes{availableThemes(approvedOnly: ${approvedOnly}){content(page: ${page}){approved,created,creator,id,installed,name,installations,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
         dispatch(updateThemes(data.themes.availableThemes.content.map(p => ({ ...p, actionInProgress: false }))));
         dispatch(updatePagination(data.themes.availableThemes));
     }).finally(() => {

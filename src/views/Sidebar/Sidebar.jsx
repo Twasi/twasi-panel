@@ -201,7 +201,7 @@ class Sidebar extends Component {
             <div className="headerMenuItem">
               {checked ? <Typography component="span" color="inherit" className="headerMenuTitle"><FormattedMessage id="sidebar.navigation_headline" /></Typography> : ''}
               <Fab onClick={this.handleChange} className="navigationFab" size="small" aria-label="Collapse">
-                <Icon style={{ color: '#ffffff' }}>
+                <Icon className="actionButtons">
                   {checked ? 'arrow_back' : 'arrow_forward'}
                 </Icon>
               </Fab>

@@ -24,7 +24,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import storage from 'local-storage';
 
 import { appInfoSelectors, appInfoOperations } from '../../state/appInfo';
-import { themesOperations, themesSelectors } from '../../state/themes';
+import { themesSelectors } from '../../state/themes';
 
 import './_style.css';
 

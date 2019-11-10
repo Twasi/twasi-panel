@@ -113,6 +113,12 @@ function loadCss(theme){
           .tooltipAccountSwitch {
             background-color: ${theme.theme.primaryColor};
           }
+          .actionButtons {
+            color: ${theme.theme.buttonFontColor};
+          }
+          .headerMenuTitle {
+            color: ${theme.theme.buttonFontColor} !important;
+          }
         `}
       </style>
     )
@@ -233,23 +239,25 @@ const App = () => {
             MuiButton: { // Name of the component ⚛️ / style sheet
               root: { // Name of the rule
                 textTransform: 'none', // Some CSS
-                color: installedtheme.theme.buttonColor, // Some CSS
+                color: installedtheme.theme.buttonFontColor, // Some CSS
                 borderRadius: installedtheme.theme.buttonRadius+'px'
               },
               containedPrimary: {
+                color: installedtheme.theme.buttonFontColor,
                 boxShadow: 'none',
                 background: installedtheme.theme.primaryColor,
                 '&$disabled': {
                   background: installedtheme.theme.backgroundColor,
-                  color: installedtheme.theme.buttonColor
+                  color: installedtheme.theme.buttonFontColor
                 }
               },
               containedSecondary: {
+                color: installedtheme.theme.buttonFontColor,
                 boxShadow: 'none',
                 background: installedtheme.theme.secondaryColor,
                 '&$disabled': {
                   background: installedtheme.theme.backgroundColor,
-                  color: installedtheme.theme.buttonColor
+                  color: installedtheme.theme.buttonFontColor
                 }
               },
               outlinedPrimary: {
@@ -297,6 +305,7 @@ const App = () => {
             },
             MuiFab: {
               root: {
+                color: installedtheme.theme.buttonFontColor,
                 backgroundColor: 'transparent',
                 boxShadow: 'none',
                 '&:hover': {
@@ -305,6 +314,7 @@ const App = () => {
                 }
               },
               primary: {
+                color: installedtheme.theme.buttonFontColor,
                 background: installedtheme.theme.primaryColor,
                 '&:hover': {
                   boxShadow: 'none',
@@ -312,6 +322,7 @@ const App = () => {
                 }
               },
               secondary: {
+                color: installedtheme.theme.buttonFontColor,
                 background: installedtheme.theme.secondaryColor,
                 '&:hover': {
                   boxShadow: 'none',
@@ -386,9 +397,11 @@ const App = () => {
                 backgroundColor: installedtheme.theme.panelBackgroundColor // Some CSS
               },
               colorPrimary: {
+                color: installedtheme.theme.buttonFontColor,
                 background: installedtheme.theme.primaryColor
               },
               colorSecondary: {
+                color: installedtheme.theme.buttonFontColor,
                 background: installedtheme.theme.secondaryColor
               }
             },

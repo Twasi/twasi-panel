@@ -210,7 +210,7 @@ class Commands extends Component {
               onClick={() => {
                   this.setState({ openEditCommandDialog: true, editDialogContent: command })
               }}>
-              <Icon style={{ color: '#ffffff' }}>edit</Icon>
+              <Icon className="actionButtons">edit</Icon>
             </Fab>
           </Tooltip>{' '}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
@@ -223,7 +223,7 @@ class Commands extends Component {
                   this.props.delCommand(command.id);
                   this.handleOpenNotification(command.name)
               }}>
-              <Icon style={{ color: '#ffffff' }}>delete</Icon>
+              <Icon className="actionButtons">delete</Icon>
             </Fab>
           </Tooltip>
         </TableCell>

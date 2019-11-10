@@ -118,7 +118,7 @@ class Timers extends Component {
               aria-label="editTimer"
                onClick={() => this.setState({ openEditTimerDialog: true, editTimerDialogContent: timer })}
             >
-              <Icon style={{ color: '#ffffff' }}>edit</Icon>
+              <Icon className="actionButtons">edit</Icon>
             </Fab>
           </Tooltip>{' '}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
@@ -131,7 +131,7 @@ class Timers extends Component {
                   this.props.delTimer(timer.command);
               }}
             >
-              <Icon style={{ color: '#ffffff' }}>delete</Icon>
+              <Icon className="actionButtons">delete</Icon>
             </Fab>
           </Tooltip>
         </TableCell>
