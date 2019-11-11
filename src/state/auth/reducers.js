@@ -9,6 +9,7 @@ const initialState = {
   jwt: null,
   isLoading: false,
   isSetUp: false,
+  isActionSuccessAuth: false,
   userData: {
     id: '',
     banner: '',
@@ -46,6 +47,10 @@ const authReducer = (state = initialState, action) => {
 
     case types.UPDATE_IS_SET_UP: {
       return { ...state, isSetUp: action.isSetUp };
+    }
+
+    case types.UPDATE_ACTIONSUCCESSAUTH: {
+      return { ...state, isActionSuccessAuth: action.isActionSuccessAuth };
     }
 
     default:

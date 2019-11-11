@@ -53,7 +53,6 @@ class ChattersChart extends Component {
     const data = [];
     var count = 0
     chattersdata.forEach(entry => {
-      console.log(getImage(entry.displayName))
       count++;
       if(count<30) {
         if (entry.displayName.toLowerCase() === "blechkelle" || entry.displayName.toLowerCase() === "tom_meka" || entry.displayName.toLowerCase() === "larcce" || entry.displayName.toLowerCase() === "deezermerlin" ) {

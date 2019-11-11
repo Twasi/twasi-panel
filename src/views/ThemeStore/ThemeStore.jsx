@@ -68,7 +68,6 @@ class ThemeStore extends Component {
           key={i+1}
           onClick={() => {
             updateThemes(i+1, this.state.approvedOnly);
-            console.log(i+1)
             this.setState({ page: i+1});
           }}
           style={{ marginLeft: '5px', marginRight: '5px' }}

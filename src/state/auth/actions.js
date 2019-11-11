@@ -35,6 +35,11 @@ const updateIsSetUp = isSetUp => ({
   isSetUp
 });
 
+const updateActionSuccessAuth = isActionSuccessAuth => ({
+  type: types.UPDATE_ACTIONSUCCESSAUTH,
+  isActionSuccessAuth
+});
+
 export default {
   updateJwt,
   updateUser,
@@ -42,5 +47,6 @@ export default {
   isAuthenticated,
   updateUserData,
   updateIsUserUpdating,
-  updateIsSetUp
+  updateIsSetUp,
+  updateActionSuccessAuth
 };

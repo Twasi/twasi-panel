@@ -1,6 +1,7 @@
 const getJwt = state => state.auth.jwt;
 const getUser = state => state.auth.user;
 const isLoading = state => state.auth.isLoading;
+const isActionSuccessAuth = state => state.auth.isActionSuccessAuth;
 
 const isAuthenticated = state => state.auth.isAuthenticated;
 
@@ -18,5 +19,6 @@ export default {
   getUserAvatar,
   isUserUpdating,
   getUserBanner,
-  isSetUp
+  isSetUp,
+  isActionSuccessAuth
 };

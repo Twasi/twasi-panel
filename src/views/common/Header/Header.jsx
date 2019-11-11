@@ -26,8 +26,8 @@ import {
 
 class Header extends Component {
   render() {
-    const { userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp, theme, isActionSuccess, updateInstalledThemes, logocolor } = this.props;
-    if(isActionSuccess || isSetUp) {
+    const { userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp, theme, isActionSuccess, updateInstalledThemes, logocolor, isActionSuccessAuth } = this.props;
+    if(isActionSuccess || isActionSuccessAuth) {
       updateInstalledThemes();
     }
     return (
@@ -87,6 +87,7 @@ Header.defaultProps = {
 
 const mapStateToProps = state => ({
   isSetUp: authSelectors.isSetUp(state),
+  isAuthenticated: authSelectors.isAuthenticated(state),
   userName: authSelectors.getUser(state).displayName,
   rank: authSelectors.getUser(state).rank,
   avatar: authSelectors.getUserAvatar(state),
@@ -94,6 +95,7 @@ const mapStateToProps = state => ({
   selectedBannerAsHeaderValue: appInfoSelectors.getBannerAsHeader(state),
   themes: themesSelectors.getThemes(state),
   isActionSuccess: themesSelectors.isActionSuccess(state),
+  isActionSuccessAuth: authSelectors.isActionSuccessAuth(state),
 });
 
 const mapDispatchToProps = dispatch => ({

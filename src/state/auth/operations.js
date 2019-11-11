@@ -5,7 +5,7 @@ import actions from './actions';
 import { getGraph } from '../../services/graphqlService';
 import { appInfoOperations } from '../appInfo';
 
-const { updateUserData, updateIsUserUpdating } = actions;
+const { updateUserData, updateIsUserUpdating, updateActionSuccessAuth } = actions;
 
 const updateUser = () => dispatch => {
   dispatch(updateIsUserUpdating(true));
@@ -19,9 +19,13 @@ const updateUser = () => dispatch => {
 };
 
 const loadUser = () => dispatch => {
+  dispatch(updateActionSuccessAuth(false));
   dispatch(getGraph('user{id,twitchAccount{twitchid,name,avatar,email},banner}')).then(data => {
     dispatch(updateUserData(data.user));
     dispatch(appInfoOperations.loadVersion());
+    dispatch(updateActionSuccessAuth(true));
+  }).finally(() => {
+    dispatch(updateActionSuccessAuth(false));
   });
 };
 
@@ -46,6 +50,7 @@ export default {
   authenticate,
   updateUserData,
   updateUser,
+  updateActionSuccessAuth,
   updateIsAuthenticated: actions.isAuthenticated,
   updateIsLoading: actions.isLoading,
   updateIsSetUp: actions.updateIsSetUp,
