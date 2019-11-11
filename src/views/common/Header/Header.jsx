@@ -25,16 +25,9 @@ import {
 } from './_style';
 
 class Header extends Component {
-
-  componentDidMount() {
-    const { updateInstalledThemes, isSetUp } = this.props;
-    if(isSetUp){
-      updateInstalledThemes();
-    }
-  }
   render() {
     const { userName, avatar, banner, selectedBannerAsHeaderValue, isSetUp, theme, isActionSuccess, updateInstalledThemes, logocolor } = this.props;
-    if(isActionSuccess) {
+    if(isActionSuccess || isSetUp) {
       updateInstalledThemes();
     }
     return (
