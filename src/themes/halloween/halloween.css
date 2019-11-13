@@ -21,6 +21,9 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+.halloween .translucentBoxText {
+  color: #ffffff;
+}
 .halloween .translucentBoxWelcome {
   background: #fe8000;
 }

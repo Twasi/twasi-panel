@@ -47,7 +47,7 @@ class PublicLeaderboard extends Component {
             <Grid item xs={3}>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                  <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
                       #1
                     </h1>
@@ -61,7 +61,7 @@ class PublicLeaderboard extends Component {
             <Grid item xs={3}>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                  <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
                       24h 31m
                     </h1>
@@ -75,7 +75,7 @@ class PublicLeaderboard extends Component {
             <Grid item xs={3}>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                  <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
                       immer lol
                     </h1>
@@ -89,7 +89,7 @@ class PublicLeaderboard extends Component {
             <Grid item xs={3}>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                  <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
                       Blechlöffel
                     </h1>

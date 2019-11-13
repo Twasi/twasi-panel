@@ -28,6 +28,9 @@
   border-style:solid;
   border-radius: 0px;
 }
+.windows95 .translucentBoxText {
+  color: #ffffff;
+}
 .windows95 .translucentBoxWelcome {
   background: #000080;
   border-width:2px;

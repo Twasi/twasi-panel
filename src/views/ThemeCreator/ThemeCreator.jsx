@@ -28,9 +28,7 @@ import SnowStorm from 'react-snowstorm';
 import ColorPicker from './ColorPicker'
 
 import CoolStoryBob from '../common/resources/CoolStoryBob.png';
-
 import { themesSelectors, themesOperations } from '../../state/themes';
-
 import {shadeColor} from '../../customTheme.js';
 
 class ThemeCreator extends Component {
@@ -250,16 +248,17 @@ class ThemeCreator extends Component {
                   variant="contained"
                   color="primary"
                   style={{ marginRight: 16 }}
-                  onClick={event => this.props.updateMyThemes(this.state.page)}
+                  onClick={event => this.handleClickBreadCrumb(event, '/themes')}
                 >
-                  <FormattedMessage id="common.refresh" />
+                  <FormattedMessage id="themecreator.themestore_button" />
                 </Button>
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={event => this.handleClickBreadCrumb(event, '/themes')}
+                  onClick={event => this.props.updateMyThemes(this.state.page)}
                 >
-                  <FormattedMessage id="themecreator.themestore_button" />
+                  <Icon style={{ marginRight: '5px' }}>cached</Icon>
+                  <FormattedMessage id="common.refresh" />
                 </Button>
               </span>
             </h4>
@@ -271,7 +270,7 @@ class ThemeCreator extends Component {
             <Grid item xs={3}>
               <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                  <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
                       {this.getCreatedThemeCount(mythemes)}
                     </h1>
@@ -285,7 +284,7 @@ class ThemeCreator extends Component {
             <Grid item xs={3}>
               <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                  <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
                       {this.getVerifiedThemeCount(mythemes)}
                     </h1>
@@ -299,7 +298,7 @@ class ThemeCreator extends Component {
             <Grid item xs={3}>
               <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                  <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
                       {this.getOpenThemeSlotsCount(mythemes)}
                     </h1>
@@ -313,7 +312,7 @@ class ThemeCreator extends Component {
             <Grid item xs={3}>
               <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                  <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
                       {this.getMostFamousTheme(mythemes)}
                     </h1>

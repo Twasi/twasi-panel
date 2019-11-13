@@ -15,6 +15,9 @@
 .twasi-dark .bannerHeaderTopBar {
   background-color: #00aeae;
 }
+.twasi-dark .translucentBoxText {
+  color: #ffffff;
+}
 .twasi-dark .urlshortener_arrow {
   color: #00aeae;
 }

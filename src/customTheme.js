@@ -31,6 +31,9 @@ export function loadCustomCss(theme) {
           .translucentBoxLeaderboard {
             background: ${theme.theme.primaryColor};
           }
+          .translucentBoxText {
+            color: ${theme.theme.buttonFontColor};
+          }
           .translucentBoxWelcome {
             background: ${theme.theme.primaryColor};
           }
