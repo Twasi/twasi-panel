@@ -409,6 +409,7 @@ export default {
   'themecreator.themes_created': 'Themes created',
   'themecreator.themes_approved': 'Themes verified',
   'themecreator.themes_left': 'Themeslots open',
+  'themecreator.themes_installations': 'Installations',
 
   // Theme Store
   'themestore.title': 'Theme Store',

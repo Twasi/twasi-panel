@@ -162,6 +162,16 @@ class ThemeCreator extends Component {
     return themeSlotsOpen;
   }
 
+  getMostFamousTheme = (themes) => {
+    var themeInstallations = 0;
+    themes.map(theme => (
+      <span>
+        {themeInstallations = themeInstallations+theme.installations}
+      </span>
+    ))
+    return themeInstallations;
+  }
+
   renderThemeSlotsEmpty() {
     return (
       <Paper className="pageContainer" style={{ paddingTop: '1px', borderRadius: '0px 0px 4px 4px' }}>
@@ -258,7 +268,7 @@ class ThemeCreator extends Component {
             </small>
           </Typography>
           <Grid container spacing={4}>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
                   <Typography component={"div"} style={{ color: '#ffffff' }}>
@@ -272,7 +282,7 @@ class ThemeCreator extends Component {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
                   <Typography component={"div"} style={{ color: '#ffffff' }}>
@@ -286,7 +296,7 @@ class ThemeCreator extends Component {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
                   <Typography component={"div"} style={{ color: '#ffffff' }}>
@@ -295,6 +305,20 @@ class ThemeCreator extends Component {
                     </h1>
                     <h4 className="pageContainerTitle">
                       <FormattedMessage id="themecreator.themes_left" />
+                    </h4>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
+                <CardContent className="pluginCardContent translucentBoxLeaderboard">
+                  <Typography component={"div"} style={{ color: '#ffffff' }}>
+                    <h1 className="pageContainerTitle">
+                      {this.getMostFamousTheme(mythemes)}
+                    </h1>
+                    <h4 className="pageContainerTitle">
+                      <FormattedMessage id="themecreator.themes_installations" />
                     </h4>
                   </Typography>
                 </CardContent>
@@ -516,7 +540,7 @@ class ThemeCreator extends Component {
                   </small>
                 </Typography>
                 <div style={{ position: 'relative', height: 'auto', width: '100%', padding: '50px', marginTop: '25px' }}>
-                  {this.state.enableSnow && <SnowStorm followMouse={false} />}
+                  {this.state.enableSnow && <SnowStorm followMouse={false} freezeOnBlur={false} />}
                   <Checkboard size={ 8 } white="#fff" grey="#cccccc" />
                   <div style={{ position: 'inherit' }}>
                     <div style={{ background: this.state.backgroundColor, padding: '25px' }}>
