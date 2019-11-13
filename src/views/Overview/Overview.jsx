@@ -497,7 +497,7 @@ class Overview extends Component {
           </div>
           } {noStreamData && !isLoading &&
           <div>
-            <Paper className="pageContainer" style={{ marginTop: '-22px' }}>
+            <Paper className="pageContainer" style={{ marginTop: '-24px' }}>
               <div>
                 <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
                   <img
