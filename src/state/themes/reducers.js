@@ -2,6 +2,7 @@ import types from './types';
 
 export const initialState = {
   themes: [],
+  mythemes: [],
   installedthemes: [],
   pagination: [],
   isDisabled: false,
@@ -20,6 +21,9 @@ const themesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_THEMES: {
       return { ...state, themes: action.themes };
+    }
+    case types.UPDATE_MYTHEMES: {
+      return { ...state, mythemes: action.mythemes };
     }
     case types.UPDATE_APPROVE: {
       return { ...state, id: action.id };

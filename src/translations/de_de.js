@@ -407,6 +407,9 @@ export default {
   'themecreator.preview.cards.subtitle': 'So werden die hervorgehobenen Inhalte aussehen.',
   'themecreator.preview.buttons.primary': 'Primärfarbe',
   'themecreator.preview.buttons.secondary': 'Sekundärfarbe',
+  'themecreator.themes_created': 'Themes erstellt',
+  'themecreator.themes_approved': 'Themes verifiziert',
+  'themecreator.themes_left': 'Themeslots offen',
 
   // Theme Store
   'themestore.title': 'Theme Store',

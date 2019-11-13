@@ -406,6 +406,9 @@ export default {
   'themecreator.preview.cards.subtitle': 'Special content will look like this.',
   'themecreator.preview.buttons.primary': 'Primary color',
   'themecreator.preview.buttons.secondary': 'Secondary color',
+  'themecreator.themes_created': 'Themes created',
+  'themecreator.themes_approved': 'Themes verified',
+  'themecreator.themes_left': 'Themeslots open',
 
   // Theme Store
   'themestore.title': 'Theme Store',

@@ -5,6 +5,7 @@ import {getGraph} from '../../services/graphqlService';
 
 const {
     updateThemes,
+    updateMyThemes,
     updateApprove,
     updateInstalledThemes,
     updateThemeResponse,
@@ -30,12 +31,22 @@ const approve = id => dispatch => {
     });
 };
 
-
 const loadThemes = (page, approvedOnly) => dispatch => {
     dispatch(updateLoading(true));
     dispatch(getGraph(`themes{availableThemes(approvedOnly: ${approvedOnly}){content(page: ${page}){approved,created,creator,id,installed,name,installations,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode,specialProperties{snow}}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
         dispatch(updateThemes(data.themes.availableThemes.content.map(p => ({ ...p, actionInProgress: false }))));
         dispatch(updatePagination(data.themes.availableThemes));
+    }).finally(() => {
+        dispatch(updateLoading(false))
+        dispatch(updateLoaded(true))
+    });
+};
+
+const loadMyThemes = (page) => dispatch => {
+    dispatch(updateLoading(true));
+    dispatch(getGraph(`themes{myThemes{content(page: ${page}){approved,created,creator,id,installed,name,installations,theme{backgroundColor,buttonFontColor,buttonRadius,fontColor,mainTextLogo,outlineTextLogo,panelBackgroundColor,panelRadius,primaryColor,secondaryColor,shadowPrimaryTextLogo,shadowSecondaryTextLogo,specialContentColor,specialContentRadius,darkMode,specialProperties{snow}}},itemsPerPage,total,pages}}`, 'panel')).then(data => {
+        dispatch(updateMyThemes(data.themes.myThemes.content.map(p => ({ ...p, actionInProgress: false }))));
+        dispatch(updatePagination(data.themes.myThemes));
     }).finally(() => {
         dispatch(updateLoading(false))
         dispatch(updateLoaded(true))
@@ -117,6 +128,7 @@ function getRndInteger(min, max) {
 
 export default {
     loadThemes,
+    loadMyThemes,
     approve,
     loadInstalledThemes,
     addTheme,

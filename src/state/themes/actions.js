@@ -5,6 +5,11 @@ const updateThemes = themes => ({
   themes
 });
 
+const updateMyThemes = mythemes => ({
+  type: types.UPDATE_MYTHEMES,
+  mythemes
+});
+
 const updateInstalledThemes = installedthemes => ({
   type: types.UPDATE_INSTALLEDTHEMES,
   installedthemes
@@ -60,6 +65,7 @@ const updateActionSuccess = isActionSuccess => ({
 
 export default {
   updateThemes,
+  updateMyThemes,
   updateApprove,
   updateInstalledThemes,
   setInstalled,
