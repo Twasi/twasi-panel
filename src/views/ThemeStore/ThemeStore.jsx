@@ -97,6 +97,14 @@ class ThemeStore extends Component {
                 <Typography component={'div'}>
                   <h2 style={{ margin: "0px" }}>
                     {theme.name}
+                    {theme.theme.specialProperties.snow &&
+                      <span>
+                        <Icon
+                         className="verifiedBadge"
+                         color="action">ac_unit
+                        </Icon>
+                      </span>
+                    }
                     {theme.approved &&
                     <img
                       className="verifiedBadge"

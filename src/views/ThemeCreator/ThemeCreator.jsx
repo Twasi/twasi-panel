@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { withSnackbar } from 'notistack';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -29,6 +30,7 @@ import ColorPicker from './ColorPicker'
 
 import CoolStoryBob from '../common/resources/CoolStoryBob.png';
 import { themesSelectors, themesOperations } from '../../state/themes';
+import { authSelectors } from '../../state/auth';
 import {shadeColor} from '../../customTheme.js';
 
 class ThemeCreator extends Component {
@@ -48,6 +50,8 @@ class ThemeCreator extends Component {
       specialContentColor: '#232f4a', // Background color of cards and special contents
       darkMode: true,
       enableSnow: false,
+      headerImage: '',
+      headerImagePreview: '',
 
       outlineTextlogo: '#1A2036', // Outline color of logo
       shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo
@@ -157,10 +161,10 @@ class ThemeCreator extends Component {
     ))
     themeDifference = themesCreated - themesVerified;
     themeSlotsOpen = themeSlotsMax - themeDifference;
-    return themeSlotsOpen;
+    return themeSlotsOpen + " / " + themeSlotsMax;
   }
 
-  getMostFamousTheme = (themes) => {
+  getThemeInstallations = (themes) => {
     var themeInstallations = 0;
     themes.map(theme => (
       <span>
@@ -168,6 +172,24 @@ class ThemeCreator extends Component {
       </span>
     ))
     return themeInstallations;
+  }
+
+  handleUploadedFile = event => {
+    this.setState({ headerImage: event.target.files[0] });
+    this.setState({ headerImagePreview: URL.createObjectURL(event.target.files[0]) });
+  }
+
+  handleAddTheme = (themeName, themeData) => {
+    const { addTheme, jwt } = this.props;
+    if(this.state.headerImage !== '') {
+      const data = new FormData()
+      data.append('file', this.state.headerImage)
+      axios.post("https://api-beta.twasi.net/upload/IMG?jwt="+jwt, this.state.headerImage, {
+      }).then(res => {
+        console.log(res.statusText)
+      })
+    }
+    addTheme(themeName, themeData)
   }
 
   renderThemeSlotsEmpty() {
@@ -195,7 +217,6 @@ class ThemeCreator extends Component {
 
   render() {
     const { mythemes } = this.props;
-
     const action = key => (
       <div>
         <Button variant='contained' onClick={() => { this.props.closeSnackbar(key) }}>
@@ -314,7 +335,7 @@ class ThemeCreator extends Component {
                 <CardContent className="pluginCardContent translucentBoxLeaderboard">
                   <Typography className={'translucentBoxText'} component={"div"}>
                     <h1 className="pageContainerTitle">
-                      {this.getMostFamousTheme(mythemes)}
+                      {this.getThemeInstallations(mythemes)}
                     </h1>
                     <h4 className="pageContainerTitle">
                       <FormattedMessage id="themecreator.themes_installations" />
@@ -373,6 +394,31 @@ class ThemeCreator extends Component {
                   </CardContent>
                 </Card>
               </Paper>
+              {/* this.state.themeName.length > 4 &&
+              <Paper className="pageContainer">
+                <Typography component={'span'}>
+                  <h4 className="pageContainerTitle">
+                    <FormattedMessage id="themecreator.new.header.title" />
+                  </h4>
+                  <small>
+                    <FormattedMessage id="themecreator.new.header.subtitle" />
+                  </small>
+                </Typography>
+                <br />
+                <Card style={{ marginTop: '15px' }} className="pluginCard">
+                  <CardContent style={{ padding: '24px' }}>
+                  <TextField
+                    label={<FormattedMessage id="themecreator.new.header.upload_field" />}
+                    fullWidth
+                    type="file"
+                    onChange={this.handleUploadedFile}
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{ shrink: true }}
+                  />
+                  </CardContent>
+                </Card>
+              </Paper> */}
               {this.state.themeName.length > 4 &&
               <Paper className="pageContainer">
                 <Typography component={'span'}>
@@ -504,7 +550,7 @@ class ThemeCreator extends Component {
                         color="primary"
                         style={{ marginRight: '16px' }}
                         onClick={() => {
-                            this.props.addTheme(this.state.themeName, themedata);
+                            this.handleAddTheme(this.state.themeName, themedata)
                             this.props.updateMyThemes(this.state.page);
                             this.setState({
                               backgroundColor: '#1a2035', // Background color of the whole page
@@ -519,6 +565,8 @@ class ThemeCreator extends Component {
                               specialContentColor: '#232f4a', // Background color of cards and special contents
                               darkMode: true,
                               enableSnow: false,
+                              headerImage: '',
+                              headerImagePreview: '',
 
                               outlineTextlogo: '#1A2036', // Outline color of logo
                               shadowPrimaryTextlogo: '#303F8B', // Primary (Bigger) shadow color of logo
@@ -543,71 +591,74 @@ class ThemeCreator extends Component {
                   <Checkboard size={ 8 } white="#fff" grey="#cccccc" />
                   <div style={{ position: 'inherit' }}>
                     <div style={{ background: this.state.backgroundColor, padding: '25px' }}>
-                      <Typography component={'span'} style={{ color: this.state.fontColor }}>
-                        <h4 className="pageContainerTitle">
-                          <FormattedMessage id="themecreator.preview.content.title" />
-                        </h4>
-                        <small>
-                          <FormattedMessage id="themecreator.preview.content.subtitle" />
-                        </small>
-                      </Typography>
-                      <div style={{ marginTop: '23px', marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
-                        <Logo color={this.state.mainTextlogo}/>
-                      </div>
-                      <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: this.state.panelBackgroundColor, borderRadius: this.state.panelRadius+"px" }}>
+                      <div className="bannerHeader" style={{ zIndex: '2', backgroundColor: shadeColor(this.state.backgroundColor,-20), backgroundImage: `url(${this.state.headerImagePreview})` }}/>
+                      <div style={{ position: 'relative', zIndex: '3' }}>
                         <Typography component={'span'} style={{ color: this.state.fontColor }}>
                           <h4 className="pageContainerTitle">
-                            <FormattedMessage id="themecreator.preview.panels.title" />
+                            <FormattedMessage id="themecreator.preview.content.title" />
                           </h4>
                           <small>
-                            <FormattedMessage id="themecreator.preview.panels.subtitle" />
+                            <FormattedMessage id="themecreator.preview.content.subtitle" />
                           </small>
                         </Typography>
-                        <Card style={{ marginTop: '25px', background: this.state.specialContentColor, borderRadius: this.state.specialContentRadius+"px" }} className="pluginCard">
-                          <CardContent style={{ backgroundColor: this.state.specialContentColor }} className="pluginCardContent">
-                            <Typography component={'span'} style={{ color: this.state.fontColor }}>
-                              <h4 className="pageContainerTitle">
-                                <FormattedMessage id="themecreator.preview.cards.title" />
-                              </h4>
-                              <small>
-                                <FormattedMessage id="themecreator.preview.cards.subtitle" />
-                              </small>
-                            </Typography>
-                          </CardContent>
-                        </Card>
-                        <br />
-                        <Table>
-                          <TableHead>
-                            <TableRow style={{ borderBottom: '3px solid '+this.state.primaryColor }}>
-                              <TableCell style={{ color: this.state.fontColor }}>ID</TableCell>
-                              <TableCell style={{ color: this.state.fontColor }}>Name</TableCell>
-                            </TableRow>
-                          </TableHead>
-                          <TableBody className="anim">
-                            <TableRow>
-                              <TableCell style={{ color: this.state.fontColor }}>1</TableCell>
-                              <TableCell style={{ color: this.state.fontColor }}>Foobar</TableCell>
-                            </TableRow>
-                            <TableRow style={{ backgroundColor: this.state.specialContentColor }}>
-                              <TableCell style={{ color: this.state.fontColor }}>2</TableCell>
-                              <TableCell style={{ color: this.state.fontColor }}>Lorem Ipsum</TableCell>
-                            </TableRow>
-                          </TableBody>
-                        </Table>
-                        <br />
-                        <Grid container spacing={4}>
-                          <Grid item xs={6} style={{ textAlign: 'center' }}>
-                            <Button variant="contained" color="primary" style={{ background: this.state.primaryColor, borderRadius: this.state.buttonRadius+"px", color: this.state.buttonFontColor }}>
-                              <FormattedMessage id="themecreator.preview.buttons.primary" />
-                            </Button>
+                        <div style={{ marginTop: '23px', marginLeft: 'auto', marginRight: 'auto', width: '150px' }}>
+                          <Logo color={this.state.mainTextlogo}/>
+                        </div>
+                        <Paper className="pageContainer" style={{ marginTop: '25px', backgroundColor: this.state.panelBackgroundColor, borderRadius: this.state.panelRadius+"px" }}>
+                          <Typography component={'span'} style={{ color: this.state.fontColor }}>
+                            <h4 className="pageContainerTitle">
+                              <FormattedMessage id="themecreator.preview.panels.title" />
+                            </h4>
+                            <small>
+                              <FormattedMessage id="themecreator.preview.panels.subtitle" />
+                            </small>
+                          </Typography>
+                          <Card style={{ marginTop: '25px', background: this.state.specialContentColor, borderRadius: this.state.specialContentRadius+"px" }} className="pluginCard">
+                            <CardContent style={{ backgroundColor: this.state.specialContentColor }} className="pluginCardContent">
+                              <Typography component={'span'} style={{ color: this.state.fontColor }}>
+                                <h4 className="pageContainerTitle">
+                                  <FormattedMessage id="themecreator.preview.cards.title" />
+                                </h4>
+                                <small>
+                                  <FormattedMessage id="themecreator.preview.cards.subtitle" />
+                                </small>
+                              </Typography>
+                            </CardContent>
+                          </Card>
+                          <br />
+                          <Table>
+                            <TableHead>
+                              <TableRow style={{ borderBottom: '3px solid '+this.state.primaryColor }}>
+                                <TableCell style={{ color: this.state.fontColor }}>ID</TableCell>
+                                <TableCell style={{ color: this.state.fontColor }}>Name</TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody className="anim">
+                              <TableRow>
+                                <TableCell style={{ color: this.state.fontColor }}>1</TableCell>
+                                <TableCell style={{ color: this.state.fontColor }}>Foobar</TableCell>
+                              </TableRow>
+                              <TableRow style={{ backgroundColor: this.state.specialContentColor }}>
+                                <TableCell style={{ color: this.state.fontColor }}>2</TableCell>
+                                <TableCell style={{ color: this.state.fontColor }}>Lorem Ipsum</TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                          <br />
+                          <Grid container spacing={4}>
+                            <Grid item xs={6} style={{ textAlign: 'center' }}>
+                              <Button variant="contained" color="primary" style={{ background: this.state.primaryColor, borderRadius: this.state.buttonRadius+"px", color: this.state.buttonFontColor }}>
+                                <FormattedMessage id="themecreator.preview.buttons.primary" />
+                              </Button>
+                            </Grid>
+                            <Grid item xs={6} style={{ textAlign: 'center' }}>
+                              <Button variant="contained" color="secondary" style={{ background: this.state.secondaryColor, borderRadius: this.state.buttonRadius+"px", color: this.state.buttonFontColor }}>
+                                <FormattedMessage id="themecreator.preview.buttons.secondary" />
+                              </Button>
+                            </Grid>
                           </Grid>
-                          <Grid item xs={6} style={{ textAlign: 'center' }}>
-                            <Button variant="contained" color="secondary" style={{ background: this.state.secondaryColor, borderRadius: this.state.buttonRadius+"px", color: this.state.buttonFontColor }}>
-                              <FormattedMessage id="themecreator.preview.buttons.secondary" />
-                            </Button>
-                          </Grid>
-                        </Grid>
-                      </Paper>
+                        </Paper>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -632,6 +683,7 @@ const mapStateToProps = state => ({
   isLoaded: themesSelectors.isLoaded(state),
   isLoading: themesSelectors.isLoading(state),
   isActionSuccess: themesSelectors.isActionSuccess(state),
+  jwt: authSelectors.getJwt(state)
 });
 
 const mapDispatchToProps = dispatch => ({

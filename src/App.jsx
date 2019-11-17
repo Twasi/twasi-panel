@@ -110,7 +110,7 @@ const App = () => {
           <SnackbarProvider maxSnack={3}>
             <AuthLoader>
               <Content className={props.comicsans ? props.theme.toLowerCase() + " comicsans" : props.theme.toLowerCase()}>
-                {customInstalledTheme !== '' && customInstalledTheme.theme.specialProperties !== null && customInstalledTheme.theme.specialProperties.snow && <SnowStorm followMouse={false} freezeOnBlur={false} />}
+                {customInstalledTheme !== '' && customInstalledTheme.theme.specialProperties.snow && <SnowStorm followMouse={false} freezeOnBlur={false} />}
                 <Header logocolor={customInstalledTheme && customInstalledTheme.theme.mainTextLogo} />
                 <Switch>
                   <Route path="/profile/:name" component={Public} />

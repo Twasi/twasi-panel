@@ -44,7 +44,7 @@ export function loadCustomCss(theme) {
             border-bottom: 3px solid ${theme.theme.primaryColor} !important;
           }
           .bannerHeader {
-            background-color: ${shadeColor(theme.theme.backgroundColor, -40)};
+            background-color: ${shadeColor(theme.theme.backgroundColor, -20)};
           }
           .bannerHeaderTopBar {
             background: ${theme.theme.primaryColor};
@@ -340,7 +340,15 @@ export function loadCustomOverrides(installedtheme) {
             color: installedtheme.theme.fontColor
           }
         },
+        MuiIcon: { // Name of the component ⚛️ / style sheet
+          root: { // Name of the rule
+            color: installedtheme.theme.buttonFontColor
+          }
+        },
         MuiTypography: { // Name of the component ⚛️ / style sheet
+          colorTextPrimary: {
+            color: installedtheme.theme.fontColor
+          },
           body1: { // Name of the rule
             color: installedtheme.theme.fontColor // Some CSS
           },

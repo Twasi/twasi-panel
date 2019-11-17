@@ -19,7 +19,10 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+import GivePLZ from '../common/resources/giveplz.png';
+
 // import SongrequestConnectionStatus from './SongrequestConnectionStatus';
+import { isValidBrowser } from './browserCheck.js';
 import songrequestSync from '../../services/songrequestSync';
 import { authSelectors } from '../../state/auth';
 
@@ -67,8 +70,29 @@ class Songrequests extends React.Component {
     this.setState({});
   }
 
+  renderUnsupportedBrowser() {
+    return (
+      <Paper className="pageContainer" style={{ paddingTop: '1px', borderRadius: '0px 0px 4px 4px' }}>
+        <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+          <img
+            style={{ position: 'relative', height: '150px' }}
+            src={GivePLZ}
+            alt="GivePLZ"
+          />
+          <h3 className="pageContainerTitle">
+            Dieser Browser wird nicht Supportet.
+          </h3>
+          <small>
+            Bitte nutze Firefox, Chrome oder Opera, um die Songrequest Funktion zu nutzen.
+          </small>
+        </Typography>
+      </Paper>
+    );
+  }
+
   render() {
     const { volume, time } = this.state;
+    const image = 'https://qph.fs.quoracdn.net/main-qimg-4441921147e85b468845f56460c53654';
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -77,28 +101,32 @@ class Songrequests extends React.Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.songrequests" /></Typography>
         </Breadcrumbs>
+        {isValidBrowser() &&
         <Paper
           style={{
             padding: '0px',
             display: 'flex',
-            marginBottom: '23px'
+            position: 'relative',
+            marginBottom: '23px',
           }}
           className="pageContainer"
         >
-          <div style={{ position: 'relative' }} className="songrequestsCoverImage">
+          <div style={{ position: 'relative', zIndex: '50' }} className="songrequestsCoverImage">
             <img
-              src="https://images-na.ssl-images-amazon.com/images/I/71M%2BI5aOauL._SY355_.jpg"
+              src={image}
               alt="albumcover"
               style={{ height: '150px', width: '150px' }}
             />
           </div>
-          <Grid container spacing={0} className="songrequestsPlayer">
+          {/*<div style={{ background: `linear-gradient(135deg, rgba(${getAverageRGB(image)},1), rgba(${getAverageRGB(image)},0))`, width: '100%', height: '100%', position: 'absolute', zIndex: '10' }} />*/}
+          {/*<div style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', width: '100%', height: '100%', position: 'absolute', opacity: '0.1', zIndex: '5' }} />*/}
+          <Grid container spacing={0} className="songrequestsPlayer" style={{ zIndex: '25' }}>
             <Grid item xs={6}>
-              <Typography>
+              <Typography color="textPrimary">
                 <h4 style={{ padding: '0px', margin: '0px' }}>
-                  Bohemian Rhapsody{' '}
+                  Titel{' '}
                   <br />
-                  <small>Queen</small>
+                  <small>Interpret</small>
                   <br />
                   <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
                     <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
@@ -143,7 +171,8 @@ class Songrequests extends React.Component {
               <span className="rightTime">13:37</span>
             </Grid>
           </Grid>
-        </Paper>
+        </Paper>}
+        {isValidBrowser() &&
         <Paper className="pageContainer" style={{ padding: '0px' }}>
           <Table>
             <TableHead
@@ -218,7 +247,8 @@ class Songrequests extends React.Component {
               </TableRow>
             </TableBody>
           </Table>
-        </Paper>
+        </Paper>}
+        {!isValidBrowser() && this.renderUnsupportedBrowser()}
       </div>
     );
   }
