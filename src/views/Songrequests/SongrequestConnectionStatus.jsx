@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SongrequestConnectionStatus = props => (
   <div className="SongrequestConnectionStatus">
-    {props.status === 'connected' ? `Verbunden | ${props.timestamp}` : 'Getrennt'}
+      {props.status === 'connected' ? `Verbunden | ${props.timestamp}` : 'Getrennt'}
   </div>
 );
 

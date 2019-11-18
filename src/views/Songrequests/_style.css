@@ -20,3 +20,16 @@
   display: flex;
   justify-content: space-between;
 }
+.songrequestPlayer {
+  height: 125px;
+  width: 470px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 500;
+}
+.playerControl {
+  width: 100%;
+  padding: 15px;
+  overflow:hidden;
+}

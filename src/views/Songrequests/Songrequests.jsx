@@ -22,6 +22,7 @@ import Link from '@material-ui/core/Link';
 import GivePLZ from '../common/resources/giveplz.png';
 
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
+import SongrequestPlayer from './SongrequestPlayer';
 import { isValidBrowser } from './browserCheck.js';
 import songrequestSync from '../../services/songrequestSync';
 import { authSelectors } from '../../state/auth';
@@ -96,6 +97,7 @@ class Songrequests extends React.Component {
     const image = 'https://qph.fs.quoracdn.net/main-qimg-4441921147e85b468845f56460c53654';
     return (
       <div className="pageContent">
+        <SongrequestPlayer/>
         <Breadcrumbs arial-label="Breadcrumb">
           <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
@@ -131,9 +133,9 @@ class Songrequests extends React.Component {
             <Grid item xs={6}>
               <Typography color="textPrimary">
                 <h4 style={{ padding: '0px', margin: '0px' }}>
-                  Titel{' '}
+                  Krasser Songtitel
                   <br />
-                  <small>Interpret</small>
+                  <small>Noch krasserer Interpret</small>
                   <br />
                   <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
                     <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
@@ -151,21 +153,23 @@ class Songrequests extends React.Component {
                     </Avatar>
                   }
                   label={<div style={{
-                    marginRight: '15px',
-                    marginTop: '12px',
-                    marginBottom: '11px',
-                    paddingTop: '5px',
+                    padding: '5px 0px 0px 5px',
+                    margin: '12px 0px 11px 0px',
                     width: '150px' }}>
-                    <Slider value={volume} onChange={this.handleVolumeChange} />
-                         </div>}
+                    <Slider
+                      value={volume}
+                      onChange={this.handleVolumeChange} 
+                      aria-labelledby="discrete-slider"
+                      valueLabelDisplay="auto"/>
+                  </div>}
                 />
-                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="previous">
+                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="previous">
                   <Icon className="actionButtons">skip_previous</Icon>
                 </Fab>
-                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="play">
+                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
                   <Icon className="actionButtons">play_arrow</Icon>
                 </Fab>
-                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} mini variant="fab" color="primary" aria-label="skip">
+                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
                   <Icon className="actionButtons">skip_next</Icon>
                 </Fab>
               </div>
