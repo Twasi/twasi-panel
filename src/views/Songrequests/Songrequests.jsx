@@ -21,7 +21,7 @@ import Link from '@material-ui/core/Link';
 
 import GivePLZ from '../common/resources/giveplz.png';
 
-// import SongrequestConnectionStatus from './SongrequestConnectionStatus';
+import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import { isValidBrowser } from './browserCheck.js';
 import songrequestSync from '../../services/songrequestSync';
 import { authSelectors } from '../../state/auth';
@@ -46,7 +46,7 @@ class Songrequests extends React.Component {
       time: 50,
       sync: {
         status: 'disconnected',
-        ping: -1
+        timestamp: Date.now()
       }
     };
     this.sync = songrequestSync;
@@ -54,12 +54,13 @@ class Songrequests extends React.Component {
 
   componentDidMount() {
     this.sync.setTwitchId(this.props.twitchid);
+    this.sync.setJwtToken(this.props.jwt);
     this.sync.connect();
 
-    this.sync.onPing = ping =>
-      this.setState({ sync: { ...this.state.sync, ping } });
     this.sync.onStatus = status =>
       this.setState({ sync: { ...this.state.sync, status } });
+    this.sync.onTimestamp = timestamp =>
+      this.setState({ sync: { ...this.state.sync, timestamp } });
 
     this.sync.requestStatus();
   }
@@ -101,6 +102,12 @@ class Songrequests extends React.Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.songrequests" /></Typography>
         </Breadcrumbs>
+        <span style={{ float: 'right', position: 'relative', top: '-23px' }}>
+          <SongrequestConnectionStatus
+            status={this.state.sync.status}
+            timestamp={new Date(this.state.sync.timestamp).toLocaleString()}
+          />
+        </span>
         {isValidBrowser() &&
         <Paper
           style={{
@@ -255,7 +262,8 @@ class Songrequests extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  twitchid: authSelectors.getUser(state).twitchid
+  twitchid: authSelectors.getUser(state).twitchid,
+  jwt: authSelectors.getJwt(state)
 });
 
 export default connect(mapStateToProps)(Songrequests);
