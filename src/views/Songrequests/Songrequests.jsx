@@ -61,7 +61,7 @@ class Songrequests extends React.Component {
 
     this.sync.onStatus = status =>
       this.setState({ sync: { ...this.state.sync, status } });
-    this.sync.onTimestamp = timestamp =>
+    this.sync.onKeepalive = timestamp =>
       this.setState({ sync: { ...this.state.sync, timestamp } });
 
     this.sync.requestStatus();

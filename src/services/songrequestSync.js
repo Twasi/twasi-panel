@@ -58,7 +58,7 @@ class SongrequestSync {
     const parsed = JSON.parse(msg.data);
     switch (parsed.type) {
       case 'keepalive': {
-        this.onTimestamp(parsed.timestamp)
+        this.onKeepalive(parsed.timestamp)
         //SongrequestSync.log(`Keepalive recieved at ${parsed.timestamp}`);
         break;
       }
