@@ -45,6 +45,7 @@ class Songrequests extends React.Component {
     this.state = {
       volume: 50,
       time: 50,
+      playback: false,
       sync: {
         status: 'disconnected',
         timestamp: Date.now()
@@ -70,6 +71,10 @@ class Songrequests extends React.Component {
     const { history } = this.props;
     history.push(value);
     this.setState({});
+  }
+
+  handleChangePlayback = () => {
+    this.setState({ playback: !this.state.playback })
   }
 
   renderUnsupportedBrowser() {
@@ -158,7 +163,7 @@ class Songrequests extends React.Component {
                     width: '150px' }}>
                     <Slider
                       value={volume}
-                      onChange={this.handleVolumeChange} 
+                      onChange={this.handleVolumeChange}
                       aria-labelledby="discrete-slider"
                       valueLabelDisplay="auto"/>
                   </div>}
@@ -166,8 +171,8 @@ class Songrequests extends React.Component {
                 <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="previous">
                   <Icon className="actionButtons">skip_previous</Icon>
                 </Fab>
-                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
-                  <Icon className="actionButtons">play_arrow</Icon>
+                <Fab onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
+                  <Icon className="actionButtons">{this.state.playback ? 'stop' : 'play_arrow'}</Icon>
                 </Fab>
                 <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
                   <Icon className="actionButtons">skip_next</Icon>
