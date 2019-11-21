@@ -18,9 +18,12 @@ import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import GivePLZ from '../common/resources/giveplz.png';
 
+import SongrequestSettings from './SongrequestSettings';
 import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 import SongrequestPlayer from './SongrequestPlayer';
 import { isValidBrowser } from './browserCheck.js';
@@ -43,6 +46,7 @@ class Songrequests extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      openSongrequestSettings: false,
       volume: 50,
       time: 50,
       playback: false,
@@ -76,6 +80,10 @@ class Songrequests extends React.Component {
   handleChangePlayback = () => {
     this.setState({ playback: !this.state.playback })
   }
+
+  handleCloseSongrequestSettings = () => {
+    this.setState({ openSongrequestSettings: false });
+  };
 
   renderUnsupportedBrowser() {
     return (
@@ -121,7 +129,6 @@ class Songrequests extends React.Component {
             padding: '0px',
             display: 'flex',
             position: 'relative',
-            marginBottom: '23px',
           }}
           className="pageContainer"
         >
@@ -176,6 +183,10 @@ class Songrequests extends React.Component {
                 </Fab>
                 <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
                   <Icon className="actionButtons">skip_next</Icon>
+                </Fab>
+                {/* Settings */}
+                <Fab size="small" style={{ margin: '0px 5px 0px 25px', boxShadow: 'none' }} color="primary" aria-label="settings" onClick={() => this.setState({ openSongrequestSettings: true })}>
+                  <Icon className="actionButtons">settings</Icon>
                 </Fab>
               </div>
             </Grid>
@@ -264,6 +275,13 @@ class Songrequests extends React.Component {
             </TableBody>
           </Table>
         </Paper>}
+        {console.log(this.state.openSongrequestSettings)}
+        {this.state.openSongrequestSettings &&
+          <SongrequestSettings
+            open
+            onClose={this.handleCloseSongrequestSettings}
+          />
+        }
         {!isValidBrowser() && this.renderUnsupportedBrowser()}
       </div>
     );
