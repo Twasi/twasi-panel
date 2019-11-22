@@ -226,6 +226,13 @@ class Plugins extends Component {
           </Grid>
           <Grid container spacing={3} style={{ marginTop: '23px' }} className="anim">
             {renderedPluginsNew}
+            <Grid item sm={6} md={4}>
+              <Card onClick={() => window.open('https://docs.twasi.net/docs/en/core-concepts/twasi-plugin', '_blank')} className="pluginCard" style={{ borderRadius: "15px" }}>
+                <CardContent className="pluginCardContent" style={{ padding: '16px', borderRadius: '0px', height: '524px', display: 'grid' }}>
+                  <Icon style={{ margin: 'auto', fontSize: '5rem' }}>add</Icon>
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
           {this.props.pagination.pages !== 1 && this.renderPagination()}
         </Paper>
