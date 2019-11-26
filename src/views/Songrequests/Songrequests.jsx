@@ -10,6 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Tooltip from '@material-ui/core/Tooltip';
 import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
@@ -18,7 +19,6 @@ import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import Divider from '@material-ui/core/Divider';
 
 import GivePLZ from '../common/resources/giveplz.png';
 
@@ -161,8 +161,8 @@ class Songrequests extends React.Component {
               </Typography>
             </Grid>
           </Grid>
-          <Grid container spacing={3} className="songrequestsPlayer" style={{ padding: '20px 23px 10px 23px', position: 'relative', zIndex: '20' }}>
-            <Grid item xs={2}>
+          <Grid container spacing={3} className="songrequestsPlayer" style={{ padding: '23px 23px 10px 23px', position: 'relative', zIndex: '20' }}>
+            <Grid item>
               <Fab size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
                 <Icon className="actionButtons">skip_previous</Icon>
               </Fab>
@@ -173,7 +173,7 @@ class Songrequests extends React.Component {
                 <Icon className="actionButtons">skip_next</Icon>
               </Fab>
             </Grid>
-            <Grid item xs={6} style={{ verticalAlign: 'middle' }}>
+            <Grid item xs={4} style={{ verticalAlign: 'middle' }}>
               <Slider
                 style={{
                   width: '100%',
@@ -185,7 +185,7 @@ class Songrequests extends React.Component {
                 valueLabelDisplay="auto"
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item>
               <div style={{ textAlign: 'right', float: 'right' }}>
                 <Chip
                   style={{ verticalAlign: 'middle', marginRight: '5px' }}
@@ -209,6 +209,12 @@ class Songrequests extends React.Component {
                 <Fab style={{ marginLeft: '15px' }} size="small" color="primary" aria-label="settings" onClick={() => this.setState({ openSongrequestSettings: true })}>
                   <Icon className="actionButtons">settings</Icon>
                 </Fab>
+                <Button style={{ marginLeft: '15px' }} color="secondary" variant="outlined">
+                  Song sperren
+                </Button>
+                <Button style={{ marginLeft: '15px' }} color="secondary" variant="outlined">
+                  Nutzer sperren
+                </Button>
               </div>
             </Grid>
           </Grid>
