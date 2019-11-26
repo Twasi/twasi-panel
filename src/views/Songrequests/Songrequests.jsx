@@ -18,6 +18,7 @@ import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Divider from '@material-ui/core/Divider';
 
 import GivePLZ from '../common/resources/giveplz.png';
 
@@ -122,38 +123,69 @@ class Songrequests extends React.Component {
           />
         </span>
         {isValidBrowser() &&
-        <Paper
-          style={{
-            padding: '0px',
-            display: 'flex',
-            position: 'relative',
-          }}
-          className="pageContainer"
-        >
-          <div style={{ position: 'relative', zIndex: '50' }} className="songrequestsCoverImage">
-            <img
-              src={image}
-              alt="albumcover"
-              style={{ height: '150px', width: '150px' }}
-            />
+        <Paper className="pageContainer" style={{ padding: '0px', position: 'relative' }}>
+          <div
+            style={{
+              width: '100%',
+              height: '195px',
+              position: 'absolute',
+              backgroundImage: 'url('+image+')',
+              opacity: '.1',
+              zIndex: '10'
+            }}
+          >
           </div>
-          {/*<div style={{ background: `linear-gradient(135deg, rgba(${getAverageRGB(image)},1), rgba(${getAverageRGB(image)},0))`, width: '100%', height: '100%', position: 'absolute', zIndex: '10' }} />*/}
-          {/*<div style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', width: '100%', height: '100%', position: 'absolute', opacity: '0.1', zIndex: '5' }} />*/}
-          <Grid container spacing={0} className="songrequestsPlayer" style={{ zIndex: '25' }}>
-            <Grid item xs={6}>
+          <Grid container spacing={3} style={{ padding: '12px 23px', position: 'relative', zIndex: '20' }}>
+            <Grid item>
+              <div className="songrequestsCoverImage">
+                <img
+                  src={image}
+                  alt="albumcover"
+                  style={{ height: '150px', width: '150px' }}
+                />
+              </div>
+            </Grid>
+            <Grid item style={{ position: 'relative' }}>
               <Typography color="textPrimary">
-                <h4 style={{ padding: '0px', margin: '0px' }}>
+                <h1 style={{ padding: '0px', margin: '0px' }}>
                   Krasser Songtitel
-                  <br />
-                  <small>Noch krasserer Interpret</small>
-                  <br />
-                  <em style={{ fontSize: '12px', fontWeight: 'normal' }}>
+                </h1>
+                <h4 style={{ padding: '0px', margin: '0px' }}>
+                  Noch krasserer Interpret
+                </h4>
+                <small style={{ position: 'absolute', bottom: '18px' }}>
+                  <em>
                     <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
                   </em>
-                </h4>
+                </small>
               </Typography>
             </Grid>
-            <Grid item xs={6}>
+          </Grid>
+          <Grid container spacing={3} className="songrequestsPlayer" style={{ padding: '20px 23px 10px 23px', position: 'relative', zIndex: '20' }}>
+            <Grid item xs={2}>
+              <Fab size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
+                <Icon className="actionButtons">skip_previous</Icon>
+              </Fab>
+              <Fab onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
+                <Icon className="actionButtons">{this.state.playback ? 'stop' : 'play_arrow'}</Icon>
+              </Fab>
+              <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
+                <Icon className="actionButtons">skip_next</Icon>
+              </Fab>
+            </Grid>
+            <Grid item xs={6} style={{ verticalAlign: 'middle' }}>
+              <Slider
+                style={{
+                  width: '100%',
+                  marginTop: '5px'
+                }}
+                value={time}
+                onChange={this.handleTimelineChange}
+                aria-labelledby="discrete-slider"
+                valueLabelDisplay="auto"
+              />
+            </Grid>
+            <Grid item xs={4}>
               <div style={{ textAlign: 'right', float: 'right' }}>
                 <Chip
                   style={{ verticalAlign: 'middle', marginRight: '5px' }}
@@ -173,27 +205,11 @@ class Songrequests extends React.Component {
                       valueLabelDisplay="auto"/>
                   </div>}
                 />
-                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="previous">
-                  <Icon className="actionButtons">skip_previous</Icon>
-                </Fab>
-                <Fab onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
-                  <Icon className="actionButtons">{this.state.playback ? 'stop' : 'play_arrow'}</Icon>
-                </Fab>
-                <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
-                  <Icon className="actionButtons">skip_next</Icon>
-                </Fab>
                 {/* Settings */}
-                <Fab size="small" style={{ margin: '0px 5px 0px 25px', boxShadow: 'none' }} color="primary" aria-label="settings" onClick={() => this.setState({ openSongrequestSettings: true })}>
+                <Fab style={{ marginLeft: '15px' }} size="small" color="primary" aria-label="settings" onClick={() => this.setState({ openSongrequestSettings: true })}>
                   <Icon className="actionButtons">settings</Icon>
                 </Fab>
               </div>
-            </Grid>
-            <Grid item xs={12}>
-              <div style={{ marginBottom: '-12px', marginTop: '0px' }}>
-                <Slider value={time} onChange={this.handleTimelineChange} />
-              </div>
-              <span className="leftTime">00:00</span>
-              <span className="rightTime">13:37</span>
             </Grid>
           </Grid>
         </Paper>}
