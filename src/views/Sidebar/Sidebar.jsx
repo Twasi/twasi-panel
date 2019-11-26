@@ -90,7 +90,7 @@ class Sidebar extends Component {
         path: '/songrequests',
         icon: 'library_music',
         name: 'sidebar.songrequests',
-        shown: 'all'
+        shown: 'plugins/songrequests'
       },
       {
         key: 'giveaways',

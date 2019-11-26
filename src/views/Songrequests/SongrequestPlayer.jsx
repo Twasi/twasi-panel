@@ -28,7 +28,7 @@ class SongrequestPlayer extends React.Component {
         <Paper>
           <div style={{ position: 'relative', zIndex: '50', display: 'flex' }}>
             <img
-              src="https://qph.fs.quoracdn.net/main-qimg-4441921147e85b468845f56460c53654"
+              src="https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg"
               alt="albumcover"
               style={{ height: '125px' }}
             />
@@ -37,9 +37,9 @@ class SongrequestPlayer extends React.Component {
                 <Grid item xs={12} style={{ marginBottom: '5px' }}>
                   <Typography color="textPrimary">
                     <h5 style={{ padding: '0px', margin: '0px' }}>
-                      Krasser Songtitel
+                      Snow (Hey Oh)
                       <br />
-                      <small>Noch krasserer Interpret</small>
+                      <small>Red Hot Chilli Peppers</small>
                     </h5>
                   </Typography>
                 </Grid>

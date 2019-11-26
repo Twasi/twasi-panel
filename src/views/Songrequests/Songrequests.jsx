@@ -19,6 +19,8 @@ import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 import GivePLZ from '../common/resources/giveplz.png';
 
@@ -46,9 +48,12 @@ class Songrequests extends React.Component {
     super(props);
     this.state = {
       openSongrequestSettings: false,
+      songTitle: 'Snow (Hey Oh)',
+      songInterpret: 'Red Hot Chilli Peppers',
       volume: 50,
       time: 50,
       playback: false,
+      tabValue: 0,
       sync: {
         status: 'disconnected',
         timestamp: Date.now()
@@ -84,6 +89,12 @@ class Songrequests extends React.Component {
     this.setState({ openSongrequestSettings: false });
   };
 
+  handleTabChange = (event, tabValue) => {
+    this.setState({
+      tabValue,
+    });
+  };
+
   renderUnsupportedBrowser() {
     return (
       <Paper className="pageContainer" style={{ paddingTop: '1px', borderRadius: '0px 0px 4px 4px' }}>
@@ -106,7 +117,7 @@ class Songrequests extends React.Component {
 
   render() {
     const { volume, time } = this.state;
-    const image = 'https://qph.fs.quoracdn.net/main-qimg-4441921147e85b468845f56460c53654';
+    const image = 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg';
     return (
       <div className="pageContent">
         <SongrequestPlayer/>
@@ -129,7 +140,7 @@ class Songrequests extends React.Component {
               width: '100%',
               height: '195px',
               position: 'absolute',
-              backgroundImage: 'url('+image+')',
+              backgroundImage: `url(${image})`,
               opacity: '.1',
               zIndex: '10'
             }}
@@ -148,14 +159,15 @@ class Songrequests extends React.Component {
             <Grid item style={{ position: 'relative' }}>
               <Typography color="textPrimary">
                 <h1 style={{ padding: '0px', margin: '0px' }}>
-                  Krasser Songtitel
+                  {this.state.songTitle}
                 </h1>
                 <h4 style={{ padding: '0px', margin: '0px' }}>
-                  Noch krasserer Interpret
+                  {this.state.songInterpret}
                 </h4>
                 <small style={{ position: 'absolute', bottom: '18px' }}>
                   <em>
-                    <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b>
+                    <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b><br/>
+                    am 26.11.2019, 11:06
                   </em>
                 </small>
               </Typography>
@@ -220,7 +232,16 @@ class Songrequests extends React.Component {
           </Grid>
         </Paper>}
         {isValidBrowser() &&
-        <Paper className="pageContainer" style={{ padding: '0px' }}>
+        <Paper className="pageContainer" style={{ padding: '0px', marginTop: '33px' }}>
+          <Tabs
+            indicatorColor="primary"
+            textColor="primary"
+            value={this.state.tabValue}
+            onChange={this.handleTabChange}
+          >
+            <Tab label="Songwünsche" />
+            <Tab label="Verlauf" />
+          </Tabs>
           <Table>
             <TableHead
               adjustForCheckbox={false}
