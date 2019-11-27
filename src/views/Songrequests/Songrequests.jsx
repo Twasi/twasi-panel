@@ -60,6 +60,7 @@ class Songrequests extends React.Component {
       }
     };
     this.sync = songrequestSync;
+    const valueLabelFormat = x => "Hi " + x;
   }
 
   componentDidMount() {
@@ -193,7 +194,6 @@ class Songrequests extends React.Component {
                 }}
                 value={time}
                 onChange={this.handleTimelineChange}
-                aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
               />
             </Grid>

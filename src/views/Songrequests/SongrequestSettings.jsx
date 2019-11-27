@@ -3,17 +3,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
-import Grid from '@material-ui/core/Grid';
 import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Row, Col } from 'react-grid-system';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import TextField from '@material-ui/core/TextField';
-import { FormattedMessage } from 'react-intl';
 import Slider from '@material-ui/core/Slider';
 
 class SongrequestSettings extends React.Component {
