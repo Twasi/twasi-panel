@@ -1,6 +1,6 @@
 .songrequestsCoverImage {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width:auto;
 }
 .songrequestsPlayer {
   width: -webkit-fill-available;

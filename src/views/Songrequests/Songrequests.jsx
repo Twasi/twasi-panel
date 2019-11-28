@@ -48,8 +48,14 @@ class Songrequests extends React.Component {
     super(props);
     this.state = {
       openSongrequestSettings: false,
-      songTitle: 'Snow (Hey Oh)',
-      songInterpret: 'Red Hot Chilli Peppers',
+      song: {
+        provider: 'spotify',
+        requester: 'John Doe',
+        timestamp: Date.now(),
+        title: 'Snow (Hey Oh)',
+        artist: 'Red Hot Chilli Peppers',
+        media: 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg'
+      },
       volume: 50,
       time: 50,
       playback: false,
@@ -60,7 +66,6 @@ class Songrequests extends React.Component {
       }
     };
     this.sync = songrequestSync;
-    const valueLabelFormat = x => "Hi " + x;
   }
 
   componentDidMount() {
@@ -84,6 +89,25 @@ class Songrequests extends React.Component {
 
   handleChangePlayback = () => {
     this.setState({ playback: !this.state.playback })
+    if(this.state.song.provider === 'spotify') {
+      this.setState({ song: {
+        provider: 'youtube',
+        requester: 'Blechkelle',
+        timestamp: Date.now(),
+        title: 'Sin (Official Video)',
+        artist: 'Kakkmaddafakka',
+        media: 'https://www.fritz.de/content/dam/rbb/frz/aus-plato/35/87/9160_36074.jpg.jpg/rendition=kakkmaddafakkapressefotos2013_1280_36074.jpg/size=708x398.jpg'
+      }})
+    } else {
+      this.setState({ song: {
+        provider: 'spotify',
+        requester: 'John Doe',
+        timestamp: Date.now(),
+        title: 'Snow (Hey Oh)',
+        artist: 'Red Hot Chilli Peppers',
+        media: 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg'
+      }})
+    }
   }
 
   handleCloseSongrequestSettings = () => {
@@ -118,7 +142,6 @@ class Songrequests extends React.Component {
 
   render() {
     const { volume, time } = this.state;
-    const image = 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg';
     return (
       <div className="pageContent">
         <SongrequestPlayer/>
@@ -139,9 +162,9 @@ class Songrequests extends React.Component {
           <div
             style={{
               width: '100%',
-              height: '195px',
+              height: '245px',
               position: 'absolute',
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${this.state.song.media})`,
               opacity: '.1',
               zIndex: '10'
             }}
@@ -150,25 +173,32 @@ class Songrequests extends React.Component {
           <Grid container spacing={3} style={{ padding: '12px 23px', position: 'relative', zIndex: '20' }}>
             <Grid item>
               <div className="songrequestsCoverImage">
-                <img
-                  src={image}
-                  alt="albumcover"
-                  style={{ height: '150px', width: '150px' }}
-                />
+                {this.state.song.provider === 'spotify' &&
+                  <img
+                    src={this.state.song.media}
+                    alt="albumcover"
+                    style={{ height: '200px', width: '200px' }}
+                />}
+                {this.state.song.provider === 'youtube' &&
+                <iframe id="ytplayer" type="text/html" height="200"
+                  src="http://www.youtube.com/embed/RVfwQylsAq4?autoplay=1"
+                  frameborder="0"
+                />}
               </div>
             </Grid>
             <Grid item style={{ position: 'relative' }}>
               <Typography color="textPrimary">
                 <h1 style={{ padding: '0px', margin: '0px' }}>
-                  {this.state.songTitle}
+                  {this.state.song.title}
                 </h1>
-                <h4 style={{ padding: '0px', margin: '0px' }}>
-                  {this.state.songInterpret}
-                </h4>
+                <h3 style={{ padding: '0px', margin: '0px' }}>
+                  {this.state.song.artist}
+                </h3>
                 <small style={{ position: 'absolute', bottom: '18px' }}>
                   <em>
-                    <FormattedMessage id="songrequest.requestby" /> <b>John Doe</b><br/>
-                    am 26.11.2019, 11:06
+                    <FormattedMessage id="songrequest.requestby" /> <b>{this.state.song.requester}</b><br/>
+                    am {new Date(this.state.song.timestamp).toLocaleString()}<br/>
+                    Provided by {this.state.song.provider}
                   </em>
                 </small>
               </Typography>
