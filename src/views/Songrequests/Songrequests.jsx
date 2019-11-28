@@ -162,7 +162,7 @@ class Songrequests extends React.Component {
           <div
             style={{
               width: '100%',
-              height: '245px',
+              height: '248px',
               position: 'absolute',
               backgroundImage: `url(${this.state.song.media})`,
               opacity: '.1',
@@ -180,8 +180,8 @@ class Songrequests extends React.Component {
                     style={{ height: '200px', width: '200px' }}
                 />}
                 {this.state.song.provider === 'youtube' &&
-                <iframe id="ytplayer" type="text/html" height="200"
-                  src="http://www.youtube.com/embed/RVfwQylsAq4?autoplay=1"
+                <iframe id="ytplayer" type="text/html" height="200" width="355"
+                  src="http://www.youtube.com/embed/RVfwQylsAq4?autoplay=1&showinfo=0&controls=0"
                   frameborder="0"
                 />}
               </div>
@@ -203,6 +203,14 @@ class Songrequests extends React.Component {
                 </small>
               </Typography>
             </Grid>
+            <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
+              <Button style={{ marginLeft: '15px' }} color="secondary" variant="contained">
+                Song sperren
+              </Button>
+              <Button style={{ marginLeft: '15px' }} color="secondary" variant="contained">
+                Nutzer sperren
+              </Button>
+            </span>
           </Grid>
           <Grid container spacing={3} className="songrequestsPlayer" style={{ padding: '23px 23px 10px 23px', position: 'relative', zIndex: '20' }}>
             <Grid item>
@@ -216,19 +224,23 @@ class Songrequests extends React.Component {
                 <Icon className="actionButtons">skip_next</Icon>
               </Fab>
             </Grid>
-            <Grid item xs={4} style={{ verticalAlign: 'middle' }}>
+            <Grid item xs={5} style={{ verticalAlign: 'middle' }}>
               <Slider
                 style={{
-                  width: '100%',
-                  marginTop: '5px'
+                  width: '70%',
+                  marginTop: '6px',
+                  float: 'left'
                 }}
                 value={time}
                 onChange={this.handleTimelineChange}
                 valueLabelDisplay="auto"
               />
+              <Typography style={{ float: 'left', minWidth: '80px', marginLeft: '10px', paddingTop: '7px' }} color="textPrimary">
+                <small>00:00 / 00:00</small>
+              </Typography>
             </Grid>
-            <Grid item>
-              <div style={{ textAlign: 'right', float: 'right' }}>
+            <Grid item style={{ verticalAlign: 'middle' }}>
+              <div style={{ textAlign: 'right', float: 'right', paddingTop: '5px' }}>
                 <Chip
                   style={{ verticalAlign: 'middle', marginRight: '5px' }}
                   avatar={
@@ -248,16 +260,12 @@ class Songrequests extends React.Component {
                   </div>}
                 />
                 {/* Settings */}
-                <Fab style={{ marginLeft: '15px' }} size="small" color="primary" aria-label="settings" onClick={() => this.setState({ openSongrequestSettings: true })}>
-                  <Icon className="actionButtons">settings</Icon>
-                </Fab>
-                <Button style={{ marginLeft: '15px' }} color="secondary" variant="outlined">
-                  Song sperren
-                </Button>
-                <Button style={{ marginLeft: '15px' }} color="secondary" variant="outlined">
-                  Nutzer sperren
-                </Button>
               </div>
+            </Grid>
+            <Grid item style={{ position: 'absolute', right: '23px' }}>
+              <Fab style={{ marginLeft: '15px' }} size="small" color="primary" aria-label="settings" onClick={() => this.setState({ openSongrequestSettings: true })}>
+                <Icon className="actionButtons">settings</Icon>
+              </Fab>
             </Grid>
           </Grid>
         </Paper>}
