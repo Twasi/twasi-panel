@@ -493,6 +493,10 @@ export default {
   'footer.branding': 'Branding',
 
   // Songrequests
+  'songrequest.request.at': 'at',
+  'songrequest.request.provided_by': 'Provided by',
+  'songrequest.request.block_user': 'Block user',
+  'songrequest.request.block_song': 'Block song',
   'songrequest.requestby': 'Requested by',
   'songrequest.table_id': 'ID',
   'songrequest.table_title': 'Title',
@@ -500,5 +504,22 @@ export default {
   'songrequest.table_duration': 'Duration',
   'songrequest.table_requestby': 'Requested by',
   'songrequest.table_platform': 'Platform',
-  'songrequest.table_actions': 'Actions'
+  'songrequest.table_actions': 'Actions',
+  'songrequest.table_fav': 'favor',
+  'songrequest.browsersupport.title': 'The browser you are using is not supported.',
+  'songrequest.browsersupport.subtitle': 'Please use Firefox, Chrome or Opera, to use the songrequest function.',
+  'songrequest.tab.wishes': 'Songlist',
+  'songrequest.tab.history': 'History',
+  'songrequest.settings.title': 'Settings',
+  'songrequest.settings.subtitle': 'Here you can adjust your songrequest settings.',
+  'songrequest.settings.spotify.title': 'Songrequests via Spotify',
+  'songrequest.settings.spotify.subtitle': 'To activate Songrequests via Spotify you have to connect your Spotify account to Twasi.',
+  'songrequest.settings.spotify.connect': 'Connect Spotify account',
+  'songrequest.settings.youtube.title': 'Songrequests via Youtube',
+  'songrequest.settings.youtube.subtitle': 'Activate this function to enable songrequests via Youtube.',
+  'songrequest.settings.songs_per_user.title': 'Songrequests per user:',
+  'songrequest.settings.songs_per_user.helpertext': 'How many songs should a viewer be able to request?',
+  'songrequest.settings.tab.settings': 'Settings',
+  'songrequest.settings.tab.blocked_songs': 'Blocked songs',
+  'songrequest.settings.tab.blocked_users': 'Blocked users'
 };

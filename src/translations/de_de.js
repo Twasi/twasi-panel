@@ -494,6 +494,10 @@ export default {
   'footer.branding': 'Branding',
 
   // Songrequests
+  'songrequest.request.at': 'am',
+  'songrequest.request.provided_by': 'Zur Verfügung gestellt durch',
+  'songrequest.request.block_user': 'Nutzer sperren',
+  'songrequest.request.block_song': 'Song sperren',
   'songrequest.requestby': 'Requestet von',
   'songrequest.table_id': 'ID',
   'songrequest.table_title': 'Titel',
@@ -501,5 +505,22 @@ export default {
   'songrequest.table_duration': 'Dauer',
   'songrequest.table_requestby': 'Requestet von',
   'songrequest.table_platform': 'Plattform',
-  'songrequest.table_actions': 'Aktionen'
+  'songrequest.table_actions': 'Aktionen',
+  'songrequest.table_fav': 'Favorisieren',
+  'songrequest.browsersupport.title': 'Dieser Browser wird nicht Supportet.',
+  'songrequest.browsersupport.subtitle': 'Bitte nutze Firefox, Chrome oder Opera, um die Songrequest Funktion zu nutzen.',
+  'songrequest.tab.wishes': 'Songwünsche',
+  'songrequest.tab.history': 'Verlauf',
+  'songrequest.settings.title': 'Einstellungen',
+  'songrequest.settings.subtitle': 'Hier kannst du Einstellungen zu den Songrequests vornehmen.',
+  'songrequest.settings.spotify.title': 'Songwünsche über Spotify',
+  'songrequest.settings.spotify.subtitle': 'Um Songwünsche über Spotify zu aktivieren, musst du deinen Spotify Account mit Twasi verbinden.',
+  'songrequest.settings.spotify.connect': 'Spotify Account verbinden',
+  'songrequest.settings.youtube.title': 'Songwünsche über Youtube',
+  'songrequest.settings.youtube.subtitle': 'Aktiviere diese Funktion, um Songwünsche über Youtube zuzulassen.',
+  'songrequest.settings.songs_per_user.title': 'Songwünsche pro Nutzer:',
+  'songrequest.settings.songs_per_user.helpertext': 'Wie viele Songs darf sich jeder Nutzer wünschen?',
+  'songrequest.settings.tab.settings': 'Einstellungen',
+  'songrequest.settings.tab.blocked_songs': 'Gesperrte Songs',
+  'songrequest.settings.tab.blocked_users': 'Gesperrte Nutzer'
 };

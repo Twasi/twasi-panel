@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
@@ -50,17 +51,17 @@ class SongrequestSettings extends React.Component {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab label="Einstellungen" />
-          <Tab label="Gesperrte Songs" />
-          <Tab label="Gesperrte Nutzer" />
+          <Tab label={<FormattedMessage id="songrequest.settings.tab.settings" />} />
+          <Tab label={<FormattedMessage id="songrequest.settings.tab.blocked_songs" />} />
+          <Tab label={<FormattedMessage id="songrequest.settings.tab.blocked_users" />} />
         </Tabs>
         <DialogContent>
           <Typography component={"div"}>
             <h4 className="pageContainerTitle">
-              Einstellungen
+              <FormattedMessage id="songrequest.settings.title" />
             </h4>
             <small>
-              Hier kannst du Einstellungen zu den Songrequests vornehmen.
+              <FormattedMessage id="songrequest.settings.subtitle" />
             </small>
           </Typography>
           <Card style={{ marginTop: '25px' }} className="pluginCard">
@@ -69,10 +70,10 @@ class SongrequestSettings extends React.Component {
                 <Col style={{ textAlign: 'left' }} sm={8}>
                   <Typography component={"div"}>
                     <h4 className="pageContainerTitle">
-                      Songwünsche über Spotify
+                      <FormattedMessage id="songrequest.settings.spotify.title" />
                     </h4>
                     <small>
-                      Um Songwünsche über Spotify zu aktivieren, musst du deinen Spotify Account mit Twasi verbinden.
+                      <FormattedMessage id="songrequest.settings.spotify.subtitle" />
                     </small>
                   </Typography>
                 </Col>
@@ -84,7 +85,7 @@ class SongrequestSettings extends React.Component {
               <Row>
                 <Col sm={12}>
                   <Button color="primary" variant="contained">
-                    Spotify Account verbinden
+                    <FormattedMessage id="songrequest.settings.spotify.connect" />
                   </Button>
                 </Col>
               </Row>
@@ -96,10 +97,10 @@ class SongrequestSettings extends React.Component {
                 <Col style={{ textAlign: 'left' }} sm={8}>
                   <Typography component={"div"}>
                     <h4 className="pageContainerTitle">
-                      Songwünsche über Youtube
+                      <FormattedMessage id="songrequest.settings.youtube.title" />
                     </h4>
                     <small>
-                      Aktiviere diese Funktion, um Songwünsche über Youtube zuzulassen.
+                      <FormattedMessage id="songrequest.settings.youtube.subtitle" />
                     </small>
                   </Typography>
                 </Col>
@@ -114,7 +115,7 @@ class SongrequestSettings extends React.Component {
               <Row>
                 <Col style={{ textAlign: 'left' }} sm={12}>
                   <Typography component={"div"}>
-                    <h4 className="pageContainerTitle">Songwünsche pro Nutzer: {this.state.songs_per_user}</h4>
+                    <h4 className="pageContainerTitle"><FormattedMessage id="songrequest.settings.songs_per_user.title" /> {this.state.songs_per_user}</h4>
                   </Typography>
                   <Slider
                     style={{ padding: '22px 0px' }}
@@ -126,7 +127,7 @@ class SongrequestSettings extends React.Component {
                     onChange={this.handleSongsPerUser}
                   />
                   <Typography>
-                    <small>Wie viele Songs darf sich jeder Nutzer wünschen?</small>
+                    <small><FormattedMessage id="songrequest.settings.songs_per_user.helpertext" /></small>
                   </Typography>
                 </Col>
               </Row>

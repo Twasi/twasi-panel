@@ -130,10 +130,10 @@ class Songrequests extends React.Component {
             alt="GivePLZ"
           />
           <h3 className="pageContainerTitle">
-            Dieser Browser wird nicht Supportet.
+            <FormattedMessage id="songrequest.browsersupport.title" />
           </h3>
           <small>
-            Bitte nutze Firefox, Chrome oder Opera, um die Songrequest Funktion zu nutzen.
+            <FormattedMessage id="songrequest.browsersupport.subtitle" />
           </small>
         </Typography>
       </Paper>
@@ -197,18 +197,18 @@ class Songrequests extends React.Component {
                 <small style={{ position: 'absolute', bottom: '18px' }}>
                   <em>
                     <FormattedMessage id="songrequest.requestby" /> <b>{this.state.song.requester}</b><br/>
-                    am {new Date(this.state.song.timestamp).toLocaleString()}<br/>
-                    Provided by {this.state.song.provider}
+                    <FormattedMessage id="songrequest.request.at" /> {new Date(this.state.song.timestamp).toLocaleString()}<br/>
+                    <FormattedMessage id="songrequest.request.provided_by" /> {this.state.song.provider}
                   </em>
                 </small>
               </Typography>
             </Grid>
             <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
               <Button style={{ marginLeft: '15px' }} color="secondary" variant="contained">
-                Song sperren
+                <FormattedMessage id="songrequest.request.block_song" />
               </Button>
               <Button style={{ marginLeft: '15px' }} color="secondary" variant="contained">
-                Nutzer sperren
+                <FormattedMessage id="songrequest.request.block_user" />
               </Button>
             </span>
           </Grid>
@@ -277,8 +277,8 @@ class Songrequests extends React.Component {
             value={this.state.tabValue}
             onChange={this.handleTabChange}
           >
-            <Tab label="Songwünsche" />
-            <Tab label="Verlauf" />
+            <Tab label={<FormattedMessage id="songrequest.tab.wishes" />} />
+            <Tab label={<FormattedMessage id="songrequest.tab.history" />} />
           </Tabs>
           <Table>
             <TableHead
@@ -329,7 +329,7 @@ class Songrequests extends React.Component {
                   </div>
                 </TableCell>
                 <TableCell>
-                  <Tooltip title="Favorisieren" placement="top">
+                  <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
                     <Fab
                       className="noshadow"
                       color="primary"
