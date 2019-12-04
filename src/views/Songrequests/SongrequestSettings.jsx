@@ -38,7 +38,7 @@ class SongrequestSettings extends React.Component {
   };
 
   render() {
-    const { classes, onClose, ...other } = this.props;
+    const { classes, onClose, enableSpotifyAuth, ...other } = this.props;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -78,13 +78,13 @@ class SongrequestSettings extends React.Component {
                   </Typography>
                 </Col>
                 <Col style={{ textAlign: 'right' }} sm={4}>
-                  <Switch checked={true} color="primary" />
+                  <Switch disabled={enableSpotifyAuth} checked={true} color="primary" />
                 </Col>
               </Row>
               <br/>
               <Row>
                 <Col sm={12}>
-                  <Button color="primary" variant="contained">
+                  <Button disabled={!enableSpotifyAuth} color="primary" variant="contained">
                     <FormattedMessage id="songrequest.settings.spotify.connect" />
                   </Button>
                 </Col>

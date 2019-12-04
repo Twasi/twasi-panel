@@ -25,15 +25,17 @@ import Tab from '@material-ui/core/Tab';
 import GivePLZ from '../common/resources/giveplz.png';
 
 import SongrequestSettings from './SongrequestSettings';
-import SongrequestConnectionStatus from './SongrequestConnectionStatus';
-import SongrequestPlayer from './SongrequestPlayer';
+//import SongrequestConnectionStatus from './SongrequestConnectionStatus';
+//import SongrequestPlayer from './SongrequestPlayer';
 import { isValidBrowser } from './browserCheck.js';
-import songrequestSync from '../../services/songrequestSync';
+//import songrequestSync from '../../services/songrequestSync';
 import { authSelectors } from '../../state/auth';
 
 import spotifylogo from '../common/resources/spotifyIcon.png';
 
 import './_style.css';
+
+var songqueue = [];
 
 class Songrequests extends React.Component {
   handleVolumeChange = (event, volume) => {
@@ -57,18 +59,53 @@ class Songrequests extends React.Component {
         media: 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg'
       },
       volume: 50,
-      time: 50,
+      time: 50, // timeline
       playback: false,
+      enableSpotifyAuth: false,
       tabValue: 0,
       sync: {
         status: 'disconnected',
         timestamp: Date.now()
       }
     };
-    this.sync = songrequestSync;
+    const events = {
+      enableSpotifyAuth: (enable) => {
+          // true = spotify button active
+          this.setState({ enableSpotifyAuth: enable });
+      }, initialized: function (status) {
+          // called when player initializes
+          console.log("Status: %s", JSON.stringify(status));
+      }, pause: () => {
+          // called when player pauses
+          this.setState({ playback: false });
+      }, play: () => {
+          // called when player starts playing
+          this.setState({ playback: true });
+      }, position: (position) => {
+          // called when timeline of song changes
+          this.setState({ time: position * 100 });
+      }, song: function (song) {
+          // called when new song data is available
+          console.log(song)
+      }, stop: function () {
+          // called when player stops playing
+          console.log("STOP")
+      }, volume: function (volume) {
+          // called when volume changes
+          console.log("VOLUME: " + volume)
+      }, queueUpdate: (queue) => {
+          // called when queue updates
+          songqueue = queue;
+      }
+    };
+    this.events = events;
+    //this.sync = songrequestSync;
   }
 
   componentDidMount() {
+    window.TSRI.init(this.props.jwt, 'ws://srv-01.twasi.net:8090', this.events);
+
+    /*
     this.sync.setTwitchId(this.props.twitchid);
     this.sync.setJwtToken(this.props.jwt);
     this.sync.connect();
@@ -79,6 +116,7 @@ class Songrequests extends React.Component {
       this.setState({ sync: { ...this.state.sync, timestamp } });
 
     this.sync.requestStatus();
+    */
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -89,6 +127,20 @@ class Songrequests extends React.Component {
 
   handleChangePlayback = () => {
     this.setState({ playback: !this.state.playback })
+    if(!this.state.playback){
+      window.TSRI.playback.play({provider:1,uri:"spotify:track:3ztCt91U2wGkDZuzbCwH6H"})
+    } else {
+      window.TSRI.playback.pause()
+    }
+    this.setState({ song: {
+      provider: 'spotify',
+      requester: 'John Doe',
+      timestamp: Date.now(),
+      title: 'Snow (Hey Oh)',
+      artist: 'Red Hot Chilli Peppers',
+      media: 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg'
+    }})
+    /*
     if(this.state.song.provider === 'spotify') {
       this.setState({ song: {
         provider: 'youtube',
@@ -108,6 +160,7 @@ class Songrequests extends React.Component {
         media: 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg'
       }})
     }
+    */
   }
 
   handleCloseSongrequestSettings = () => {
@@ -140,23 +193,70 @@ class Songrequests extends React.Component {
     );
   }
 
+  renderSongqueue() {
+    return songqueue.map(song => (
+      <TableRow>
+        <TableCell>-</TableCell>
+        <TableCell>{song.name}</TableCell>
+        <TableCell>{song.artist}</TableCell>
+        <TableCell>{song.duration}</TableCell>
+        <TableCell>John Doe</TableCell>
+        <TableCell>
+          <div>
+            <Tooltip title="Spotify" placement="top">
+              <img
+                src={spotifylogo}
+                alt="spotify"
+                style={{ height: '32px', marginTop: '7px' }}
+              />
+            </Tooltip>
+          </div>
+        </TableCell>
+        <TableCell>
+          <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
+            <Fab
+              className="noshadow"
+              color="primary"
+              size="small"
+              aria-label="favSong"
+            >
+              <Icon className="actionButtons">star</Icon>
+            </Fab>
+          </Tooltip>{' '}
+          <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
+            <Fab
+              className="noshadow"
+              color="secondary"
+              size="small"
+              aria-label="deleteSong"
+            >
+              <Icon className="actionButtons">delete</Icon>
+            </Fab>
+          </Tooltip>
+        </TableCell>
+      </TableRow>
+    ));
+  }
+
   render() {
     const { volume, time } = this.state;
     return (
       <div className="pageContent">
-        <SongrequestPlayer/>
+        {/*<SongrequestPlayer/>*/}
         <Breadcrumbs arial-label="Breadcrumb">
           <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.songrequests" /></Typography>
         </Breadcrumbs>
+        {/*
         <span style={{ float: 'right', position: 'relative', top: '-23px' }}>
           <SongrequestConnectionStatus
             status={this.state.sync.status}
             timestamp={new Date(this.state.sync.timestamp).toLocaleString()}
           />
         </span>
+        */}
         {isValidBrowser() &&
         <Paper className="pageContainer" style={{ padding: '0px', position: 'relative' }}>
           <div
@@ -180,7 +280,7 @@ class Songrequests extends React.Component {
                     style={{ height: '200px', width: '200px' }}
                 />}
                 {this.state.song.provider === 'youtube' &&
-                <iframe id="ytplayer" type="text/html" height="200" width="355"
+                <iframe title="ytplayer" id="ytplayer" type="text/html" height="200" width="355"
                   src="http://www.youtube.com/embed/RVfwQylsAq4?autoplay=1&showinfo=0&controls=0"
                   frameborder="0"
                 />}
@@ -311,53 +411,14 @@ class Songrequests extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody displayRowCheckbox={false}>
-              <TableRow>
-                <TableCell>1</TableCell>
-                <TableCell>Queen - Bohemian Rhapsody</TableCell>
-                <TableCell>Queen</TableCell>
-                <TableCell>13:37</TableCell>
-                <TableCell>John Doe</TableCell>
-                <TableCell>
-                  <div>
-                    <Tooltip title="Spotify" placement="top">
-                      <img
-                        src={spotifylogo}
-                        alt="spotify"
-                        style={{ height: '32px', marginTop: '7px' }}
-                      />
-                    </Tooltip>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
-                    <Fab
-                      className="noshadow"
-                      color="primary"
-                      size="small"
-                      aria-label="favSong"
-                    >
-                      <Icon className="actionButtons">star</Icon>
-                    </Fab>
-                  </Tooltip>{' '}
-                  <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
-                    <Fab
-                      className="noshadow"
-                      color="secondary"
-                      size="small"
-                      aria-label="deleteSong"
-                    >
-                      <Icon className="actionButtons">delete</Icon>
-                    </Fab>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
+              {this.renderSongqueue()}
             </TableBody>
           </Table>
         </Paper>}
-        {console.log(this.state.openSongrequestSettings)}
         {this.state.openSongrequestSettings &&
           <SongrequestSettings
             open
+            enableSpotifyAuth={this.state.enableSpotifyAuth}
             onClose={this.handleCloseSongrequestSettings}
           />
         }
