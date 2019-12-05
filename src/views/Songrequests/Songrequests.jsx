@@ -25,13 +25,12 @@ import Tab from '@material-ui/core/Tab';
 import GivePLZ from '../common/resources/giveplz.png';
 
 import SongrequestSettings from './SongrequestSettings';
-//import SongrequestConnectionStatus from './SongrequestConnectionStatus';
 //import SongrequestPlayer from './SongrequestPlayer';
 import { isValidBrowser } from './browserCheck.js';
-//import songrequestSync from '../../services/songrequestSync';
 import { authSelectors } from '../../state/auth';
 
-import spotifylogo from '../common/resources/spotifyIcon.png';
+import spotifylogo from '../common/resources/spotify.png';
+import youtubelogo from '../common/resources/youtube.png';
 
 import './_style.css';
 
@@ -51,15 +50,15 @@ class Songrequests extends React.Component {
     this.state = {
       openSongrequestSettings: false,
       song: {
-        provider: 'spotify',
-        requester: 'John Doe',
+        provider: 1,
+        requester: '',
         timestamp: Date.now(),
-        title: 'Snow (Hey Oh)',
-        artist: 'Red Hot Chilli Peppers',
-        media: 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg'
+        name: 'Kein Song in der Songliste',
+        artist: '',
+        media: 'https://f-scope.net/images/notlikethis-png.png'
       },
       volume: 50,
-      time: 50, // timeline
+      time: 0, // timeline
       playback: false,
       enableSpotifyAuth: false,
       tabValue: 0,
@@ -83,13 +82,32 @@ class Songrequests extends React.Component {
           this.setState({ playback: true });
       }, position: (position) => {
           // called when timeline of song changes
+          //console.log(position)
           this.setState({ time: position * 100 });
-      }, song: function (song) {
+      }, song: (song) => {
           // called when new song data is available
-          console.log(song)
-      }, stop: function () {
+          if(song !== null) {
+            this.setState({ song: {
+              provider: song.provider,
+              requester: 'John Doe',
+              timestamp: Date.now(),
+              name: song.name,
+              artist: song.artist,
+              media: song.covers
+            }})
+          } else {
+            this.setState({ song: {
+              provider: 1,
+              requester: '',
+              timestamp: Date.now(),
+              name: 'Kein Song in der Songliste',
+              artist: '',
+              media: 'https://f-scope.net/images/notlikethis-png.png'
+            }})
+          }
+      }, stop: () => {
           // called when player stops playing
-          console.log("STOP")
+          this.setState({ playback: false });
       }, volume: function (volume) {
           // called when volume changes
           console.log("VOLUME: " + volume)
@@ -99,24 +117,10 @@ class Songrequests extends React.Component {
       }
     };
     this.events = events;
-    //this.sync = songrequestSync;
   }
 
   componentDidMount() {
     window.TSRI.init(this.props.jwt, 'ws://srv-01.twasi.net:8090', this.events);
-
-    /*
-    this.sync.setTwitchId(this.props.twitchid);
-    this.sync.setJwtToken(this.props.jwt);
-    this.sync.connect();
-
-    this.sync.onStatus = status =>
-      this.setState({ sync: { ...this.state.sync, status } });
-    this.sync.onKeepalive = timestamp =>
-      this.setState({ sync: { ...this.state.sync, timestamp } });
-
-    this.sync.requestStatus();
-    */
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -125,42 +129,25 @@ class Songrequests extends React.Component {
     this.setState({});
   }
 
+  handleAddToQueue = (provider) => {
+    if(provider === 1) {
+      window.TSRI.playback.add({provider:2,uri:"s9N5l96IoY4",name:'YOU MAN - BIRDCAGE',artist:'ALPAGERECORDS',covers:'https://f4.bcbits.com/img/a0195149678_10.jpg'})
+    } else {
+      window.TSRI.playback.add({provider:1,uri:"spotify:track:3ztCt91U2wGkDZuzbCwH6H",name:'Black Hole Sun',artist:'Soundgarden',covers:'https://m.media-amazon.com/images/I/71MyUhYRmvL._SS500_.jpg'})
+    }
+  }
+
   handleChangePlayback = () => {
     this.setState({ playback: !this.state.playback })
     if(!this.state.playback){
-      window.TSRI.playback.play({provider:1,uri:"spotify:track:3ztCt91U2wGkDZuzbCwH6H"})
+      window.TSRI.playback.play()
     } else {
       window.TSRI.playback.pause()
     }
-    this.setState({ song: {
-      provider: 'spotify',
-      requester: 'John Doe',
-      timestamp: Date.now(),
-      title: 'Snow (Hey Oh)',
-      artist: 'Red Hot Chilli Peppers',
-      media: 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg'
-    }})
-    /*
-    if(this.state.song.provider === 'spotify') {
-      this.setState({ song: {
-        provider: 'youtube',
-        requester: 'Blechkelle',
-        timestamp: Date.now(),
-        title: 'Sin (Official Video)',
-        artist: 'Kakkmaddafakka',
-        media: 'https://www.fritz.de/content/dam/rbb/frz/aus-plato/35/87/9160_36074.jpg.jpg/rendition=kakkmaddafakkapressefotos2013_1280_36074.jpg/size=708x398.jpg'
-      }})
-    } else {
-      this.setState({ song: {
-        provider: 'spotify',
-        requester: 'John Doe',
-        timestamp: Date.now(),
-        title: 'Snow (Hey Oh)',
-        artist: 'Red Hot Chilli Peppers',
-        media: 'https://images-na.ssl-images-amazon.com/images/I/91ODLT7BLmL._SX466_.jpg'
-      }})
-    }
-    */
+  }
+
+  handleSkipPlayback = () => {
+    window.TSRI.playback.next()
   }
 
   handleCloseSongrequestSettings = () => {
@@ -203,10 +190,10 @@ class Songrequests extends React.Component {
         <TableCell>John Doe</TableCell>
         <TableCell>
           <div>
-            <Tooltip title="Spotify" placement="top">
+            <Tooltip title={song.provider === 1 ? 'Spotify' : 'Youtube'} placement="top">
               <img
-                src={spotifylogo}
-                alt="spotify"
+                src={song.provider === 1 ? spotifylogo : youtubelogo}
+                alt="provider logo"
                 style={{ height: '32px', marginTop: '7px' }}
               />
             </Tooltip>
@@ -242,21 +229,12 @@ class Songrequests extends React.Component {
     const { volume, time } = this.state;
     return (
       <div className="pageContent">
-        {/*<SongrequestPlayer/>*/}
         <Breadcrumbs arial-label="Breadcrumb">
           <Link color="inherit" onClick={event => this.handleClickBreadCrumb(event, '/')}>
             <FormattedMessage id="sidebar.overview" />
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.songrequests" /></Typography>
         </Breadcrumbs>
-        {/*
-        <span style={{ float: 'right', position: 'relative', top: '-23px' }}>
-          <SongrequestConnectionStatus
-            status={this.state.sync.status}
-            timestamp={new Date(this.state.sync.timestamp).toLocaleString()}
-          />
-        </span>
-        */}
         {isValidBrowser() &&
         <Paper className="pageContainer" style={{ padding: '0px', position: 'relative' }}>
           <div
@@ -273,54 +251,67 @@ class Songrequests extends React.Component {
           <Grid container spacing={3} style={{ padding: '12px 23px', position: 'relative', zIndex: '20' }}>
             <Grid item>
               <div className="songrequestsCoverImage">
-                {this.state.song.provider === 'spotify' &&
+                {this.state.song.provider === 1 &&
                   <img
                     src={this.state.song.media}
                     alt="albumcover"
                     style={{ height: '200px', width: '200px' }}
                 />}
-                {this.state.song.provider === 'youtube' &&
-                <iframe title="ytplayer" id="ytplayer" type="text/html" height="200" width="355"
-                  src="http://www.youtube.com/embed/RVfwQylsAq4?autoplay=1&showinfo=0&controls=0"
+                <iframe style={{ display: this.state.song.provider === 2 ? '' : 'none' }}
+                  title="ytplayer"
+                  id="youtube-player"
+                  type="text/html"
+                  height="200"
+                  width="355"
+                  src="http://www.youtube.com/embed/?showinfo=0&controls=0&enablejsapi=1&autoplay=1"
                   frameborder="0"
-                />}
+                  allow="autoplay"
+                />
               </div>
             </Grid>
-            <Grid item style={{ position: 'relative' }}>
+            <Grid item>
               <Typography color="textPrimary">
                 <h1 style={{ padding: '0px', margin: '0px' }}>
-                  {this.state.song.title}
+                  {this.state.song.name}
                 </h1>
                 <h3 style={{ padding: '0px', margin: '0px' }}>
                   {this.state.song.artist}
                 </h3>
-                <small style={{ position: 'absolute', bottom: '18px' }}>
+                <small style={{ position: 'absolute', bottom: '30px' }}>
+                  {window.TSRI.status.api && window.TSRI.playback.song !== null ?
                   <em>
                     <FormattedMessage id="songrequest.requestby" /> <b>{this.state.song.requester}</b><br/>
                     <FormattedMessage id="songrequest.request.at" /> {new Date(this.state.song.timestamp).toLocaleString()}<br/>
-                    <FormattedMessage id="songrequest.request.provided_by" /> {this.state.song.provider}
+                    <FormattedMessage id="songrequest.request.provided_by" />{' '}
+                    {this.state.song.provider === 1 && 'spotify'}
+                    {this.state.song.provider === 2 && 'youtube'}
                   </em>
+                  :
+                  <em>
+                    Es befindet sich derzeit kein Song in der Songliste.<br/>
+                    Füge einen Song hinzu, um die Wiedergabe zu starten.
+                  </em>}
                 </small>
               </Typography>
             </Grid>
             <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
-              <Button style={{ marginLeft: '15px' }} color="secondary" variant="contained">
+              <Button disabled={window.TSRI.status.api && window.TSRI.playback.song === null} style={{ marginLeft: '15px' }} color="secondary" variant="contained">
                 <FormattedMessage id="songrequest.request.block_song" />
               </Button>
-              <Button style={{ marginLeft: '15px' }} color="secondary" variant="contained">
+              <Button disabled={window.TSRI.status.api && window.TSRI.playback.song === null} style={{ marginLeft: '15px' }} color="secondary" variant="contained">
                 <FormattedMessage id="songrequest.request.block_user" />
               </Button>
             </span>
           </Grid>
           <Grid container spacing={3} className="songrequestsPlayer" style={{ padding: '23px 23px 10px 23px', position: 'relative', zIndex: '20' }}>
             <Grid item>
-              <Fab size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
+              <Fab disabled={true} size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
                 <Icon className="actionButtons">skip_previous</Icon>
               </Fab>
-              <Fab onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
+              <Fab disabled={window.TSRI.status.api && window.TSRI.playback.song === null} onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
                 <Icon className="actionButtons">{this.state.playback ? 'stop' : 'play_arrow'}</Icon>
               </Fab>
-              <Fab size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
+              <Fab disabled={window.TSRI.status.api && window.TSRI.playback.queue.length === 0} onClick={this.handleSkipPlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
                 <Icon className="actionButtons">skip_next</Icon>
               </Fab>
             </Grid>
@@ -331,9 +322,10 @@ class Songrequests extends React.Component {
                   marginTop: '6px',
                   float: 'left'
                 }}
+                disabled={window.TSRI.status.api && window.TSRI.playback.song === null}
                 value={time}
                 onChange={this.handleTimelineChange}
-                valueLabelDisplay="auto"
+                valueLabelDisplay="off"
               />
               <Typography style={{ float: 'left', minWidth: '80px', marginLeft: '10px', paddingTop: '7px' }} color="textPrimary">
                 <small>00:00 / 00:00</small>
@@ -363,6 +355,12 @@ class Songrequests extends React.Component {
               </div>
             </Grid>
             <Grid item style={{ position: 'absolute', right: '23px' }}>
+              <Fab style={{ marginLeft: '15px' }} size="small" color="primary" aria-label="settings" onClick={() => this.handleAddToQueue(1)}>
+                <Icon className="actionButtons">add</Icon>
+              </Fab>
+              <Fab style={{ marginLeft: '15px' }} size="small" color="secondary" aria-label="settings" onClick={() => this.handleAddToQueue(2)}>
+                <Icon className="actionButtons">add</Icon>
+              </Fab>
               <Fab style={{ marginLeft: '15px' }} size="small" color="primary" aria-label="settings" onClick={() => this.setState({ openSongrequestSettings: true })}>
                 <Icon className="actionButtons">settings</Icon>
               </Fab>

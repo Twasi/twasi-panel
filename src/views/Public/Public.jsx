@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import PublicCommands from './PublicCommands';
 import PublicLeaderboard from './PublicLeaderboard';
 import PublicQuotes from './PublicQuotes';
+import PublicUnban from './PublicUnban';
 
 import './_style.css';
 //import RequireAuth from '../../auth/RequireAuth';
@@ -43,24 +44,50 @@ class Public extends React.Component {
                 indicatorColor="primary"
                 textColor="primary"
               >
-                <Tab label={(
-                  <span>
-                    <Icon>code</Icon><br/>
-                    Befehle
-                  </span>
-                )} />
-                <Tab label={(
-                  <span>
-                    <Icon>format_quote</Icon><br/>
-                    Zitate
-                  </span>
-                )} />
-                <Tab label={(
-                  <span>
-                    <Icon>emoji_events</Icon><br/>
-                    Bestenliste
-                  </span>
-                )} />
+                <Tab
+                  style={{
+                    padding: '15px'
+                  }}
+                  label={(
+                    <span>
+                      <Icon>code</Icon><br/>
+                      Befehle
+                    </span>
+                  )}
+                />
+                <Tab
+                  style={{
+                    padding: '15px'
+                  }}
+                  label={(
+                    <span>
+                      <Icon>format_quote</Icon><br/>
+                      Zitate
+                    </span>
+                  )}
+                />
+                <Tab
+                  style={{
+                    padding: '15px'
+                  }}
+                  label={(
+                    <span>
+                      <Icon>emoji_events</Icon><br/>
+                      Bestenliste
+                    </span>
+                  )}
+                />
+                <Tab
+                  style={{
+                    padding: '15px'
+                  }}
+                  label={(
+                    <span>
+                      <Icon>block</Icon><br/>
+                      Entbannantrag stellen
+                    </span>
+                  )}
+                />
               </Tabs>
             </Grid>
             <Grid item xs={6}>
@@ -81,6 +108,9 @@ class Public extends React.Component {
         </TabContainer>}
         {value === 2 && <TabContainer>
           <PublicLeaderboard/>
+        </TabContainer>}
+        {value === 3 && <TabContainer>
+          <PublicUnban/>
         </TabContainer>}
       </div>
     );
