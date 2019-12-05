@@ -32,6 +32,10 @@ class SongrequestSettings extends React.Component {
     });
   };
 
+  authenticateSpotify = () => {
+    window.TSRI.spotifyAuth.init()
+  }
+
   handleSongsPerUser = (event, songs_per_user) => {
     this.setState({ [event.target.name]: event.target.value });
     this.setState({ songs_per_user });
@@ -84,7 +88,7 @@ class SongrequestSettings extends React.Component {
               <br/>
               <Row>
                 <Col sm={12}>
-                  <Button disabled={!enableSpotifyAuth} color="primary" variant="contained">
+                  <Button disabled={!enableSpotifyAuth} onClick={this.authenticateSpotify} color="primary" variant="contained">
                     <FormattedMessage id="songrequest.settings.spotify.connect" />
                   </Button>
                 </Col>

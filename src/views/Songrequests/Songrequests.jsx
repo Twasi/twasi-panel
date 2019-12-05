@@ -54,7 +54,7 @@ class Songrequests extends React.Component {
         requester: '',
         timestamp: Date.now(),
         name: 'Kein Song in der Songliste',
-        artist: '',
+        artists: '',
         media: 'https://f-scope.net/images/notlikethis-png.png'
       },
       volume: 50,
@@ -87,13 +87,17 @@ class Songrequests extends React.Component {
       }, song: (song) => {
           // called when new song data is available
           if(song !== null) {
+            let features = [...song.artists];
+            features.shift();
+            if (features.length)
+              features = ' feat. ' + features.join(' & ');
             this.setState({ song: {
               provider: song.provider,
-              requester: 'John Doe',
-              timestamp: Date.now(),
+              requester: song.requester.displayName,
+              timestamp: song.timeStamp,
               name: song.name,
-              artist: song.artist,
-              media: song.covers
+              artist: song.artists[0] + features,
+              media: song.covers[0]
             }})
           } else {
             this.setState({ song: {
@@ -101,7 +105,7 @@ class Songrequests extends React.Component {
               requester: '',
               timestamp: Date.now(),
               name: 'Kein Song in der Songliste',
-              artist: '',
+              artists: '',
               media: 'https://f-scope.net/images/notlikethis-png.png'
             }})
           }
@@ -120,7 +124,7 @@ class Songrequests extends React.Component {
   }
 
   componentDidMount() {
-    window.TSRI.init(this.props.jwt, 'ws://srv-01.twasi.net:8090', this.events);
+    window.TSRI.init(this.props.jwt, 'wss://api-dev.twasi.net/ws', this.events);
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -131,9 +135,9 @@ class Songrequests extends React.Component {
 
   handleAddToQueue = (provider) => {
     if(provider === 1) {
-      window.TSRI.playback.add({provider:2,uri:"s9N5l96IoY4",name:'YOU MAN - BIRDCAGE',artist:'ALPAGERECORDS',covers:'https://f4.bcbits.com/img/a0195149678_10.jpg'})
+      window.TSRI.playback.add({provider:2,uri:"s9N5l96IoY4",name:'YOU MAN - BIRDCAGE',artists:'ALPAGERECORDS',covers:'https://f4.bcbits.com/img/a0195149678_10.jpg'})
     } else {
-      window.TSRI.playback.add({provider:1,uri:"spotify:track:3ztCt91U2wGkDZuzbCwH6H",name:'Black Hole Sun',artist:'Soundgarden',covers:'https://m.media-amazon.com/images/I/71MyUhYRmvL._SS500_.jpg'})
+      window.TSRI.playback.add({provider:1,uri:"spotify:track:3ztCt91U2wGkDZuzbCwH6H",name:'Black Hole Sun',artists:'Soundgarden',covers:'https://m.media-amazon.com/images/I/71MyUhYRmvL._SS500_.jpg'})
     }
   }
 
@@ -185,9 +189,9 @@ class Songrequests extends React.Component {
       <TableRow>
         <TableCell>-</TableCell>
         <TableCell>{song.name}</TableCell>
-        <TableCell>{song.artist}</TableCell>
+        <TableCell>{song.artists[0]}</TableCell>
         <TableCell>{song.duration}</TableCell>
-        <TableCell>John Doe</TableCell>
+        <TableCell>{song.requester.displayName}</TableCell>
         <TableCell>
           <div>
             <Tooltip title={song.provider === 1 ? 'Spotify' : 'Youtube'} placement="top">
@@ -278,7 +282,7 @@ class Songrequests extends React.Component {
                   {this.state.song.artist}
                 </h3>
                 <small style={{ position: 'absolute', bottom: '30px' }}>
-                  {window.TSRI.status.api && window.TSRI.playback.song !== null ?
+                  {window.TSRI.playback && window.TSRI.playback.song ?
                   <em>
                     <FormattedMessage id="songrequest.requestby" /> <b>{this.state.song.requester}</b><br/>
                     <FormattedMessage id="songrequest.request.at" /> {new Date(this.state.song.timestamp).toLocaleString()}<br/>
