@@ -14,7 +14,6 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
-import VolumeIcon from '@material-ui/icons/VolumeUp';
 import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
@@ -31,6 +30,7 @@ import { authSelectors } from '../../state/auth';
 
 import spotifylogo from '../common/resources/spotify.png';
 import youtubelogo from '../common/resources/youtube.png';
+import gachiHYPER from '../common/resources/gachiHYPER.gif';
 
 import './_style.css';
 
@@ -293,16 +293,16 @@ class Songrequests extends React.Component {
                   :
                   <em>
                     Es befindet sich derzeit kein Song in der Songliste.<br/>
-                    Füge einen Song hinzu, um die Wiedergabe zu starten.
+                    Füge einen Song über den Chat hinzu, um die Wiedergabe zu starten.
                   </em>}
                 </small>
               </Typography>
             </Grid>
             <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
-              <Button disabled={window.TSRI.playback && !window.TSRI.playback.song} style={{ marginLeft: '15px' }} color="secondary" variant="contained">
+              <Button style={{ marginLeft: '15px', display: window.TSRI.playback && !window.TSRI.playback.song ? 'none' : '' }} color="secondary" variant="contained">
                 <FormattedMessage id="songrequest.request.block_song" />
               </Button>
-              <Button disabled={window.TSRI.playback && !window.TSRI.playback.song} style={{ marginLeft: '15px' }} color="secondary" variant="contained">
+              <Button style={{ marginLeft: '15px', display: window.TSRI.playback && !window.TSRI.playback.song ? 'none' : '' }} color="secondary" variant="contained">
                 <FormattedMessage id="songrequest.request.block_user" />
               </Button>
             </span>
@@ -345,7 +345,13 @@ class Songrequests extends React.Component {
                   style={{ backgroundColor: 'transparent' }}
                   avatar={
                     <Avatar style={{ backgroundColor: 'transparent' }}>
-                      <VolumeIcon />
+                      <Icon>
+                        {volume === 0 && 'volume_off'}
+                        {volume >= 1 && volume <= 33 && 'volume_mute'}
+                        {volume >= 34 && volume <= 66 && 'volume_down'}
+                        {volume >= 67 && volume <= 99 && 'volume_up'}
+                        {volume === 100 && <img src={gachiHYPER} height="24px"/>}
+                      </Icon>
                     </Avatar>
                   }
                   label={<div style={{
