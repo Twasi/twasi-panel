@@ -273,9 +273,9 @@ class Songrequests extends React.Component {
                 />
               </div>
             </Grid>
-            <Grid item>
-              <Typography color="textPrimary">
-                <h1 style={{ padding: '0px', margin: '0px' }}>
+            <Grid item xs zeroMinWidth>
+              <Typography color="textPrimary" noWrap>
+                <h1 style={{ padding: '0px', margin: '0px', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
                   {this.state.song.name}
                 </h1>
                 <h3 style={{ padding: '0px', margin: '0px' }}>
@@ -299,10 +299,10 @@ class Songrequests extends React.Component {
               </Typography>
             </Grid>
             <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
-              <Button disabled={window.TSRI.status.api && window.TSRI.playback.song === null} style={{ marginLeft: '15px' }} color="secondary" variant="contained">
+              <Button disabled={window.TSRI.playback && !window.TSRI.playback.song} style={{ marginLeft: '15px' }} color="secondary" variant="contained">
                 <FormattedMessage id="songrequest.request.block_song" />
               </Button>
-              <Button disabled={window.TSRI.status.api && window.TSRI.playback.song === null} style={{ marginLeft: '15px' }} color="secondary" variant="contained">
+              <Button disabled={window.TSRI.playback && !window.TSRI.playback.song} style={{ marginLeft: '15px' }} color="secondary" variant="contained">
                 <FormattedMessage id="songrequest.request.block_user" />
               </Button>
             </span>
@@ -312,42 +312,46 @@ class Songrequests extends React.Component {
               <Fab disabled={true} size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
                 <Icon className="actionButtons">skip_previous</Icon>
               </Fab>
-              <Fab disabled={window.TSRI.status.api && window.TSRI.playback.song === null} onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
+              <Fab disabled={window.TSRI.playback && !window.TSRI.playback.song} onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
                 <Icon className="actionButtons">{this.state.playback ? 'stop' : 'play_arrow'}</Icon>
               </Fab>
-              <Fab disabled={window.TSRI.status.api && window.TSRI.playback.queue.length === 0} onClick={this.handleSkipPlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
+              <Fab disabled={window.TSRI.playback && !window.TSRI.playback.song && window.TSRI.playback.queue.length === 0} onClick={this.handleSkipPlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="skip">
                 <Icon className="actionButtons">skip_next</Icon>
               </Fab>
             </Grid>
-            <Grid item xs={5} style={{ verticalAlign: 'middle' }}>
-              <Slider
-                style={{
-                  width: '70%',
-                  marginTop: '6px',
-                  float: 'left'
-                }}
-                disabled={window.TSRI.status.api && window.TSRI.playback.song === null}
-                value={time}
-                onChange={this.handleTimelineChange}
-                valueLabelDisplay="off"
-              />
-              <Typography style={{ float: 'left', minWidth: '80px', marginLeft: '10px', paddingTop: '7px' }} color="textPrimary">
-                <small>00:00 / 00:00</small>
-              </Typography>
-            </Grid>
-            <Grid item style={{ verticalAlign: 'middle' }}>
+            <Grid item alignItems='center'>
               <div style={{ textAlign: 'right', float: 'right', paddingTop: '5px' }}>
                 <Chip
-                  style={{ verticalAlign: 'middle', marginRight: '5px' }}
+                  style={{ verticalAlign: 'middle', marginRight: '5px', backgroundColor: 'transparent' }}
+                  label={<div style={{
+                    padding: '5px 0px 0px 5px',
+                    margin: '12px 0px 11px 0px',
+                    width: '300px' }}>
+                    <Slider
+                      disabled={window.TSRI.playback && !window.TSRI.playback.song}
+                      value={time}
+                      onChange={this.handleTimelineChange}
+                      valueLabelDisplay="off"/>
+                  </div>}
+                />
+                <Typography style={{ float: 'right', paddingTop: '4px' }} color="textPrimary">
+                  <small>00:00 / 00:00</small>
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item alignItems='center'>
+              <div style={{ textAlign: 'right', float: 'right', paddingTop: '5px' }}>
+                <Chip
+                  style={{ backgroundColor: 'transparent' }}
                   avatar={
-                    <Avatar>
+                    <Avatar style={{ backgroundColor: 'transparent' }}>
                       <VolumeIcon />
                     </Avatar>
                   }
                   label={<div style={{
                     padding: '5px 0px 0px 5px',
                     margin: '12px 0px 11px 0px',
-                    width: '150px' }}>
+                    width: '100px' }}>
                     <Slider
                       value={volume}
                       onChange={this.handleVolumeChange}
@@ -359,12 +363,6 @@ class Songrequests extends React.Component {
               </div>
             </Grid>
             <Grid item style={{ position: 'absolute', right: '23px' }}>
-              <Fab style={{ marginLeft: '15px' }} size="small" color="primary" aria-label="settings" onClick={() => this.handleAddToQueue(1)}>
-                <Icon className="actionButtons">add</Icon>
-              </Fab>
-              <Fab style={{ marginLeft: '15px' }} size="small" color="secondary" aria-label="settings" onClick={() => this.handleAddToQueue(2)}>
-                <Icon className="actionButtons">add</Icon>
-              </Fab>
               <Fab style={{ marginLeft: '15px' }} size="small" color="primary" aria-label="settings" onClick={() => this.setState({ openSongrequestSettings: true })}>
                 <Icon className="actionButtons">settings</Icon>
               </Fab>
