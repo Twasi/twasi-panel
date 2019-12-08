@@ -24,6 +24,7 @@ import Tab from '@material-ui/core/Tab';
 import GivePLZ from '../common/resources/giveplz.png';
 
 import SongrequestSettings from './SongrequestSettings';
+import ReportPlaybackIssue from './ReportPlaybackIssue';
 //import SongrequestPlayer from './SongrequestPlayer';
 import { isValidBrowser } from './browserCheck.js';
 import { authSelectors } from '../../state/auth';
@@ -49,6 +50,7 @@ class Songrequests extends React.Component {
     super(props);
     this.state = {
       openSongrequestSettings: false,
+      openReportPlaybackIssue: false,
       song: {
         provider: 1,
         requester: '',
@@ -154,8 +156,16 @@ class Songrequests extends React.Component {
     window.TSRI.playback.next()
   }
 
+  handleRevokePlayback = () => {
+    window.TSRI.playback.back()
+  }
+
   handleCloseSongrequestSettings = () => {
     this.setState({ openSongrequestSettings: false });
+  };
+
+  handleCloseReportPlaybackIssue = () => {
+    this.setState({ openReportPlaybackIssue: false });
   };
 
   handleTabChange = (event, tabValue) => {
@@ -267,7 +277,7 @@ class Songrequests extends React.Component {
                   type="text/html"
                   height="200"
                   width="355"
-                  src="http://www.youtube.com/embed/?showinfo=0&controls=0&enablejsapi=1&autoplay=1"
+                  src="https://www.youtube.com/embed/?showinfo=0&controls=0&enablejsapi=1&autoplay=1"
                   frameborder="0"
                   allow="autoplay"
                 />
@@ -309,7 +319,7 @@ class Songrequests extends React.Component {
           </Grid>
           <Grid container spacing={3} className="songrequestsPlayer" style={{ padding: '23px 23px 10px 23px', position: 'relative', zIndex: '20' }}>
             <Grid item>
-              <Fab disabled={true} size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
+              <Fab onClick={this.handleRevokePlayback} size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
                 <Icon className="actionButtons">skip_previous</Icon>
               </Fab>
               <Fab disabled={window.TSRI.playback && !window.TSRI.playback.song} onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">
@@ -350,7 +360,7 @@ class Songrequests extends React.Component {
                         {volume >= 1 && volume <= 33 && 'volume_mute'}
                         {volume >= 34 && volume <= 66 && 'volume_down'}
                         {volume >= 67 && volume <= 99 && 'volume_up'}
-                        {volume === 100 && <img src={gachiHYPER} height="24px"/>}
+                        {volume === 100 && <img alt="volume_max" src={gachiHYPER} height="24px"/>}
                       </Icon>
                     </Avatar>
                   }
@@ -375,8 +385,16 @@ class Songrequests extends React.Component {
             </Grid>
           </Grid>
         </Paper>}
+        <Typography component={'div'} style={{ padding: '0px', marginTop: '30px' }}>
+          <small>
+            Gibt es ein Problem mit der Wiedergabe?{'   '}
+            <Button size="small" color="primary" variant="contained" style={{ marginTop: '-4px' }} onClick={() => this.setState({ openReportPlaybackIssue: true })}>
+              Problem melden
+            </Button>
+          </small>
+        </Typography>
         {isValidBrowser() &&
-        <Paper className="pageContainer" style={{ padding: '0px', marginTop: '33px' }}>
+        <Paper className="pageContainer" style={{ padding: '0px', marginTop: '15px' }}>
           <Tabs
             indicatorColor="primary"
             textColor="primary"
@@ -426,6 +444,12 @@ class Songrequests extends React.Component {
             open
             enableSpotifyAuth={this.state.enableSpotifyAuth}
             onClose={this.handleCloseSongrequestSettings}
+          />
+        }
+        {this.state.openReportPlaybackIssue &&
+          <ReportPlaybackIssue
+            open
+            onClose={this.handleCloseReportPlaybackIssue}
           />
         }
         {!isValidBrowser() && this.renderUnsupportedBrowser()}

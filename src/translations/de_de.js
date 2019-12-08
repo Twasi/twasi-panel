@@ -516,6 +516,7 @@ export default {
   'songrequest.settings.spotify.title': 'Songwünsche über Spotify',
   'songrequest.settings.spotify.subtitle': 'Um Songwünsche über Spotify zu aktivieren, musst du deinen Spotify Account mit Twasi verbinden.',
   'songrequest.settings.spotify.connect': 'Spotify Account verbinden',
+  'songrequest.settings.spotify.disconnect': 'Spotify Account trennen',
   'songrequest.settings.youtube.title': 'Songwünsche über Youtube',
   'songrequest.settings.youtube.subtitle': 'Aktiviere diese Funktion, um Songwünsche über Youtube zuzulassen.',
   'songrequest.settings.songs_per_user.title': 'Songwünsche pro Nutzer:',

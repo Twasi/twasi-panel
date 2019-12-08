@@ -515,6 +515,7 @@ export default {
   'songrequest.settings.spotify.title': 'Songrequests via Spotify',
   'songrequest.settings.spotify.subtitle': 'To activate Songrequests via Spotify you have to connect your Spotify account to Twasi.',
   'songrequest.settings.spotify.connect': 'Connect Spotify account',
+  'songrequest.settings.spotify.disconnect': 'Disconnect Spotify account',
   'songrequest.settings.youtube.title': 'Songrequests via Youtube',
   'songrequest.settings.youtube.subtitle': 'Activate this function to enable songrequests via Youtube.',
   'songrequest.settings.songs_per_user.title': 'Songrequests per user:',

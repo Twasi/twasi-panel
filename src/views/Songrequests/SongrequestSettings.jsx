@@ -18,7 +18,7 @@ class SongrequestSettings extends React.Component {
     super(props);
     this.state = {
       tabValue: 0,
-      songs_per_user: 15,
+      songs_per_user: 5,
     };
   }
 
@@ -34,6 +34,10 @@ class SongrequestSettings extends React.Component {
 
   authenticateSpotify = () => {
     window.TSRI.spotifyAuth.init()
+  }
+
+  unAuthenticateSpotify = () => {
+    window.TSRI.spotifyAuth.remove()
   }
 
   handleSongsPerUser = (event, songs_per_user) => {
@@ -88,9 +92,14 @@ class SongrequestSettings extends React.Component {
               <br/>
               <Row>
                 <Col sm={12}>
+                  {!enableSpotifyAuth &&
+                  <Button disabled={enableSpotifyAuth} onClick={this.unAuthenticateSpotify} color="secondary" variant="contained">
+                    <FormattedMessage id="songrequest.settings.spotify.disconnect" />
+                  </Button>}
+                  {enableSpotifyAuth &&
                   <Button disabled={!enableSpotifyAuth} onClick={this.authenticateSpotify} color="primary" variant="contained">
                     <FormattedMessage id="songrequest.settings.spotify.connect" />
-                  </Button>
+                  </Button>}
                 </Col>
               </Row>
             </CardContent>
@@ -126,7 +135,7 @@ class SongrequestSettings extends React.Component {
                     aria-labelledby="label"
                     value={this.state.songs_per_user}
                     min={0}
-                    max={100}
+                    max={10}
                     step={1}
                     onChange={this.handleSongsPerUser}
                   />
