@@ -48,12 +48,14 @@ class Songrequests extends React.Component {
         requester: '',
         timestamp: Date.now(),
         duration: '00:00',
-        name: <FormattedMessage id="songrequest.request.no_request" />,
+        name: 'Kein Song in der Songliste',
         artists: '',
         media: 'https://f-scope.net/images/notlikethis-png.png'
       },
       volume: 50,
       time: 0, // timeline
+      changeTimelineSlider: false,
+      changeVolumeSlider: false,
       playback: false,
       enableSpotifyAuth: false,
       tabValue: 0,
@@ -78,7 +80,9 @@ class Songrequests extends React.Component {
       }, position: (position) => {
           // called when timeline of song changes
           //console.log(position)
-          this.setState({ time: position * 100 });
+          if(!this.state.changeTimelineSlider) {
+            this.setState({ time: position * 100 });
+          }
       }, song: (song) => {
           // called when new song data is available
           if(song !== null) {
@@ -101,7 +105,7 @@ class Songrequests extends React.Component {
               requester: '',
               timestamp: Date.now(),
               duration: 0,
-              name: <FormattedMessage id="songrequest.request.no_request" />,
+              name: 'Kein Song in der Songliste',
               artists: '',
               media: 'https://f-scope.net/images/notlikethis-png.png'
             }})
@@ -111,7 +115,9 @@ class Songrequests extends React.Component {
           this.setState({ playback: false });
       }, volume: function (volume) {
           // called when volume changes
-          this.setState({ volume: volume * 100 });
+          if(!this.state.changeVolumeSlider) {
+            this.setState({ volume: volume * 100 });
+          }
       }, queueUpdate: (queue) => {
           // called when queue updates
           queue.shift()
@@ -133,19 +139,23 @@ class Songrequests extends React.Component {
 
   handleVolumeChange = (event, volume) => {
     this.setState({ volume });
+    this.setState({ changeVolumeSlider: true });
   };
 
-  handleVolumeSet = (event, time) => {
-    this.setState({ time });
-    window.TSRI.playback.seek(time / 100)
+  handleVolumeSet = (event, volume) => {
+    this.setState({ volume });
+    this.setState({ changeVolumeSlider: false });
+    window.TSRI.playback.setVolume(volume / 100)
   };
 
   handleTimelineChange = (event, time) => {
     this.setState({ time });
+    this.setState({ changeTimelineSlider: true });
   };
 
   handleTimelineSet = (event, time) => {
     this.setState({ time });
+    this.setState({ changeTimelineSlider: false });
     window.TSRI.playback.seek(time / 100)
   };
 
@@ -304,7 +314,7 @@ class Songrequests extends React.Component {
             <Grid item xs zeroMinWidth>
               <Typography color="textPrimary">
                 <h1 style={{ padding: '0px', margin: '0px', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
-                  {this.state.song.name}
+                  {this.decodeHtml(this.state.song.name)}
                 </h1>
                 <h3 style={{ padding: '0px', margin: '0px' }}>
                   {this.state.song.artist}
