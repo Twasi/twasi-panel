@@ -92,9 +92,13 @@ class Songrequests extends React.Component {
           //console.log("Status: %s", JSON.stringify(status));
       }, pause: () => {
           // called when player pauses
+          console.log("pause");
+          console.log(window.TSRI.playback.shouldPlay);
           this.setState({ playback: false });
       }, play: () => {
           // called when player starts playing
+          console.log("play");
+          console.log(window.TSRI.playback.shouldPlay);
           this.setState({ playback: true });
       }, position: (position) => {
           // called when timeline of song changes
@@ -131,14 +135,19 @@ class Songrequests extends React.Component {
           }
       }, stop: () => {
           // called when player stops playing
+          console.log("stop");
+          console.log(window.TSRI.playback.shouldPlay);
           this.setState({ playback: false });
-      }, volume: function (volume) {
+      }, settingsUpdate: (settings) => {
           // called when volume changes
+          /*
           if(!this.state.changeVolumeSlider) {
-            this.setState({ volume: volume * 100 });
+            this.setState({ volume: settings.volume * 100 });
           }
+          */
       }, queueUpdate: (queue, history) => {
           // called when queue updates
+          //console.log(queue)
           queue.shift()
           songqueue = queue;
           songhistory = history;
