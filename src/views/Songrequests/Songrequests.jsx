@@ -135,14 +135,6 @@ class Songrequests extends React.Component {
     this.setState({});
   }
 
-  handleAddToQueue = (provider) => {
-    if(provider === 1) {
-      window.TSRI.playback.add({provider:2,uri:"s9N5l96IoY4",name:'YOU MAN - BIRDCAGE',artists:'ALPAGERECORDS',covers:'https://f4.bcbits.com/img/a0195149678_10.jpg'})
-    } else {
-      window.TSRI.playback.add({provider:1,uri:"spotify:track:3ztCt91U2wGkDZuzbCwH6H",name:'Black Hole Sun',artists:'Soundgarden',covers:'https://m.media-amazon.com/images/I/71MyUhYRmvL._SS500_.jpg'})
-    }
-  }
-
   handleChangePlayback = () => {
     this.setState({ playback: !this.state.playback })
     if(!this.state.playback){
@@ -340,7 +332,7 @@ class Songrequests extends React.Component {
                     <Slider
                       disabled={window.TSRI.playback && !window.TSRI.playback.song}
                       value={time}
-                      onChange={this.handleTimelineChange}
+                      onChangeCommitted={this.handleTimelineChange}
                       valueLabelDisplay="off"/>
                   </div>}
                 />
