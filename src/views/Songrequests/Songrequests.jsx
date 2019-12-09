@@ -18,8 +18,9 @@ import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-//import Tabs from '@material-ui/core/Tabs';
-//import Tab from '@material-ui/core/Tab';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box';
 
 import GivePLZ from '../common/resources/giveplz.png';
 
@@ -36,6 +37,24 @@ import gachiHYPER from '../common/resources/gachiHYPER.gif';
 import './_style.css';
 
 var songqueue = [];
+var songhistory = [];
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      <Box p={0}>{children}</Box>
+    </Typography>
+  );
+}
 
 class Songrequests extends React.Component {
   constructor(props) {
@@ -118,10 +137,11 @@ class Songrequests extends React.Component {
           if(!this.state.changeVolumeSlider) {
             this.setState({ volume: volume * 100 });
           }
-      }, queueUpdate: (queue) => {
+      }, queueUpdate: (queue, history) => {
           // called when queue updates
           queue.shift()
           songqueue = queue;
+          songhistory = history;
       }
     };
     this.events = events;
@@ -224,6 +244,58 @@ class Songrequests extends React.Component {
 
   renderSongqueue() {
     return songqueue.map(song => (
+      <TableRow>
+        <TableCell></TableCell>
+        <TableCell>{this.decodeHtml(song.name)}</TableCell>
+        <TableCell>{song.artists[0]}</TableCell>
+        <TableCell>{this.getDuration(song.duration)}</TableCell>
+        <TableCell>
+          <Chip
+            color="primary"
+            avatar={<Avatar style={{ width: '24px', height: '24px' }} alt="ticket_owner_avatar" src={song.requester && song.requester.avatar} />}
+            label={song.requester ? song.requester.displayName : 'unknown'}
+            style={{ marginRight: '5px' }}
+          />
+        </TableCell>
+        <TableCell>
+          <div>
+            <Tooltip title={song.provider === 1 ? 'Spotify' : 'Youtube'} placement="top">
+              <img
+                src={song.provider === 1 ? spotifylogo : youtubelogo}
+                alt="provider logo"
+                style={{ height: '32px', marginTop: '7px' }}
+              />
+            </Tooltip>
+          </div>
+        </TableCell>
+        <TableCell>
+          <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
+            <Fab
+              className="noshadow"
+              color="primary"
+              size="small"
+              aria-label="favSong"
+            >
+              <Icon className="actionButtons">star</Icon>
+            </Fab>
+          </Tooltip>{' '}
+          <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
+            <Fab
+              className="noshadow"
+              color="secondary"
+              size="small"
+              aria-label="deleteSong"
+            >
+              <Icon className="actionButtons">delete</Icon>
+            </Fab>
+          </Tooltip>
+        </TableCell>
+      </TableRow>
+    ));
+  }
+
+  renderSonghistory() {
+    return songhistory.map(song => (
       <TableRow>
         <TableCell></TableCell>
         <TableCell>{this.decodeHtml(song.name)}</TableCell>
@@ -421,6 +493,7 @@ class Songrequests extends React.Component {
             </Grid>
           </Grid>
         </Paper>}
+        {isValidBrowser() &&
         <Typography component={'div'} style={{ padding: '0px', marginTop: '30px' }}>
           <small>
             Gibt es ein Problem mit der Wiedergabe?{'   '}
@@ -428,10 +501,10 @@ class Songrequests extends React.Component {
               Problem melden
             </Button>
           </small>
-        </Typography>
+        </Typography>}
         {isValidBrowser() &&
         <Paper className="pageContainer" style={{ padding: '0px', marginTop: '15px' }}>
-          {/*<Tabs
+          <Tabs
             indicatorColor="primary"
             textColor="primary"
             value={this.state.tabValue}
@@ -439,41 +512,79 @@ class Songrequests extends React.Component {
           >
             <Tab label={<FormattedMessage id="songrequest.tab.wishes" />} />
             <Tab label={<FormattedMessage id="songrequest.tab.history" />} />
-          </Tabs>*/}
-          <Table>
-            <TableHead
-              adjustForCheckbox={false}
-              displaySelectAll={false}
-              selectable={false}
-            >
-              <TableRow className="TableRow">
-                <TableCell>
-                  <FormattedMessage id="songrequest.table_id" />
-                </TableCell>
-                <TableCell>
-                  <FormattedMessage id="songrequest.table_title" />
-                </TableCell>
-                <TableCell>
-                  <FormattedMessage id="songrequest.table_channel" />
-                </TableCell>
-                <TableCell>
-                  <FormattedMessage id="songrequest.table_duration" />
-                </TableCell>
-                <TableCell>
-                  <FormattedMessage id="songrequest.table_requestby" />
-                </TableCell>
-                <TableCell>
-                  <FormattedMessage id="songrequest.table_platform" />
-                </TableCell>
-                <TableCell>
-                  <FormattedMessage id="common.actions" />
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody displayRowCheckbox={false}>
-              {this.renderSongqueue()}
-            </TableBody>
-          </Table>
+          </Tabs>
+          <TabPanel value={this.state.tabValue} index={0}>
+            <Table>
+              <TableHead
+                adjustForCheckbox={false}
+                displaySelectAll={false}
+                selectable={false}
+              >
+                <TableRow className="TableRow">
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_id" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_title" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_channel" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_duration" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_requestby" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_platform" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="common.actions" />
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody displayRowCheckbox={false}>
+                {this.renderSongqueue()}
+              </TableBody>
+            </Table>
+          </TabPanel>
+          <TabPanel value={this.state.tabValue} index={1}>
+            <Table>
+              <TableHead
+                adjustForCheckbox={false}
+                displaySelectAll={false}
+                selectable={false}
+              >
+                <TableRow className="TableRow">
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_id" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_title" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_channel" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_duration" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_requestby" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="songrequest.table_platform" />
+                  </TableCell>
+                  <TableCell>
+                    <FormattedMessage id="common.actions" />
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody displayRowCheckbox={false}>
+                {this.renderSonghistory()}
+              </TableBody>
+            </Table>
+          </TabPanel>
         </Paper>}
         {this.state.openSongrequestSettings &&
           <SongrequestSettings
