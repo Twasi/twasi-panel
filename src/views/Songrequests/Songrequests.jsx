@@ -47,6 +47,7 @@ class Songrequests extends React.Component {
         provider: 1,
         requester: '',
         timestamp: Date.now(),
+        duration: '00:00',
         name: 'Kein Song in der Songliste',
         artists: '',
         media: 'https://f-scope.net/images/notlikethis-png.png'
@@ -67,7 +68,7 @@ class Songrequests extends React.Component {
           this.setState({ enableSpotifyAuth: enable });
       }, initialized: function (status) {
           // called when player initializes
-          console.log("Status: %s", JSON.stringify(status));
+          //console.log("Status: %s", JSON.stringify(status));
       }, pause: () => {
           // called when player pauses
           this.setState({ playback: false });
@@ -87,8 +88,9 @@ class Songrequests extends React.Component {
               features = ' feat. ' + features.join(' & ');
             this.setState({ song: {
               provider: song.provider,
-              requester: song.requester.displayName,
+              requester: song.requester ? song.requester.displayName : 'unknown',
               timestamp: song.timeStamp,
+              duration: song.duration,
               name: song.name,
               artist: song.artists[0] + features,
               media: song.covers[0]
@@ -98,6 +100,7 @@ class Songrequests extends React.Component {
               provider: 1,
               requester: '',
               timestamp: Date.now(),
+              duration: '00:00',
               name: 'Kein Song in der Songliste',
               artists: '',
               media: 'https://f-scope.net/images/notlikethis-png.png'
@@ -168,6 +171,12 @@ class Songrequests extends React.Component {
     });
   };
 
+  getDuration = (millis) => {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
   renderUnsupportedBrowser() {
     return (
       <Paper className="pageContainer" style={{ paddingTop: '1px', borderRadius: '0px 0px 4px 4px' }}>
@@ -194,8 +203,8 @@ class Songrequests extends React.Component {
         <TableCell>-</TableCell>
         <TableCell>{song.name}</TableCell>
         <TableCell>{song.artists[0]}</TableCell>
-        <TableCell>{song.duration}</TableCell>
-        <TableCell>{song.requester.displayName}</TableCell>
+        <TableCell>{this.getDuration(song.duration)}</TableCell>
+        <TableCell>{song.requester ? song.requester.displayName : 'unknown'}</TableCell>
         <TableCell>
           <div>
             <Tooltip title={song.provider === 1 ? 'Spotify' : 'Youtube'} placement="top">
@@ -339,7 +348,7 @@ class Songrequests extends React.Component {
                   </div>}
                 />
                 <Typography style={{ float: 'right', paddingTop: '4px' }} color="textPrimary">
-                  <small>00:00 / 00:00</small>
+                  <small>{this.getDuration(Math.round(this.state.song.duration / 100 * this.state.time))} / {this.getDuration(this.state.song.duration)}</small>
                 </Typography>
               </div>
             </Grid>

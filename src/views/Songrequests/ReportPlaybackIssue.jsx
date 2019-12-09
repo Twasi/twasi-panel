@@ -47,7 +47,8 @@ class SongrequestSettings extends React.Component {
             </h4>
             <small>
               Falls es Probleme mit der Wiedergabe der Songrequests gibt, kannst du hier dein Problem melden.<br/><br/>
-              Bitte versuche, bevor du ein Problem meldest, deinen Spotify Account neu zu verbinden. Du kannst deinen Spotify Account unter den Songrequest Einstellungen (Zahnrad) neu verbinden.
+              Bitte versuche, bevor du ein Problem meldest, deinen Spotify Account neu zu verbinden. Du kannst deinen Spotify Account unter den Songrequest Einstellungen (Zahnrad) neu verbinden.<br/><br/>
+              Desweiteren kann ein Reload der Seite helfen.
             </small>
           </Typography>
           <Card style={{ marginTop: '25px' }} className="pluginCard">
