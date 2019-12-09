@@ -133,10 +133,18 @@ class Songrequests extends React.Component {
 
   handleVolumeChange = (event, volume) => {
     this.setState({ volume });
-    window.TSRI.playback.setVolume(volume / 100)
+  };
+
+  handleVolumeSet = (event, time) => {
+    this.setState({ time });
+    window.TSRI.playback.seek(time / 100)
   };
 
   handleTimelineChange = (event, time) => {
+    this.setState({ time });
+  };
+
+  handleTimelineSet = (event, time) => {
     this.setState({ time });
     window.TSRI.playback.seek(time / 100)
   };
@@ -349,7 +357,8 @@ class Songrequests extends React.Component {
                     <Slider
                       disabled={window.TSRI.playback && !window.TSRI.playback.song}
                       value={time}
-                      onChangeCommitted={this.handleTimelineChange}
+                      onChange={this.handleTimelineChange}
+                      onChangeCommitted={this.handleTimelineSet}
                       valueLabelDisplay="off"/>
                   </div>}
                 />
@@ -380,6 +389,7 @@ class Songrequests extends React.Component {
                     <Slider
                       value={volume}
                       onChange={this.handleVolumeChange}
+                      onChangeCommitted={this.handleVolumeSet}
                       aria-labelledby="discrete-slider"
                       valueLabelDisplay="auto"/>
                   </div>}
