@@ -48,7 +48,7 @@ class Songrequests extends React.Component {
         requester: '',
         timestamp: Date.now(),
         duration: '00:00',
-        name: 'Kein Song in der Songliste',
+        name: <FormattedMessage id="songrequest.request.no_request" />,
         artists: '',
         media: 'https://f-scope.net/images/notlikethis-png.png'
       },
@@ -100,8 +100,8 @@ class Songrequests extends React.Component {
               provider: 1,
               requester: '',
               timestamp: Date.now(),
-              duration: '00:00',
-              name: 'Kein Song in der Songliste',
+              duration: 0,
+              name: <FormattedMessage id="songrequest.request.no_request" />,
               artists: '',
               media: 'https://f-scope.net/images/notlikethis-png.png'
             }})
@@ -111,9 +111,10 @@ class Songrequests extends React.Component {
           this.setState({ playback: false });
       }, volume: function (volume) {
           // called when volume changes
-          console.log("VOLUME: " + volume)
+          this.setState({ volume: volume * 100 });
       }, queueUpdate: (queue) => {
           // called when queue updates
+          queue.shift()
           songqueue = queue;
       }
     };
@@ -132,7 +133,7 @@ class Songrequests extends React.Component {
 
   handleVolumeChange = (event, volume) => {
     this.setState({ volume });
-    window.TSRI.playback.volume(volume)
+    window.TSRI.playback.setVolume(volume / 100)
   };
 
   handleTimelineChange = (event, time) => {
@@ -177,6 +178,12 @@ class Songrequests extends React.Component {
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
 
+  decodeHtml = (html) => {
+    var txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
   renderUnsupportedBrowser() {
     return (
       <Paper className="pageContainer" style={{ paddingTop: '1px', borderRadius: '0px 0px 4px 4px' }}>
@@ -201,7 +208,7 @@ class Songrequests extends React.Component {
     return songqueue.map(song => (
       <TableRow>
         <TableCell>-</TableCell>
-        <TableCell>{song.name}</TableCell>
+        <TableCell>{this.decodeHtml(song.name)}</TableCell>
         <TableCell>{song.artists[0]}</TableCell>
         <TableCell>{this.getDuration(song.duration)}</TableCell>
         <TableCell>{song.requester ? song.requester.displayName : 'unknown'}</TableCell>
@@ -287,7 +294,7 @@ class Songrequests extends React.Component {
               </div>
             </Grid>
             <Grid item xs zeroMinWidth>
-              <Typography color="textPrimary" noWrap>
+              <Typography color="textPrimary">
                 <h1 style={{ padding: '0px', margin: '0px', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
                   {this.state.song.name}
                 </h1>
@@ -300,13 +307,12 @@ class Songrequests extends React.Component {
                     <FormattedMessage id="songrequest.requestby" /> <b>{this.state.song.requester}</b><br/>
                     <FormattedMessage id="songrequest.request.at" /> {new Date(this.state.song.timestamp).toLocaleString()}<br/>
                     <FormattedMessage id="songrequest.request.provided_by" />{' '}
-                    {this.state.song.provider === 1 && 'spotify'}
-                    {this.state.song.provider === 2 && 'youtube'}
+                    {this.state.song.provider === 1 && <b>spotify</b>}
+                    {this.state.song.provider === 2 && <b>youtube</b>}
                   </em>
                   :
                   <em>
-                    Es befindet sich derzeit kein Song in der Songliste.<br/>
-                    Füge einen Song über den Chat hinzu, um die Wiedergabe zu starten.
+                    <FormattedMessage id="songrequest.request.no_request" />
                   </em>}
                 </small>
               </Typography>

@@ -495,9 +495,10 @@ export default {
 
   // Songrequests
   'songrequest.request.at': 'am',
-  'songrequest.request.provided_by': 'Zur Verfügung gestellt durch',
+  'songrequest.request.provided_by': 'über',
   'songrequest.request.block_user': 'Nutzer sperren',
   'songrequest.request.block_song': 'Song sperren',
+  'songrequest.request.no_request': 'Es befindet sich derzeit kein Song in der Songliste.\nFüge einen Song über den Chat hinzu, um die Wiedergabe zu starten.',
   'songrequest.requestby': 'Requestet von',
   'songrequest.table_id': 'ID',
   'songrequest.table_title': 'Titel',

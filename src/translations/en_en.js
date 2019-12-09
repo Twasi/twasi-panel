@@ -497,6 +497,7 @@ export default {
   'songrequest.request.provided_by': 'Provided by',
   'songrequest.request.block_user': 'Block user',
   'songrequest.request.block_song': 'Block song',
+  'songrequest.request.no_request': 'No songs in the Queue.\nAdd a song to start the playback.',
   'songrequest.requestby': 'Requested by',
   'songrequest.table_id': 'ID',
   'songrequest.table_title': 'Title',
