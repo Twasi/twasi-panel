@@ -18,8 +18,8 @@ import Grid from '@material-ui/core/Grid';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+//import Tabs from '@material-ui/core/Tabs';
+//import Tab from '@material-ui/core/Tab';
 
 import GivePLZ from '../common/resources/giveplz.png';
 
@@ -225,11 +225,18 @@ class Songrequests extends React.Component {
   renderSongqueue() {
     return songqueue.map(song => (
       <TableRow>
-        <TableCell>-</TableCell>
+        <TableCell></TableCell>
         <TableCell>{this.decodeHtml(song.name)}</TableCell>
         <TableCell>{song.artists[0]}</TableCell>
         <TableCell>{this.getDuration(song.duration)}</TableCell>
-        <TableCell>{song.requester ? song.requester.displayName : 'unknown'}</TableCell>
+        <TableCell>
+          <Chip
+            color="primary"
+            avatar={<Avatar style={{ width: '24px', height: '24px' }} alt="ticket_owner_avatar" src={song.requester && song.requester.avatar} />}
+            label={song.requester ? song.requester.displayName : 'unknown'}
+            style={{ marginRight: '5px' }}
+          />
+        </TableCell>
         <TableCell>
           <div>
             <Tooltip title={song.provider === 1 ? 'Spotify' : 'Youtube'} placement="top">
@@ -424,7 +431,7 @@ class Songrequests extends React.Component {
         </Typography>
         {isValidBrowser() &&
         <Paper className="pageContainer" style={{ padding: '0px', marginTop: '15px' }}>
-          <Tabs
+          {/*<Tabs
             indicatorColor="primary"
             textColor="primary"
             value={this.state.tabValue}
@@ -432,7 +439,7 @@ class Songrequests extends React.Component {
           >
             <Tab label={<FormattedMessage id="songrequest.tab.wishes" />} />
             <Tab label={<FormattedMessage id="songrequest.tab.history" />} />
-          </Tabs>
+          </Tabs>*/}
           <Table>
             <TableHead
               adjustForCheckbox={false}
