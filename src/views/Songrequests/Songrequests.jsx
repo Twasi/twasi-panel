@@ -38,14 +38,6 @@ import './_style.css';
 var songqueue = [];
 
 class Songrequests extends React.Component {
-  handleVolumeChange = (event, volume) => {
-    this.setState({ volume });
-  };
-
-  handleTimelineChange = (event, time) => {
-    this.setState({ time });
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -134,6 +126,16 @@ class Songrequests extends React.Component {
     history.push(value);
     this.setState({});
   }
+
+  handleVolumeChange = (event, volume) => {
+    this.setState({ volume });
+    window.TSRI.playback.volume(volume)
+  };
+
+  handleTimelineChange = (event, time) => {
+    this.setState({ time });
+    window.TSRI.playback.seek(time / 100)
+  };
 
   handleChangePlayback = () => {
     this.setState({ playback: !this.state.playback })
