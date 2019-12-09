@@ -245,7 +245,7 @@ class Songrequests extends React.Component {
   renderSongqueue() {
     return songqueue.map(song => (
       <TableRow>
-        <TableCell></TableCell>
+        <TableCell>{song.id}</TableCell>
         <TableCell>{this.decodeHtml(song.name)}</TableCell>
         <TableCell>{song.artists[0]}</TableCell>
         <TableCell>{this.getDuration(song.duration)}</TableCell>
@@ -268,7 +268,8 @@ class Songrequests extends React.Component {
             </Tooltip>
           </div>
         </TableCell>
-        <TableCell>
+        <TableCell style={{ textAlign: 'center' }}>
+          {/*
           <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
             <Fab
               className="noshadow"
@@ -279,6 +280,7 @@ class Songrequests extends React.Component {
               <Icon className="actionButtons">star</Icon>
             </Fab>
           </Tooltip>{' '}
+          */}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
             <Fab
               className="noshadow"
@@ -321,6 +323,7 @@ class Songrequests extends React.Component {
           </div>
         </TableCell>
         <TableCell>
+          {/*
           <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
             <Fab
               className="noshadow"
@@ -331,6 +334,7 @@ class Songrequests extends React.Component {
               <Icon className="actionButtons">star</Icon>
             </Fab>
           </Tooltip>{' '}
+          */}
           <Tooltip title={<FormattedMessage id="common.delete" />} placement="top">
             <Fab
               className="noshadow"
@@ -414,6 +418,7 @@ class Songrequests extends React.Component {
                 </small>
               </Typography>
             </Grid>
+            {/*
             <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
               <Button style={{ marginLeft: '15px', display: window.TSRI.playback && !window.TSRI.playback.song ? 'none' : '' }} color="secondary" variant="contained">
                 <FormattedMessage id="songrequest.request.block_song" />
@@ -422,10 +427,11 @@ class Songrequests extends React.Component {
                 <FormattedMessage id="songrequest.request.block_user" />
               </Button>
             </span>
+            */}
           </Grid>
           <Grid container spacing={3} className="songrequestsPlayer" style={{ padding: '23px 23px 10px 23px', position: 'relative', zIndex: '20' }}>
             <Grid item>
-              <Fab onClick={this.handleRevokePlayback} size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
+              <Fab disabled={window.TSRI.playback && window.TSRI.playback._history.length === 0} onClick={this.handleRevokePlayback} size="small" color="primary" aria-label="previous" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }}>
                 <Icon className="actionButtons">skip_previous</Icon>
               </Fab>
               <Fab disabled={window.TSRI.playback && !window.TSRI.playback.song} onClick={this.handleChangePlayback} size="small" style={{ margin: '0px 5px 0px 5px', boxShadow: 'none' }} color="primary" aria-label="play">

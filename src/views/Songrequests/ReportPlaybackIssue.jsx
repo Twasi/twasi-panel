@@ -22,6 +22,7 @@ class SongrequestSettings extends React.Component {
 
   handleSubmitIssue = (issue) => {
     window.TSRI.report(issue)
+    this.props.onClose(this.props.selectedValue);
   };
 
   handleIssueChange = (event) => {

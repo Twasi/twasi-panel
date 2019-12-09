@@ -8,9 +8,9 @@ import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Row, Col } from 'react-grid-system';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Slider from '@material-ui/core/Slider';
+//import Tabs from '@material-ui/core/Tabs';
+//import Tab from '@material-ui/core/Tab';
+//import Slider from '@material-ui/core/Slider';
 
 class SongrequestSettings extends React.Component {
 
@@ -57,6 +57,7 @@ class SongrequestSettings extends React.Component {
         scroll="body"
         {...other}
       >
+        {/*
         <Tabs
           value={this.state.tabValue}
           onChange={this.handleTabChange}
@@ -67,6 +68,7 @@ class SongrequestSettings extends React.Component {
           <Tab label={<FormattedMessage id="songrequest.settings.tab.blocked_songs" />} />
           <Tab label={<FormattedMessage id="songrequest.settings.tab.blocked_users" />} />
         </Tabs>
+        */}
         <DialogContent>
           <Typography component={"div"}>
             <h4 className="pageContainerTitle">
@@ -127,6 +129,7 @@ class SongrequestSettings extends React.Component {
               </Row>
             </CardContent>
           </Card>
+          {/*
           <Card style={{ marginTop: '25px' }} className="pluginCard">
             <CardContent className="pluginCardContent anim">
               <Row>
@@ -150,6 +153,7 @@ class SongrequestSettings extends React.Component {
               </Row>
             </CardContent>
           </Card>
+          */}
           <br />
           Wir ermöglichen die Wiedergabe von Songrequests über den Spotify Musikdienst und über YouTube.
           Bitte beachte, dass die Wiedergabe nicht-eigener Werke im eigenen Livestream eine Copyrightverletzung darstellen kann,
