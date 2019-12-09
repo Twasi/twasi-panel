@@ -6,5 +6,6 @@
 window.env = {
   ...window.env,
   AUTH_URL: 'https://api-beta.twasi.net/auth',
-  GRAPHQL_URL: 'https://api-beta.twasi.net/apis'
+  GRAPHQL_URL: 'https://api-beta.twasi.net/apis',
+  WEBSOCKET_URL: 'wss://api-beta.twasi.net/ws'
 };

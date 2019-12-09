@@ -148,7 +148,7 @@ class Songrequests extends React.Component {
   }
 
   componentDidMount() {
-    window.TSRI.init(this.props.jwt, 'wss://api-dev.twasi.net/ws', this.events);
+    window.TSRI.init(this.props.jwt, window.env.WEBSOCKET_URL, this.events);
   }
 
   handleClickBreadCrumb = (event, value) => {
