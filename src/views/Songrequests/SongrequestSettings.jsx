@@ -15,10 +15,12 @@ import Slider from '@material-ui/core/Slider';
 class SongrequestSettings extends React.Component {
 
   constructor(props) {
+    const { enableSpotifyAuth } = props;
     super(props);
     this.state = {
       tabValue: 0,
       songs_per_user: 5,
+      enableSpotify: enableSpotifyAuth
     };
   }
 
@@ -34,10 +36,12 @@ class SongrequestSettings extends React.Component {
 
   authenticateSpotify = () => {
     window.TSRI.spotifyAuth.init()
+    this.setState({ enableSpotify: false });
   }
 
   unAuthenticateSpotify = () => {
     window.TSRI.spotifyAuth.remove()
+    this.setState({ enableSpotify: true });
   }
 
   handleSongsPerUser = (event, songs_per_user) => {
@@ -46,7 +50,7 @@ class SongrequestSettings extends React.Component {
   };
 
   render() {
-    const { classes, onClose, enableSpotifyAuth, ...other } = this.props;
+    const { classes, onClose, ...other } = this.props;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -86,18 +90,18 @@ class SongrequestSettings extends React.Component {
                   </Typography>
                 </Col>
                 <Col style={{ textAlign: 'right' }} sm={4}>
-                  <Switch disabled={enableSpotifyAuth} checked={true} color="primary" />
+                  <Switch disabled={this.state.enableSpotify} checked={true} color="primary" />
                 </Col>
               </Row>
               <br/>
               <Row>
                 <Col sm={12}>
-                  {!enableSpotifyAuth &&
-                  <Button disabled={enableSpotifyAuth} onClick={this.unAuthenticateSpotify} color="secondary" variant="contained">
+                  {!this.state.enableSpotify &&
+                  <Button disabled={this.state.enableSpotify} onClick={this.unAuthenticateSpotify} color="secondary" variant="contained">
                     <FormattedMessage id="songrequest.settings.spotify.disconnect" />
                   </Button>}
-                  {enableSpotifyAuth &&
-                  <Button disabled={!enableSpotifyAuth} onClick={this.authenticateSpotify} color="primary" variant="contained">
+                  {this.state.enableSpotify &&
+                  <Button disabled={!this.state.enableSpotify} onClick={this.authenticateSpotify} color="primary" variant="contained">
                     <FormattedMessage id="songrequest.settings.spotify.connect" />
                   </Button>}
                 </Col>
