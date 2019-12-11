@@ -1,0 +1,69 @@
+#sr-mini-player, #sr-mini-player.retract:hover, #sr-mini-player.retract.youtube:hover {
+    opacity: 1;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 5000;
+    width: 520px;
+    min-width: 520px;
+    max-width: 520px;
+    overflow: hidden;
+    transition: all .45s cubic-bezier(.35, .09, .44, 1) .2s;
+    background-color: white;
+    color: #121212;
+}
+
+#sr-mini-player:not(.show) {
+    opacity: 0;
+    right: -450px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#sr-mini-player.youtube:not(.show) {
+    opacity: .75;
+    right: -165px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#sr-mini-player.retract {
+    opacity: .75;
+    right: -395px;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgba(0, 0, 0, 0);
+}
+
+#sr-mini-player.retract.youtube {
+    right: -320px;
+}
+
+#sr-mini-player:hover {
+    opacity: 1;
+}
+
+.mini-player-preview {
+    margin: 0 15px 0 0;
+    float: left;
+    transition: all .45s cubic-bezier(.35, .09, .44, 1) .2s;
+}
+
+#mini-player-infos {
+    display: inline-block;
+    transition: all .45s cubic-bezier(.35, .09, .44, 1) .2s;
+}
+
+#sr-mini-player.youtube-only #mini-player-infos {
+    opacity: 0;
+}
+
+#mp-song-title {
+    margin-top: 11px;
+    display: block;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+#mp-song-artist {
+    font-size: 1em;
+    display: block;
+    margin-top: 6px;
+}

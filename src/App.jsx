@@ -42,6 +42,7 @@ import germanData from 'react-intl/locale-data/de';
 import german from './translations/de_de';
 import englishData from 'react-intl/locale-data/en';
 import english from './translations/en_en';
+import SongRequestMiniPlayer from "./views/Songrequests/MiniPlayer/MiniPlayer";
 
 addLocaleData(germanData);
 addLocaleData(englishData);
@@ -121,6 +122,7 @@ const App = () => {
                   <Route path="/privacy" component={Privacy} />
                   <Route path="/" component={PanelContent} />
                 </Switch>
+                <SongRequestMiniPlayer/>
                 <Footer />
               </Content>
             </AuthLoader>
