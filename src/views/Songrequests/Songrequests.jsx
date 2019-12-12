@@ -366,6 +366,7 @@ class Songrequests extends React.Component {
                             height: '248px',
                             position: 'absolute',
                             backgroundImage: `url(${this.state.song.media})`,
+                            backgroundSize: 'contain',
                             opacity: '.1',
                             zIndex: '10'
                         }}
