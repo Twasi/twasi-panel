@@ -9,7 +9,6 @@
     max-width: 520px;
     overflow: hidden;
     transition: all .45s cubic-bezier(.35, .09, .44, 1) .2s;
-    background-color: white;
     color: #121212;
 }
 
@@ -59,11 +58,11 @@
     margin-top: 11px;
     display: block;
     font-weight: bold;
-    font-size: 1.25em;
+    font-size: 1em;
 }
 
 #mp-song-artist {
-    font-size: 1em;
+    font-size: 0.8em;
     display: block;
     margin-top: 6px;
 }

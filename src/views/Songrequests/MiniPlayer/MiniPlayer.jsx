@@ -1,5 +1,7 @@
 import "./_style.css";
 import * as React from "react";
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 class SongRequestMiniPlayer extends React.Component {
     constructor(props) {
@@ -26,38 +28,41 @@ class SongRequestMiniPlayer extends React.Component {
 
     render() {
         return (
-            <div
-                id={'sr-mini-player'}
-                className={
-                    (this.state.show ? 'show' : '') +
-                    (this.state.song && this.state.song.provider === 2 ? ' youtube' : '') +
-                    (this.state.retract ? ' retract' : '')
-                } playing
-                style={{display: 'flex'}}>
-                <iframe style={{display: this.state.song && this.state.song.provider === 2 ? '' : 'none'}}
-                        title="ytplayer"
-                        id="youtube-player"
-                        type="text/html"
-                        height={!this.state.show ? 200 : 100}
-                        width={!this.state.show ? 355 : 178}
-                        src="https://www.youtube.com/embed/?showinfo=0&controls=0&enablejsapi=1&autoplay=1"
-                        frameBorder="0"
-                        allow="autoplay"
-                        className={'mini-player-preview'}
-                />
-                <img style={{display: this.state.song && this.state.song.provider === 1 ? '' : 'none'}}
-                     height={100}
-                     width={'auto'}
-                     className={'mini-player-preview'}
-                     alt={'Song cover'}
-                     src={this.state.song && this.state.song.provider === 1 ? this.state.song.covers[0] : ''}/>
-                <div id={'mini-player-infos'}>
-                    <span id={'mp-song-title'}
-                          hidden={!this.state.song}>{this.state.song && this.state.song.name}</span>
-                    <span id={'mp-song-artist'}
-                          hidden={!this.state.song}>{this.state.song && this.state.song.formattedArtists}</span>
-                </div>
-            </div>
+                <Paper
+                  id={'sr-mini-player'}
+                  className={
+                      (this.state.show ? 'show' : '') +
+                      (this.state.song && this.state.song.provider === 2 ? ' youtube' : '') +
+                      (this.state.retract ? ' retract' : '')
+                  }
+                  playing
+                  style={{display: 'flex', padding: '0px'}}>
+                  <iframe style={{display: this.state.song && this.state.song.provider === 2 ? '' : 'none'}}
+                          title="ytplayer"
+                          id="youtube-player"
+                          type="text/html"
+                          height={!this.state.show ? 200 : 100}
+                          width={!this.state.show ? 355 : 178}
+                          src="https://www.youtube.com/embed/?showinfo=0&controls=0&enablejsapi=1&autoplay=1"
+                          frameBorder="0"
+                          allow="autoplay"
+                          className={'mini-player-preview'}
+                  />
+                  <img style={{display: this.state.song && this.state.song.provider === 1 ? '' : 'none'}}
+                       height={100}
+                       width={'auto'}
+                       className={'mini-player-preview'}
+                       alt={'Song cover'}
+                       src={this.state.song && this.state.song.provider === 1 ? this.state.song.covers[0] : ''}/>
+                  <Typography id={'mini-player-infos'}>
+                      <span id={'mp-song-title'} hidden={!this.state.song}>
+                        {this.state.song && this.state.song.name}
+                      </span>
+                      <span id={'mp-song-artist'} hidden={!this.state.song}>
+                        {this.state.song && this.state.song.formattedArtists}
+                      </span>
+                  </Typography>
+                </Paper>
         )
     }
 }
