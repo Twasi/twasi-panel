@@ -43,7 +43,7 @@ class LocalTSRIEventDistributor {
                 fire("spotifyAuth", enable);
             },
             queueUpdate: (queue, history) => {
-                console.log(queue);
+                //console.log(queue);
                 queue.forEach(e => e.formattedMaxPos = this.formatPosition(1, e.duration));
                 fire("queue", {queue, history});
             },

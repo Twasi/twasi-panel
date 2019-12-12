@@ -127,7 +127,9 @@ class Songrequests extends React.Component {
 
         const on = (event, handler) => window.TSRI.local.manager.eventDistributor.onChange(event, handler, "panel");
         on("spotifyAuth", enableSpotifyAuth => this.setState({enableSpotifyAuth}));
-        on("playState", playback => this.setState({playback}));
+        on("playState", playback => {
+            this.setState({playback})
+        });
         on("position", ({pos, formattedPos}) => {
           if(!this.state.changeTimelineSlider) {
             this.setState({pos, formattedPos})
