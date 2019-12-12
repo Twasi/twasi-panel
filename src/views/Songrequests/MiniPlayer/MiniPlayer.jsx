@@ -38,14 +38,14 @@ class SongRequestMiniPlayer extends React.Component {
         on("status", status => this.setState({status}));
         on("position", ({pos, formattedPos}) => this.setState({pos, formattedPos}));
         on("song", song => {
+            if (song && (!this.state.song || this.state.song.uri !== song.uri)) retract(this.state.show);
             this.setState({song});
-            if (song) retract(this.state.show);
         });
         on("playState", playing => this.setState({playing}));
         on("showMiniPlayer", show => {
             getPlayerPosition();
+            if (!this.state.show && show) retract(show);
             this.setState({show});
-            retract(show);
         });
     }
 
