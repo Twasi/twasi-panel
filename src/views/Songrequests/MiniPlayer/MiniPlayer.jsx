@@ -25,20 +25,27 @@ class SongRequestMiniPlayer extends React.Component {
     };
 
     componentDidMount() {
-        const on = (event, handler) => window.TSRI.local.manager.eventDistributor.onChange(event, handler, "miniplayer");
-        on("status", status => this.setState({status}));
-        on("position", ({pos, formattedPos}) => this.setState({pos, formattedPos}));
-        on("song", song => this.setState({song}));
-        on("playState", playing => this.setState({playing}));
         let retractTimeout;
-        on("showMiniPlayer", show => {
-            getPlayerPosition()
-            this.setState({show});
+        const retract = (show) => {
+            if (this.state.show) this.setState({retract: false});
             clearTimeout(retractTimeout);
             if (show) setTimeout(() => {
                 if (this.state.show) this.setState({retract: true})
             }, 2800);
             else this.setState({retract: false});
+        };
+        const on = (event, handler) => window.TSRI.local.manager.eventDistributor.onChange(event, handler, "miniplayer");
+        on("status", status => this.setState({status}));
+        on("position", ({pos, formattedPos}) => this.setState({pos, formattedPos}));
+        on("song", song => {
+            this.setState({song});
+            if (song) retract(this.state.show);
+        });
+        on("playState", playing => this.setState({playing}));
+        on("showMiniPlayer", show => {
+            getPlayerPosition();
+            this.setState({show});
+            retract(show);
         });
     }
 
@@ -47,7 +54,7 @@ class SongRequestMiniPlayer extends React.Component {
                 <Paper
                   id={'sr-mini-player'}
                   className={
-                      (this.state.show ? 'show' : '') +
+                      (this.state.show && this.state.song ? 'show' : '') +
                       (this.state.song && this.state.song.provider === 2 ? ' youtube' : '') +
                       (this.state.retract ? ' retract' : ' expanded')
                   }

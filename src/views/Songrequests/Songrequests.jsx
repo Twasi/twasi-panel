@@ -107,7 +107,7 @@ class Songrequests extends React.Component {
                         media: song.covers[0],
                         formattedMaxPos: song.formattedMaxPos
                     }
-                })
+                });
             } else {
                 this.setState({
                     song: {
@@ -143,7 +143,9 @@ class Songrequests extends React.Component {
     componentDidMount() {
         window.TSRI.init(this.props.jwt, window.env.WEBSOCKET_URL, window.TSRI.local.manager.eventDistributor.TSRIEvents);
 
-        const handle = ob => window.TSRI.local.manager.eventDistributor.fire("showMiniPlayer", ob.pathname !== "/songrequests");
+        const handle = ob => {
+            window.TSRI.local.manager.eventDistributor.fire("showMiniPlayer", ob.pathname !== "/songrequests");
+        };
 
         if (!window.TSRI.local.manager.unlisten)
             window.TSRI.local.manager.unlisten = this.props.history.listen(handle);

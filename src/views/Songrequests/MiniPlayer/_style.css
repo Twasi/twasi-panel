@@ -13,9 +13,9 @@
     color: #121212;
 }
 
-#sr-mini-player:not(.show) {
+#sr-mini-player:not(.show), #sr-mini-player.retract:not(.show) {
     opacity: 0;
-    right: -450px;
+    right: -450px !important;
 }
 
 #sr-mini-player.youtube:not(.show) {
