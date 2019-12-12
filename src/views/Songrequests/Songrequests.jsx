@@ -135,8 +135,9 @@ class Songrequests extends React.Component {
         });
         on("song", handleNewSong);
         on("queue", ({queue, history}) => {
-            queue.shift();
-            songqueue = queue;
+            const saveQueue = [...queue];
+            saveQueue.shift();
+            songqueue = saveQueue;
             songhistory = history;
         });
     }
