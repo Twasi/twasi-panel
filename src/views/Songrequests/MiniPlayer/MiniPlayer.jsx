@@ -33,7 +33,7 @@ class SongRequestMiniPlayer extends React.Component {
                   className={
                       (this.state.show ? 'show' : '') +
                       (this.state.song && this.state.song.provider === 2 ? ' youtube' : '') +
-                      (this.state.retract ? ' retract' : '')
+                      (this.state.retract ? ' retract' : ' expanded')
                   }
                   playing
                   style={{display: 'flex', padding: '0px'}}>
