@@ -523,6 +523,7 @@ export default {
   'songrequest.settings.songs_per_user.title': 'Songwünsche pro Nutzer:',
   'songrequest.settings.songs_per_user.helpertext': 'Wie viele Songs darf sich jeder Nutzer wünschen?',
   'songrequest.settings.tab.settings': 'Einstellungen',
+  'songrequest.settings.tab.balance': 'Balance',
   'songrequest.settings.tab.blocked_songs': 'Gesperrte Songs',
   'songrequest.settings.tab.blocked_users': 'Gesperrte Nutzer'
 };
