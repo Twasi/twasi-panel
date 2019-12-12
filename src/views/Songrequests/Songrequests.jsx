@@ -518,7 +518,7 @@ class Songrequests extends React.Component {
                                             onChange={this.handleVolumeChange}
                                             onChangeCommitted={this.handleVolumeSet}
                                             aria-labelledby="discrete-slider"
-                                            valueLabelDisplay="auto"/>
+                                            valueLabelDisplay="off"/>
                                     </div>}
                                 />
                                 {/* Settings */}
