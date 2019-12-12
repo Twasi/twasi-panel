@@ -72,10 +72,10 @@ class SongRequestMiniPlayer extends React.Component {
                        src={this.state.song && this.state.song.provider === 1 ? this.state.song.covers[0] : ''}/>
                   <Typography id={'mini-player-infos'}>
                       <span id={'mp-song-title'} hidden={!this.state.song}>
-                        {this.state.song && this.decodeHtml(this.state.song.name)}
+                        {this.state.song && this.state.song.name}
                       </span>
                       <span id={'mp-song-artist'} hidden={!this.state.song}>
-                        {this.state.song && this.decodeHtml(this.state.song.formattedArtists)}
+                        {this.state.song && this.state.song.formattedArtists}
                       </span>
                   </Typography>
                 </Paper>

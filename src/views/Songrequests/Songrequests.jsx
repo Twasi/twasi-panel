@@ -42,8 +42,9 @@ function getPlayerPosition() {
   let box = document.getElementById('songrequestsCoverImage').getBoundingClientRect();
   let player = document.getElementById('sr-mini-player');
   let playerInfo = document.getElementById('mini-player-infos');
+  var topDistance = box.top+window.scrollY
   player.style.position = 'absolute'
-  player.style.top = box.top+"px"
+  player.style.top = topDistance+"px"
   player.style.left = box.left+"px"
   playerInfo.style.display = 'none'
 }
@@ -242,7 +243,7 @@ class Songrequests extends React.Component {
         return songqueue.map(song => (
             <TableRow>
                 <TableCell>{song.id}</TableCell>
-                <TableCell>{this.decodeHtml(song.name)}</TableCell>
+                <TableCell>{song.name}</TableCell>
                 <TableCell>{song.artists[0]}</TableCell>
                 <TableCell>{song.formattedMaxPos}</TableCell>
                 <TableCell>
@@ -297,7 +298,7 @@ class Songrequests extends React.Component {
         return songhistory.map(song => (
             <TableRow>
                 <TableCell></TableCell>
-                <TableCell>{this.decodeHtml(song.name)}</TableCell>
+                <TableCell>{song.name}</TableCell>
                 <TableCell>{song.artists[0]}</TableCell>
                 <TableCell>{song.formattedMaxPos}</TableCell>
                 <TableCell>
@@ -401,7 +402,7 @@ class Songrequests extends React.Component {
                                     whiteSpace: 'nowrap',
                                     overflow: 'hidden'
                                 }}>
-                                    {this.decodeHtml(this.state.song.name)}
+                                    {this.state.song.name}
                                 </h1>
                                 <h3 style={{padding: '0px', margin: '0px'}}>
                                     {this.state.song.artist}
