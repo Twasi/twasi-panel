@@ -56,7 +56,11 @@
     opacity: 1;
 }
 
+<<<<<<< HEAD
 #sr-mini-player.youtube:not(.show) > #mini-player-infos {
+=======
+#sr-mini-player.youtube:not(.show) #mini-player-infos {
+>>>>>>> e17d8729cb6c3f9261f50efae2c01a8a47df70f8
     opacity: 0;
 }
 
