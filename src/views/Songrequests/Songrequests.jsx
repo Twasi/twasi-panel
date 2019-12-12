@@ -142,6 +142,9 @@ class Songrequests extends React.Component {
             songqueue = saveQueue;
             songhistory = history;
         });
+        on("settings", settings => {
+            this.setState({volume: settings.volume * 100});
+        });
     }
 
     componentDidMount() {
