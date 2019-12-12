@@ -50,7 +50,7 @@
     transition: all .45s cubic-bezier(.35, .09, .44, 1) .2s;
 }
 
-#sr-mini-player.youtube-only #mini-player-infos {
+#sr-mini-player.youtube:not(.show) #mini-player-infos {
     opacity: 0;
 }
 
