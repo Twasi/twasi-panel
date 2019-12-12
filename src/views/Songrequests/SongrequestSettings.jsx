@@ -86,21 +86,19 @@ class SongrequestSettings extends React.Component {
       this.setState({changeBalanceSlider: false});
   };
 
-  handleChangeSpotifyPlayback = () => {
+  handleChangeSpotifyPlayback = async () => {
       this.setState({spotifyplayback: !this.state.spotifyplayback})
       if (!this.state.spotifyplayback) {
-          //play
-      } else {
-          //pause
+          await window.TSRI.playback.spotify.preview();
+          this.setState({spotifyplayback: !this.state.spotifyplayback})
       }
   };
 
-  handleChangeYoutubePlayback = () => {
+  handleChangeYoutubePlayback = async () => {
       this.setState({youtubeplayback: !this.state.youtubeplayback})
       if (!this.state.youtubeplayback) {
-          //play
-      } else {
-          //pause
+        await window.TSRI.playback.youtube.preview();
+        this.setState({spotifyplayback: !this.state.spotifyplayback})
       }
   };
 

@@ -48,6 +48,7 @@ class LocalTSRIEventDistributor {
                 fire("queue", {queue, history});
             },
             settingsUpdate: settings => {
+              if(!settings) return;
                 fire("settings", settings);
             }
         };

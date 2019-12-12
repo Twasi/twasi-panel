@@ -81,8 +81,8 @@ class Songrequests extends React.Component {
                 artists: '',
                 media: 'https://f-scope.net/images/notlikethis-png.png'
             },
-            volume: 60,
             time: 0, // timeline
+            volume: 0,
             changeTimelineSlider: false,
             changeVolumeSlider: false,
             playback: false,
@@ -94,7 +94,7 @@ class Songrequests extends React.Component {
             }
         };
 
-        const handleNewSong = (song) => {
+        this.handleNewSong = (song) => {
             // called when new song data is available
             if (song !== null) {
                 this.setState({
@@ -124,27 +124,6 @@ class Songrequests extends React.Component {
                 })
             }
         };
-
-        const on = (event, handler) => window.TSRI.local.manager.eventDistributor.onChange(event, handler, "panel");
-        on("spotifyAuth", enableSpotifyAuth => this.setState({enableSpotifyAuth}));
-        on("playState", playback => {
-            this.setState({playback})
-        });
-        on("position", ({pos, formattedPos}) => {
-          if(!this.state.changeTimelineSlider) {
-            this.setState({pos, formattedPos})
-          }
-        });
-        on("song", handleNewSong);
-        on("queue", ({queue, history}) => {
-            const saveQueue = [...queue];
-            saveQueue.shift();
-            songqueue = saveQueue;
-            songhistory = history;
-        });
-        on("settings", settings => {
-            this.setState({volume: settings.volume * 100});
-        });
     }
 
     componentDidMount() {
@@ -156,6 +135,27 @@ class Songrequests extends React.Component {
 
         if (!window.TSRI.local.manager.unlisten)
             window.TSRI.local.manager.unlisten = this.props.history.listen(handle);
+
+        const on = (event, handler) => window.TSRI.local.manager.eventDistributor.onChange(event, handler, "panel");
+        on("spotifyAuth", enableSpotifyAuth => this.setState({enableSpotifyAuth}));
+        on("playState", playback => {
+            this.setState({playback})
+        });
+        on("position", ({pos, formattedPos}) => {
+          if(!this.state.changeTimelineSlider) {
+            this.setState({pos, formattedPos})
+          }
+        });
+        on("song", this.handleNewSong);
+        on("queue", ({queue, history}) => {
+            const saveQueue = [...queue];
+            saveQueue.shift();
+            songqueue = saveQueue;
+            songhistory = history;
+        });
+        on("settings", settings => {
+            this.setState({volume: settings.volume * 100});
+        });
     }
 
     componentDidUpdate() {
@@ -358,7 +358,6 @@ class Songrequests extends React.Component {
     }
 
     render() {
-        const {volume} = this.state;
         return (
             <div className="pageContent">
                 <Breadcrumbs arial-label="Breadcrumb">
@@ -499,11 +498,11 @@ class Songrequests extends React.Component {
                                     avatar={
                                         <Avatar style={{backgroundColor: 'transparent'}}>
                                             <Icon>
-                                                {volume === 0 && 'volume_off'}
-                                                {volume >= 1 && volume <= 33 && 'volume_mute'}
-                                                {volume >= 34 && volume <= 66 && 'volume_down'}
-                                                {volume >= 67 && volume <= 99 && 'volume_up'}
-                                                {volume === 100 &&
+                                                {this.state.volume === 0 && 'volume_off'}
+                                                {this.state.volume >= 1 && this.state.volume <= 33 && 'volume_mute'}
+                                                {this.state.volume >= 34 && this.state.volume <= 66 && 'volume_down'}
+                                                {this.state.volume >= 67 && this.state.volume <= 99 && 'volume_up'}
+                                                {this.state.volume === 100 &&
                                                 <img alt="volume_max" src={gachiHYPER} height="24px"/>}
                                             </Icon>
                                         </Avatar>
@@ -514,7 +513,7 @@ class Songrequests extends React.Component {
                                         width: '100px'
                                     }}>
                                         <Slider
-                                            value={volume}
+                                            value={this.state.volume}
                                             onChange={this.handleVolumeChange}
                                             onChangeCommitted={this.handleVolumeSet}
                                             aria-labelledby="discrete-slider"
