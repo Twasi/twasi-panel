@@ -5,6 +5,7 @@
     right: 10px;
     z-index: 5000;
     width: 520px;
+    height: auto;
     min-width: 520px;
     max-width: 520px;
     overflow: hidden;

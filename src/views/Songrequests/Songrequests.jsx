@@ -118,8 +118,9 @@ class Songrequests extends React.Component {
         on("spotifyAuth", enableSpotifyAuth => this.setState({enableSpotifyAuth}));
         on("playState", playback => this.setState({playback}));
         on("position", ({pos, formattedPos}) => {
-            pos=pos*100
+          if(!this.state.changeTimelineSlider) {
             this.setState({pos, formattedPos})
+          }
         });
         on("song", handleNewSong);
         on("queue", ({queue, history}) => {
@@ -155,15 +156,15 @@ class Songrequests extends React.Component {
         window.TSRI.playback.setVolume(volume / 100)
     };
 
-    handleTimelineChange = (event, time) => {
-        this.setState({time});
+    handleTimelineChange = (event, pos) => {
+        this.setState({pos: pos/100})
         this.setState({changeTimelineSlider: true});
     };
 
-    handleTimelineSet = (event, time) => {
-        this.setState({time});
+    handleTimelineSet = (event, pos) => {
+        this.setState({pos: pos/100})
         this.setState({changeTimelineSlider: false});
-        window.TSRI.playback.seek(time / 100)
+        window.TSRI.playback.seek(pos / 100)
     };
 
     handleChangePlayback = () => {
@@ -447,7 +448,7 @@ class Songrequests extends React.Component {
                                     }}>
                                         <Slider
                                             disabled={window.TSRI.playback && !window.TSRI.playback.song}
-                                            value={this.state.pos}
+                                            value={this.state.pos*100}
                                             onChange={this.handleTimelineChange}
                                             onChangeCommitted={this.handleTimelineSet}
                                             valueLabelDisplay="off"/>
