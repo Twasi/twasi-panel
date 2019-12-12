@@ -117,7 +117,10 @@ class Songrequests extends React.Component {
         const on = (event, handler) => window.TSRI.local.manager.eventDistributor.onChange(event, handler, "panel");
         on("spotifyAuth", enableSpotifyAuth => this.setState({enableSpotifyAuth}));
         on("playState", playback => this.setState({playback}));
-        on("position", ({pos, formattedPos}) => this.setState({pos, formattedPos}));
+        on("position", ({pos, formattedPos}) => {
+            pos=pos*100
+            this.setState({pos, formattedPos})
+        });
         on("song", handleNewSong);
         on("queue", ({queue, history}) => {
             queue.shift();
@@ -381,7 +384,7 @@ class Songrequests extends React.Component {
                                 <small style={{position: 'absolute', bottom: '30px'}}>
                                     {window.TSRI.playback && window.TSRI.playback.song ?
                                         <em>
-                                            <FormattedMessage id="songrequest.requestby"/>
+                                            <FormattedMessage id="songrequest.requestby"/>{' '}
                                             <b>{this.state.song.requester}</b><br/>
                                             <FormattedMessage
                                                 id="songrequest.request.at"/> {new Date(this.state.song.timestamp).toLocaleString()}<br/>
@@ -444,7 +447,7 @@ class Songrequests extends React.Component {
                                     }}>
                                         <Slider
                                             disabled={window.TSRI.playback && !window.TSRI.playback.song}
-                                            value={this.state.pos * 100}
+                                            value={this.state.pos}
                                             onChange={this.handleTimelineChange}
                                             onChangeCommitted={this.handleTimelineSet}
                                             valueLabelDisplay="off"/>

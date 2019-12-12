@@ -9,6 +9,12 @@ class SongRequestMiniPlayer extends React.Component {
         this.state = {big: true}
     }
 
+    decodeHtml = (html) => {
+        var txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
+
     componentDidMount() {
         const on = (event, handler) => window.TSRI.local.manager.eventDistributor.onChange(event, handler, "miniplayer");
         on("status", status => this.setState({status}));
@@ -56,10 +62,10 @@ class SongRequestMiniPlayer extends React.Component {
                        src={this.state.song && this.state.song.provider === 1 ? this.state.song.covers[0] : ''}/>
                   <Typography id={'mini-player-infos'}>
                       <span id={'mp-song-title'} hidden={!this.state.song}>
-                        {this.state.song && this.state.song.name}
+                        {this.state.song && this.decodeHtml(this.state.song.name)}
                       </span>
                       <span id={'mp-song-artist'} hidden={!this.state.song}>
-                        {this.state.song && this.state.song.formattedArtists}
+                        {this.state.song && this.decodeHtml(this.state.song.formattedArtists)}
                       </span>
                   </Typography>
                 </Paper>
