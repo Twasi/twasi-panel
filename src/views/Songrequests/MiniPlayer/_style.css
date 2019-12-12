@@ -5,11 +5,11 @@
     right: 10px;
     z-index: 5000;
     width: 520px;
-    height: auto;
+    height: fit-content;
     min-width: 520px;
     max-width: 520px;
     overflow: hidden;
-    transition: all .45s cubic-bezier(.35, .09, .44, 1) .2s;
+    transition: all .45s cubic-bezier(.35, .09, .44, 1) .1s;
     color: #121212;
 }
 
@@ -19,7 +19,7 @@
 }
 
 #sr-mini-player.youtube:not(.show) {
-    opacity: .75;
+    opacity: 1;
     right: -207px;
     background-color: transparent;
 }
@@ -36,12 +36,11 @@
 .mini-player-preview {
     margin: 0 15px 0 0;
     float: left;
-    transition: all .45s cubic-bezier(.35, .09, .44, 1) .2s;
 }
 
 #mini-player-infos {
     display: inline-block;
-    transition: all .45s cubic-bezier(.35, .09, .44, 1) .2s;
+    transition: all .45s cubic-bezier(.35, .09, .44, 1) .1s;
     opacity: 0;
 }
 

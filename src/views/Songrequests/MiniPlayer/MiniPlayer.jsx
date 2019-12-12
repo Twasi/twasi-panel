@@ -3,6 +3,15 @@ import * as React from "react";
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+function getPlayerPosition() {
+  let player = document.getElementById('sr-mini-player');
+  let playerInfo = document.getElementById('mini-player-infos');
+  player.style.position = 'fixed'
+  player.style.top = ''
+  player.style.left = ''
+  playerInfo.style.display = ''
+}
+
 class SongRequestMiniPlayer extends React.Component {
     constructor(props) {
         super(props);
@@ -23,6 +32,7 @@ class SongRequestMiniPlayer extends React.Component {
         on("playState", playing => this.setState({playing}));
         let retractTimeout;
         on("showMiniPlayer", show => {
+            getPlayerPosition()
             this.setState({show});
             clearTimeout(retractTimeout);
             if (show) setTimeout(() => {

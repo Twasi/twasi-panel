@@ -38,6 +38,16 @@ import './_style.css';
 var songqueue = [];
 var songhistory = [];
 
+function getPlayerPosition() {
+  let box = document.getElementById('songrequestsCoverImage').getBoundingClientRect();
+  let player = document.getElementById('sr-mini-player');
+  let playerInfo = document.getElementById('mini-player-infos');
+  player.style.position = 'absolute'
+  player.style.top = box.top+"px"
+  player.style.left = box.left+"px"
+  playerInfo.style.display = 'none'
+}
+
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
 
@@ -137,6 +147,10 @@ class Songrequests extends React.Component {
 
         if (!window.TSRI.local.manager.unlisten)
             window.TSRI.local.manager.unlisten = this.props.history.listen(handle);
+    }
+
+    componentDidUpdate() {
+      getPlayerPosition()
     }
 
     handleClickBreadCrumb = (event, value) => {
@@ -359,12 +373,21 @@ class Songrequests extends React.Component {
                     </div>
                     <Grid container spacing={3} style={{padding: '12px 23px', position: 'relative', zIndex: '20'}}>
                         <Grid item>
-                            <div className="songrequestsCoverImage">
+                            <div id="songrequestsCoverImage" className="songrequestsCoverImage">
+                              {this.state.song.provider === 1 &&
                                 <img
                                     src={this.state.song.media}
                                     alt="albumcover"
                                     style={{height: '200px', width: '200px'}}
                                 />
+                              }
+                              {this.state.song.provider === 2 &&
+                                <img
+                                    src={this.state.song.media}
+                                    alt="albumcover"
+                                    style={{height: '200px', width: '355px'}}
+                                />
+                              }
                                 <span id={"player-position"}/>
                             </div>
                         </Grid>
