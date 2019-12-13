@@ -268,7 +268,7 @@ class Songrequests extends React.Component {
                         style={{marginRight: '5px'}}
                     />
                 </TableCell>
-                <TableCell>
+                <TableCell style={{ textAlign: 'center' }}>
                     <div>
                         <Tooltip title={song.provider === 1 ? 'Spotify' : 'Youtube'} placement="top">
                             <img
@@ -570,7 +570,7 @@ class Songrequests extends React.Component {
                                     <TableCell>
                                         <FormattedMessage id="songrequest.table_requestby"/>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell style={{ textAlign: 'center' }}>
                                         <FormattedMessage id="songrequest.table_platform"/>
                                     </TableCell>
                                     <TableCell>
