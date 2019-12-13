@@ -60,6 +60,7 @@ class SongRequestMiniPlayer extends React.Component {
                   }
                   playing
                   style={{display: 'flex', padding: '0px'}}>
+                  <div style={{ position: 'absolute', display: this.state.song && this.state.song.provider === 2 ? '' : 'none', height: !this.state.show ? 200 : 100, width: !this.state.show ? 355 : 178 }}/>
                   <iframe style={{display: this.state.song && this.state.song.provider === 2 ? '' : 'none'}}
                           title="ytplayer"
                           id="youtube-player"
