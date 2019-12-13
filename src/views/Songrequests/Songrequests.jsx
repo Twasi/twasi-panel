@@ -75,6 +75,7 @@ class Songrequests extends React.Component {
             openSongrequestSettings: false,
             openReportPlaybackIssue: false,
             song: {
+                url: '',
                 provider: 1,
                 requester: '',
                 timestamp: Date.now(),
@@ -101,6 +102,7 @@ class Songrequests extends React.Component {
             if (song !== null) {
                 this.setState({
                     song: {
+                        url: song.url,
                         provider: song.provider,
                         requester: song.requester ? song.requester.displayName : 'unknown',
                         timestamp: song.timeStamp,
@@ -114,6 +116,7 @@ class Songrequests extends React.Component {
             } else {
                 this.setState({
                     song: {
+                        url: '',
                         provider: 1,
                         requester: '',
                         timestamp: Date.now(),
@@ -417,8 +420,8 @@ class Songrequests extends React.Component {
                                             <FormattedMessage
                                                 id="songrequest.request.at"/> {new Date(this.state.song.timestamp).toLocaleString()}<br/>
                                             <FormattedMessage id="songrequest.request.provided_by"/>{' '}
-                                            {this.state.song.provider === 1 && <b>spotify</b>}
-                                            {this.state.song.provider === 2 && <b>youtube</b>}
+                                            {this.state.song.provider === 1 && <b>Spotify</b>}
+                                            {this.state.song.provider === 2 && <b>YouTube</b>}
                                         </em>
                                         :
                                         <em>
@@ -427,6 +430,14 @@ class Songrequests extends React.Component {
                                 </small>
                             </Typography>
                         </Grid>
+                        <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
+                          <Button onClick={() => {
+                            localStorage.clear();
+                            window.open(this.state.song.url, '_blank');
+                          }}>
+                            Zum Song
+                          </Button>
+                        </span>
                         {/*
                         <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
                           <Button style={{ marginLeft: '15px', display: window.TSRI.playback && !window.TSRI.playback.song ? 'none' : '' }} color="secondary" variant="contained">
