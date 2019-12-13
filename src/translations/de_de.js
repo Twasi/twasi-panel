@@ -82,6 +82,7 @@ export default {
   'sidebar.quotes': 'Zitate',
   'sidebar.votings': 'Umfragen',
   'sidebar.chatfilter': 'Chatfilter',
+  'sidebar.chatlog': 'Chatlog',
   'sidebar.support': 'Support',
   'sidebar.userfeedback': 'User Feedback',
   'sidebar.navigation_headline': 'Navigation',

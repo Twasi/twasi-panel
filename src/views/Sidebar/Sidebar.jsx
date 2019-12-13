@@ -114,6 +114,13 @@ class Sidebar extends Component {
         shown: 'none'
       },
       {
+        key: 'chatlog',
+        path: '/chatlog',
+        icon: 'policy',
+        name: 'sidebar.chatlog',
+        shown: 'none'
+      },
+      {
         key: 'urlshortener',
         path: '/urlshortener',
         icon: 'link',
