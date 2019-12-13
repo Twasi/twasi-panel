@@ -4,10 +4,6 @@
     bottom: 10px;
     right: 10px;
     z-index: 1000;
-    width: 520px;
-    height: fit-content;
-    min-width: 520px;
-    max-width: 520px;
     overflow: hidden;
     transition: all .45s cubic-bezier(.35, .09, .44, 1) .1s;
     color: #121212;
@@ -29,12 +25,25 @@
     right: -395px;
 }
 
+#sr-mini-player.hide {
+    width: 355px !important;
+    min-width: 355px !important;
+    max-width: 355px !important;
+    height: 200px;
+}
+
+#sr-mini-player.show {
+    width: 520px;
+    min-width: 520px;
+    max-width: 520px;
+}
+
 #sr-mini-player.retract.youtube {
     right: -320px;
 }
 
 .mini-player-preview {
-    margin: 0 15px 0 0;
+    margin: 0 0 0 0;
     float: left;
 }
 
@@ -50,6 +59,7 @@
 
 #sr-mini-player > #mini-player-infos {
     opacity: 0;
+    margin-left: 15px;
 }
 
 #sr-mini-player.expanded > #mini-player-infos {
