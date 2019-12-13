@@ -139,7 +139,9 @@ class Songrequests extends React.Component {
             window.TSRI.local.manager.unlisten = this.props.history.listen(handle);
 
         const on = (event, handler) => window.TSRI.local.manager.eventDistributor.onChange(event, handler, "panel");
-        on("spotifyAuth", enableSpotifyAuth => this.setState({enableSpotifyAuth}));
+        on("spotifyAuth", enableSpotifyAuth => {
+            this.setState({enableSpotifyAuth: enableSpotifyAuth});
+        });
         on("playState", playback => {
             this.setState({playback})
         });
@@ -357,6 +359,8 @@ class Songrequests extends React.Component {
                     </Link>
                     <Typography color="textPrimary"><FormattedMessage id="sidebar.songrequests"/></Typography>
                 </Breadcrumbs>
+                {isValidBrowser() && this.state.enableSpotifyAuth &&
+                <Chip style={{ marginTop: '15px' }} color="primary" label="Du möchtest Spotify Requests aktivieren? Klicke auf das Zahnrad und verbinde deinen Spotify Account." />}
                 {isValidBrowser() &&
                 <Paper className="pageContainer" style={{padding: '0px', position: 'relative'}}>
                     <div

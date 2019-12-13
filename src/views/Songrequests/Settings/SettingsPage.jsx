@@ -12,25 +12,24 @@ class SettingsPage extends Component {
 
   constructor(props) {
     const { enableSpotifyAuth, settings } = props;
-    console.log(settings)
     super(props);
     this.state = {
       songs_per_broadcaster: settings.maxRequests.BROADCASTER === -1 ? 11 : settings.maxRequests.BROADCASTER,
       songs_per_mod: settings.maxRequests.MODERATOR === -1 ? 11 : settings.maxRequests.MODERATOR,
       songs_per_sub: settings.maxRequests.SUBSCRIBERS === -1 ? 11 : settings.maxRequests.SUBSCRIBERS,
       songs_per_viewer: settings.maxRequests.VIEWER === -1 ? 11 : settings.maxRequests.VIEWER,
-      enableSpotify: enableSpotifyAuth,
+      enableSpotifyAuth: enableSpotifyAuth,
     };
   }
 
   authenticateSpotify = () => {
     window.TSRI.spotifyAuth.init()
-    this.setState({ enableSpotify: false });
+    this.setState({ enableSpotifyAuth: false });
   }
 
   unAuthenticateSpotify = () => {
     window.TSRI.spotifyAuth.remove()
-    this.setState({ enableSpotify: true });
+    this.setState({ enableSpotifyAuth: true });
   }
 
   handleSongsPerBroadcaster = (event, songs_per_broadcaster) => {
@@ -110,18 +109,18 @@ class SettingsPage extends Component {
                 </Typography>
               </Col>
               <Col style={{ textAlign: 'right' }} sm={4}>
-                <Switch disabled={this.state.enableSpotify} checked={true} color="primary" />
+                <Switch disabled={this.state.enableSpotifyAuth} checked={true} color="primary" />
               </Col>
             </Row>
             <br/>
             <Row>
               <Col sm={12}>
-                {!this.state.enableSpotify &&
-                <Button disabled={this.state.enableSpotify} onClick={this.unAuthenticateSpotify} color="secondary" variant="contained">
+                {!this.state.enableSpotifyAuth &&
+                <Button disabled={this.state.enableSpotifyAuth} onClick={this.unAuthenticateSpotify} color="secondary" variant="contained">
                   <FormattedMessage id="songrequest.settings.spotify.disconnect" />
                 </Button>}
-                {this.state.enableSpotify &&
-                <Button disabled={!this.state.enableSpotify} onClick={this.authenticateSpotify} color="primary" variant="contained">
+                {this.state.enableSpotifyAuth &&
+                <Button disabled={!this.state.enableSpotifyAuth} onClick={this.authenticateSpotify} color="primary" variant="contained">
                   <FormattedMessage id="songrequest.settings.spotify.connect" />
                 </Button>}
               </Col>

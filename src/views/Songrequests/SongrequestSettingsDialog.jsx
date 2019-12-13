@@ -47,7 +47,7 @@ class SongrequestSettings extends React.Component {
   };
 
   render() {
-    const { classes, onClose, settings, enableSpotify, ...other } = this.props;
+    const { classes, onClose, settings, enableSpotifyAuth, ...other } = this.props;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -65,7 +65,7 @@ class SongrequestSettings extends React.Component {
         </Tabs>
         <DialogContent>
           <TabPanel value={this.state.tabValue} index={0}>
-            <SettingsPage settings={settings} enableSpotify={enableSpotify}/>
+            <SettingsPage settings={settings} enableSpotifyAuth={enableSpotifyAuth}/>
           </TabPanel>
           <TabPanel value={this.state.tabValue} index={1}>
             <BalancePage/>
