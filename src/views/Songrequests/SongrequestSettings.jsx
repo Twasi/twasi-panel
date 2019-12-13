@@ -269,17 +269,17 @@ class SongrequestSettings extends React.Component {
                     <Grid item xs={6} style={{ textAlign: 'left' }}>
                       <Icon>
                           {this.state.balance === 0 && <img alt="volume_max" src={gachiHYPER} height="24px"/>}
-                          {this.state.balance >= 0 && this.state.balance <= 0.3 && 'volume_up'}
-                          {this.state.balance >= 0.3 && this.state.balance <= 0.6 && 'volume_down'}
-                          {this.state.balance >= 0.6 && this.state.balance <= 1 && 'volume_mute'}
+                          {this.state.balance >= 0 && this.state.balance <= 0.4 && 'volume_up'}
+                          {this.state.balance >= 0.4 && this.state.balance <= 0.7 && 'volume_down'}
+                          {this.state.balance >= 0.7 && this.state.balance <= 1 && 'volume_mute'}
                       </Icon>
                     </Grid>
                     <Grid item xs={6} style={{ textAlign: 'right' }}>
                       <Icon>
                           {this.state.balance === 1 && <img alt="volume_max" src={gachiHYPER} height="24px"/>}
-                          {this.state.balance >= 0 && this.state.balance <= 0.3 && 'volume_mute'}
-                          {this.state.balance >= 0.3 && this.state.balance <= 0.6 && 'volume_down'}
-                          {this.state.balance >= 0.6 && this.state.balance <= 1 && 'volume_up'}
+                        {this.state.balance >= 0.6 && this.state.balance <= 1 && 'volume_up'}
+                        {this.state.balance >= 0.3 && this.state.balance <= 0.6 && 'volume_down'}
+                        {this.state.balance >= 0 && this.state.balance <= 0.3 && 'volume_mute'}
                       </Icon>
                     </Grid>
                   </Grid>
