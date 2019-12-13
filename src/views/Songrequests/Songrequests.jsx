@@ -66,6 +66,8 @@ function TabPanel(props) {
     );
 }
 
+var songrequestSettings = "";
+
 class Songrequests extends React.Component {
     constructor(props) {
         super(props);
@@ -154,6 +156,7 @@ class Songrequests extends React.Component {
             songhistory = history;
         });
         on("settings", settings => {
+            songrequestSettings = settings;
             this.setState({volume: settings.volume * 100});
         });
     }
@@ -330,18 +333,6 @@ class Songrequests extends React.Component {
                     </div>
                 </TableCell>
                 <TableCell>
-                    {/*
-          <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
-            <Fab
-              className="noshadow"
-              color="primary"
-              size="small"
-              aria-label="favSong"
-            >
-              <Icon className="actionButtons">star</Icon>
-            </Fab>
-          </Tooltip>{' '}
-          */}
                     <Tooltip title={<FormattedMessage id="common.delete"/>} placement="top">
                         <Fab
                             className="noshadow"
@@ -433,15 +424,15 @@ class Songrequests extends React.Component {
                             </Typography>
                         </Grid>
                         {/*
-            <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
-              <Button style={{ marginLeft: '15px', display: window.TSRI.playback && !window.TSRI.playback.song ? 'none' : '' }} color="secondary" variant="contained">
-                <FormattedMessage id="songrequest.request.block_song" />
-              </Button>
-              <Button style={{ marginLeft: '15px', display: window.TSRI.playback && !window.TSRI.playback.song ? 'none' : '' }} color="secondary" variant="contained">
-                <FormattedMessage id="songrequest.request.block_user" />
-              </Button>
-            </span>
-            */}
+                        <span style={{ position: 'absolute', right: '33px', bottom: '23px' }}>
+                          <Button style={{ marginLeft: '15px', display: window.TSRI.playback && !window.TSRI.playback.song ? 'none' : '' }} color="secondary" variant="contained">
+                            <FormattedMessage id="songrequest.request.block_song" />
+                          </Button>
+                          <Button style={{ marginLeft: '15px', display: window.TSRI.playback && !window.TSRI.playback.song ? 'none' : '' }} color="secondary" variant="contained">
+                            <FormattedMessage id="songrequest.request.block_user" />
+                          </Button>
+                        </span>
+                        */}
                     </Grid>
                     <Grid container spacing={3} className="songrequestsPlayer"
                           style={{padding: '23px 23px 10px 23px', position: 'relative', zIndex: '20'}}>
@@ -628,6 +619,7 @@ class Songrequests extends React.Component {
                 {this.state.openSongrequestSettings &&
                 <SongrequestSettings
                     open
+                    settings={songrequestSettings}
                     enableSpotifyAuth={this.state.enableSpotifyAuth}
                     onClose={this.handleCloseSongrequestSettings}
                 />
