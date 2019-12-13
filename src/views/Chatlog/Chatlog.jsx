@@ -15,6 +15,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import Fab from '@material-ui/core/Fab';
+import TextField from '@material-ui/core/TextField';
 
 import './_style.css';
 
@@ -99,44 +101,60 @@ class Chatlog extends Component {
           </Grid>
         </Paper>
         <Grid container spacing={4}>
-          <Grid item sm={6}>
+          <Grid item sm={12}>
             <Paper className="pageContainer">
-              <Typography component={'div'}>
-                <h4 className="pageContainerTitle">
-                  Chatlog
-                </h4>
-                <small>
-                  Chatlog deines Chats
-                </small>
-              </Typography>
-              <Card style={{ marginTop: '25px' }} className="pluginCard">
-                <CardContent style={{ padding: '0px 0px 10px 0px' }}>
-                  <Table>
-                    <TableHead>
-                      <TableRow className="TableRow">
-                        <TableCell>Zuschauer</TableCell>
-                        <TableCell>Nachricht</TableCell>
-                        <TableCell>Zeit</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody className="anim">
-                      <TableRow>
-                        <TableCell>DeineMuddi</TableCell>
-                        <TableCell>Besucht alle meinen super coolen Kanal, ich mache Kuchen Giveaways!!!</TableCell>
-                        <TableCell>vor 1 Minute</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>DeinPapi</TableCell>
-                        <TableCell>Ich hasse alle Karottenkinder!</TableCell>
-                        <TableCell>vor 2 Minuten</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
+              <Card className="pluginCard">
+                <CardContent style={{ padding: '24px' }}>
+                  <Grid container spacing={2}>
+                    <Grid item sm={11} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+                      <TextField
+                        label="Chatlog durchsuchen"
+                        fullWidth
+                        margin="normal"
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                      />
+                    </Grid>
+                    <Grid item sm={1} style={{ paddingTop: '15px' }}>
+                      <Fab
+                        color="primary"
+                        size="large"
+                        style={{ height: '56px', borderRadius: '50px' }}
+                      >
+                        <Icon>
+                          search
+                        </Icon>
+                      </Fab>
+                    </Grid>
+                  </Grid>
                 </CardContent>
               </Card>
+              <Table>
+                <TableHead>
+                  <TableRow className="TableRow">
+                    <TableCell>Zuschauer</TableCell>
+                    <TableCell>Nachricht</TableCell>
+                    <TableCell>Zeitpunkt</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody className="anim">
+                  <TableRow>
+                    <TableCell>DeineMuddi</TableCell>
+                    <TableCell>Bla</TableCell>
+                    <TableCell>Gestern</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>DeinPapi</TableCell>
+                    <TableCell>lol</TableCell>
+                    <TableCell>Gestern</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </Paper>
           </Grid>
-          <Grid item sm={6}>
+        </Grid>
+        <Grid container spacing={4}>
+          <Grid item sm={6} style={{ paddingTop: '0px' }}>
             <Paper className="pageContainer">
               <Typography component={'div'}>
                 <h4 className="pageContainerTitle">
@@ -173,6 +191,38 @@ class Chatlog extends Component {
                           <Chip color="secondary" label="Permanent"/>
                         </TableCell>
                         <TableCell>Werd Erwachsen du Lurch!</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </Paper>
+          </Grid>
+          <Grid item sm={6} style={{ paddingTop: '0px' }}>
+            <Paper className="pageContainer">
+              <Typography component={'div'}>
+                <h4 className="pageContainerTitle">
+                  Chatlog des bestraften Zuschauers
+                </h4>
+                <small>
+                  Chatlog des Zuschauers, der einen Timeout oder Ban erhalten hat.
+                </small>
+              </Typography>
+              <Card style={{ marginTop: '25px' }} className="pluginCard">
+                <CardContent style={{ padding: '0px 0px 10px 0px' }}>
+                  <Table>
+                    <TableHead>
+                      <TableRow className="TableRow">
+                        <TableCell>Zuschauer</TableCell>
+                        <TableCell>Nachricht</TableCell>
+                        <TableCell>Zeit</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody className="anim">
+                      <TableRow>
+                        <TableCell>DeineMuddi</TableCell>
+                        <TableCell>Besucht alle meinen super coolen Kanal, ich mache Kuchen Giveaways!!!</TableCell>
+                        <TableCell>vor 1 Minute</TableCell>
                       </TableRow>
                     </TableBody>
                   </Table>
