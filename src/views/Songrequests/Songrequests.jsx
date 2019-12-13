@@ -24,7 +24,7 @@ import Box from '@material-ui/core/Box';
 
 import GivePLZ from '../common/resources/giveplz.png';
 
-import SongrequestSettings from './SongrequestSettings';
+import SongrequestSettingsDialog from './SongrequestSettingsDialog';
 import ReportPlaybackIssue from './ReportPlaybackIssue';
 import {isValidBrowser} from './browserCheck.js';
 import {authSelectors} from '../../state/auth';
@@ -617,7 +617,7 @@ class Songrequests extends React.Component {
                     </TabPanel>
                 </Paper>}
                 {this.state.openSongrequestSettings &&
-                <SongrequestSettings
+                <SongrequestSettingsDialog
                     open
                     settings={songrequestSettings}
                     enableSpotifyAuth={this.state.enableSpotifyAuth}
