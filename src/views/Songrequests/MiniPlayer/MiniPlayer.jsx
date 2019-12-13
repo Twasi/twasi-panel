@@ -54,7 +54,7 @@ class SongRequestMiniPlayer extends React.Component {
                 <Paper
                   id={'sr-mini-player'}
                   className={
-                      (this.state.show && this.state.song ? 'show' : 'hide') +
+                      (this.state.show && this.state.song ? 'show' : '') +
                       (this.state.song && this.state.song.provider === 2 ? ' youtube' : '') +
                       (this.state.retract ? ' retract' : ' expanded')
                   }
