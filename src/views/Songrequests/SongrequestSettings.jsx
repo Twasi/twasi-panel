@@ -374,35 +374,37 @@ class SongrequestSettings extends React.Component {
               </Grid>
               <Grid item xs={12}>
                 <Card className="pluginCard">
-                  <CardContent className="pluginCardContent">
-                  <Grid container spacing={3}>
-                    <Grid item xs={6} style={{ textAlign: 'left' }}>
-                      <Icon>
-                          {this.state.balance === 0 && <img alt="volume_max" src={gachiHYPER} height="24px"/>}
-                          {this.state.balance >= 0 && this.state.balance <= 0.4 && 'volume_up'}
-                          {this.state.balance >= 0.4 && this.state.balance <= 0.7 && 'volume_down'}
-                          {this.state.balance >= 0.7 && this.state.balance <= 1 && 'volume_mute'}
-                      </Icon>
+                  <CardContent style={{ paddingTop: '25px', paddingBottom: '15px' }}>
+                    <Grid container spacing={3}>
+                      <Grid item style={{ textAlign: 'left' }}>
+                        <Icon>
+                            {this.state.balance === 0 && <img alt="volume_max" src={gachiHYPER} height="24px"/>}
+                            {this.state.balance >= 0 && this.state.balance <= 0.4 && 'volume_up'}
+                            {this.state.balance >= 0.4 && this.state.balance <= 0.7 && 'volume_down'}
+                            {this.state.balance >= 0.7 && this.state.balance <= 1 && 'volume_mute'}
+                        </Icon>
+                      </Grid>
+                      <Grid item xs>
+                        <Slider
+                          value={this.state.balance}
+                          onChange={this.handleBalanceChange}
+                          onChangeCommitted={this.handleBalanceSet}
+                          aria-labelledby="discrete-slider"
+                          valueLabelDisplay="off"
+                          step={0.01}
+                          min={0}
+                          max={1}
+                        />
+                      </Grid>
+                      <Grid item style={{ textAlign: 'right' }}>
+                        <Icon>
+                            {this.state.balance === 1 && <img alt="volume_max" src={gachiHYPER} height="24px"/>}
+                          {this.state.balance >= 0.6 && this.state.balance <= 1 && 'volume_up'}
+                          {this.state.balance >= 0.3 && this.state.balance <= 0.6 && 'volume_down'}
+                          {this.state.balance >= 0 && this.state.balance <= 0.3 && 'volume_mute'}
+                        </Icon>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6} style={{ textAlign: 'right' }}>
-                      <Icon>
-                          {this.state.balance === 1 && <img alt="volume_max" src={gachiHYPER} height="24px"/>}
-                        {this.state.balance >= 0.6 && this.state.balance <= 1 && 'volume_up'}
-                        {this.state.balance >= 0.3 && this.state.balance <= 0.6 && 'volume_down'}
-                        {this.state.balance >= 0 && this.state.balance <= 0.3 && 'volume_mute'}
-                      </Icon>
-                    </Grid>
-                  </Grid>
-                  <Slider
-                    value={this.state.balance}
-                    onChange={this.handleBalanceChange}
-                    onChangeCommitted={this.handleBalanceSet}
-                    aria-labelledby="discrete-slider"
-                    valueLabelDisplay="off"
-                    step={0.01}
-                    min={0}
-                    max={1}
-                  />
                   </CardContent>
                 </Card>
               </Grid>
