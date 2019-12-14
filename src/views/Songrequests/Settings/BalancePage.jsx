@@ -5,9 +5,20 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Icon from '@material-ui/core/Icon';
-import Fab from '@material-ui/core/Fab';
+//import Fab from '@material-ui/core/Fab';
 
 import gachiHYPER from '../../common/resources/gachiHYPER.gif';
+
+const marks = [
+  {
+    value: 0,
+    label: 'Spotify',
+  },
+  {
+    value: 1,
+    label: 'YouTube',
+  }
+];
 
 class BalancePage extends Component {
 
@@ -66,6 +77,7 @@ class BalancePage extends Component {
           </small>
         </Typography>
         <Grid container spacing={3}>
+          {/*
           <Grid item xs={6}>
             <Card style={{ marginTop: '25px' }} className="pluginCard">
               <CardContent className="pluginCardContent">
@@ -106,8 +118,9 @@ class BalancePage extends Component {
               </CardContent>
             </Card>
           </Grid>
+          */}
           <Grid item xs={12}>
-            <Card className="pluginCard">
+            <Card className="pluginCard" style={{ marginTop: '25px' }}>
               <CardContent style={{ paddingTop: '25px', paddingBottom: '15px' }}>
                 <Grid container spacing={3}>
                   <Grid item style={{ textAlign: 'left' }}>
@@ -128,6 +141,7 @@ class BalancePage extends Component {
                       step={0.01}
                       min={0}
                       max={1}
+                      marks={marks}
                     />
                   </Grid>
                   <Grid item style={{ textAlign: 'right' }}>
