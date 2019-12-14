@@ -21,6 +21,12 @@ class BalancePage extends Component {
     };
   }
 
+  componentDidMount() {
+    window.TSRI.local.manager.eventDistributor.onChange("settings", (event) => {
+      this.setState({balance: event.volumeBalance})
+    })
+  }
+
   handleBalanceChange = (event, balance) => {
       this.setState({balance});
       this.setState({changeBalanceSlider: true});
@@ -29,6 +35,7 @@ class BalancePage extends Component {
   handleBalanceSet = (event, balance) => {
       this.setState({balance});
       this.setState({changeBalanceSlider: false});
+      window.TSRI.playback.setVolumeBalance(balance);
   };
 
   handleChangeSpotifyPlayback = async () => {
