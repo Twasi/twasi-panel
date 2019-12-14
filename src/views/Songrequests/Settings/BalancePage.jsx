@@ -15,6 +15,42 @@ const marks = [
     label: 'Spotify',
   },
   {
+    value: 0.1,
+    label: '\'',
+  },
+  {
+    value: 0.2,
+    label: '\'',
+  },
+  {
+    value: 0.3,
+    label: '\'',
+  },
+  {
+    value: 0.4,
+    label: '\'',
+  },
+  {
+    value: 0.5,
+    label: '|',
+  },
+  {
+    value: 0.6,
+    label: '\'',
+  },
+  {
+    value: 0.7,
+    label: '\'',
+  },
+  {
+    value: 0.8,
+    label: '\'',
+  },
+  {
+    value: 0.9,
+    label: '\'',
+  },
+  {
     value: 1,
     label: 'YouTube',
   }
