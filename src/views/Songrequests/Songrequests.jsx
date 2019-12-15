@@ -66,6 +66,15 @@ function TabPanel(props) {
     );
 }
 
+function getDuration(duration) {
+    let sec = duration / 1000;
+    let min = sec / 60;
+    sec = sec % 60;
+    if (sec < 10) sec = "0" + Math.floor(sec);
+    else sec = Math.floor(sec);
+    return Math.floor(min) + ":" + sec;
+}
+
 var songrequestSettings = "";
 
 class Songrequests extends React.Component {
@@ -258,15 +267,23 @@ class Songrequests extends React.Component {
     renderSongqueue() {
         return songqueue.map(song => (
             <TableRow>
-                <TableCell>{song.id}</TableCell>
+                <TableCell></TableCell>
                 <TableCell>{song.name}</TableCell>
                 <TableCell>{song.artists[0]}</TableCell>
                 <TableCell>{song.formattedMaxPos}</TableCell>
                 <TableCell>
                     <Chip
                         color="primary"
-                        avatar={<Avatar style={{width: '24px', height: '24px'}} alt="ticket_owner_avatar"
-                                        src={song.requester && song.requester.avatar}/>}
+                        avatar={
+                          <Avatar style={{width: '24px', height: '24px'}} alt="ticket_owner_avatar">
+                            <Icon>
+                              person
+                            </Icon>
+                          </Avatar>
+                          /*
+                          <Avatar style={{width: '24px', height: '24px'}} alt="ticket_owner_avatar"
+                                  src={song.requester && song.requester.avatar}/>*/
+                        }
                         label={song.requester ? song.requester.displayName : 'unknown'}
                         style={{marginRight: '5px'}}
                     />
@@ -284,19 +301,20 @@ class Songrequests extends React.Component {
                 </TableCell>
                 <TableCell style={{textAlign: 'center'}}>
                     {/*
-          <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
-            <Fab
-              className="noshadow"
-              color="primary"
-              size="small"
-              aria-label="favSong"
-            >
-              <Icon className="actionButtons">star</Icon>
-            </Fab>
-          </Tooltip>{' '}
-          */}
+                    <Tooltip title={<FormattedMessage id="songrequest.table_fav" />} placement="top">
+                      <Fab
+                        className="noshadow"
+                        color="primary"
+                        size="small"
+                        aria-label="favSong"
+                      >
+                        <Icon className="actionButtons">star</Icon>
+                      </Fab>
+                    </Tooltip>{' '}
+                    */}
                     <Tooltip title={<FormattedMessage id="common.delete"/>} placement="top">
                         <Fab
+                            disabled
                             className="noshadow"
                             color="secondary"
                             size="small"
@@ -316,12 +334,20 @@ class Songrequests extends React.Component {
                 <TableCell></TableCell>
                 <TableCell>{song.name}</TableCell>
                 <TableCell>{song.artists[0]}</TableCell>
-                <TableCell>{song.formattedMaxPos}</TableCell>
+                <TableCell>{getDuration(song.duration)}</TableCell>
                 <TableCell>
                     <Chip
                         color="primary"
-                        avatar={<Avatar style={{width: '24px', height: '24px'}} alt="ticket_owner_avatar"
-                                        src={song.requester && song.requester.avatar}/>}
+                        avatar={
+                          <Avatar style={{width: '24px', height: '24px'}} alt="ticket_owner_avatar">
+                            <Icon>
+                              person
+                            </Icon>
+                          </Avatar>
+                          /*
+                          <Avatar style={{width: '24px', height: '24px'}} alt="ticket_owner_avatar"
+                                  src={song.requester && song.requester.avatar}/>*/
+                        }
                         label={song.requester ? song.requester.displayName : 'unknown'}
                         style={{marginRight: '5px'}}
                     />
