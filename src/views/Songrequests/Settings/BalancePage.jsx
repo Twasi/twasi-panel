@@ -5,7 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Icon from '@material-ui/core/Icon';
-//import Fab from '@material-ui/core/Fab';
+import Fab from '@material-ui/core/Fab';
+import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
 
 import gachiHYPER from '../../common/resources/gachiHYPER.gif';
 
@@ -63,8 +65,7 @@ class BalancePage extends Component {
     this.state = {
       changeBalanceSlider: false,
       balance: 0.5,
-      spotifyplayback: false,
-      youtubeplayback: false
+      previewplayback: false
     };
   }
 
@@ -85,19 +86,10 @@ class BalancePage extends Component {
       window.TSRI.playback.setVolumeBalance(balance);
   };
 
-  handleChangeSpotifyPlayback = async () => {
-      this.setState({spotifyplayback: !this.state.spotifyplayback})
-      if (!this.state.spotifyplayback) {
-          await window.TSRI.playback.spotify.preview();
-          this.setState({spotifyplayback: !this.state.spotifyplayback})
-      }
-  };
-
-  handleChangeYoutubePlayback = async () => {
-      this.setState({youtubeplayback: !this.state.youtubeplayback})
-      if (!this.state.youtubeplayback) {
-        await window.TSRI.playback.youtube.preview();
-        this.setState({spotifyplayback: !this.state.spotifyplayback})
+  handleChangePreviewPlayback = async () => {
+      this.setState({previewplayback: !this.state.previewplayback})
+      if (!this.state.previewplayback) {
+          this.setState({previewplayback: !this.state.previewplayback})
       }
   };
 
@@ -109,13 +101,39 @@ class BalancePage extends Component {
             Lautstärke Anpassung
           </h4>
           <small>
-            Hier kannst du die Lautstärke Balance zwischen den verschiedenen Platformen anpassen.
+            Hier kannst du die Lautstärke Balance zwischen den verschiedenen Platformen anpassen.<br/><br/>
+            Starte die Preview und stelle die Lautstärke Balance so ein, dass beide Previews gleich laut sind.
           </small>
         </Typography>
         <Grid container spacing={3}>
-          {/*
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <Card style={{ marginTop: '25px' }} className="pluginCard">
+              <CardContent style={{ paddingBottom: '25px' }}>
+                <Grid container spacing={3}>
+                  <Grid item xs={2}>
+                    <Fab onClick={this.handleChangePreviewPlayback}
+                       style={{ boxShadow: 'none', marginTop: '18px' }} color="primary"
+                       aria-label="play">
+                      <Icon className="actionButtons">{this.state.previewplayback ? 'stop' : 'play_arrow'}</Icon>
+                    </Fab>
+                  </Grid>
+                  <Grid item xs={10}>
+                    <Typography component={"div"}>
+                      <h2 className="pageContainerTitle">
+                        Krasser Songtitel
+                      </h2>
+                      <small>
+                        Krasser Interpret<br/>
+                        über <b>Spotify</b>
+                      </small>
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={6}>
+            <Card className="pluginCard">
               <CardContent className="pluginCardContent">
                 <Typography component={"div"}>
                   <h4 className="pageContainerTitle">
@@ -126,16 +144,12 @@ class BalancePage extends Component {
                   </small>
                 </Typography>
                 <br/>
-                <Fab onClick={this.handleChangeSpotifyPlayback}
-                     style={{ boxShadow: 'none'}} color="primary"
-                     aria-label="play">
-                    <Icon className="actionButtons">{this.state.spotifyplayback ? 'stop' : 'play_arrow'}</Icon>
-                </Fab>
+                <Chip avatar={<Avatar><Icon>volume_up</Icon></Avatar>} color="primary" label="Wird abgespielt"/>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={6}>
-            <Card style={{ marginTop: '25px' }} className="pluginCard">
+            <Card className="pluginCard">
               <CardContent className="pluginCardContent">
                 <Typography component={"div"}>
                   <h4 className="pageContainerTitle">
@@ -146,17 +160,12 @@ class BalancePage extends Component {
                   </small>
                 </Typography>
                 <br/>
-                <Fab onClick={this.handleChangeYoutubePlayback}
-                     style={{ boxShadow: 'none' }} color="primary"
-                     aria-label="play">
-                    <Icon className="actionButtons">{this.state.youtubeplayback ? 'stop' : 'play_arrow'}</Icon>
-                </Fab>
+                <Chip avatar={<Avatar><Icon>volume_off</Icon></Avatar>} color="secondary" label="Wird nicht abgespielt"/>
               </CardContent>
             </Card>
           </Grid>
-          */}
           <Grid item xs={12}>
-            <Card className="pluginCard" style={{ marginTop: '25px' }}>
+            <Card className="pluginCard">
               <CardContent style={{ paddingTop: '25px', paddingBottom: '15px' }}>
                 <Grid container spacing={3}>
                   <Grid item style={{ textAlign: 'left' }}>
@@ -169,10 +178,11 @@ class BalancePage extends Component {
                   </Grid>
                   <Grid item xs>
                     <Slider
+                      track={false}
                       value={this.state.balance}
                       onChange={this.handleBalanceChange}
                       onChangeCommitted={this.handleBalanceSet}
-                      aria-labelledby="discrete-slider"
+                      aria-labelledby="track-false-slider"
                       valueLabelDisplay="off"
                       step={0.01}
                       min={0}
