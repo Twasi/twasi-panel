@@ -31,7 +31,7 @@ import Rank from '../common/Rank';
 import twitterlogo from '../common/resources/twitter.svg';
 import facebooklogo from '../common/resources/facebook.svg';
 import googlelogo from '../common/resources/google.svg';
-import spotifylogo from '../common/resources/spotify.svg';
+//import spotifylogo from '../common/resources/spotify.svg';
 import soundcloudlogo from '../common/resources/soundcloud.svg';
 import telegramlogo from '../common/resources/telegram.svg';
 
@@ -41,7 +41,7 @@ import gc17_badge from '../common/resources/gamescom_badge_blue.svg';
 import gc18_badge from '../common/resources/gamescom_badge_blue18.svg';
 
 import { authSelectors, authOperations } from '../../state/auth';
-import { spotifySelectors, spotifyOperations } from '../../state/integrations/spotify';
+//import { spotifySelectors, spotifyOperations } from '../../state/integrations/spotify';
 import { twitchSelectors, twitchOperations } from '../../state/integrations/twitch';
 import './_style.css';
 
@@ -54,10 +54,10 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    const { updateSpotifyAccount, updateSpotifyAuthUri } = this.props;
+    //const { updateSpotifyAccount, updateSpotifyAuthUri } = this.props;
     const { updateTwitchAccount, updateTwitchAuthUri } = this.props;
-    updateSpotifyAccount();
-    updateSpotifyAuthUri();
+    //updateSpotifyAccount();
+    //updateSpotifyAuthUri();
     updateTwitchAccount();
     updateTwitchAuthUri();
   }
@@ -470,6 +470,7 @@ class Profile extends Component {
                     </div>
                   </Col>
                 </Row>
+                {/*
                 <br />
                 <Row>
                   <Col sm={6}>
@@ -527,6 +528,7 @@ class Profile extends Component {
                     }
                   </Col>
                 </Row>
+                */}
               </div>
             </Paper>
             <Paper className="pageContainer">
@@ -602,9 +604,9 @@ Profile.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   updateUser: () => dispatch(authOperations.updateUser()),
-  updateSpotifyAccount: () => dispatch(spotifyOperations.loadSpotifyAccount()),
-  updateSpotifyAuthUri: () => dispatch(spotifyOperations.loadSpotifyAuthUri()),
-  updateSpotifyDisconnect: () => dispatch(spotifyOperations.loadSpotifyDisconnect()),
+  //updateSpotifyAccount: () => dispatch(spotifyOperations.loadSpotifyAccount()),
+  //updateSpotifyAuthUri: () => dispatch(spotifyOperations.loadSpotifyAuthUri()),
+  //updateSpotifyDisconnect: () => dispatch(spotifyOperations.loadSpotifyDisconnect()),
   updateTwitchAccount: () => dispatch(twitchOperations.loadTwitchAccount()),
   updateTwitchAuthUri: () => dispatch(twitchOperations.loadTwitchAuthUri()),
   updateTwitchDisconnect: () => dispatch(twitchOperations.loadTwitchDisconnect())
@@ -613,9 +615,9 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   user: authSelectors.getUser(state),
   isUserUpdating: authSelectors.isUserUpdating(state),
-  spotify: spotifySelectors.getSpotifyAccount(state),
-  spotifyUri: spotifySelectors.getSpotifyAuthUri(state),
-  spotifyDisconnect: spotifySelectors.getSpotifyDisconnect(state),
+  //spotify: spotifySelectors.getSpotifyAccount(state),
+  //spotifyUri: spotifySelectors.getSpotifyAuthUri(state),
+  //spotifyDisconnect: spotifySelectors.getSpotifyDisconnect(state),
   twitch: twitchSelectors.getTwitchAccount(state),
   twitchUri: twitchSelectors.getTwitchAuthUri(state),
   twitchDisconnect: twitchSelectors.getTwitchDisconnect(state),
