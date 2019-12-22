@@ -101,11 +101,12 @@ class BalancePage extends Component {
             Lautstärke Anpassung
           </h4>
           <small>
-            Hier kannst du die Lautstärke Balance zwischen den verschiedenen Platformen anpassen.<br/><br/>
-            Starte die Preview und stelle die Lautstärke Balance so ein, dass beide Previews gleich laut sind.
+            Hier kannst du die Lautstärke Balance zwischen den verschiedenen Platformen anpassen.<br/>
           </small>
         </Typography>
+        {/* Starte die Preview und stelle die Lautstärke Balance so ein, dass beide Previews gleich laut sind. */}
         <Grid container spacing={3}>
+          {/*
           <Grid item xs={12}>
             <Card style={{ marginTop: '25px' }} className="pluginCard">
               <CardContent style={{ paddingBottom: '25px' }}>
@@ -164,8 +165,9 @@ class BalancePage extends Component {
               </CardContent>
             </Card>
           </Grid>
+          */}
           <Grid item xs={12}>
-            <Card className="pluginCard">
+            <Card className="pluginCard" style={{ marginTop: '25px' }}>
               <CardContent style={{ paddingTop: '25px', paddingBottom: '15px' }}>
                 <Grid container spacing={3}>
                   <Grid item style={{ textAlign: 'left' }}>

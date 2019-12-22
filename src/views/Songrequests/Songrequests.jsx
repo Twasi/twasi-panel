@@ -8,7 +8,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Tooltip from '@material-ui/core/Tooltip';
 import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
@@ -81,6 +80,7 @@ class Songrequests extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            apiConnection: false,
             openSongrequestSettings: false,
             openReportPlaybackIssue: false,
             song: {
@@ -173,6 +173,9 @@ class Songrequests extends React.Component {
             songrequestSettings = settings;
             this.setState({volume: settings.volume * 100});
         });
+        on("status", status => {
+            this.setState({ apiConnection: status.api })
+        });
     }
 
     componentDidUpdate() {
@@ -264,6 +267,26 @@ class Songrequests extends React.Component {
         );
     }
 
+    renderApiConnectionLost() {
+        return (
+            <Paper className="pageContainer" style={{paddingTop: '1px', borderRadius: '0px 0px 4px 4px'}}>
+                <Typography component={'div'} style={{textAlign: 'center', marginTop: '150px', marginBottom: '150px'}}>
+                    <img
+                        style={{position: 'relative', height: '150px'}}
+                        src={GivePLZ}
+                        alt="GivePLZ"
+                    />
+                    <h3 className="pageContainerTitle">
+                        Die Verbindung zur API wurde unterbrochen
+                    </h3>
+                    <small>
+                        Prüfe deinen Internetverbindung oder warte auf eine erneute Verbindung.
+                    </small>
+                </Typography>
+            </Paper>
+        );
+    }
+
     renderSongqueue() {
         return songqueue.map(song => (
             <TableRow>
@@ -289,15 +312,11 @@ class Songrequests extends React.Component {
                     />
                 </TableCell>
                 <TableCell style={{ textAlign: 'center' }}>
-                    <div>
-                        <Tooltip title={song.provider === 1 ? 'Spotify' : 'Youtube'} placement="top">
-                            <img
-                                src={song.provider === 1 ? spotifylogo : youtubelogo}
-                                alt="provider logo"
-                                style={{height: '32px', marginTop: '7px'}}
-                            />
-                        </Tooltip>
-                    </div>
+                  <img
+                      src={song.provider === 1 ? spotifylogo : youtubelogo}
+                      alt="provider logo"
+                      style={{height: '32px', marginTop: '7px'}}
+                  />
                 </TableCell>
                 <TableCell style={{textAlign: 'center'}}>
                     {/*
@@ -312,17 +331,15 @@ class Songrequests extends React.Component {
                       </Fab>
                     </Tooltip>{' '}
                     */}
-                    <Tooltip title={<FormattedMessage id="common.delete"/>} placement="top">
-                        <Fab
-                            disabled
-                            className="noshadow"
-                            color="secondary"
-                            size="small"
-                            aria-label="deleteSong"
-                        >
-                            <Icon className="actionButtons">delete</Icon>
-                        </Fab>
-                    </Tooltip>
+                    <Fab
+                        disabled
+                        className="noshadow"
+                        color="secondary"
+                        size="small"
+                        aria-label="deleteSong"
+                    >
+                        <Icon className="actionButtons">delete</Icon>
+                    </Fab>
                 </TableCell>
             </TableRow>
         ));
@@ -353,27 +370,22 @@ class Songrequests extends React.Component {
                     />
                 </TableCell>
                 <TableCell>
-                    <div>
-                        <Tooltip title={song.provider === 1 ? 'Spotify' : 'Youtube'} placement="top">
-                            <img
-                                src={song.provider === 1 ? spotifylogo : youtubelogo}
-                                alt="provider logo"
-                                style={{height: '32px', marginTop: '7px'}}
-                            />
-                        </Tooltip>
-                    </div>
+                  <img
+                      src={song.provider === 1 ? spotifylogo : youtubelogo}
+                      alt="provider logo"
+                      style={{height: '32px', marginTop: '7px'}}
+                  />
                 </TableCell>
                 <TableCell>
-                    <Tooltip title={<FormattedMessage id="common.delete"/>} placement="top">
-                        <Fab
-                            className="noshadow"
-                            color="secondary"
-                            size="small"
-                            aria-label="deleteSong"
-                        >
-                            <Icon className="actionButtons">delete</Icon>
-                        </Fab>
-                    </Tooltip>
+                  <Fab
+                      disabled
+                      className="noshadow"
+                      color="secondary"
+                      size="small"
+                      aria-label="deleteSong"
+                  >
+                      <Icon className="actionButtons">delete</Icon>
+                  </Fab>
                 </TableCell>
             </TableRow>
         ));
@@ -388,6 +400,9 @@ class Songrequests extends React.Component {
                     </Link>
                     <Typography color="textPrimary"><FormattedMessage id="sidebar.songrequests"/></Typography>
                 </Breadcrumbs>
+                {!this.state.apiConnection &&
+                  this.renderApiConnectionLost()
+                }
                 {isValidBrowser() && this.state.enableSpotifyAuth &&
                 <Chip style={{ marginTop: '15px' }} color="primary" label="Du möchtest Spotify Requests aktivieren? Klicke auf das Zahnrad und verbinde deinen Spotify Account." />}
                 {isValidBrowser() &&
