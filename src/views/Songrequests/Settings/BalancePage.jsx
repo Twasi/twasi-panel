@@ -5,9 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import Icon from '@material-ui/core/Icon';
-import Fab from '@material-ui/core/Fab';
-import Chip from '@material-ui/core/Chip';
-import Avatar from '@material-ui/core/Avatar';
+//import Fab from '@material-ui/core/Fab';
+//import Chip from '@material-ui/core/Chip';
+//import Avatar from '@material-ui/core/Avatar';
 
 import gachiHYPER from '../../common/resources/gachiHYPER.gif';
 

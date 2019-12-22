@@ -79,7 +79,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { spotify, updateUser, updateSpotifyDisconnect, updateSpotifyAccount, twitch, updateTwitchDisconnect, updateTwitchAccount, user, jwt } = this.props;
+    const { updateUser, twitch, updateTwitchDisconnect, updateTwitchAccount, user, jwt } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
