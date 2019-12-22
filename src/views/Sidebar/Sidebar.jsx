@@ -76,7 +76,7 @@ class Sidebar extends Component {
         path: '/variables',
         icon: 'settings_ethernet',
         name: 'sidebar.variables',
-        shown: 'plugins/variablen'
+        shown: 'plugins/customvariables'
       },
       {
         key: 'timedmessages',
@@ -186,7 +186,7 @@ class Sidebar extends Component {
           } else if (item.shown === 'none') {
             return false;
           }
-          return plugins.filter(p => p.isInstalled && item.shown === `plugins/${p.name.toLowerCase()}`).length !== 0;
+          return plugins.filter(p => p.isInstalled && item.shown === `plugins/${p.id.toLowerCase()}`).length !== 0;
         })
         .map(item => (
           <MenuItem
