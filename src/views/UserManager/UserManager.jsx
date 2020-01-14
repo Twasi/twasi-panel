@@ -70,7 +70,7 @@ class UserManager extends Component {
           {user.channelData.Game}
         </TableCell>
         <TableCell style={{ color: "#de6464" }}>
-          <Icon style={{ verticalAlign: "middle", marginRight: '5px', marginTop: '-3px' }} fontSize="small">person</Icon>
+          <Icon style={{ verticalAlign: "middle", marginRight: '5px', marginTop: '-3px', color: "#de6464" }} fontSize="small">person</Icon>
           {user.viewerCount}
         </TableCell>
         <TableCell>
