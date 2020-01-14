@@ -160,6 +160,7 @@ class Overview extends Component {
     const { allstreams } = this.props;
     return allstreams.map(stream => (
       <Tab
+       key={stream.streamId}
        value={allstreams[0].startedAt === stream.startedAt ? 0 : parseInt(stream.streamId)}
        label={(
         <span>
@@ -182,7 +183,7 @@ class Overview extends Component {
       } else {
         chatterschart =
           <div>
-            <Typography style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+            <Typography component={'span'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
               <img
                 style={{ position: 'relative', height: '80px' }}
                 src={MonkaS}
