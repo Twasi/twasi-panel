@@ -15,7 +15,16 @@ import './_style.css';
 
 import smartlife_logo from '../common/resources/smartlife.png';
 
+import { smartlifeSelectors, smartlifeOperations } from '../../state/integrations/smartlife';
+import { authSelectors } from '../../state/auth';
+
 class SmartLife extends Component {
+
+  componentDidMount() {
+    const { updateSmartlifeAuthUri, updateSmartlifeAccount } = this.props;
+    updateSmartlifeAuthUri();
+    updateSmartlifeAccount();
+  }
 
   state = {
     openConnectSmartlifeAccount: false
@@ -25,8 +34,12 @@ class SmartLife extends Component {
     this.setState({ openConnectSmartlifeAccount: false })
   };
 
+  handleAuthentication = (uri) => {
+    window.location = encodeURI(uri);
+  }
+
   render() {
-    const { classes, onClose, ...other } = this.props;
+    const { classes, onClose, smartlifeUri, smartlife, jwt, ...other } = this.props;
     return (
       <div className="pageContent">
         <Paper className="pageContainer">
@@ -79,6 +92,7 @@ class SmartLife extends Component {
               </Typography>
               <br /><br />
               <Button
+                onClick={() => { this.handleAuthentication(smartlifeUri + "?environment=" + window.location + "&jwt=" + jwt) }}
                 fullWidth
                 variant="contained"
                 color="primary">
@@ -93,11 +107,14 @@ class SmartLife extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-
+  updateSmartlifeAccount: () => dispatch(smartlifeOperations.loadSmartlifeAccount()),
+  updateSmartlifeAuthUri: () => dispatch(smartlifeOperations.loadSmartlifeAuthUri()),
 });
 
 const mapStateToProps = state => ({
-
+  smartlifeUri: smartlifeSelectors.getSmartlifeAuthUri(state),
+  smartlife: smartlifeSelectors.getSmartlifeAccount(state),
+  jwt: authSelectors.getJwt(state)
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SmartLife));

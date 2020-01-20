@@ -89,6 +89,7 @@ export default {
   'sidebar.user_manager': 'Nutzer Manager',
   'sidebar.themecreator': 'Theme Creator',
   'sidebar.themes': 'Theme Store',
+  'sidebar.smartlife': 'Smartlife',
 
   // User Manager
   'manager.title': 'Nutzer Manager',

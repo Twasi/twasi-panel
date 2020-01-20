@@ -16,6 +16,7 @@ import utilities from './utilities';
 import support from './support';
 import spotify from './integrations/spotify';
 import twitch from './integrations/twitch';
+import smartlife from './integrations/smartlife';
 import timedmessages from './timedmessages';
 import themes from './themes';
 
@@ -45,7 +46,8 @@ const configureStore = (translations = {}) => {
         spotify,
         twitch,
         timedmessages,
-        themes
+        themes,
+        smartlife
     };
 
     const initialState = {

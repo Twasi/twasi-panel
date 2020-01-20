@@ -93,6 +93,13 @@ class Sidebar extends Component {
         shown: 'plugins/twasi-songrequests'
       },
       {
+        key: 'smartlife',
+        path: '/smartlife',
+        icon: 'wifi',
+        name: 'sidebar.smartlife',
+        shown: 'all'
+      },
+      {
         key: 'giveaways',
         path: '/giveaways',
         icon: 'redeem',
@@ -202,7 +209,7 @@ class Sidebar extends Component {
         ));
     const { rank } = this.props;
     return (
-      <div className="siteSidebar" style={checked ? {} : { width: 87 }}>
+      <div className="siteSidebar" style={checked ? {} : { width: 85 }}>
         <Paper style={getMenuStyle()} className="sidebar">
           <Hidden mdDown>
             <div className="headerMenuItem">

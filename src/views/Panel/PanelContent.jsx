@@ -20,6 +20,7 @@ import Giveaways from '../Giveaways';
 import Quotes from '../Quotes';
 import Chatfilter from '../Chatfilter';
 import Chatlog from '../Chatlog';
+import Smartlife from '../Smartlife';
 import Support from '../Support';
 import DevTools from '../DevTools';
 import UserManager from '../UserManager';
@@ -47,6 +48,7 @@ const PanelContent = () => (
                 <Route path="/quotes" exact component={Quotes}/>
                 <Route path="/chatfilter" exact component={Chatfilter}/>
                 <Route path="/chatlog" exact component={Chatlog}/>
+                <Route path="/smartlife" exact component={Smartlife}/>
                 <Route path="/support" exact component={Support}/>
                 <Route path="/manager" exact component={UserManager}/>
             </Switch>
