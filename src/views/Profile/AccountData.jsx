@@ -88,7 +88,7 @@ class AccountData extends Component {
                       <FormattedMessage id="profile.your_data_delete" />
                     </TableCell>
                     <TableCell style={{ borderBottom: '0px' }}>
-                      <Button variant="contained" size="small" color="secondary">
+                      <Button disabled variant="contained" size="small" color="secondary">
                         <FormattedMessage id="profile.your_data_deletelink" />
                       </Button>
                     </TableCell>

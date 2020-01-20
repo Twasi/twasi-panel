@@ -231,6 +231,9 @@ export default {
   'profile.public_profile.activate_leaderboard': 'Leaderboard anzeigen',
   'profile.public_profile.activate_commands': 'Befehle anzeigen',
   'profile.public_profile.activate_quotes': 'Zitate anzeigen',
+  'profile.smartlife.title': 'Smartlife',
+  'profile.smartlife.subtitle': 'Steuere deine Smartlife Geräte mit Twasi.',
+  'profile.smartlife.connect': 'Smartlife Account verbinden',
 
   // Commands
   'commands.title': 'Deine Befehle',
