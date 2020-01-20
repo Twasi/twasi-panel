@@ -34,7 +34,7 @@ class SmartLife extends Component {
             <h4 className="pageContainerTitle">
               <FormattedMessage id="profile.smartlife.title" />
               <span style={{ float: 'right' }}>
-                <img src={smartlife_logo} height="36px"/>
+                <img src={smartlife_logo} height="36px" alt="smartlife logo"/>
               </span>
             </h4>
             <small>

@@ -13,10 +13,10 @@ import './_style.css';
 import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 
 import AccountData from './AccountData';
-import PublicProfile from './PublicProfile';
+//import PublicProfile from './PublicProfile';
 import OwnBotAccount from './OwnBotAccount';
-import SocialMedia from './SocialMedia';
-import Badges from './Badges';
+//import SocialMedia from './SocialMedia';
+//import Badges from './Badges';
 import SmartLife from './SmartLife';
 
 class Profile extends Component {
