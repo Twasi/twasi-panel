@@ -97,6 +97,7 @@ export default {
   'manager.table.game': 'Spiel',
   'manager.table.viewers': 'Zuschauer',
   'manager.table.followers': 'Follower',
+  'manager.table.ban': 'Sanktionieren',
   'manager.table.url': 'Kanal',
   'manager.table.tochannel': 'Kanal besuchen',
   'manager.table.impersonate': 'Zum Panel',

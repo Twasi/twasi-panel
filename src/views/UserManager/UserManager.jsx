@@ -94,6 +94,18 @@ class UserManager extends Component {
             </Icon>
           </Fab>
         </TableCell>
+        <TableCell>
+          <Fab
+            color="secondary"
+            variant="contained"
+            size="small"
+            style={{ height: "40px", width: "40px", borderRadius: "50px" }}
+          >
+            <Icon>
+              mood_bad
+            </Icon>
+          </Fab>
+        </TableCell>
       </TableRow>
     ));
   }
@@ -112,13 +124,13 @@ class UserManager extends Component {
           <b>Zusammenfassung:</b>
         </TableCell>
         <TableCell style={{ color: "#de6464" }}>
-          <Icon style={{ verticalAlign: "middle", marginRight: '5px', marginTop: '-3px' }} fontSize="small">person</Icon>
+          <Icon style={{ verticalAlign: "middle", marginRight: '5px', marginTop: '-3px', color: "#de6464" }} fontSize="small">person</Icon>
           {viewercount}
         </TableCell>
         <TableCell>
           {followercount}
         </TableCell>
-        <TableCell colSpan={2}/>
+        <TableCell colSpan={3}/>
       </TableRow>
     );
   }
@@ -163,6 +175,7 @@ class UserManager extends Component {
                 <TableCell><FormattedMessage id="manager.table.followers" /></TableCell>
                 <TableCell><FormattedMessage id="manager.table.url" /></TableCell>
                 <TableCell><FormattedMessage id="manager.table.impersonate" /></TableCell>
+                <TableCell><FormattedMessage id="manager.table.ban" /></TableCell>
               </TableRow>
             </TableHead>
             <TableBody className="anim">
