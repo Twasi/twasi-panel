@@ -43,11 +43,18 @@ class OwnBotAccount extends Component {
               <Grid container spacing={0}>
                 <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <Typography>
-                    {twitch.twitch === null ? "Twasibot" : twitch.twitch.userName}
+                    Twasibot
+                    {/*twitch.twitch === null ? "Twasibot" : twitch.twitch.userName*/}
                   </Typography>
                 </Grid>
                 <Grid item md={6} style={{ textAlign: 'center' }}>
-                  {twitch.twitch === null &&
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    disabled>
+                    <FormattedMessage id="profile.own_bot.connect" />
+                  </Button>
+                  {/*twitch.twitch === null &&
                     <Button
                       onClick={() => { this.handleAuthentication(twitch.twitchUri + "?environment=" + window.location + "&jwt=" + jwt) }}
                       variant="contained"
@@ -66,7 +73,7 @@ class OwnBotAccount extends Component {
                       variant="contained"
                       color="secondary">
                       <FormattedMessage id="profile.own_bot.disconnect" />
-                    </Button>}
+                    </Button>*/}
                 </Grid>
               </Grid>
             </CardContent>
