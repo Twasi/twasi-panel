@@ -231,6 +231,12 @@ export default {
   'profile.public_profile.activate_leaderboard': 'Show leaderboard',
   'profile.public_profile.activate_commands': 'Show commands',
   'profile.public_profile.activate_quotes': 'Show quotes',
+  'profile.smartlife.title': 'Smartlife',
+  'profile.smartlife.subtitle': 'Control your Smartlife devices with Twasi.',
+  'profile.smartlife.connect': 'Connect Smartlife account',
+  'profile.smartlife.disconnect': 'Disconnect Smartlife account',
+  'profile.smartlife.disconnected': 'Not connected',
+  'profile.smartlife.connected': 'Connected',
 
   // Commands
   'commands.title': 'Your commands',

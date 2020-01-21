@@ -235,6 +235,9 @@ export default {
   'profile.smartlife.title': 'Smartlife',
   'profile.smartlife.subtitle': 'Steuere deine Smartlife Geräte mit Twasi.',
   'profile.smartlife.connect': 'Smartlife Account verbinden',
+  'profile.smartlife.disconnect': 'Smartlife Account trennen',
+  'profile.smartlife.disconnected': 'Nicht verbunden',
+  'profile.smartlife.connected': 'Verbunden',
 
   // Commands
   'commands.title': 'Deine Befehle',

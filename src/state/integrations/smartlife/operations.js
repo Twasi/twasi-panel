@@ -9,8 +9,9 @@ const {
 } = actions;
 
 const loadSmartlifeAccount = () => dispatch => {
-    dispatch(getGraph('control{devices{active_time,category,create_time,id,ip,name,online,product_id,status{code,value},sub,time_zone,uid,update_time}', 'smartlifeintegration')).then(data => {
+    dispatch(getGraph('control{devices{active_time,category,create_time,id,ip,name,online,product_id,status{code,value},sub,time_zone,uid,update_time}}', 'smartlifeintegration')).then(data => {
         //console.log("spotify: " + data.authenticationUri + " " + data.account)
+        console.log('lol')
         dispatch(updateSmartlifeAccount(data.control))
     });
 }

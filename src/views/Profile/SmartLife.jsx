@@ -59,16 +59,23 @@ class SmartLife extends Component {
               <Grid container spacing={0}>
                 <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <Typography>
-                    Nicht verbunden
+                    {!smartlife.smartlife.devices ? <FormattedMessage id="profile.smartlife.disconnected" /> : <FormattedMessage id="profile.smartlife.connected" />}
                   </Typography>
                 </Grid>
                 <Grid item md={6} style={{ textAlign: 'center' }}>
+                  {!smartlife.smartlife.devices ?
                   <Button
                     onClick={() => this.setState({ openConnectSmartlifeAccount: true })}
                     variant="contained"
                     color="primary">
                     <FormattedMessage id="profile.smartlife.connect" />
                   </Button>
+                  :
+                  <Button
+                    variant="contained"
+                    color="secondary">
+                    <FormattedMessage id="profile.smartlife.disconnect" />
+                  </Button>}
                 </Grid>
               </Grid>
             </CardContent>
