@@ -37,7 +37,7 @@ class Chatlog extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.chatlog" /></Typography>
         </Breadcrumbs>
-        <Paper className="pageContainer">
+        <Paper style={{ borderRadius: '4px 4px 0px 0px' }} className="pageContainer">
           <Typography component={'span'}>
             <h4 className="pageContainerTitle">
               Chat Statistiken
@@ -55,80 +55,36 @@ class Chatlog extends Component {
               Deine Chatstatistiken
             </small>
           </Typography>
-          <Grid container spacing={4}>
-              <Grid item xs={4}>
-                <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
-                  <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                    <Typography className={'translucentBoxText'} component={"div"}>
-                      <h1 className="pageContainerTitle">
-                        1
-                      </h1>
-                      <h4 className="pageContainerTitle">
-                        Timeouts
-                      </h4>
-                    </Typography>
-                  </CardContent>
-                </Card>
+          <Card style={{ marginTop: '25px' }} className="pluginCard">
+            <CardContent style={{ padding: '24px' }}>
+              <Grid container spacing={2}>
+                <Grid item sm={11} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
+                  <TextField
+                    label="Chat nach Namen, Wörtern oder Sätzen durchsuchen"
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{ shrink: true }}
+                  />
+                </Grid>
+                <Grid item sm={1} style={{ paddingTop: '15px' }}>
+                  <Fab
+                    color="primary"
+                    size="large"
+                    style={{ height: '56px', borderRadius: '50px' }}
+                  >
+                    <Icon>
+                      search
+                    </Icon>
+                  </Fab>
+                </Grid>
               </Grid>
-              <Grid item xs={4}>
-                <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
-                  <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                    <Typography className={'translucentBoxText'} component={"div"}>
-                      <h1 className="pageContainerTitle">
-                        1
-                      </h1>
-                      <h4 className="pageContainerTitle">
-                        Bans
-                      </h4>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={4}>
-                <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
-                  <CardContent className="pluginCardContent translucentBoxLeaderboard">
-                    <Typography className={'translucentBoxText'} component={"div"}>
-                      <h1 className="pageContainerTitle">
-                        2
-                      </h1>
-                      <h4 className="pageContainerTitle">
-                        Chatnachrichten
-                      </h4>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-          </Grid>
+            </CardContent>
+          </Card>
         </Paper>
         <Grid container spacing={4}>
           <Grid item sm={12}>
-            <Paper className="pageContainer">
-              <Card className="pluginCard">
-                <CardContent style={{ padding: '24px' }}>
-                  <Grid container spacing={2}>
-                    <Grid item sm={11} style={{ paddingTop: '0px', paddingBottom: '0px' }}>
-                      <TextField
-                        label="Chatlog durchsuchen"
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                        InputLabelProps={{ shrink: true }}
-                      />
-                    </Grid>
-                    <Grid item sm={1} style={{ paddingTop: '15px' }}>
-                      <Fab
-                        color="primary"
-                        size="large"
-                        style={{ height: '56px', borderRadius: '50px' }}
-                      >
-                        <Icon>
-                          search
-                        </Icon>
-                      </Fab>
-                    </Grid>
-                  </Grid>
-                </CardContent>
-              </Card>
+            <Paper style={{ marginTop: '0px', padding: '0px', borderRadius: '0px 0px 4px 4px' }} className="pageContainer">
               <Table>
                 <TableHead>
                   <TableRow className="TableRow">
@@ -164,6 +120,50 @@ class Chatlog extends Component {
                   Timeout und Bans in deinem Kanal
                 </small>
               </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={4}>
+                  <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
+                    <CardContent className="pluginCardContent translucentBoxLeaderboard">
+                      <Typography className={'translucentBoxText'} component={"div"}>
+                        <h1 className="pageContainerTitle">
+                          1
+                        </h1>
+                        <h4 className="pageContainerTitle">
+                          Timeouts
+                        </h4>
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={4}>
+                  <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
+                    <CardContent className="pluginCardContent translucentBoxLeaderboard">
+                      <Typography className={'translucentBoxText'} component={"div"}>
+                        <h1 className="pageContainerTitle">
+                          1
+                        </h1>
+                        <h4 className="pageContainerTitle">
+                          Bans
+                        </h4>
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+                <Grid item xs={4}>
+                  <Card style={{ marginTop: '25px', textAlign: 'center' }} className="pluginCard">
+                    <CardContent className="pluginCardContent translucentBoxLeaderboard">
+                      <Typography className={'translucentBoxText'} component={"div"}>
+                        <h1 className="pageContainerTitle">
+                          1
+                        </h1>
+                        <h4 className="pageContainerTitle">
+                          Purges
+                        </h4>
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
               <Card style={{ marginTop: '25px' }} className="pluginCard">
                 <CardContent style={{ padding: '0px 0px 10px 0px' }}>
                   <Table>
