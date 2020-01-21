@@ -236,7 +236,7 @@ export default {
   'profile.smartlife.connect': 'Connect Smartlife account',
   'profile.smartlife.disconnect': 'Disconnect Smartlife account',
   'profile.smartlife.disconnected': 'Not connected',
-  'profile.smartlife.connected': 'Connected',
+  'profile.smartlife.connected': 'Manage Smartlife',
 
   // Commands
   'commands.title': 'Your commands',

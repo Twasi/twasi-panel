@@ -38,6 +38,12 @@ class SmartLife extends Component {
     window.location = encodeURI(uri);
   }
 
+  handleClickBreadCrumb = (event, value) => {
+    const { history } = this.props;
+    history.push(value);
+    this.setState({});
+  }
+
   render() {
     const { classes, onClose, smartlifeUri, smartlife, jwt, ...other } = this.props;
     return (
@@ -59,7 +65,15 @@ class SmartLife extends Component {
               <Grid container spacing={0}>
                 <Grid item md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <Typography>
-                    {!smartlife.smartlife.devices ? <FormattedMessage id="profile.smartlife.disconnected" /> : <FormattedMessage id="profile.smartlife.connected" />}
+                    {!smartlife.smartlife.devices ?
+                      <FormattedMessage id="profile.smartlife.disconnected" /> :
+                      <Button
+                        onClick={event => this.handleClickBreadCrumb(event, '/smartlife')}
+                        variant="contained"
+                        color="primary">
+                        <FormattedMessage id="profile.smartlife.connected" />
+                      </Button>
+                    }
                   </Typography>
                 </Grid>
                 <Grid item md={6} style={{ textAlign: 'center' }}>
