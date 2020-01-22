@@ -389,6 +389,7 @@ class Overview extends Component {
         {!noStreamData && !isLoading &&
         <Paper className="pageContainer" style={{ borderRadius: '4px', padding: '0px' }}>
           <Tabs
+            style={{ borderRadius: '4px' }}
             value={value}
             onChange={this.handleChange}
             indicatorColor="primary"

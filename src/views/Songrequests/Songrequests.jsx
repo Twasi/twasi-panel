@@ -591,6 +591,7 @@ class Songrequests extends React.Component {
                 {isValidBrowser() &&
                 <Paper className="pageContainer" style={{padding: '0px', marginTop: '15px'}}>
                     <Tabs
+                        style={{ borderRadius: '4px 4px 0px 0px' }}
                         indicatorColor="primary"
                         textColor="primary"
                         value={this.state.tabValue}

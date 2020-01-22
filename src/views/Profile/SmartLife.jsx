@@ -46,6 +46,7 @@ class SmartLife extends Component {
 
   render() {
     const { classes, onClose, smartlifeUri, smartlife, jwt, ...other } = this.props;
+    console.log(smartlife)
     return (
       <div className="pageContent">
         <Paper className="pageContainer">

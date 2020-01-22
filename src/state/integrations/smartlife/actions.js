@@ -10,6 +10,11 @@ const updateSmartlifeAuthUri = smartlifeUri => ({
   smartlifeUri
 });
 
+const updateSmartlifeScenes = smartlifeScenes => ({
+  type: types.UPDATE_SMARTLIFESCENES,
+  smartlifeScenes
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
@@ -23,6 +28,7 @@ const updateIsLoading = isLoading => ({
 export default {
   updateSmartlifeAccount,
   updateSmartlifeAuthUri,
+  updateSmartlifeScenes,
   updateDisabled,
   updateIsLoading
 };

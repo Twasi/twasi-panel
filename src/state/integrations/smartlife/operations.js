@@ -5,12 +5,19 @@ import {getGraph} from '../../../services/graphqlService';
 
 const {
     updateSmartlifeAccount,
-    updateSmartlifeAuthUri
+    updateSmartlifeAuthUri,
+    updateSmartlifeScenes
 } = actions;
 
 const loadSmartlifeAccount = () => dispatch => {
-    dispatch(getGraph('control{devices{active_time,category,create_time,id,ip,name,online,product_id,status{code,value},sub,time_zone,uid,update_time}}', 'smartlifeintegration')).then(data => {
+    dispatch(getGraph('control{devices{activeTime,category,createTime,id,ip,name,online,productId,status{code,value},sub,timeZone,uid,updateTime},homes{homeId,name}}', 'smartlifeintegration')).then(data => {
         dispatch(updateSmartlifeAccount(data.control))
+    });
+}
+
+const loadSmartlifeScenes = (homeId) => dispatch => {
+    dispatch(getGraph(`control{scenes(homeId: ${homeId}){background,name,sceneId}}`, 'smartlifeintegration')).then(data => {
+        dispatch(updateSmartlifeScenes(data.control))
     });
 }
 
@@ -38,6 +45,7 @@ const verifyData = () => (dispatch, getState) => {
 export default {
     loadSmartlifeAccount,
     loadSmartlifeAuthUri,
+    loadSmartlifeScenes,
     loadSmartlifeDisconnect,
     verifyData
 };

@@ -3,6 +3,7 @@ import types from './types';
 export const initialState = {
   isLoaded: false,
   smartlife: [],
+  smartlifeScenes: [],
   smartlifeUri: '',
   smartlifeDisconnect: '',
   isDisabled: false,
@@ -16,6 +17,9 @@ const smartlifeReducer = (state = initialState, action) => {
     }
     case types.UPDATE_SMARTLIFEAUTHURI: {
       return ({ ...state, isLoaded: true, isDisabled: false, smartlifeUri: action.smartlifeUri});
+    }
+    case types.UPDATE_SMARTLIFESCENES: {
+      return ({ ...state, isLoaded: true, isDisabled: false, smartlifeScenes: action.smartlifeScenes});
     }
     case types.UPDATE_SMARTLIFEDISCONNECT: {
       return ({ ...state, isLoaded: true, isDisabled: false, smartlifeDisconnect: action.smartlifeDisconnect});
