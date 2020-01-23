@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CardContent from '@material-ui/core/CardContent';
@@ -22,11 +23,14 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
+import Grid from '@material-ui/core/Grid';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import './_style.css';
 
 import { smartlifeSelectors, smartlifeOperations } from '../../state/integrations/smartlife';
+
+var usedScenes = [];
 
 class AddSequenceDialog extends React.Component {
 
@@ -34,20 +38,19 @@ class AddSequenceDialog extends React.Component {
     sequenceName: '',
     variableName: '',
     createVariable: false,
-    sceneCount: 1,
-    sceneOne: 0,
-    sceneTwo: 0,
-    sceneThree: 0
+    sceneCount: 1
   };
 
   componentDidMount() {
-    const { updateSmartlifeScenes } = this.props;
-    updateSmartlifeScenes(this.props.homeId);
+    const {updateSmartlifeMaxSteps,updateSmartlifeScenes,homes} = this.props;
+    updateSmartlifeMaxSteps();
+    updateSmartlifeScenes(homes[0].homeId)
+    this.setState({ ['group0']: homes[0].homeId })
     this.textInput = React.createRef();
   }
 
   handleClose = () => {
-    this.props.onClose(this.props.selectedValue);
+    this.props.onClose();
   };
 
   focusTextInput = () => {
@@ -60,23 +63,127 @@ class AddSequenceDialog extends React.Component {
     this.setState({ [name]: event.target.checked });
   };
 
-  addSzene = () => {
+  addScene = () => {
     this.setState({ sceneCount: this.state.sceneCount+1 });
   }
 
-  removeSzene = () => {
+  removeScene = () => {
     this.setState({ sceneCount: this.state.sceneCount-1 });
   }
 
-  renderScenes() {
-    const { smartlifeScenes } = this.props;
-    return smartlifeScenes.scenes.map(scene => (
-      <MenuItem key={scene.sceneId} value={scene.name}>{scene.name}</MenuItem>
+  renderGroups() {
+    const { homes } = this.props;
+    return homes.map(home => (
+      <MenuItem key={home.homeId} value={home.homeId}>{home.name}</MenuItem>
     ));
   }
 
+  renderScenes(scenes) {
+    if(scenes.scenes != undefined) {
+      return scenes.scenes.map(scene => (
+        <MenuItem key={scene.sceneId} value={scene.sceneId}>{scene.name}</MenuItem>
+      ));
+    }
+  }
+
+  renderSceneCreator() {
+    const { homes, smartlifeMaxSteps, disabled, updateSmartlifeScenes, smartlifeScenes, isActionSuccess } = this.props;
+    return (
+      <div>
+        {_.times(this.state.sceneCount, i =>
+          <Card style={{ marginTop: '15px' }} className="pluginCard">
+            <CardContent>
+              <Typography>
+                <b>Szene {i+1}</b>
+              </Typography>
+              {homes.length !== 1 &&
+              <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
+                <InputLabel
+                  htmlFor="group-select"
+                >
+                  Gruppe auswählen
+                </InputLabel>
+                <Select
+                  value={this.state['group'+i]}
+                  onChange={(event) => this.setState({ ['group'+i]: event.target.value })}
+                  input={
+                    <OutlinedInput
+                      labelWidth='130'
+                      name={i}
+                      id="group-select"
+                    />
+                  }
+                >
+                  {!disabled && this.renderGroups()}
+                </Select>
+              </FormControl>}
+              <Grid container spacing={3}>
+                <Grid item xs={10} style={{ borderRadius: '50px' }}>
+                  <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
+                    <InputLabel
+                      htmlFor="scene-select"
+                    >
+                      Szene auswählen
+                    </InputLabel>
+                    <Select
+                      value={this.state['scene'+i]}
+                      onChange={(event) => this.setState({ ['scene'+i]: event.target.value })}
+                      onOpen={!disabled && homes.length === 1 ? () => updateSmartlifeScenes(homes[0].homeId) : () => updateSmartlifeScenes(this.state['group'+i])}
+                      input={
+                        <OutlinedInput
+                          labelWidth='130'
+                          name={"scene"+i}
+                          id="scene-select"
+                          value={this.state['scene'+i]}
+                        />
+                      }
+                    >
+                      {smartlifeScenes && this.renderScenes(smartlifeScenes)}
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={2} style={{ borderRadius: '50px' }}>
+                  <Fab
+                    style={{ marginTop: '15px' }}
+                    color="primary"
+                    className="noshadow"
+                    aria-label="playScene">
+                    <Icon className="actionButtons">play_arrow</Icon>
+                  </Fab>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        )}
+        <div style={{ width: '100%', textAlign: 'center' }}>
+          <Fab
+            disabled={this.state.sceneCount === 1}
+            onClick={() => this.removeScene()}
+            style={{ marginTop: '15px', marginRight: '5px' }}
+            color="secondary"
+            className="noshadow"
+            size="small"
+            aria-label="removeScene">
+            <Icon className="actionButtons">remove</Icon>
+          </Fab>
+          <Fab
+            disabled={this.state.sceneCount >= smartlifeMaxSteps || smartlifeScenes.scenes && smartlifeScenes.scenes.length === this.state.sceneCount}
+            onClick={() => this.addScene()}
+            style={{ marginTop: '15px' }}
+            color="primary"
+            className="noshadow"
+            size="small"
+            aria-label="addScene">
+            <Icon className="actionButtons">add</Icon>
+          </Fab>
+        </div>
+      </div>
+    )
+  }
+
   render() {
-    const { classes, onClose, smartlifeScenes, ...other } = this.props;
+    console.log(this.state['scene0'])
+    const { classes, onClose, smartlifeScenes, smartlifeMaxSteps, disabled, isLoaded, isLoading, isActionSuccess, updateSmartlifeScenes, updateSmartlifeMaxSteps, homes, ...other } = this.props;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -139,53 +246,7 @@ class AddSequenceDialog extends React.Component {
               />
             </CardContent>
           </Card>
-          <Card style={{ marginTop: '15px' }} className="pluginCard">
-            <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
-              <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
-                <InputLabel
-                  htmlFor="scene-select"
-                >
-                  Szene auswählen
-                </InputLabel>
-                <Select
-                  value={this.state.sceneOne}
-                  onChange={this.handleChangeSceneOne}
-                  input={
-                    <OutlinedInput
-                      labelWidth='130'
-                      name="sceneOne"
-                      id="scene-select"
-                    />
-                  }
-                >
-                  {smartlifeScenes.length !== 0 && this.renderScenes()}
-                </Select>
-                <FormHelperText>Welche Szene soll als erstes ausgelöst werden?</FormHelperText>
-              </FormControl>
-            </CardContent>
-          </Card>
-          <div style={{ width: '100%', textAlign: 'center' }}>
-            <Fab
-              disabled={this.state.sceneCount === 1}
-              onClick={() => this.removeSzene()}
-              style={{ marginTop: '15px', marginRight: '5px' }}
-              color="secondary"
-              className="noshadow"
-              size="small"
-              aria-label="removeScene">
-              <Icon className="actionButtons">remove</Icon>
-            </Fab>
-            <Fab
-              disabled={this.state.sceneCount >= 3 || smartlifeScenes.scenes && smartlifeScenes.scenes.length === this.state.sceneCount}
-              onClick={() => this.addSzene()}
-              style={{ marginTop: '15px' }}
-              color="primary"
-              className="noshadow"
-              size="small"
-              aria-label="addScene">
-              <Icon className="actionButtons">add</Icon>
-            </Fab>
-          </div>
+          {this.renderSceneCreator()}
           <Button
             disabled
             fullWidth
@@ -202,10 +263,16 @@ class AddSequenceDialog extends React.Component {
 
 const mapStateToProps = state => ({
   smartlifeScenes: smartlifeSelectors.getSmartlifeScenes(state),
+  smartlifeMaxSteps: smartlifeSelectors.getSmartlifeMaxSteps(state),
+  isLoaded: smartlifeSelectors.isLoaded(state),
+  isLoading: smartlifeSelectors.isLoading(state),
+  isActionSuccess: smartlifeSelectors.isActionSuccess(state),
+  disabled: smartlifeSelectors.isDisabled(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   updateSmartlifeScenes: (homeId) => dispatch(smartlifeOperations.loadSmartlifeScenes(homeId)),
+  updateSmartlifeMaxSteps: () => dispatch(smartlifeOperations.loadSmartlifeMaxSteps()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddSequenceDialog);

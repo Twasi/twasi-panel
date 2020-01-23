@@ -1,13 +1,15 @@
 import types from './types';
 
 export const initialState = {
-  isLoaded: false,
   smartlife: [],
   smartlifeScenes: [],
   smartlifeUri: '',
   smartlifeDisconnect: '',
+  smartlifeMaxSteps: 0,
   isDisabled: false,
   isLoading: false,
+  isLoaded: false,
+  isActionSuccess: false,
 };
 
 const smartlifeReducer = (state = initialState, action) => {
@@ -21,14 +23,23 @@ const smartlifeReducer = (state = initialState, action) => {
     case types.UPDATE_SMARTLIFESCENES: {
       return ({ ...state, isLoaded: true, isDisabled: false, smartlifeScenes: action.smartlifeScenes});
     }
+    case types.UPDATE_SMARTLIFEMAXSTEPS: {
+      return ({ ...state, isLoaded: true, isDisabled: false, smartlifeMaxSteps: action.smartlifeMaxSteps});
+    }
     case types.UPDATE_SMARTLIFEDISCONNECT: {
       return ({ ...state, isLoaded: true, isDisabled: false, smartlifeDisconnect: action.smartlifeDisconnect});
     }
     case types.UPDATE_DISABLED: {
       return { ...state, isDisabled: action.isDisabled };
     }
-    case types.UPDATE_IS_LOADING: {
+    case types.UPDATE_LOADING: {
       return { ...state, isLoading: action.isLoading };
+    }
+    case types.UPDATE_LOADED: {
+      return { ...state, isLoaded: action.isLoaded };
+    }
+    case types.UPDATE_ACTIONSUCCESS: {
+      return { ...state, isActionSuccess: action.isActionSuccess };
     }
     default:
       return state;

@@ -6,29 +6,69 @@ import {getGraph} from '../../../services/graphqlService';
 const {
     updateSmartlifeAccount,
     updateSmartlifeAuthUri,
-    updateSmartlifeScenes
+    updateSmartlifeScenes,
+    updateSmartlifeMaxSteps,
+    updateDisabled,
+    updateLoaded,
+    updateLoading,
+    updateActionSuccess
 } = actions;
 
 const loadSmartlifeAccount = () => dispatch => {
+    dispatch(updateLoading(true));
     dispatch(getGraph('control{devices{activeTime,category,createTime,id,ip,name,online,productId,status{code,value},sub,timeZone,uid,updateTime},homes{homeId,name}}', 'smartlifeintegration')).then(data => {
-        dispatch(updateSmartlifeAccount(data.control))
+      if (data == null) {
+          dispatch(updateDisabled(true));
+          return;
+      }
+      dispatch(updateSmartlifeAccount(data.control))
+    });
+}
+
+const loadSmartlifeMaxSteps = () => dispatch => {
+    dispatch(updateLoading(true));
+    dispatch(getGraph('maxSequenceSteps', 'smartlifeintegration')).then(data => {
+      if (data == null) {
+          dispatch(updateDisabled(true));
+          return;
+      }
+      dispatch(updateSmartlifeMaxSteps(data.maxSequenceSteps))
     });
 }
 
 const loadSmartlifeScenes = (homeId) => dispatch => {
+    dispatch(updateLoading(true));
+    dispatch(updateActionSuccess(false));
     dispatch(getGraph(`control{scenes(homeId: ${homeId}){background,name,sceneId}}`, 'smartlifeintegration')).then(data => {
-        dispatch(updateSmartlifeScenes(data.control))
+      if (data == null) {
+          dispatch(updateDisabled(true));
+          return;
+      }
+      dispatch(updateSmartlifeScenes(data.control))
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+        dispatch(updateActionSuccess(false));
+        dispatch(updateLoading(false))
+        dispatch(updateLoaded(true))
     });
 }
 
 const loadSmartlifeAuthUri = () => dispatch => {
+    dispatch(updateLoading(true));
     dispatch(getGraph('authenticationUri', 'smartlifeintegration')).then(data => {
-        dispatch(updateSmartlifeAuthUri(data.authenticationUri))
+      if (data == null) {
+          dispatch(updateDisabled(true));
+          return;
+      }
+      dispatch(updateSmartlifeAuthUri(data.authenticationUri))
+    }).finally(() => {
+        dispatch(updateLoading(false))
+        dispatch(updateLoaded(true))
     });
 }
 
 const loadSmartlifeDisconnect = () => dispatch => {
-    dispatch(getGraph('account{logout}', 'smartlifeintegration'))
+    dispatch(getGraph('disconnect{status,translationKey}', 'smartlifeintegration'))
 }
 
 
@@ -47,5 +87,9 @@ export default {
     loadSmartlifeAuthUri,
     loadSmartlifeScenes,
     loadSmartlifeDisconnect,
-    verifyData
+    loadSmartlifeMaxSteps,
+    verifyData,
+    updateLoaded,
+    updateLoading,
+    updateActionSuccess
 };

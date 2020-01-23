@@ -49,7 +49,7 @@ class Smartlife extends Component {
       value: 0,
       tabContainer: "",
       openAddSequenceDialog: false,
-      homeIdState: ""
+      homes: 0
     };
   }
   componentDidMount() {
@@ -66,22 +66,6 @@ class Smartlife extends Component {
   handleCloseAddSequenceDialog = () => {
     this.setState({ openAddSequenceDialog: false });
   };
-
-  renderHomes() {
-    const { smartlife } = this.props;
-    if(smartlife.smartlife.homes !== null || smartlife.smartlife.length !== 0){
-      return smartlife.smartlife.homes.map(home => (
-        <Tab
-          key={home.homeId}
-          value={smartlife.smartlife.homes[0].homeId === home.homeId ? 0 : parseInt(home.homeId)}
-          label={(
-          <span>
-            <b>{home.name}</b>
-          </span>
-        )} />
-      ));
-    }
-  }
 
   renderDevicesEmpty() {
     return (
@@ -104,8 +88,7 @@ class Smartlife extends Component {
   }
 
   render() {
-    const { smartlife } = this.props;
-    console.log(smartlife)
+    const { smartlife, disabled, isLoaded, isLoading, isActionSuccess } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -139,44 +122,28 @@ class Smartlife extends Component {
           </Typography>
         </Paper>
         {smartlife.smartlife.devices &&
-        <Paper className="pageContainer" style={{ borderRadius: '4px 4px 0px 0px', padding: '0px' }}>
-          <Tabs
-            style={{ borderRadius: '4px 4px 0px 0px' }}
-            value={this.state.value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            variant="scrollable"
-            scrollButtons="auto"
-            textColor="primary"
-          >
-            {this.renderHomes()}
-          </Tabs>
-        </Paper>}
-        {smartlife.smartlife.devices &&
-        <TabPanel value={this.state.value} index={0}>
-          <Paper className="pageContainer" style={{ padding: '0px', marginTop: '0px', borderRadius: '0px 0px 4px 4px' }}>
-            <Table>
-              <TableHead>
-                <TableRow className="TableRow">
-                  <TableCell>ID</TableCell>
-                  <TableCell>Sequenz</TableCell>
-                  <TableCell>Verwendete Szenen</TableCell>
-                  <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody className="anim">
+        <Paper className="pageContainer" style={{ padding: '0px', marginTop: '0px', borderRadius: '0px 0px 4px 4px' }}>
+          <Table>
+            <TableHead>
+              <TableRow className="TableRow">
+                <TableCell>ID</TableCell>
+                <TableCell>Sequenz</TableCell>
+                <TableCell>Verwendete Szenen</TableCell>
+                <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody className="anim">
 
-              </TableBody>
-            </Table>
-          </Paper>
-          {this.state.openAddSequenceDialog &&
-            <AddSequenceDialog
-              open
-              homeId={this.state.homeIdState}
-              onClose={this.handleCloseAddSequenceDialog}
-            />
-          }
-        </TabPanel>}
+            </TableBody>
+          </Table>
+        </Paper>}
+        {this.state.openAddSequenceDialog &&
+          <AddSequenceDialog
+            open
+            homes={smartlife.smartlife.homes}
+            onClose={this.handleCloseAddSequenceDialog}
+          />
+        }
         {!smartlife.smartlife.devices && this.renderDevicesEmpty()}
       </div>
     );
@@ -189,6 +156,10 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   smartlife: smartlifeSelectors.getSmartlifeAccount(state),
+  isLoaded: smartlifeSelectors.isLoaded(state),
+  isLoading: smartlifeSelectors.isLoading(state),
+  isActionSuccess: smartlifeSelectors.isActionSuccess(state),
+  disabled: smartlifeSelectors.isDisabled(state)
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Smartlife));

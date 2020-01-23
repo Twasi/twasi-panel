@@ -15,20 +15,38 @@ const updateSmartlifeScenes = smartlifeScenes => ({
   smartlifeScenes
 });
 
+const updateSmartlifeMaxSteps = smartlifeMaxSteps => ({
+  type: types.UPDATE_SMARTLIFEMAXSTEPS,
+  smartlifeMaxSteps
+});
+
 const updateDisabled = isDisabled => ({
   type: types.UPDATE_DISABLED,
   isDisabled
 });
 
-const updateIsLoading = isLoading => ({
-  type: types.UPDATE_IS_LOADING,
+const updateLoading = isLoading => ({
+  type: types.UPDATE_LOADING,
   isLoading
+});
+
+const updateLoaded = isLoaded => ({
+  type: types.UPDATE_LOADED,
+  isLoaded
+});
+
+const updateActionSuccess = isActionSuccess => ({
+  type: types.UPDATE_ACTIONSUCCESS,
+  isActionSuccess
 });
 
 export default {
   updateSmartlifeAccount,
   updateSmartlifeAuthUri,
   updateSmartlifeScenes,
+  updateSmartlifeMaxSteps,
   updateDisabled,
-  updateIsLoading
+  updateLoading,
+  updateLoaded,
+  updateActionSuccess
 };
