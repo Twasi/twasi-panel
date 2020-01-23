@@ -7,6 +7,8 @@ const {
     updateSmartlifeAccount,
     updateSmartlifeAuthUri,
     updateSmartlifeScenes,
+    updateTriggerSmartlifeScene,
+    updateCreateSequence,
     updateSmartlifeMaxSteps,
     updateDisabled,
     updateLoaded,
@@ -53,6 +55,40 @@ const loadSmartlifeScenes = (homeId) => dispatch => {
     });
 }
 
+const triggerSmartlifeScene = (homeId, sceneId) => dispatch => {
+    dispatch(updateLoading(true));
+    dispatch(updateActionSuccess(false));
+    dispatch(getGraph(`control{triggerScene(homeId: ${homeId}, sceneId: ${JSON.stringify(sceneId)}){status,translationKey}}`, 'smartlifeintegration')).then(data => {
+      if (data == null) {
+          dispatch(updateDisabled(true));
+          return;
+      }
+      dispatch(updateTriggerSmartlifeScene(data.control))
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+        dispatch(updateActionSuccess(false));
+        dispatch(updateLoading(false))
+        dispatch(updateLoaded(true))
+    });
+}
+
+const createSequence = (sequenceInput) => dispatch => {
+    dispatch(updateLoading(true));
+    dispatch(updateActionSuccess(false));
+    dispatch(getGraph(`control{sceneSequences{create(newSequence: ${JSON.stringify(sequenceInput)}){created,id,name,steps{homeId,msDelay,sceneId},updated,variable}}}`, 'smartlifeintegration')).then(data => {
+      if (data == null) {
+          dispatch(updateDisabled(true));
+          return;
+      }
+      dispatch(updateCreateSequence(data.control))
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+        dispatch(updateActionSuccess(false));
+        dispatch(updateLoading(false))
+        dispatch(updateLoaded(true))
+    });
+}
+
 const loadSmartlifeAuthUri = () => dispatch => {
     dispatch(updateLoading(true));
     dispatch(getGraph('authenticationUri', 'smartlifeintegration')).then(data => {
@@ -83,9 +119,11 @@ const verifyData = () => (dispatch, getState) => {
 };
 
 export default {
+    createSequence,
     loadSmartlifeAccount,
     loadSmartlifeAuthUri,
     loadSmartlifeScenes,
+    triggerSmartlifeScene,
     loadSmartlifeDisconnect,
     loadSmartlifeMaxSteps,
     verifyData,

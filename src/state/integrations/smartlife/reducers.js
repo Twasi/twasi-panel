@@ -3,6 +3,8 @@ import types from './types';
 export const initialState = {
   smartlife: [],
   smartlifeScenes: [],
+  sequenceInput: [],
+  triggerSmartlifeScene: '',
   smartlifeUri: '',
   smartlifeDisconnect: '',
   smartlifeMaxSteps: 0,
@@ -10,6 +12,8 @@ export const initialState = {
   isLoading: false,
   isLoaded: false,
   isActionSuccess: false,
+  homeId: '',
+  sceneId: ''
 };
 
 const smartlifeReducer = (state = initialState, action) => {
@@ -22,6 +26,12 @@ const smartlifeReducer = (state = initialState, action) => {
     }
     case types.UPDATE_SMARTLIFESCENES: {
       return ({ ...state, isLoaded: true, isDisabled: false, smartlifeScenes: action.smartlifeScenes});
+    }
+    case types.UPDATE_TRIGGERSMARTLIFESCENE: {
+      return ({ ...state, isLoaded: true, isDisabled: false, homeId: action.homeId, sceneId: action.sceneId});
+    }
+    case types.UPDATE_CREATESEQUENCE: {
+      return ({ ...state, isLoaded: true, isDisabled: false, sequenceInput: action.sequenceInput});
     }
     case types.UPDATE_SMARTLIFEMAXSTEPS: {
       return ({ ...state, isLoaded: true, isDisabled: false, smartlifeMaxSteps: action.smartlifeMaxSteps});

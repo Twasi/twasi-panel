@@ -31,7 +31,8 @@ import './_style.css';
 
 import { smartlifeSelectors, smartlifeOperations } from '../../state/integrations/smartlife';
 
-var usedScenes = [];
+var usedScenes = {};
+let sequenceQuery = {};
 
 class AddSequenceDialog extends React.Component {
 
@@ -39,7 +40,7 @@ class AddSequenceDialog extends React.Component {
     sequenceName: '',
     variableName: '',
     createVariable: false,
-    sceneCount: 1
+    sceneCount: 1,
   };
 
   componentDidMount() {
@@ -74,6 +75,38 @@ class AddSequenceDialog extends React.Component {
     this.setState({ sceneCount: this.state.sceneCount-1 });
   }
 
+  handleSequenceNameChange = (event) => {
+    if(event.target.value.length <= 25) {
+      this.setState({
+        sequenceName: event.target.value
+      });
+    }
+  };
+
+  handleVariableNameChange = (event) => {
+    if(event.target.value.length <= 25) {
+      this.setState({
+        variableName: event.target.value
+      });
+    }
+  };
+
+  handleCreateSequence = () => {
+    for(var i = 1; i <= this.state.sceneCount; i++) {
+      usedScenes.homeId = this.state['group'+(i-1)]
+      usedScenes.msDelay = this.state['delay'+(i-1)]*1000
+      usedScenes.sceneId = this.state['scene'+(i-1)]
+    }
+    sequenceQuery.name = this.state.sequenceName
+    sequenceQuery.steps = usedScenes
+    sequenceQuery.variable = this.state.variableName
+
+    sequenceQuery = JSON.stringify(sequenceQuery);
+    sequenceQuery = sequenceQuery.replace(/\"([^(\")"]+)\":/g,"$1:");
+    console.log(sequenceQuery)
+    this.props.createSequence(sequenceQuery)
+  }
+
   renderGroups() {
     const { homes } = this.props;
     return homes.map(home => (
@@ -90,7 +123,7 @@ class AddSequenceDialog extends React.Component {
   }
 
   renderSceneCreator() {
-    const { homes, smartlifeMaxSteps, disabled, updateSmartlifeScenes, smartlifeScenes, isActionSuccess } = this.props;
+    const { homes, smartlifeMaxSteps, disabled, updateSmartlifeScenes, smartlifeScenes, isActionSuccess, triggerSmartlifeScene } = this.props;
     return (
       <div>
         {_.times(this.state.sceneCount, i =>
@@ -102,6 +135,7 @@ class AddSequenceDialog extends React.Component {
                   style={{ padding: '22px 0px' }}
                   aria-labelledby="label"
                   value={this.state['delay'+i]}
+                  defaultValue={0}
                   min={0}
                   max={59}
                   step={1}
@@ -146,7 +180,7 @@ class AddSequenceDialog extends React.Component {
                       </InputLabel>
                       <Select
                         value={this.state['scene'+i]}
-                        onChange={(event) => this.setState({ ['scene'+i]: event.target.value })}
+                        onChange={(event, name) => this.setState({ ['scene'+i]: event.target.value, ['sceneName'+i]: name.props.children })}
                         onOpen={!disabled && homes.length === 1 ? () => updateSmartlifeScenes(homes[0].homeId) : () => updateSmartlifeScenes(this.state['group'+i])}
                         input={
                           <OutlinedInput
@@ -156,13 +190,14 @@ class AddSequenceDialog extends React.Component {
                           />
                         }
                       >
-                        {this.state['scene'+i] !== undefined && <MenuItem disabled key={this.state['scene'+i]} value={this.state['scene'+i]}>{this.state['scene'+i]}</MenuItem>}
+                        {this.state['scene'+i] !== undefined && <MenuItem disabled key={this.state['scene'+i]} value={this.state['scene'+i]}>{this.state['sceneName'+i]}</MenuItem>}
                         {smartlifeScenes && this.renderScenes(smartlifeScenes)}
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={2} style={{ borderRadius: '50px' }}>
                     <Fab
+                      onClick={() => triggerSmartlifeScene(this.state['group'+i], this.state['scene'+i])}
                       style={{ marginTop: '15px' }}
                       color="primary"
                       className="noshadow"
@@ -187,7 +222,7 @@ class AddSequenceDialog extends React.Component {
             <Icon className="actionButtons">remove</Icon>
           </Fab>
           <Fab
-            disabled={this.state.sceneCount >= smartlifeMaxSteps || smartlifeScenes.scenes && smartlifeScenes.scenes.length === this.state.sceneCount}
+            disabled={this.state.sceneCount >= smartlifeMaxSteps || this.state['scene'+(this.state.sceneCount-1)] === undefined}
             onClick={() => this.addScene()}
             style={{ marginTop: '15px' }}
             color="primary"
@@ -202,7 +237,6 @@ class AddSequenceDialog extends React.Component {
   }
 
   render() {
-    console.log(this.state['scene0'])
     const { classes, onClose, smartlifeScenes, smartlifeMaxSteps, disabled, isLoaded, isLoading, isActionSuccess, updateSmartlifeScenes, updateSmartlifeMaxSteps, homes, ...other } = this.props;
     return (
       <Dialog
@@ -268,7 +302,7 @@ class AddSequenceDialog extends React.Component {
           </Card>
           {this.renderSceneCreator()}
           <Button
-            disabled
+            onClick={this.handleCreateSequence}
             fullWidth
             style={{ marginTop: '15px' }}
             variant="contained"
@@ -291,6 +325,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  createSequence: (sequenceInput) => dispatch(smartlifeOperations.createSequence(sequenceInput)),
+  triggerSmartlifeScene: (homeId, sceneId) => dispatch(smartlifeOperations.triggerSmartlifeScene(homeId, sceneId)),
   updateSmartlifeScenes: (homeId) => dispatch(smartlifeOperations.loadSmartlifeScenes(homeId)),
   updateSmartlifeMaxSteps: () => dispatch(smartlifeOperations.loadSmartlifeMaxSteps()),
 });

@@ -15,6 +15,17 @@ const updateSmartlifeScenes = smartlifeScenes => ({
   smartlifeScenes
 });
 
+const updateTriggerSmartlifeScene = (homeId, sceneId) => ({
+  type: types.UPDATE_TRIGGERSMARTLIFESCENE,
+  homeId,
+  sceneId
+});
+
+const updateCreateSequence = (sequenceInput) => ({
+  type: types.UPDATE_CREATESEQUENCE,
+  sequenceInput
+});
+
 const updateSmartlifeMaxSteps = smartlifeMaxSteps => ({
   type: types.UPDATE_SMARTLIFEMAXSTEPS,
   smartlifeMaxSteps
@@ -41,9 +52,11 @@ const updateActionSuccess = isActionSuccess => ({
 });
 
 export default {
+  updateCreateSequence,
   updateSmartlifeAccount,
   updateSmartlifeAuthUri,
   updateSmartlifeScenes,
+  updateTriggerSmartlifeScene,
   updateSmartlifeMaxSteps,
   updateDisabled,
   updateLoading,
