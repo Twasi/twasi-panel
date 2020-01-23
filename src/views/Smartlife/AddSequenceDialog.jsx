@@ -46,7 +46,9 @@ class AddSequenceDialog extends React.Component {
     const {updateSmartlifeMaxSteps,updateSmartlifeScenes,homes} = this.props;
     updateSmartlifeMaxSteps();
     updateSmartlifeScenes(homes[0].homeId)
-    this.setState({ ['group0']: homes[0].homeId })
+    for(var i = 0; i <= this.state.sceneCount; i++) {
+      this.setState({ ['group'+i]: homes[0].homeId })
+    }
     this.textInput = React.createRef();
   }
 
@@ -149,9 +151,8 @@ class AddSequenceDialog extends React.Component {
                         input={
                           <OutlinedInput
                             labelWidth='130'
-                            name={"scene"+i}
-                            id="scene-select"
                             value={this.state['scene'+i]}
+                            id="scene-select"
                           />
                         }
                       >
