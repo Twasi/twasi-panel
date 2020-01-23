@@ -24,6 +24,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import './_style.css';
@@ -91,69 +92,86 @@ class AddSequenceDialog extends React.Component {
     return (
       <div>
         {_.times(this.state.sceneCount, i =>
-          <Card style={{ marginTop: '15px' }} className="pluginCard">
-            <CardContent>
-              <Typography>
-                <b>Szene {i+1}</b>
-              </Typography>
-              {homes.length !== 1 &&
-              <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
-                <InputLabel
-                  htmlFor="group-select"
-                >
-                  Gruppe auswählen
-                </InputLabel>
-                <Select
-                  value={this.state['group'+i]}
-                  onChange={(event) => this.setState({ ['group'+i]: event.target.value })}
-                  input={
-                    <OutlinedInput
-                      labelWidth='130'
-                      name={i}
-                      id="group-select"
-                    />
-                  }
-                >
-                  {!disabled && this.renderGroups()}
-                </Select>
-              </FormControl>}
-              <Grid container spacing={3}>
-                <Grid item xs={10} style={{ borderRadius: '50px' }}>
-                  <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
-                    <InputLabel
-                      htmlFor="scene-select"
-                    >
-                      Szene auswählen
-                    </InputLabel>
-                    <Select
-                      value={this.state['scene'+i]}
-                      onChange={(event) => this.setState({ ['scene'+i]: event.target.value })}
-                      onOpen={!disabled && homes.length === 1 ? () => updateSmartlifeScenes(homes[0].homeId) : () => updateSmartlifeScenes(this.state['group'+i])}
-                      input={
-                        <OutlinedInput
-                          labelWidth='130'
-                          name={"scene"+i}
-                          id="scene-select"
-                          value={this.state['scene'+i]}
-                        />
-                      }
-                    >
-                      {smartlifeScenes && this.renderScenes(smartlifeScenes)}
-                    </Select>
-                  </FormControl>
+          <div>
+            <Card className="pluginCard" style={{ marginTop: '15px' }}>
+              <CardContent style={{ paddingTop: '0px', paddingBottom: '8px' }}>
+                <Typography style={{ paddingTop: '8px', paddingLeft: '12px', fontSize: '0.775rem' }}>Delay für Szene {i+1}: {this.state['delay'+i]}</Typography>
+                <Slider
+                  style={{ padding: '22px 0px' }}
+                  aria-labelledby="label"
+                  value={this.state['delay'+i]}
+                  min={0}
+                  max={59}
+                  step={1}
+                  onChange={(event, delay) => this.setState({ ['delay'+i]: delay })}
+                />
+                <Typography style={{ paddingLeft: '12px', fontSize: '0.775rem' }}>Stelle hier ein gewünschtes Delay ein.</Typography>
+              </CardContent>
+            </Card>
+            <Card style={{ marginTop: '15px' }} className="pluginCard">
+              <CardContent>
+                <Typography>
+                  <b>Szene {i+1}</b>
+                </Typography>
+                {homes.length !== 1 &&
+                <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
+                  <InputLabel
+                    htmlFor="group-select"
+                  >
+                    Gruppe auswählen
+                  </InputLabel>
+                  <Select
+                    value={this.state['group'+i]}
+                    onChange={(event) => this.setState({ ['group'+i]: event.target.value })}
+                    input={
+                      <OutlinedInput
+                        labelWidth='130'
+                        name={i}
+                        id="group-select"
+                      />
+                    }
+                  >
+                    {!disabled && this.renderGroups()}
+                  </Select>
+                </FormControl>}
+                <Grid container spacing={3}>
+                  <Grid item xs={10} style={{ borderRadius: '50px' }}>
+                    <FormControl style={{ marginTop: '16px' }} variant="outlined" fullWidth>
+                      <InputLabel
+                        htmlFor="scene-select"
+                      >
+                        Szene auswählen
+                      </InputLabel>
+                      <Select
+                        value={this.state['scene'+i]}
+                        onChange={(event) => this.setState({ ['scene'+i]: event.target.value })}
+                        onOpen={!disabled && homes.length === 1 ? () => updateSmartlifeScenes(homes[0].homeId) : () => updateSmartlifeScenes(this.state['group'+i])}
+                        input={
+                          <OutlinedInput
+                            labelWidth='130'
+                            name={"scene"+i}
+                            id="scene-select"
+                            value={this.state['scene'+i]}
+                          />
+                        }
+                      >
+                        {smartlifeScenes && this.renderScenes(smartlifeScenes)}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={2} style={{ borderRadius: '50px' }}>
+                    <Fab
+                      style={{ marginTop: '15px' }}
+                      color="primary"
+                      className="noshadow"
+                      aria-label="playScene">
+                      <Icon className="actionButtons">play_arrow</Icon>
+                    </Fab>
+                  </Grid>
                 </Grid>
-                <Grid item xs={2} style={{ borderRadius: '50px' }}>
-                  <Fab
-                    style={{ marginTop: '15px' }}
-                    color="primary"
-                    className="noshadow"
-                    aria-label="playScene">
-                    <Icon className="actionButtons">play_arrow</Icon>
-                  </Fab>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         )}
         <div style={{ width: '100%', textAlign: 'center' }}>
           <Fab
