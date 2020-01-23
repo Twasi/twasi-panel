@@ -156,6 +156,7 @@ class AddSequenceDialog extends React.Component {
                           />
                         }
                       >
+                        {this.state['scene'+i] !== undefined && <MenuItem disabled key={this.state['scene'+i]} value={this.state['scene'+i]}>{this.state['scene'+i]}</MenuItem>}
                         {smartlifeScenes && this.renderScenes(smartlifeScenes)}
                       </Select>
                     </FormControl>
