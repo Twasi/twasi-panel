@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
 import { FormattedMessage } from 'react-intl';
 import Paper from '@material-ui/core/Paper';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
@@ -10,6 +11,8 @@ import Icon from '@material-ui/core/Icon';
 import Link from '@material-ui/core/Link';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Fab from '@material-ui/core/Fab';
+import Chip from '@material-ui/core/Chip';
 import Box from '@material-ui/core/Box';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -49,12 +52,14 @@ class Smartlife extends Component {
       value: 0,
       tabContainer: "",
       openAddSequenceDialog: false,
-      homes: 0
+      homes: 0,
+      page: 1
     };
   }
   componentDidMount() {
-    const { updateSmartlifeAccount } = this.props;
+    const { updateSmartlifeAccount, updateSequences } = this.props;
     updateSmartlifeAccount();
+    updateSequences(this.state.page);
   }
 
   handleClickBreadCrumb = (event, value) => {
@@ -66,6 +71,29 @@ class Smartlife extends Component {
   handleCloseAddSequenceDialog = () => {
     this.setState({ openAddSequenceDialog: false });
   };
+
+  renderPagination() {
+    const { pagination, updateSequences } = this.props;
+    return (
+      <Paper style={{ textAlign: 'center' }} className="pageContainer">
+      {_.times(pagination.pages, i =>
+        <Fab
+          key={i+1}
+          onClick={() => {
+            updateSequences(i+1)
+            this.setState({ page: i+1});
+          }}
+          style={{ marginLeft: '5px', marginRight: '5px' }}
+          size="small"
+          disabled={i+1 === this.state.page}
+          color={i+1 === this.state.page ? "default" : "primary"}
+        >
+        {i+1}
+        </Fab>
+      )}
+      </Paper>
+    );
+  }
 
   renderDevicesEmpty() {
     return (
@@ -87,8 +115,45 @@ class Smartlife extends Component {
     );
   }
 
+  renderSequences() {
+    const { sequences, delSequence } = this.props;
+    return sequences.map(sequence => (
+      <TableRow key={sequence.id}>
+        <TableCell>
+          <b>{sequence.name}</b>
+        </TableCell>
+        <TableCell>
+          {sequence.variable !== "" ?
+          <Chip color="primary" label={sequence.variable}/>:
+          <Chip color="secondary" label="Keine Variable gesetzt."/>}
+        </TableCell>
+        <TableCell>
+          {sequence.steps.length}
+        </TableCell>
+        <TableCell>
+          <Fab
+            color="primary"
+            className="noshadow"
+            size="small"
+            aria-label="editCommand">
+            <Icon className="actionButtons">play_arrow</Icon>
+          </Fab>
+          {' '}
+          <Fab
+            onClick={() => delSequence(sequence.id)}
+            color="secondary"
+            className="noshadow"
+            size="small"
+            aria-label="deleteCommand">
+            <Icon className="actionButtons">delete</Icon>
+          </Fab>
+        </TableCell>
+      </TableRow>
+    ));
+  }
+
   render() {
-    const { smartlife, disabled, isLoaded, isLoading, isActionSuccess } = this.props;
+    const { smartlife, disabled, isLoaded, isLoading, updateSequences, isActionSuccess } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -106,6 +171,7 @@ class Smartlife extends Component {
                   style={{ marginRight: smartlife.smartlife.devices ? 16 : 0 }}
                   variant="contained"
                   color="primary"
+                  onClick={() => updateSequences(this.state.page)}
                 >
                   <Icon style={{ marginRight: '5px' }}>cached</Icon>
                   <FormattedMessage id="common.refresh" />
@@ -126,16 +192,17 @@ class Smartlife extends Component {
           <Table>
             <TableHead>
               <TableRow className="TableRow">
-                <TableCell>ID</TableCell>
                 <TableCell>Sequenz</TableCell>
-                <TableCell>Verwendete Szenen</TableCell>
+                <TableCell>Variable</TableCell>
+                <TableCell>Anzahl der Szenen</TableCell>
                 <TableCell style={{ width: '120px' }}><FormattedMessage id="common.actions" /></TableCell>
               </TableRow>
             </TableHead>
             <TableBody className="anim">
-
+              {this.renderSequences()}
             </TableBody>
           </Table>
+          {this.props.pagination.pages !== 1 && this.renderPagination()}
         </Paper>}
         {this.state.openAddSequenceDialog &&
           <AddSequenceDialog
@@ -152,9 +219,13 @@ class Smartlife extends Component {
 
 const mapDispatchToProps = dispatch => ({
   updateSmartlifeAccount: () => dispatch(smartlifeOperations.loadSmartlifeAccount()),
+  updateSequences: page => dispatch(smartlifeOperations.loadSequences(page)),
+  delSequence: id => dispatch(smartlifeOperations.delSequence(id)),
 });
 
 const mapStateToProps = state => ({
+  sequences: smartlifeSelectors.getSequences(state),
+  pagination: smartlifeSelectors.getPagination(state),
   smartlife: smartlifeSelectors.getSmartlifeAccount(state),
   isLoaded: smartlifeSelectors.isLoaded(state),
   isLoading: smartlifeSelectors.isLoading(state),

@@ -1,5 +1,15 @@
 import types from './types';
 
+const updateSequences = sequences => ({
+  type: types.UPDATE_SEQUENCES,
+  sequences
+});
+
+const updateDelSequence = (id) => ({
+  type: types.UPDATE_DELSEQUENCE,
+  id
+});
+
 const updateSmartlifeAccount = smartlife => ({
   type: types.UPDATE_SMARTLIFEACCOUNT,
   smartlife
@@ -51,13 +61,21 @@ const updateActionSuccess = isActionSuccess => ({
   isActionSuccess
 });
 
+const updatePagination = pagination => ({
+  type: types.UPDATE_PAGINATION,
+  pagination
+});
+
 export default {
+  updateSequences,
+  updateDelSequence,
   updateCreateSequence,
   updateSmartlifeAccount,
   updateSmartlifeAuthUri,
   updateSmartlifeScenes,
   updateTriggerSmartlifeScene,
   updateSmartlifeMaxSteps,
+  updatePagination,
   updateDisabled,
   updateLoading,
   updateLoaded,

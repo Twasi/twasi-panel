@@ -34,6 +34,20 @@ import { smartlifeSelectors, smartlifeOperations } from '../../state/integration
 var usedScenes = {};
 let sequenceQuery = {};
 
+function stringify(obj_from_json){
+    if(typeof obj_from_json !== "object" || Array.isArray(obj_from_json)){
+        // not an object, stringify using native function
+        return JSON.stringify(obj_from_json);
+    }
+    // Implements recursive object serialization according to JSON spec
+    // but without quotes around the keys.
+    let props = Object
+        .keys(obj_from_json)
+        .map(key => `${key}:${stringify(obj_from_json[key])}`)
+        .join(",");
+    return `{${props}}`;
+}
+
 class AddSequenceDialog extends React.Component {
 
   state = {
@@ -92,18 +106,20 @@ class AddSequenceDialog extends React.Component {
   };
 
   handleCreateSequence = () => {
+    var steps = []
     for(var i = 1; i <= this.state.sceneCount; i++) {
-      usedScenes.homeId = this.state['group'+(i-1)]
-      usedScenes.msDelay = this.state['delay'+(i-1)]*1000
-      usedScenes.sceneId = this.state['scene'+(i-1)]
+      var obj = {
+        homeId: this.state['group'+(i-1)],
+        msDelay: this.state['delay'+(i-1)]*1000,
+        sceneId: this.state['scene'+(i-1)]
+      }
+      steps.push(obj)
     }
-    sequenceQuery.name = this.state.sequenceName
-    sequenceQuery.steps = usedScenes
-    sequenceQuery.variable = this.state.variableName
-
-    sequenceQuery = JSON.stringify(sequenceQuery);
-    sequenceQuery = sequenceQuery.replace(/\"([^(\")"]+)\":/g,"$1:");
-    console.log(sequenceQuery)
+    var sequenceQuery = {
+      name: this.state.sequenceName,
+      variable: this.state.variableName,
+      steps: steps
+    }
     this.props.createSequence(sequenceQuery)
   }
 

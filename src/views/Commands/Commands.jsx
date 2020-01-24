@@ -302,7 +302,7 @@ class Commands extends Component {
               </small>
             </Typography>
           </Paper>
-          }{!disabled && this.renderCommands(this.state.page).length !== 0 &&
+          }{!disabled && this.renderCommands().length !== 0 &&
           <Paper className="pageContainer" style={{ padding: '0px', margin: '0px', borderRadius: '0px 0px 4px 4px' }}>
             <Table>
               <TableHead>
@@ -317,7 +317,7 @@ class Commands extends Component {
                 </TableRow>
               </TableHead>
               <TableBody className="anim">
-                {this.renderCommands(this.state.page)}
+                {this.renderCommands()}
               </TableBody>
             </Table>
             {this.props.pagination.pages !== 1 && this.renderPagination()}

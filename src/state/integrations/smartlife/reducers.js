@@ -1,6 +1,8 @@
 import types from './types';
 
 export const initialState = {
+  sequences: [],
+  pagination: [],
   smartlife: [],
   smartlifeScenes: [],
   sequenceInput: [],
@@ -13,11 +15,21 @@ export const initialState = {
   isLoaded: false,
   isActionSuccess: false,
   homeId: '',
-  sceneId: ''
+  sceneId: '',
+  id: '',
 };
 
 const smartlifeReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.UPDATE_SEQUENCES: {
+      return { ...state, isLoaded: true, isDisabled: false, sequences: action.sequences };
+    }
+    case types.UPDATE_DELSEQUENCE: {
+      return { ...state, isLoaded: true, id: action.id };
+    }
+    case types.UPDATE_PAGINATION: {
+      return { ...state, pagination: action.pagination };
+    }
     case types.UPDATE_SMARTLIFEACCOUNT: {
       return ({ ...state, isLoaded: true, isDisabled: false, smartlife: action.smartlife});
     }
