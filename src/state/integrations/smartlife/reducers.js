@@ -45,6 +45,9 @@ const smartlifeReducer = (state = initialState, action) => {
     case types.UPDATE_CREATESEQUENCE: {
       return ({ ...state, isLoaded: true, isDisabled: false, sequenceInput: action.sequenceInput});
     }
+    case types.UPDATE_PLAYSEQUENCE: {
+      return ({ ...state, isLoaded: true, isDisabled: false, id: action.id});
+    }
     case types.UPDATE_SMARTLIFEMAXSTEPS: {
       return ({ ...state, isLoaded: true, isDisabled: false, smartlifeMaxSteps: action.smartlifeMaxSteps});
     }

@@ -96,7 +96,7 @@ class Smartlife extends Component {
   }
 
   renderSequences() {
-    const { sequences, delSequence } = this.props;
+    const { sequences, delSequence, playSequence } = this.props;
     return sequences.map(sequence => (
       <TableRow key={sequence.id}>
         <TableCell>
@@ -112,6 +112,7 @@ class Smartlife extends Component {
         </TableCell>
         <TableCell>
           <Fab
+            onClick={() => playSequence(sequence.id)}
             color="primary"
             className="noshadow"
             size="small"
@@ -134,6 +135,9 @@ class Smartlife extends Component {
 
   render() {
     const { smartlife, updateSequences } = this.props;
+    if(this.props.isActionSuccess){
+      updateSequences(this.state.page);
+    }
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -202,10 +206,12 @@ const mapDispatchToProps = dispatch => ({
   updateSmartlifeAccount: () => dispatch(smartlifeOperations.loadSmartlifeAccount()),
   updateSequences: page => dispatch(smartlifeOperations.loadSequences(page)),
   delSequence: id => dispatch(smartlifeOperations.delSequence(id)),
+  playSequence: id => dispatch(smartlifeOperations.playSequence(id)),
 });
 
 const mapStateToProps = state => ({
   sequences: smartlifeSelectors.getSequences(state),
+  sequenceInput: smartlifeSelectors.getCreateSequence(state),
   pagination: smartlifeSelectors.getPagination(state),
   smartlife: smartlifeSelectors.getSmartlifeAccount(state),
   isLoaded: smartlifeSelectors.isLoaded(state),

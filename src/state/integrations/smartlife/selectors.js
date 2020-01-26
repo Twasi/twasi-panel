@@ -1,4 +1,5 @@
 const getSequences = state => state.smartlife.sequences;
+const getCreateSequence = state => state.smartlife.sequenceInput;
 const getSmartlifeAccount = state => state.smartlife;
 const getPagination = state => state.smartlife.pagination;
 const getSmartlifeAuthUri = state => state.smartlife.smartlifeUri;
@@ -12,6 +13,7 @@ const isActionSuccess = state => state.smartlife.isActionSuccess;
 
 export default {
   getSequences,
+  getCreateSequence,
   getSmartlifeAccount,
   getSmartlifeAuthUri,
   getSmartlifeScenes,

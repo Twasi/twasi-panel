@@ -36,6 +36,11 @@ const updateCreateSequence = (sequenceInput) => ({
   sequenceInput
 });
 
+const updatePlaySequence = (id) => ({
+  type: types.UPDATE_PLAYSEQUENCE,
+  id
+});
+
 const updateSmartlifeMaxSteps = smartlifeMaxSteps => ({
   type: types.UPDATE_SMARTLIFEMAXSTEPS,
   smartlifeMaxSteps
@@ -70,6 +75,7 @@ export default {
   updateSequences,
   updateDelSequence,
   updateCreateSequence,
+  updatePlaySequence,
   updateSmartlifeAccount,
   updateSmartlifeAuthUri,
   updateSmartlifeScenes,

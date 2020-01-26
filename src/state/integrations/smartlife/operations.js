@@ -11,6 +11,7 @@ const {
     updateSmartlifeScenes,
     updateTriggerSmartlifeScene,
     updateCreateSequence,
+    updatePlaySequence,
     updateSmartlifeMaxSteps,
     updatePagination,
     updateDisabled,
@@ -34,17 +35,9 @@ function stringify(obj_from_json){
 }
 
 const loadSequences = page => dispatch => {
-    dispatch(updateLoading(true));
     dispatch(getGraph(`control{sceneSequences{list{content(page: ${page}){created,id,name,steps{homeId,msDelay,sceneId},updated,variable},itemsPerPage,pages,total}}}`, 'smartlifeintegration')).then(data => {
-        if (data == null) {
-            dispatch(updateDisabled(true));
-            return;
-        }
-        dispatch(updateSequences(data.control.sceneSequences.list.content));
-        dispatch(updatePagination(data.control.sceneSequences.list));
-    }).finally(() => {
-        dispatch(updateLoading(false))
-        dispatch(updateLoaded(true))
+      dispatch(updateSequences(data.control.sceneSequences.list.content));
+      dispatch(updatePagination(data.control.sceneSequences.list));
     });
 };
 
@@ -109,16 +102,25 @@ const triggerSmartlifeScene = (homeId, sceneId) => dispatch => {
     });
 }
 
+
+
 const createSequence = (sequenceInput) => dispatch => {
-    dispatch(updateLoading(true));
     dispatch(updateActionSuccess(false));
     dispatch(getGraph(`control{sceneSequences{create(newSequence: ${stringify(sequenceInput).replace(/"([^(")"]+)":/g,"$1:")}){created,id,name,steps{homeId,msDelay,sceneId},updated,variable}}}`, 'smartlifeintegration')).then(data => {
       dispatch(updateCreateSequence(data.control.sceneSequences.create))
       dispatch(updateActionSuccess(true));
     }).finally(() => {
         dispatch(updateActionSuccess(false));
-        dispatch(updateLoading(false))
-        dispatch(updateLoaded(true))
+    });
+}
+
+const playSequence = (id) => dispatch => {
+    dispatch(updateActionSuccess(false));
+    dispatch(getGraph(`control{sceneSequences{play(id: ${id}){status,translationKey}}}`, 'smartlifeintegration')).then(data => {
+      dispatch(updatePlaySequence(data.control.sceneSequences.play))
+      dispatch(updateActionSuccess(true));
+    }).finally(() => {
+        dispatch(updateActionSuccess(false));
     });
 }
 
@@ -153,6 +155,7 @@ const verifyData = () => (dispatch, getState) => {
 
 export default {
     createSequence,
+    playSequence,
     delSequence,
     loadSequences,
     loadSmartlifeAccount,

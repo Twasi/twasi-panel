@@ -24,6 +24,8 @@ import './_style.css';
 
 import { smartlifeSelectors, smartlifeOperations } from '../../state/integrations/smartlife';
 
+var usedScenes = []
+
 class AddSequenceDialog extends React.Component {
 
   state = {
@@ -31,7 +33,6 @@ class AddSequenceDialog extends React.Component {
     variableName: '',
     createVariable: false,
     sceneCount: 1,
-    page: this.props.page
   };
 
   componentDidMount() {
@@ -42,6 +43,12 @@ class AddSequenceDialog extends React.Component {
       this.setState({ ['group'+i]: homes[0].homeId })
     }
     this.textInput = React.createRef();
+  }
+
+  componentDidUpdate() {
+    for(var i = 0; i <= this.state.sceneCount; i++) {
+      usedScenes[i] = this.state['scene'+(i)]
+    }
   }
 
   handleClose = () => {
@@ -98,7 +105,7 @@ class AddSequenceDialog extends React.Component {
       steps: steps
     }
     this.props.createSequence(sequenceQuery)
-    this.props.updateSequences(this.state.page)
+    this.props.onClose(this.props.selectedValue);
   }
 
   renderGroups() {
@@ -106,14 +113,6 @@ class AddSequenceDialog extends React.Component {
     return homes.map(home => (
       <MenuItem key={home.homeId} value={home.homeId}>{home.name}</MenuItem>
     ));
-  }
-
-  renderScenes(scenes) {
-    if(scenes.scenes !== undefined) {
-      return scenes.scenes.map(scene => (
-        <MenuItem key={scene.sceneId} value={scene.sceneId}>{scene.name}</MenuItem>
-      ));
-    }
   }
 
   renderSceneCreator() {
@@ -296,7 +295,7 @@ class AddSequenceDialog extends React.Component {
           </Card>
           {this.renderSceneCreator()}
           <Button
-            onClick={this.handleCreateSequence}
+            onClick={() => this.handleCreateSequence()}
             fullWidth
             style={{ marginTop: '15px' }}
             variant="contained"
@@ -323,7 +322,6 @@ const mapDispatchToProps = dispatch => ({
   triggerSmartlifeScene: (homeId, sceneId) => dispatch(smartlifeOperations.triggerSmartlifeScene(homeId, sceneId)),
   updateSmartlifeScenes: (homeId) => dispatch(smartlifeOperations.loadSmartlifeScenes(homeId)),
   updateSmartlifeMaxSteps: () => dispatch(smartlifeOperations.loadSmartlifeMaxSteps()),
-  updateSequences: (page) => dispatch(smartlifeOperations.loadSequences(page))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddSequenceDialog);
