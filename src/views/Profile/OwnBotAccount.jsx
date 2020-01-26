@@ -26,7 +26,7 @@ class OwnBotAccount extends Component {
   }
 
   render() {
-    const { twitch, updateTwitchDisconnect, updateTwitchAccount, jwt } = this.props;
+    //const { twitch, updateTwitchDisconnect, updateTwitchAccount, jwt } = this.props;
     return (
       <div className="pageContent">
         <Paper className="pageContainer">

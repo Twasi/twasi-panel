@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
 import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import TextField from '@material-ui/core/TextField';
@@ -16,37 +14,15 @@ import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
-import Snackbar from '@material-ui/core/Snackbar';
-import Chip from '@material-ui/core/Chip';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
-import { FormattedMessage, injectIntl } from 'react-intl';
 
 import './_style.css';
 
 import { smartlifeSelectors, smartlifeOperations } from '../../state/integrations/smartlife';
-
-var usedScenes = {};
-let sequenceQuery = {};
-
-function stringify(obj_from_json){
-    if(typeof obj_from_json !== "object" || Array.isArray(obj_from_json)){
-        // not an object, stringify using native function
-        return JSON.stringify(obj_from_json);
-    }
-    // Implements recursive object serialization according to JSON spec
-    // but without quotes around the keys.
-    let props = Object
-        .keys(obj_from_json)
-        .map(key => `${key}:${stringify(obj_from_json[key])}`)
-        .join(",");
-    return `{${props}}`;
-}
 
 class AddSequenceDialog extends React.Component {
 
@@ -55,6 +31,7 @@ class AddSequenceDialog extends React.Component {
     variableName: '',
     createVariable: false,
     sceneCount: 1,
+    page: this.props.page
   };
 
   componentDidMount() {
@@ -121,6 +98,7 @@ class AddSequenceDialog extends React.Component {
       steps: steps
     }
     this.props.createSequence(sequenceQuery)
+    this.props.updateSequences(this.state.page)
   }
 
   renderGroups() {
@@ -131,7 +109,7 @@ class AddSequenceDialog extends React.Component {
   }
 
   renderScenes(scenes) {
-    if(scenes.scenes != undefined) {
+    if(scenes.scenes !== undefined) {
       return scenes.scenes.map(scene => (
         <MenuItem key={scene.sceneId} value={scene.sceneId}>{scene.name}</MenuItem>
       ));
@@ -139,7 +117,7 @@ class AddSequenceDialog extends React.Component {
   }
 
   renderSceneCreator() {
-    const { homes, smartlifeMaxSteps, disabled, updateSmartlifeScenes, smartlifeScenes, isActionSuccess, triggerSmartlifeScene } = this.props;
+    const { homes, smartlifeMaxSteps, disabled, updateSmartlifeScenes, smartlifeScenes, triggerSmartlifeScene } = this.props;
     return (
       <div>
         {_.times(this.state.sceneCount, i =>
@@ -345,6 +323,7 @@ const mapDispatchToProps = dispatch => ({
   triggerSmartlifeScene: (homeId, sceneId) => dispatch(smartlifeOperations.triggerSmartlifeScene(homeId, sceneId)),
   updateSmartlifeScenes: (homeId) => dispatch(smartlifeOperations.loadSmartlifeScenes(homeId)),
   updateSmartlifeMaxSteps: () => dispatch(smartlifeOperations.loadSmartlifeMaxSteps()),
+  updateSequences: (page) => dispatch(smartlifeOperations.loadSequences(page))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddSequenceDialog);

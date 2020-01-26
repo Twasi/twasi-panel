@@ -112,12 +112,8 @@ const triggerSmartlifeScene = (homeId, sceneId) => dispatch => {
 const createSequence = (sequenceInput) => dispatch => {
     dispatch(updateLoading(true));
     dispatch(updateActionSuccess(false));
-    dispatch(getGraph(`control{sceneSequences{create(newSequence: ${stringify(sequenceInput).replace(/\"([^(\")"]+)\":/g,"$1:")}){created,id,name,steps{homeId,msDelay,sceneId},updated,variable}}}`, 'smartlifeintegration')).then(data => {
-      if (data == null) {
-          dispatch(updateDisabled(true));
-          return;
-      }
-      dispatch(updateCreateSequence(data.control))
+    dispatch(getGraph(`control{sceneSequences{create(newSequence: ${stringify(sequenceInput).replace(/"([^(")"]+)":/g,"$1:")}){created,id,name,steps{homeId,msDelay,sceneId},updated,variable}}}`, 'smartlifeintegration')).then(data => {
+      dispatch(updateCreateSequence(data.control.sceneSequences.create))
       dispatch(updateActionSuccess(true));
     }).finally(() => {
         dispatch(updateActionSuccess(false));

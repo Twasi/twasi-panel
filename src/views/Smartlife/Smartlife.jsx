@@ -9,11 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Link from '@material-ui/core/Link';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Fab from '@material-ui/core/Fab';
 import Chip from '@material-ui/core/Chip';
-import Box from '@material-ui/core/Box';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -27,23 +24,6 @@ import './_style.css';
 import smartlife_logo from '../common/resources/smartlife.png';
 
 import { smartlifeSelectors, smartlifeOperations } from '../../state/integrations/smartlife';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`scrollable-auto-tabpanel-${index}`}
-      aria-labelledby={`scrollable-auto-tab-${index}`}
-      {...other}
-    >
-      <Box p={0}>{children}</Box>
-    </Typography>
-  );
-}
 
 class Smartlife extends Component {
   constructor(props){
@@ -153,7 +133,7 @@ class Smartlife extends Component {
   }
 
   render() {
-    const { smartlife, disabled, isLoaded, isLoading, updateSequences, isActionSuccess } = this.props;
+    const { smartlife, updateSequences } = this.props;
     return (
       <div className="pageContent">
         <Breadcrumbs arial-label="Breadcrumb">
@@ -208,6 +188,7 @@ class Smartlife extends Component {
           <AddSequenceDialog
             open
             homes={smartlife.smartlife.homes}
+            page={this.state.page}
             onClose={this.handleCloseAddSequenceDialog}
           />
         }
