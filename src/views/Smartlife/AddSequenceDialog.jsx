@@ -115,6 +115,14 @@ class AddSequenceDialog extends React.Component {
     ));
   }
 
+  renderScenes(scenes) {
+    if(scenes.scenes !== undefined) {
+      return scenes.scenes.map(scene => (
+        <MenuItem key={scene.sceneId} value={scene.sceneId}>{scene.name}</MenuItem>
+      ));
+    }
+  }
+
   renderSceneCreator() {
     const { homes, smartlifeMaxSteps, disabled, updateSmartlifeScenes, smartlifeScenes, triggerSmartlifeScene } = this.props;
     return (
