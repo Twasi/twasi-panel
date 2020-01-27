@@ -112,7 +112,7 @@ class Smartlife extends Component {
         </TableCell>
         <TableCell>
           <Fab
-            onClick={() => playSequence(sequence.id)}
+            onClick={() => playSequence(sequence.id.toString())}
             color="primary"
             className="noshadow"
             size="small"
