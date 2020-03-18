@@ -33,7 +33,7 @@ import MonkaS from '../common/resources/MonkaS.png';
 
 import ViewerChart from './ViewerChart';
 import PlayedGamesChart from './PlayedGamesChart';
-import CommandsChart from './CommandsChart';
+//import CommandsChart from './CommandsChart';
 import ChattersChart from './ChattersChart';
 import StatsList from './StatsList';
 import GameTitleCard from './GameTitleCard';
@@ -183,7 +183,7 @@ class Overview extends Component {
       } else {
         chatterschart =
           <div>
-            <Typography component={'span'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
+            <Typography component={'div'} style={{ textAlign: 'center', marginTop: '150px', marginBottom: '150px' }}>
               <img
                 style={{ position: 'relative', height: '80px' }}
                 src={MonkaS}
@@ -445,6 +445,7 @@ class Overview extends Component {
                   <ViewerChart streamdata={streamtracker}/>
                 </Paper>
                 <Row>
+                  {/*
                   <Col sm={6}>
                     <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
                       <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
@@ -462,10 +463,10 @@ class Overview extends Component {
                           <Typography><small>Das Plugin für die Befehle ist nicht installiert. Um dieses Diagramm anzuzeigen, installiere bitte das Plugin "<b>Befehle</b>".</small></Typography>
                         </CardContent>
                       </Card>
-                      }
                     </Paper>
                   </Col>
-                  <Col sm={6}>
+                  */}
+                  <Col sm={12}>
                     <Paper className="pageContainer" style={{ height: '350px', padding: '23px 0px 0px 0px' }}>
                       <Typography component={'span'} style={{ paddingLeft: '23px', position: 'absolute' }}>
                         <h4 className="pageContainerTitle">

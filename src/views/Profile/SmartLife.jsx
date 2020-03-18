@@ -46,7 +46,6 @@ class SmartLife extends Component {
 
   render() {
     const { classes, onClose, smartlifeUri, smartlife, jwt, ...other } = this.props;
-    console.log(smartlife)
     return (
       <div className="pageContent">
         <Paper className="pageContainer">
@@ -80,6 +79,7 @@ class SmartLife extends Component {
                 <Grid item md={6} style={{ textAlign: 'center' }}>
                   {!smartlife.smartlife.devices ?
                   <Button
+                    disabled
                     onClick={() => this.setState({ openConnectSmartlifeAccount: true })}
                     variant="contained"
                     color="primary">

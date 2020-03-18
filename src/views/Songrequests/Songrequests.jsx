@@ -22,6 +22,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
 import GivePLZ from '../common/resources/giveplz.png';
+import Notlikethis from '../common/resources/Notlikethis.png';
 
 import SongrequestSettingsDialog from './SongrequestSettingsDialog';
 import ReportPlaybackIssue from './ReportPlaybackIssue';
@@ -91,7 +92,7 @@ class Songrequests extends React.Component {
                 duration: '00:00',
                 name: 'Kein Song in der Songliste',
                 artists: '',
-                media: 'https://f-scope.net/images/notlikethis-png.png'
+                media: ''
             },
             time: 0, // timeline
             volume: 0,
@@ -132,7 +133,7 @@ class Songrequests extends React.Component {
                         duration: 0,
                         name: 'Kein Song in der Songliste',
                         artists: '',
-                        media: 'https://f-scope.net/images/notlikethis-png.png',
+                        media: Notlikethis,
                         formattedMaxPos: '0:00'
                     }
                 })
@@ -404,7 +405,7 @@ class Songrequests extends React.Component {
                   this.renderApiConnectionLost()
                 }
                 {isValidBrowser() && this.state.enableSpotifyAuth &&
-                <Chip style={{ marginTop: '15px' }} color="primary" label="Du möchtest Spotify Requests aktivieren? Klicke auf das Zahnrad und verbinde deinen Spotify Account." />}
+                <Chip style={{ marginTop: '15px', marginBottom: '10px' }} color="primary" label="Du möchtest Spotify Requests aktivieren? Klicke auf das Zahnrad und verbinde deinen Spotify Account." />}
                 {isValidBrowser() &&
                 <Paper className="pageContainer" style={{padding: '0px', position: 'relative'}}>
                     <div

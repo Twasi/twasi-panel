@@ -35,7 +35,7 @@ const PanelContent = () => (
                 <Route path="/" exact component={Overview}/>
                 <Route path="/plugins" exact component={Plugins}/>
                 <Route path="/profile" exact component={Profile}/>
-                <Route path="/themecreator" exact component={ThemeCreator}/>
+                <Route path="/themecreator" render={ThemeCreator.render}/>
                 <Route path="/themes" exact component={ThemeStore}/>
                 <Route path="/mods" exact component={Moderators}/>
                 <Route path="/commands" exact component={Commands}/>

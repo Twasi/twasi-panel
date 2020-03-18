@@ -36,7 +36,7 @@ class Profile extends Component {
           </Link>
           <Typography color="textPrimary"><FormattedMessage id="sidebar.profile" /></Typography>
         </Breadcrumbs>
-        <NotFunctionalAlert/>
+        {/*<NotFunctionalAlert/>*/}
         <Row>
           <Col sm={6}>
             <AccountData/>

@@ -48,7 +48,7 @@ class Sidebar extends Component {
         path: '/profile',
         icon: 'account_box',
         name: 'sidebar.profile',
-        shown: 'all'
+        shown: 'none'
       },
       {
         key: 'mods',
@@ -97,7 +97,7 @@ class Sidebar extends Component {
         path: '/smartlife',
         icon: 'wifi',
         name: 'sidebar.smartlife',
-        shown: 'all'
+        shown: 'none'
       },
       {
         key: 'giveaways',
