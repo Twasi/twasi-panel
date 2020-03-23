@@ -43,7 +43,7 @@ body {
   background-color: #e53935 !important;
 }
 .tealbg {
-  background-color: #00aeae !important;
+  background-color: #3f51b5 !important;
 }
 .noshadow {
   box-shadow: none !important;
@@ -77,7 +77,7 @@ body {
   margin-bottom: 1rem;
 }
 .TableRow {
-  border-bottom: 3px solid #00aeae !important;
+  border-bottom: 3px solid #3f51b5 !important;
 }
 .TableRowThin {
   border-bottom: 0px !important;
@@ -86,7 +86,7 @@ body {
   margin-top: 0px;
 }
 .parameter {
-  background-color: #00aeae;
+  background-color: linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255));
   color: #fff;
   padding: 0px 5px 2px 5px;
 }

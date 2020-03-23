@@ -26,7 +26,7 @@
 }
 
 .translucentBoxLeaderboard {
-  background: linear-gradient(135deg, rgb(0, 174, 174), rgb(2, 212, 212));
+  background: linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255));
   color: #ffffff !important;
   width: 100% !important;
 }

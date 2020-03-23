@@ -1,5 +1,5 @@
 #header {
-  border-top: 5px solid #00aeae;
+  border-top: 5px solid #3f51b5;
 }
 
 .bannerHeader {
@@ -54,7 +54,7 @@
   transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-  background: -webkit-linear-gradient(135deg,#00aeae,#02d4d4);
+  background: -webkit-linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

@@ -12,7 +12,7 @@
 }
 
 .headerMenuItem {
-  background: linear-gradient(135deg,#00aeae,#02d4d4);
+  background: linear-gradient(135deg, rgb(63, 81, 181), rgb(84, 128, 255));
   margin-left: 0px;
   padding: 0px 5px 0px 16px;
   min-height: 48px;
