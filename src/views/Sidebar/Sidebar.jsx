@@ -48,7 +48,7 @@ class Sidebar extends Component {
         path: '/profile',
         icon: 'account_box',
         name: 'sidebar.profile',
-        shown: 'none'
+        shown: 'all'
       },
       {
         key: 'mods',

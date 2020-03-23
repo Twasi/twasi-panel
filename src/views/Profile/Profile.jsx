@@ -10,7 +10,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import './_style.css';
 
-import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
+//import NotFunctionalAlert from '../NotFunctionalAlert/NotFunctionalAlert';
 
 import AccountData from './AccountData';
 //import PublicProfile from './PublicProfile';

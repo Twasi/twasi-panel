@@ -173,7 +173,7 @@ class Overview extends Component {
   }
 
   render() {
-    const { streamtracker, globalstreamtracker, disabled, isLoading, isGlobalLoading, noStreamData, user } = this.props;
+    const { streamtracker, globalstreamtracker, isLoading, isGlobalLoading, noStreamData, user } = this.props;
     const { value } = this.state;
     let chatterschart;
 
